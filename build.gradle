@@ -13,6 +13,7 @@ group = mod_group_id
 
 repositories {
     mavenLocal()
+    mavenCentral()
 
     maven {
         name = "Jared's maven"
@@ -87,6 +88,9 @@ dependencies {
     compileOnly "mezz.jei:jei-${mc_version}-common-api:${jei_version}"
     compileOnly "mezz.jei:jei-${mc_version}-neoforge-api:${jei_version}"
     localRuntime "mezz.jei:jei-${mc_version}-neoforge:${jei_version}"
+
+    // LuckPerms Dependency
+    compileOnly 'net.luckperms:api:5.4'
 }
 
 // gradle.properties entries
