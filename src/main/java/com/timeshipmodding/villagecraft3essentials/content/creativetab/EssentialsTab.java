@@ -11,7 +11,6 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import static net.minecraft.world.item.Items.*;
 
 import static com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems.*;
-import static com.timeshipmodding.villagecraft3essentials.content.item.registries.ModPermitItems.*;
 import static com.timeshipmodding.villagecraft3essentials.content.block.registries.ModBlocks.*;
 
 import static com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials.MODID;
@@ -106,12 +105,6 @@ public class EssentialsTab {
                 pOutput.accept(RUBY);
                 pOutput.accept(AMBER);
                 pOutput.accept(NETHERITE_INGOT);
-                pOutput.accept(VC_STARTING_PERMIT);
-                pOutput.accept(GC_STARTING_PERMIT);
-                pOutput.accept(AC_STARTING_PERMIT);
-                pOutput.accept(VC_PERMIT_1);
-                pOutput.accept(GC_PERMIT_1);
-                pOutput.accept(AC_PERMIT_1);
                 pOutput.accept(MOLE_SPAWN_EGG);
             }).build());
 }

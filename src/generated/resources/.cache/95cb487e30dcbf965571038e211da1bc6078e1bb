@@ -1,6 +1,0 @@
-// 1.21.1	2024-12-19T13:03:38.5447008	Tags for minecraft:block mod id villagecraft3essentials
-13627febb5f413a2169f8736b19fc80a18d6a84b data/minecraft/tags/block/beacon_base_blocks.json
-dfdbf5dfd43963ca49ed04baea3484b53fd3f89b data/minecraft/tags/block/mineable/pickaxe.json
-551df9d57eff09fa582f03321383f81dfe022964 data/minecraft/tags/block/needs_iron_tool.json
-e686d24d2d08a3fb70bb2c4b3acc9b2eab7eb83d data/minecraft/tags/block/needs_stone_tool.json
-4bb2bfb8a34c19e1120b90d9a04aad667386ecdf data/villagecraft3essentials/tags/block/moles_spawnable_on.json

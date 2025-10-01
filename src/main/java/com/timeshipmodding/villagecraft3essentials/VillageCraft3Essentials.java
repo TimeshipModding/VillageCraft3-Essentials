@@ -5,7 +5,6 @@ import com.timeshipmodding.villagecraft3essentials.content.creativetab.Essential
 import com.timeshipmodding.villagecraft3essentials.content.entity.client.registries.ModEntities;
 import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModArmorMaterials;
 import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems;
-import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModPermitItems;
 import com.timeshipmodding.villagecraft3essentials.content.sound.registries.ModSounds;
 import com.timeshipmodding.villagecraft3essentials.content.villager.registries.ModVillagers;
 import com.timeshipmodding.villagecraft3essentials.util.saveddata.JailSavedData;
@@ -31,7 +30,6 @@ public class VillageCraft3Essentials {
         // Register registry classes
         ModBlocks.BLOCKS.register(modEventBus);
         ModItems.ITEMS.register(modEventBus);
-        ModPermitItems.ITEMS.register(modEventBus);
         ModArmorMaterials.ARMOR_MATERIALS.register(modEventBus);
         ModVillagers.POI_TYPES.register(modEventBus);
         ModVillagers.VILLAGER_PROFESSIONS.register(modEventBus);
