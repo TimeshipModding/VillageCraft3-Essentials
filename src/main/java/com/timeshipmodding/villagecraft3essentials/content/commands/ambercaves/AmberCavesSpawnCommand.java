@@ -17,10 +17,10 @@ public class AmberCavesSpawnCommand {
         dispatcher.register(Commands.literal("ambercaves").then(Commands.literal("spawn").executes(this::execute)));
     }
 
-    private ResourceKey<Level> townDimension = ServerLevel.OVERWORLD;
+    private ResourceKey<Level> spawnDimension = ServerLevel.OVERWORLD;
 
     public ResourceKey<Level> getTownDimension() {
-        return this.townDimension;
+        return this.spawnDimension;
     }
 
     private int execute(CommandContext<CommandSourceStack> context) {
@@ -30,12 +30,12 @@ public class AmberCavesSpawnCommand {
         SpawnSavedData savedData = SpawnSavedData.getData(server);
         int[] spawn = savedData.getAmberCavesSpawn();
 
-        if(spawn[3] != 0 && spawn[4] != 0) {
+        if(spawn[3] != 0 && spawn[4] != 0 && player != null && serverlevel != null) {
             player.teleportTo(serverlevel, spawn[0], spawn[1], spawn[2], spawn[3], spawn[4]);
             context.getSource().sendSuccess(() -> Component.literal("You have been teleported to The Amber Caves!"), false);
             return 1;
         } else {
-            context.getSource().sendFailure(Component.literal("No Amber Caves Spawn ition has been set."));
+            context.getSource().sendFailure(Component.literal("No Amber Caves Spawn position has been set."));
             return -1;
         }
     }

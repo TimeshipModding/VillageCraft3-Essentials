@@ -1,9 +1,9 @@
-package com.timeshipmodding.villagecraft3essentials.content.commands.villagecraftcity;
+package com.timeshipmodding.villagecraft3essentials.content.commands.ambercaves;
 
 import com.google.common.collect.ImmutableList;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
-import com.timeshipmodding.villagecraft3essentials.util.saveddata.JailSavedData;
+import com.timeshipmodding.villagecraft3essentials.util.saveddata.SpawnSavedData;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.EntityArgument;
@@ -15,11 +15,10 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.level.Level;
 
 import java.util.Collection;
-import java.util.Objects;
 
-public class VillageCraftCityJailCommand {
-    public VillageCraftCityJailCommand(CommandDispatcher<CommandSourceStack> dispatcher) {
-        dispatcher.register(Commands.literal("villagecraftcity").then(Commands.literal("jail")
+public class AmberCavesPardonCommand {
+    public AmberCavesPardonCommand(CommandDispatcher<CommandSourceStack> dispatcher) {
+        dispatcher.register(Commands.literal("ambercaves").then(Commands.literal("pardon")
                 .executes(p_137817_ -> execute(p_137817_, ImmutableList.of(p_137817_.getSource().getPlayerOrException())))
                         .then(
                                 Commands.argument("targets", EntityArgument.players())
@@ -28,29 +27,29 @@ public class VillageCraftCityJailCommand {
     }
 
     private String targetPlayerUsername;
-    private final ResourceKey<Level> jailDimension = ServerLevel.OVERWORLD;
+    private final ResourceKey<Level> spawnDimension = ServerLevel.OVERWORLD;
 
     public ResourceKey<Level> getJailDimension() {
-        return this.jailDimension;
+        return this.spawnDimension;
     }
 
     private int execute(CommandContext<CommandSourceStack> context, Collection<? extends ServerPlayer> targets) {
         MinecraftServer server = context.getSource().getServer();
         ServerLevel serverlevel = server.getLevel(this.getJailDimension());
-        JailSavedData savedData = JailSavedData.getData(server);
-        int[] jail = savedData.getVillagecraftCityJail();
+        SpawnSavedData savedData = SpawnSavedData.getData(server);
+        int[] spawn = savedData.getAmberCavesSpawn();
 
-        if(jail[3] != 0 && jail[4] != 0 && serverlevel != null) {
+        if(spawn[3] != 0 && spawn[4] != 0 && serverlevel != null) {
             for (ServerPlayer player : targets) {
-                player.teleportTo(serverlevel, jail[0], jail[1], jail[2], jail[3], jail[4]);
-                player.sendSystemMessage(Component.literal("You have been arrested and teleported to VillageCraft City Jail!"), false);
-                targetPlayerUsername = Objects.requireNonNull(player.getDisplayName()).getString();
+                player.teleportTo(serverlevel, spawn[0], spawn[1], spawn[2], spawn[3], spawn[4]);
+                player.sendSystemMessage(Component.literal("You have been pardoned from jail and teleported to The Amber Caves Spawn!"), false);
+                targetPlayerUsername = player.getDisplayName().getString();
             }
 
-            context.getSource().sendSuccess(() -> Component.literal("You have arrested and teleported " + targetPlayerUsername + " to VillageCraft Jail!"), false);
+            context.getSource().sendSuccess(() -> Component.literal("You have pardoned " + targetPlayerUsername + " from jail and teleported them to The Amber Caves Spawn!"), false);
             return 1;
         } else {
-            context.getSource().sendFailure(Component.literal("No VillageCraft City Jail position has been set."));
+            context.getSource().sendFailure(Component.literal("No Amber Caves' Spawn position has been set."));
             return -1;
         }
     }

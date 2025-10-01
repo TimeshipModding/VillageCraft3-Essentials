@@ -15,6 +15,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.level.Level;
 
 import java.util.Collection;
+import java.util.Objects;
 
 public class GripperCityJailCommand {
     public GripperCityJailCommand(CommandDispatcher<CommandSourceStack> dispatcher) {
@@ -26,7 +27,8 @@ public class GripperCityJailCommand {
                         )));
     }
 
-    private ResourceKey<Level> jailDimension = ServerLevel.OVERWORLD;
+    private String targetPlayerUsername;
+    private final ResourceKey<Level> jailDimension = ServerLevel.OVERWORLD;
 
     public ResourceKey<Level> getJailDimension() {
         return this.jailDimension;
@@ -38,15 +40,17 @@ public class GripperCityJailCommand {
         JailSavedData savedData = JailSavedData.getData(server);
         int[] jail = savedData.getGripperCityJail();
 
-        if(jail[3] != 0 && jail[4] != 0) {
+        if(jail[3] != 0 && jail[4] != 0 && serverlevel != null) {
             for (ServerPlayer player : targets) {
                 player.teleportTo(serverlevel, jail[0], jail[1], jail[2], jail[3], jail[4]);
+                player.sendSystemMessage(Component.literal("You have been arrested and teleported to Gripper City Jail!"), false);
+                targetPlayerUsername = Objects.requireNonNull(player.getDisplayName()).getString();
             }
 
-            context.getSource().sendSuccess(() -> Component.literal("You have been teleported to Gripper Jail!"), false);
+            context.getSource().sendSuccess(() -> Component.literal("You have arrested and teleported " + targetPlayerUsername + " to Gripper City Jail!"), false);
             return 1;
         } else {
-            context.getSource().sendFailure(Component.literal("No Gripper City Jail Position has been set."));
+            context.getSource().sendFailure(Component.literal("No Gripper City Jail position has been set."));
             return -1;
         }
     }

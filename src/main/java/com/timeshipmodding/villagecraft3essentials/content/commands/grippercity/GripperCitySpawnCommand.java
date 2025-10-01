@@ -17,10 +17,10 @@ public class GripperCitySpawnCommand {
         dispatcher.register(Commands.literal("grippercity").then(Commands.literal("spawn").executes(this::execute)));
     }
 
-    private ResourceKey<Level> townDimension = ServerLevel.OVERWORLD;
+    private final ResourceKey<Level> spawnDimension = ServerLevel.OVERWORLD;
 
     public ResourceKey<Level> getTownDimension() {
-        return this.townDimension;
+        return this.spawnDimension;
     }
 
     private int execute(CommandContext<CommandSourceStack> context) {
@@ -30,12 +30,12 @@ public class GripperCitySpawnCommand {
         SpawnSavedData savedData = SpawnSavedData.getData(server);
         int[] spawn = savedData.getGripperCitySpawn();
 
-        if(spawn[3] != 0 && spawn[4] != 0) {
+        if(spawn[3] != 0 && spawn[4] != 0 && player != null && serverlevel != null) {
             player.teleportTo(serverlevel, spawn[0], spawn[1], spawn[2], spawn[3], spawn[4]);
             context.getSource().sendSuccess(() -> Component.literal("You have been teleported to Gripper City!"), false);
             return 1;
         } else {
-            context.getSource().sendFailure(Component.literal("No Gripper City Spawn ition has been set."));
+            context.getSource().sendFailure(Component.literal("No Gripper City Spawn position has been set."));
             return -1;
         }
     }

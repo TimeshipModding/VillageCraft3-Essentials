@@ -1,18 +1,9 @@
 package com.timeshipmodding.villagecraft3essentials.event.registries;
 
 import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
-import com.timeshipmodding.villagecraft3essentials.content.commands.ambercaves.AmberCavesJailCommand;
-import com.timeshipmodding.villagecraft3essentials.content.commands.ambercaves.AmberCavesSetJailCommand;
-import com.timeshipmodding.villagecraft3essentials.content.commands.ambercaves.AmberCavesSetSpawnCommand;
-import com.timeshipmodding.villagecraft3essentials.content.commands.ambercaves.AmberCavesSpawnCommand;
-import com.timeshipmodding.villagecraft3essentials.content.commands.grippercity.GripperCityJailCommand;
-import com.timeshipmodding.villagecraft3essentials.content.commands.grippercity.GripperCitySetJailCommand;
-import com.timeshipmodding.villagecraft3essentials.content.commands.grippercity.GripperCitySetSpawnCommand;
-import com.timeshipmodding.villagecraft3essentials.content.commands.grippercity.GripperCitySpawnCommand;
-import com.timeshipmodding.villagecraft3essentials.content.commands.villagecraftcity.VillageCraftCityJailCommand;
-import com.timeshipmodding.villagecraft3essentials.content.commands.villagecraftcity.VillageCraftCitySetJailCommand;
-import com.timeshipmodding.villagecraft3essentials.content.commands.villagecraftcity.VillageCraftCitySpawnCommand;
-import com.timeshipmodding.villagecraft3essentials.content.commands.villagecraftcity.VillageCraftCitySetSpawnCommand;
+import com.timeshipmodding.villagecraft3essentials.content.commands.ambercaves.*;
+import com.timeshipmodding.villagecraft3essentials.content.commands.grippercity.*;
+import com.timeshipmodding.villagecraft3essentials.content.commands.villagecraftcity.*;
 import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems;
 import com.timeshipmodding.villagecraft3essentials.content.villager.registries.ModVillagers;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
@@ -188,14 +179,17 @@ public class ModEvents {
     public static void onCommandsRegister(RegisterCommandsEvent event) {
         new AmberCavesSetJailCommand(event.getDispatcher());
         new AmberCavesJailCommand(event.getDispatcher());
+        new AmberCavesPardonCommand(event.getDispatcher());
         new AmberCavesSetSpawnCommand(event.getDispatcher());
         new AmberCavesSpawnCommand(event.getDispatcher());
         new GripperCitySetJailCommand(event.getDispatcher());
         new GripperCityJailCommand(event.getDispatcher());
+        new GripperCityPardonCommand(event.getDispatcher());
         new GripperCitySetSpawnCommand(event.getDispatcher());
         new GripperCitySpawnCommand(event.getDispatcher());
         new VillageCraftCitySetJailCommand(event.getDispatcher());
         new VillageCraftCityJailCommand(event.getDispatcher());
+        new VillageCraftCityPardonCommand(event.getDispatcher());
         new VillageCraftCitySetSpawnCommand(event.getDispatcher());
         new VillageCraftCitySpawnCommand(event.getDispatcher());
 

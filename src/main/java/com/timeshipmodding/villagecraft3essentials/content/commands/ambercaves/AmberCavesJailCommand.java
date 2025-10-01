@@ -15,6 +15,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.level.Level;
 
 import java.util.Collection;
+import java.util.Objects;
 
 public class AmberCavesJailCommand {
     public AmberCavesJailCommand(CommandDispatcher<CommandSourceStack> dispatcher) {
@@ -26,7 +27,8 @@ public class AmberCavesJailCommand {
                         )));
     }
 
-    private ResourceKey<Level> jailDimension = ServerLevel.OVERWORLD;
+    private String targetPlayerUsername;
+    private final ResourceKey<Level> jailDimension = ServerLevel.OVERWORLD;
 
     public ResourceKey<Level> getJailDimension() {
         return this.jailDimension;
@@ -38,15 +40,17 @@ public class AmberCavesJailCommand {
         JailSavedData savedData = JailSavedData.getData(server);
         int[] jail = savedData.getAmberCavesJail();
 
-        if(jail[3] != 0 && jail[4] != 0) {
+        if(jail[3] != 0 && jail[4] != 0 && serverlevel != null) {
             for (ServerPlayer player : targets) {
                 player.teleportTo(serverlevel, jail[0], jail[1], jail[2], jail[3], jail[4]);
+                player.sendSystemMessage(Component.literal("You have been arrested and teleported to The Amber Caves Jail!"), false);
+                targetPlayerUsername = Objects.requireNonNull(player.getDisplayName()).getString();
             }
 
-            context.getSource().sendSuccess(() -> Component.literal("You have been teleported to The Amber Caves Jail!"), false);
+            context.getSource().sendSuccess(() -> Component.literal("You have arrested and teleported " + targetPlayerUsername + " to The Amber Caves Jail!"), false);
             return 1;
         } else {
-            context.getSource().sendFailure(Component.literal("No Amber Caves Jail Position has been set."));
+            context.getSource().sendFailure(Component.literal("No Amber Caves Jail position has been set."));
             return -1;
         }
     }

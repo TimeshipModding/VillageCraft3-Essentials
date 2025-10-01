@@ -22,6 +22,7 @@ public class AmberCavesSetSpawnCommand {
         ServerPlayer player = context.getSource().getPlayer();
         ServerLevel serverLevel = context.getSource().getLevel();
         MinecraftServer server = context.getSource().getServer();
+        assert player != null;
         BlockPos playerPos = player.blockPosition();
         String positionString = playerPos.getX() + ", " + playerPos.getY() + ", " + playerPos.getZ();
         int playerYaw = (int) player.getYRot();
