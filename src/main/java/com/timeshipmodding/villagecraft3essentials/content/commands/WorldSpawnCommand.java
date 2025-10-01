@@ -31,10 +31,11 @@ public class WorldSpawnCommand {
         ServerLevel serverlevel = server.getLevel(this.getSpawnDimension());
         assert serverlevel != null;
         BlockPos blockpos = serverlevel.getSharedSpawnPos();
-        float angle = serverlevel.getSharedSpawnAngle();
 
         if(player != null) {
-            player.teleportTo(serverlevel, blockpos.getX(), blockpos.getY(), blockpos.getZ(), angle, 0);
+            int playerYaw = (int) player.getYRot();
+            int playerPitch = (int) player.getXRot();
+            player.teleportTo(serverlevel, blockpos.getX(), blockpos.getY(), blockpos.getZ(), playerYaw, playerPitch);
             context.getSource().sendSuccess(() -> Component.literal("You have been teleported to World Spawn!"), false);
             return 1;
         } else {
