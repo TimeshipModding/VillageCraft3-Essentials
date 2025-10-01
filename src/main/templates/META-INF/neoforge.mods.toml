@@ -3,7 +3,7 @@ modLoader="javafml"
 loaderVersion="${loader_version_range}"
 license="${mod_license}"
 
-# VillageCraft 2 Essentials Conifg
+# VillageCraft 3 Essentials Conifg
 [[mods]]
 modId="${mod_id}"
 version="${mod_version}"

@@ -64,7 +64,7 @@
               "options": "#minecraft:on_random_loot"
             }
           ],
-          "name": "villagecraft2essentials:ruby_axe",
+          "name": "villagecraft3essentials:ruby_axe",
           "weight": 3
         },
         {
@@ -80,7 +80,7 @@
               "options": "#minecraft:on_random_loot"
             }
           ],
-          "name": "villagecraft2essentials:amber_axe",
+          "name": "villagecraft3essentials:amber_axe",
           "weight": 3
         },
         {
@@ -112,7 +112,7 @@
               "options": "#minecraft:on_random_loot"
             }
           ],
-          "name": "villagecraft2essentials:ruby_chestplate",
+          "name": "villagecraft3essentials:ruby_chestplate",
           "weight": 3
         },
         {
@@ -128,7 +128,7 @@
               "options": "#minecraft:on_random_loot"
             }
           ],
-          "name": "villagecraft2essentials:amber_chestplate",
+          "name": "villagecraft3essentials:amber_chestplate",
           "weight": 3
         },
         {
@@ -196,7 +196,7 @@
         },
         {
           "type": "minecraft:item",
-          "name": "villagecraft2essentials:ruby_block"
+          "name": "villagecraft3essentials:ruby_block"
         },
         {
           "type": "minecraft:item",
@@ -214,7 +214,7 @@
         },
         {
           "type": "minecraft:item",
-          "name": "villagecraft2essentials:amber_block"
+          "name": "villagecraft3essentials:amber_block"
         }
       ],
       "rolls": 1.0

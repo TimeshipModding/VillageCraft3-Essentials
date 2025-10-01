@@ -1,4 +1,4 @@
-// 1.21.1	2025-01-03T20:24:17.6176994	Tags for minecraft:item mod id villagecraft2essentials
+// 1.21.1	2025-01-03T20:24:17.6176994	Tags for minecraft:item mod id villagecraft3essentials
 c51c92e3d9505d3f29237b9b93a92b54ba5f2015 data/minecraft/tags/item/axes.json
 bd2a04a92a2eb44119cdb9bd10e2caf5882df561 data/minecraft/tags/item/beacon_payment_items.json
 2c25024d7273d2eb742cfa3ee7a58cec927dcb77 data/minecraft/tags/item/breaks_decorated_pots.json
@@ -16,5 +16,5 @@ c98453892f5cbc0b46eb861eb0e315a11de40bb3 data/minecraft/tags/item/shovels.json
 8d4c338c05169d24a7281fa17ad4968dc79a7f2f data/minecraft/tags/item/swords.json
 d0f28bc050594221c17da113bf5f739f2f8d8299 data/minecraft/tags/item/trimmable_armor.json
 bd2a04a92a2eb44119cdb9bd10e2caf5882df561 data/minecraft/tags/item/trim_materials.json
-98d9771fe1b5b02f02c0b74ec6238b98687624d1 data/villagecraft2essentials/tags/item/mole_food.json
-bcd3d93b2f87dcfb8650d3f5c1971aace32c6c9c data/villagecraft2essentials/tags/item/netherite_upgrade_smithing_template_gems.json
+98d9771fe1b5b02f02c0b74ec6238b98687624d1 data/villagecraft3essentials/tags/item/mole_food.json
+bcd3d93b2f87dcfb8650d3f5c1971aace32c6c9c data/villagecraft3essentials/tags/item/netherite_upgrade_smithing_template_gems.json

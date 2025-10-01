@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "villagecraft3essentials",
+  "key": {
+    "#": {
+      "item": "villagecraft3essentials:ruby"
+    }
+  },
+  "pattern": [
+    "###",
+    "# #",
+    "# #"
+  ],
+  "result": {
+    "count": 1,
+    "id": "villagecraft3essentials:ruby_leggings"
+  }
+}

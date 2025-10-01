@@ -4,7 +4,7 @@
     "item": "minecraft:netherite_ingot"
   },
   "base": {
-    "item": "villagecraft2essentials:ruby_chestplate"
+    "item": "villagecraft3essentials:ruby_chestplate"
   },
   "result": {
     "count": 1,

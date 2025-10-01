@@ -57,8 +57,8 @@
         "gold_darker": "trims/color_palettes/gold_darker",
         "diamond_darker": "trims/color_palettes/diamond_darker",
         "netherite_darker": "trims/color_palettes/netherite_darker",
-        "ruby": "villagecraft2essentials:trims/color_palettes/ruby",
-        "amber": "villagecraft2essentials:trims/color_palettes/amber"
+        "ruby": "villagecraft3essentials:trims/color_palettes/ruby",
+        "amber": "villagecraft3essentials:trims/color_palettes/amber"
       }
     }
   ]

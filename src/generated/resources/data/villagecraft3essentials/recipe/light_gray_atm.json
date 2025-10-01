@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "villagecraft3essentials",
+  "key": {
+    "!": {
+      "item": "minecraft:redstone_torch"
+    },
+    "#": {
+      "item": "minecraft:light_gray_concrete"
+    },
+    "x": {
+      "item": "minecraft:iron_ingot"
+    },
+    "y": {
+      "item": "minecraft:hopper"
+    }
+  },
+  "pattern": [
+    "#!#",
+    "#y#",
+    "#x#"
+  ],
+  "result": {
+    "count": 1,
+    "id": "villagecraft3essentials:light_gray_atm"
+  }
+}

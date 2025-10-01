@@ -24,7 +24,7 @@
               "function": "minecraft:set_count"
             }
           ],
-          "name": "villagecraft2essentials:ruby_block"
+          "name": "villagecraft3essentials:ruby_block"
         },
         {
           "type": "minecraft:item",
@@ -35,7 +35,7 @@
               "function": "minecraft:set_count"
             }
           ],
-          "name": "villagecraft2essentials:amber_block"
+          "name": "villagecraft3essentials:amber_block"
         },
         {
           "type": "minecraft:item",
@@ -92,7 +92,7 @@
               "function": "minecraft:set_damage"
             }
           ],
-          "name": "villagecraft2essentials:ruby_axe",
+          "name": "villagecraft3essentials:ruby_axe",
           "weight": 5
         },
         {
@@ -113,7 +113,7 @@
               "function": "minecraft:set_damage"
             }
           ],
-          "name": "villagecraft2essentials:amber_axe",
+          "name": "villagecraft3essentials:amber_axe",
           "weight": 5
         },
         {
@@ -155,7 +155,7 @@
               "function": "minecraft:set_damage"
             }
           ],
-          "name": "villagecraft2essentials:ruby_pickaxe",
+          "name": "villagecraft3essentials:ruby_pickaxe",
           "weight": 5
         },
         {
@@ -176,7 +176,7 @@
               "function": "minecraft:set_damage"
             }
           ],
-          "name": "villagecraft2essentials:amber_pickaxe",
+          "name": "villagecraft3essentials:amber_pickaxe",
           "weight": 5
         },
         {
@@ -208,7 +208,7 @@
               "function": "minecraft:set_count"
             }
           ],
-          "name": "villagecraft2essentials:ruby",
+          "name": "villagecraft3essentials:ruby",
           "weight": 10
         },
         {
@@ -224,7 +224,7 @@
               "function": "minecraft:set_count"
             }
           ],
-          "name": "villagecraft2essentials:amber",
+          "name": "villagecraft3essentials:amber",
           "weight": 10
         },
         {

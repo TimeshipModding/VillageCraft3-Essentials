@@ -167,7 +167,7 @@
               "function": "minecraft:set_count"
             }
           ],
-          "name": "villagecraft2essentials:ruby"
+          "name": "villagecraft3essentials:ruby"
         },
         {
           "type": "minecraft:item",
@@ -182,7 +182,7 @@
               "function": "minecraft:set_count"
             }
           ],
-          "name": "villagecraft2essentials:amber"
+          "name": "villagecraft3essentials:amber"
         }
       ],
       "rolls": 1.0

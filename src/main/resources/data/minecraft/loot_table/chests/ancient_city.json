@@ -113,7 +113,7 @@
               "treasure": true
             }
           ],
-          "name": "villagecraft2essentials:ruby_hoe",
+          "name": "villagecraft3essentials:ruby_hoe",
           "weight": 2
         },
         {
@@ -143,7 +143,7 @@
               "treasure": true
             }
           ],
-          "name": "villagecraft2essentials:amber_hoe",
+          "name": "villagecraft3essentials:amber_hoe",
           "weight": 2
         },
         {
@@ -221,7 +221,7 @@
               "treasure": true
             }
           ],
-          "name": "villagecraft2essentials:ruby_leggings",
+          "name": "villagecraft3essentials:ruby_leggings",
           "weight": 2
         },
         {
@@ -237,7 +237,7 @@
               "treasure": true
             }
           ],
-          "name": "villagecraft2essentials:amber_leggings",
+          "name": "villagecraft3essentials:amber_leggings",
           "weight": 2
         },
         {

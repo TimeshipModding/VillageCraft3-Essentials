@@ -87,7 +87,7 @@
               "function": "minecraft:enchant_randomly"
             }
           ],
-          "name": "villagecraft2essentials:ruby_sword",
+          "name": "villagecraft3essentials:ruby_sword",
           "weight": 6
         },
         {
@@ -106,7 +106,7 @@
               "function": "minecraft:enchant_randomly"
             }
           ],
-          "name": "villagecraft2essentials:amber_sword",
+          "name": "villagecraft3essentials:amber_sword",
           "weight": 6
         },
         {
@@ -144,7 +144,7 @@
               "function": "minecraft:enchant_randomly"
             }
           ],
-          "name": "villagecraft2essentials:ruby_chestplate",
+          "name": "villagecraft3essentials:ruby_chestplate",
           "weight": 6
         },
         {
@@ -163,7 +163,7 @@
               "function": "minecraft:enchant_randomly"
             }
           ],
-          "name": "villagecraft2essentials:amber_chestplate",
+          "name": "villagecraft3essentials:amber_chestplate",
           "weight": 6
         },
         {
@@ -201,7 +201,7 @@
               "function": "minecraft:enchant_randomly"
             }
           ],
-          "name": "villagecraft2essentials:ruby_helmet",
+          "name": "villagecraft3essentials:ruby_helmet",
           "weight": 6
         },
         {
@@ -220,7 +220,7 @@
               "function": "minecraft:enchant_randomly"
             }
           ],
-          "name": "villagecraft2essentials:amber_helmet",
+          "name": "villagecraft3essentials:amber_helmet",
           "weight": 6
         },
         {
@@ -258,7 +258,7 @@
               "function": "minecraft:enchant_randomly"
             }
           ],
-          "name": "villagecraft2essentials:ruby_leggings",
+          "name": "villagecraft3essentials:ruby_leggings",
           "weight": 6
         },
         {
@@ -277,7 +277,7 @@
               "function": "minecraft:enchant_randomly"
             }
           ],
-          "name": "villagecraft2essentials:amber_leggings",
+          "name": "villagecraft3essentials:amber_leggings",
           "weight": 6
         },
         {
@@ -315,7 +315,7 @@
               "function": "minecraft:enchant_randomly"
             }
           ],
-          "name": "villagecraft2essentials:ruby_boots",
+          "name": "villagecraft3essentials:ruby_boots",
           "weight": 6
         },
         {
@@ -334,7 +334,7 @@
               "function": "minecraft:enchant_randomly"
             }
           ],
-          "name": "villagecraft2essentials:amber_boots",
+          "name": "villagecraft3essentials:amber_boots",
           "weight": 6
         },
         {
@@ -344,12 +344,12 @@
         },
         {
           "type": "minecraft:item",
-          "name": "villagecraft2essentials:ruby_sword",
+          "name": "villagecraft3essentials:ruby_sword",
           "weight": 6
         },
         {
           "type": "minecraft:item",
-          "name": "villagecraft2essentials:amber_sword",
+          "name": "villagecraft3essentials:amber_sword",
           "weight": 6
         },
         {
@@ -359,12 +359,12 @@
         },
         {
           "type": "minecraft:item",
-          "name": "villagecraft2essentials:ruby_chestplate",
+          "name": "villagecraft3essentials:ruby_chestplate",
           "weight": 5
         },
         {
           "type": "minecraft:item",
-          "name": "villagecraft2essentials:amber_chestplate",
+          "name": "villagecraft3essentials:amber_chestplate",
           "weight": 5
         },
         {
@@ -374,12 +374,12 @@
         },
         {
           "type": "minecraft:item",
-          "name": "villagecraft2essentials:ruby_helmet",
+          "name": "villagecraft3essentials:ruby_helmet",
           "weight": 5
         },
         {
           "type": "minecraft:item",
-          "name": "villagecraft2essentials:amber_helmet",
+          "name": "villagecraft3essentials:amber_helmet",
           "weight": 5
         },
         {
@@ -389,12 +389,12 @@
         },
         {
           "type": "minecraft:item",
-          "name": "villagecraft2essentials:ruby_boots",
+          "name": "villagecraft3essentials:ruby_boots",
           "weight": 5
         },
         {
           "type": "minecraft:item",
-          "name": "villagecraft2essentials:amber_boots",
+          "name": "villagecraft3essentials:amber_boots",
           "weight": 5
         },
         {
@@ -404,12 +404,12 @@
         },
         {
           "type": "minecraft:item",
-          "name": "villagecraft2essentials:ruby_leggings",
+          "name": "villagecraft3essentials:ruby_leggings",
           "weight": 5
         },
         {
           "type": "minecraft:item",
-          "name": "villagecraft2essentials:amber_leggings",
+          "name": "villagecraft3essentials:amber_leggings",
           "weight": 5
         },
         {
@@ -441,7 +441,7 @@
               "function": "minecraft:set_count"
             }
           ],
-          "name": "villagecraft2essentials:ruby",
+          "name": "villagecraft3essentials:ruby",
           "weight": 5
         },
         {
@@ -457,7 +457,7 @@
               "function": "minecraft:set_count"
             }
           ],
-          "name": "villagecraft2essentials:amber",
+          "name": "villagecraft3essentials:amber",
           "weight": 5
         },
         {

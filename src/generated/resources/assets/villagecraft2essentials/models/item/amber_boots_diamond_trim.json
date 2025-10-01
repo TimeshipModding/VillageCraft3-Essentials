@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "villagecraft2essentials:item/amber_boots",
-    "layer1": "minecraft:trims/items/boots_trim_diamond"
-  }
-}

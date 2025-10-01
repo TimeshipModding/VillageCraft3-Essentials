@@ -33,7 +33,7 @@
                   "condition": "minecraft:random_chance"
                 }
               ],
-              "name": "villagecraft2essentials:worm"
+              "name": "villagecraft3essentials:worm"
             }
           ]
         }

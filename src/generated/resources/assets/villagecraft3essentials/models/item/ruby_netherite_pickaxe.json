@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "villagecraft3essentials:item/ruby_netherite_pickaxe"
+  }
+}

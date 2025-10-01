@@ -46,12 +46,12 @@
         },
         {
           "type": "minecraft:item",
-          "name": "villagecraft2essentials:ruby_hoe",
+          "name": "villagecraft3essentials:ruby_hoe",
           "weight": 15
         },
         {
           "type": "minecraft:item",
-          "name": "villagecraft2essentials:amber_hoe",
+          "name": "villagecraft3essentials:amber_hoe",
           "weight": 15
         },
         {

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "villagecraft3essentials",
+  "key": {
+    "#": {
+      "item": "minecraft:fishing_rod"
+    },
+    "X": {
+      "item": "villagecraft3essentials:worm"
+    }
+  },
+  "pattern": [
+    "# ",
+    " X"
+  ],
+  "result": {
+    "count": 1,
+    "id": "villagecraft3essentials:worm_on_a_stick"
+  }
+}

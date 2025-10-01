@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "villagecraft2essentials:item/ruby_leggings",
-    "layer1": "minecraft:trims/items/leggings_trim_netherite"
-  }
-}

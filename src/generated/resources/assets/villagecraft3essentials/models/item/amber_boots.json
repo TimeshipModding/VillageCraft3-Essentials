@@ -1,0 +1,80 @@
+{
+  "parent": "minecraft:item/generated",
+  "overrides": [
+    {
+      "model": "villagecraft3essentials:item/amber_boots_quartz_trim",
+      "predicate": {
+        "minecraft:trim_type": 0.1
+      }
+    },
+    {
+      "model": "villagecraft3essentials:item/amber_boots_iron_trim",
+      "predicate": {
+        "minecraft:trim_type": 0.2
+      }
+    },
+    {
+      "model": "villagecraft3essentials:item/amber_boots_netherite_trim",
+      "predicate": {
+        "minecraft:trim_type": 0.3
+      }
+    },
+    {
+      "model": "villagecraft3essentials:item/amber_boots_redstone_trim",
+      "predicate": {
+        "minecraft:trim_type": 0.4
+      }
+    },
+    {
+      "model": "villagecraft3essentials:item/amber_boots_copper_trim",
+      "predicate": {
+        "minecraft:trim_type": 0.5
+      }
+    },
+    {
+      "model": "villagecraft3essentials:item/amber_boots_gold_trim",
+      "predicate": {
+        "minecraft:trim_type": 0.6
+      }
+    },
+    {
+      "model": "villagecraft3essentials:item/amber_boots_emerald_trim",
+      "predicate": {
+        "minecraft:trim_type": 0.7
+      }
+    },
+    {
+      "model": "villagecraft3essentials:item/amber_boots_diamond_trim",
+      "predicate": {
+        "minecraft:trim_type": 0.8
+      }
+    },
+    {
+      "model": "villagecraft3essentials:item/amber_boots_lapis_trim",
+      "predicate": {
+        "minecraft:trim_type": 0.9
+      }
+    },
+    {
+      "model": "villagecraft3essentials:item/amber_boots_amethyst_trim",
+      "predicate": {
+        "minecraft:trim_type": 1.0
+      }
+    },
+    {
+      "model": "villagecraft3essentials:item/amber_boots_ruby_trim",
+      "predicate": {
+        "minecraft:trim_type": 0.4
+      }
+    },
+    {
+      "model": "villagecraft3essentials:item/amber_boots_amber_trim",
+      "predicate": {
+        "minecraft:trim_type": 0.6
+      }
+    }
+  ],
+  "textures": {
+    "layer0": "villagecraft3essentials:item/amber_boots"
+  }
+}

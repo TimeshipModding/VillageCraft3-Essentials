@@ -4,7 +4,7 @@
     "item": "minecraft:netherite_ingot"
   },
   "base": {
-    "item": "villagecraft2essentials:ruby_helmet"
+    "item": "villagecraft3essentials:ruby_helmet"
   },
   "result": {
     "count": 1,

@@ -1,0 +1,76 @@
+{
+	"credit": "Made with Blockbench",
+	"texture_size": [48, 48],
+	"textures": {
+		"11": "villagecraft3essentials:block/atm/purple_atm",
+		"particle": "minecraft:block/purple_concrete"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 0],
+			"to": [16, 2, 16],
+			"faces": {
+				"north": {"uv": [4.66667, 0, 10, 0.66667], "texture": "#11"},
+				"east": {"uv": [4.66667, 0, 10, 0.66667], "texture": "#11"},
+				"south": {"uv": [4.66667, 0, 10, 0.66667], "texture": "#11"},
+				"west": {"uv": [4.66667, 0, 10, 0.66667], "texture": "#11"},
+				"up": {"uv": [4.66667, 0, 10, 5.33333], "texture": "#11"},
+				"down": {"uv": [4.66667, 0, 10, 5.33333], "texture": "#11"}
+			}
+		},
+		{
+			"from": [0, 2, 2],
+			"to": [16, 16, 16],
+			"faces": {
+				"north": {"uv": [10, 0, 15.33333, 4.66667], "texture": "#11"},
+				"east": {"uv": [0, 4.66667, 4.66667, 9], "texture": "#11"},
+				"south": {"uv": [0, 4.66667, 4.66667, 9], "texture": "#11"},
+				"west": {"uv": [0, 4.66667, 4.66667, 9], "texture": "#11"},
+				"up": {"uv": [0, 0, 16, 14], "texture": "#missing"},
+				"down": {"uv": [0, 0, 16, 14], "texture": "#missing"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [28, -180, 0],
+			"translation": [2.75, -1.75, -6]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [48, -180, 0],
+			"translation": [2.75, 4, -1]
+		},
+		"firstperson_righthand": {
+			"rotation": [48, -180, 0],
+			"translation": [2.75, 4, -1]
+		},
+		"firstperson_lefthand": {
+			"rotation": [48, -180, 0],
+			"translation": [2.75, 4, -1]
+		},
+		"ground": {
+			"translation": [0, 1, 0],
+			"scale": [0.58, 0.58, 0.58]
+		},
+		"gui": {
+			"rotation": [0, -180, 0],
+			"translation": [0, -4.5, 0],
+			"scale": [0.58, 0.58, 0.58]
+		},
+		"head": {
+			"translation": [0, -17.5, -1.5]
+		},
+		"fixed": {
+			"translation": [0, -4.5, 0],
+			"scale": [0.58, 0.58, 0.58]
+		}
+	},
+	"groups": [
+		{
+			"name": "VoxelShapes",
+			"origin": [8, 8, 8],
+			"color": 0,
+			"children": [0, 1]
+		}
+	]
+}

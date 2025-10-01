@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "villagecraft3essentials:block/amber_block"
+  }
+}

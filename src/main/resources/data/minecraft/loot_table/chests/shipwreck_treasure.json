@@ -59,12 +59,12 @@
         },
         {
           "type": "minecraft:item",
-          "name": "villagecraft2essentials:ruby",
+          "name": "villagecraft3essentials:ruby",
           "weight": 5
         },
         {
           "type": "minecraft:item",
-          "name": "villagecraft2essentials:amber",
+          "name": "villagecraft3essentials:amber",
           "weight": 5
         },
         {

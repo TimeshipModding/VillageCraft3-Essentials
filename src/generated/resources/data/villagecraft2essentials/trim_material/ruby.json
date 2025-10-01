@@ -1,9 +1,0 @@
-{
-  "asset_name": "ruby",
-  "description": {
-    "color": "#C71836",
-    "translate": "trim_material.villagecraft2essentials.ruby"
-  },
-  "ingredient": "villagecraft2essentials:ruby",
-  "item_model_index": 0.4
-}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld_rod",
+  "textures": {
+    "layer0": "villagecraft3essentials:item/worm_on_a_stick"
+  }
+}

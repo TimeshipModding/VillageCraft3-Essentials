@@ -31,7 +31,7 @@
               "function": "minecraft:enchant_randomly"
             }
           ],
-          "name": "villagecraft2essentials:ruby_pickaxe",
+          "name": "villagecraft3essentials:ruby_pickaxe",
           "weight": 6
         },
         {
@@ -46,7 +46,7 @@
               "function": "minecraft:enchant_randomly"
             }
           ],
-          "name": "villagecraft2essentials:amber_pickaxe",
+          "name": "villagecraft3essentials:amber_pickaxe",
           "weight": 6
         },
         {
@@ -70,7 +70,7 @@
               "function": "minecraft:set_count"
             }
           ],
-          "name": "villagecraft2essentials:ruby_shovel",
+          "name": "villagecraft3essentials:ruby_shovel",
           "weight": 6
         },
         {
@@ -82,7 +82,7 @@
               "function": "minecraft:set_count"
             }
           ],
-          "name": "villagecraft2essentials:amber_shovel",
+          "name": "villagecraft3essentials:amber_shovel",
           "weight": 6
         },
         {

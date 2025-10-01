@@ -50,7 +50,7 @@
               "options": "#minecraft:on_random_loot"
             }
           ],
-          "name": "villagecraft2essentials:ruby_axe"
+          "name": "villagecraft3essentials:ruby_axe"
         },
         {
           "type": "minecraft:item",
@@ -74,7 +74,7 @@
               "options": "#minecraft:on_random_loot"
             }
           ],
-          "name": "villagecraft2essentials:amber_axe"
+          "name": "villagecraft3essentials:amber_axe"
         },
         {
           "type": "minecraft:item",
@@ -114,7 +114,7 @@
               "function": "minecraft:set_damage"
             }
           ],
-          "name": "villagecraft2essentials:ruby_pickaxe"
+          "name": "villagecraft3essentials:ruby_pickaxe"
         },
         {
           "type": "minecraft:item",
@@ -134,7 +134,7 @@
               "function": "minecraft:set_damage"
             }
           ],
-          "name": "villagecraft2essentials:amber_pickaxe"
+          "name": "villagecraft3essentials:amber_pickaxe"
         },
         {
           "type": "minecraft:item",
@@ -164,7 +164,7 @@
               "function": "minecraft:set_count"
             }
           ],
-          "name": "villagecraft2essentials:ruby"
+          "name": "villagecraft3essentials:ruby"
         },
         {
           "type": "minecraft:item",
@@ -179,7 +179,7 @@
               "function": "minecraft:set_count"
             }
           ],
-          "name": "villagecraft2essentials:amber"
+          "name": "villagecraft3essentials:amber"
         },
         {
           "type": "minecraft:item",

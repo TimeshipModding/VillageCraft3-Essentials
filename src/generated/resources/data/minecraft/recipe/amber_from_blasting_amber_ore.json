@@ -5,10 +5,10 @@
   "experience": 1.0,
   "group": "amber",
   "ingredient": {
-    "item": "villagecraft2essentials:amber_ore"
+    "item": "villagecraft3essentials:amber_ore"
   },
   "result": {
     "count": 1,
-    "id": "villagecraft2essentials:amber"
+    "id": "villagecraft3essentials:amber"
   }
 }

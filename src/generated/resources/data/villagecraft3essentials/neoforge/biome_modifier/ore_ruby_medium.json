@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#minecraft:is_overworld",
+  "features": "villagecraft3essentials:ore_ruby_medium",
+  "step": "underground_ores"
+}

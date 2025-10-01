@@ -5,10 +5,10 @@
   "experience": 1.0,
   "group": "ruby",
   "ingredient": {
-    "item": "villagecraft2essentials:ruby_ore"
+    "item": "villagecraft3essentials:ruby_ore"
   },
   "result": {
     "count": 1,
-    "id": "villagecraft2essentials:ruby"
+    "id": "villagecraft3essentials:ruby"
   }
 }

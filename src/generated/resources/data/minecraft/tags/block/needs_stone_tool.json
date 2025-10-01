@@ -1,20 +1,20 @@
 {
   "values": [
-    "villagecraft2essentials:black_atm",
-    "villagecraft2essentials:blue_atm",
-    "villagecraft2essentials:brown_atm",
-    "villagecraft2essentials:cyan_atm",
-    "villagecraft2essentials:gray_atm",
-    "villagecraft2essentials:green_atm",
-    "villagecraft2essentials:light_blue_atm",
-    "villagecraft2essentials:light_gray_atm",
-    "villagecraft2essentials:lime_atm",
-    "villagecraft2essentials:magenta_atm",
-    "villagecraft2essentials:orange_atm",
-    "villagecraft2essentials:pink_atm",
-    "villagecraft2essentials:purple_atm",
-    "villagecraft2essentials:red_atm",
-    "villagecraft2essentials:white_atm",
-    "villagecraft2essentials:yellow_atm"
+    "villagecraft3essentials:black_atm",
+    "villagecraft3essentials:blue_atm",
+    "villagecraft3essentials:brown_atm",
+    "villagecraft3essentials:cyan_atm",
+    "villagecraft3essentials:gray_atm",
+    "villagecraft3essentials:green_atm",
+    "villagecraft3essentials:light_blue_atm",
+    "villagecraft3essentials:light_gray_atm",
+    "villagecraft3essentials:lime_atm",
+    "villagecraft3essentials:magenta_atm",
+    "villagecraft3essentials:orange_atm",
+    "villagecraft3essentials:pink_atm",
+    "villagecraft3essentials:purple_atm",
+    "villagecraft3essentials:red_atm",
+    "villagecraft3essentials:white_atm",
+    "villagecraft3essentials:yellow_atm"
   ]
 }

@@ -1,10 +1,10 @@
 {
   "values": [
-    "villagecraft2essentials:ruby_ore",
-    "villagecraft2essentials:deepslate_ruby_ore",
-    "villagecraft2essentials:ruby_block",
-    "villagecraft2essentials:amber_ore",
-    "villagecraft2essentials:deepslate_amber_ore",
-    "villagecraft2essentials:amber_block"
+    "villagecraft3essentials:ruby_ore",
+    "villagecraft3essentials:deepslate_ruby_ore",
+    "villagecraft3essentials:ruby_block",
+    "villagecraft3essentials:amber_ore",
+    "villagecraft3essentials:deepslate_amber_ore",
+    "villagecraft3essentials:amber_block"
   ]
 }
