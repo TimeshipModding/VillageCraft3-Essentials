@@ -24,10 +24,11 @@ public class VillageCraftCitySetJailCommand {
         MinecraftServer server = context.getSource().getServer();
         BlockPos playerPos = player.blockPosition();
         String positionString = playerPos.getX() + ", " + playerPos.getY() + ", " + playerPos.getZ();
-
-        int[] jailPos = {playerPos.getX(), playerPos.getY(), playerPos.getZ()};
+        int playerYaw = (int) player.getYRot();
+        int playerPitch = (int) player.getXRot();
+        int[] jail = {playerPos.getX(), playerPos.getY(), playerPos.getZ(), playerYaw, playerPitch};
         JailSavedData savedData = JailSavedData.getData(server);
-        savedData.setVillagecraftCityJailPos(jailPos);
+        savedData.setVillagecraftCityJail(jail);
 
         if (serverLevel.dimension() != Level.OVERWORLD) {
             context.getSource().sendFailure(Component.literal("Can only set Villagecraft City's Jail in the overworld."));

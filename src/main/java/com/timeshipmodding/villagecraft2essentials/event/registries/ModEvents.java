@@ -36,7 +36,7 @@ import net.neoforged.neoforge.server.command.ConfigCommand;
 
 import java.util.List;
 
-@EventBusSubscriber(modid = VillageCraft2Essentials.MODID, bus = EventBusSubscriber.Bus.GAME)
+@EventBusSubscriber(modid = VillageCraft2Essentials.MODID)
 public class ModEvents {
     @SubscribeEvent
     public static void addCustomTrades(VillagerTradesEvent event) {

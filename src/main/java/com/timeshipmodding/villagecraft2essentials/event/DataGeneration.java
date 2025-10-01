@@ -1,6 +1,5 @@
 package com.timeshipmodding.villagecraft2essentials.event;
 
-import com.timeshipmodding.villagecraft2essentials.VillageCraft2Essentials;
 import com.timeshipmodding.villagecraft2essentials.datagen.*;
 import com.timeshipmodding.villagecraft2essentials.datagen.loot.DataBlockLootTables;
 import com.timeshipmodding.villagecraft2essentials.datagen.tags.DataBlockTags;
@@ -20,7 +19,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-@EventBusSubscriber(modid = VillageCraft2Essentials.MODID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = "villagecraft2essentials")
 public class DataGeneration {
     @SubscribeEvent
     public static void gatherdata(GatherDataEvent event) {

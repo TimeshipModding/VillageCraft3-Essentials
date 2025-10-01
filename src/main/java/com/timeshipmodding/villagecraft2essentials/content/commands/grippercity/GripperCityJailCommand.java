@@ -8,9 +8,12 @@ import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.level.Level;
 import org.apache.logging.log4j.core.jmx.Server;
 
 import java.util.Collection;
@@ -18,33 +21,35 @@ import java.util.Collection;
 public class GripperCityJailCommand {
     public GripperCityJailCommand(CommandDispatcher<CommandSourceStack> dispatcher) {
         dispatcher.register(Commands.literal("grippercity").then(Commands.literal("jail")
-                .executes(p_137817_ -> execute(p_137817_, ImmutableList.of(p_137817_.getSource().getEntityOrException())))
+                .executes(p_137817_ -> execute(p_137817_, ImmutableList.of(p_137817_.getSource().getPlayerOrException())))
                         .then(
-                                Commands.argument("targets", EntityArgument.entities())
-                                        .executes(p_137810_ -> execute(p_137810_, EntityArgument.getEntities(p_137810_, "targets")))
+                                Commands.argument("targets", EntityArgument.players())
+                                        .executes(p_137810_ -> execute(p_137810_, EntityArgument.getPlayers(p_137810_, "targets")))
                         )));
     }
 
-    private int execute(CommandContext<CommandSourceStack> context, Collection<? extends Entity> targets) {
+    private ResourceKey<Level> jailDimension = ServerLevel.OVERWORLD;
+
+    public ResourceKey<Level> getJailDimension() {
+        return this.jailDimension;
+    }
+
+    private int execute(CommandContext<CommandSourceStack> context, Collection<? extends ServerPlayer> targets) {
         MinecraftServer server = context.getSource().getServer();
-        ServerLevel serverLevel = context.getSource().getLevel();
+        ServerLevel serverlevel = server.getLevel(this.getJailDimension());
         JailSavedData savedData = JailSavedData.getData(server);
-        int[] jailPos = savedData.getGripperCityJailPos();
+        int[] jail = savedData.getGripperCityJail();
 
-        if(serverLevel.dimension() == ServerLevel.OVERWORLD) {
-            if(jailPos[0] != 0 && jailPos[1] != 0 && jailPos[2] != 0) {
-                for (Entity entity : targets) {
-                    entity.teleportTo(jailPos[0], jailPos[1], jailPos[2]);
-                }
-
-                context.getSource().sendSuccess(() -> Component.literal("You have been teleported to Gripper Jail!"), false);
-                return 1;
-            } else {
-                context.getSource().sendFailure(Component.literal("No Gripper City Jail Position has been set."));
-                return -1;
+        if(jail[3] != 0 && jail[4] != 0) {
+            for (ServerPlayer player : targets) {
+                player.teleportTo(serverlevel, jail[0], jail[1], jail[2], jail[3], jail[4]);
             }
+
+            context.getSource().sendSuccess(() -> Component.literal("You have been teleported to Gripper Jail!"), false);
+            return 1;
+        } else {
+            context.getSource().sendFailure(Component.literal("No Gripper City Jail Position has been set."));
+            return -1;
         }
-        context.getSource().sendFailure(Component.literal("Can only teleport to Gripper City's Jail while in the overworld."));
-        return -1;
     }
 }

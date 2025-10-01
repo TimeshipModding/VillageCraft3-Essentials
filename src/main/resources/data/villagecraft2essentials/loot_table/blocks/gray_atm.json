@@ -13,18 +13,18 @@
           "type": "minecraft:item",
           "conditions": [
             {
-              "block": "villagecraft2essentials:grey_atm",
+              "block": "villagecraft2essentials:gray_atm",
               "condition": "minecraft:block_state_property",
               "properties": {
                 "half": "lower"
               }
             }
           ],
-          "name": "villagecraft2essentials:grey_atm"
+          "name": "villagecraft2essentials:gray_atm"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "villagecraft2essentials:blocks/grey_atm"
+  "random_sequence": "villagecraft2essentials:blocks/gray_atm"
 }

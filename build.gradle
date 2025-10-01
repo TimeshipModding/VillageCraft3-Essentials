@@ -1,7 +1,8 @@
 plugins {
     id 'java-library'
     id 'maven-publish'
-    id 'net.neoforged.moddev' version '1.0.17'
+    id 'net.neoforged.moddev' version '2.0.110'
+    id 'idea'
 }
 
 tasks.named('wrapper', Wrapper).configure {
@@ -12,7 +13,6 @@ version = "${minecraft_version}${version_suffix}${mod_version}"
 group = mod_group_id
 
 repositories {
-    mavenLocal()
     mavenCentral()
 
     maven {
@@ -99,7 +99,6 @@ var generateModMetadata = tasks.register("generateModMetadata", ProcessResources
             minecraft_version      : minecraft_version,
             minecraft_version_range: minecraft_version_range,
             neo_version            : neo_version,
-            neo_version_range      : neo_version_range,
             loader_version_range   : loader_version_range,
             jei_version            : jei_version,
             mc_version             : mc_version,

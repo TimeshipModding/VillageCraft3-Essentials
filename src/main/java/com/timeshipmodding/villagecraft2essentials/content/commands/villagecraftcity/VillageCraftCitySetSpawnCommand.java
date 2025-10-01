@@ -24,10 +24,11 @@ public class VillageCraftCitySetSpawnCommand {
         MinecraftServer server = context.getSource().getServer();
         BlockPos playerPos = player.blockPosition();
         String positionString = playerPos.getX() + ", " + playerPos.getY() + ", " + playerPos.getZ();
-
-        int[] spawnPos = {playerPos.getX(), playerPos.getY(), playerPos.getZ()};
+        int playerYaw = (int) player.getYRot();
+        int playerPitch = (int) player.getXRot();
+        int[] spawn = {playerPos.getX(), playerPos.getY(), playerPos.getZ(), playerYaw, playerPitch};
         SpawnSavedData savedData = SpawnSavedData.getData(server);
-        savedData.setVillagecraftCitySpawnPos(spawnPos);
+        savedData.setVillagecraftCitySpawn(spawn);
 
         if (serverLevel.dimension() != Level.OVERWORLD) {
             context.getSource().sendFailure(Component.literal("Can only set Villagecraft City's spawn in the overworld."));

@@ -24,10 +24,11 @@ public class AmberCavesSetJailCommand {
         MinecraftServer server = context.getSource().getServer();
         BlockPos playerPos = player.blockPosition();
         String positionString = playerPos.getX() + ", " + playerPos.getY() + ", " + playerPos.getZ();
-
-        int[] jailPos = {playerPos.getX(), playerPos.getY(), playerPos.getZ()};
+        int playerYaw = (int) player.getYRot();
+        int playerPitch = (int) player.getXRot();
+        int[] jail = {playerPos.getX(), playerPos.getY(), playerPos.getZ(), playerYaw, playerPitch};
         JailSavedData savedData = JailSavedData.getData(server);
-        savedData.setAmberCavesJailPos(jailPos);
+        savedData.setAmberCavesJail(jail);
 
         if (serverLevel.dimension() != Level.OVERWORLD) {
             context.getSource().sendFailure(Component.literal("Can only set The Amber Caves' Jail in the overworld."));

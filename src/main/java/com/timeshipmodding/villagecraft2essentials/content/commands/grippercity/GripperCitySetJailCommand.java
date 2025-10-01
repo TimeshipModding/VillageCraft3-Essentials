@@ -24,10 +24,11 @@ public class GripperCitySetJailCommand {
         MinecraftServer server = context.getSource().getServer();
         BlockPos playerPos = player.blockPosition();
         String positionString = playerPos.getX() + ", " + playerPos.getY() + ", " + playerPos.getZ();
-
-        int[] jailPos = {playerPos.getX(), playerPos.getY(), playerPos.getZ()};
+        int playerYaw = (int) player.getYRot();
+        int playerPitch = (int) player.getXRot();
+        int[] jail = {playerPos.getX(), playerPos.getY(), playerPos.getZ(), playerYaw, playerPitch};
         JailSavedData savedData = JailSavedData.getData(server);
-        savedData.setGripperCityJailPos(jailPos);
+        savedData.setGripperCityJail(jail);
 
         if (serverLevel.dimension() != Level.OVERWORLD) {
             context.getSource().sendFailure(Component.literal("Can only set Gripper City's Jail in the overworld."));
