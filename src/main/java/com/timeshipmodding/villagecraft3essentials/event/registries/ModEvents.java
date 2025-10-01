@@ -1,6 +1,7 @@
 package com.timeshipmodding.villagecraft3essentials.event.registries;
 
 import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
+import com.timeshipmodding.villagecraft3essentials.content.commands.WorldSpawnCommand;
 import com.timeshipmodding.villagecraft3essentials.content.commands.ambercaves.*;
 import com.timeshipmodding.villagecraft3essentials.content.commands.grippercity.*;
 import com.timeshipmodding.villagecraft3essentials.content.commands.villagecraftcity.*;
@@ -177,19 +178,20 @@ public class ModEvents {
 
     @SubscribeEvent
     public static void onCommandsRegister(RegisterCommandsEvent event) {
-        new AmberCavesSetJailCommand(event.getDispatcher());
+        new WorldSpawnCommand(event.getDispatcher());
         new AmberCavesJailCommand(event.getDispatcher());
         new AmberCavesPardonCommand(event.getDispatcher());
+        new AmberCavesSetJailCommand(event.getDispatcher());
         new AmberCavesSetSpawnCommand(event.getDispatcher());
         new AmberCavesSpawnCommand(event.getDispatcher());
-        new GripperCitySetJailCommand(event.getDispatcher());
         new GripperCityJailCommand(event.getDispatcher());
         new GripperCityPardonCommand(event.getDispatcher());
+        new GripperCitySetJailCommand(event.getDispatcher());
         new GripperCitySetSpawnCommand(event.getDispatcher());
         new GripperCitySpawnCommand(event.getDispatcher());
-        new VillageCraftCitySetJailCommand(event.getDispatcher());
         new VillageCraftCityJailCommand(event.getDispatcher());
         new VillageCraftCityPardonCommand(event.getDispatcher());
+        new VillageCraftCitySetJailCommand(event.getDispatcher());
         new VillageCraftCitySetSpawnCommand(event.getDispatcher());
         new VillageCraftCitySpawnCommand(event.getDispatcher());
 
