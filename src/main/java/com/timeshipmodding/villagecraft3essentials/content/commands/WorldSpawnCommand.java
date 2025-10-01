@@ -21,14 +21,14 @@ public class WorldSpawnCommand {
 
     private final ResourceKey<Level> spawnDimension = ServerLevel.OVERWORLD;
 
-    public ResourceKey<Level> getTownDimension() {
+    public ResourceKey<Level> getSpawnDimension() {
         return this.spawnDimension;
     }
 
     private int execute(CommandContext<CommandSourceStack> context) {
         ServerPlayer player = context.getSource().getPlayer();
         MinecraftServer server = context.getSource().getServer();
-        ServerLevel serverlevel = server.getLevel(this.getTownDimension());
+        ServerLevel serverlevel = server.getLevel(this.getSpawnDimension());
         assert serverlevel != null;
         BlockPos blockpos = serverlevel.getSharedSpawnPos();
         float angle = serverlevel.getSharedSpawnAngle();

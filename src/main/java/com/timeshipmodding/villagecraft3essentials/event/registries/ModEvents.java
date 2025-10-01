@@ -180,16 +180,19 @@ public class ModEvents {
     public static void onCommandsRegister(RegisterCommandsEvent event) {
         new WorldSpawnCommand(event.getDispatcher());
         new AmberCavesJailCommand(event.getDispatcher());
+        new AmberCavesKickCommand(event.getDispatcher());
         new AmberCavesPardonCommand(event.getDispatcher());
         new AmberCavesSetJailCommand(event.getDispatcher());
         new AmberCavesSetSpawnCommand(event.getDispatcher());
         new AmberCavesSpawnCommand(event.getDispatcher());
         new GripperCityJailCommand(event.getDispatcher());
+        new GripperCityKickCommand(event.getDispatcher());
         new GripperCityPardonCommand(event.getDispatcher());
         new GripperCitySetJailCommand(event.getDispatcher());
         new GripperCitySetSpawnCommand(event.getDispatcher());
         new GripperCitySpawnCommand(event.getDispatcher());
         new VillageCraftCityJailCommand(event.getDispatcher());
+        new VillageCraftCityKickCommand(event.getDispatcher());
         new VillageCraftCityPardonCommand(event.getDispatcher());
         new VillageCraftCitySetJailCommand(event.getDispatcher());
         new VillageCraftCitySetSpawnCommand(event.getDispatcher());
