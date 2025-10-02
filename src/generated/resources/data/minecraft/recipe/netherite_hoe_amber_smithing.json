@@ -4,11 +4,11 @@
     "item": "minecraft:netherite_ingot"
   },
   "base": {
-    "item": "villagecraft3essentials:amber_pickaxe"
+    "item": "villagecraft3essentials:amber_hoe"
   },
   "result": {
     "count": 1,
-    "id": "villagecraft3essentials:amber_netherite_pickaxe"
+    "id": "minecraft:netherite_hoe"
   },
   "template": {
     "item": "minecraft:netherite_upgrade_smithing_template"

@@ -4,11 +4,11 @@
     "item": "minecraft:netherite_ingot"
   },
   "base": {
-    "item": "villagecraft3essentials:ruby_hoe"
+    "item": "villagecraft3essentials:amber_axe"
   },
   "result": {
     "count": 1,
-    "id": "villagecraft3essentials:ruby_netherite_hoe"
+    "id": "minecraft:netherite_axe"
   },
   "template": {
     "item": "minecraft:netherite_upgrade_smithing_template"

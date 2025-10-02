@@ -39,29 +39,19 @@ public class DataItemTags extends ItemTagsProvider {
                 .add(AMBER.get());
         tag(ItemTags.SHOVELS)
                 .add(RUBY_SHOVEL.get())
-                .add(RUBY_NETHERITE_SHOVEL.get())
-                .add(AMBER_SHOVEL.get())
-                .add(AMBER_NETHERITE_SHOVEL.get());
+                .add(AMBER_SHOVEL.get());
         tag(ItemTags.PICKAXES)
                 .add(RUBY_PICKAXE.get())
-                .add(RUBY_NETHERITE_PICKAXE.get())
-                .add(AMBER_PICKAXE.get())
-                .add(AMBER_NETHERITE_PICKAXE.get());
+                .add(AMBER_PICKAXE.get());
         tag(ItemTags.AXES)
                 .add(RUBY_AXE.get())
-                .add(RUBY_NETHERITE_AXE.get())
-                .add(AMBER_AXE.get())
-                .add(AMBER_NETHERITE_AXE.get());
+                .add(AMBER_AXE.get());
         tag(ItemTags.HOES)
                 .add(RUBY_HOE.get())
-                .add(RUBY_NETHERITE_HOE.get())
-                .add(AMBER_HOE.get())
-                .add(AMBER_NETHERITE_HOE.get());
+                .add(AMBER_HOE.get());
         tag(ItemTags.SWORDS)
                 .add(RUBY_SWORD.get())
-                .add(RUBY_NETHERITE_SWORD.get())
-                .add(AMBER_SWORD.get())
-                .add(AMBER_NETHERITE_SWORD.get());
+                .add(AMBER_SWORD.get());
         tag(ItemTags.FOOT_ARMOR)
                 .add(RUBY_BOOTS.get())
                 .add(AMBER_BOOTS.get());

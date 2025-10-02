@@ -68,16 +68,6 @@ public class EssentialsTab {
                 pOutput.accept(NETHERITE_AXE);
                 pOutput.accept(NETHERITE_HOE);
                 pOutput.accept(NETHERITE_SWORD);
-                pOutput.accept(RUBY_NETHERITE_SHOVEL);
-                pOutput.accept(RUBY_NETHERITE_PICKAXE);
-                pOutput.accept(RUBY_NETHERITE_AXE);
-                pOutput.accept(RUBY_NETHERITE_HOE);
-                pOutput.accept(RUBY_NETHERITE_SWORD);
-                pOutput.accept(AMBER_NETHERITE_SHOVEL);
-                pOutput.accept(AMBER_NETHERITE_PICKAXE);
-                pOutput.accept(AMBER_NETHERITE_AXE);
-                pOutput.accept(AMBER_NETHERITE_HOE);
-                pOutput.accept(AMBER_NETHERITE_SWORD);
                 pOutput.accept(DIAMOND_HELMET);
                 pOutput.accept(DIAMOND_CHESTPLATE);
                 pOutput.accept(DIAMOND_LEGGINGS);

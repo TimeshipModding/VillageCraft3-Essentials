@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:amber_netherite_axe_smithing"
+        "recipe": "minecraft:netherite_hoe_amber_smithing"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:amber_netherite_axe_smithing"
+      "minecraft:netherite_hoe_amber_smithing"
     ]
   }
 }

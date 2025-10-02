@@ -221,23 +221,21 @@ public class DataRecipes extends RecipeProvider implements IConditionBuilder {
         oreBlasting(recipeOutput, RUBY_SMELTABLES, RecipeCategory.MISC, RUBY.get(), 1.0F, 100, "ruby");
         oreBlasting(recipeOutput, AMBER_SMELTABLES, RecipeCategory.MISC, AMBER.get(), 1.0F, 100, "amber");
 
-        // Netherite Smithing
-        netheriteSmithing(recipeOutput, AMBER_AXE.get(), RecipeCategory.TOOLS, AMBER_NETHERITE_AXE.get());
-        netheriteSmithing(recipeOutput, AMBER_HOE.get(), RecipeCategory.TOOLS, AMBER_NETHERITE_HOE.get());
-        netheriteSmithing(recipeOutput, AMBER_PICKAXE.get(), RecipeCategory.TOOLS, AMBER_NETHERITE_PICKAXE.get());
-        netheriteSmithing(recipeOutput, AMBER_SHOVEL.get(), RecipeCategory.TOOLS, AMBER_NETHERITE_SHOVEL.get());
-        netheriteSmithing(recipeOutput, AMBER_SWORD.get(), RecipeCategory.TOOLS, AMBER_NETHERITE_SWORD.get());
-        netheriteSmithing(recipeOutput, RUBY_AXE.get(), RecipeCategory.TOOLS, RUBY_NETHERITE_AXE.get());
-        netheriteSmithing(recipeOutput, RUBY_HOE.get(), RecipeCategory.TOOLS, RUBY_NETHERITE_HOE.get());
-        netheriteSmithing(recipeOutput, RUBY_PICKAXE.get(), RecipeCategory.TOOLS, RUBY_NETHERITE_PICKAXE.get());
-        netheriteSmithing(recipeOutput, RUBY_SHOVEL.get(), RecipeCategory.TOOLS, RUBY_NETHERITE_SHOVEL.get());
-        netheriteSmithing(recipeOutput, RUBY_SWORD.get(), RecipeCategory.TOOLS, RUBY_NETHERITE_SWORD.get());
-
-        // Ruby and Amber Netherite Armor Smithing
+        // Ruby and Amber Netherite Smithing
+        rubyNetheriteSmithing(recipeOutput, RUBY_AXE.get(), RecipeCategory.TOOLS, NETHERITE_AXE);
+        rubyNetheriteSmithing(recipeOutput, RUBY_HOE.get(), RecipeCategory.TOOLS, NETHERITE_HOE);
+        rubyNetheriteSmithing(recipeOutput, RUBY_PICKAXE.get(), RecipeCategory.TOOLS, NETHERITE_PICKAXE);
+        rubyNetheriteSmithing(recipeOutput, RUBY_SHOVEL.get(), RecipeCategory.TOOLS, NETHERITE_SHOVEL);
+        rubyNetheriteSmithing(recipeOutput, RUBY_SWORD.get(), RecipeCategory.TOOLS, NETHERITE_SWORD);
         rubyNetheriteSmithing(recipeOutput, RUBY_HELMET.get(), RecipeCategory.TOOLS, NETHERITE_HELMET);
         rubyNetheriteSmithing(recipeOutput, RUBY_CHESTPLATE.get(), RecipeCategory.TOOLS, NETHERITE_CHESTPLATE);
         rubyNetheriteSmithing(recipeOutput, RUBY_LEGGINGS.get(), RecipeCategory.TOOLS, NETHERITE_LEGGINGS);
         rubyNetheriteSmithing(recipeOutput, RUBY_BOOTS.get(), RecipeCategory.TOOLS, NETHERITE_BOOTS);
+        amberNetheriteSmithing(recipeOutput, AMBER_AXE.get(), RecipeCategory.TOOLS, NETHERITE_AXE);
+        amberNetheriteSmithing(recipeOutput, AMBER_HOE.get(), RecipeCategory.TOOLS, NETHERITE_HOE);
+        amberNetheriteSmithing(recipeOutput, AMBER_PICKAXE.get(), RecipeCategory.TOOLS, NETHERITE_PICKAXE);
+        amberNetheriteSmithing(recipeOutput, AMBER_SHOVEL.get(), RecipeCategory.TOOLS, NETHERITE_SHOVEL);
+        amberNetheriteSmithing(recipeOutput, AMBER_SWORD.get(), RecipeCategory.TOOLS, NETHERITE_SWORD);
         amberNetheriteSmithing(recipeOutput, AMBER_HELMET.get(), RecipeCategory.TOOLS, NETHERITE_HELMET);
         amberNetheriteSmithing(recipeOutput, AMBER_CHESTPLATE.get(), RecipeCategory.TOOLS, NETHERITE_CHESTPLATE);
         amberNetheriteSmithing(recipeOutput, AMBER_LEGGINGS.get(), RecipeCategory.TOOLS, NETHERITE_LEGGINGS);

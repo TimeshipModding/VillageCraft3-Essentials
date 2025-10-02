@@ -61,16 +61,6 @@ public class DataItemModels extends ItemModelProvider {
         handheldItem(AMBER_PICKAXE.get());
         handheldItem(AMBER_AXE.get());
         handheldItem(AMBER_HOE.get());
-        handheldItem(RUBY_NETHERITE_SWORD.get());
-        handheldItem(RUBY_NETHERITE_SHOVEL.get());
-        handheldItem(RUBY_NETHERITE_PICKAXE.get());
-        handheldItem(RUBY_NETHERITE_AXE.get());
-        handheldItem(RUBY_NETHERITE_HOE.get());
-        handheldItem(AMBER_NETHERITE_SWORD.get());
-        handheldItem(AMBER_NETHERITE_SHOVEL.get());
-        handheldItem(AMBER_NETHERITE_PICKAXE.get());
-        handheldItem(AMBER_NETHERITE_AXE.get());
-        handheldItem(AMBER_NETHERITE_HOE.get());
         handheldItem(POLICE_BATON.get());
         handheldRodItem(WORM_ON_A_STICK.get());
 

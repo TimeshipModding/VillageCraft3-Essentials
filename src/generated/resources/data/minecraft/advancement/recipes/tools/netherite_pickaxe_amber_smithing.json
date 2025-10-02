@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:ruby_netherite_shovel_smithing"
+        "recipe": "minecraft:netherite_pickaxe_amber_smithing"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:ruby_netherite_shovel_smithing"
+      "minecraft:netherite_pickaxe_amber_smithing"
     ]
   }
 }

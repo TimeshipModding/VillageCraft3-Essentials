@@ -8,7 +8,7 @@
   },
   "result": {
     "count": 1,
-    "id": "villagecraft3essentials:ruby_netherite_pickaxe"
+    "id": "minecraft:netherite_pickaxe"
   },
   "template": {
     "item": "minecraft:netherite_upgrade_smithing_template"

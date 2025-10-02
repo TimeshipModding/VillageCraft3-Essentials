@@ -1,5 +1,5 @@
-// 1.21.1	2025-10-01T15:25:55.06306	Tags for minecraft:item mod id villagecraft3essentials
-10983140eca68ebafaa25688eadfc295dc81665f data/minecraft/tags/item/axes.json
+// 1.21.1	2025-10-02T11:00:47.366731	Tags for minecraft:item mod id villagecraft3essentials
+b1c74e437e0593ddf4f5ee19f47a5eabf582572f data/minecraft/tags/item/axes.json
 d03fa87e10535e7ddd298826de46878b10e461b2 data/minecraft/tags/item/beacon_payment_items.json
 649b29e6b6d8a5a0e4b103006266698f0d2c937e data/minecraft/tags/item/breaks_decorated_pots.json
 526d09e906c729a7a033c4c6b889ebf415a2a689 data/minecraft/tags/item/chest_armor.json
@@ -9,11 +9,11 @@ d03fa87e10535e7ddd298826de46878b10e461b2 data/minecraft/tags/item/beacon_payment
 649b29e6b6d8a5a0e4b103006266698f0d2c937e data/minecraft/tags/item/enchantable/weapon.json
 36f870599a90a564f8d06d05ab699f8ad90a18fe data/minecraft/tags/item/foot_armor.json
 e14000d5a438bc890ed1b7866bac8ff89c1cc032 data/minecraft/tags/item/head_armor.json
-b6162a107487f41cbe975fcc10d9e4c187271cf2 data/minecraft/tags/item/hoes.json
+9ddbb3b79fdbb3ed8493d8d9857ad6fd8bece62c data/minecraft/tags/item/hoes.json
 2b1fc57cb6cdd030a1c2f2a2c5e5ab170d8608f2 data/minecraft/tags/item/leg_armor.json
-c871af05304eca46fc7c8ca76d1d4521c08cc7ae data/minecraft/tags/item/pickaxes.json
-3085b3c4e2b1eee72963ec6a2c0c4316ef51020a data/minecraft/tags/item/shovels.json
-81fba4d0372194546b5425fafeda564640249bc0 data/minecraft/tags/item/swords.json
+bf4bf7acc3ce5a96922fb05f71ffaec04d3d3f9e data/minecraft/tags/item/pickaxes.json
+0ba95b17323fc00803665f4009dc9761deff9cda data/minecraft/tags/item/shovels.json
+e6c7295c8a74347127b325cdeeefc14cc28c00fc data/minecraft/tags/item/swords.json
 44302f61f46fba400b2545da27bf3431462b8c01 data/minecraft/tags/item/trimmable_armor.json
 d03fa87e10535e7ddd298826de46878b10e461b2 data/minecraft/tags/item/trim_materials.json
 bbbe68f23d94ae2a72f5380fb7195d7486f0955f data/villagecraft3essentials/tags/item/mole_food.json
