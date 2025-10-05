@@ -12,6 +12,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.level.GameType;
 import net.minecraft.world.level.Level;
 
 import java.util.Collection;
@@ -43,6 +44,7 @@ public class GripperCityPardonCommand {
         if(spawn[3] != 0 && spawn[4] != 0 && serverlevel != null) {
             for (ServerPlayer player : targets) {
                 player.teleportTo(serverlevel, spawn[0], spawn[1], spawn[2], spawn[3], spawn[4]);
+                player.setGameMode(GameType.SURVIVAL);
                 player.sendSystemMessage(Component.literal("You have been pardoned from jail and teleported to Gripper City Spawn!"), false);
                 targetPlayerUsername = Objects.requireNonNull(player.getDisplayName()).getString();
             }

@@ -12,6 +12,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.level.GameType;
 import net.minecraft.world.level.Level;
 
 import java.util.Collection;
@@ -43,6 +44,7 @@ public class VillageCraftCityJailCommand {
         if(jail[3] != 0 && jail[4] != 0 && serverlevel != null) {
             for (ServerPlayer player : targets) {
                 player.teleportTo(serverlevel, jail[0], jail[1], jail[2], jail[3], jail[4]);
+                player.setGameMode(GameType.ADVENTURE);
                 player.sendSystemMessage(Component.literal("You have been arrested and teleported to VillageCraft City Jail!"), false);
                 targetPlayerUsername = Objects.requireNonNull(player.getDisplayName()).getString();
             }
