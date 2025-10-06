@@ -10,6 +10,8 @@ import com.timeshipmodding.villagecraft3essentials.content.villager.registries.M
 import com.timeshipmodding.villagecraft3essentials.util.saveddata.JailSavedData;
 import com.timeshipmodding.villagecraft3essentials.util.saveddata.SpawnSavedData;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.ModList;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import net.neoforged.neoforge.event.server.ServerStoppingEvent;
 import org.slf4j.Logger;
@@ -38,6 +40,17 @@ public class VillageCraft3Essentials {
 
         // Register creative mode tab
         EssentialsTab.CREATIVE_MODE_TABS.register(modEventBus);
+
+        // Listener to Common Setup
+        modEventBus.addListener(this::commonSetup);
+    }
+
+    private void commonSetup(FMLCommonSetupEvent event) {
+        if (ModList.get().isLoaded("luckperms")) {
+            LOGGER.info("Luckperms is installed. Enabled luckperms features within commands.");
+        } else {
+            LOGGER.info("Luckperms is not installed. Disabled luckperms features within commands.");
+        }
     }
 
     @SubscribeEvent

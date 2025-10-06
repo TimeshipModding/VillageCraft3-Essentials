@@ -8,6 +8,8 @@ import com.timeshipmodding.villagecraft3essentials.content.commands.villagecraft
 import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems;
 import com.timeshipmodding.villagecraft3essentials.content.villager.registries.ModVillagers;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import net.luckperms.api.LuckPerms;
+import net.luckperms.api.LuckPermsProvider;
 import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.item.ItemStack;

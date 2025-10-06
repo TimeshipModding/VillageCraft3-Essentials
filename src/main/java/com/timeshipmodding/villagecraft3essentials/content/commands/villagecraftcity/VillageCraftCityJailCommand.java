@@ -3,10 +3,12 @@ package com.timeshipmodding.villagecraft3essentials.content.commands.villagecraf
 import com.google.common.collect.ImmutableList;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
+import com.timeshipmodding.villagecraft3essentials.compat.luckperms.LuckpermsMethods;
 import com.timeshipmodding.villagecraft3essentials.util.saveddata.JailSavedData;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.EntityArgument;
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.MinecraftServer;
@@ -14,6 +16,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.level.GameType;
 import net.minecraft.world.level.Level;
+import net.neoforged.fml.ModList;
 
 import java.util.Collection;
 import java.util.Objects;
@@ -28,6 +31,7 @@ public class VillageCraftCityJailCommand {
                         )));
     }
 
+    public static boolean luckpermsInstalled;
     private String targetPlayerUsername;
     private final ResourceKey<Level> jailDimension = ServerLevel.OVERWORLD;
 
@@ -45,8 +49,14 @@ public class VillageCraftCityJailCommand {
             for (ServerPlayer player : targets) {
                 player.teleportTo(serverlevel, jail[0], jail[1], jail[2], jail[3], jail[4]);
                 player.setGameMode(GameType.ADVENTURE);
+                BlockPos playerPos = player.blockPosition();
+                player.setRespawnPosition(ServerLevel.OVERWORLD, playerPos, player.getYRot(), true, false);
                 player.sendSystemMessage(Component.literal("You have been arrested and teleported to VillageCraft City Jail!"), false);
                 targetPlayerUsername = Objects.requireNonNull(player.getDisplayName()).getString();
+
+                if (ModList.get().isLoaded("luckperms")) {
+                    LuckpermsMethods.AddJailedGroup(player);
+                }
             }
 
             context.getSource().sendSuccess(() -> Component.literal("You have arrested and teleported " + targetPlayerUsername + " to VillageCraft Jail!"), false);

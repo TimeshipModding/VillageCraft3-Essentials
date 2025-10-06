@@ -3,10 +3,12 @@ package com.timeshipmodding.villagecraft3essentials.content.commands.grippercity
 import com.google.common.collect.ImmutableList;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
+import com.timeshipmodding.villagecraft3essentials.compat.luckperms.LuckpermsMethods;
 import com.timeshipmodding.villagecraft3essentials.util.saveddata.SpawnSavedData;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.EntityArgument;
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.MinecraftServer;
@@ -14,6 +16,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.level.GameType;
 import net.minecraft.world.level.Level;
+import net.neoforged.fml.ModList;
 
 import java.util.Collection;
 import java.util.Objects;
@@ -45,8 +48,14 @@ public class GripperCityPardonCommand {
             for (ServerPlayer player : targets) {
                 player.teleportTo(serverlevel, spawn[0], spawn[1], spawn[2], spawn[3], spawn[4]);
                 player.setGameMode(GameType.SURVIVAL);
+                BlockPos blockpos = serverlevel.getSharedSpawnPos();
+                player.setRespawnPosition(ServerLevel.OVERWORLD, blockpos, player.getYRot(), true, false);
                 player.sendSystemMessage(Component.literal("You have been pardoned from jail and teleported to Gripper City Spawn!"), false);
                 targetPlayerUsername = Objects.requireNonNull(player.getDisplayName()).getString();
+
+                if (ModList.get().isLoaded("luckperms")) {
+                    LuckpermsMethods.RemoveJailedGroup(player);
+                }
             }
 
             context.getSource().sendSuccess(() -> Component.literal("You have pardoned " + targetPlayerUsername + " from jail and teleported them to Gripper City Spawn!"), false);
