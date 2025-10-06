@@ -181,24 +181,30 @@ public class ModEvents {
     @SubscribeEvent
     public static void onCommandsRegister(RegisterCommandsEvent event) {
         new WorldSpawnCommand(event.getDispatcher());
+        new AmberCavesBlacklistCommand(event.getDispatcher());
         new AmberCavesJailCommand(event.getDispatcher());
         new AmberCavesKickCommand(event.getDispatcher());
         new AmberCavesPardonCommand(event.getDispatcher());
         new AmberCavesSetJailCommand(event.getDispatcher());
         new AmberCavesSetSpawnCommand(event.getDispatcher());
         new AmberCavesSpawnCommand(event.getDispatcher());
+        new AmberCavesWhitelistCommand(event.getDispatcher());
+        new GripperCityBlacklistCommand(event.getDispatcher());
         new GripperCityJailCommand(event.getDispatcher());
         new GripperCityKickCommand(event.getDispatcher());
         new GripperCityPardonCommand(event.getDispatcher());
         new GripperCitySetJailCommand(event.getDispatcher());
         new GripperCitySetSpawnCommand(event.getDispatcher());
         new GripperCitySpawnCommand(event.getDispatcher());
+        new GripperCityWhitelistCommand(event.getDispatcher());
+        new VillageCraftCityBlacklistCommand(event.getDispatcher());
         new VillageCraftCityJailCommand(event.getDispatcher());
         new VillageCraftCityKickCommand(event.getDispatcher());
         new VillageCraftCityPardonCommand(event.getDispatcher());
         new VillageCraftCitySetJailCommand(event.getDispatcher());
         new VillageCraftCitySetSpawnCommand(event.getDispatcher());
         new VillageCraftCitySpawnCommand(event.getDispatcher());
+        new VillageCraftCityWhitelistCommand(event.getDispatcher());
 
         ConfigCommand.register(event.getDispatcher());
     }

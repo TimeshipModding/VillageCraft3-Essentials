@@ -53,7 +53,7 @@ public class VillageCraftCityPardonCommand {
                 targetPlayerUsername = player.getDisplayName().getString();
 
                 if (ModList.get().isLoaded("luckperms")) {
-                    LuckpermsMethods.RemoveJailedGroup(player);
+                    LuckpermsMethods.removeGroup(player, "jailed");
                 }
             }
 

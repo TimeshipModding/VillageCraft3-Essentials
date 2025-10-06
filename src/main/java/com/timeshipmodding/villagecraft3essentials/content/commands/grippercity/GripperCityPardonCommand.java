@@ -54,7 +54,7 @@ public class GripperCityPardonCommand {
                 targetPlayerUsername = Objects.requireNonNull(player.getDisplayName()).getString();
 
                 if (ModList.get().isLoaded("luckperms")) {
-                    LuckpermsMethods.RemoveJailedGroup(player);
+                    LuckpermsMethods.removeGroup(player, "jailed");
                 }
             }
 

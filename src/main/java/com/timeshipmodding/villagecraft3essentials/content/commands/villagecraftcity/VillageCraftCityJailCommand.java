@@ -31,7 +31,6 @@ public class VillageCraftCityJailCommand {
                         )));
     }
 
-    public static boolean luckpermsInstalled;
     private String targetPlayerUsername;
     private final ResourceKey<Level> jailDimension = ServerLevel.OVERWORLD;
 
@@ -55,7 +54,7 @@ public class VillageCraftCityJailCommand {
                 targetPlayerUsername = Objects.requireNonNull(player.getDisplayName()).getString();
 
                 if (ModList.get().isLoaded("luckperms")) {
-                    LuckpermsMethods.AddJailedGroup(player);
+                    LuckpermsMethods.addGroup(player, "jailed");
                 }
             }
 

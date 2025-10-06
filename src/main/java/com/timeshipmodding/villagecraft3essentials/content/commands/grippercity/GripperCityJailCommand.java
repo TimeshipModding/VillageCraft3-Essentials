@@ -54,7 +54,7 @@ public class GripperCityJailCommand {
                 targetPlayerUsername = Objects.requireNonNull(player.getDisplayName()).getString();
 
                 if (ModList.get().isLoaded("luckperms")) {
-                    LuckpermsMethods.AddJailedGroup(player);
+                    LuckpermsMethods.addGroup(player, "jailed");
                 }
             }
 
