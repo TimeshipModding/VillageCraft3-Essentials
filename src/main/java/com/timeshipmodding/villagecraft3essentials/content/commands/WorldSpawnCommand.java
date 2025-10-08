@@ -35,7 +35,7 @@ public class WorldSpawnCommand {
         if(player != null) {
             int playerYaw = (int) player.getYRot();
             int playerPitch = (int) player.getXRot();
-            player.teleportTo(serverlevel, blockpos.getX(), blockpos.getY(), blockpos.getZ(), playerYaw, playerPitch);
+            player.teleportTo(serverlevel, blockpos.getX() + 0.5, blockpos.getY(), blockpos.getZ() + 0.5, playerYaw, playerPitch);
             context.getSource().sendSuccess(() -> Component.literal("You have been teleported to World Spawn!"), false);
             return 1;
         } else {

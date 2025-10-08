@@ -46,7 +46,7 @@ public class VillageCraftCityJailCommand {
 
         if(jail[3] != 0 && jail[4] != 0 && serverlevel != null) {
             for (ServerPlayer player : targets) {
-                player.teleportTo(serverlevel, jail[0], jail[1], jail[2], jail[3], jail[4]);
+                player.teleportTo(serverlevel, jail[0] + 0.5, jail[1], jail[2] + 0.5, jail[3], jail[4]);
                 player.setGameMode(GameType.ADVENTURE);
                 BlockPos playerPos = player.blockPosition();
                 player.setRespawnPosition(ServerLevel.OVERWORLD, playerPos, player.getYRot(), true, false);

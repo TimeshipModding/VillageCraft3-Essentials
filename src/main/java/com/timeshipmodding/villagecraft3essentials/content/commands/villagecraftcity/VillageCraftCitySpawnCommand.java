@@ -31,7 +31,7 @@ public class VillageCraftCitySpawnCommand {
         int[] spawn = savedData.getVillagecraftCitySpawn();
 
         if(spawn[3] != 0 && spawn[4] != 0 && player != null && serverlevel != null) {
-            player.teleportTo(serverlevel, spawn[0], spawn[1], spawn[2], spawn[3], spawn[4]);
+            player.teleportTo(serverlevel, spawn[0] + 0.5, spawn[1], spawn[2] + 0.5, spawn[3], spawn[4]);
             context.getSource().sendSuccess(() -> Component.literal("You have been teleported to VillageCraft City!"), false);
             return 1;
         } else {

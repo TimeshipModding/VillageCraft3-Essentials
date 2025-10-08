@@ -48,7 +48,7 @@ public class VillageCraftCityKickCommand {
         for (ServerPlayer player : targets) {
             int playerYaw = (int) player.getYRot();
             int playerPitch = (int) player.getXRot();
-            player.teleportTo(serverlevel, blockpos.getX(), blockpos.getY(), blockpos.getZ(), playerYaw, playerPitch);
+            player.teleportTo(serverlevel, blockpos.getX() + 0.5, blockpos.getY(), blockpos.getZ() + 0.5, playerYaw, playerPitch);
 
             if (hideMessage) {
                 player.sendSystemMessage(Component.literal("You have been kicked from VillageCraft City and teleported to World Spawn!"), false);

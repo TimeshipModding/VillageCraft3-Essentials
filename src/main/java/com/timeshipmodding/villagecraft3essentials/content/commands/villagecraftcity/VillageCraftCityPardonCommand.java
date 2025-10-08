@@ -45,7 +45,7 @@ public class VillageCraftCityPardonCommand {
 
         if(spawn[3] != 0 && spawn[4] != 0 && serverlevel != null) {
             for (ServerPlayer player : targets) {
-                player.teleportTo(serverlevel, spawn[0], spawn[1], spawn[2], spawn[3], spawn[4]);
+                player.teleportTo(serverlevel, spawn[0] + 0.5, spawn[1], spawn[2] + 0.5, spawn[3], spawn[4]);
                 player.setGameMode(GameType.SURVIVAL);
                 BlockPos blockpos = serverlevel.getSharedSpawnPos();
                 player.setRespawnPosition(ServerLevel.OVERWORLD, blockpos, player.getYRot(), true, false);
