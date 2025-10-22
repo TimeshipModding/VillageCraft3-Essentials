@@ -7,6 +7,7 @@ import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModAr
 import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems;
 import com.timeshipmodding.villagecraft3essentials.content.sound.registries.ModSounds;
 import com.timeshipmodding.villagecraft3essentials.content.villager.registries.ModVillagers;
+import com.timeshipmodding.villagecraft3essentials.util.saveddata.CurrencyConversionSavedData;
 import com.timeshipmodding.villagecraft3essentials.util.saveddata.JailSavedData;
 import com.timeshipmodding.villagecraft3essentials.util.saveddata.SpawnSavedData;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -21,10 +22,15 @@ import com.mojang.logging.LogUtils;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.temporal.ChronoField;
+
 @Mod(VillageCraft3Essentials.MODID)
 public class VillageCraft3Essentials {
     private static final Logger LOGGER = LogUtils.getLogger();
     public static final String MODID = "villagecraft3essentials";
+    public static CurrencyConversionSavedData currencyConversionSavedData;
     public static SpawnSavedData spawnSavedData;
     public static JailSavedData jailSavedData;
 
@@ -55,13 +61,20 @@ public class VillageCraft3Essentials {
 
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
+        VillageCraft3Essentials.currencyConversionSavedData = CurrencyConversionSavedData.getData(event.getServer());
         VillageCraft3Essentials.spawnSavedData = SpawnSavedData.getData(event.getServer());
         VillageCraft3Essentials.jailSavedData = JailSavedData.getData(event.getServer());
     }
 
     @SubscribeEvent
     public void onServerStopping(ServerStoppingEvent event) {
+        VillageCraft3Essentials.currencyConversionSavedData = CurrencyConversionSavedData.getData(event.getServer());
         VillageCraft3Essentials.spawnSavedData.setDirty(true);
         VillageCraft3Essentials.jailSavedData.setDirty(true);
+
+        LocalTime localTime = LocalTime.now();
+        if(localTime.getHour() == 0) {
+
+        }
     }
 }
