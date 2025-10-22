@@ -7,9 +7,8 @@ import com.timeshipmodding.villagecraft3essentials.content.commands.grippercity.
 import com.timeshipmodding.villagecraft3essentials.content.commands.villagecraftcity.*;
 import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems;
 import com.timeshipmodding.villagecraft3essentials.content.villager.registries.ModVillagers;
+import com.timeshipmodding.villagecraft3essentials.util.saveddata.CurrencyConversionSavedData;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import net.luckperms.api.LuckPerms;
-import net.luckperms.api.LuckPermsProvider;
 import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.item.ItemStack;
@@ -20,10 +19,13 @@ import net.minecraft.world.level.block.Blocks;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
+import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import net.neoforged.neoforge.event.village.VillagerTradesEvent;
 import net.neoforged.neoforge.server.command.ConfigCommand;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 @EventBusSubscriber(modid = VillageCraft3Essentials.MODID)
 public class ModEvents {
@@ -207,5 +209,33 @@ public class ModEvents {
         new VillageCraftCityWhitelistCommand(event.getDispatcher());
 
         ConfigCommand.register(event.getDispatcher());
+    }
+
+    @SubscribeEvent
+    public static void onServerStarting(ServerStartingEvent event) {
+        CurrencyConversionSavedData savedData = CurrencyConversionSavedData.getData(event.getServer());
+        int diamond_ruby = randomCurrencyConversion();
+        int diamond_amber = randomCurrencyConversion();
+        int amber = randomCurrencyConversion();
+        int ruby = randomCurrencyConversion();
+        savedData.setDiamondToRuby(new int[]{diamond_ruby, ruby});
+        savedData.setDiamondToAmber(new int[]{diamond_amber, amber});
+        savedData.setRubyToDiamond(new int[]{ruby, diamond_ruby});
+        savedData.setRubyToAmber(new int[]{diamond_amber*ruby, amber*diamond_ruby});
+        savedData.setAmberToDiamond(new int[]{amber, diamond_amber});
+        savedData.setAmberToRuby(new int[]{amber*diamond_ruby, diamond_amber*ruby});
+        VillageCraft3Essentials.LOGGER.info("Currency Conversions Randomized - DiamondToAmber{}", Arrays.toString(savedData.getDiamondToAmber()));
+        VillageCraft3Essentials.LOGGER.info("Currency Conversions Randomized - DiamondToRuby{}", Arrays.toString(savedData.getDiamondToRuby()));
+        VillageCraft3Essentials.LOGGER.info("Currency Conversions Randomized - RubyToDiamond{}", Arrays.toString(savedData.getRubyToDiamond()));
+        VillageCraft3Essentials.LOGGER.info("Currency Conversions Randomized - RubyToAmber{}", Arrays.toString(savedData.getRubyToAmber()));
+        VillageCraft3Essentials.LOGGER.info("Currency Conversions Randomized - AmberToDiamond{}", Arrays.toString(savedData.getAmberToDiamond()));
+        VillageCraft3Essentials.LOGGER.info("Currency Conversions Randomized - AmberToRuby{}", Arrays.toString(savedData.getAmberToRuby()));
+    }
+
+    public static int randomCurrencyConversion() {
+        Random random = new Random();
+        int min = 1;
+        int max = 10;
+        return random.nextInt(min, max);
     }
 }
