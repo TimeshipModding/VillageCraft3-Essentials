@@ -96,6 +96,6 @@ public class CurrencyConversionSavedData extends SavedData { ;
     }
 
     public static CurrencyConversionSavedData getData(MinecraftServer server) {
-        return server.overworld().getDataStorage().computeIfAbsent(new Factory<>(CurrencyConversionSavedData::create, CurrencyConversionSavedData::load), "villagecraft3essentials_spawns");
+        return server.overworld().getDataStorage().computeIfAbsent(new Factory<>(CurrencyConversionSavedData::create, CurrencyConversionSavedData::load), "villagecraft3essentials_currency_conversions");
     }
 }
