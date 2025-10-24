@@ -1,4 +1,4 @@
-// 1.21.1	2025-10-02T10:44:56.900811	Recipes
+// 1.21.1	2025-10-24T08:05:14.0515767	Recipes
 952a5d2dbe35fd7f2361c4b82f60ef9a4b109a6d data/minecraft/advancement/recipes/food/worm_from_campfire_cooking.json
 c25a35f7e71b6c426d8cdbf3b4883fd42af53497 data/minecraft/advancement/recipes/food/worm_from_smoking.json
 245ef8bb731b0cde9284dee6677565badfc5d5e4 data/minecraft/advancement/recipes/misc/amber_from_blasting_amber_ore.json
@@ -60,6 +60,7 @@ b970bab7ff60886abe72e84583ea54d9de1b1b7a data/minecraft/recipe/worm_from_smoking
 c37a3752c290e9b2d301d525221c5872b658224a data/villagecraft3essentials/advancement/recipes/combat/amber_helmet.json
 0d7770966943eadf3aeb292f3e6ea00a6894e16f data/villagecraft3essentials/advancement/recipes/combat/amber_leggings.json
 5997c576335da76c9a204a98d3ba94e8f3197661 data/villagecraft3essentials/advancement/recipes/combat/amber_sword.json
+c9f3c4703fedd870e50fa14700eb3c3b3f51552b data/villagecraft3essentials/advancement/recipes/combat/police_baton.json
 7abad3f72ef606c8090ca041b07f553955c6400d data/villagecraft3essentials/advancement/recipes/combat/ruby_boots.json
 c582166768858e0196628a8e83723405d326a887 data/villagecraft3essentials/advancement/recipes/combat/ruby_chestplate.json
 2fc65eeacb69618382226b7c085765c3f8760d5e data/villagecraft3essentials/advancement/recipes/combat/ruby_helmet.json
@@ -119,6 +120,7 @@ d95a6a9dcd1774451a57c309d9660fa78bf0338c data/villagecraft3essentials/recipe/lim
 1e52b451f55a9b618f3e5f49cc20390ef2507dc7 data/villagecraft3essentials/recipe/magenta_atm.json
 7cd296fffa7b252262f8585a132f70a520dd862d data/villagecraft3essentials/recipe/orange_atm.json
 7ca73e87ef51648546775aadc56d1e94c8e1019d data/villagecraft3essentials/recipe/pink_atm.json
+a8ff1795334884be2c368c98418e500d670d76c0 data/villagecraft3essentials/recipe/police_baton.json
 ce5935e6908f5c6cd28ab0749d8da3b0e8c5c326 data/villagecraft3essentials/recipe/purple_atm.json
 3895cf94ebc960ba774709d0443c2c4ca8cfc0ae data/villagecraft3essentials/recipe/red_atm.json
 c4154c798b27cfbd7c7efc7bcd025e0b66f26eab data/villagecraft3essentials/recipe/ruby.json
