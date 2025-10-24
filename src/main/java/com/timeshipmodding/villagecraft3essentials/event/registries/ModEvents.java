@@ -7,6 +7,7 @@ import com.timeshipmodding.villagecraft3essentials.content.commands.grippercity.
 import com.timeshipmodding.villagecraft3essentials.content.commands.villagecraftcity.*;
 import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems;
 import com.timeshipmodding.villagecraft3essentials.content.villager.registries.ModVillagers;
+import com.timeshipmodding.villagecraft3essentials.util.Config;
 import com.timeshipmodding.villagecraft3essentials.util.saveddata.CurrencyConversionSavedData;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.minecraft.world.entity.npc.VillagerProfession;
@@ -234,8 +235,6 @@ public class ModEvents {
 
     public static int randomCurrencyConversion() {
         Random random = new Random();
-        int min = 1;
-        int max = 10;
-        return random.nextInt(min, max);
+        return random.nextInt(Config.currencyConversionRateMin, Config.currencyConversionRateMax);
     }
 }
