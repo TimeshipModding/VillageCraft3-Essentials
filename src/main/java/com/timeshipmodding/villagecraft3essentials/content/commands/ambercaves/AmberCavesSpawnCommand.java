@@ -17,7 +17,7 @@ public class AmberCavesSpawnCommand {
         dispatcher.register(Commands.literal("ambercaves").then(Commands.literal("spawn").executes(this::execute)));
     }
 
-    private ResourceKey<Level> spawnDimension = ServerLevel.OVERWORLD;
+    private final ResourceKey<Level> spawnDimension = ServerLevel.OVERWORLD;
 
     public ResourceKey<Level> getTownDimension() {
         return this.spawnDimension;

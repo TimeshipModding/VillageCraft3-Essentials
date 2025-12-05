@@ -1,9 +1,4 @@
 {
-  "creativemodetab.villagecraft3essentials.essentialstab": "VillageCraft 3 Essentials",
-
-  "trim_material.villagecraft3essentials.ruby": "Ruby Material",
-  "trim_material.villagecraft3essentials.amber": "Amber Material",
-
   "block.villagecraft3essentials.ruby_block": "Block of Ruby",
   "block.villagecraft3essentials.ruby_ore": "Ruby Ore",
   "block.villagecraft3essentials.deepslate_ruby_ore": "Deepslate Ruby Ore",
@@ -26,6 +21,13 @@
   "block.villagecraft3essentials.red_atm": "Red ATM",
   "block.villagecraft3essentials.white_atm": "White ATM",
   "block.villagecraft3essentials.yellow_atm": "Yellow ATM",
+
+  "blockentity.villagecraft3essentials.atm.toolconvert": "ATM - Convert Currency Tools",
+  "blockentity.villagecraft3essentials.atm.randomconvert": "ATM - Currency Conversion",
+
+  "creativemodetab.villagecraft3essentials.essentialstab": "VillageCraft 3 Essentials",
+
+  "entity.villagecraft3essentials.mole": "Mole",
 
   "item.villagecraft3essentials.ruby": "Ruby",
   "item.villagecraft3essentials.ruby_sword": "Ruby Sword",
@@ -58,12 +60,25 @@
   "item.minecraft.smithing_template.netherite_upgrade.applies_to": "Diamond, Ruby and Amber Equipment",
   "item.minecraft.smithing_template.netherite_upgrade.base_slot_description": "Add diamond, ruby, amber armor, weapon, or tool",
 
-  "sounds.villagecraft3essentials.mole_ambient": "Mole stridulates",
-  "sounds.villagecraft3essentials.mole_hurt": "Mole hurts",
-  "sounds.villagecraft3essentials.mole_death": "Mole dies",
+  "subtitles.villagecraft3essentials.entity.mole.ambient": "Mole stridulates",
+  "subtitles.villagecraft3essentials.entity.mole.hurt": "Mole hurts",
+  "subtitles.villagecraft3essentials.entity.mole.death": "Mole dies",
+  "subtitles.villagecraft3essentials.block.atm.use": "Atm used",
 
-  "entity.minecraft.villager.villagecraft3essentials.banker": "Banker",
-  "entity.villagecraft3essentials.mole": "Mole",
+  "trim_material.villagecraft3essentials.ruby": "Ruby Material",
+  "trim_material.villagecraft3essentials.amber": "Amber Material",
+
+  "tooltips.villagecraft3essentials.atm.nextmenu": "To Tool Conversion",
+  "tooltips.villagecraft3essentials.atm.previousmenu": "To Currency Conversion",
+  "tooltips.villagecraft3essentials.atm.randomconvert1": "%1$s Diamonds to %2$s Rubies",
+  "tooltips.villagecraft3essentials.atm.randomconvert2": "%1$s Diamonds to %2$s Ambers",
+  "tooltips.villagecraft3essentials.atm.randomconvert3": "%1$s Rubies to %2$s Diamonds",
+  "tooltips.villagecraft3essentials.atm.randomconvert4": "%1$s Rubies to %2$s Ambers",
+  "tooltips.villagecraft3essentials.atm.randomconvert5": "%1$s Ambers to %2$s Rubies",
+  "tooltips.villagecraft3essentials.atm.randomconvert6": "%1$s Ambers to %2$s Diamonds",
+  "tooltips.villagecraft3essentials.atm.toolconvertbuttondiamond": "Convert to Diamond",
+  "tooltips.villagecraft3essentials.atm.toolconvertbuttonruby": "Convert to Ruby",
+  "tooltips.villagecraft3essentials.atm.toolconvertbuttonamber": "Convert to Amber",
 
   "tutorial.punch_tree.title": "Destroy the trey"
 }

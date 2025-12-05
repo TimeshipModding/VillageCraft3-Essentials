@@ -1,4 +1,4 @@
-// 1.21.1	2025-10-02T11:00:47.366731	Tags for minecraft:item mod id villagecraft3essentials
+// 1.21.1	2025-12-04T17:40:26.9645814	Tags for minecraft:item mod id villagecraft3essentials
 b1c74e437e0593ddf4f5ee19f47a5eabf582572f data/minecraft/tags/item/axes.json
 d03fa87e10535e7ddd298826de46878b10e461b2 data/minecraft/tags/item/beacon_payment_items.json
 649b29e6b6d8a5a0e4b103006266698f0d2c937e data/minecraft/tags/item/breaks_decorated_pots.json
@@ -16,4 +16,5 @@ bf4bf7acc3ce5a96922fb05f71ffaec04d3d3f9e data/minecraft/tags/item/pickaxes.json
 e6c7295c8a74347127b325cdeeefc14cc28c00fc data/minecraft/tags/item/swords.json
 44302f61f46fba400b2545da27bf3431462b8c01 data/minecraft/tags/item/trimmable_armor.json
 d03fa87e10535e7ddd298826de46878b10e461b2 data/minecraft/tags/item/trim_materials.json
+127fc7ed68f704df17de8c312166c04d8ab26a27 data/villagecraft3essentials/tags/item/diamond_convertible_tools.json
 bbbe68f23d94ae2a72f5380fb7195d7486f0955f data/villagecraft3essentials/tags/item/mole_food.json

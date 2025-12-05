@@ -1,6 +1,6 @@
 {
   "mole_ambient": {
-    "subtitle": "sounds.villagecraft3essentials.mole_ambient",
+    "subtitle": "subtitles.villagecraft3essentials.entity.mole.ambient",
     "sounds": [
       "villagecraft3essentials:mole_ambient_1",
       "villagecraft3essentials:mole_ambient_2",
@@ -8,15 +8,21 @@
     ]
   },
   "mole_hurt": {
-    "subtitle": "sounds.villagecraft3essentials.mole_hurt",
+    "subtitle": "subtitles.villagecraft3essentials.entity.mole.hurt",
     "sounds": [
       "villagecraft3essentials:mole_hurt"
     ]
   },
   "mole_death": {
-    "subtitle": "sounds.villagecraft3essentials.mole_death",
+    "subtitle": "subtitles.villagecraft3essentials.entity.mole.death",
     "sounds": [
       "villagecraft3essentials:mole_death"
+    ]
+  },
+  "atm_use": {
+    "subtitle": "subtitles.villagecraft3essentials.block.atm.use",
+    "sounds": [
+      "villagecraft3essentials:atm_use"
     ]
   }
 }

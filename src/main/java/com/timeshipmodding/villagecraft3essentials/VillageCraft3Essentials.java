@@ -1,12 +1,13 @@
 package com.timeshipmodding.villagecraft3essentials;
 
 import com.timeshipmodding.villagecraft3essentials.content.block.registries.ModBlocks;
+import com.timeshipmodding.villagecraft3essentials.content.block.entity.registries.ModBlockEntities;
 import com.timeshipmodding.villagecraft3essentials.content.creativetab.EssentialsTab;
 import com.timeshipmodding.villagecraft3essentials.content.entity.client.registries.ModEntities;
 import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModArmorMaterials;
 import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems;
+import com.timeshipmodding.villagecraft3essentials.content.menu.registries.ModMenus;
 import com.timeshipmodding.villagecraft3essentials.content.sound.registries.ModSounds;
-import com.timeshipmodding.villagecraft3essentials.content.villager.registries.ModVillagers;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import org.slf4j.Logger;
@@ -24,11 +25,11 @@ public class VillageCraft3Essentials {
     public VillageCraft3Essentials(IEventBus modEventBus) {
         // Register registry classes
         ModBlocks.BLOCKS.register(modEventBus);
-        ModItems.ITEMS.register(modEventBus);
-        ModArmorMaterials.ARMOR_MATERIALS.register(modEventBus);
-        ModVillagers.POI_TYPES.register(modEventBus);
-        ModVillagers.VILLAGER_PROFESSIONS.register(modEventBus);
+        ModBlockEntities.BLOCK_ENTITIES.register(modEventBus);
         ModEntities.ENTITY_TYPES.register(modEventBus);
+        ModArmorMaterials.ARMOR_MATERIALS.register(modEventBus);
+        ModItems.ITEMS.register(modEventBus);
+        ModMenus.MENUS.register(modEventBus);
         ModSounds.SOUND_EVENTS.register(modEventBus);
 
         // Register creative mode tab

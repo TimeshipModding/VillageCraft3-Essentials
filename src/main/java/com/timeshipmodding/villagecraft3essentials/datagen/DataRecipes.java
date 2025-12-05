@@ -149,16 +149,16 @@ public class DataRecipes extends RecipeProvider implements IConditionBuilder {
                 .pattern("#y#")
                 .pattern("#x#")
                 .define('#', Blocks.LIGHT_BLUE_CONCRETE).define('!', Blocks.REDSTONE_TORCH).define('y', Blocks.HOPPER).define('x', Items.IRON_INGOT).group("villagecraft3essentials").unlockedBy(getHasName(AMBER.get()), has(AMBER.get())).save(recipeOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, LIME_ATM.get())
-                .pattern("#!#")
-                .pattern("#y#")
-                .pattern("#x#")
-                .define('#', Blocks.LIME_CONCRETE).define('!', Blocks.REDSTONE_TORCH).define('y', Blocks.HOPPER).define('x', Items.IRON_INGOT).group("villagecraft3essentials").unlockedBy(getHasName(AMBER.get()), has(AMBER.get())).save(recipeOutput);
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, LIGHT_GRAY_ATM.get())
                 .pattern("#!#")
                 .pattern("#y#")
                 .pattern("#x#")
                 .define('#', Blocks.LIGHT_GRAY_CONCRETE).define('!', Blocks.REDSTONE_TORCH).define('y', Blocks.HOPPER).define('x', Items.IRON_INGOT).group("villagecraft3essentials").unlockedBy(getHasName(AMBER.get()), has(AMBER.get())).save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, LIME_ATM.get())
+                .pattern("#!#")
+                .pattern("#y#")
+                .pattern("#x#")
+                .define('#', Blocks.LIME_CONCRETE).define('!', Blocks.REDSTONE_TORCH).define('y', Blocks.HOPPER).define('x', Items.IRON_INGOT).group("villagecraft3essentials").unlockedBy(getHasName(AMBER.get()), has(AMBER.get())).save(recipeOutput);
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MAGENTA_ATM.get())
                 .pattern("#!#")
                 .pattern("#y#")

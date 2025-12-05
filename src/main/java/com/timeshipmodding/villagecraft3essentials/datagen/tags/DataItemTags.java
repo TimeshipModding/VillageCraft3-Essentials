@@ -13,6 +13,7 @@ import java.util.concurrent.CompletableFuture;
 
 import static com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems.*;
 import static com.timeshipmodding.villagecraft3essentials.util.tags.registries.ModItemTags.*;
+import static net.minecraft.world.item.Items.*;
 
 public class DataItemTags extends ItemTagsProvider {
     public DataItemTags(PackOutput pOutput, CompletableFuture<HolderLookup.Provider> pLookupProvider, CompletableFuture<TagLookup<Block>> pBlockTags, @Nullable ExistingFileHelper existingFileHelper) {
@@ -79,5 +80,38 @@ public class DataItemTags extends ItemTagsProvider {
         tag(MOLE_FOOD)
                 .add(WORM.get())
                 .add(COOKED_WORM.get());
+        tag(DIAMOND_CONVERTIBLE_TOOLS)
+                .add(DIAMOND_SWORD)
+                .add(DIAMOND_SHOVEL)
+                .add(DIAMOND_PICKAXE)
+                .add(DIAMOND_AXE)
+                .add(DIAMOND_HOE)
+                .add(DIAMOND_HELMET)
+                .add(DIAMOND_CHESTPLATE)
+                .add(DIAMOND_LEGGINGS)
+                .add(DIAMOND_BOOTS)
+                .add(DIAMOND_HORSE_ARMOR);
+        tag(RUBY_CONVERTIBLE_TOOLS)
+                .add(RUBY_SWORD.get())
+                .add(RUBY_SHOVEL.get())
+                .add(RUBY_PICKAXE.get())
+                .add(RUBY_AXE.get())
+                .add(RUBY_HOE.get())
+                .add(RUBY_HELMET.get())
+                .add(RUBY_CHESTPLATE.get())
+                .add(RUBY_LEGGINGS.get())
+                .add(RUBY_BOOTS.get())
+                .add(RUBY_HORSE_ARMOR.get());
+        tag(AMBER_CONVERTIBLE_TOOLS)
+                .add(AMBER_SWORD.get())
+                .add(AMBER_SHOVEL.get())
+                .add(AMBER_PICKAXE.get())
+                .add(AMBER_AXE.get())
+                .add(AMBER_HOE.get())
+                .add(AMBER_HELMET.get())
+                .add(AMBER_CHESTPLATE.get())
+                .add(AMBER_LEGGINGS.get())
+                .add(AMBER_BOOTS.get())
+                .add(AMBER_HORSE_ARMOR.get());
     }
 }

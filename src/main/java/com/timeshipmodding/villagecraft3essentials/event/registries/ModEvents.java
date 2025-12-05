@@ -6,8 +6,6 @@ import com.timeshipmodding.villagecraft3essentials.content.commands.ambercaves.*
 import com.timeshipmodding.villagecraft3essentials.content.commands.grippercity.*;
 import com.timeshipmodding.villagecraft3essentials.content.commands.villagecraftcity.*;
 import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems;
-import com.timeshipmodding.villagecraft3essentials.content.villager.registries.ModVillagers;
-import com.timeshipmodding.villagecraft3essentials.util.saveddata.CurrencyConversionSavedData;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.entity.npc.VillagerTrades;
@@ -15,7 +13,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.trading.ItemCost;
 import net.minecraft.world.item.trading.MerchantOffer;
-import net.minecraft.world.level.block.Blocks;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
@@ -29,48 +26,16 @@ import java.util.Random;
 
 @EventBusSubscriber(modid = VillageCraft3Essentials.MODID)
 public class ModEvents {
+    public static int[] diamondToRuby;
+    public static int[] diamondToAmber;
+    public static int[] rubyToDiamond;
+    public static int[] rubyToAmber;
+    public static int[] amberToDiamond;
+    public static int[] amberToRuby;
+
+
     @SubscribeEvent
     public static void addCustomTrades(VillagerTradesEvent event) {
-        if(event.getType() == ModVillagers.BANKER.value()) {
-            Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
-            trades.get(1).add((pTrader, pRandom) -> new MerchantOffer(
-                    new ItemCost(Items.DIAMOND, 1),
-                    new ItemStack(ModItems.RUBY.get(), 5), 128, 10, 0.0f
-            ));
-            trades.get(1).add((pTrader, pRandom) -> new MerchantOffer(
-                    new ItemCost(ModItems.RUBY.get(), 5),
-                    new ItemStack(Items.DIAMOND, 1), 128, 10, 0.0f
-            ));
-            trades.get(2).add((pTrader, pRandom) -> new MerchantOffer(
-                    new ItemCost(Items.DIAMOND, 2),
-                    new ItemStack(ModItems.AMBER.get(), 1), 128, 15, 0.0f
-            ));
-            trades.get(2).add((pTrader, pRandom) -> new MerchantOffer(
-                    new ItemCost(ModItems.AMBER.get(), 1),
-                    new ItemStack(Items.DIAMOND, 2), 128, 15, 0.0f
-            ));
-            trades.get(3).add((pTrader, pRandom) -> new MerchantOffer(
-                    new ItemCost(ModItems.AMBER.get(), 1),
-                    new ItemStack(ModItems.RUBY.get(), 10), 128, 30, 0.0f
-            ));
-            trades.get(3).add((pTrader, pRandom) -> new MerchantOffer(
-                    new ItemCost(ModItems.RUBY.get(), 10),
-                    new ItemStack(ModItems.AMBER.get(), 1), 128, 30, 0.0f
-            ));
-            trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
-                    new ItemCost(Blocks.EMERALD_BLOCK, 8),
-                    new ItemStack(Items.DIAMOND, 1), 128, 45, 0.0f
-            ));
-            trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
-                    new ItemCost(Blocks.EMERALD_BLOCK, 8),
-                    new ItemStack(ModItems.RUBY.get(), 5), 128, 45, 0.0f
-            ));
-            trades.get(5).add((pTrader, pRandom) -> new MerchantOffer(
-                    new ItemCost(Blocks.EMERALD_BLOCK, 16),
-                    new ItemStack(ModItems.AMBER.get(), 1), 128, 45, 0.0f
-            ));
-        }
-
         if(event.getType() == VillagerProfession.ARMORER) {
             Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
             trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
@@ -213,26 +178,36 @@ public class ModEvents {
 
     @SubscribeEvent
     public static void onServerStarting(ServerStartingEvent event) {
-        CurrencyConversionSavedData savedData = CurrencyConversionSavedData.getData(event.getServer());
-        int diamond_ruby = randomCurrencyConversion();
-        int diamond_amber = randomCurrencyConversion();
-        int amber = randomCurrencyConversion();
-        int ruby = randomCurrencyConversion();
-        savedData.setDiamondToRuby(new int[]{diamond_ruby, ruby});
-        savedData.setDiamondToAmber(new int[]{diamond_amber, amber});
-        savedData.setRubyToDiamond(new int[]{ruby, diamond_ruby});
-        savedData.setRubyToAmber(new int[]{diamond_amber*ruby, amber*diamond_ruby});
-        savedData.setAmberToDiamond(new int[]{amber, diamond_amber});
-        savedData.setAmberToRuby(new int[]{amber*diamond_ruby, diamond_amber*ruby});
-        VillageCraft3Essentials.LOGGER.info("Currency Conversions Randomized - DiamondToAmber{}", Arrays.toString(savedData.getDiamondToAmber()));
-        VillageCraft3Essentials.LOGGER.info("Currency Conversions Randomized - DiamondToRuby{}", Arrays.toString(savedData.getDiamondToRuby()));
-        VillageCraft3Essentials.LOGGER.info("Currency Conversions Randomized - RubyToDiamond{}", Arrays.toString(savedData.getRubyToDiamond()));
-        VillageCraft3Essentials.LOGGER.info("Currency Conversions Randomized - RubyToAmber{}", Arrays.toString(savedData.getRubyToAmber()));
-        VillageCraft3Essentials.LOGGER.info("Currency Conversions Randomized - AmberToDiamond{}", Arrays.toString(savedData.getAmberToDiamond()));
-        VillageCraft3Essentials.LOGGER.info("Currency Conversions Randomized - AmberToRuby{}", Arrays.toString(savedData.getAmberToRuby()));
+        int diamond_ruby = randomRubyCurrencyConversion();
+        int diamond_amber = randomAmberCurrencyConversion();
+        int ruby = randomRubyCurrencyConversion();
+        int amber = randomAmberCurrencyConversion();
+        diamondToRuby = new int[]{diamond_ruby, ruby};
+        diamondToAmber = new int[]{diamond_amber, amber};
+        rubyToDiamond = new int[]{ruby, diamond_ruby};
+
+        int[] scaledArray1 = new int[]{(diamond_ruby*diamond_amber), (ruby*diamond_amber)};
+        int[] scaledArray2 = new int[]{(diamond_amber*diamond_ruby), (amber*diamond_ruby)};
+        rubyToAmber = new int[]{scaledArray1[1], scaledArray2[1]};
+        amberToDiamond = new int[]{amber, diamond_amber};
+        amberToRuby = new int[]{scaledArray2[1],  scaledArray1[1]};
+
+        VillageCraft3Essentials.LOGGER.info("Currency Conversions Randomized - DiamondToRuby{}", Arrays.toString(diamondToRuby));
+        VillageCraft3Essentials.LOGGER.info("Currency Conversions Randomized - DiamondToAmber{}", Arrays.toString(diamondToAmber));
+        VillageCraft3Essentials.LOGGER.info("Currency Conversions Randomized - RubyToDiamond{}", Arrays.toString(rubyToDiamond));
+        VillageCraft3Essentials.LOGGER.info("Currency Conversions Randomized - RubyToAmber{}", Arrays.toString(rubyToAmber));
+        VillageCraft3Essentials.LOGGER.info("Currency Conversions Randomized - AmberToDiamond{}", Arrays.toString(amberToDiamond));
+        VillageCraft3Essentials.LOGGER.info("Currency Conversions Randomized - AmberToRuby{}", Arrays.toString(amberToRuby));
     }
 
-    public static int randomCurrencyConversion() {
+    public static int randomRubyCurrencyConversion() {
+        Random random = new Random();
+        int min = 1;
+        int max = 10;
+        return random.nextInt(min, max);
+    }
+
+    public static int randomAmberCurrencyConversion() {
         Random random = new Random();
         int min = 1;
         int max = 10;

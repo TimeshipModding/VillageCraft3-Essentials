@@ -14,6 +14,7 @@ public class ModSounds {
     public static final Supplier<SoundEvent> MOLE_DEATH = registerSoundEvent("mole_death");
     public static final Supplier<SoundEvent> MOLE_HURT = registerSoundEvent("mole_hurt");
     public static final Supplier<SoundEvent> MOLE_AMBIENT = registerSoundEvent("mole_ambient");
+    public static final Supplier<SoundEvent> ATM_USE = registerSoundEvent("atm_use");
 
     private static Supplier<SoundEvent> registerSoundEvent(String name) {
         ResourceLocation id = ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, name);

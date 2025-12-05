@@ -40,8 +40,8 @@ public class DataBlockLootTables extends BlockLootSubProvider {
         add(GRAY_ATM.get(), block -> createATMTable(GRAY_ATM.get()));
         add(GREEN_ATM.get(), block -> createATMTable(GREEN_ATM.get()));
         add(LIGHT_BLUE_ATM.get(), block -> createATMTable(LIGHT_BLUE_ATM.get()));
-        add(LIME_ATM.get(), block -> createATMTable(LIME_ATM.get()));
         add(LIGHT_GRAY_ATM.get(), block -> createATMTable(LIGHT_GRAY_ATM.get()));
+        add(LIME_ATM.get(), block -> createATMTable(LIME_ATM.get()));
         add(MAGENTA_ATM.get(), block -> createATMTable(MAGENTA_ATM.get()));
         add(ORANGE_ATM.get(), block -> createATMTable(ORANGE_ATM.get()));
         add(PINK_ATM.get(), block -> createATMTable(PINK_ATM.get()));
