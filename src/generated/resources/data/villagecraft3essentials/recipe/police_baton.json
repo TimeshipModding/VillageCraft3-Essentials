@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "group": "villagecraft3essentials",
+  "ingredients": [
+    {
+      "item": "minecraft:mace"
+    },
+    {
+      "item": "minecraft:black_dye"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "villagecraft3essentials:police_baton"
+  }
+}

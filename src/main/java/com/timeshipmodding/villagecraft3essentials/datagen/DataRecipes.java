@@ -204,6 +204,7 @@ public class DataRecipes extends RecipeProvider implements IConditionBuilder {
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RUBY_BLOCK.get()).requires(RUBY.get(), 9).group("villagecraft3essentials").unlockedBy(getHasName(RUBY.get()), has(RUBY_BLOCK.get())).save(recipeOutput);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AMBER.get(), 9).requires(AMBER_BLOCK.get()).group("villagecraft3essentials").unlockedBy(getHasName(AMBER_BLOCK.get()), has(AMBER_BLOCK.get())).save(recipeOutput);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AMBER_BLOCK.get()).requires(AMBER.get(), 9).group("villagecraft3essentials").unlockedBy(getHasName(AMBER.get()), has(AMBER.get())).save(recipeOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, POLICE_BATON.get()).requires(MACE).requires(BLACK_DYE).group("villagecraft3essentials").unlockedBy(getHasName(MACE), has(MACE)).save(recipeOutput);
 
         // Simple Cooking Recipe
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(WORM), RecipeCategory.FOOD, COOKED_WORM, 0.35F, 200)
