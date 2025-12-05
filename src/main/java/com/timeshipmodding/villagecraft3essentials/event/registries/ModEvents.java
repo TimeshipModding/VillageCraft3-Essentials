@@ -6,6 +6,7 @@ import com.timeshipmodding.villagecraft3essentials.content.commands.ambercaves.*
 import com.timeshipmodding.villagecraft3essentials.content.commands.grippercity.*;
 import com.timeshipmodding.villagecraft3essentials.content.commands.villagecraftcity.*;
 import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems;
+import com.timeshipmodding.villagecraft3essentials.util.Config;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.entity.npc.VillagerTrades;
@@ -202,15 +203,11 @@ public class ModEvents {
 
     public static int randomRubyCurrencyConversion() {
         Random random = new Random();
-        int min = 1;
-        int max = 10;
-        return random.nextInt(min, max);
+        return random.nextInt(Config.rubyCurrencyConversionRateMin, Config.rubyCurrencyConversionRateMax);
     }
 
     public static int randomAmberCurrencyConversion() {
         Random random = new Random();
-        int min = 1;
-        int max = 10;
-        return random.nextInt(min, max);
+        return random.nextInt(Config.amberCurrencyConversionRateMin, Config.amberCurrencyConversionRateMax);
     }
 }

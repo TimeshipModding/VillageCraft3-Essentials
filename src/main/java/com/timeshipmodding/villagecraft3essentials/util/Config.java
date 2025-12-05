@@ -11,20 +11,30 @@ import net.neoforged.neoforge.common.ModConfigSpec;
 public class Config {
     private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 
-    private static final ModConfigSpec.IntValue CURRENCY_CONVERSION_RATE_MIN = BUILDER
-            .comment("The minimum number for random currency conversion rates in the atm blocks")
-            .defineInRange("currencyConversionRateMin", 1, 1, 64);
-    private static final ModConfigSpec.IntValue CURRENCY_CONVERSION_RATE_MAX = BUILDER
-            .comment("The maximum number for random currency conversion rates in the atm blocks")
-            .defineInRange("currencyConversionRateMax", 10, 1, 64);
+    private static final ModConfigSpec.IntValue RUBY_CURRENCY_CONVERSION_RATE_MIN = BUILDER
+            .comment("The minimum number for ruby random currency conversion rates in the atm block")
+            .defineInRange("rubyCurrencyConversionRateMin", 1, 1, 64);
+    private static final ModConfigSpec.IntValue RUBY_CURRENCY_CONVERSION_RATE_MAX = BUILDER
+            .comment("The maximum number for ruby random currency conversion rates in the atm block")
+            .defineInRange("rubyCurrencyConversionRateMax", 10, 1, 64);
+    private static final ModConfigSpec.IntValue AMBER_CURRENCY_CONVERSION_RATE_MIN = BUILDER
+            .comment("The minimum number for amber random currency conversion rates in the atm block")
+            .defineInRange("amberCurrencyConversionRateMin", 1, 1, 64);
+    private static final ModConfigSpec.IntValue AMBER_CURRENCY_CONVERSION_RATE_MAX = BUILDER
+            .comment("The maximum number for amber random currency conversion rates in the atm block")
+            .defineInRange("amberCurrencyConversionRateMax", 10, 1, 64);
 
     public static final ModConfigSpec SPEC = BUILDER.build();
-    public static int currencyConversionRateMin;
-    public static int currencyConversionRateMax;
+    public static int rubyCurrencyConversionRateMin;
+    public static int rubyCurrencyConversionRateMax;
+    public static int amberCurrencyConversionRateMin;
+    public static int amberCurrencyConversionRateMax;
 
     @SubscribeEvent
     static void onLoad(final ModConfigEvent event) {
-        currencyConversionRateMin = CURRENCY_CONVERSION_RATE_MIN.get();
-        currencyConversionRateMax = CURRENCY_CONVERSION_RATE_MAX.get();
+        rubyCurrencyConversionRateMin = RUBY_CURRENCY_CONVERSION_RATE_MIN.get();
+        rubyCurrencyConversionRateMax = RUBY_CURRENCY_CONVERSION_RATE_MAX.get();
+        amberCurrencyConversionRateMin = AMBER_CURRENCY_CONVERSION_RATE_MIN.get();
+        amberCurrencyConversionRateMax = AMBER_CURRENCY_CONVERSION_RATE_MAX.get();
     }
 }

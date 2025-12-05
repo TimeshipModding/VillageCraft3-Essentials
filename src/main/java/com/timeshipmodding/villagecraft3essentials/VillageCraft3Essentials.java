@@ -8,7 +8,10 @@ import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModAr
 import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems;
 import com.timeshipmodding.villagecraft3essentials.content.menu.registries.ModMenus;
 import com.timeshipmodding.villagecraft3essentials.content.sound.registries.ModSounds;
+import com.timeshipmodding.villagecraft3essentials.util.Config;
+import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.ModList;
+import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import org.slf4j.Logger;
 
@@ -22,7 +25,7 @@ public class VillageCraft3Essentials {
     public static final Logger LOGGER = LogUtils.getLogger();
     public static final String MODID = "villagecraft3essentials";
 
-    public VillageCraft3Essentials(IEventBus modEventBus) {
+    public VillageCraft3Essentials(IEventBus modEventBus, ModContainer modContainer) {
         // Register registry classes
         ModBlocks.BLOCKS.register(modEventBus);
         ModBlockEntities.BLOCK_ENTITIES.register(modEventBus);
@@ -37,6 +40,9 @@ public class VillageCraft3Essentials {
 
         // Listener to Common Setup
         modEventBus.addListener(this::commonSetup);
+
+        // Register mod config
+        modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {
