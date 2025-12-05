@@ -67,4 +67,3 @@ public class ModOrePlacements {
         return orePlacement(RarityFilter.onAverageOnceEvery(pChance), pHeightRange);
     }
 }
-

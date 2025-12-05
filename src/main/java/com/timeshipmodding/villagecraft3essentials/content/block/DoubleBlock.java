@@ -26,6 +26,5 @@ public class DoubleBlock extends DoublePlantBlock {
                 pLevel.levelEvent(pPlayer, 2001, blockpos, Block.getId(blockstate));
             }
         }
-
     }
 }

@@ -15,7 +15,6 @@ import static com.timeshipmodding.villagecraft3essentials.content.block.registri
 
 import static com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials.MODID;
 
-
 public class EssentialsTab {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
 

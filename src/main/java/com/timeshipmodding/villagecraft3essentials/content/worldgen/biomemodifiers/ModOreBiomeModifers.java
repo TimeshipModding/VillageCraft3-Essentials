@@ -49,4 +49,3 @@ public class ModOreBiomeModifers {
         return ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, name));
     }
 }
-
