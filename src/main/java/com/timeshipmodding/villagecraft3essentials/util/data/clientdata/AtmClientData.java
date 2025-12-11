@@ -1,6 +1,6 @@
-package com.timeshipmodding.villagecraft3essentials.util;
+package com.timeshipmodding.villagecraft3essentials.util.data.clientdata;
 
-public class ClientModData {
+public class AtmClientData {
     public static int[] diamondToRuby = null;
     public static int[] diamondToAmber = null;
     public static int[] rubyToDiamond = null;

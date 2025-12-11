@@ -2,7 +2,7 @@ package com.timeshipmodding.villagecraft3essentials.networking.packet.atm;
 
 import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
 import com.timeshipmodding.villagecraft3essentials.content.screen.AtmScreen;
-import com.timeshipmodding.villagecraft3essentials.util.ClientModData;
+import com.timeshipmodding.villagecraft3essentials.util.data.clientdata.AtmClientData;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -46,7 +46,7 @@ public record AtmRandomConversionRatesPacket(int[] diamondToRuby, int[] diamondT
 
     public static void handle(AtmRandomConversionRatesPacket payload, IPayloadContext context) {
         context.enqueueWork(() -> {
-            ClientModData.setRandomConversionRates(payload.diamondToRuby(), payload.diamondToAmber(), payload.rubyToDiamond(), payload.rubyToAmber(), payload.amberToDiamond(), payload.amberToRuby());
+            AtmClientData.setRandomConversionRates(payload.diamondToRuby(), payload.diamondToAmber(), payload.rubyToDiamond(), payload.rubyToAmber(), payload.amberToDiamond(), payload.amberToRuby());
             System.out.println("Client received and stored data array.");
 
             Minecraft minecraft = Minecraft.getInstance();

@@ -3,7 +3,7 @@ package com.timeshipmodding.villagecraft3essentials.content.block.entity;
 import com.timeshipmodding.villagecraft3essentials.content.block.entity.registries.ModBlockEntities;
 import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems;
 import com.timeshipmodding.villagecraft3essentials.content.menu.AtmMenu;
-import com.timeshipmodding.villagecraft3essentials.util.saveddata.AtmRandomConversionRatesSavedData;
+import com.timeshipmodding.villagecraft3essentials.util.data.saveddata.AtmRandomConversionRatesSavedData;
 import com.timeshipmodding.villagecraft3essentials.util.tags.registries.ModItemTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;

@@ -8,7 +8,7 @@ import com.timeshipmodding.villagecraft3essentials.content.commands.villagecraft
 import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems;
 import com.timeshipmodding.villagecraft3essentials.networking.packet.atm.AtmRandomConversionRatesPacket;
 import com.timeshipmodding.villagecraft3essentials.util.Config;
-import com.timeshipmodding.villagecraft3essentials.util.saveddata.AtmRandomConversionRatesSavedData;
+import com.timeshipmodding.villagecraft3essentials.util.data.saveddata.AtmRandomConversionRatesSavedData;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;

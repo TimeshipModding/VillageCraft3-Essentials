@@ -8,7 +8,7 @@ import com.timeshipmodding.villagecraft3essentials.networking.packet.atm.*;
 import com.timeshipmodding.villagecraft3essentials.networking.packet.atm.button.AtmRandomConvertButtonPressedPacket;
 import com.timeshipmodding.villagecraft3essentials.networking.packet.atm.button.AtmRefreshSlotsPacket;
 import com.timeshipmodding.villagecraft3essentials.networking.packet.atm.button.AtmToolConvertButtonPressedPacket;
-import com.timeshipmodding.villagecraft3essentials.util.ClientModData;
+import com.timeshipmodding.villagecraft3essentials.util.data.clientdata.AtmClientData;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.*;
@@ -82,12 +82,12 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
         this.inventoryLabelY = this.imageHeight - 92;
         this.titleLabelY = 5;
         this.titleLabelX = 8;
-        this.diamondToRuby = ClientModData.getDiamondToRuby() != null ? ClientModData.getDiamondToRuby() : new int[]{};
-        this.diamondToAmber = ClientModData.getDiamondToAmber() != null ? ClientModData.getDiamondToAmber() : new int[]{};
-        this.rubyToDiamond = ClientModData.getRubyToDiamond() != null ? ClientModData.getRubyToDiamond() : new int[]{};
-        this.rubyToAmber = ClientModData.getRubyToAmber() != null ? ClientModData.getRubyToAmber() : new int[]{};
-        this.amberToDiamond = ClientModData.getAmberToDiamond() != null ? ClientModData.getAmberToDiamond() : new int[]{};
-        this.amberToRuby = ClientModData.getAmberToRuby() != null ? ClientModData.getAmberToRuby() : new int[]{};
+        this.diamondToRuby = AtmClientData.getDiamondToRuby() != null ? AtmClientData.getDiamondToRuby() : new int[]{};
+        this.diamondToAmber = AtmClientData.getDiamondToAmber() != null ? AtmClientData.getDiamondToAmber() : new int[]{};
+        this.rubyToDiamond = AtmClientData.getRubyToDiamond() != null ? AtmClientData.getRubyToDiamond() : new int[]{};
+        this.rubyToAmber = AtmClientData.getRubyToAmber() != null ? AtmClientData.getRubyToAmber() : new int[]{};
+        this.amberToDiamond = AtmClientData.getAmberToDiamond() != null ? AtmClientData.getAmberToDiamond() : new int[]{};
+        this.amberToRuby = AtmClientData.getAmberToRuby() != null ? AtmClientData.getAmberToRuby() : new int[]{};
     }
 
     private void onDiamondCurrencyButtonPress(Button button) {

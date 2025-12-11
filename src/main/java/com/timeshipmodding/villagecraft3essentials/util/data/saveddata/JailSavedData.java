@@ -1,4 +1,4 @@
-package com.timeshipmodding.villagecraft3essentials.util.saveddata;
+package com.timeshipmodding.villagecraft3essentials.util.data.saveddata;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
