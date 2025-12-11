@@ -47,9 +47,9 @@ public class VillageCraft3Essentials {
 
     private void commonSetup(FMLCommonSetupEvent event) {
         if (ModList.get().isLoaded("luckperms")) {
-            LOGGER.info("Luckperms is installed. Enabled luckperms features within commands.");
+            LOGGER.info("Luckperms is installed. Enabled luckperms features.");
         } else {
-            LOGGER.info("Luckperms is not installed. Disabled luckperms features within commands.");
+            LOGGER.info("Luckperms is not installed. Disabled luckperms features.");
         }
     }
 }

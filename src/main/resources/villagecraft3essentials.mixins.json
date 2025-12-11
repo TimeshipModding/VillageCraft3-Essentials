@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "package": "com.timeshipmodding.villagecraft3essentials.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "ItemMixin",
+    "HorseInventoryMenuMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

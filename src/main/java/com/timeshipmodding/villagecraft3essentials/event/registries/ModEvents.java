@@ -5,145 +5,24 @@ import com.timeshipmodding.villagecraft3essentials.content.commands.WorldSpawnCo
 import com.timeshipmodding.villagecraft3essentials.content.commands.ambercaves.*;
 import com.timeshipmodding.villagecraft3essentials.content.commands.grippercity.*;
 import com.timeshipmodding.villagecraft3essentials.content.commands.villagecraftcity.*;
-import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems;
 import com.timeshipmodding.villagecraft3essentials.networking.packet.atm.AtmRandomConversionRatesPacket;
 import com.timeshipmodding.villagecraft3essentials.util.Config;
 import com.timeshipmodding.villagecraft3essentials.util.data.saveddata.AtmRandomConversionRatesSavedData;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.npc.VillagerProfession;
-import net.minecraft.world.entity.npc.VillagerTrades;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.trading.ItemCost;
-import net.minecraft.world.item.trading.MerchantOffer;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.OnDatapackSyncEvent;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
-import net.neoforged.neoforge.event.village.VillagerTradesEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.neoforge.server.command.ConfigCommand;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.Random;
 
 @EventBusSubscriber(modid = VillageCraft3Essentials.MODID)
 public class ModEvents {
-    @SubscribeEvent
-    public static void addCustomTrades(VillagerTradesEvent event) {
-        if (event.getType() == VillagerProfession.ARMORER) {
-            Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
-            trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
-                    new ItemCost(Items.EMERALD, 14),
-                    new ItemStack(ModItems.RUBY_LEGGINGS.get(), 1), 3, 15, 0.2F
-            ));
-            trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
-                    new ItemCost(Items.EMERALD, 14),
-                    new ItemStack(ModItems.AMBER_LEGGINGS.get(), 1), 3, 15, 0.2F
-            ));
-            trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
-                    new ItemCost(Items.EMERALD, 8),
-                    new ItemStack(ModItems.RUBY_BOOTS.get(), 1), 3, 15, 0.2F
-            ));
-            trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
-                    new ItemCost(Items.EMERALD, 8),
-                    new ItemStack(ModItems.AMBER_BOOTS.get(), 1), 3, 15, 0.2F
-            ));
-            trades.get(5).add((pTrader, pRandom) -> new MerchantOffer(
-                    new ItemCost(Items.EMERALD, 8),
-                    new ItemStack(ModItems.RUBY_HELMET.get(), 1), 3, 30, 0.2F
-            ));
-            trades.get(5).add((pTrader, pRandom) -> new MerchantOffer(
-                    new ItemCost(Items.EMERALD, 8),
-                    new ItemStack(ModItems.AMBER_HELMET.get(), 1), 3, 30, 0.2F
-            ));
-            trades.get(5).add((pTrader, pRandom) -> new MerchantOffer(
-                    new ItemCost(Items.EMERALD, 16),
-                    new ItemStack(ModItems.RUBY_CHESTPLATE.get(), 1), 3, 30, 0.2F
-            ));
-            trades.get(5).add((pTrader, pRandom) -> new MerchantOffer(
-                    new ItemCost(Items.EMERALD, 16),
-                    new ItemStack(ModItems.AMBER_CHESTPLATE.get(), 1), 3, 30, 0.2F
-            ));
-        }
-
-        if (event.getType() == VillagerProfession.TOOLSMITH) {
-            Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
-            trades.get(3).add((pTrader, pRandom) -> new MerchantOffer(
-                    new ItemCost(Items.EMERALD, 4),
-                    new ItemStack(ModItems.RUBY_HOE.get(), 1), 3, 10, 0.2F
-            ));
-            trades.get(3).add((pTrader, pRandom) -> new MerchantOffer(
-                    new ItemCost(Items.EMERALD, 4),
-                    new ItemStack(ModItems.AMBER_HOE.get(), 1), 3, 10, 0.2F
-            ));
-            trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
-                    new ItemCost(ModItems.RUBY.get(), 1),
-                    new ItemStack(Items.EMERALD, 1), 12, 30, 0F
-            ));
-            trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
-                    new ItemCost(ModItems.AMBER.get(), 1),
-                    new ItemStack(Items.EMERALD, 1), 12, 30, 0F
-            ));
-            trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
-                    new ItemCost(Items.EMERALD, 12),
-                    new ItemStack(ModItems.RUBY_AXE.get(), 1), 3, 15, 0.2F
-            ));
-            trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
-                    new ItemCost(Items.EMERALD, 12),
-                    new ItemStack(ModItems.AMBER_AXE.get(), 1), 3, 15, 0.2F
-            ));
-            trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
-                    new ItemCost(Items.EMERALD, 5),
-                    new ItemStack(ModItems.RUBY_SHOVEL.get(), 1), 3, 15, 0.2F
-            ));
-            trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
-                    new ItemCost(Items.EMERALD, 5),
-                    new ItemStack(ModItems.AMBER_SHOVEL.get(), 1), 3, 15, 0.2F
-            ));
-            trades.get(5).add((pTrader, pRandom) -> new MerchantOffer(
-                    new ItemCost(Items.EMERALD, 13),
-                    new ItemStack(ModItems.RUBY_PICKAXE.get(), 1), 3, 30, 0.2F
-            ));
-            trades.get(5).add((pTrader, pRandom) -> new MerchantOffer(
-                    new ItemCost(Items.EMERALD, 13),
-                    new ItemStack(ModItems.AMBER_PICKAXE.get(), 1), 3, 30, 0.2F
-            ));
-        }
-
-        if (event.getType() == VillagerProfession.WEAPONSMITH) {
-            Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
-            trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
-                    new ItemCost(ModItems.RUBY.get(), 1),
-                    new ItemStack(Items.EMERALD, 1), 12, 30, 0F
-            ));
-            trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
-                    new ItemCost(ModItems.AMBER, 1),
-                    new ItemStack(Items.EMERALD, 1), 12, 30, 0F
-            ));
-            trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
-                    new ItemCost(Items.EMERALD, 12),
-                    new ItemStack(ModItems.RUBY_AXE.get(), 1), 3, 15, 0.2F
-            ));
-            trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
-                    new ItemCost(Items.EMERALD, 12),
-                    new ItemStack(ModItems.AMBER_AXE.get(), 1), 3, 15, 0.2F
-            ));
-            trades.get(5).add((pTrader, pRandom) -> new MerchantOffer(
-                    new ItemCost(Items.EMERALD, 8),
-                    new ItemStack(ModItems.RUBY_SWORD.get(), 1), 3, 30, 0.2F
-            ));
-            trades.get(5).add((pTrader, pRandom) -> new MerchantOffer(
-                    new ItemCost(Items.EMERALD, 8),
-                    new ItemStack(ModItems.AMBER_SWORD.get(), 1), 3, 30, 0.2F
-            ));
-        }
-    }
-
     @SubscribeEvent
     public static void onCommandsRegister(RegisterCommandsEvent event) {
         new WorldSpawnCommand(event.getDispatcher());

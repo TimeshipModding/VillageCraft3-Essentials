@@ -1,6 +1,7 @@
 package com.timeshipmodding.villagecraft3essentials.event.registries;
 
 import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
+import com.timeshipmodding.villagecraft3essentials.networking.packet.HorseSyncCurrencyArmorEquipPacket;
 import com.timeshipmodding.villagecraft3essentials.networking.packet.atm.*;
 import com.timeshipmodding.villagecraft3essentials.networking.packet.atm.button.AtmRandomConvertButtonPressedPacket;
 import com.timeshipmodding.villagecraft3essentials.networking.packet.atm.button.AtmRefreshSlotsPacket;
@@ -49,5 +50,9 @@ public class ModNetworkingEvents {
                 AtmToolConvertScreenPacket.TYPE,
                 AtmToolConvertScreenPacket.STREAM_CODEC,
                 AtmToolConvertScreenPacket::handle);
+        registrar.playBidirectional(
+                HorseSyncCurrencyArmorEquipPacket.TYPE,
+                HorseSyncCurrencyArmorEquipPacket.STREAM_CODEC,
+                HorseSyncCurrencyArmorEquipPacket::handle);
     }
 }

@@ -1,4 +1,4 @@
-package com.timeshipmodding.villagecraft3essentials.util.slotitemhandlers;
+package com.timeshipmodding.villagecraft3essentials.util.itemhandler.slot;
 
 import com.timeshipmodding.villagecraft3essentials.content.block.entity.AtmBlockEntity;
 import net.minecraft.world.entity.player.Player;

@@ -1,4 +1,7 @@
 {
+  "actionbar.villagecraft3essentials.armor_conversation_hint" : "You cannot use this armor piece. Convert it to your currency in an ATM",
+  "actionbar.villagecraft3essentials.tool_conversation_hint" : "You cannot use this tool. Convert it to your currency in an ATM",
+
   "block.villagecraft3essentials.ruby_block": "Block of Ruby",
   "block.villagecraft3essentials.ruby_ore": "Ruby Ore",
   "block.villagecraft3essentials.deepslate_ruby_ore": "Deepslate Ruby Ore",
@@ -68,6 +71,7 @@
   "trim_material.villagecraft3essentials.ruby": "Ruby Material",
   "trim_material.villagecraft3essentials.amber": "Amber Material",
 
+  "tooltip.villagecraft3essentials.armor_conversation_hint": "If you cannot use this piece of armor. Convert it to your currency in an ATM",
   "tooltips.villagecraft3essentials.atm.nextmenu": "To Tool Conversion",
   "tooltips.villagecraft3essentials.atm.previousmenu": "To Currency Conversion",
   "tooltips.villagecraft3essentials.atm.randomconvert1": "%1$s Diamonds to %2$s Rubies",
@@ -79,6 +83,8 @@
   "tooltips.villagecraft3essentials.atm.toolconvertbuttondiamond": "Convert to Diamond",
   "tooltips.villagecraft3essentials.atm.toolconvertbuttonruby": "Convert to Ruby",
   "tooltips.villagecraft3essentials.atm.toolconvertbuttonamber": "Convert to Amber",
+  "tooltip.villagecraft3essentials.press_shift": "Press §eShift§r for info.",
+  "tooltip.villagecraft3essentials.tool_conversation_hint": "If you cannot use this tool. Convert it to your currency in an ATM",
 
   "tutorial.punch_tree.title": "Destroy the trey"
 }
