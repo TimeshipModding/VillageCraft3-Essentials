@@ -106,16 +106,16 @@ public class AtmMenu extends AbstractContainerMenu {
             ItemStack rawStack = quickMovedSlot.getItem();
             quickMovedStack = rawStack.copy();
             if (quickMovedSlotIndex == 1) {
-                ItemStack outputStack = blockEntity.getRandomConvertRecipe()[1];
-                int randomConvertButtonPressed = this.blockEntity.getRandomConvertButtonPressed();
-
                 if (this.blockEntity.getRandomConvertScreen()) {
-                    rawStack.setCount(this.blockEntity.quickRandomConvertCurrency(outputStack, randomConvertButtonPressed));
-                    quickMovedStack.setCount(this.blockEntity.quickRandomConvertCurrency(outputStack, randomConvertButtonPressed));
-                }
-
-                if (!this.moveItemStackTo(rawStack, 2, 38, true)) {
-                    return ItemStack.EMPTY;
+                    ItemStack outputStackTemplate = blockEntity.getRandomConvertRecipe()[1];
+                    int randomConvertButtonPressed = this.blockEntity.getRandomConvertButtonPressed();
+                    int totalOutputCount = this.blockEntity.quickRandomConvertCurrency(outputStackTemplate, randomConvertButtonPressed);
+                    ItemStack itemsToMove = outputStackTemplate.copy();
+                    itemsToMove.setCount(totalOutputCount);
+                    if (!this.insertItemStacked(itemsToMove, 2, 38)) {
+                        return ItemStack.EMPTY;
+                    }
+                    quickMovedSlot.setByPlayer(ItemStack.EMPTY);
                 }
             } else if (quickMovedSlotIndex == 0) {
                 if (!this.moveItemStackTo(rawStack, 2, 38, false)) {
@@ -153,8 +153,41 @@ public class AtmMenu extends AbstractContainerMenu {
 
             quickMovedSlot.onTake(player, rawStack);
         }
-
         return quickMovedStack;
+    }
+
+    protected boolean insertItemStacked(ItemStack stack, int startIndex, int endIndex) {
+        if (stack.isEmpty()) return false;
+        for (int i = startIndex; i < endIndex; i++) {
+            Slot slot = this.slots.get(i);
+            if (slot.hasItem() && ItemStack.isSameItemSameComponents(slot.getItem(), stack)) {
+                int currentStackSize = slot.getItem().getCount();
+                int maxSize = Math.min(stack.getMaxStackSize(), slot.getMaxStackSize());
+                int amountToTransfer = Math.min(stack.getCount(), maxSize - currentStackSize);
+
+                if (amountToTransfer > 0) {
+                    slot.getItem().grow(amountToTransfer);
+                    stack.shrink(amountToTransfer);
+                    slot.setChanged();
+                }
+                if (stack.isEmpty()) return true;
+            }
+        }
+
+        for (int i = startIndex; i < endIndex; i++) {
+            Slot slot = this.slots.get(i);
+            if (!slot.hasItem()) {
+                int maxSize = Math.min(stack.getMaxStackSize(), slot.getMaxStackSize());
+                int amountToTransfer = Math.min(stack.getCount(), maxSize);
+
+                if (amountToTransfer > 0) {
+                    slot.setByPlayer(stack.split(amountToTransfer));
+                    slot.setChanged();
+                }
+                if (stack.isEmpty()) return true;
+            }
+        }
+        return stack.isEmpty();
     }
 
     @Override
