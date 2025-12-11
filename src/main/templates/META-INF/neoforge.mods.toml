@@ -11,6 +11,10 @@ displayName="${mod_name}"
 authors="${mod_authors}"
 description='''${mod_description}'''
 
+# Access Transformer
+[[accessTransformers]]
+file="META-INF/accesstransformer.cfg"
+
 # Dependency for NeoForge
 [[dependencies.${mod_id}]]
     modId="neoforge"

@@ -4,10 +4,13 @@ import com.timeshipmodding.villagecraft3essentials.content.block.entity.AtmBlock
 import com.timeshipmodding.villagecraft3essentials.content.block.registries.ModBlocks;
 import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems;
 import com.timeshipmodding.villagecraft3essentials.content.menu.registries.ModMenus;
-import com.timeshipmodding.villagecraft3essentials.content.screen.AtmScreen;
 import com.timeshipmodding.villagecraft3essentials.content.sound.registries.ModSounds;
+import com.timeshipmodding.villagecraft3essentials.networking.packet.atm.AtmRandomConvertScreenPacket;
+import com.timeshipmodding.villagecraft3essentials.networking.packet.atm.button.AtmSyncSlotPositionsPacket;
+import com.timeshipmodding.villagecraft3essentials.networking.packet.atm.AtmToolConvertScreenPacket;
 import com.timeshipmodding.villagecraft3essentials.util.slotitemhandlers.AtmOutputSlotItemHandler;
 import com.timeshipmodding.villagecraft3essentials.util.tags.registries.ModItemTags;
+import net.minecraft.client.Minecraft;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
@@ -21,65 +24,70 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.neoforged.neoforge.items.SlotItemHandler;
+import net.neoforged.neoforge.network.PacketDistributor;
 
 public class AtmMenu extends AbstractContainerMenu {
     public final AtmBlockEntity blockEntity;
     private final Level level;
     private final Inventory inv;
+    public final Slot inputSlot;
+    public final Slot outputSlot;
 
-    public AtmMenu(int pContainerId, Inventory inv, FriendlyByteBuf extraData) {
-        this(pContainerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()));
+    public AtmMenu(int containerId, Inventory inv, FriendlyByteBuf extraData) {
+        this(containerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()));
     }
 
-    public AtmMenu(int pContainerId, Inventory inv, BlockEntity entity) {
-        super(ModMenus.ATM_MENU.get(), pContainerId);
+    public AtmMenu(int containerId, Inventory inv, BlockEntity entity) {
+        super(ModMenus.ATM_MENU.get(), containerId);
         blockEntity = ((AtmBlockEntity) entity);
         this.level = inv.player.level();
         this.inv = inv;
-
-        this.addSlot(new SlotItemHandler(this.blockEntity.itemStackHandler, 0, 26, 24));
-        this.addSlot(new AtmOutputSlotItemHandler(this.blockEntity.itemStackHandler, 1, 26, 75, this.blockEntity));
-
+        this.inputSlot = this.addSlot(new SlotItemHandler(this.blockEntity.itemStackHandler, 0, 26, 24));
+        this.outputSlot = this.addSlot(new AtmOutputSlotItemHandler(this.blockEntity.itemStackHandler, 1, 26, 75, this.blockEntity));
         addPlayerInventory(inv);
         addPlayerHotbar(inv);
     }
 
     public void refreshSlots() {
-        if (AtmScreen.randomConvertScreen) {
-            this.slots.clear();
-            this.addSlot(new SlotItemHandler(this.blockEntity.itemStackHandler, 0, 26, 24));
-            this.addSlot(new AtmOutputSlotItemHandler(this.blockEntity.itemStackHandler, 1, 26, 75, this.blockEntity));
-            addPlayerInventory(inv);
-            addPlayerHotbar(inv);
-        } else if (AtmScreen.toolConvertScreen){
-            this.slots.clear();
-            this.addSlot(new SlotItemHandler(this.blockEntity.itemStackHandler, 0, 53, 32));
-            this.addSlot(new AtmOutputSlotItemHandler(this.blockEntity.itemStackHandler, 1, 107, 32, this.blockEntity));
-            addPlayerInventory(inv);
-            addPlayerHotbar(inv);
+        int ix = 0, iy = 0, ox = 0, oy = 0;
+        if (this.blockEntity.getRandomConvertScreen()) {
+            System.out.println("randomrefresh");
+            ix = 26; iy = 24; ox = 26; oy = 75;
+        } else if (this.blockEntity.getToolConvertScreen()){
+            System.out.println("toolrefresh");
+            ix = 53; iy = 32; ox = 107; oy = 32;
+        }
+
+        this.inputSlot.x = ix;
+        this.inputSlot.y = iy;
+        this.outputSlot.x = ox;
+        this.outputSlot.y = oy;
+        this.broadcastChanges();
+
+        if (!this.blockEntity.getLevel().isClientSide && inv.player instanceof ServerPlayer) {
+            PacketDistributor.sendToPlayer((ServerPlayer) inv.player, new AtmSyncSlotPositionsPacket(ix, iy, ox, oy));
         }
     }
 
     public void returnItemsToPlayer(Player player) {
         if (player instanceof ServerPlayer) {
             for (int i = 0; i < blockEntity.itemStackHandler.getSlots(); i++){
-                ItemStack itemstack = blockEntity.itemStackHandler.extractItem(i, 64, false);
+                ItemStack stack = blockEntity.itemStackHandler.extractItem(i, 64, false);
 
-                if (!itemstack.isEmpty()) {
-                    if (!player.getInventory().add(itemstack)) {
-                        player.drop(itemstack, false);
+                if (!stack.isEmpty()) {
+                    if (!player.getInventory().add(stack)) {
+                        player.drop(stack, false);
                     }
                 }
             }
 
-            ItemStack itemstack = this.getCarried();
-            if (!itemstack.isEmpty()) {
+            ItemStack stack = this.getCarried();
+            if (!stack.isEmpty()) {
                 if (player.isAlive() && !((ServerPlayer)player).hasDisconnected()) {
-                    player.getInventory().placeItemBackInInventory(itemstack);
+                    player.getInventory().placeItemBackInInventory(stack);
                 } else {
-                    player.drop(itemstack, false);
+                    player.drop(stack, false);
                 }
-
                 this.setCarried(ItemStack.EMPTY);
             }
         }
@@ -90,10 +98,6 @@ public class AtmMenu extends AbstractContainerMenu {
         this.blockEntity.getLevel().playLocalSound(this.blockEntity.getBlockPos(), ModSounds.ATM_USE.get(), SoundSource.BLOCKS, 0.4F, randomsource.nextFloat() * 0.1F + 1.0F, false);
     }
 
-    public int getGuiTextureIndex() {
-        return this.blockEntity.getGuiTextureIndex();
-    }
-
     @Override
     public ItemStack quickMoveStack(Player player, int quickMovedSlotIndex) {
         ItemStack quickMovedStack = ItemStack.EMPTY;
@@ -102,12 +106,12 @@ public class AtmMenu extends AbstractContainerMenu {
             ItemStack rawStack = quickMovedSlot.getItem();
             quickMovedStack = rawStack.copy();
             if (quickMovedSlotIndex == 1) {
-                ItemStack outputItemstack = blockEntity.getRandomConvertRecipe()[1];
-                int randomConvertButtonPressed = AtmScreen.randomConvertButtonPressed;
+                ItemStack outputStack = blockEntity.getRandomConvertRecipe()[1];
+                int randomConvertButtonPressed = this.blockEntity.getRandomConvertButtonPressed();
 
-                if (AtmScreen.randomConvertScreen) {
-                    rawStack.setCount(this.blockEntity.quickRandomConvertCurrency(outputItemstack, randomConvertButtonPressed));
-                    quickMovedStack.setCount(this.blockEntity.quickRandomConvertCurrency(outputItemstack, randomConvertButtonPressed));
+                if (this.blockEntity.getRandomConvertScreen()) {
+                    rawStack.setCount(this.blockEntity.quickRandomConvertCurrency(outputStack, randomConvertButtonPressed));
+                    quickMovedStack.setCount(this.blockEntity.quickRandomConvertCurrency(outputStack, randomConvertButtonPressed));
                 }
 
                 if (!this.moveItemStackTo(rawStack, 2, 38, true)) {
@@ -117,13 +121,13 @@ public class AtmMenu extends AbstractContainerMenu {
                 if (!this.moveItemStackTo(rawStack, 2, 38, false)) {
                     return ItemStack.EMPTY;
                 }
-            } else if (AtmScreen.randomConvertScreen) {
+            } else if (this.blockEntity.getRandomConvertScreen()) {
                 if (rawStack.getItem() == Items.DIAMOND || rawStack.getItem() == ModItems.RUBY.get() || rawStack.getItem() == ModItems.AMBER.get()) {
                     if (!this.moveItemStackTo(rawStack, 0, 1, false)) {
                         return ItemStack.EMPTY;
                     }
                 }
-            } else if (AtmScreen.toolConvertScreen) {
+            } else if (this.blockEntity.getToolConvertScreen()) {
                 if (rawStack.is(ModItemTags.DIAMOND_CONVERTIBLE_TOOLS) || rawStack.is(ModItemTags.RUBY_CONVERTIBLE_TOOLS) || rawStack.is(ModItemTags.AMBER_CONVERTIBLE_TOOLS)) {
                     if (!this.moveItemStackTo(rawStack, 0, 1, false)) {
                         return ItemStack.EMPTY;
@@ -155,7 +159,7 @@ public class AtmMenu extends AbstractContainerMenu {
 
     @Override
     public boolean stillValid(Player player) {
-        int guiTextureIndex = this.getGuiTextureIndex();
+        int guiTextureIndex = blockEntity.getGuiTextureIndex();
         Block ATM;
 
         switch (guiTextureIndex) {
@@ -182,11 +186,12 @@ public class AtmMenu extends AbstractContainerMenu {
     @Override
     public void removed(Player player) {
         super.removed(player);
+        blockEntity.setRandomConvertScreen(true);
+        blockEntity.setToolConvertScreen(false);
 
         if (player instanceof ServerPlayer) {
             for (int i = 0; i < blockEntity.itemStackHandler.getSlots(); i++){
                 ItemStack itemstack = blockEntity.itemStackHandler.extractItem(i, 64, false);
-
                 if (!itemstack.isEmpty()) {
                     if (!player.getInventory().add(itemstack)) {
                         player.drop(itemstack, false);
@@ -196,17 +201,17 @@ public class AtmMenu extends AbstractContainerMenu {
         }
     }
 
-    private void addPlayerInventory(Inventory playerInventory) {
+    private void addPlayerInventory(Inventory inv) {
         for (int i = 0; i < 3; ++i) {
             for (int l = 0; l < 9; ++l) {
-                this.addSlot(new Slot(playerInventory, l + i * 9 + 9, 8 + l * 18, 121 + i * 18));
+                this.addSlot(new Slot(inv, l + i * 9 + 9, 8 + l * 18, 121 + i * 18));
             }
         }
     }
 
-    private void addPlayerHotbar(Inventory playerInventory) {
+    private void addPlayerHotbar(Inventory inv) {
         for (int i = 0; i < 9; ++i) {
-            this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 179));
+            this.addSlot(new Slot(inv, i, 8 + i * 18, 179));
         }
     }
 }

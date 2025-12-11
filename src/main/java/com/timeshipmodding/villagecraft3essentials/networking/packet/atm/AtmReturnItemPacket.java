@@ -1,4 +1,4 @@
-package com.timeshipmodding.villagecraft3essentials.networking.packet;
+package com.timeshipmodding.villagecraft3essentials.networking.packet.atm;
 
 import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
 import com.timeshipmodding.villagecraft3essentials.content.menu.AtmMenu;
@@ -10,7 +10,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 
 public record AtmReturnItemPacket() implements CustomPacketPayload {
-    public static final CustomPacketPayload.Type<AtmReturnItemPacket> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "return_item"));
+    public static final CustomPacketPayload.Type<AtmReturnItemPacket> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "atm_return_item"));
     public static final StreamCodec<FriendlyByteBuf, AtmReturnItemPacket> STREAM_CODEC = StreamCodec.unit(new AtmReturnItemPacket());
 
     @Override
@@ -22,10 +22,8 @@ public record AtmReturnItemPacket() implements CustomPacketPayload {
         public static void handle(final AtmReturnItemPacket payload, final IPayloadContext context) {
             context.enqueueWork(() -> {
                 ServerPlayer player = (ServerPlayer) context.player();
-                if (player != null) {
-                    if (player.containerMenu instanceof AtmMenu serverMenu) {
-                        serverMenu.returnItemsToPlayer(player);
-                    }
+                if (player.containerMenu instanceof AtmMenu serverMenu) {
+                    serverMenu.returnItemsToPlayer(player);
                 }
             });
         }

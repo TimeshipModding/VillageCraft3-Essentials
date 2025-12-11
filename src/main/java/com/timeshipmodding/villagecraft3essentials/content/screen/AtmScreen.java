@@ -4,8 +4,11 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
 import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems;
 import com.timeshipmodding.villagecraft3essentials.content.menu.AtmMenu;
-import com.timeshipmodding.villagecraft3essentials.event.registries.ModEvents;
-import com.timeshipmodding.villagecraft3essentials.networking.packet.AtmReturnItemPacket;
+import com.timeshipmodding.villagecraft3essentials.networking.packet.atm.*;
+import com.timeshipmodding.villagecraft3essentials.networking.packet.atm.button.AtmRandomConvertButtonPressedPacket;
+import com.timeshipmodding.villagecraft3essentials.networking.packet.atm.button.AtmRefreshSlotsPacket;
+import com.timeshipmodding.villagecraft3essentials.networking.packet.atm.button.AtmToolConvertButtonPressedPacket;
+import com.timeshipmodding.villagecraft3essentials.util.ClientModData;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.*;
@@ -60,89 +63,110 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
     private ImageButton nextMenuButton;
     private ImageButton previousMenuButton;
 
-    public static int toolConvertButtonPressed = 0;
-    public static int randomConvertButtonPressed = 0;
-    public static boolean randomConvertScreen = false;
-    public static boolean toolConvertScreen = false;
+    private int[] diamondToRuby;
+    private int[] diamondToAmber;
+    private int[] rubyToDiamond;
+    private int[] rubyToAmber;
+    private int[] amberToDiamond;
+    private int[] amberToRuby;
 
-    public AtmScreen(AtmMenu menu, Inventory playerInventory, Component title) {
-        super(menu, playerInventory, title);
+    public AtmScreen(AtmMenu menu, Inventory inv, Component title) {
+        super(menu, inv, title);
     }
 
     @Override
     protected void init() {
         super.init();
-
         this.imageHeight = 202;
         this.imageWidth = 175;
         this.inventoryLabelY = this.imageHeight - 92;
         this.titleLabelY = 5;
         this.titleLabelX = 8;
+        this.diamondToRuby = ClientModData.getDiamondToRuby() != null ? ClientModData.getDiamondToRuby() : new int[]{};
+        this.diamondToAmber = ClientModData.getDiamondToAmber() != null ? ClientModData.getDiamondToAmber() : new int[]{};
+        this.rubyToDiamond = ClientModData.getRubyToDiamond() != null ? ClientModData.getRubyToDiamond() : new int[]{};
+        this.rubyToAmber = ClientModData.getRubyToAmber() != null ? ClientModData.getRubyToAmber() : new int[]{};
+        this.amberToDiamond = ClientModData.getAmberToDiamond() != null ? ClientModData.getAmberToDiamond() : new int[]{};
+        this.amberToRuby = ClientModData.getAmberToRuby() != null ? ClientModData.getAmberToRuby() : new int[]{};
     }
 
     private void onDiamondCurrencyButtonPress(Button button) {
         this.menu.playAtmSound();
-        toolConvertButtonPressed = 1;
+        if (Minecraft.getInstance().getConnection() != null) {
+            PacketDistributor.sendToServer(new AtmToolConvertButtonPressedPacket(menu.blockEntity.getBlockPos(), 1));
+        }
     }
 
     private void onRubyCurrencyButtonPress(Button button) {
         this.menu.playAtmSound();
-        toolConvertButtonPressed = 2;
+        if (Minecraft.getInstance().getConnection() != null) {
+            PacketDistributor.sendToServer(new AtmToolConvertButtonPressedPacket(menu.blockEntity.getBlockPos(), 2));
+        }
     }
 
     private void onAmberCurrencyButtonPress(Button button) {
         this.menu.playAtmSound();
-        toolConvertButtonPressed = 3;
+        if (Minecraft.getInstance().getConnection() != null) {
+            PacketDistributor.sendToServer(new AtmToolConvertButtonPressedPacket(menu.blockEntity.getBlockPos(), 3));
+        }
     }
 
     private void onPreviousButtonPress(Button button) {
         if (Minecraft.getInstance().getConnection() != null) {
             PacketDistributor.sendToServer(new AtmReturnItemPacket());
+            PacketDistributor.sendToServer(new AtmRandomConvertScreenPacket(menu.blockEntity.getBlockPos(), true));
+            PacketDistributor.sendToServer(new AtmToolConvertScreenPacket(menu.blockEntity.getBlockPos(), false));
+            PacketDistributor.sendToServer(new AtmRefreshSlotsPacket(menu.blockEntity.getBlockPos()));
         }
-
-        randomConvertScreen = true;
-        toolConvertScreen = false;
-        menu.refreshSlots();
     }
 
     private void onNextButtonPress(Button button) {
         if (Minecraft.getInstance().getConnection() != null) {
             PacketDistributor.sendToServer(new AtmReturnItemPacket());
+            PacketDistributor.sendToServer(new AtmRandomConvertScreenPacket(menu.blockEntity.getBlockPos(), false));
+            PacketDistributor.sendToServer(new AtmToolConvertScreenPacket(menu.blockEntity.getBlockPos(), true));
+            PacketDistributor.sendToServer(new AtmRefreshSlotsPacket(menu.blockEntity.getBlockPos()));
         }
-
-        randomConvertScreen = false;
-        toolConvertScreen = true;
-        menu.refreshSlots();
     }
 
     private void onRandomConvertButtonPress(Button button) {
         if (randomConvertButtons[0] == button) {
             this.menu.playAtmSound();
-            randomConvertButtonPressed = 1;
+            if (Minecraft.getInstance().getConnection() != null) {
+                PacketDistributor.sendToServer(new AtmRandomConvertButtonPressedPacket(menu.blockEntity.getBlockPos(), 1));
+            }
         } else if (randomConvertButtons[1] == button) {
             this.menu.playAtmSound();
-            randomConvertButtonPressed = 2;
+            if (Minecraft.getInstance().getConnection() != null) {
+                PacketDistributor.sendToServer(new AtmRandomConvertButtonPressedPacket(menu.blockEntity.getBlockPos(), 2));
+            }
         } else if (randomConvertButtons[2] == button) {
             this.menu.playAtmSound();
-            randomConvertButtonPressed = 3;
+            if (Minecraft.getInstance().getConnection() != null) {
+                PacketDistributor.sendToServer(new AtmRandomConvertButtonPressedPacket(menu.blockEntity.getBlockPos(), 3));
+            }
         } else if (randomConvertButtons[3] == button) {
             this.menu.playAtmSound();
-            randomConvertButtonPressed = 4;
+            if (Minecraft.getInstance().getConnection() != null) {
+                PacketDistributor.sendToServer(new AtmRandomConvertButtonPressedPacket(menu.blockEntity.getBlockPos(), 4));
+            }
         } else if (randomConvertButtons[4] == button) {
             this.menu.playAtmSound();
-            randomConvertButtonPressed = 5;
+            if (Minecraft.getInstance().getConnection() != null) {
+                PacketDistributor.sendToServer(new AtmRandomConvertButtonPressedPacket(menu.blockEntity.getBlockPos(), 5));
+            }
         } else if (randomConvertButtons[5] == button) {
             this.menu.playAtmSound();
-            randomConvertButtonPressed = 6;
+            if (Minecraft.getInstance().getConnection() != null) {
+                PacketDistributor.sendToServer(new AtmRandomConvertButtonPressedPacket(menu.blockEntity.getBlockPos(), 6));
+            }
         }
-        menu.refreshSlots();
     }
 
     @Override
     protected void renderBg(@NotNull GuiGraphics guiGraphics, float partialTick, int mouseX, int mouseY) {
-        int guiTextureIndex = this.menu.getGuiTextureIndex();
-
-        if (randomConvertScreen) {
+        int guiTextureIndex = this.menu.blockEntity.getGuiTextureIndex();
+        if (this.menu.blockEntity.getRandomConvertScreen()) {
             this.clearWidgets();
             guiGraphics.blit(getRandomConvertGuiTexture(guiTextureIndex), leftPos, topPos, 0, 0, imageWidth, imageHeight);
 
@@ -156,8 +180,8 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
             int j1 = this.startIndex + 3;
             this.renderRandomConvertButtons(guiGraphics, mouseX, mouseY, l, i1, j1);
             this.renderRandomConvertButtonItems(guiGraphics, l, i1, j1);
-            
-        } else if (toolConvertScreen) {
+
+        } else if (this.menu.blockEntity.getToolConvertScreen()) {
             this.clearWidgets();
             ItemStack diamond = new ItemStack(Items.DIAMOND, 3);
 
@@ -180,11 +204,11 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
 
     @Override
     public void render(@NotNull GuiGraphics guiGraphics, int mouseX, int mouseY, float delta) {
-        if (randomConvertScreen) {
+        if (this.menu.blockEntity.getRandomConvertScreen()) {
             renderBackground(guiGraphics, mouseX, mouseY, delta);
             super.render(guiGraphics, mouseX, mouseY, delta);
             renderTooltip(guiGraphics, mouseX, mouseY);
-        } else if (toolConvertScreen) {
+        } else if (this.menu.blockEntity.getToolConvertScreen()) {
             renderBackground(guiGraphics, mouseX, mouseY, delta);
             super.render(guiGraphics, mouseX, mouseY, delta);
             renderTooltip(guiGraphics, mouseX, mouseY);
@@ -201,7 +225,7 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
     protected void renderTooltip(GuiGraphics guiGraphics, int mouseX, int mouseY) {
         super.renderTooltip(guiGraphics, mouseX, mouseY);
 
-        if (randomConvertScreen) {
+        if (this.menu.blockEntity.getRandomConvertScreen()) {
             int i = this.leftPos + RECIPES_X;
             int j = this.topPos + RECIPES_Y;
             int k = this.startIndex + 3;
@@ -218,22 +242,22 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
                         Component tooltipText;
                         switch (l) {
                             case 0:
-                                tooltipText = Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert1", ModEvents.diamondToRuby[0], ModEvents.diamondToRuby[1]);
+                                tooltipText = Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert1", diamondToRuby[0], diamondToRuby[1]);
                                 break;
                             case 1:
-                                tooltipText = Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert2", ModEvents.diamondToAmber[0], ModEvents.diamondToAmber[1]);
+                                tooltipText = Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert2", diamondToAmber[0], diamondToAmber[1]);
                                 break;
                             case 2:
-                                tooltipText = Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert3", ModEvents.rubyToDiamond[0], ModEvents.rubyToDiamond[1]);
+                                tooltipText = Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert3", rubyToDiamond[0], rubyToDiamond[1]);
                                 break;
                             case 3:
-                                tooltipText = Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert4", ModEvents.rubyToAmber[0], ModEvents.rubyToAmber[1]);
+                                tooltipText = Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert4", rubyToAmber[0], rubyToAmber[1]);
                                 break;
                             case 4:
-                                tooltipText = Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert5", ModEvents.amberToDiamond[0], ModEvents.amberToDiamond[1]);
+                                tooltipText = Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert5", amberToDiamond[0], amberToDiamond[1]);
                                 break;
                             case 5:
-                                tooltipText = Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert6", ModEvents.amberToRuby[0], ModEvents.amberToRuby[1]);
+                                tooltipText = Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert6", amberToRuby[0],amberToRuby[1]);
                                 break;
                             default:
                                 continue;
@@ -243,7 +267,7 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
                 }
             }
 
-        } else if (toolConvertScreen) {
+        } else if (this.menu.blockEntity.getToolConvertScreen()) {
             if (toolConvertButtonDiamond.isHovered()) {
                 guiGraphics.renderTooltip(this.font, Component.translatable("tooltips.villagecraft3essentials.atm.toolconvertbuttondiamond"), mouseX, mouseY);
             } else if (toolConvertButtonRuby.isHovered()) {
@@ -274,49 +298,49 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
             int l = j / RECIPES_COLUMNS;
             int i1 = y + l * RECIPES_IMAGE_SIZE_HEIGHT + 2;
 
-            if (i == 0){
-                ItemStack diamond = new ItemStack(Items.DIAMOND, ModEvents.diamondToRuby[0]);
-                ItemStack ruby = new ItemStack(ModItems.RUBY.get(), ModEvents.diamondToRuby[1]);
+            if (i == 0) {
+                ItemStack diamond = new ItemStack(Items.DIAMOND, diamondToRuby[0]);
+                ItemStack ruby = new ItemStack(ModItems.RUBY.get(), diamondToRuby[1]);
                 guiGraphics.renderFakeItem(diamond, k, i1);
                 guiGraphics.renderFakeItem(ruby, k + 42, i1);
                 guiGraphics.renderItemDecorations(this.font, diamond, k, i1);
                 guiGraphics.renderItemDecorations(this.font, ruby, k + 42, i1);
 
             } else if (i == 1) {
-                ItemStack diamond = new ItemStack(Items.DIAMOND, ModEvents.diamondToAmber[0]);
-                ItemStack amber = new ItemStack(ModItems.AMBER.get(), ModEvents.diamondToAmber[1]);
+                ItemStack diamond = new ItemStack(Items.DIAMOND, diamondToAmber[0]);
+                ItemStack amber = new ItemStack(ModItems.AMBER.get(), diamondToAmber[1]);
                 guiGraphics.renderFakeItem(diamond, k, i1);
                 guiGraphics.renderFakeItem(amber, k + 42, i1);
                 guiGraphics.renderItemDecorations(this.font, diamond, k, i1);
                 guiGraphics.renderItemDecorations(this.font, amber, k + 42, i1);
 
             } else if (i == 2) {
-                ItemStack ruby = new ItemStack(ModItems.RUBY.get(), ModEvents.rubyToDiamond[0]);
-                ItemStack diamond = new ItemStack(Items.DIAMOND, ModEvents.rubyToDiamond[1]);
+                ItemStack ruby = new ItemStack(ModItems.RUBY.get(), rubyToDiamond[0]);
+                ItemStack diamond = new ItemStack(Items.DIAMOND, rubyToDiamond[1]);
                 guiGraphics.renderFakeItem(ruby, k, i1);
                 guiGraphics.renderFakeItem(diamond, k + 42, i1);
                 guiGraphics.renderItemDecorations(this.font, ruby, k, i1);
                 guiGraphics.renderItemDecorations(this.font, diamond, k + 42, i1);
 
             } else if (i == 3) {
-                ItemStack ruby = new ItemStack(ModItems.RUBY.get(), ModEvents.rubyToAmber[0]);
-                ItemStack amber = new ItemStack(ModItems.AMBER.get(), ModEvents.rubyToAmber[1]);
+                ItemStack ruby = new ItemStack(ModItems.RUBY.get(), rubyToAmber[0]);
+                ItemStack amber = new ItemStack(ModItems.AMBER.get(), rubyToAmber[1]);
                 guiGraphics.renderFakeItem(ruby, k, i1);
                 guiGraphics.renderFakeItem(amber, k + 42, i1);
                 guiGraphics.renderItemDecorations(this.font, ruby, k, i1);
                 guiGraphics.renderItemDecorations(this.font, amber, k + 42, i1);
 
             } else if (i == 4) {
-                ItemStack amber = new ItemStack(ModItems.AMBER.get(), ModEvents.amberToDiamond[0]);
-                ItemStack diamond = new ItemStack(Items.DIAMOND, ModEvents.amberToDiamond[1]);
+                ItemStack amber = new ItemStack(ModItems.AMBER.get(), amberToDiamond[0]);
+                ItemStack diamond = new ItemStack(Items.DIAMOND, amberToDiamond[1]);
                 guiGraphics.renderFakeItem(amber, k, i1);
                 guiGraphics.renderFakeItem(diamond, k + 42, i1);
                 guiGraphics.renderItemDecorations(this.font, amber, k, i1);
                 guiGraphics.renderItemDecorations(this.font, diamond, k + 42, i1);
 
             } else if (i == 5) {
-                ItemStack amber = new ItemStack(ModItems.AMBER.get(), ModEvents.amberToRuby[0]);
-                ItemStack ruby = new ItemStack(ModItems.RUBY.get(), ModEvents.amberToRuby[1]);
+                ItemStack amber = new ItemStack(ModItems.AMBER.get(), amberToRuby[0]);
+                ItemStack ruby = new ItemStack(ModItems.RUBY.get(), amberToRuby[1]);
                 guiGraphics.renderFakeItem(amber, k, i1);
                 guiGraphics.renderFakeItem(ruby, k + 42, i1);
                 guiGraphics.renderItemDecorations(this.font, amber, k, i1);
@@ -378,6 +402,15 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
 
     protected int getOffscreenRows() {
         return (6 + RECIPES_COLUMNS - 1) / RECIPES_COLUMNS - RECIPES_ROWS;
+    }
+
+    public void setConversionRates(int[] diamondToRuby, int[] diamondToAmber, int[] rubyToDiamond, int[] rubyToAmber, int[] amberToDiamond, int[] amberToRuby) {
+        this.diamondToRuby = diamondToRuby;
+        this.diamondToAmber = diamondToAmber;
+        this.rubyToDiamond = rubyToDiamond;
+        this.rubyToAmber = rubyToAmber;
+        this.amberToDiamond = amberToDiamond;
+        this.amberToRuby = amberToRuby;
     }
 
     private static @NotNull ResourceLocation getRandomConvertGuiTexture(int guiTextureIndex) {

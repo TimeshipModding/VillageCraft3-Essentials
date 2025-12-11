@@ -3,7 +3,6 @@ package com.timeshipmodding.villagecraft3essentials.content.block;
 import com.mojang.serialization.MapCodec;
 import com.timeshipmodding.villagecraft3essentials.content.block.entity.AtmBlockEntity;
 import com.timeshipmodding.villagecraft3essentials.content.block.entity.registries.ModBlockEntities;
-import com.timeshipmodding.villagecraft3essentials.content.screen.AtmScreen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -126,20 +125,17 @@ public class AtmBlock extends BaseEntityBlock {
         if (!level.isClientSide()) {
             BlockEntity entity = level.getBlockEntity(pos);
             if(entity instanceof AtmBlockEntity atmBlockEntity) {
-                AtmScreen.randomConvertScreen = true;
-                AtmScreen.toolConvertScreen = false;
-                AtmScreen.randomConvertButtonPressed = 0;
-                AtmScreen.toolConvertButtonPressed = 0;
+                atmBlockEntity.setRandomConvertScreen(true);
+                atmBlockEntity.setToolConvertScreen(false);
+                atmBlockEntity.setRandomConvertButtonPressed(0);
+                atmBlockEntity.setToolConvertButtonPressed(0);
                 atmBlockEntity.setGuiTextureIndex(guiTextureIndex);
                 level.sendBlockUpdated(pos, state, state, 2);
                 atmBlockEntity.setChanged();
                 ServerPlayer serverPlayer = (ServerPlayer) player;
                 serverPlayer.openMenu(new SimpleMenuProvider(atmBlockEntity, Component.empty()), pos);
-            } else {
-                throw new IllegalStateException("Our Container provider is missing!");
             }
         }
-
         return ItemInteractionResult.sidedSuccess(level.isClientSide());
     }
 
@@ -165,7 +161,6 @@ public class AtmBlock extends BaseEntityBlock {
         BlockPos blockpos = context.getClickedPos();
         Level level = context.getLevel();
         if (blockpos.getY() < level.getMaxBuildHeight() - 1 && level.getBlockState(blockpos.above()).canBeReplaced(context)) {
-            boolean flag = level.hasNeighborSignal(blockpos) || level.hasNeighborSignal(blockpos.above());
             return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite()).setValue(HALF, DoubleBlockHalf.LOWER);
         } else {
             return null;
@@ -208,7 +203,6 @@ public class AtmBlock extends BaseEntityBlock {
             return null;
         }
 
-        return createTickerHelper(pBlockEntityType, ModBlockEntities.ATM_BLOCKENTITY.get(),
-                (pLevel1, pPos, pState1, pBlockEntity) -> pBlockEntity.tick(pLevel1, pPos, pState1));
+        return createTickerHelper(pBlockEntityType, ModBlockEntities.ATM_BLOCKENTITY.get(), (pLevel1, pPos, pState1, pBlockEntity) -> pBlockEntity.tick(pLevel1, pPos, pState1));
     }
 }
