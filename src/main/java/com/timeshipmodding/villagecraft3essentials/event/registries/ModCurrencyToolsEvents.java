@@ -5,6 +5,7 @@ import com.timeshipmodding.villagecraft3essentials.compat.luckperms.LuckpermsMet
 import com.timeshipmodding.villagecraft3essentials.interfacing.IHorseInventoryMenuEntity;
 import com.timeshipmodding.villagecraft3essentials.networking.handler.client.HorseCurrencyArmorClientHandler;
 import com.timeshipmodding.villagecraft3essentials.networking.packet.HorseSyncCurrencyArmorEquipPacket;
+import com.timeshipmodding.villagecraft3essentials.util.config.ServerConfig;
 import com.timeshipmodding.villagecraft3essentials.util.itemhandler.HorseCurrencyArmorItemHandler;
 import com.timeshipmodding.villagecraft3essentials.util.tags.registries.ModItemTags;
 import net.minecraft.network.chat.Component;
@@ -46,7 +47,7 @@ public class ModCurrencyToolsEvents {
                 return;
             }
 
-            if (LuckpermsMethods.isInGroup(event.getEntity(), "villagecraftcity") && stack.is(ModItemTags.RUBY_CONVERTIBLE_TOOLS) || LuckpermsMethods.isInGroup(event.getEntity(), "villagecraftcity") && stack.is(ModItemTags.AMBER_CONVERTIBLE_TOOLS)) {
+            if (LuckpermsMethods.isInGroup(event.getEntity(), ServerConfig.VILLAGECRAFTCITY_GROUP_NAME.get()) && stack.is(ModItemTags.RUBY_CONVERTIBLE_TOOLS) || LuckpermsMethods.isInGroup(event.getEntity(), ServerConfig.VILLAGECRAFTCITY_GROUP_NAME.get()) && stack.is(ModItemTags.AMBER_CONVERTIBLE_TOOLS)) {
                 if (stack.getItem() instanceof ArmorItem) {
                     event.getEntity().displayClientMessage(Component.translatable("actionbar.villagecraft3essentials.armor_conversation_hint"), true);
 
@@ -58,7 +59,7 @@ public class ModCurrencyToolsEvents {
                 stack.shrink(1);
                 event.setCanceled(true);
 
-            } else if (LuckpermsMethods.isInGroup(event.getEntity(), "grippercity") && stack.is(ModItemTags.DIAMOND_CONVERTIBLE_TOOLS) || LuckpermsMethods.isInGroup(event.getEntity(), "grippercity") && stack.is(ModItemTags.AMBER_CONVERTIBLE_TOOLS)) {
+            } else if (LuckpermsMethods.isInGroup(event.getEntity(), ServerConfig.GRIPPERCITY_GROUP_NAME.get()) && stack.is(ModItemTags.DIAMOND_CONVERTIBLE_TOOLS) || LuckpermsMethods.isInGroup(event.getEntity(), ServerConfig.GRIPPERCITY_GROUP_NAME.get()) && stack.is(ModItemTags.AMBER_CONVERTIBLE_TOOLS)) {
                 if (stack.getItem() instanceof ArmorItem) {
                     event.getEntity().displayClientMessage(Component.translatable("actionbar.villagecraft3essentials.armor_conversation_hint"), true);
 
@@ -70,7 +71,7 @@ public class ModCurrencyToolsEvents {
                 stack.shrink(1);
                 event.setCanceled(true);
 
-            } else if (LuckpermsMethods.isInGroup(event.getEntity(), "ambercaves") && stack.is(ModItemTags.DIAMOND_CONVERTIBLE_TOOLS) || LuckpermsMethods.isInGroup(event.getEntity(), "ambercaves") && stack.is(ModItemTags.RUBY_CONVERTIBLE_TOOLS)) {
+            } else if (LuckpermsMethods.isInGroup(event.getEntity(), ServerConfig.AMBERCAVES_GROUP_NAME.get()) && stack.is(ModItemTags.DIAMOND_CONVERTIBLE_TOOLS) || LuckpermsMethods.isInGroup(event.getEntity(), ServerConfig.AMBERCAVES_GROUP_NAME.get()) && stack.is(ModItemTags.RUBY_CONVERTIBLE_TOOLS)) {
                 if (stack.getItem() instanceof ArmorItem) {
                     event.getEntity().displayClientMessage(Component.translatable("actionbar.villagecraft3essentials.armor_conversation_hint"), true);
 
@@ -98,21 +99,21 @@ public class ModCurrencyToolsEvents {
                 return;
             }
 
-            if (LuckpermsMethods.isInGroup(event.getEntity(), "villagecraftcity") && stack.is(ModItemTags.RUBY_CONVERTIBLE_TOOLS) || LuckpermsMethods.isInGroup(event.getEntity(), "villagecraftcity") && stack.is(ModItemTags.AMBER_CONVERTIBLE_TOOLS)) {
+            if (LuckpermsMethods.isInGroup(event.getEntity(), ServerConfig.VILLAGECRAFTCITY_GROUP_NAME.get()) && stack.is(ModItemTags.RUBY_CONVERTIBLE_TOOLS) || LuckpermsMethods.isInGroup(event.getEntity(), ServerConfig.VILLAGECRAFTCITY_GROUP_NAME.get()) && stack.is(ModItemTags.AMBER_CONVERTIBLE_TOOLS)) {
                 event.getEntity().displayClientMessage(Component.translatable("actionbar.villagecraft3essentials.tool_conversation_hint"), true);
                 event.getEntity().drop(stack.copy(), true);
                 stack.shrink(1);
                 event.setCancellationResult(InteractionResult.FAIL);
                 event.setCanceled(true);
 
-            } else if (LuckpermsMethods.isInGroup(event.getEntity(), "grippercity") && stack.is(ModItemTags.DIAMOND_CONVERTIBLE_TOOLS) || LuckpermsMethods.isInGroup(event.getEntity(), "grippercity") && stack.is(ModItemTags.AMBER_CONVERTIBLE_TOOLS)) {
+            } else if (LuckpermsMethods.isInGroup(event.getEntity(), ServerConfig.GRIPPERCITY_GROUP_NAME.get()) && stack.is(ModItemTags.DIAMOND_CONVERTIBLE_TOOLS) || LuckpermsMethods.isInGroup(event.getEntity(), ServerConfig.GRIPPERCITY_GROUP_NAME.get()) && stack.is(ModItemTags.AMBER_CONVERTIBLE_TOOLS)) {
                 event.getEntity().displayClientMessage(Component.translatable("actionbar.villagecraft3essentials.tool_conversation_hint"), true);
                 event.getEntity().drop(stack.copy(), true);
                 stack.shrink(1);
                 event.setCancellationResult(InteractionResult.FAIL);
                 event.setCanceled(true);
 
-            } else if (LuckpermsMethods.isInGroup(event.getEntity(), "ambercaves") && stack.is(ModItemTags.DIAMOND_CONVERTIBLE_TOOLS) || LuckpermsMethods.isInGroup(event.getEntity(), "ambercaves") && stack.is(ModItemTags.RUBY_CONVERTIBLE_TOOLS)) {
+            } else if (LuckpermsMethods.isInGroup(event.getEntity(), ServerConfig.AMBERCAVES_GROUP_NAME.get()) && stack.is(ModItemTags.DIAMOND_CONVERTIBLE_TOOLS) || LuckpermsMethods.isInGroup(event.getEntity(), ServerConfig.AMBERCAVES_GROUP_NAME.get()) && stack.is(ModItemTags.RUBY_CONVERTIBLE_TOOLS)) {
                 event.getEntity().displayClientMessage(Component.translatable("actionbar.villagecraft3essentials.tool_conversation_hint"), true);
                 event.getEntity().drop(stack.copy(), true);
                 stack.shrink(1);
@@ -208,7 +209,7 @@ public class ModCurrencyToolsEvents {
                 return;
             }
 
-            if (LuckpermsMethods.isInGroup(event.getEntity(), "villagecraftcity") && stack.is(ModItemTags.RUBY_CONVERTIBLE_TOOLS) || LuckpermsMethods.isInGroup(event.getEntity(), "villagecraftcity") && stack.is(ModItemTags.AMBER_CONVERTIBLE_TOOLS)) {
+            if (LuckpermsMethods.isInGroup(event.getEntity(), ServerConfig.VILLAGECRAFTCITY_GROUP_NAME.get()) && stack.is(ModItemTags.RUBY_CONVERTIBLE_TOOLS) || LuckpermsMethods.isInGroup(event.getEntity(), ServerConfig.VILLAGECRAFTCITY_GROUP_NAME.get()) && stack.is(ModItemTags.AMBER_CONVERTIBLE_TOOLS)) {
                 if (stack.getItem() instanceof ArmorItem) {
                     event.getEntity().displayClientMessage(Component.translatable("actionbar.villagecraft3essentials.armor_conversation_hint"), true);
 
@@ -221,7 +222,7 @@ public class ModCurrencyToolsEvents {
                 stack.shrink(1);
                 event.setCanceled(true);
 
-            } else if (LuckpermsMethods.isInGroup(event.getEntity(), "grippercity") && stack.is(ModItemTags.DIAMOND_CONVERTIBLE_TOOLS) || LuckpermsMethods.isInGroup(event.getEntity(), "grippercity") && stack.is(ModItemTags.AMBER_CONVERTIBLE_TOOLS)) {
+            } else if (LuckpermsMethods.isInGroup(event.getEntity(), ServerConfig.GRIPPERCITY_GROUP_NAME.get()) && stack.is(ModItemTags.DIAMOND_CONVERTIBLE_TOOLS) || LuckpermsMethods.isInGroup(event.getEntity(), ServerConfig.GRIPPERCITY_GROUP_NAME.get()) && stack.is(ModItemTags.AMBER_CONVERTIBLE_TOOLS)) {
                 if (stack.getItem() instanceof ArmorItem) {
                     event.getEntity().displayClientMessage(Component.translatable("actionbar.villagecraft3essentials.armor_conversation_hint"), true);
 
@@ -234,7 +235,7 @@ public class ModCurrencyToolsEvents {
                 stack.shrink(1);
                 event.setCanceled(true);
 
-            } else if (LuckpermsMethods.isInGroup(event.getEntity(), "ambercaves") && stack.is(ModItemTags.DIAMOND_CONVERTIBLE_TOOLS) || LuckpermsMethods.isInGroup(event.getEntity(), "ambercaves") && stack.is(ModItemTags.RUBY_CONVERTIBLE_TOOLS)) {
+            } else if (LuckpermsMethods.isInGroup(event.getEntity(), ServerConfig.AMBERCAVES_GROUP_NAME.get()) && stack.is(ModItemTags.DIAMOND_CONVERTIBLE_TOOLS) || LuckpermsMethods.isInGroup(event.getEntity(), ServerConfig.AMBERCAVES_GROUP_NAME.get()) && stack.is(ModItemTags.RUBY_CONVERTIBLE_TOOLS)) {
                 if (stack.getItem() instanceof ArmorItem) {
                     event.getEntity().displayClientMessage(Component.translatable("actionbar.villagecraft3essentials.armor_conversation_hint"), true);
 

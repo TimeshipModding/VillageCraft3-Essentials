@@ -8,7 +8,8 @@ import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModAr
 import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems;
 import com.timeshipmodding.villagecraft3essentials.content.menu.registries.ModMenus;
 import com.timeshipmodding.villagecraft3essentials.content.sound.registries.ModSounds;
-import com.timeshipmodding.villagecraft3essentials.util.Config;
+import com.timeshipmodding.villagecraft3essentials.util.config.CommonConfig;
+import com.timeshipmodding.villagecraft3essentials.util.config.ServerConfig;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.config.ModConfig;
@@ -41,8 +42,9 @@ public class VillageCraft3Essentials {
         // Listener to Common Setup
         modEventBus.addListener(this::commonSetup);
 
-        // Register mod config
-        modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+        // Register mod configs
+        modContainer.registerConfig(ModConfig.Type.COMMON, CommonConfig.SPEC);
+        modContainer.registerConfig(ModConfig.Type.SERVER, ServerConfig.SPEC);
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {

@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableList;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
 import com.timeshipmodding.villagecraft3essentials.compat.luckperms.LuckpermsMethods;
+import com.timeshipmodding.villagecraft3essentials.util.config.ServerConfig;
 import com.timeshipmodding.villagecraft3essentials.util.data.saveddata.JailSavedData;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
@@ -54,7 +55,7 @@ public class AmberCavesJailCommand {
                 targetPlayerUsername = Objects.requireNonNull(player.getDisplayName()).getString();
 
                 if (ModList.get().isLoaded("luckperms")) {
-                    LuckpermsMethods.addGroup(player, "jailed");
+                    LuckpermsMethods.addGroup(player, ServerConfig.JAILED_GROUP_NAME.get());
                 }
             }
 

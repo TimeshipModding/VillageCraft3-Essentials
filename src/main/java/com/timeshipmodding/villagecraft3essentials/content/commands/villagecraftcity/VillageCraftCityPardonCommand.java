@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableList;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
 import com.timeshipmodding.villagecraft3essentials.compat.luckperms.LuckpermsMethods;
+import com.timeshipmodding.villagecraft3essentials.util.config.ServerConfig;
 import com.timeshipmodding.villagecraft3essentials.util.data.saveddata.SpawnSavedData;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
@@ -53,7 +54,7 @@ public class VillageCraftCityPardonCommand {
                 targetPlayerUsername = player.getDisplayName().getString();
 
                 if (ModList.get().isLoaded("luckperms")) {
-                    LuckpermsMethods.removeGroup(player, "jailed");
+                    LuckpermsMethods.removeGroup(player, ServerConfig.JAILED_GROUP_NAME.get());
                 }
             }
 

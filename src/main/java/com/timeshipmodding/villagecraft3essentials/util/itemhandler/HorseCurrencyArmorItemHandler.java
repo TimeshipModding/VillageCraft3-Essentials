@@ -1,6 +1,7 @@
 package com.timeshipmodding.villagecraft3essentials.util.itemhandler;
 
 import com.timeshipmodding.villagecraft3essentials.compat.luckperms.LuckpermsMethods;
+import com.timeshipmodding.villagecraft3essentials.util.config.ServerConfig;
 import com.timeshipmodding.villagecraft3essentials.util.tags.registries.ModItemTags;
 import net.minecraft.world.entity.animal.horse.Horse;
 import net.minecraft.world.entity.player.Player;
@@ -42,13 +43,13 @@ public class HorseCurrencyArmorItemHandler extends ItemStackHandler {
     }
 
     public boolean canPlayerEquip(Player player, ItemStack stack) {
-        if (LuckpermsMethods.isInGroup(player, "villagecraftcity") && stack.is(ModItemTags.RUBY_CONVERTIBLE_TOOLS) || LuckpermsMethods.isInGroup(player, "villagecraftcity") && stack.is(ModItemTags.AMBER_CONVERTIBLE_TOOLS)) {
+        if (LuckpermsMethods.isInGroup(player, ServerConfig.VILLAGECRAFTCITY_GROUP_NAME.get()) && stack.is(ModItemTags.RUBY_CONVERTIBLE_TOOLS) || LuckpermsMethods.isInGroup(player, ServerConfig.VILLAGECRAFTCITY_GROUP_NAME.get()) && stack.is(ModItemTags.AMBER_CONVERTIBLE_TOOLS)) {
             return false;
 
-        } else if (LuckpermsMethods.isInGroup(player, "grippercity") && stack.is(ModItemTags.DIAMOND_CONVERTIBLE_TOOLS) || LuckpermsMethods.isInGroup(player, "grippercity") && stack.is(ModItemTags.AMBER_CONVERTIBLE_TOOLS)) {
+        } else if (LuckpermsMethods.isInGroup(player, ServerConfig.GRIPPERCITY_GROUP_NAME.get()) && stack.is(ModItemTags.DIAMOND_CONVERTIBLE_TOOLS) || LuckpermsMethods.isInGroup(player, ServerConfig.GRIPPERCITY_GROUP_NAME.get()) && stack.is(ModItemTags.AMBER_CONVERTIBLE_TOOLS)) {
             return false;
 
-        } else if (LuckpermsMethods.isInGroup(player, "ambercaves") && stack.is(ModItemTags.DIAMOND_CONVERTIBLE_TOOLS) || LuckpermsMethods.isInGroup(player, "ambercaves") && stack.is(ModItemTags.RUBY_CONVERTIBLE_TOOLS)) {
+        } else if (LuckpermsMethods.isInGroup(player, ServerConfig.AMBERCAVES_GROUP_NAME.get()) && stack.is(ModItemTags.DIAMOND_CONVERTIBLE_TOOLS) || LuckpermsMethods.isInGroup(player, ServerConfig.AMBERCAVES_GROUP_NAME.get()) && stack.is(ModItemTags.RUBY_CONVERTIBLE_TOOLS)) {
             return false;
         }
 

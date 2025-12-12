@@ -6,7 +6,7 @@ import com.timeshipmodding.villagecraft3essentials.content.commands.ambercaves.*
 import com.timeshipmodding.villagecraft3essentials.content.commands.grippercity.*;
 import com.timeshipmodding.villagecraft3essentials.content.commands.villagecraftcity.*;
 import com.timeshipmodding.villagecraft3essentials.networking.packet.atm.AtmRandomConversionRatesPacket;
-import com.timeshipmodding.villagecraft3essentials.util.Config;
+import com.timeshipmodding.villagecraft3essentials.util.config.CommonConfig;
 import com.timeshipmodding.villagecraft3essentials.util.data.saveddata.AtmRandomConversionRatesSavedData;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
@@ -105,11 +105,11 @@ public class ModEvents {
 
     public static int randomRubyCurrencyConversion() {
         Random random = new Random();
-        return random.nextInt(Config.rubyCurrencyConversionRateMin, Config.rubyCurrencyConversionRateMax);
+        return random.nextInt(CommonConfig.RUBY_CURRENCY_CONVERSION_RATE_MIN.getAsInt(), CommonConfig.RUBY_CURRENCY_CONVERSION_RATE_MAX.getAsInt());
     }
 
     public static int randomAmberCurrencyConversion() {
         Random random = new Random();
-        return random.nextInt(Config.amberCurrencyConversionRateMin, Config.amberCurrencyConversionRateMax);
+        return random.nextInt(CommonConfig.AMBER_CURRENCY_CONVERSION_RATE_MIN.getAsInt(), CommonConfig.AMBER_CURRENCY_CONVERSION_RATE_MAX.getAsInt());
     }
 }

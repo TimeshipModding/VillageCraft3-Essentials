@@ -5,6 +5,7 @@ import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.BoolArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.timeshipmodding.villagecraft3essentials.compat.luckperms.LuckpermsMethods;
+import com.timeshipmodding.villagecraft3essentials.util.config.ServerConfig;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.EntityArgument;
@@ -38,7 +39,7 @@ public class GripperCityBlacklistCommand {
             }
 
             if (ModList.get().isLoaded("luckperms")) {
-                LuckpermsMethods.addGroup(player, "grippercityblacklisted");
+                LuckpermsMethods.addGroup(player, ServerConfig.GRIPPERCITY_GROUP_NAME.get());
             }
 
             targetPlayerUsername = Objects.requireNonNull(player.getDisplayName()).getString();
