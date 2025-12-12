@@ -37,12 +37,10 @@ public class JailSavedData extends SavedData { ;
         this.setDirty();
     }
 
-    // Create new instance of saved data
     public static JailSavedData create() {
         return new JailSavedData();
     }
 
-    // Load existing instance of saved data
     public static JailSavedData load(CompoundTag tag, HolderLookup.Provider lookupProvider) {
         JailSavedData data = create();
         data.villagecraftCityJail = tag.getIntArray("villagecraftCityJail");

@@ -27,6 +27,7 @@ public abstract class ItemMixin {
 
         if (!level.isClientSide() && entity instanceof Player player && ModList.get().isLoaded("luckperms") && stack.getItem() instanceof ArmorItem armorItem) {
             ItemStack equippedStack = player.getItemBySlot(armorItem.getType().getSlot());
+
             if (LuckpermsMethods.isInGroup(player, "villagecraftcity") && equippedStack.is(ModItemTags.RUBY_CONVERTIBLE_TOOLS) && equippedStack == stack || LuckpermsMethods.isInGroup(player, "villagecraftcity") && equippedStack.is(ModItemTags.AMBER_CONVERTIBLE_TOOLS) && equippedStack == stack)  {
                 player.displayClientMessage(Component.translatable("actionbar.villagecraft3essentials.armor_conversation_hint"), true);
                 player.setItemSlot(armorItem.getType().getSlot(), ItemStack.EMPTY);
@@ -36,6 +37,7 @@ public abstract class ItemMixin {
                 player.displayClientMessage(Component.translatable("actionbar.villagecraft3essentials.armor_conversation_hint"), true);
                 player.setItemSlot(armorItem.getType().getSlot(), ItemStack.EMPTY);
                 player.drop(stack, true);
+
             } else if (LuckpermsMethods.isInGroup(player, "ambercaves") && equippedStack.is(ModItemTags.DIAMOND_CONVERTIBLE_TOOLS) && equippedStack == stack || LuckpermsMethods.isInGroup(player, "ambercaves") && equippedStack.is(ModItemTags.RUBY_CONVERTIBLE_TOOLS) && equippedStack == stack) {
                 player.displayClientMessage(Component.translatable("actionbar.villagecraft3essentials.armor_conversation_hint"), true);
                 player.setItemSlot(armorItem.getType().getSlot(), ItemStack.EMPTY);

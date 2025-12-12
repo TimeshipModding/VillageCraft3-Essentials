@@ -12,8 +12,7 @@ import net.neoforged.neoforge.network.handling.IPayloadContext;
 public record HorseSyncCurrencyArmorEquipPacket(boolean canEquip) implements CustomPacketPayload {
     public static final CustomPacketPayload.Type<HorseSyncCurrencyArmorEquipPacket> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "horse_sync_currency_armor_equip"));
 
-    public static final StreamCodec<RegistryFriendlyByteBuf, HorseSyncCurrencyArmorEquipPacket> STREAM_CODEC =
-            StreamCodec.of(
+    public static final StreamCodec<RegistryFriendlyByteBuf, HorseSyncCurrencyArmorEquipPacket> STREAM_CODEC = StreamCodec.of(
                     HorseSyncCurrencyArmorEquipPacket::encode,
                     HorseSyncCurrencyArmorEquipPacket::decode
             );

@@ -22,6 +22,7 @@ public class HorseCurrencyArmorItemHandler extends ItemStackHandler {
         if (slot == 0) {
             return stack.getItem() instanceof AnimalArmorItem;
         }
+
         return super.isItemValid(slot, stack);
     }
 
@@ -32,6 +33,7 @@ public class HorseCurrencyArmorItemHandler extends ItemStackHandler {
                 return stack;
             }
         }
+
         return super.insertItem(slot, stack, simulate);
     }
 
@@ -42,11 +44,14 @@ public class HorseCurrencyArmorItemHandler extends ItemStackHandler {
     public boolean canPlayerEquip(Player player, ItemStack stack) {
         if (LuckpermsMethods.isInGroup(player, "villagecraftcity") && stack.is(ModItemTags.RUBY_CONVERTIBLE_TOOLS) || LuckpermsMethods.isInGroup(player, "villagecraftcity") && stack.is(ModItemTags.AMBER_CONVERTIBLE_TOOLS)) {
             return false;
+
         } else if (LuckpermsMethods.isInGroup(player, "grippercity") && stack.is(ModItemTags.DIAMOND_CONVERTIBLE_TOOLS) || LuckpermsMethods.isInGroup(player, "grippercity") && stack.is(ModItemTags.AMBER_CONVERTIBLE_TOOLS)) {
             return false;
+
         } else if (LuckpermsMethods.isInGroup(player, "ambercaves") && stack.is(ModItemTags.DIAMOND_CONVERTIBLE_TOOLS) || LuckpermsMethods.isInGroup(player, "ambercaves") && stack.is(ModItemTags.RUBY_CONVERTIBLE_TOOLS)) {
             return false;
         }
+
         return true;
     }
 }

@@ -66,9 +66,7 @@ public class MoleEntity extends Animal implements ItemSteerable, Saddleable {
                 .add(Attributes.FOLLOW_RANGE, 24);
     }
 
-    public static boolean checkMoleSpawnRules(
-            EntityType<? extends LivingEntity> mole, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, RandomSource random
-    ) {
+    public static boolean checkMoleSpawnRules(EntityType<? extends LivingEntity> mole, LevelAccessor level, MobSpawnType spawnType, BlockPos pos, RandomSource random) {
         boolean flag = MobSpawnType.ignoresLightRequirements(spawnType) || isBrightEnoughToSpawn(level, pos);
         return level.getBlockState(pos.below()).is(ModBlockTags.MOLES_SPAWNABLE_ON) && flag;
     }
@@ -80,9 +78,7 @@ public class MoleEntity extends Animal implements ItemSteerable, Saddleable {
     @javax.annotation.Nullable
     @Override
     public LivingEntity getControllingPassenger() {
-        return (LivingEntity)(this.isSaddled() && this.getFirstPassenger() instanceof Player player && player.isHolding(ModItems.WORM_ON_A_STICK.get())
-                ? player
-                : super.getControllingPassenger());
+        return this.isSaddled() && this.getFirstPassenger() instanceof Player player && player.isHolding(ModItems.WORM_ON_A_STICK.get()) ? player : super.getControllingPassenger();
     }
 
     @Override
@@ -107,9 +103,6 @@ public class MoleEntity extends Animal implements ItemSteerable, Saddleable {
         this.steering.addAdditionalSaveData(compound);
     }
 
-    /**
-     * (abstract) Protected helper method to read subclass entity data from NBT.
-     */
     @Override
     public void readAdditionalSaveData(CompoundTag compound) {
         super.readAdditionalSaveData(compound);
@@ -137,15 +130,19 @@ public class MoleEntity extends Animal implements ItemSteerable, Saddleable {
     public InteractionResult mobInteract(Player player, InteractionHand hand) {
         boolean flag = this.isFood(player.getItemInHand(hand));
         ItemStack itemstack = player.getItemInHand(hand);
+
         if (!flag && this.isSaddled() && !this.isVehicle() && !player.isSecondaryUseActive()) {
             if (!this.level().isClientSide) {
                 player.startRiding(this);
             }
             return InteractionResult.sidedSuccess(this.level().isClientSide);
+
         } else if (this.isFood(itemstack)) {
             return this.fedFood(player, itemstack);
+
         } else {
             InteractionResult interactionresult = super.mobInteract(player, hand);
+
             if (!interactionresult.consumesAction()) {
                 return itemstack.is(Items.SADDLE) ? itemstack.interactLivingEntity(player, this, hand) : InteractionResult.PASS;
             } else {
@@ -156,6 +153,7 @@ public class MoleEntity extends Animal implements ItemSteerable, Saddleable {
 
     public InteractionResult fedFood(Player player, ItemStack stack) {
         boolean flag = this.handleEating(player, stack);
+
         if (flag) {
             stack.consume(1, player);
         }
@@ -171,6 +169,7 @@ public class MoleEntity extends Animal implements ItemSteerable, Saddleable {
         boolean flag = false;
         float f = 0.0F;
         int i = 0;
+
         if (stack.is(ModItems.COOKED_WORM)) {
             f = 2.0F;
             i = 30;
@@ -195,6 +194,7 @@ public class MoleEntity extends Animal implements ItemSteerable, Saddleable {
             if (flag) {
                 this.gameEvent(GameEvent.EAT);
             }
+
         return flag;
     }
 
@@ -206,6 +206,7 @@ public class MoleEntity extends Animal implements ItemSteerable, Saddleable {
     @Override
     protected void dropEquipment() {
         super.dropEquipment();
+
         if (this.isSaddled()) {
             this.spawnAtLocation(Items.SADDLE);
         }
@@ -219,6 +220,7 @@ public class MoleEntity extends Animal implements ItemSteerable, Saddleable {
     @Override
     public void equipSaddle(ItemStack stack, @javax.annotation.Nullable SoundSource soundSource) {
         this.steering.setSaddle(true);
+
         if (soundSource != null) {
             this.level().playSound(null, this, SoundEvents.PIG_SADDLE, soundSource, 0.5F, 1.2F);
         }
@@ -227,8 +229,10 @@ public class MoleEntity extends Animal implements ItemSteerable, Saddleable {
     @Override
     public Vec3 getDismountLocationForPassenger(LivingEntity livingEntity) {
         Direction direction = this.getMotionDirection();
+
         if (direction.getAxis() == Direction.Axis.Y) {
             return super.getDismountLocationForPassenger(livingEntity);
+
         } else {
             int[][] aint = DismountHelper.offsetsForDirection(direction);
             BlockPos blockpos = this.blockPosition();
@@ -240,8 +244,10 @@ public class MoleEntity extends Animal implements ItemSteerable, Saddleable {
                 for (int[] aint1 : aint) {
                     blockpos$mutableblockpos.set(blockpos.getX() + aint1[0], blockpos.getY(), blockpos.getZ() + aint1[1]);
                     double d0 = this.level().getBlockFloorHeight(blockpos$mutableblockpos);
+
                     if (DismountHelper.isBlockFloorValid(d0)) {
                         Vec3 vec3 = Vec3.upFromBottomCenterOf(blockpos$mutableblockpos, d0);
+
                         if (DismountHelper.canDismountTo(this.level(), livingEntity, aabb.move(vec3))) {
                             livingEntity.setPose(pose);
                             return vec3;

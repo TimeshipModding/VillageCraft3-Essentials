@@ -101,12 +101,13 @@ public class DataItemModels extends ItemModelProvider {
                 .texture("layer0", ResourceLocation.fromNamespaceAndPath(item.getNamespace(), "item/" + item.getPath()));
     }
 
-    // Shoutout to El_Redstoniano for making this
     private void trimmedArmorItem(DeferredItem<Item> itemDeferredItem) {
-        final String MOD_ID = VillageCraft3Essentials.MODID; // Change this to your mod id
+        final String MOD_ID = VillageCraft3Essentials.MODID;
+
         if (itemDeferredItem.get() instanceof ArmorItem armorItem) {
             trimMaterials.forEach((trimMaterial, value) -> {
                 float trimValue = value;
+
                 String armorType = switch (armorItem.getEquipmentSlot()) {
                     case HEAD -> "helmet";
                     case CHEST -> "chestplate";
@@ -114,21 +115,20 @@ public class DataItemModels extends ItemModelProvider {
                     case FEET -> "boots";
                     default -> "";
                 };
+
                 String armorItemPath = armorItem.toString();
                 String trimPath = "trims/items/" + armorType + "_trim_" + trimMaterial.location().getPath();
                 String currentTrimName = armorItemPath + "_" + trimMaterial.location().getPath() + "_trim";
                 ResourceLocation armorItemResLoc = ResourceLocation.parse(armorItemPath);
                 ResourceLocation trimResLoc = ResourceLocation.parse(trimPath); // minecraft namespace
                 ResourceLocation trimNameResLoc = ResourceLocation.parse(currentTrimName);
-                // This is used for making the ExistingFileHelper acknowledge that this texture exist, so this will
-                // avoid an IllegalArgumentException
                 existingFileHelper.trackGenerated(trimResLoc, PackType.CLIENT_RESOURCES, ".png", "textures");
-                // Trimmed armorItem files
+
                 getBuilder(currentTrimName)
                         .parent(new ModelFile.UncheckedModelFile("item/generated"))
                         .texture("layer0", armorItemResLoc.getNamespace() + ":item/" + armorItemResLoc.getPath())
                         .texture("layer1", trimResLoc);
-                // Non-trimmed armorItem file (normal variant)
+
                 this.withExistingParent(itemDeferredItem.getId().getPath(),
                                 mcLoc("item/generated"))
                         .override()

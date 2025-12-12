@@ -117,6 +117,7 @@ public class AtmBlock extends BaseEntityBlock {
                 default -> EAST_UPPER_SHAPE;
             };
         }
+
         return null;
     }
 
@@ -124,6 +125,7 @@ public class AtmBlock extends BaseEntityBlock {
     protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
         if (!level.isClientSide()) {
             BlockEntity entity = level.getBlockEntity(pos);
+
             if(entity instanceof AtmBlockEntity atmBlockEntity) {
                 atmBlockEntity.setRandomConvertScreen(true);
                 atmBlockEntity.setToolConvertScreen(false);
@@ -136,11 +138,13 @@ public class AtmBlock extends BaseEntityBlock {
                 serverPlayer.openMenu(new SimpleMenuProvider(atmBlockEntity, Component.empty()), pos);
             }
         }
+
         return ItemInteractionResult.sidedSuccess(level.isClientSide());
     }
 
     public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor level, BlockPos currentPos, BlockPos facingPos) {
         DoubleBlockHalf doubleblockhalf = state.getValue(HALF);
+
         if (facing.getAxis() == Direction.Axis.Y && doubleblockhalf == DoubleBlockHalf.LOWER == (facing == Direction.UP)) {
             return facingState.is(this) && facingState.getValue(HALF) != doubleblockhalf ? state.setValue(FACING, facingState.getValue(FACING)) : Blocks.AIR.defaultBlockState();
         } else {
@@ -152,6 +156,7 @@ public class AtmBlock extends BaseEntityBlock {
         if (!level.isClientSide && player.isCreative()) {
             DoubleBlock.preventCreativeDropFromBottomPart(level, pos, state, player);
         }
+
         super.playerWillDestroy(level, pos, state, player);
         return state;
     }
@@ -160,6 +165,7 @@ public class AtmBlock extends BaseEntityBlock {
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         BlockPos blockpos = context.getClickedPos();
         Level level = context.getLevel();
+
         if (blockpos.getY() < level.getMaxBuildHeight() - 1 && level.getBlockState(blockpos.above()).canBeReplaced(context)) {
             return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite()).setValue(HALF, DoubleBlockHalf.LOWER);
         } else {
@@ -192,17 +198,17 @@ public class AtmBlock extends BaseEntityBlock {
     }
 
     @Override
-    protected RenderShape getRenderShape(BlockState pState) {
+    protected RenderShape getRenderShape(BlockState state) {
         return RenderShape.MODEL;
     }
 
     @Nullable
     @Override
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level pLevel, BlockState pState, BlockEntityType<T> pBlockEntityType) {
-        if(pLevel.isClientSide()) {
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
+        if(level.isClientSide()) {
             return null;
         }
 
-        return createTickerHelper(pBlockEntityType, ModBlockEntities.ATM_BLOCKENTITY.get(), (pLevel1, pPos, pState1, pBlockEntity) -> pBlockEntity.tick(pLevel1, pPos, pState1));
+        return createTickerHelper(blockEntityType, ModBlockEntities.ATM_BLOCKENTITY.get(), (pLevel1, pPos, pState1, pBlockEntity) -> pBlockEntity.tick(pLevel1, pPos, pState1));
     }
 }

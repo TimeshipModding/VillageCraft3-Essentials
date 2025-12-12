@@ -25,9 +25,7 @@ public class ModArmorMaterials {
                 map.put(ArmorItem.Type.HELMET, 3);
                 map.put(ArmorItem.Type.BODY, 11);
             }), 10, SoundEvents.ARMOR_EQUIP_DIAMOND, () -> Ingredient.of(ModItems.RUBY), List.of(
-                    new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "ruby"))
-    ), 2.0f, 0.0f
-    ));
+                    new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "ruby"))), 2.0f, 0.0f));
 
     public static final Holder<ArmorMaterial> AMBER = ARMOR_MATERIALS.register("amber", () -> new ArmorMaterial(
             Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
@@ -37,7 +35,5 @@ public class ModArmorMaterials {
                 map.put(ArmorItem.Type.HELMET, 3);
                 map.put(ArmorItem.Type.BODY, 11);
             }), 10, SoundEvents.ARMOR_EQUIP_DIAMOND, () -> Ingredient.of(ModItems.AMBER), List.of(
-                    new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "amber"))
-    ), 2.0f, 0.0f
-    ));
+                    new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "amber"))), 2.0f, 0.0f));
 }

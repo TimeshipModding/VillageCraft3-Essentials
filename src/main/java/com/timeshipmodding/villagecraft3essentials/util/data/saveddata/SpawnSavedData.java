@@ -37,12 +37,10 @@ public class SpawnSavedData extends SavedData { ;
         this.setDirty();
     }
 
-    // Create new instance of saved data
     public static SpawnSavedData create() {
         return new SpawnSavedData();
     }
 
-    // Load existing instance of saved data
     public static SpawnSavedData load(CompoundTag tag, HolderLookup.Provider lookupProvider) {
         SpawnSavedData data = create();
         data.villagecraftCitySpawn = tag.getIntArray("villagecraftCitySpawn");

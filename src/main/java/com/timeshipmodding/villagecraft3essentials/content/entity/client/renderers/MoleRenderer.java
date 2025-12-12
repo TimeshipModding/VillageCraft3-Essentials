@@ -27,6 +27,7 @@ public class MoleRenderer extends MobRenderer<MoleEntity, MoleModel> {
     @Override
     public void render(MoleEntity entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
         poseStack.scale(1.75f, 1.75f, 1.75f);
+
         if(entity.isBaby()) {
             poseStack.scale(0.45f, 0.45f, 0.45f);
         }

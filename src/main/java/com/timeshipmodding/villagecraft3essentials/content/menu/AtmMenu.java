@@ -47,9 +47,11 @@ public class AtmMenu extends AbstractContainerMenu {
 
     public void refreshSlots() {
         int ix = 0, iy = 0, ox = 0, oy = 0;
+
         if (this.blockEntity.getRandomConvertScreen()) {
             System.out.println("randomrefresh");
             ix = 26; iy = 24; ox = 26; oy = 75;
+
         } else if (this.blockEntity.getToolConvertScreen()){
             System.out.println("toolrefresh");
             ix = 53; iy = 32; ox = 107; oy = 32;
@@ -79,12 +81,15 @@ public class AtmMenu extends AbstractContainerMenu {
             }
 
             ItemStack stack = this.getCarried();
+
             if (!stack.isEmpty()) {
                 if (player.isAlive() && !((ServerPlayer)player).hasDisconnected()) {
                     player.getInventory().placeItemBackInInventory(stack);
+
                 } else {
                     player.drop(stack, false);
                 }
+
                 this.setCarried(ItemStack.EMPTY);
             }
         }
@@ -99,9 +104,11 @@ public class AtmMenu extends AbstractContainerMenu {
     public ItemStack quickMoveStack(Player player, int quickMovedSlotIndex) {
         ItemStack quickMovedStack = ItemStack.EMPTY;
         Slot quickMovedSlot = this.slots.get(quickMovedSlotIndex);
+
         if (quickMovedSlot.hasItem()) {
             ItemStack rawStack = quickMovedSlot.getItem();
             quickMovedStack = rawStack.copy();
+
             if (quickMovedSlotIndex == 1) {
                 if (this.blockEntity.getRandomConvertScreen()) {
                     ItemStack outputStackTemplate = blockEntity.getRandomConvertRecipe()[1];
@@ -109,31 +116,38 @@ public class AtmMenu extends AbstractContainerMenu {
                     int totalOutputCount = this.blockEntity.quickRandomConvertCurrency(outputStackTemplate, randomConvertButtonPressed);
                     ItemStack itemsToMove = outputStackTemplate.copy();
                     itemsToMove.setCount(totalOutputCount);
+
                     if (!this.insertItemStacked(itemsToMove, 2, 38)) {
                         return ItemStack.EMPTY;
                     }
+
                     quickMovedSlot.setByPlayer(ItemStack.EMPTY);
                 }
+
             } else if (quickMovedSlotIndex == 0) {
                 if (!this.moveItemStackTo(rawStack, 2, 38, false)) {
                     return ItemStack.EMPTY;
                 }
+
             } else if (this.blockEntity.getRandomConvertScreen()) {
                 if (rawStack.getItem() == Items.DIAMOND || rawStack.getItem() == ModItems.RUBY.get() || rawStack.getItem() == ModItems.AMBER.get()) {
                     if (!this.moveItemStackTo(rawStack, 0, 1, false)) {
                         return ItemStack.EMPTY;
                     }
                 }
+
             } else if (this.blockEntity.getToolConvertScreen()) {
                 if (rawStack.is(ModItemTags.DIAMOND_CONVERTIBLE_TOOLS) || rawStack.is(ModItemTags.RUBY_CONVERTIBLE_TOOLS) || rawStack.is(ModItemTags.AMBER_CONVERTIBLE_TOOLS)) {
                     if (!this.moveItemStackTo(rawStack, 0, 1, false)) {
                         return ItemStack.EMPTY;
                     }
                 }
+
             } else if (quickMovedSlotIndex >= 2 && quickMovedSlotIndex < 29) {
                 if (!this.moveItemStackTo(rawStack, 29, 38, false)) {
                     return ItemStack.EMPTY;
                 }
+
             } else if (quickMovedSlotIndex >= 29 && quickMovedSlotIndex < 38 && !this.moveItemStackTo(rawStack, 2, 29, false)) {
                 return ItemStack.EMPTY;
             }
@@ -150,11 +164,13 @@ public class AtmMenu extends AbstractContainerMenu {
 
             quickMovedSlot.onTake(player, rawStack);
         }
+
         return quickMovedStack;
     }
 
     protected boolean insertItemStacked(ItemStack stack, int startIndex, int endIndex) {
         if (stack.isEmpty()) return false;
+
         for (int i = startIndex; i < endIndex; i++) {
             Slot slot = this.slots.get(i);
             if (slot.hasItem() && ItemStack.isSameItemSameComponents(slot.getItem(), stack)) {
@@ -167,12 +183,14 @@ public class AtmMenu extends AbstractContainerMenu {
                     stack.shrink(amountToTransfer);
                     slot.setChanged();
                 }
+
                 if (stack.isEmpty()) return true;
             }
         }
 
         for (int i = startIndex; i < endIndex; i++) {
             Slot slot = this.slots.get(i);
+
             if (!slot.hasItem()) {
                 int maxSize = Math.min(stack.getMaxStackSize(), slot.getMaxStackSize());
                 int amountToTransfer = Math.min(stack.getCount(), maxSize);
@@ -181,9 +199,11 @@ public class AtmMenu extends AbstractContainerMenu {
                     slot.setByPlayer(stack.split(amountToTransfer));
                     slot.setChanged();
                 }
+
                 if (stack.isEmpty()) return true;
             }
         }
+
         return stack.isEmpty();
     }
 
@@ -210,6 +230,7 @@ public class AtmMenu extends AbstractContainerMenu {
             case 15 -> ATM = ModBlocks.WHITE_ATM.get();
             case 16 -> ATM = ModBlocks.YELLOW_ATM.get();
         }
+
         return stillValid(ContainerLevelAccess.create(level, blockEntity.getBlockPos()), player, ATM);
     }
 

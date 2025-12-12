@@ -92,6 +92,7 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
 
     private void onDiamondCurrencyButtonPress(Button button) {
         this.menu.playAtmSound();
+
         if (Minecraft.getInstance().getConnection() != null) {
             PacketDistributor.sendToServer(new AtmToolConvertButtonPressedPacket(menu.blockEntity.getBlockPos(), 1));
         }
@@ -99,6 +100,7 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
 
     private void onRubyCurrencyButtonPress(Button button) {
         this.menu.playAtmSound();
+
         if (Minecraft.getInstance().getConnection() != null) {
             PacketDistributor.sendToServer(new AtmToolConvertButtonPressedPacket(menu.blockEntity.getBlockPos(), 2));
         }
@@ -106,6 +108,7 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
 
     private void onAmberCurrencyButtonPress(Button button) {
         this.menu.playAtmSound();
+
         if (Minecraft.getInstance().getConnection() != null) {
             PacketDistributor.sendToServer(new AtmToolConvertButtonPressedPacket(menu.blockEntity.getBlockPos(), 3));
         }
@@ -132,31 +135,42 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
     private void onRandomConvertButtonPress(Button button) {
         if (randomConvertButtons[0] == button) {
             this.menu.playAtmSound();
+
             if (Minecraft.getInstance().getConnection() != null) {
                 PacketDistributor.sendToServer(new AtmRandomConvertButtonPressedPacket(menu.blockEntity.getBlockPos(), 1));
             }
+
         } else if (randomConvertButtons[1] == button) {
             this.menu.playAtmSound();
+
             if (Minecraft.getInstance().getConnection() != null) {
                 PacketDistributor.sendToServer(new AtmRandomConvertButtonPressedPacket(menu.blockEntity.getBlockPos(), 2));
             }
+
         } else if (randomConvertButtons[2] == button) {
             this.menu.playAtmSound();
+
             if (Minecraft.getInstance().getConnection() != null) {
                 PacketDistributor.sendToServer(new AtmRandomConvertButtonPressedPacket(menu.blockEntity.getBlockPos(), 3));
             }
+
         } else if (randomConvertButtons[3] == button) {
             this.menu.playAtmSound();
+
             if (Minecraft.getInstance().getConnection() != null) {
                 PacketDistributor.sendToServer(new AtmRandomConvertButtonPressedPacket(menu.blockEntity.getBlockPos(), 4));
             }
+
         } else if (randomConvertButtons[4] == button) {
             this.menu.playAtmSound();
+
             if (Minecraft.getInstance().getConnection() != null) {
                 PacketDistributor.sendToServer(new AtmRandomConvertButtonPressedPacket(menu.blockEntity.getBlockPos(), 5));
             }
+
         } else if (randomConvertButtons[5] == button) {
             this.menu.playAtmSound();
+
             if (Minecraft.getInstance().getConnection() != null) {
                 PacketDistributor.sendToServer(new AtmRandomConvertButtonPressedPacket(menu.blockEntity.getBlockPos(), 6));
             }
@@ -166,6 +180,7 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
     @Override
     protected void renderBg(@NotNull GuiGraphics guiGraphics, float partialTick, int mouseX, int mouseY) {
         int guiTextureIndex = this.menu.blockEntity.getGuiTextureIndex();
+
         if (this.menu.blockEntity.getRandomConvertScreen()) {
             this.clearWidgets();
             guiGraphics.blit(getRandomConvertGuiTexture(guiTextureIndex), leftPos, topPos, 0, 0, imageWidth, imageHeight);
@@ -208,6 +223,7 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
             renderBackground(guiGraphics, mouseX, mouseY, delta);
             super.render(guiGraphics, mouseX, mouseY, delta);
             renderTooltip(guiGraphics, mouseX, mouseY);
+
         } else if (this.menu.blockEntity.getToolConvertScreen()) {
             renderBackground(guiGraphics, mouseX, mouseY, delta);
             super.render(guiGraphics, mouseX, mouseY, delta);
@@ -262,6 +278,7 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
                             default:
                                 continue;
                         }
+
                         guiGraphics.renderTooltip(this.font, tooltipText, mouseX, mouseY);
                     }
                 }
@@ -270,10 +287,13 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
         } else if (this.menu.blockEntity.getToolConvertScreen()) {
             if (toolConvertButtonDiamond.isHovered()) {
                 guiGraphics.renderTooltip(this.font, Component.translatable("tooltips.villagecraft3essentials.atm.toolconvertbuttondiamond"), mouseX, mouseY);
+
             } else if (toolConvertButtonRuby.isHovered()) {
                 guiGraphics.renderTooltip(this.font, Component.translatable("tooltips.villagecraft3essentials.atm.toolconvertbuttonruby"), mouseX, mouseY);
+
             } else if (toolConvertButtonAmber.isHovered()) {
                 guiGraphics.renderTooltip(this.font, Component.translatable("tooltips.villagecraft3essentials.atm.toolconvertbuttonamber"), mouseX, mouseY);
+
             } else if (previousMenuButton.isHovered()) {
                 guiGraphics.renderTooltip(this.font, Component.translatable("tooltips.villagecraft3essentials.atm.previousmenu"), mouseX, mouseY);
             }
@@ -386,6 +406,7 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
             this.scrollOffs = Mth.clamp(this.scrollOffs, 0.0F, 1.0F);
             this.startIndex = (int)((double)(this.scrollOffs * (float)this.getOffscreenRows()) + 0.5) * RECIPES_COLUMNS;
             return true;
+
         } else {
             return super.mouseDragged(mouseX, mouseY, button, dragX, dragY);
         }

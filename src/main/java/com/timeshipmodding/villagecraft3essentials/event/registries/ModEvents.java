@@ -87,6 +87,7 @@ public class ModEvents {
     public static void onPlayerJoined(OnDatapackSyncEvent event) {
         if (event.getPlayer() instanceof ServerPlayer player) {
             MinecraftServer server = player.getServer();
+
             if (server != null) {
                 int[] diamondToRuby = AtmRandomConversionRatesSavedData.getData(server).getDiamondToRuby();
                 int[] diamondToAmber = AtmRandomConversionRatesSavedData.getData(server).getDiamondToAmber();
@@ -94,6 +95,7 @@ public class ModEvents {
                 int[] rubyToAmber = AtmRandomConversionRatesSavedData.getData(server).getRubyToAmber();
                 int[] amberToDiamond = AtmRandomConversionRatesSavedData.getData(server).getAmberToDiamond();
                 int[] amberToRuby = AtmRandomConversionRatesSavedData.getData(server).getAmberToRuby();
+
                 if (diamondToRuby != null && diamondToRuby.length > 0) {
                     PacketDistributor.sendToPlayer(player, new AtmRandomConversionRatesPacket(diamondToRuby, diamondToAmber, rubyToDiamond, rubyToAmber, amberToDiamond, amberToRuby));
                 }

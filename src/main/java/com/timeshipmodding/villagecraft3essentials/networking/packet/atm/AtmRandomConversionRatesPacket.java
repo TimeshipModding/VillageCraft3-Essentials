@@ -13,12 +13,9 @@ import net.neoforged.neoforge.network.handling.IPayloadContext;
 
 public record AtmRandomConversionRatesPacket(int[] diamondToRuby, int[] diamondToAmber, int[] rubyToDiamond, int[] rubyToAmber, int[] amberToDiamond, int[] amberToRuby) implements CustomPacketPayload {
     public static final Type<AtmRandomConversionRatesPacket> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "atm_random_conversion_rates"));
-
-    public static final StreamCodec<RegistryFriendlyByteBuf, AtmRandomConversionRatesPacket> STREAM_CODEC =
-            StreamCodec.of(
+    public static final StreamCodec<RegistryFriendlyByteBuf, AtmRandomConversionRatesPacket> STREAM_CODEC = StreamCodec.of(
                     AtmRandomConversionRatesPacket::encode,
-                    AtmRandomConversionRatesPacket::decode
-            );
+                    AtmRandomConversionRatesPacket::decode);
 
     private static void encode(RegistryFriendlyByteBuf buf, AtmRandomConversionRatesPacket payload) {
         buf.writeVarIntArray(payload.diamondToRuby());
@@ -51,6 +48,7 @@ public record AtmRandomConversionRatesPacket(int[] diamondToRuby, int[] diamondT
 
             Minecraft minecraft = Minecraft.getInstance();
             Screen currentScreen = minecraft.screen;
+
             if (currentScreen instanceof AtmScreen) {
                 ((AtmScreen) currentScreen).setConversionRates(payload.diamondToRuby(), payload.diamondToAmber(), payload.rubyToDiamond(), payload.rubyToAmber(), payload.amberToDiamond(), payload.amberToRuby());
             }

@@ -22,6 +22,7 @@ public record AtmReturnItemPacket() implements CustomPacketPayload {
         public static void handle(final AtmReturnItemPacket payload, final IPayloadContext context) {
             context.enqueueWork(() -> {
                 ServerPlayer player = (ServerPlayer) context.player();
+
                 if (player.containerMenu instanceof AtmMenu serverMenu) {
                     serverMenu.returnItemsToPlayer(player);
                 }

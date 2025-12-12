@@ -41,6 +41,7 @@ public class ModCurrencyToolsEvents {
     public static void onPlayerLeftClickBlock(PlayerInteractEvent.LeftClickBlock event) {
         if (ModList.get().isLoaded("luckperms")) {
             ItemStack stack = event.getItemStack();
+
             if (event.getSide() == LogicalSide.CLIENT) {
                 return;
             }
@@ -48,6 +49,7 @@ public class ModCurrencyToolsEvents {
             if (LuckpermsMethods.isInGroup(event.getEntity(), "villagecraftcity") && stack.is(ModItemTags.RUBY_CONVERTIBLE_TOOLS) || LuckpermsMethods.isInGroup(event.getEntity(), "villagecraftcity") && stack.is(ModItemTags.AMBER_CONVERTIBLE_TOOLS)) {
                 if (stack.getItem() instanceof ArmorItem) {
                     event.getEntity().displayClientMessage(Component.translatable("actionbar.villagecraft3essentials.armor_conversation_hint"), true);
+
                 } else {
                     event.getEntity().displayClientMessage(Component.translatable("actionbar.villagecraft3essentials.tool_conversation_hint"), true);
                 }
@@ -59,6 +61,7 @@ public class ModCurrencyToolsEvents {
             } else if (LuckpermsMethods.isInGroup(event.getEntity(), "grippercity") && stack.is(ModItemTags.DIAMOND_CONVERTIBLE_TOOLS) || LuckpermsMethods.isInGroup(event.getEntity(), "grippercity") && stack.is(ModItemTags.AMBER_CONVERTIBLE_TOOLS)) {
                 if (stack.getItem() instanceof ArmorItem) {
                     event.getEntity().displayClientMessage(Component.translatable("actionbar.villagecraft3essentials.armor_conversation_hint"), true);
+
                 } else {
                     event.getEntity().displayClientMessage(Component.translatable("actionbar.villagecraft3essentials.tool_conversation_hint"), true);
                 }
@@ -70,6 +73,7 @@ public class ModCurrencyToolsEvents {
             } else if (LuckpermsMethods.isInGroup(event.getEntity(), "ambercaves") && stack.is(ModItemTags.DIAMOND_CONVERTIBLE_TOOLS) || LuckpermsMethods.isInGroup(event.getEntity(), "ambercaves") && stack.is(ModItemTags.RUBY_CONVERTIBLE_TOOLS)) {
                 if (stack.getItem() instanceof ArmorItem) {
                     event.getEntity().displayClientMessage(Component.translatable("actionbar.villagecraft3essentials.armor_conversation_hint"), true);
+
                 } else {
                     event.getEntity().displayClientMessage(Component.translatable("actionbar.villagecraft3essentials.tool_conversation_hint"), true);
                 }
@@ -85,6 +89,7 @@ public class ModCurrencyToolsEvents {
     public static void onPlayerRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
         if (ModList.get().isLoaded("luckperms")) {
             ItemStack stack = event.getItemStack();
+
             if (event.getSide() == LogicalSide.CLIENT) {
                 return;
             }
@@ -121,6 +126,7 @@ public class ModCurrencyToolsEvents {
     public static void onPlayerEntityInteract(PlayerInteractEvent.EntityInteract event) {
         if (ModList.get().isLoaded("luckperms")) {
             ItemStack stack = event.getItemStack();
+
             if (event.getLevel().isClientSide()) {
                 if (stack.getItem() instanceof AnimalArmorItem) {
                     if (!HorseCurrencyArmorClientHandler.canEquip()) {
@@ -128,6 +134,7 @@ public class ModCurrencyToolsEvents {
                         event.setCancellationResult(InteractionResult.FAIL);
                     }
                 }
+
                 return;
             }
 
@@ -152,6 +159,7 @@ public class ModCurrencyToolsEvents {
                     stack.shrink(1);
                     event.setCancellationResult(InteractionResult.FAIL);
                     event.setCanceled(true);
+
                     if (event.getEntity() instanceof ServerPlayer serverPlayer && event.getTarget() instanceof Horse horse) {
                         List<SynchedEntityData.DataValue<?>> changes = horse.getEntityData().packDirty();
                         if (changes != null && !changes.isEmpty()) {
@@ -173,10 +181,13 @@ public class ModCurrencyToolsEvents {
     public static void onPlayerTickPost(PlayerTickEvent.Post event) {
         if (ModList.get().isLoaded("luckperms")) {
             if (event.getEntity().level().isClientSide()) return;
+
             if (event.getEntity().containerMenu instanceof HorseInventoryMenu horseInventoryMenu) {
                 ItemStack stack = horseInventoryMenu.getSlot(1).getItem();
+
                 if (!stack.isEmpty() && horseInventoryMenu instanceof IHorseInventoryMenuEntity iHorseInventoryMenuEntity) {
                     HorseCurrencyArmorItemHandler handler = iHorseInventoryMenuEntity.getEntity().getCapability(ModCapabilityEvents.HORSE_ARMOR_CAPABILITY);
+
                     if (handler != null && !handler.canPlayerEquip(event.getEntity(), stack)) {
                         ItemStack stackToDrop = horseInventoryMenu.getSlot(1).remove(stack.getCount());
                         event.getEntity().drop(stackToDrop.copy(), true);
@@ -192,6 +203,7 @@ public class ModCurrencyToolsEvents {
     public static void onPlayerAttack(AttackEntityEvent event) {
         if (ModList.get().isLoaded("luckperms")) {
             ItemStack stack = event.getEntity().getInventory().getSelected();
+
             if (event.getEntity().level().isClientSide) {
                 return;
             }
@@ -199,6 +211,7 @@ public class ModCurrencyToolsEvents {
             if (LuckpermsMethods.isInGroup(event.getEntity(), "villagecraftcity") && stack.is(ModItemTags.RUBY_CONVERTIBLE_TOOLS) || LuckpermsMethods.isInGroup(event.getEntity(), "villagecraftcity") && stack.is(ModItemTags.AMBER_CONVERTIBLE_TOOLS)) {
                 if (stack.getItem() instanceof ArmorItem) {
                     event.getEntity().displayClientMessage(Component.translatable("actionbar.villagecraft3essentials.armor_conversation_hint"), true);
+
                 } else {
                     event.getEntity().displayClientMessage(Component.translatable("actionbar.villagecraft3essentials.tool_conversation_hint"), true);
                 }
@@ -211,6 +224,7 @@ public class ModCurrencyToolsEvents {
             } else if (LuckpermsMethods.isInGroup(event.getEntity(), "grippercity") && stack.is(ModItemTags.DIAMOND_CONVERTIBLE_TOOLS) || LuckpermsMethods.isInGroup(event.getEntity(), "grippercity") && stack.is(ModItemTags.AMBER_CONVERTIBLE_TOOLS)) {
                 if (stack.getItem() instanceof ArmorItem) {
                     event.getEntity().displayClientMessage(Component.translatable("actionbar.villagecraft3essentials.armor_conversation_hint"), true);
+
                 } else {
                     event.getEntity().displayClientMessage(Component.translatable("actionbar.villagecraft3essentials.tool_conversation_hint"), true);
                 }
@@ -223,6 +237,7 @@ public class ModCurrencyToolsEvents {
             } else if (LuckpermsMethods.isInGroup(event.getEntity(), "ambercaves") && stack.is(ModItemTags.DIAMOND_CONVERTIBLE_TOOLS) || LuckpermsMethods.isInGroup(event.getEntity(), "ambercaves") && stack.is(ModItemTags.RUBY_CONVERTIBLE_TOOLS)) {
                 if (stack.getItem() instanceof ArmorItem) {
                     event.getEntity().displayClientMessage(Component.translatable("actionbar.villagecraft3essentials.armor_conversation_hint"), true);
+
                 } else {
                     event.getEntity().displayClientMessage(Component.translatable("actionbar.villagecraft3essentials.tool_conversation_hint"), true);
                 }

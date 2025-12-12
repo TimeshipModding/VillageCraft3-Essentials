@@ -59,6 +59,7 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
         } else if (toolConvertScreen) {
             return Component.translatable("blockentity.villagecraft3essentials.atm.toolconvert");
         }
+
         return null;
     }
 
@@ -69,16 +70,17 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
     }
 
     public void tick(Level level, BlockPos pos, BlockState state) {
-        ItemStack randomConvertInputItemstack = getRandomConvertRecipe()[0];
-        ItemStack randomConvertOutputItemstack = getRandomConvertRecipe()[1];
-        ItemStack toolConvertInputItemstack = getToolConvertRecipe()[0];
-        ItemStack toolConvertOutputItemstack = getToolConvertRecipe()[1];
+        ItemStack randomConvertInputStack = getRandomConvertRecipe()[0];
+        ItemStack randomConvertOutputStack = getRandomConvertRecipe()[1];
+        ItemStack toolConvertInputStack = getToolConvertRecipe()[0];
+        ItemStack toolConvertOutputStack = getToolConvertRecipe()[1];
         updateOutputWhenButtonChanged();
 
-        if (randomConvertScreen && itemStackHandler.getStackInSlot(OUTPUT_SLOT).isEmpty() && hasRecipe(randomConvertInputItemstack, randomConvertOutputItemstack)) {
-            randomConvertCurrency(randomConvertOutputItemstack, randomConvertButtonPressed);
-        } else if (toolConvertScreen && itemStackHandler.getStackInSlot(OUTPUT_SLOT).isEmpty() && hasRecipe(toolConvertInputItemstack, toolConvertOutputItemstack)) {
-            toolConvertItem(toolConvertOutputItemstack);
+        if (randomConvertScreen && itemStackHandler.getStackInSlot(OUTPUT_SLOT).isEmpty() && hasRecipe(randomConvertInputStack, randomConvertOutputStack)) {
+            randomConvertCurrency(randomConvertOutputStack, randomConvertButtonPressed);
+
+        } else if (toolConvertScreen && itemStackHandler.getStackInSlot(OUTPUT_SLOT).isEmpty() && hasRecipe(toolConvertInputStack, toolConvertOutputStack)) {
+            toolConvertItem(toolConvertOutputStack);
         }
     }
 
@@ -150,10 +152,10 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
         itemStackHandler.setStackInSlot(OUTPUT_SLOT, outputStack);
     }
 
-    public int quickRandomConvertCurrency(ItemStack initialOutputItemstack, int randomConvertButtonPressed) {
+    public int quickRandomConvertCurrency(ItemStack initialOutputStack, int randomConvertButtonPressed) {
         convertAmount = getRandomConvertInputAmount(randomConvertButtonPressed);
-        ItemStack initialInputItemstack = itemStackHandler.getStackInSlot(INPUT_SLOT);
-        int currentInputItemCount = initialInputItemstack.getCount();
+        ItemStack initialInputStack = itemStackHandler.getStackInSlot(INPUT_SLOT);
+        int currentInputItemCount = initialInputStack.getCount();
         int maxConversions;
         int conversionRemainder;
         maxConversions = currentInputItemCount / convertAmount;
@@ -162,11 +164,11 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
         if (conversionRemainder == 0) {
             itemStackHandler.setStackInSlot(INPUT_SLOT, ItemStack.EMPTY);
         } else {
-            initialInputItemstack.setCount(conversionRemainder);
-            itemStackHandler.setStackInSlot(INPUT_SLOT, initialInputItemstack);
+            initialInputStack.setCount(conversionRemainder);
+            itemStackHandler.setStackInSlot(INPUT_SLOT, initialInputStack);
         }
 
-        return initialOutputItemstack.getCount() * maxConversions;
+        return initialOutputStack.getCount() * maxConversions;
     }
 
     private void toolConvertItem(ItemStack outputStack) {
@@ -178,242 +180,245 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
 
     public ItemStack[] getRandomConvertRecipe() {
         MinecraftServer server = this.level.getServer();
-        ItemStack OUPUT_ITEMSTACK = ItemStack.EMPTY;
-        ItemStack INPUT_ITEMSTACK = ItemStack.EMPTY;
-        Item INPUT_ITEM = itemStackHandler.getStackInSlot(INPUT_SLOT).getItem();
+        Item inputItem = itemStackHandler.getStackInSlot(INPUT_SLOT).getItem();
+        ItemStack inputStack = ItemStack.EMPTY;
+        ItemStack outputStack = ItemStack.EMPTY;
 
         if (server != null) {
             if (randomConvertButtonPressed == 1) {
-                if (INPUT_ITEM == Items.DIAMOND && (itemStackHandler.getStackInSlot(INPUT_SLOT).getCount() >= AtmRandomConversionRatesSavedData.getData(server).getDiamondToRuby()[0])) {
-                    INPUT_ITEMSTACK = new ItemStack(Items.DIAMOND, AtmRandomConversionRatesSavedData.getData(server).getDiamondToRuby()[0]);
-                    OUPUT_ITEMSTACK = new ItemStack(ModItems.RUBY.get(), AtmRandomConversionRatesSavedData.getData(server).getDiamondToRuby()[1]);
+                if (inputItem == Items.DIAMOND && (itemStackHandler.getStackInSlot(INPUT_SLOT).getCount() >= AtmRandomConversionRatesSavedData.getData(server).getDiamondToRuby()[0])) {
+                    inputStack = new ItemStack(Items.DIAMOND, AtmRandomConversionRatesSavedData.getData(server).getDiamondToRuby()[0]);
+                    outputStack = new ItemStack(ModItems.RUBY.get(), AtmRandomConversionRatesSavedData.getData(server).getDiamondToRuby()[1]);
                 }
             } else if (randomConvertButtonPressed == 2) {
-                if (INPUT_ITEM == Items.DIAMOND && (itemStackHandler.getStackInSlot(INPUT_SLOT).getCount() >= AtmRandomConversionRatesSavedData.getData(server).getDiamondToAmber()[0])) {
-                    INPUT_ITEMSTACK = new ItemStack(Items.DIAMOND, AtmRandomConversionRatesSavedData.getData(server).getDiamondToAmber()[0]);
-                    OUPUT_ITEMSTACK = new ItemStack(ModItems.AMBER.get(), AtmRandomConversionRatesSavedData.getData(server).getDiamondToAmber()[1]);
+                if (inputItem == Items.DIAMOND && (itemStackHandler.getStackInSlot(INPUT_SLOT).getCount() >= AtmRandomConversionRatesSavedData.getData(server).getDiamondToAmber()[0])) {
+                    inputStack = new ItemStack(Items.DIAMOND, AtmRandomConversionRatesSavedData.getData(server).getDiamondToAmber()[0]);
+                    outputStack = new ItemStack(ModItems.AMBER.get(), AtmRandomConversionRatesSavedData.getData(server).getDiamondToAmber()[1]);
                 }
             } else if (randomConvertButtonPressed == 3) {
-                if (INPUT_ITEM == ModItems.RUBY.get() && (itemStackHandler.getStackInSlot(INPUT_SLOT).getCount() >= AtmRandomConversionRatesSavedData.getData(server).getRubyToDiamond()[0])) {
-                    INPUT_ITEMSTACK = new ItemStack(ModItems.RUBY.get(), AtmRandomConversionRatesSavedData.getData(server).getRubyToDiamond()[0]);
-                    OUPUT_ITEMSTACK = new ItemStack(Items.DIAMOND, AtmRandomConversionRatesSavedData.getData(server).getRubyToDiamond()[1]);
+                if (inputItem == ModItems.RUBY.get() && (itemStackHandler.getStackInSlot(INPUT_SLOT).getCount() >= AtmRandomConversionRatesSavedData.getData(server).getRubyToDiamond()[0])) {
+                    inputStack = new ItemStack(ModItems.RUBY.get(), AtmRandomConversionRatesSavedData.getData(server).getRubyToDiamond()[0]);
+                    outputStack = new ItemStack(Items.DIAMOND, AtmRandomConversionRatesSavedData.getData(server).getRubyToDiamond()[1]);
                 }
             } else if (randomConvertButtonPressed == 4) {
-                if (INPUT_ITEM == ModItems.RUBY.get() && (itemStackHandler.getStackInSlot(INPUT_SLOT).getCount() >= AtmRandomConversionRatesSavedData.getData(server).getRubyToAmber()[0])) {
-                    INPUT_ITEMSTACK = new ItemStack(ModItems.RUBY.get(), AtmRandomConversionRatesSavedData.getData(server).getRubyToAmber()[0]);
-                    OUPUT_ITEMSTACK = new ItemStack(ModItems.AMBER.get(), AtmRandomConversionRatesSavedData.getData(server).getRubyToAmber()[1]);
+                if (inputItem == ModItems.RUBY.get() && (itemStackHandler.getStackInSlot(INPUT_SLOT).getCount() >= AtmRandomConversionRatesSavedData.getData(server).getRubyToAmber()[0])) {
+                    inputStack = new ItemStack(ModItems.RUBY.get(), AtmRandomConversionRatesSavedData.getData(server).getRubyToAmber()[0]);
+                    outputStack = new ItemStack(ModItems.AMBER.get(), AtmRandomConversionRatesSavedData.getData(server).getRubyToAmber()[1]);
                 }
             } else if (randomConvertButtonPressed == 5) {
-                if (INPUT_ITEM == ModItems.AMBER.get() && (itemStackHandler.getStackInSlot(INPUT_SLOT).getCount() >= AtmRandomConversionRatesSavedData.getData(server).getAmberToDiamond()[0])) {
-                    INPUT_ITEMSTACK = new ItemStack(ModItems.AMBER.get(), AtmRandomConversionRatesSavedData.getData(server).getAmberToDiamond()[0]);
-                    OUPUT_ITEMSTACK = new ItemStack(Items.DIAMOND, AtmRandomConversionRatesSavedData.getData(server).getAmberToDiamond()[1]);
+                if (inputItem == ModItems.AMBER.get() && (itemStackHandler.getStackInSlot(INPUT_SLOT).getCount() >= AtmRandomConversionRatesSavedData.getData(server).getAmberToDiamond()[0])) {
+                    inputStack = new ItemStack(ModItems.AMBER.get(), AtmRandomConversionRatesSavedData.getData(server).getAmberToDiamond()[0]);
+                    outputStack = new ItemStack(Items.DIAMOND, AtmRandomConversionRatesSavedData.getData(server).getAmberToDiamond()[1]);
                 }
             } else if (randomConvertButtonPressed == 6) {
-                if (INPUT_ITEM == ModItems.AMBER.get() && (itemStackHandler.getStackInSlot(INPUT_SLOT).getCount() >= AtmRandomConversionRatesSavedData.getData(server).getAmberToRuby()[0])) {
-                    INPUT_ITEMSTACK = new ItemStack(ModItems.AMBER.get(), AtmRandomConversionRatesSavedData.getData(server).getAmberToRuby()[0]);
-                    OUPUT_ITEMSTACK = new ItemStack(ModItems.RUBY.get(), AtmRandomConversionRatesSavedData.getData(server).getAmberToRuby()[1]);
+                if (inputItem == ModItems.AMBER.get() && (itemStackHandler.getStackInSlot(INPUT_SLOT).getCount() >= AtmRandomConversionRatesSavedData.getData(server).getAmberToRuby()[0])) {
+                    inputStack = new ItemStack(ModItems.AMBER.get(), AtmRandomConversionRatesSavedData.getData(server).getAmberToRuby()[0]);
+                    outputStack = new ItemStack(ModItems.RUBY.get(), AtmRandomConversionRatesSavedData.getData(server).getAmberToRuby()[1]);
                 }
             }
-            return new ItemStack[]{INPUT_ITEMSTACK, OUPUT_ITEMSTACK};
+
+            return new ItemStack[]{inputStack, outputStack};
         }
+
         return new ItemStack[]{ItemStack.EMPTY, ItemStack.EMPTY};
     }
 
     private ItemStack[] getToolConvertRecipe() {
-        ItemStack OUPUT_ITEMSTACK = ItemStack.EMPTY;
-        ItemStack INPUT_ITEMSTACK = ItemStack.EMPTY;
-        Item INPUT_ITEM = itemStackHandler.getStackInSlot(INPUT_SLOT).getItem();
+        Item inputItem = itemStackHandler.getStackInSlot(INPUT_SLOT).getItem();
+        ItemStack inputStack = ItemStack.EMPTY;
+        ItemStack outputStack = ItemStack.EMPTY;
 
         if (toolConvertButtonPressed == 1) {
-            if(INPUT_ITEM == ModItems.RUBY_SWORD.get()) {
-                INPUT_ITEMSTACK = new ItemStack(ModItems.RUBY_SWORD.get());
-                OUPUT_ITEMSTACK = new ItemStack(Items.DIAMOND_SWORD);
-            } else if (INPUT_ITEM == ModItems.RUBY_SHOVEL.get()) {
-                INPUT_ITEMSTACK = new ItemStack(ModItems.RUBY_SHOVEL.get());
-                OUPUT_ITEMSTACK = new ItemStack(Items.DIAMOND_SHOVEL);
-            } else if (INPUT_ITEM == ModItems.RUBY_PICKAXE.get()) {
-                INPUT_ITEMSTACK = new ItemStack(ModItems.RUBY_PICKAXE.get());
-                OUPUT_ITEMSTACK = new ItemStack(Items.DIAMOND_PICKAXE);
-            } else if (INPUT_ITEM == ModItems.RUBY_AXE.get()) {
-                INPUT_ITEMSTACK = new ItemStack(ModItems.RUBY_AXE.get());
-                OUPUT_ITEMSTACK = new ItemStack(Items.DIAMOND_AXE);
-            } else if (INPUT_ITEM == ModItems.RUBY_HOE.get()) {
-                INPUT_ITEMSTACK = new ItemStack(ModItems.RUBY_HOE.get());
-                OUPUT_ITEMSTACK = new ItemStack(Items.DIAMOND_HOE);
-            } else if (INPUT_ITEM == ModItems.RUBY_HELMET.get()) {
-                INPUT_ITEMSTACK = new ItemStack(ModItems.RUBY_HELMET.get());
-                OUPUT_ITEMSTACK = new ItemStack(Items.DIAMOND_HELMET);
-            } else if (INPUT_ITEM == ModItems.RUBY_CHESTPLATE.get()) {
-                INPUT_ITEMSTACK = new ItemStack(ModItems.RUBY_CHESTPLATE.get());
-                OUPUT_ITEMSTACK = new ItemStack(Items.DIAMOND_CHESTPLATE);
-            } else if (INPUT_ITEM == ModItems.RUBY_LEGGINGS.get()) {
-                INPUT_ITEMSTACK = new ItemStack(ModItems.RUBY_LEGGINGS.get());
-                OUPUT_ITEMSTACK = new ItemStack(Items.DIAMOND_LEGGINGS);
-            } else if (INPUT_ITEM == ModItems.RUBY_BOOTS.get()) {
-                INPUT_ITEMSTACK = new ItemStack(ModItems.RUBY_BOOTS.get());
-                OUPUT_ITEMSTACK = new ItemStack(Items.DIAMOND_BOOTS);
-            } else if (INPUT_ITEM == ModItems.RUBY_HORSE_ARMOR.get()) {
-                INPUT_ITEMSTACK = new ItemStack(ModItems.RUBY_HORSE_ARMOR.get());
-                OUPUT_ITEMSTACK = new ItemStack(Items.DIAMOND_HORSE_ARMOR);
-            } else if(INPUT_ITEM == ModItems.AMBER_SWORD.get()) {
-                INPUT_ITEMSTACK = new ItemStack(ModItems.AMBER_SWORD.get());
-                OUPUT_ITEMSTACK = new ItemStack(Items.DIAMOND_SWORD);
-            } else if (INPUT_ITEM == ModItems.AMBER_SHOVEL.get()) {
-                INPUT_ITEMSTACK = new ItemStack(ModItems.AMBER_SHOVEL.get());
-                OUPUT_ITEMSTACK = new ItemStack(Items.DIAMOND_SHOVEL);
-            } else if (INPUT_ITEM == ModItems.AMBER_PICKAXE.get()) {
-                INPUT_ITEMSTACK = new ItemStack(ModItems.AMBER_PICKAXE.get());
-                OUPUT_ITEMSTACK = new ItemStack(Items.DIAMOND_PICKAXE);
-            } else if (INPUT_ITEM == ModItems.AMBER_AXE.get()) {
-                INPUT_ITEMSTACK = new ItemStack(ModItems.AMBER_AXE.get());
-                OUPUT_ITEMSTACK = new ItemStack(Items.DIAMOND_AXE);
-            } else if (INPUT_ITEM == ModItems.AMBER_HOE.get()) {
-                INPUT_ITEMSTACK = new ItemStack(ModItems.AMBER_HOE.get());
-                OUPUT_ITEMSTACK = new ItemStack(Items.DIAMOND_HOE);
-            } else if (INPUT_ITEM == ModItems.AMBER_HELMET.get()) {
-                INPUT_ITEMSTACK = new ItemStack(ModItems.AMBER_HELMET.get());
-                OUPUT_ITEMSTACK = new ItemStack(Items.DIAMOND_HELMET);
-            } else if (INPUT_ITEM == ModItems.AMBER_CHESTPLATE.get()) {
-                INPUT_ITEMSTACK = new ItemStack(ModItems.AMBER_CHESTPLATE.get());
-                OUPUT_ITEMSTACK = new ItemStack(Items.DIAMOND_CHESTPLATE);
-            } else if (INPUT_ITEM == ModItems.AMBER_LEGGINGS.get()) {
-                INPUT_ITEMSTACK = new ItemStack(ModItems.AMBER_LEGGINGS.get());
-                OUPUT_ITEMSTACK = new ItemStack(Items.DIAMOND_LEGGINGS);
-            } else if (INPUT_ITEM == ModItems.AMBER_BOOTS.get()) {
-                INPUT_ITEMSTACK = new ItemStack(ModItems.AMBER_BOOTS.get());
-                OUPUT_ITEMSTACK = new ItemStack(Items.DIAMOND_BOOTS);
-            } else if (INPUT_ITEM == ModItems.AMBER_HORSE_ARMOR.get()) {
-                INPUT_ITEMSTACK = new ItemStack(ModItems.AMBER_HORSE_ARMOR.get());
-                OUPUT_ITEMSTACK = new ItemStack(Items.DIAMOND_HORSE_ARMOR);
+            if(inputItem == ModItems.RUBY_SWORD.get()) {
+                inputStack = new ItemStack(ModItems.RUBY_SWORD.get());
+                outputStack = new ItemStack(Items.DIAMOND_SWORD);
+            } else if (inputItem == ModItems.RUBY_SHOVEL.get()) {
+                inputStack = new ItemStack(ModItems.RUBY_SHOVEL.get());
+                outputStack = new ItemStack(Items.DIAMOND_SHOVEL);
+            } else if (inputItem == ModItems.RUBY_PICKAXE.get()) {
+                inputStack = new ItemStack(ModItems.RUBY_PICKAXE.get());
+                outputStack = new ItemStack(Items.DIAMOND_PICKAXE);
+            } else if (inputItem == ModItems.RUBY_AXE.get()) {
+                inputStack = new ItemStack(ModItems.RUBY_AXE.get());
+                outputStack = new ItemStack(Items.DIAMOND_AXE);
+            } else if (inputItem == ModItems.RUBY_HOE.get()) {
+                inputStack = new ItemStack(ModItems.RUBY_HOE.get());
+                outputStack = new ItemStack(Items.DIAMOND_HOE);
+            } else if (inputItem == ModItems.RUBY_HELMET.get()) {
+                inputStack = new ItemStack(ModItems.RUBY_HELMET.get());
+                outputStack = new ItemStack(Items.DIAMOND_HELMET);
+            } else if (inputItem == ModItems.RUBY_CHESTPLATE.get()) {
+                inputStack = new ItemStack(ModItems.RUBY_CHESTPLATE.get());
+                outputStack = new ItemStack(Items.DIAMOND_CHESTPLATE);
+            } else if (inputItem == ModItems.RUBY_LEGGINGS.get()) {
+                inputStack = new ItemStack(ModItems.RUBY_LEGGINGS.get());
+                outputStack = new ItemStack(Items.DIAMOND_LEGGINGS);
+            } else if (inputItem == ModItems.RUBY_BOOTS.get()) {
+                inputStack = new ItemStack(ModItems.RUBY_BOOTS.get());
+                outputStack = new ItemStack(Items.DIAMOND_BOOTS);
+            } else if (inputItem == ModItems.RUBY_HORSE_ARMOR.get()) {
+                inputStack = new ItemStack(ModItems.RUBY_HORSE_ARMOR.get());
+                outputStack = new ItemStack(Items.DIAMOND_HORSE_ARMOR);
+            } else if(inputItem == ModItems.AMBER_SWORD.get()) {
+                inputStack = new ItemStack(ModItems.AMBER_SWORD.get());
+                outputStack = new ItemStack(Items.DIAMOND_SWORD);
+            } else if (inputItem == ModItems.AMBER_SHOVEL.get()) {
+                inputStack = new ItemStack(ModItems.AMBER_SHOVEL.get());
+                outputStack = new ItemStack(Items.DIAMOND_SHOVEL);
+            } else if (inputItem == ModItems.AMBER_PICKAXE.get()) {
+                inputStack = new ItemStack(ModItems.AMBER_PICKAXE.get());
+                outputStack = new ItemStack(Items.DIAMOND_PICKAXE);
+            } else if (inputItem == ModItems.AMBER_AXE.get()) {
+                inputStack = new ItemStack(ModItems.AMBER_AXE.get());
+                outputStack = new ItemStack(Items.DIAMOND_AXE);
+            } else if (inputItem == ModItems.AMBER_HOE.get()) {
+                inputStack = new ItemStack(ModItems.AMBER_HOE.get());
+                outputStack = new ItemStack(Items.DIAMOND_HOE);
+            } else if (inputItem == ModItems.AMBER_HELMET.get()) {
+                inputStack = new ItemStack(ModItems.AMBER_HELMET.get());
+                outputStack = new ItemStack(Items.DIAMOND_HELMET);
+            } else if (inputItem == ModItems.AMBER_CHESTPLATE.get()) {
+                inputStack = new ItemStack(ModItems.AMBER_CHESTPLATE.get());
+                outputStack = new ItemStack(Items.DIAMOND_CHESTPLATE);
+            } else if (inputItem == ModItems.AMBER_LEGGINGS.get()) {
+                inputStack = new ItemStack(ModItems.AMBER_LEGGINGS.get());
+                outputStack = new ItemStack(Items.DIAMOND_LEGGINGS);
+            } else if (inputItem == ModItems.AMBER_BOOTS.get()) {
+                inputStack = new ItemStack(ModItems.AMBER_BOOTS.get());
+                outputStack = new ItemStack(Items.DIAMOND_BOOTS);
+            } else if (inputItem == ModItems.AMBER_HORSE_ARMOR.get()) {
+                inputStack = new ItemStack(ModItems.AMBER_HORSE_ARMOR.get());
+                outputStack = new ItemStack(Items.DIAMOND_HORSE_ARMOR);
             }
 
         } else if (toolConvertButtonPressed == 2) {
-            if(INPUT_ITEM == Items.DIAMOND_SWORD) {
-                INPUT_ITEMSTACK = new ItemStack(Items.DIAMOND_SWORD);
-                OUPUT_ITEMSTACK = new ItemStack(ModItems.RUBY_SWORD.get());
-            } else if (INPUT_ITEM == Items.DIAMOND_SHOVEL) {
-                INPUT_ITEMSTACK = new ItemStack(Items.DIAMOND_SHOVEL);
-                OUPUT_ITEMSTACK = new ItemStack(ModItems.RUBY_SHOVEL.get());
-            } else if (INPUT_ITEM == Items.DIAMOND_PICKAXE) {
-                INPUT_ITEMSTACK = new ItemStack(Items.DIAMOND_PICKAXE);
-                OUPUT_ITEMSTACK = new ItemStack(ModItems.RUBY_PICKAXE.get());
-            } else if (INPUT_ITEM == Items.DIAMOND_AXE) {
-                INPUT_ITEMSTACK = new ItemStack(Items.DIAMOND_AXE);
-                OUPUT_ITEMSTACK = new ItemStack(ModItems.RUBY_AXE.get());
-            } else if (INPUT_ITEM == Items.DIAMOND_HOE) {
-                INPUT_ITEMSTACK = new ItemStack(Items.DIAMOND_HOE);
-                OUPUT_ITEMSTACK = new ItemStack(ModItems.RUBY_HOE.get());
-            } else if (INPUT_ITEM == Items.DIAMOND_HELMET) {
-                INPUT_ITEMSTACK = new ItemStack(Items.DIAMOND_HELMET);
-                OUPUT_ITEMSTACK = new ItemStack(ModItems.RUBY_HELMET.get());
-            } else if (INPUT_ITEM == Items.DIAMOND_CHESTPLATE) {
-                INPUT_ITEMSTACK = new ItemStack(Items.DIAMOND_CHESTPLATE);
-                OUPUT_ITEMSTACK = new ItemStack(ModItems.RUBY_CHESTPLATE.get());
-            } else if (INPUT_ITEM == Items.DIAMOND_LEGGINGS) {
-                INPUT_ITEMSTACK = new ItemStack(Items.DIAMOND_LEGGINGS);
-                OUPUT_ITEMSTACK = new ItemStack(ModItems.RUBY_LEGGINGS.get());
-            } else if (INPUT_ITEM == Items.DIAMOND_BOOTS) {
-                INPUT_ITEMSTACK = new ItemStack(Items.DIAMOND_BOOTS);
-                OUPUT_ITEMSTACK = new ItemStack(ModItems.RUBY_BOOTS.get());
-            } else if (INPUT_ITEM == Items.DIAMOND_HORSE_ARMOR) {
-                INPUT_ITEMSTACK = new ItemStack(Items.DIAMOND_HORSE_ARMOR);
-                OUPUT_ITEMSTACK = new ItemStack(ModItems.RUBY_HORSE_ARMOR.get());
-            } else if(INPUT_ITEM == ModItems.AMBER_SWORD.get()) {
-                INPUT_ITEMSTACK = new ItemStack(ModItems.AMBER_SWORD.get());
-                OUPUT_ITEMSTACK = new ItemStack(ModItems.RUBY_SWORD.get());
-            } else if (INPUT_ITEM == ModItems. AMBER_SHOVEL.get()) {
-                INPUT_ITEMSTACK = new ItemStack(ModItems.AMBER_SHOVEL.get());
-                OUPUT_ITEMSTACK = new ItemStack(ModItems.RUBY_SHOVEL.get());
-            } else if (INPUT_ITEM == ModItems.AMBER_PICKAXE.get()) {
-                INPUT_ITEMSTACK = new ItemStack(ModItems.AMBER_PICKAXE.get());
-                OUPUT_ITEMSTACK = new ItemStack(ModItems.RUBY_PICKAXE.get());
-            } else if (INPUT_ITEM == ModItems.AMBER_AXE.get()) {
-                INPUT_ITEMSTACK = new ItemStack(ModItems.AMBER_AXE.get());
-                OUPUT_ITEMSTACK = new ItemStack(ModItems.RUBY_AXE.get());
-            } else if (INPUT_ITEM == ModItems.AMBER_HOE.get()) {
-                INPUT_ITEMSTACK = new ItemStack(ModItems.AMBER_HOE.get());
-                OUPUT_ITEMSTACK = new ItemStack(ModItems.RUBY_HOE.get());
-            } else if (INPUT_ITEM == ModItems.AMBER_HELMET.get()) {
-                INPUT_ITEMSTACK = new ItemStack(ModItems.AMBER_HELMET.get());
-                OUPUT_ITEMSTACK = new ItemStack(ModItems.RUBY_HELMET.get());
-            } else if (INPUT_ITEM == ModItems.AMBER_CHESTPLATE.get()) {
-                INPUT_ITEMSTACK = new ItemStack(ModItems.AMBER_CHESTPLATE.get());
-                OUPUT_ITEMSTACK = new ItemStack(ModItems.RUBY_CHESTPLATE.get());
-            } else if (INPUT_ITEM == ModItems.AMBER_LEGGINGS.get()) {
-                INPUT_ITEMSTACK = new ItemStack(ModItems.AMBER_LEGGINGS.get());
-                OUPUT_ITEMSTACK = new ItemStack(ModItems.RUBY_LEGGINGS.get());
-            } else if (INPUT_ITEM == ModItems.AMBER_BOOTS.get()) {
-                INPUT_ITEMSTACK = new ItemStack(ModItems.AMBER_BOOTS.get());
-                OUPUT_ITEMSTACK = new ItemStack(ModItems.RUBY_BOOTS.get());
-            } else if (INPUT_ITEM == ModItems.AMBER_HORSE_ARMOR.get()) {
-                INPUT_ITEMSTACK = new ItemStack(ModItems.AMBER_HORSE_ARMOR.get());
-                OUPUT_ITEMSTACK = new ItemStack(ModItems.RUBY_HORSE_ARMOR.get());
+            if(inputItem == Items.DIAMOND_SWORD) {
+                inputStack = new ItemStack(Items.DIAMOND_SWORD);
+                outputStack = new ItemStack(ModItems.RUBY_SWORD.get());
+            } else if (inputItem == Items.DIAMOND_SHOVEL) {
+                inputStack = new ItemStack(Items.DIAMOND_SHOVEL);
+                outputStack = new ItemStack(ModItems.RUBY_SHOVEL.get());
+            } else if (inputItem == Items.DIAMOND_PICKAXE) {
+                inputStack = new ItemStack(Items.DIAMOND_PICKAXE);
+                outputStack = new ItemStack(ModItems.RUBY_PICKAXE.get());
+            } else if (inputItem == Items.DIAMOND_AXE) {
+                inputStack = new ItemStack(Items.DIAMOND_AXE);
+                outputStack = new ItemStack(ModItems.RUBY_AXE.get());
+            } else if (inputItem == Items.DIAMOND_HOE) {
+                inputStack = new ItemStack(Items.DIAMOND_HOE);
+                outputStack = new ItemStack(ModItems.RUBY_HOE.get());
+            } else if (inputItem == Items.DIAMOND_HELMET) {
+                inputStack = new ItemStack(Items.DIAMOND_HELMET);
+                outputStack = new ItemStack(ModItems.RUBY_HELMET.get());
+            } else if (inputItem == Items.DIAMOND_CHESTPLATE) {
+                inputStack = new ItemStack(Items.DIAMOND_CHESTPLATE);
+                outputStack = new ItemStack(ModItems.RUBY_CHESTPLATE.get());
+            } else if (inputItem == Items.DIAMOND_LEGGINGS) {
+                inputStack = new ItemStack(Items.DIAMOND_LEGGINGS);
+                outputStack = new ItemStack(ModItems.RUBY_LEGGINGS.get());
+            } else if (inputItem == Items.DIAMOND_BOOTS) {
+                inputStack = new ItemStack(Items.DIAMOND_BOOTS);
+                outputStack = new ItemStack(ModItems.RUBY_BOOTS.get());
+            } else if (inputItem == Items.DIAMOND_HORSE_ARMOR) {
+                inputStack = new ItemStack(Items.DIAMOND_HORSE_ARMOR);
+                outputStack = new ItemStack(ModItems.RUBY_HORSE_ARMOR.get());
+            } else if(inputItem == ModItems.AMBER_SWORD.get()) {
+                inputStack = new ItemStack(ModItems.AMBER_SWORD.get());
+                outputStack = new ItemStack(ModItems.RUBY_SWORD.get());
+            } else if (inputItem == ModItems. AMBER_SHOVEL.get()) {
+                inputStack = new ItemStack(ModItems.AMBER_SHOVEL.get());
+                outputStack = new ItemStack(ModItems.RUBY_SHOVEL.get());
+            } else if (inputItem == ModItems.AMBER_PICKAXE.get()) {
+                inputStack = new ItemStack(ModItems.AMBER_PICKAXE.get());
+                outputStack = new ItemStack(ModItems.RUBY_PICKAXE.get());
+            } else if (inputItem == ModItems.AMBER_AXE.get()) {
+                inputStack = new ItemStack(ModItems.AMBER_AXE.get());
+                outputStack = new ItemStack(ModItems.RUBY_AXE.get());
+            } else if (inputItem == ModItems.AMBER_HOE.get()) {
+                inputStack = new ItemStack(ModItems.AMBER_HOE.get());
+                outputStack = new ItemStack(ModItems.RUBY_HOE.get());
+            } else if (inputItem == ModItems.AMBER_HELMET.get()) {
+                inputStack = new ItemStack(ModItems.AMBER_HELMET.get());
+                outputStack = new ItemStack(ModItems.RUBY_HELMET.get());
+            } else if (inputItem == ModItems.AMBER_CHESTPLATE.get()) {
+                inputStack = new ItemStack(ModItems.AMBER_CHESTPLATE.get());
+                outputStack = new ItemStack(ModItems.RUBY_CHESTPLATE.get());
+            } else if (inputItem == ModItems.AMBER_LEGGINGS.get()) {
+                inputStack = new ItemStack(ModItems.AMBER_LEGGINGS.get());
+                outputStack = new ItemStack(ModItems.RUBY_LEGGINGS.get());
+            } else if (inputItem == ModItems.AMBER_BOOTS.get()) {
+                inputStack = new ItemStack(ModItems.AMBER_BOOTS.get());
+                outputStack = new ItemStack(ModItems.RUBY_BOOTS.get());
+            } else if (inputItem == ModItems.AMBER_HORSE_ARMOR.get()) {
+                inputStack = new ItemStack(ModItems.AMBER_HORSE_ARMOR.get());
+                outputStack = new ItemStack(ModItems.RUBY_HORSE_ARMOR.get());
             }
 
         } else if (toolConvertButtonPressed == 3) {
-            if(INPUT_ITEM == Items.DIAMOND_SWORD) {
-                INPUT_ITEMSTACK = new ItemStack(Items.DIAMOND_SWORD);
-                OUPUT_ITEMSTACK = new ItemStack(ModItems.AMBER_SWORD.get());
-            } else if (INPUT_ITEM == Items.DIAMOND_SHOVEL) {
-                INPUT_ITEMSTACK = new ItemStack(Items.DIAMOND_SHOVEL);
-                OUPUT_ITEMSTACK = new ItemStack(ModItems.AMBER_SHOVEL.get());
-            } else if (INPUT_ITEM == Items.DIAMOND_PICKAXE) {
-                INPUT_ITEMSTACK = new ItemStack(Items.DIAMOND_PICKAXE);
-                OUPUT_ITEMSTACK = new ItemStack(ModItems.AMBER_PICKAXE.get());
-            } else if (INPUT_ITEM == Items.DIAMOND_AXE) {
-                INPUT_ITEMSTACK = new ItemStack(Items.DIAMOND_AXE);
-                OUPUT_ITEMSTACK = new ItemStack(ModItems.AMBER_AXE.get());
-            } else if (INPUT_ITEM == Items.DIAMOND_HOE) {
-                INPUT_ITEMSTACK = new ItemStack(Items.DIAMOND_HOE);
-                OUPUT_ITEMSTACK = new ItemStack(ModItems.AMBER_HOE.get());
-            } else if (INPUT_ITEM == Items.DIAMOND_HELMET) {
-                INPUT_ITEMSTACK = new ItemStack(Items.DIAMOND_HELMET);
-                OUPUT_ITEMSTACK = new ItemStack(ModItems.AMBER_HELMET.get());
-            } else if (INPUT_ITEM == Items.DIAMOND_CHESTPLATE) {
-                INPUT_ITEMSTACK = new ItemStack(Items.DIAMOND_CHESTPLATE);
-                OUPUT_ITEMSTACK = new ItemStack(ModItems.AMBER_CHESTPLATE.get());
-            } else if (INPUT_ITEM == Items.DIAMOND_LEGGINGS) {
-                INPUT_ITEMSTACK = new ItemStack(Items.DIAMOND_LEGGINGS);
-                OUPUT_ITEMSTACK = new ItemStack(ModItems.AMBER_LEGGINGS.get());
-            } else if (INPUT_ITEM == Items.DIAMOND_BOOTS) {
-                INPUT_ITEMSTACK = new ItemStack(Items.DIAMOND_BOOTS);
-                OUPUT_ITEMSTACK = new ItemStack(ModItems.AMBER_BOOTS.get());
-            } else if (INPUT_ITEM == Items.DIAMOND_HORSE_ARMOR) {
-                INPUT_ITEMSTACK = new ItemStack(Items.DIAMOND_HORSE_ARMOR);
-                OUPUT_ITEMSTACK = new ItemStack(ModItems.AMBER_HORSE_ARMOR.get());
-            } else if(INPUT_ITEM == ModItems.RUBY_SWORD.get()) {
-                INPUT_ITEMSTACK = new ItemStack(ModItems.RUBY_SWORD.get());
-                OUPUT_ITEMSTACK = new ItemStack(ModItems.AMBER_SWORD.get());
-            } else if (INPUT_ITEM == ModItems.RUBY_SHOVEL.get()) {
-                INPUT_ITEMSTACK = new ItemStack(ModItems.RUBY_SHOVEL.get());
-                OUPUT_ITEMSTACK = new ItemStack(ModItems.AMBER_SHOVEL.get());
-            } else if (INPUT_ITEM == ModItems.RUBY_PICKAXE.get()) {
-                INPUT_ITEMSTACK = new ItemStack(ModItems.RUBY_PICKAXE.get());
-                OUPUT_ITEMSTACK = new ItemStack(ModItems.AMBER_PICKAXE.get());
-            } else if (INPUT_ITEM == ModItems.RUBY_AXE.get()) {
-                INPUT_ITEMSTACK = new ItemStack(ModItems.RUBY_AXE.get());
-                OUPUT_ITEMSTACK = new ItemStack(ModItems.AMBER_AXE.get());
-            } else if (INPUT_ITEM == ModItems.RUBY_HOE.get()) {
-                INPUT_ITEMSTACK = new ItemStack(ModItems.RUBY_HOE.get());
-                OUPUT_ITEMSTACK = new ItemStack(ModItems.AMBER_HOE.get());
-            } else if (INPUT_ITEM == ModItems.RUBY_HELMET.get()) {
-                INPUT_ITEMSTACK = new ItemStack(ModItems.RUBY_HELMET.get());
-                OUPUT_ITEMSTACK = new ItemStack(ModItems.AMBER_HELMET.get());
-            } else if (INPUT_ITEM == ModItems.RUBY_CHESTPLATE.get()) {
-                INPUT_ITEMSTACK = new ItemStack(ModItems.RUBY_CHESTPLATE.get());
-                OUPUT_ITEMSTACK = new ItemStack(ModItems.AMBER_CHESTPLATE.get());
-            } else if (INPUT_ITEM == ModItems.RUBY_LEGGINGS.get()) {
-                INPUT_ITEMSTACK = new ItemStack(ModItems.RUBY_LEGGINGS.get());
-                OUPUT_ITEMSTACK = new ItemStack(ModItems.AMBER_LEGGINGS.get());
-            } else if (INPUT_ITEM == ModItems.RUBY_BOOTS.get()) {
-                INPUT_ITEMSTACK = new ItemStack(ModItems.RUBY_BOOTS.get());
-                OUPUT_ITEMSTACK = new ItemStack(ModItems.AMBER_BOOTS.get());
-            } else if (INPUT_ITEM == ModItems.RUBY_HORSE_ARMOR.get()) {
-                INPUT_ITEMSTACK = new ItemStack(ModItems.RUBY_HORSE_ARMOR.get());
-                OUPUT_ITEMSTACK = new ItemStack(ModItems.AMBER_HORSE_ARMOR.get());
+            if(inputItem == Items.DIAMOND_SWORD) {
+                inputStack = new ItemStack(Items.DIAMOND_SWORD);
+                outputStack = new ItemStack(ModItems.AMBER_SWORD.get());
+            } else if (inputItem == Items.DIAMOND_SHOVEL) {
+                inputStack = new ItemStack(Items.DIAMOND_SHOVEL);
+                outputStack = new ItemStack(ModItems.AMBER_SHOVEL.get());
+            } else if (inputItem == Items.DIAMOND_PICKAXE) {
+                inputStack = new ItemStack(Items.DIAMOND_PICKAXE);
+                outputStack = new ItemStack(ModItems.AMBER_PICKAXE.get());
+            } else if (inputItem == Items.DIAMOND_AXE) {
+                inputStack = new ItemStack(Items.DIAMOND_AXE);
+                outputStack = new ItemStack(ModItems.AMBER_AXE.get());
+            } else if (inputItem == Items.DIAMOND_HOE) {
+                inputStack = new ItemStack(Items.DIAMOND_HOE);
+                outputStack = new ItemStack(ModItems.AMBER_HOE.get());
+            } else if (inputItem == Items.DIAMOND_HELMET) {
+                inputStack = new ItemStack(Items.DIAMOND_HELMET);
+                outputStack = new ItemStack(ModItems.AMBER_HELMET.get());
+            } else if (inputItem == Items.DIAMOND_CHESTPLATE) {
+                inputStack = new ItemStack(Items.DIAMOND_CHESTPLATE);
+                outputStack = new ItemStack(ModItems.AMBER_CHESTPLATE.get());
+            } else if (inputItem == Items.DIAMOND_LEGGINGS) {
+                inputStack = new ItemStack(Items.DIAMOND_LEGGINGS);
+                outputStack = new ItemStack(ModItems.AMBER_LEGGINGS.get());
+            } else if (inputItem == Items.DIAMOND_BOOTS) {
+                inputStack = new ItemStack(Items.DIAMOND_BOOTS);
+                outputStack = new ItemStack(ModItems.AMBER_BOOTS.get());
+            } else if (inputItem == Items.DIAMOND_HORSE_ARMOR) {
+                inputStack = new ItemStack(Items.DIAMOND_HORSE_ARMOR);
+                outputStack = new ItemStack(ModItems.AMBER_HORSE_ARMOR.get());
+            } else if(inputItem == ModItems.RUBY_SWORD.get()) {
+                inputStack = new ItemStack(ModItems.RUBY_SWORD.get());
+                outputStack = new ItemStack(ModItems.AMBER_SWORD.get());
+            } else if (inputItem == ModItems.RUBY_SHOVEL.get()) {
+                inputStack = new ItemStack(ModItems.RUBY_SHOVEL.get());
+                outputStack = new ItemStack(ModItems.AMBER_SHOVEL.get());
+            } else if (inputItem == ModItems.RUBY_PICKAXE.get()) {
+                inputStack = new ItemStack(ModItems.RUBY_PICKAXE.get());
+                outputStack = new ItemStack(ModItems.AMBER_PICKAXE.get());
+            } else if (inputItem == ModItems.RUBY_AXE.get()) {
+                inputStack = new ItemStack(ModItems.RUBY_AXE.get());
+                outputStack = new ItemStack(ModItems.AMBER_AXE.get());
+            } else if (inputItem == ModItems.RUBY_HOE.get()) {
+                inputStack = new ItemStack(ModItems.RUBY_HOE.get());
+                outputStack = new ItemStack(ModItems.AMBER_HOE.get());
+            } else if (inputItem == ModItems.RUBY_HELMET.get()) {
+                inputStack = new ItemStack(ModItems.RUBY_HELMET.get());
+                outputStack = new ItemStack(ModItems.AMBER_HELMET.get());
+            } else if (inputItem == ModItems.RUBY_CHESTPLATE.get()) {
+                inputStack = new ItemStack(ModItems.RUBY_CHESTPLATE.get());
+                outputStack = new ItemStack(ModItems.AMBER_CHESTPLATE.get());
+            } else if (inputItem == ModItems.RUBY_LEGGINGS.get()) {
+                inputStack = new ItemStack(ModItems.RUBY_LEGGINGS.get());
+                outputStack = new ItemStack(ModItems.AMBER_LEGGINGS.get());
+            } else if (inputItem == ModItems.RUBY_BOOTS.get()) {
+                inputStack = new ItemStack(ModItems.RUBY_BOOTS.get());
+                outputStack = new ItemStack(ModItems.AMBER_BOOTS.get());
+            } else if (inputItem == ModItems.RUBY_HORSE_ARMOR.get()) {
+                inputStack = new ItemStack(ModItems.RUBY_HORSE_ARMOR.get());
+                outputStack = new ItemStack(ModItems.AMBER_HORSE_ARMOR.get());
             }
         }
-        return new ItemStack[]{INPUT_ITEMSTACK, OUPUT_ITEMSTACK};
+
+        return new ItemStack[]{inputStack, outputStack};
     }
 
     private void updateOutput() {
@@ -472,16 +477,15 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
                 && this.itemStackHandler.getStackInSlot(INPUT_SLOT).getItem() == inputStack.getItem();
     }
 
-    private boolean canInsertItemIntoOutputSlot(ItemStack output) {
+    private boolean canInsertItemIntoOutputSlot(ItemStack outputStack) {
         return itemStackHandler.getStackInSlot(OUTPUT_SLOT).isEmpty() ||
-                itemStackHandler.getStackInSlot(OUTPUT_SLOT).getItem() == output.getItem();
+                itemStackHandler.getStackInSlot(OUTPUT_SLOT).getItem() == outputStack.getItem();
     }
 
-    private boolean canInsertAmountIntoOutputSlot(int count) {
-        int maxCount = itemStackHandler.getStackInSlot(OUTPUT_SLOT).isEmpty() ? 64 : itemStackHandler.getStackInSlot(OUTPUT_SLOT).getMaxStackSize();
-        int currentCount = itemStackHandler.getStackInSlot(OUTPUT_SLOT).getCount();
-
-        return maxCount >= currentCount + count;
+    private boolean canInsertAmountIntoOutputSlot(int amount) {
+        int maxAmount = itemStackHandler.getStackInSlot(OUTPUT_SLOT).isEmpty() ? 64 : itemStackHandler.getStackInSlot(OUTPUT_SLOT).getMaxStackSize();
+        int currentAmount = itemStackHandler.getStackInSlot(OUTPUT_SLOT).getCount();
+        return maxAmount >= currentAmount + amount;
     }
 
     public int getConvertAmount() {
@@ -506,8 +510,10 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
             } else if (conversionButtonPressed == 6) {
                 amount = AtmRandomConversionRatesSavedData.getData(server).getAmberToRuby()[0];
             }
+
             return amount;
         }
+
         return 1;
     }
 

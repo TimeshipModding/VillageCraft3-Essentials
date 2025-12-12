@@ -26,10 +26,8 @@ public class ModTrimMaterials {
         register(context, AMBER, ModItems.AMBER.get(), Style.EMPTY.withColor(TextColor.parseColor("#ca8513").getOrThrow()), 0.6F);
     }
 
-    private static void register(BootstrapContext<TrimMaterial> context, ResourceKey<TrimMaterial> trimKey, Item item,
-                                 Style style, float itemModelIndex) {
-        TrimMaterial trimmaterial = TrimMaterial.create(trimKey.location().getPath(), item, itemModelIndex,
-                Component.translatable(Util.makeDescriptionId("trim_material", trimKey.location())).withStyle(style), Map.of());
+    private static void register(BootstrapContext<TrimMaterial> context, ResourceKey<TrimMaterial> trimKey, Item item, Style style, float itemModelIndex) {
+        TrimMaterial trimmaterial = TrimMaterial.create(trimKey.location().getPath(), item, itemModelIndex, Component.translatable(Util.makeDescriptionId("trim_material", trimKey.location())).withStyle(style), Map.of());
         context.register(trimKey, trimmaterial);
     }
 }

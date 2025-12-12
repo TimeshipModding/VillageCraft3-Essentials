@@ -14,7 +14,6 @@ public class LuckpermsMethods {
     public static void addGroup(Player  player, String groupName) {
         LuckPerms luckPermsApi = LuckPermsProvider.get();
         Group group = luckPermsApi.getGroupManager().getGroup(groupName);
-
         if (group != null) {
             User user = luckPermsApi.getUserManager().getUser(player.getUUID());
             assert user != null;
@@ -26,7 +25,6 @@ public class LuckpermsMethods {
     public static void removeGroup(Player player, String groupName) {
         LuckPerms luckPermsApi = LuckPermsProvider.get();
         Group group = luckPermsApi.getGroupManager().getGroup(groupName);
-
         if (group != null) {
             User user = luckPermsApi.getUserManager().getUser(player.getUUID());
             assert user != null;
@@ -38,7 +36,6 @@ public class LuckpermsMethods {
     public static boolean isInGroup(Player player, String groupName) {
         LuckPerms luckPermsApi = LuckPermsProvider.get();
         Group group = luckPermsApi.getGroupManager().getGroup(groupName);
-
         if (group != null) {
             User user = luckPermsApi.getUserManager().getUser(player.getUUID());
             assert user != null;

@@ -13,7 +13,7 @@ import net.neoforged.neoforge.common.world.BiomeModifier;
 import net.neoforged.neoforge.common.world.BiomeModifiers;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
-public class ModOreBiomeModifers {
+public class ModOreBiomesModifiers {
     public static final ResourceKey<BiomeModifier> ORE_RUBY_SMALL = registerKey("ore_ruby_small");
     public static final ResourceKey<BiomeModifier> ORE_RUBY_MEDIUM = registerKey("ore_ruby_medium");
     public static final ResourceKey<BiomeModifier> ORE_RUBY_LARGE = registerKey("ore_ruby_large");

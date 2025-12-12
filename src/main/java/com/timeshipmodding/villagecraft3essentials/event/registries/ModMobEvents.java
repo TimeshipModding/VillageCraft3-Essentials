@@ -30,110 +30,89 @@ public class ModMobEvents {
     public static void addCustomTrades(VillagerTradesEvent event) {
         if (event.getType() == VillagerProfession.ARMORER) {
             Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
+
             trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
                     new ItemCost(Items.EMERALD, 14),
-                    new ItemStack(ModItems.RUBY_LEGGINGS.get(), 1), 3, 15, 0.2F
-            ));
+                    new ItemStack(ModItems.RUBY_LEGGINGS.get(), 1), 3, 15, 0.2F));
             trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
                     new ItemCost(Items.EMERALD, 14),
-                    new ItemStack(ModItems.AMBER_LEGGINGS.get(), 1), 3, 15, 0.2F
-            ));
+                    new ItemStack(ModItems.AMBER_LEGGINGS.get(), 1), 3, 15, 0.2F));
             trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
                     new ItemCost(Items.EMERALD, 8),
-                    new ItemStack(ModItems.RUBY_BOOTS.get(), 1), 3, 15, 0.2F
-            ));
+                    new ItemStack(ModItems.RUBY_BOOTS.get(), 1), 3, 15, 0.2F));
             trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
                     new ItemCost(Items.EMERALD, 8),
-                    new ItemStack(ModItems.AMBER_BOOTS.get(), 1), 3, 15, 0.2F
-            ));
+                    new ItemStack(ModItems.AMBER_BOOTS.get(), 1), 3, 15, 0.2F));
             trades.get(5).add((pTrader, pRandom) -> new MerchantOffer(
                     new ItemCost(Items.EMERALD, 8),
-                    new ItemStack(ModItems.RUBY_HELMET.get(), 1), 3, 30, 0.2F
-            ));
+                    new ItemStack(ModItems.RUBY_HELMET.get(), 1), 3, 30, 0.2F));
             trades.get(5).add((pTrader, pRandom) -> new MerchantOffer(
                     new ItemCost(Items.EMERALD, 8),
-                    new ItemStack(ModItems.AMBER_HELMET.get(), 1), 3, 30, 0.2F
-            ));
+                    new ItemStack(ModItems.AMBER_HELMET.get(), 1), 3, 30, 0.2F));
             trades.get(5).add((pTrader, pRandom) -> new MerchantOffer(
                     new ItemCost(Items.EMERALD, 16),
-                    new ItemStack(ModItems.RUBY_CHESTPLATE.get(), 1), 3, 30, 0.2F
-            ));
+                    new ItemStack(ModItems.RUBY_CHESTPLATE.get(), 1), 3, 30, 0.2F));
             trades.get(5).add((pTrader, pRandom) -> new MerchantOffer(
                     new ItemCost(Items.EMERALD, 16),
-                    new ItemStack(ModItems.AMBER_CHESTPLATE.get(), 1), 3, 30, 0.2F
-            ));
+                    new ItemStack(ModItems.AMBER_CHESTPLATE.get(), 1), 3, 30, 0.2F));
         }
 
         if(event.getType() == VillagerProfession.TOOLSMITH) {
             Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
+
             trades.get(3).add((pTrader, pRandom) -> new MerchantOffer(
                     new ItemCost(Items.EMERALD, 4),
-                    new ItemStack(ModItems.RUBY_HOE.get(), 1), 3, 10, 0.2F
-            ));
+                    new ItemStack(ModItems.RUBY_HOE.get(), 1), 3, 10, 0.2F));
             trades.get(3).add((pTrader, pRandom) -> new MerchantOffer(
                     new ItemCost(Items.EMERALD, 4),
-                    new ItemStack(ModItems.AMBER_HOE.get(), 1), 3, 10, 0.2F
-            ));
+                    new ItemStack(ModItems.AMBER_HOE.get(), 1), 3, 10, 0.2F));
             trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
                     new ItemCost(ModItems.RUBY.get(), 1),
-                    new ItemStack(Items.EMERALD, 1), 12, 30, 0F
-            ));
+                    new ItemStack(Items.EMERALD, 1), 12, 30, 0F));
             trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
                     new ItemCost(ModItems.AMBER.get(), 1),
-                    new ItemStack(Items.EMERALD, 1), 12, 30, 0F
-            ));
+                    new ItemStack(Items.EMERALD, 1), 12, 30, 0F));
             trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
                     new ItemCost(Items.EMERALD, 12),
-                    new ItemStack(ModItems.RUBY_AXE.get(), 1), 3, 15, 0.2F
-            ));
+                    new ItemStack(ModItems.RUBY_AXE.get(), 1), 3, 15, 0.2F));
             trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
                     new ItemCost(Items.EMERALD, 12),
-                    new ItemStack(ModItems.AMBER_AXE.get(), 1), 3, 15, 0.2F
-            ));
+                    new ItemStack(ModItems.AMBER_AXE.get(), 1), 3, 15, 0.2F));
             trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
                     new ItemCost(Items.EMERALD, 5),
-                    new ItemStack(ModItems.RUBY_SHOVEL.get(), 1), 3, 15, 0.2F
-            ));
+                    new ItemStack(ModItems.RUBY_SHOVEL.get(), 1), 3, 15, 0.2F));
             trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
                     new ItemCost(Items.EMERALD, 5),
-                    new ItemStack(ModItems.AMBER_SHOVEL.get(), 1), 3, 15, 0.2F
-            ));
+                    new ItemStack(ModItems.AMBER_SHOVEL.get(), 1), 3, 15, 0.2F));
             trades.get(5).add((pTrader, pRandom) -> new MerchantOffer(
                     new ItemCost(Items.EMERALD, 13),
-                    new ItemStack(ModItems.RUBY_PICKAXE.get(), 1), 3, 30, 0.2F
-            ));
+                    new ItemStack(ModItems.RUBY_PICKAXE.get(), 1), 3, 30, 0.2F));
             trades.get(5).add((pTrader, pRandom) -> new MerchantOffer(
                     new ItemCost(Items.EMERALD, 13),
-                    new ItemStack(ModItems.AMBER_PICKAXE.get(), 1), 3, 30, 0.2F
-            ));
+                    new ItemStack(ModItems.AMBER_PICKAXE.get(), 1), 3, 30, 0.2F));
         }
 
         if(event.getType() == VillagerProfession.WEAPONSMITH) {
             Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
+
             trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
                     new ItemCost(ModItems.RUBY.get(), 1),
-                    new ItemStack(Items.EMERALD, 1), 12, 30, 0F
-            ));
+                    new ItemStack(Items.EMERALD, 1), 12, 30, 0F));
             trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
                     new ItemCost(ModItems.AMBER, 1),
-                    new ItemStack(Items.EMERALD, 1), 12, 30, 0F
-            ));
+                    new ItemStack(Items.EMERALD, 1), 12, 30, 0F));
             trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
                     new ItemCost(Items.EMERALD, 12),
-                    new ItemStack(ModItems.RUBY_AXE.get(), 1), 3, 15, 0.2F
-            ));
+                    new ItemStack(ModItems.RUBY_AXE.get(), 1), 3, 15, 0.2F));
             trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
                     new ItemCost(Items.EMERALD, 12),
-                    new ItemStack(ModItems.AMBER_AXE.get(), 1), 3, 15, 0.2F
-            ));
+                    new ItemStack(ModItems.AMBER_AXE.get(), 1), 3, 15, 0.2F));
             trades.get(5).add((pTrader, pRandom) -> new MerchantOffer(
                     new ItemCost(Items.EMERALD, 8),
-                    new ItemStack(ModItems.RUBY_SWORD.get(), 1), 3, 30, 0.2F
-            ));
+                    new ItemStack(ModItems.RUBY_SWORD.get(), 1), 3, 30, 0.2F));
             trades.get(5).add((pTrader, pRandom) -> new MerchantOffer(
                     new ItemCost(Items.EMERALD, 8),
-                    new ItemStack(ModItems.AMBER_SWORD.get(), 1), 3, 30, 0.2F
-            ));
+                    new ItemStack(ModItems.AMBER_SWORD.get(), 1), 3, 30, 0.2F));
         }
     }
 
@@ -150,7 +129,6 @@ public class ModMobEvents {
 
     @SubscribeEvent
     public static void registerSpawnPlacements(RegisterSpawnPlacementsEvent event) {
-        event.register(ModEntities.MOLE.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                MoleEntity::checkMoleSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+        event.register(ModEntities.MOLE.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, MoleEntity::checkMoleSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
     }
 }

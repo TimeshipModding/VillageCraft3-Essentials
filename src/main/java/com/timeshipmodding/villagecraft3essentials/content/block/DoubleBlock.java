@@ -17,6 +17,7 @@ public class DoubleBlock extends DoublePlantBlock {
 
     protected static void preventCreativeDropFromBottomPart(Level pLevel, BlockPos pPos, BlockState pState, Player pPlayer) {
         DoubleBlockHalf doubleblockhalf = pState.getValue(HALF);
+
         if (doubleblockhalf == DoubleBlockHalf.UPPER) {
             BlockPos blockpos = pPos.below();
             BlockState blockstate = pLevel.getBlockState(blockpos);
