@@ -1,20 +1,27 @@
 package com.timeshipmodding.villagecraft3essentials.event.registries;
 
 import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
-import com.timeshipmodding.villagecraft3essentials.content.commands.WorldSpawnCommand;
-import com.timeshipmodding.villagecraft3essentials.content.commands.ambercaves.*;
-import com.timeshipmodding.villagecraft3essentials.content.commands.grippercity.*;
-import com.timeshipmodding.villagecraft3essentials.content.commands.villagecraftcity.*;
-import com.timeshipmodding.villagecraft3essentials.networking.packet.atm.AtmRandomConversionRatesPacket;
-import com.timeshipmodding.villagecraft3essentials.util.config.CommonConfig;
-import com.timeshipmodding.villagecraft3essentials.util.data.saveddata.AtmRandomConversionRatesSavedData;
+import com.timeshipmodding.villagecraft3essentials.content.command.RefreshPlayerDisplayNameCommand;
+import com.timeshipmodding.villagecraft3essentials.content.command.WorldSpawnCommand;
+import com.timeshipmodding.villagecraft3essentials.content.command.ambercaves.*;
+import com.timeshipmodding.villagecraft3essentials.content.command.grippercity.*;
+import com.timeshipmodding.villagecraft3essentials.content.command.tpa.TpaCommand;
+import com.timeshipmodding.villagecraft3essentials.content.command.tpa.TpacceptCommand;
+import com.timeshipmodding.villagecraft3essentials.content.command.tpa.TpadenyCommand;
+import com.timeshipmodding.villagecraft3essentials.content.command.tpa.manager.TpaCommandManager;
+import com.timeshipmodding.villagecraft3essentials.content.command.villagecraftcity.*;
+import com.timeshipmodding.villagecraft3essentials.infrastructure.networking.packet.atm.AtmRandomConversionRatesPacket;
+import com.timeshipmodding.villagecraft3essentials.infrastructure.config.CommonConfig;
+import com.timeshipmodding.villagecraft3essentials.infrastructure.data.saveddata.AtmRandomConversionRatesSavedData;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.OnDatapackSyncEvent;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
+import net.neoforged.neoforge.event.tick.ServerTickEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.neoforge.server.command.ConfigCommand;
 
@@ -25,7 +32,6 @@ import java.util.Random;
 public class ModEvents {
     @SubscribeEvent
     public static void onCommandsRegister(RegisterCommandsEvent event) {
-        new WorldSpawnCommand(event.getDispatcher());
         new AmberCavesBlacklistCommand(event.getDispatcher());
         new AmberCavesJailCommand(event.getDispatcher());
         new AmberCavesKickCommand(event.getDispatcher());
@@ -42,6 +48,10 @@ public class ModEvents {
         new GripperCitySetSpawnCommand(event.getDispatcher());
         new GripperCitySpawnCommand(event.getDispatcher());
         new GripperCityWhitelistCommand(event.getDispatcher());
+        new RefreshPlayerDisplayNameCommand(event.getDispatcher());
+        new TpacceptCommand(event.getDispatcher());
+        new TpaCommand(event.getDispatcher());
+        new TpadenyCommand(event.getDispatcher());
         new VillageCraftCityBlacklistCommand(event.getDispatcher());
         new VillageCraftCityJailCommand(event.getDispatcher());
         new VillageCraftCityKickCommand(event.getDispatcher());
@@ -50,12 +60,19 @@ public class ModEvents {
         new VillageCraftCitySetSpawnCommand(event.getDispatcher());
         new VillageCraftCitySpawnCommand(event.getDispatcher());
         new VillageCraftCityWhitelistCommand(event.getDispatcher());
+        new WorldSpawnCommand(event.getDispatcher());
 
         ConfigCommand.register(event.getDispatcher());
     }
 
     @SubscribeEvent
     public static void onServerStarting(ServerStartingEvent event) {
+        if (ModList.get().isLoaded("luckperms")) {
+            VillageCraft3Essentials.LOGGER.info("Luckperms is installed. VillageCraft 3 Essentials luckperms features Enabled.");
+        } else {
+            VillageCraft3Essentials.LOGGER.info("Luckperms is not installed. VillageCraft 3 Essentials luckperms features Disabled.");
+        }
+
         AtmRandomConversionRatesSavedData data = AtmRandomConversionRatesSavedData.getData(event.getServer());
         int diamond_ruby = randomRubyCurrencyConversion();
         int diamond_amber = randomAmberCurrencyConversion();
@@ -101,6 +118,14 @@ public class ModEvents {
                 }
             }
         }
+    }
+
+    @SubscribeEvent
+    public static void onServerTick(ServerTickEvent.Post event) {
+        if (event.getServer().getTickCount() % 100 == 0) {
+            TpaCommandManager.cleanupTimedOutChallenges(event.getServer());
+        }
+
     }
 
     public static int randomRubyCurrencyConversion() {

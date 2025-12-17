@@ -2,12 +2,12 @@ package com.timeshipmodding.villagecraft3essentials.event.registries;
 
 import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
 import com.timeshipmodding.villagecraft3essentials.compat.luckperms.LuckpermsMethods;
-import com.timeshipmodding.villagecraft3essentials.interfacing.IHorseInventoryMenuEntity;
-import com.timeshipmodding.villagecraft3essentials.networking.handler.client.HorseCurrencyArmorClientHandler;
-import com.timeshipmodding.villagecraft3essentials.networking.packet.HorseSyncCurrencyArmorEquipPacket;
-import com.timeshipmodding.villagecraft3essentials.util.config.ServerConfig;
-import com.timeshipmodding.villagecraft3essentials.util.itemhandler.HorseCurrencyArmorItemHandler;
-import com.timeshipmodding.villagecraft3essentials.util.tags.registries.ModItemTags;
+import com.timeshipmodding.villagecraft3essentials.infrastructure.interfacing.IHorseInventoryMenuEntity;
+import com.timeshipmodding.villagecraft3essentials.infrastructure.networking.handler.client.HorseCurrencyArmorClientHandler;
+import com.timeshipmodding.villagecraft3essentials.infrastructure.networking.packet.HorseSyncCurrencyArmorEquipPacket;
+import com.timeshipmodding.villagecraft3essentials.infrastructure.config.ServerConfig;
+import com.timeshipmodding.villagecraft3essentials.infrastructure.itemhandler.HorseCurrencyArmorItemHandler;
+import com.timeshipmodding.villagecraft3essentials.infrastructure.tags.registries.ModItemTags;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundSetCarriedItemPacket;
 import net.minecraft.network.protocol.game.ClientboundSetEntityDataPacket;

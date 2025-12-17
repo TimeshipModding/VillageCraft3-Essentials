@@ -1,12 +1,12 @@
 package com.timeshipmodding.villagecraft3essentials.event.registries;
 
 import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
-import com.timeshipmodding.villagecraft3essentials.networking.packet.HorseSyncCurrencyArmorEquipPacket;
-import com.timeshipmodding.villagecraft3essentials.networking.packet.atm.*;
-import com.timeshipmodding.villagecraft3essentials.networking.packet.atm.button.AtmRandomConvertButtonPressedPacket;
-import com.timeshipmodding.villagecraft3essentials.networking.packet.atm.button.AtmRefreshSlotsPacket;
-import com.timeshipmodding.villagecraft3essentials.networking.packet.atm.button.AtmSyncSlotPositionsPacket;
-import com.timeshipmodding.villagecraft3essentials.networking.packet.atm.button.AtmToolConvertButtonPressedPacket;
+import com.timeshipmodding.villagecraft3essentials.infrastructure.networking.packet.HorseSyncCurrencyArmorEquipPacket;
+import com.timeshipmodding.villagecraft3essentials.infrastructure.networking.packet.atm.*;
+import com.timeshipmodding.villagecraft3essentials.infrastructure.networking.packet.atm.button.AtmRandomConvertButtonPressedPacket;
+import com.timeshipmodding.villagecraft3essentials.infrastructure.networking.packet.atm.button.AtmRefreshSlotsPacket;
+import com.timeshipmodding.villagecraft3essentials.infrastructure.networking.packet.atm.button.AtmSyncSlotPositionsPacket;
+import com.timeshipmodding.villagecraft3essentials.infrastructure.networking.packet.atm.button.AtmToolConvertButtonPressedPacket;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
