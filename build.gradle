@@ -10,7 +10,6 @@ tasks.named('wrapper', Wrapper).configure {
 }
 
 version = "${minecraft_version}${version_suffix}${mod_version}"
-var realVersion = project.mod_version + '+neoforge'
 group = mod_group_id
 
 repositories {
@@ -120,15 +119,6 @@ var generateModMetadata = tasks.register("generateModMetadata", ProcessResources
 
 sourceSets.main.resources.srcDir generateModMetadata
 neoForge.ideSyncTask generateModMetadata
-
-jar {
-    manifest {
-        attributes([
-                "Implementation-Title"    : project.name,
-                "Implementation-Version"  : "${realVersion}"
-        ])
-    }
-}
 
 // Example configuration to allow publishing using the maven-publish plugin
 publishing {

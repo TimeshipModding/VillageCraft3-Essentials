@@ -5,7 +5,7 @@ import com.timeshipmodding.villagecraft3essentials.content.entity.client.registr
 import com.timeshipmodding.villagecraft3essentials.content.entity.client.renderers.MoleRenderer;
 import com.timeshipmodding.villagecraft3essentials.content.menu.registries.ModMenus;
 import com.timeshipmodding.villagecraft3essentials.content.screen.AtmScreen;
-import com.timeshipmodding.villagecraft3essentials.infrastructure.tags.registries.ModItemTags;
+import com.timeshipmodding.villagecraft3essentials.util.tags.registries.ModItemTags;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.network.chat.Component;
@@ -13,6 +13,7 @@ import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;

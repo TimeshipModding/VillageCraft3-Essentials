@@ -5,9 +5,9 @@ import com.timeshipmodding.villagecraft3essentials.content.block.registries.ModB
 import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems;
 import com.timeshipmodding.villagecraft3essentials.content.menu.registries.ModMenus;
 import com.timeshipmodding.villagecraft3essentials.content.sound.registries.ModSounds;
-import com.timeshipmodding.villagecraft3essentials.infrastructure.networking.packet.atm.button.AtmSyncSlotPositionsPacket;
-import com.timeshipmodding.villagecraft3essentials.infrastructure.itemhandler.slot.AtmOutputSlotItemHandler;
-import com.timeshipmodding.villagecraft3essentials.infrastructure.tags.registries.ModItemTags;
+import com.timeshipmodding.villagecraft3essentials.networking.packet.atm.button.AtmSyncSlotPositionsPacket;
+import com.timeshipmodding.villagecraft3essentials.util.itemhandler.slot.AtmOutputSlotItemHandler;
+import com.timeshipmodding.villagecraft3essentials.util.tags.registries.ModItemTags;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
@@ -49,9 +49,11 @@ public class AtmMenu extends AbstractContainerMenu {
         int ix = 0, iy = 0, ox = 0, oy = 0;
 
         if (this.blockEntity.getRandomConvertScreen()) {
+            System.out.println("randomrefresh");
             ix = 26; iy = 24; ox = 26; oy = 75;
 
         } else if (this.blockEntity.getToolConvertScreen()){
+            System.out.println("toolrefresh");
             ix = 53; iy = 32; ox = 107; oy = 32;
         }
 
