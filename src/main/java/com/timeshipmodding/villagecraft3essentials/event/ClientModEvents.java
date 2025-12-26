@@ -1,4 +1,4 @@
-package com.timeshipmodding.villagecraft3essentials.event.registries;
+package com.timeshipmodding.villagecraft3essentials.event;
 
 import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
 import com.timeshipmodding.villagecraft3essentials.content.entity.client.registries.ModEntities;
@@ -13,7 +13,6 @@ import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;

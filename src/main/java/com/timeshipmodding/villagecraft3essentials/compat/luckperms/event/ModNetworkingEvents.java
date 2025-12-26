@@ -1,4 +1,4 @@
-package com.timeshipmodding.villagecraft3essentials.event.registries;
+package com.timeshipmodding.villagecraft3essentials.compat.luckperms.event;
 
 import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
 import com.timeshipmodding.villagecraft3essentials.networking.packet.HorseSyncCurrencyArmorEquipPacket;
