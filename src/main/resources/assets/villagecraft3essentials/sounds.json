@@ -3,8 +3,7 @@
     "subtitle": "subtitles.villagecraft3essentials.entity.mole.ambient",
     "sounds": [
       "villagecraft3essentials:mole_ambient_1",
-      "villagecraft3essentials:mole_ambient_2",
-      "villagecraft3essentials:mole_ambient_3"
+      "villagecraft3essentials:mole_ambient_2"
     ]
   },
   "mole_hurt": {

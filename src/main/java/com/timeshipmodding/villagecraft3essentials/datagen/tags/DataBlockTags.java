@@ -6,6 +6,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.MossBlock;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
@@ -26,6 +27,7 @@ public class DataBlockTags extends BlockTagsProvider {
                 .add(Blocks.DIRT)
                 .add(Blocks.COARSE_DIRT)
                 .add(Blocks.GRASS_BLOCK)
+                .add(Blocks.MOSS_BLOCK)
                 .add(Blocks.PODZOL);
 
         // Minecraft Tags

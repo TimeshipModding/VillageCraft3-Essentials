@@ -61,7 +61,7 @@ public class MoleEntity extends Animal implements ItemSteerable, Saddleable {
 
     public static AttributeSupplier.Builder createAttributes() {
         return Mob.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 14)
+                .add(Attributes.MAX_HEALTH, 10)
                 .add(Attributes.MOVEMENT_SPEED, 0.15)
                 .add(Attributes.FOLLOW_RANGE, 24);
     }
@@ -160,6 +160,7 @@ public class MoleEntity extends Animal implements ItemSteerable, Saddleable {
 
         if (this.level().isClientSide) {
             return InteractionResult.CONSUME;
+
         } else {
             return flag ? InteractionResult.SUCCESS : InteractionResult.PASS;
         }
@@ -173,6 +174,7 @@ public class MoleEntity extends Animal implements ItemSteerable, Saddleable {
         if (stack.is(ModItems.COOKED_WORM)) {
             f = 2.0F;
             i = 30;
+
         } else if (stack.is(ModItems.WORM)) {
             f = 1.0F;
             i = 20;
@@ -185,6 +187,7 @@ public class MoleEntity extends Animal implements ItemSteerable, Saddleable {
 
             if (this.isBaby() && i > 0) {
                 this.level().addParticle(ParticleTypes.HAPPY_VILLAGER, this.getRandomX(1.0), this.getRandomY() + 0.5, this.getRandomZ(1.0), 0.0, 0.0, 0.0);
+
                 if (!this.level().isClientSide) {
                     this.ageUp(i);
                     flag = true;

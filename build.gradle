@@ -9,7 +9,7 @@ tasks.named('wrapper', Wrapper).configure {
     distributionType = Wrapper.DistributionType.BIN
 }
 
-version = "${minecraft_version}${version_suffix}${mod_version}"
+version = mod_version
 group = mod_group_id
 
 repositories {
@@ -84,10 +84,8 @@ configurations {
 }
 
 dependencies {
-    // JEI Dependency
-    compileOnly "mezz.jei:jei-${mc_version}-common-api:${jei_version}"
-    compileOnly "mezz.jei:jei-${mc_version}-neoforge-api:${jei_version}"
-    localRuntime "mezz.jei:jei-${mc_version}-neoforge:${jei_version}"
+    compileOnly("mezz.jei:jei-${mc_version}-neoforge-api:${jei_version}")
+    runtimeOnly("mezz.jei:jei-${mc_version}-neoforge:${jei_version}")
 
     // LuckPerms Dependency
     compileOnly 'net.luckperms:api:5.4'
@@ -106,7 +104,6 @@ var generateModMetadata = tasks.register("generateModMetadata", ProcessResources
             mod_name               : mod_name,
             mod_license            : mod_license,
             mod_version            : mod_version,
-            version_suffix         : version_suffix,
             mod_credits            : mod_credits,
             mod_authors            : mod_authors,
             mod_description        : mod_description
