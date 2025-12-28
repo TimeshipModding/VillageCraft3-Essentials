@@ -21,6 +21,7 @@ public class DoubleBlock extends DoublePlantBlock {
         if (doubleblockhalf == DoubleBlockHalf.UPPER) {
             BlockPos blockpos = pPos.below();
             BlockState blockstate = pLevel.getBlockState(blockpos);
+
             if (blockstate.is(pState.getBlock()) && blockstate.getValue(HALF) == DoubleBlockHalf.LOWER) {
                 BlockState blockstate1 = blockstate.getFluidState().is(Fluids.WATER) ? Blocks.WATER.defaultBlockState() : Blocks.AIR.defaultBlockState();
                 pLevel.setBlock(blockpos, blockstate1, 35);

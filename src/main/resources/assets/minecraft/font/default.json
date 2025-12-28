@@ -1,0 +1,24 @@
+{
+  "providers": [
+    {
+      "type": "bitmap",
+      "file": "villagecraft3essentials:font/tab_header_left.png",
+      "ascent": 16,
+      "height": 64,
+      "chars": ["\uE001"]
+    },
+    {
+      "type": "bitmap",
+      "file": "villagecraft3essentials:font/tab_header_right.png",
+      "ascent": 16,
+      "height": 64,
+      "chars": ["\uE002"]
+    },
+    {
+      "type": "space",
+      "advances": {
+        "\uF801": -1
+      }
+    }
+  ]
+}

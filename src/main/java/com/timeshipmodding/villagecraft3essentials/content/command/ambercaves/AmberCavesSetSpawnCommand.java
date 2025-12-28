@@ -1,0 +1,59 @@
+package com.timeshipmodding.villagecraft3essentials.content.command.ambercaves;
+
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.context.CommandContext;
+import com.timeshipmodding.villagecraft3essentials.compat.luckperms.LuckpermsMethods;
+import com.timeshipmodding.villagecraft3essentials.infrastructure.config.ServerConfig;
+import com.timeshipmodding.villagecraft3essentials.infrastructure.data.saveddata.SpawnSavedData;
+import net.minecraft.ChatFormatting;
+import net.minecraft.commands.CommandSourceStack;
+import net.minecraft.commands.Commands;
+import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.level.Level;
+import net.neoforged.fml.ModList;
+
+public class AmberCavesSetSpawnCommand {
+    public AmberCavesSetSpawnCommand(CommandDispatcher<CommandSourceStack> dispatcher) {
+        dispatcher.register(Commands.literal("ambercaves").then(Commands.literal("setspawn")
+                .executes(this::execute)));
+    }
+
+    private int execute(CommandContext<CommandSourceStack> context) {
+        ServerPlayer player = context.getSource().getPlayer();
+        ServerLevel serverLevel = context.getSource().getLevel();
+        MinecraftServer server = context.getSource().getServer();
+        assert player != null;
+        BlockPos playerPos = player.blockPosition();
+        String positionString = playerPos.getX() + ", " + playerPos.getY() + ", " + playerPos.getZ();
+        int playerYaw = (int) player.getYRot();
+        int playerPitch = (int) player.getXRot();
+        int[] spawn = {playerPos.getX(), playerPos.getY(), playerPos.getZ(), playerYaw, playerPitch};
+        SpawnSavedData savedData = SpawnSavedData.getData(server);
+        savedData.setAmberCavesSpawn(spawn);
+        ChatFormatting groupStyling = ChatFormatting.WHITE;
+
+        if (ModList.get().isLoaded("luckperms")) {
+            groupStyling = LuckpermsMethods.getGroupStyling(ServerConfig.AMBERCAVES_GROUP_NAME.get());
+        }
+
+        if (serverLevel.dimension() != Level.OVERWORLD) {
+            MutableComponent message = Component.literal("Can only set ").withStyle(ChatFormatting.RED);
+            message.append(Component.literal("The Amber Caves'").withStyle(groupStyling));
+            message.append(Component.literal(" spawn in the overworld.").withStyle(ChatFormatting.RED));
+            context.getSource().sendFailure(message);
+            return 0;
+
+        } else {
+            MutableComponent message = Component.literal("Set ");
+            message.append(Component.literal("The Amber Caves'").withStyle(groupStyling));
+            message.append(Component.literal(" spawn to " + positionString + "!").withStyle(ChatFormatting.RED));
+            context.getSource().sendSuccess(() -> message, true);
+            return 1;
+        }
+    }
+}

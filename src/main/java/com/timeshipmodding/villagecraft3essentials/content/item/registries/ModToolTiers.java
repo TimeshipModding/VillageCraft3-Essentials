@@ -1,7 +1,6 @@
 package com.timeshipmodding.villagecraft3essentials.content.item.registries;
 
 import net.minecraft.tags.BlockTags;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.neoforged.neoforge.common.SimpleTier;

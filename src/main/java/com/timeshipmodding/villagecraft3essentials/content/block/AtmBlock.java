@@ -100,16 +100,20 @@ public class AtmBlock extends BaseEntityBlock {
 
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         DoubleBlockHalf doubleblockhalf = state.getValue(HALF);
+
         if (doubleblockhalf == DoubleBlockHalf.LOWER) {
             Direction direction = state.getValue(FACING);
+
             return switch (direction) {
                 case NORTH -> NORTH_LOWER_SHAPE;
                 case SOUTH -> SOUTH_LOWER_SHAPE;
                 case WEST -> WEST_LOWER_SHAPE;
                 default -> EAST_LOWER_SHAPE;
             };
+
         } else if (doubleblockhalf == DoubleBlockHalf.UPPER) {
             Direction direction = state.getValue(FACING);
+
             return switch (direction) {
                 case NORTH -> NORTH_UPPER_SHAPE;
                 case SOUTH -> SOUTH_UPPER_SHAPE;
@@ -147,6 +151,7 @@ public class AtmBlock extends BaseEntityBlock {
 
         if (facing.getAxis() == Direction.Axis.Y && doubleblockhalf == DoubleBlockHalf.LOWER == (facing == Direction.UP)) {
             return facingState.is(this) && facingState.getValue(HALF) != doubleblockhalf ? state.setValue(FACING, facingState.getValue(FACING)) : Blocks.AIR.defaultBlockState();
+
         } else {
             return doubleblockhalf == DoubleBlockHalf.LOWER && facing == Direction.DOWN && !state.canSurvive(level, currentPos) ? Blocks.AIR.defaultBlockState() : super.updateShape(state, facing, facingState, level, currentPos, facingPos);
         }
@@ -168,6 +173,7 @@ public class AtmBlock extends BaseEntityBlock {
 
         if (blockpos.getY() < level.getMaxBuildHeight() - 1 && level.getBlockState(blockpos.above()).canBeReplaced(context)) {
             return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite()).setValue(HALF, DoubleBlockHalf.LOWER);
+
         } else {
             return null;
         }

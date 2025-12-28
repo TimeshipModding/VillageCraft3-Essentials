@@ -4,11 +4,11 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
 import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems;
 import com.timeshipmodding.villagecraft3essentials.content.menu.AtmMenu;
-import com.timeshipmodding.villagecraft3essentials.networking.packet.atm.*;
-import com.timeshipmodding.villagecraft3essentials.networking.packet.atm.button.AtmRandomConvertButtonPressedPacket;
-import com.timeshipmodding.villagecraft3essentials.networking.packet.atm.button.AtmRefreshSlotsPacket;
-import com.timeshipmodding.villagecraft3essentials.networking.packet.atm.button.AtmToolConvertButtonPressedPacket;
-import com.timeshipmodding.villagecraft3essentials.util.data.clientdata.AtmClientData;
+import com.timeshipmodding.villagecraft3essentials.infrastructure.networking.packet.atm.*;
+import com.timeshipmodding.villagecraft3essentials.infrastructure.networking.packet.atm.button.AtmRandomConvertButtonPressedPacket;
+import com.timeshipmodding.villagecraft3essentials.infrastructure.networking.packet.atm.button.AtmRefreshSlotsPacket;
+import com.timeshipmodding.villagecraft3essentials.infrastructure.networking.packet.atm.button.AtmToolConvertButtonPressedPacket;
+import com.timeshipmodding.villagecraft3essentials.infrastructure.data.clientdata.AtmClientData;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.*;
@@ -253,9 +253,11 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
             for (int l = this.startIndex; l < k && l < 6; l++) {
                 int i1 = l - this.startIndex;
                 int k1 = j + i1 / RECIPES_COLUMNS * RECIPES_IMAGE_SIZE_HEIGHT + 2;
+
                 if (mouseX >= i && mouseX < i + RECIPES_IMAGE_SIZE_WIDTH && mouseY >= k1 && mouseY < k1 + RECIPES_IMAGE_SIZE_HEIGHT) {
                     if (randomConvertButtons[l].isHovered()) {
                         Component tooltipText;
+
                         switch (l) {
                             case 0:
                                 tooltipText = Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert1", diamondToRuby[0], diamondToRuby[1]);

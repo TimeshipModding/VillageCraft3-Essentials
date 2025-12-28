@@ -1,12 +1,11 @@
 package com.timeshipmodding.villagecraft3essentials.datagen.tags;
 
 import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
-import com.timeshipmodding.villagecraft3essentials.util.tags.registries.ModBlockTags;
+import com.timeshipmodding.villagecraft3essentials.infrastructure.tags.registries.ModBlockTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.MossBlock;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;

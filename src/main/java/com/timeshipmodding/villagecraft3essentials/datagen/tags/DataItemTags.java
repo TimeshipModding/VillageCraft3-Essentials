@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 import java.util.concurrent.CompletableFuture;
 
 import static com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems.*;
-import static com.timeshipmodding.villagecraft3essentials.util.tags.registries.ModItemTags.*;
+import static com.timeshipmodding.villagecraft3essentials.infrastructure.tags.registries.ModItemTags.*;
 import static net.minecraft.world.item.Items.*;
 
 public class DataItemTags extends ItemTagsProvider {

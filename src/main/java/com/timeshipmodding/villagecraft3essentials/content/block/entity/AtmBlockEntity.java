@@ -3,8 +3,8 @@ package com.timeshipmodding.villagecraft3essentials.content.block.entity;
 import com.timeshipmodding.villagecraft3essentials.content.block.entity.registries.ModBlockEntities;
 import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems;
 import com.timeshipmodding.villagecraft3essentials.content.menu.AtmMenu;
-import com.timeshipmodding.villagecraft3essentials.util.data.saveddata.AtmRandomConversionRatesSavedData;
-import com.timeshipmodding.villagecraft3essentials.util.tags.registries.ModItemTags;
+import com.timeshipmodding.villagecraft3essentials.infrastructure.data.saveddata.AtmRandomConversionRatesSavedData;
+import com.timeshipmodding.villagecraft3essentials.infrastructure.tags.registries.ModItemTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponentMap;
@@ -56,6 +56,7 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
     public Component getDisplayName() {
         if (randomConvertScreen) {
             return Component.translatable("blockentity.villagecraft3essentials.atm.randomconvert");
+
         } else if (toolConvertScreen) {
             return Component.translatable("blockentity.villagecraft3essentials.atm.toolconvert");
         }
@@ -163,6 +164,7 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
 
         if (conversionRemainder == 0) {
             itemStackHandler.setStackInSlot(INPUT_SLOT, ItemStack.EMPTY);
+
         } else {
             initialInputStack.setCount(conversionRemainder);
             itemStackHandler.setStackInSlot(INPUT_SLOT, initialInputStack);
@@ -190,26 +192,31 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
                     inputStack = new ItemStack(Items.DIAMOND, AtmRandomConversionRatesSavedData.getData(server).getDiamondToRuby()[0]);
                     outputStack = new ItemStack(ModItems.RUBY.get(), AtmRandomConversionRatesSavedData.getData(server).getDiamondToRuby()[1]);
                 }
+
             } else if (randomConvertButtonPressed == 2) {
                 if (inputItem == Items.DIAMOND && (itemStackHandler.getStackInSlot(INPUT_SLOT).getCount() >= AtmRandomConversionRatesSavedData.getData(server).getDiamondToAmber()[0])) {
                     inputStack = new ItemStack(Items.DIAMOND, AtmRandomConversionRatesSavedData.getData(server).getDiamondToAmber()[0]);
                     outputStack = new ItemStack(ModItems.AMBER.get(), AtmRandomConversionRatesSavedData.getData(server).getDiamondToAmber()[1]);
                 }
+
             } else if (randomConvertButtonPressed == 3) {
                 if (inputItem == ModItems.RUBY.get() && (itemStackHandler.getStackInSlot(INPUT_SLOT).getCount() >= AtmRandomConversionRatesSavedData.getData(server).getRubyToDiamond()[0])) {
                     inputStack = new ItemStack(ModItems.RUBY.get(), AtmRandomConversionRatesSavedData.getData(server).getRubyToDiamond()[0]);
                     outputStack = new ItemStack(Items.DIAMOND, AtmRandomConversionRatesSavedData.getData(server).getRubyToDiamond()[1]);
                 }
+
             } else if (randomConvertButtonPressed == 4) {
                 if (inputItem == ModItems.RUBY.get() && (itemStackHandler.getStackInSlot(INPUT_SLOT).getCount() >= AtmRandomConversionRatesSavedData.getData(server).getRubyToAmber()[0])) {
                     inputStack = new ItemStack(ModItems.RUBY.get(), AtmRandomConversionRatesSavedData.getData(server).getRubyToAmber()[0]);
                     outputStack = new ItemStack(ModItems.AMBER.get(), AtmRandomConversionRatesSavedData.getData(server).getRubyToAmber()[1]);
                 }
+
             } else if (randomConvertButtonPressed == 5) {
                 if (inputItem == ModItems.AMBER.get() && (itemStackHandler.getStackInSlot(INPUT_SLOT).getCount() >= AtmRandomConversionRatesSavedData.getData(server).getAmberToDiamond()[0])) {
                     inputStack = new ItemStack(ModItems.AMBER.get(), AtmRandomConversionRatesSavedData.getData(server).getAmberToDiamond()[0]);
                     outputStack = new ItemStack(Items.DIAMOND, AtmRandomConversionRatesSavedData.getData(server).getAmberToDiamond()[1]);
                 }
+
             } else if (randomConvertButtonPressed == 6) {
                 if (inputItem == ModItems.AMBER.get() && (itemStackHandler.getStackInSlot(INPUT_SLOT).getCount() >= AtmRandomConversionRatesSavedData.getData(server).getAmberToRuby()[0])) {
                     inputStack = new ItemStack(ModItems.AMBER.get(), AtmRandomConversionRatesSavedData.getData(server).getAmberToRuby()[0]);
@@ -232,60 +239,79 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
             if(inputItem == ModItems.RUBY_SWORD.get()) {
                 inputStack = new ItemStack(ModItems.RUBY_SWORD.get());
                 outputStack = new ItemStack(Items.DIAMOND_SWORD);
+
             } else if (inputItem == ModItems.RUBY_SHOVEL.get()) {
                 inputStack = new ItemStack(ModItems.RUBY_SHOVEL.get());
                 outputStack = new ItemStack(Items.DIAMOND_SHOVEL);
+
             } else if (inputItem == ModItems.RUBY_PICKAXE.get()) {
                 inputStack = new ItemStack(ModItems.RUBY_PICKAXE.get());
                 outputStack = new ItemStack(Items.DIAMOND_PICKAXE);
+
             } else if (inputItem == ModItems.RUBY_AXE.get()) {
                 inputStack = new ItemStack(ModItems.RUBY_AXE.get());
                 outputStack = new ItemStack(Items.DIAMOND_AXE);
+
             } else if (inputItem == ModItems.RUBY_HOE.get()) {
                 inputStack = new ItemStack(ModItems.RUBY_HOE.get());
                 outputStack = new ItemStack(Items.DIAMOND_HOE);
+
             } else if (inputItem == ModItems.RUBY_HELMET.get()) {
                 inputStack = new ItemStack(ModItems.RUBY_HELMET.get());
                 outputStack = new ItemStack(Items.DIAMOND_HELMET);
+
             } else if (inputItem == ModItems.RUBY_CHESTPLATE.get()) {
                 inputStack = new ItemStack(ModItems.RUBY_CHESTPLATE.get());
                 outputStack = new ItemStack(Items.DIAMOND_CHESTPLATE);
+
             } else if (inputItem == ModItems.RUBY_LEGGINGS.get()) {
                 inputStack = new ItemStack(ModItems.RUBY_LEGGINGS.get());
                 outputStack = new ItemStack(Items.DIAMOND_LEGGINGS);
+
             } else if (inputItem == ModItems.RUBY_BOOTS.get()) {
                 inputStack = new ItemStack(ModItems.RUBY_BOOTS.get());
                 outputStack = new ItemStack(Items.DIAMOND_BOOTS);
+
             } else if (inputItem == ModItems.RUBY_HORSE_ARMOR.get()) {
                 inputStack = new ItemStack(ModItems.RUBY_HORSE_ARMOR.get());
                 outputStack = new ItemStack(Items.DIAMOND_HORSE_ARMOR);
+
             } else if(inputItem == ModItems.AMBER_SWORD.get()) {
                 inputStack = new ItemStack(ModItems.AMBER_SWORD.get());
                 outputStack = new ItemStack(Items.DIAMOND_SWORD);
+
             } else if (inputItem == ModItems.AMBER_SHOVEL.get()) {
                 inputStack = new ItemStack(ModItems.AMBER_SHOVEL.get());
                 outputStack = new ItemStack(Items.DIAMOND_SHOVEL);
+
             } else if (inputItem == ModItems.AMBER_PICKAXE.get()) {
                 inputStack = new ItemStack(ModItems.AMBER_PICKAXE.get());
                 outputStack = new ItemStack(Items.DIAMOND_PICKAXE);
+
             } else if (inputItem == ModItems.AMBER_AXE.get()) {
                 inputStack = new ItemStack(ModItems.AMBER_AXE.get());
                 outputStack = new ItemStack(Items.DIAMOND_AXE);
+
             } else if (inputItem == ModItems.AMBER_HOE.get()) {
                 inputStack = new ItemStack(ModItems.AMBER_HOE.get());
                 outputStack = new ItemStack(Items.DIAMOND_HOE);
+
             } else if (inputItem == ModItems.AMBER_HELMET.get()) {
                 inputStack = new ItemStack(ModItems.AMBER_HELMET.get());
                 outputStack = new ItemStack(Items.DIAMOND_HELMET);
+
             } else if (inputItem == ModItems.AMBER_CHESTPLATE.get()) {
                 inputStack = new ItemStack(ModItems.AMBER_CHESTPLATE.get());
                 outputStack = new ItemStack(Items.DIAMOND_CHESTPLATE);
+
             } else if (inputItem == ModItems.AMBER_LEGGINGS.get()) {
                 inputStack = new ItemStack(ModItems.AMBER_LEGGINGS.get());
                 outputStack = new ItemStack(Items.DIAMOND_LEGGINGS);
+
             } else if (inputItem == ModItems.AMBER_BOOTS.get()) {
                 inputStack = new ItemStack(ModItems.AMBER_BOOTS.get());
                 outputStack = new ItemStack(Items.DIAMOND_BOOTS);
+
             } else if (inputItem == ModItems.AMBER_HORSE_ARMOR.get()) {
                 inputStack = new ItemStack(ModItems.AMBER_HORSE_ARMOR.get());
                 outputStack = new ItemStack(Items.DIAMOND_HORSE_ARMOR);
@@ -295,60 +321,79 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
             if(inputItem == Items.DIAMOND_SWORD) {
                 inputStack = new ItemStack(Items.DIAMOND_SWORD);
                 outputStack = new ItemStack(ModItems.RUBY_SWORD.get());
+
             } else if (inputItem == Items.DIAMOND_SHOVEL) {
                 inputStack = new ItemStack(Items.DIAMOND_SHOVEL);
                 outputStack = new ItemStack(ModItems.RUBY_SHOVEL.get());
+
             } else if (inputItem == Items.DIAMOND_PICKAXE) {
                 inputStack = new ItemStack(Items.DIAMOND_PICKAXE);
                 outputStack = new ItemStack(ModItems.RUBY_PICKAXE.get());
+
             } else if (inputItem == Items.DIAMOND_AXE) {
                 inputStack = new ItemStack(Items.DIAMOND_AXE);
                 outputStack = new ItemStack(ModItems.RUBY_AXE.get());
+
             } else if (inputItem == Items.DIAMOND_HOE) {
                 inputStack = new ItemStack(Items.DIAMOND_HOE);
                 outputStack = new ItemStack(ModItems.RUBY_HOE.get());
+
             } else if (inputItem == Items.DIAMOND_HELMET) {
                 inputStack = new ItemStack(Items.DIAMOND_HELMET);
                 outputStack = new ItemStack(ModItems.RUBY_HELMET.get());
+
             } else if (inputItem == Items.DIAMOND_CHESTPLATE) {
                 inputStack = new ItemStack(Items.DIAMOND_CHESTPLATE);
                 outputStack = new ItemStack(ModItems.RUBY_CHESTPLATE.get());
+
             } else if (inputItem == Items.DIAMOND_LEGGINGS) {
                 inputStack = new ItemStack(Items.DIAMOND_LEGGINGS);
                 outputStack = new ItemStack(ModItems.RUBY_LEGGINGS.get());
+
             } else if (inputItem == Items.DIAMOND_BOOTS) {
                 inputStack = new ItemStack(Items.DIAMOND_BOOTS);
                 outputStack = new ItemStack(ModItems.RUBY_BOOTS.get());
+
             } else if (inputItem == Items.DIAMOND_HORSE_ARMOR) {
                 inputStack = new ItemStack(Items.DIAMOND_HORSE_ARMOR);
                 outputStack = new ItemStack(ModItems.RUBY_HORSE_ARMOR.get());
+
             } else if(inputItem == ModItems.AMBER_SWORD.get()) {
                 inputStack = new ItemStack(ModItems.AMBER_SWORD.get());
                 outputStack = new ItemStack(ModItems.RUBY_SWORD.get());
+
             } else if (inputItem == ModItems. AMBER_SHOVEL.get()) {
                 inputStack = new ItemStack(ModItems.AMBER_SHOVEL.get());
                 outputStack = new ItemStack(ModItems.RUBY_SHOVEL.get());
+
             } else if (inputItem == ModItems.AMBER_PICKAXE.get()) {
                 inputStack = new ItemStack(ModItems.AMBER_PICKAXE.get());
                 outputStack = new ItemStack(ModItems.RUBY_PICKAXE.get());
+
             } else if (inputItem == ModItems.AMBER_AXE.get()) {
                 inputStack = new ItemStack(ModItems.AMBER_AXE.get());
                 outputStack = new ItemStack(ModItems.RUBY_AXE.get());
+
             } else if (inputItem == ModItems.AMBER_HOE.get()) {
                 inputStack = new ItemStack(ModItems.AMBER_HOE.get());
                 outputStack = new ItemStack(ModItems.RUBY_HOE.get());
+
             } else if (inputItem == ModItems.AMBER_HELMET.get()) {
                 inputStack = new ItemStack(ModItems.AMBER_HELMET.get());
                 outputStack = new ItemStack(ModItems.RUBY_HELMET.get());
+
             } else if (inputItem == ModItems.AMBER_CHESTPLATE.get()) {
                 inputStack = new ItemStack(ModItems.AMBER_CHESTPLATE.get());
                 outputStack = new ItemStack(ModItems.RUBY_CHESTPLATE.get());
+
             } else if (inputItem == ModItems.AMBER_LEGGINGS.get()) {
                 inputStack = new ItemStack(ModItems.AMBER_LEGGINGS.get());
                 outputStack = new ItemStack(ModItems.RUBY_LEGGINGS.get());
+
             } else if (inputItem == ModItems.AMBER_BOOTS.get()) {
                 inputStack = new ItemStack(ModItems.AMBER_BOOTS.get());
                 outputStack = new ItemStack(ModItems.RUBY_BOOTS.get());
+
             } else if (inputItem == ModItems.AMBER_HORSE_ARMOR.get()) {
                 inputStack = new ItemStack(ModItems.AMBER_HORSE_ARMOR.get());
                 outputStack = new ItemStack(ModItems.RUBY_HORSE_ARMOR.get());
@@ -358,60 +403,79 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
             if(inputItem == Items.DIAMOND_SWORD) {
                 inputStack = new ItemStack(Items.DIAMOND_SWORD);
                 outputStack = new ItemStack(ModItems.AMBER_SWORD.get());
+
             } else if (inputItem == Items.DIAMOND_SHOVEL) {
                 inputStack = new ItemStack(Items.DIAMOND_SHOVEL);
                 outputStack = new ItemStack(ModItems.AMBER_SHOVEL.get());
+
             } else if (inputItem == Items.DIAMOND_PICKAXE) {
                 inputStack = new ItemStack(Items.DIAMOND_PICKAXE);
                 outputStack = new ItemStack(ModItems.AMBER_PICKAXE.get());
+
             } else if (inputItem == Items.DIAMOND_AXE) {
                 inputStack = new ItemStack(Items.DIAMOND_AXE);
                 outputStack = new ItemStack(ModItems.AMBER_AXE.get());
+
             } else if (inputItem == Items.DIAMOND_HOE) {
                 inputStack = new ItemStack(Items.DIAMOND_HOE);
                 outputStack = new ItemStack(ModItems.AMBER_HOE.get());
+
             } else if (inputItem == Items.DIAMOND_HELMET) {
                 inputStack = new ItemStack(Items.DIAMOND_HELMET);
                 outputStack = new ItemStack(ModItems.AMBER_HELMET.get());
+
             } else if (inputItem == Items.DIAMOND_CHESTPLATE) {
                 inputStack = new ItemStack(Items.DIAMOND_CHESTPLATE);
                 outputStack = new ItemStack(ModItems.AMBER_CHESTPLATE.get());
+
             } else if (inputItem == Items.DIAMOND_LEGGINGS) {
                 inputStack = new ItemStack(Items.DIAMOND_LEGGINGS);
                 outputStack = new ItemStack(ModItems.AMBER_LEGGINGS.get());
+
             } else if (inputItem == Items.DIAMOND_BOOTS) {
                 inputStack = new ItemStack(Items.DIAMOND_BOOTS);
                 outputStack = new ItemStack(ModItems.AMBER_BOOTS.get());
+
             } else if (inputItem == Items.DIAMOND_HORSE_ARMOR) {
                 inputStack = new ItemStack(Items.DIAMOND_HORSE_ARMOR);
                 outputStack = new ItemStack(ModItems.AMBER_HORSE_ARMOR.get());
+
             } else if(inputItem == ModItems.RUBY_SWORD.get()) {
                 inputStack = new ItemStack(ModItems.RUBY_SWORD.get());
                 outputStack = new ItemStack(ModItems.AMBER_SWORD.get());
+
             } else if (inputItem == ModItems.RUBY_SHOVEL.get()) {
                 inputStack = new ItemStack(ModItems.RUBY_SHOVEL.get());
                 outputStack = new ItemStack(ModItems.AMBER_SHOVEL.get());
+
             } else if (inputItem == ModItems.RUBY_PICKAXE.get()) {
                 inputStack = new ItemStack(ModItems.RUBY_PICKAXE.get());
                 outputStack = new ItemStack(ModItems.AMBER_PICKAXE.get());
+
             } else if (inputItem == ModItems.RUBY_AXE.get()) {
                 inputStack = new ItemStack(ModItems.RUBY_AXE.get());
                 outputStack = new ItemStack(ModItems.AMBER_AXE.get());
+
             } else if (inputItem == ModItems.RUBY_HOE.get()) {
                 inputStack = new ItemStack(ModItems.RUBY_HOE.get());
                 outputStack = new ItemStack(ModItems.AMBER_HOE.get());
+
             } else if (inputItem == ModItems.RUBY_HELMET.get()) {
                 inputStack = new ItemStack(ModItems.RUBY_HELMET.get());
                 outputStack = new ItemStack(ModItems.AMBER_HELMET.get());
+
             } else if (inputItem == ModItems.RUBY_CHESTPLATE.get()) {
                 inputStack = new ItemStack(ModItems.RUBY_CHESTPLATE.get());
                 outputStack = new ItemStack(ModItems.AMBER_CHESTPLATE.get());
+
             } else if (inputItem == ModItems.RUBY_LEGGINGS.get()) {
                 inputStack = new ItemStack(ModItems.RUBY_LEGGINGS.get());
                 outputStack = new ItemStack(ModItems.AMBER_LEGGINGS.get());
+
             } else if (inputItem == ModItems.RUBY_BOOTS.get()) {
                 inputStack = new ItemStack(ModItems.RUBY_BOOTS.get());
                 outputStack = new ItemStack(ModItems.AMBER_BOOTS.get());
+
             } else if (inputItem == ModItems.RUBY_HORSE_ARMOR.get()) {
                 inputStack = new ItemStack(ModItems.RUBY_HORSE_ARMOR.get());
                 outputStack = new ItemStack(ModItems.AMBER_HORSE_ARMOR.get());
@@ -434,18 +498,23 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
                 if (itemStackHandler.getStackInSlot(OUTPUT_SLOT).getItem() == Items.DIAMOND) {
                     if ((itemStackHandler.getStackInSlot(OUTPUT_SLOT).getCount() == AtmRandomConversionRatesSavedData.getData(server).getRubyToDiamond()[1]) && randomConvertButtonPressed != 3) {
                         itemStackHandler.setStackInSlot(OUTPUT_SLOT, ItemStack.EMPTY);
+
                     } else if ((itemStackHandler.getStackInSlot(OUTPUT_SLOT).getCount() == AtmRandomConversionRatesSavedData.getData(server).getAmberToDiamond()[1]) && randomConvertButtonPressed != 5) {
                         itemStackHandler.setStackInSlot(OUTPUT_SLOT, ItemStack.EMPTY);
                     }
+
                 } else if (itemStackHandler.getStackInSlot(OUTPUT_SLOT).getItem() == ModItems.RUBY.get()) {
                     if ((itemStackHandler.getStackInSlot(OUTPUT_SLOT).getCount() == AtmRandomConversionRatesSavedData.getData(server).getDiamondToRuby()[1]) && randomConvertButtonPressed != 1) {
                         itemStackHandler.setStackInSlot(OUTPUT_SLOT, ItemStack.EMPTY);
+
                     } else if ((itemStackHandler.getStackInSlot(OUTPUT_SLOT).getCount() == AtmRandomConversionRatesSavedData.getData(server).getAmberToRuby()[1]) && randomConvertButtonPressed != 6) {
                         itemStackHandler.setStackInSlot(OUTPUT_SLOT, ItemStack.EMPTY);
                     }
+
                 } else if (itemStackHandler.getStackInSlot(OUTPUT_SLOT).getItem() == ModItems.AMBER.get()) {
                     if ((itemStackHandler.getStackInSlot(OUTPUT_SLOT).getCount() == AtmRandomConversionRatesSavedData.getData(server).getDiamondToAmber()[1]) && randomConvertButtonPressed != 2) {
                         itemStackHandler.setStackInSlot(OUTPUT_SLOT, ItemStack.EMPTY);
+
                     } else if ((itemStackHandler.getStackInSlot(OUTPUT_SLOT).getCount() == AtmRandomConversionRatesSavedData.getData(server).getRubyToAmber()[1]) && randomConvertButtonPressed != 4) {
                         itemStackHandler.setStackInSlot(OUTPUT_SLOT, ItemStack.EMPTY);
                     }
@@ -457,14 +526,19 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
 
                 if (inputStack.is(ModItemTags.DIAMOND_CONVERTIBLE_TOOLS) && (outputStack.is(ModItemTags.RUBY_CONVERTIBLE_TOOLS)) && toolConvertButtonPressed != 1) {
                     itemStackHandler.setStackInSlot(OUTPUT_SLOT, ItemStack.EMPTY);
+
                 } else if (inputStack.is(ModItemTags.DIAMOND_CONVERTIBLE_TOOLS) && (outputStack.is(ModItemTags.AMBER_CONVERTIBLE_TOOLS)) && toolConvertButtonPressed != 1) {
                     itemStackHandler.setStackInSlot(OUTPUT_SLOT, ItemStack.EMPTY);
+
                 } else if (inputStack.is(ModItemTags.RUBY_CONVERTIBLE_TOOLS) && (outputStack.is(ModItemTags.DIAMOND_CONVERTIBLE_TOOLS)) && toolConvertButtonPressed != 2) {
                     itemStackHandler.setStackInSlot(OUTPUT_SLOT, ItemStack.EMPTY);
+
                 } else if (inputStack.is(ModItemTags.RUBY_CONVERTIBLE_TOOLS) && (outputStack.is(ModItemTags.AMBER_CONVERTIBLE_TOOLS)) && toolConvertButtonPressed != 2) {
                     itemStackHandler.setStackInSlot(OUTPUT_SLOT, ItemStack.EMPTY);
+
                 } else if (inputStack.is(ModItemTags.AMBER_CONVERTIBLE_TOOLS) && (outputStack.is(ModItemTags.DIAMOND_CONVERTIBLE_TOOLS)) && toolConvertButtonPressed != 3) {
                     itemStackHandler.setStackInSlot(OUTPUT_SLOT, ItemStack.EMPTY);
+
                 } else if (inputStack.is(ModItemTags.AMBER_CONVERTIBLE_TOOLS) && (outputStack.is(ModItemTags.RUBY_CONVERTIBLE_TOOLS)) && toolConvertButtonPressed != 3) {
                     itemStackHandler.setStackInSlot(OUTPUT_SLOT, ItemStack.EMPTY);
                 }
@@ -473,13 +547,11 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
     }
 
     private boolean hasRecipe(ItemStack inputStack, ItemStack outputStack) {
-        return canInsertAmountIntoOutputSlot(outputStack.getCount()) && canInsertItemIntoOutputSlot(outputStack)
-                && this.itemStackHandler.getStackInSlot(INPUT_SLOT).getItem() == inputStack.getItem();
+        return canInsertAmountIntoOutputSlot(outputStack.getCount()) && canInsertItemIntoOutputSlot(outputStack) && this.itemStackHandler.getStackInSlot(INPUT_SLOT).getItem() == inputStack.getItem();
     }
 
     private boolean canInsertItemIntoOutputSlot(ItemStack outputStack) {
-        return itemStackHandler.getStackInSlot(OUTPUT_SLOT).isEmpty() ||
-                itemStackHandler.getStackInSlot(OUTPUT_SLOT).getItem() == outputStack.getItem();
+        return itemStackHandler.getStackInSlot(OUTPUT_SLOT).isEmpty() || itemStackHandler.getStackInSlot(OUTPUT_SLOT).getItem() == outputStack.getItem();
     }
 
     private boolean canInsertAmountIntoOutputSlot(int amount) {
@@ -499,14 +571,19 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
         if (server != null) {
             if (conversionButtonPressed == 1) {
                 amount = AtmRandomConversionRatesSavedData.getData(server).getDiamondToRuby()[0];
+
             } else if (conversionButtonPressed == 2) {
                 amount = AtmRandomConversionRatesSavedData.getData(server).getDiamondToAmber()[0];
+
             } else if (conversionButtonPressed == 3) {
                 amount = AtmRandomConversionRatesSavedData.getData(server).getRubyToDiamond()[0];
+
             } else if (conversionButtonPressed == 4) {
                 amount = AtmRandomConversionRatesSavedData.getData(server).getRubyToAmber()[0];
+
             } else if (conversionButtonPressed == 5) {
                 amount = AtmRandomConversionRatesSavedData.getData(server).getAmberToDiamond()[0];
+
             } else if (conversionButtonPressed == 6) {
                 amount = AtmRandomConversionRatesSavedData.getData(server).getAmberToRuby()[0];
             }
