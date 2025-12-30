@@ -1,1 +1,1 @@
-# Simply-Natural-Biomes
+# VillageCraft3-Essentials
