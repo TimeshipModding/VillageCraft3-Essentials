@@ -51,7 +51,7 @@ public class GripperCitySetSpawnCommand {
         } else {
             MutableComponent message = Component.literal("Set ");
             message.append(Component.literal("Gripper City's").withStyle(groupStyling));
-            message.append(Component.literal(" spawn to " + positionString + "!").withStyle(ChatFormatting.RED));
+            message.append(Component.literal(" spawn to " + positionString + "!"));
             context.getSource().sendSuccess(() -> message, true);
             return 1;
         }

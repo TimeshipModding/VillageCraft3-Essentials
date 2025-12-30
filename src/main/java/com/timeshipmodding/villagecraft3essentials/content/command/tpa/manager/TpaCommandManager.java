@@ -1,12 +1,15 @@
 package com.timeshipmodding.villagecraft3essentials.content.command.tpa.manager;
 
+import com.timeshipmodding.villagecraft3essentials.event.registries.ModEvents;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.data.TpaCommandData;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.network.chat.Style;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.neoforged.fml.ModList;
 
 import java.util.Iterator;
 import java.util.Map;
@@ -18,40 +21,52 @@ import java.util.concurrent.TimeUnit;
 public class TpaCommandManager {
     private static final Map<UUID, TpaCommandData> pendingTpaRequests = new ConcurrentHashMap<>();
     private static final long TIMEOUT_DURATION_MS = TimeUnit.MINUTES.toMillis(5);
-    private static Component requestingPlayerUsername;
-    private static Component targetPlayerUsername;
-    private static String teleportType;
 
-    public static void requestTpa(ServerPlayer requestingPlayer, ServerPlayer targetPlayer, String commandType) {
-        requestingPlayerUsername = Objects.requireNonNull(requestingPlayer.getDisplayName());
-        targetPlayerUsername = Objects.requireNonNull(targetPlayer.getDisplayName());
-        teleportType = commandType;
-
+    public static void requestTpa(ServerPlayer requestingPlayer, ServerPlayer targetPlayer, String type) {
         if (requestingPlayer.getUUID().equals(targetPlayer.getUUID())) {
             requestingPlayer.sendSystemMessage(Component.literal("You can't send a TPA request to yourself.").withStyle(ChatFormatting.RED));
             return;
         }
 
+        TpaCommandData data = new TpaCommandData(
+                requestingPlayer.getUUID(),
+                requestingPlayer.getDisplayName(),
+                targetPlayer.getDisplayName(),
+                type,
+                System.currentTimeMillis()
+        );
+
         if (pendingTpaRequests.containsKey(targetPlayer.getUUID())) {
-            MutableComponent message = Component.literal("You already sent a TPA request to ").withStyle(ChatFormatting.RED);
-            message.append(requestingPlayerUsername);
-            message.append(Component.literal("Wait for them to type ").withStyle(ChatFormatting.RED));
+            MutableComponent message = Component.empty();
+
+            if ((Objects.equals(data.type(), "tpa"))) {
+                message = Component.literal("You already sent a TPA request to ").withStyle(ChatFormatting.RED);
+            } else if ((Objects.equals(data.type(), "tpahere"))) {
+                message = Component.literal("You already sent a TPA here request to ").withStyle(ChatFormatting.RED);
+            }
+
+            if (ModList.get().isLoaded("luckperms")) {
+                message.append(data.targetPlayerName().copy());
+            } else {
+                message.append(data.targetPlayerName().copy().withStyle(ChatFormatting.WHITE));
+            }
+
+            message.append(Component.literal(". Wait for them to type ").withStyle(ChatFormatting.RED));
             message.append(Component.literal("/tpaccept").withStyle(ChatFormatting.GREEN));
             message.append(Component.literal(".").withStyle(ChatFormatting.RED));
             requestingPlayer.sendSystemMessage(message);
             return;
         }
 
-        TpaCommandData data = new TpaCommandData(requestingPlayer.getUUID(), System.currentTimeMillis());
         pendingTpaRequests.put(targetPlayer.getUUID(), data);
 
-        if (Objects.equals(teleportType, "tpa")) {
+        if (Objects.equals(data.type(), "tpa")) {
             MutableComponent requestingPlayerMessage = Component.literal("You sent a TPA request to ");
-            requestingPlayerMessage.append(targetPlayerUsername);
+            requestingPlayerMessage.append(data.targetPlayerName().copy());
             requestingPlayerMessage.append(". Waiting for them to type ");
             requestingPlayerMessage.append(Component.literal("/tpaccept").withStyle(ChatFormatting.GREEN));
             requestingPlayerMessage.append(Component.literal("..."));
-            MutableComponent targetPlayerMessage = (MutableComponent) requestingPlayerUsername;
+            MutableComponent targetPlayerMessage = data.requestingPlayerName().copy();
             targetPlayerMessage.append(" has requested to TPA to you! Type ");
             targetPlayerMessage.append(Component.literal("/tpaccept").withStyle(ChatFormatting.GREEN));
             targetPlayerMessage.append(Component.literal(" to accept or "));
@@ -60,13 +75,13 @@ public class TpaCommandManager {
             requestingPlayer.sendSystemMessage(requestingPlayerMessage);
             targetPlayer.sendSystemMessage(targetPlayerMessage);
 
-        } else if (Objects.equals(teleportType, "tpahere")) {
+        } else if (Objects.equals(data.type(), "tpahere")) {
             MutableComponent requestingPlayerMessage = Component.literal("You sent a TPA here request to ");
-            requestingPlayerMessage.append(targetPlayerUsername);
+            requestingPlayerMessage.append(data.targetPlayerName().copy());
             requestingPlayerMessage.append(". Waiting for them to type ");
             requestingPlayerMessage.append(Component.literal("/tpaccept").withStyle(ChatFormatting.GREEN));
             requestingPlayerMessage.append(Component.literal("..."));
-            MutableComponent targetPlayerMessage = (MutableComponent) requestingPlayerUsername;
+            MutableComponent targetPlayerMessage = data.requestingPlayerName().copy();
             targetPlayerMessage.append(" has requested to TPA here to them! Type ");
             targetPlayerMessage.append(Component.literal("/tpaccept").withStyle(ChatFormatting.GREEN));
             targetPlayerMessage.append(Component.literal(" to accept or "));
@@ -88,30 +103,43 @@ public class TpaCommandManager {
             ServerPlayer requestingPlayer = server.getPlayerList().getPlayer(playerUuid);
             assert serverlevel != null;
 
-            if (Objects.equals(teleportType, "tpa")) {
-                int requestingPlayerYaw = (int) requestingPlayer.getYRot();
-                int requestingPlayerPitch = (int) requestingPlayer.getXRot();
-                requestingPlayer.teleportTo(serverlevel, targetPlayer.getX(), targetPlayer.getY(), targetPlayer.getZ(), requestingPlayerYaw, requestingPlayerPitch);
+            if (Objects.equals(data.type(), "tpa")) {
                 MutableComponent requestingPlayerMessage = Component.literal("You have been teleported to ");
-                requestingPlayerMessage.append(targetPlayerUsername);
+                requestingPlayerMessage.append(data.targetPlayerName().copy());
                 requestingPlayerMessage.append(Component.literal("!"));
                 MutableComponent targetPlayerMessage = Component.literal("You accepted a TPA request from ");
-                targetPlayerMessage.append(requestingPlayerUsername);
+                targetPlayerMessage.append(data.requestingPlayerName().copy());
                 targetPlayerMessage.append(Component.literal("!"));
-                requestingPlayer.sendSystemMessage(requestingPlayerMessage);
-                targetPlayer.sendSystemMessage(targetPlayerMessage);
+                System.out.println(targetPlayerMessage);
 
-            } else if (Objects.equals(teleportType, "tpahere")) {
-                int targetPlayerYaw = (int) requestingPlayer.getYRot();
-                int targetPlayerPitch = (int) requestingPlayer.getXRot();
-                targetPlayer.teleportTo(serverlevel, requestingPlayer.getX(), requestingPlayer.getY(), requestingPlayer.getZ(), targetPlayerYaw, targetPlayerPitch);
-                MutableComponent requestingPlayerMessage = (MutableComponent) targetPlayerUsername;
+                ModEvents.pendingTPAs.put(requestingPlayer.getUUID(), new ModEvents.TpaCommandData(
+                        serverlevel,
+                        60,
+                        requestingPlayer.position(),
+                        new double[]{targetPlayer.getX(), targetPlayer.getY(), targetPlayer.getZ()},
+                        targetPlayer,
+                        targetPlayerMessage,
+                        requestingPlayerMessage,
+                        "tpa"
+                ));
+
+            } else if (Objects.equals(data.type(), "tpahere")) {
+                MutableComponent requestingPlayerMessage = data.targetPlayerName().copy();
                 requestingPlayerMessage.append(Component.literal(" has been teleported to you!"));
                 MutableComponent targetPlayerMessage = Component.literal("You accepted a TPA here request from ");
-                targetPlayerMessage.append(requestingPlayerUsername);
+                targetPlayerMessage.append(data.requestingPlayerName().copy());
                 targetPlayerMessage.append(Component.literal(" and have been teleported to them!"));
-                requestingPlayer.sendSystemMessage(requestingPlayerMessage);
-                targetPlayer.sendSystemMessage(targetPlayerMessage);
+
+                ModEvents.pendingTPAs.put(requestingPlayer.getUUID(), new ModEvents.TpaCommandData(
+                        serverlevel,
+                        60,
+                        targetPlayer.position(),
+                        new double[]{requestingPlayer.getX(), requestingPlayer.getY(), requestingPlayer.getZ()},
+                        targetPlayer,
+                        targetPlayerMessage,
+                        requestingPlayerMessage,
+                        "tpahere"
+                ));
             }
 
             pendingTpaRequests.remove(playerUuid);
@@ -134,12 +162,20 @@ public class TpaCommandManager {
 
             if (!hideMessage) {
                 MutableComponent message = Component.literal("Your tpa request to ").withStyle(ChatFormatting.RED);
-                message.append(targetPlayerUsername);
+
+                if (ModList.get().isLoaded("luckperms")) {
+                    message.append(data.targetPlayerName().copy());
+                } else {
+                    message.append(data.targetPlayerName().copy().withStyle(ChatFormatting.WHITE));
+                }
+
                 message.append(Component.literal(" has been denied.").withStyle(ChatFormatting.RED));
                 player.sendSystemMessage(message);
             }
 
-            targetPlayer.sendSystemMessage(Component.literal("You denied a teleport request from " + requestingPlayerUsername));
+            MutableComponent message = Component.literal("You denied a teleport request from");
+            message.append(data.requestingPlayerName().copy());
+            targetPlayer.sendSystemMessage(message);
             pendingTpaRequests.remove(requestingPlayerUuid);
             return true;
 

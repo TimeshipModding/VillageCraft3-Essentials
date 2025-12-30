@@ -51,7 +51,7 @@ public class VillageCraftCitySetSpawnCommand {
         } else {
             MutableComponent message = Component.literal("Set ");
             message.append(Component.literal("VillageCraft City's").withStyle(groupStyling));
-            message.append(Component.literal(" spawn to " + positionString + "!").withStyle(ChatFormatting.RED));
+            message.append(Component.literal(" spawn to " + positionString + "!"));
             context.getSource().sendSuccess(() -> message, true);
             return 1;
         }

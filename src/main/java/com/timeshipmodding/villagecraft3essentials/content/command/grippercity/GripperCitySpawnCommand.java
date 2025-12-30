@@ -3,6 +3,7 @@ package com.timeshipmodding.villagecraft3essentials.content.command.grippercity;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
 import com.timeshipmodding.villagecraft3essentials.compat.luckperms.LuckpermsMethods;
+import com.timeshipmodding.villagecraft3essentials.event.registries.ModEvents;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.config.ServerConfig;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.data.saveddata.SpawnSavedData;
 import net.minecraft.ChatFormatting;
@@ -33,11 +34,18 @@ public class GripperCitySpawnCommand {
         }
 
         if (spawn[3] != 0 && spawn[4] != 0 && player != null && serverlevel != null) {
-            player.teleportTo(serverlevel, spawn[0] + 0.5, spawn[1], spawn[2] + 0.5, spawn[3], spawn[4]);
             MutableComponent message = Component.literal("You been teleported to ");
             message.append(Component.literal("Gripper City").withStyle(groupStyling));
             message.append(Component.literal("!"));
-            context.getSource().sendSuccess(() -> message, false);
+
+            ModEvents.pendingTeleports.put(player.getUUID(), new ModEvents.TeleportCommandsData(
+                    serverlevel,
+                    60,
+                    player.position(),
+                    spawn,
+                    message
+            ));
+
             return 1;
 
         } else {

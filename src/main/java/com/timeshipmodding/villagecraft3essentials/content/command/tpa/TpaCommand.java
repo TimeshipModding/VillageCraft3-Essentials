@@ -8,6 +8,7 @@ import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.server.level.ServerPlayer;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;
 
@@ -18,7 +19,7 @@ public class TpaCommand {
                                 .executes(p_137810_ -> execute(p_137810_, EntityArgument.getPlayers(p_137810_, "targets")))));
     }
 
-    private int execute(CommandContext<CommandSourceStack> context, Collection<? extends ServerPlayer> target) {
+    private int execute(@NotNull CommandContext<CommandSourceStack> context, Collection<? extends ServerPlayer> target) {
         ServerPlayer player = context.getSource().getPlayer();
 
         if (player != null) {

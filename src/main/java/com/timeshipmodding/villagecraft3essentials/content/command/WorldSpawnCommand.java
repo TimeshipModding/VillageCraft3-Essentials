@@ -2,6 +2,7 @@ package com.timeshipmodding.villagecraft3essentials.content.command;
 
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
+import com.timeshipmodding.villagecraft3essentials.event.registries.ModEvents;
 import net.minecraft.ChatFormatting;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
@@ -27,11 +28,18 @@ public class WorldSpawnCommand {
         if(player != null) {
             int playerYaw = (int) player.getYRot();
             int playerPitch = (int) player.getXRot();
-            player.teleportTo(serverlevel, blockpos.getX() + 0.5, blockpos.getY(), blockpos.getZ() + 0.5, playerYaw, playerPitch);
             MutableComponent message = Component.literal("You have been teleported to ");
             message.append(Component.literal("World spawn").withStyle(ChatFormatting.GREEN));
             message.append(Component.literal("!"));
-            context.getSource().sendSuccess(() -> message, false);
+
+            ModEvents.pendingTeleports.put(player.getUUID(), new ModEvents.TeleportCommandsData(
+                    serverlevel,
+                    60,
+                    player.position(),
+                    new int[]{blockpos.getX(), blockpos.getY(), blockpos.getZ(), playerYaw, playerPitch},
+                    message
+            ));
+
             return 1;
 
         } else {
