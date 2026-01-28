@@ -1,11 +1,13 @@
 package com.timeshipmodding.villagecraft3essentials.datagen;
 
+import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.conditions.IConditionBuilder;
@@ -22,8 +24,10 @@ public class DataRecipes extends RecipeProvider implements IConditionBuilder {
         super(packOutput, pRegistries);
     }
 
-    private static final List<ItemLike> RUBY_SMELTABLES = List.of(RUBY_ORE.get(), DEEPSLATE_RUBY_ORE.get());
-    private static final List<ItemLike> AMBER_SMELTABLES = List.of(AMBER_ORE.get(), DEEPSLATE_AMBER_ORE.get());
+    private static final List<ItemLike> RUBY_SMELTABLES = List.of(RUBY_ORE, DEEPSLATE_RUBY_ORE);
+    private static final List<ItemLike> AMBER_SMELTABLES = List.of(AMBER_ORE, DEEPSLATE_AMBER_ORE);
+    private static final List<Item> DYES = List.of(Items.BLACK_DYE, Items.BLUE_DYE, Items.BROWN_DYE, Items.CYAN_DYE, Items.GRAY_DYE, Items.GREEN_DYE, Items.LIGHT_BLUE_DYE, Items.LIGHT_GRAY_DYE, Items.LIME_DYE, Items.MAGENTA_DYE, Items.ORANGE_DYE, Items.PINK_DYE, Items.PURPLE_DYE, Items.RED_DYE, Items.YELLOW_DYE, Items.WHITE_DYE);
+    private static final List<Item> ATMS = List.of(BLACK_ATM.asItem(), BLUE_ATM.asItem(), BROWN_ATM.asItem(), CYAN_ATM.asItem(), GRAY_ATM.asItem(), GREEN_ATM.asItem(), LIGHT_BLUE_ATM.asItem(), LIGHT_GRAY_ATM.asItem(), LIME_ATM.asItem(), MAGENTA_ATM.asItem(), ORANGE_ATM.asItem(), PINK_ATM.asItem(), PURPLE_ATM.asItem(), RED_ATM.asItem(), YELLOW_ATM.asItem(), WHITE_ATM.asItem());
 
     @Override
     protected void buildRecipes(RecipeOutput recipeOutput) {
@@ -206,13 +210,16 @@ public class DataRecipes extends RecipeProvider implements IConditionBuilder {
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AMBER_BLOCK.get()).requires(AMBER.get(), 9).group("villagecraft3essentials").unlockedBy(getHasName(AMBER.get()), has(AMBER.get())).save(recipeOutput);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, POLICE_BATON.get()).requires(MACE).requires(BLACK_DYE).group("villagecraft3essentials").unlockedBy(getHasName(MACE), has(MACE)).save(recipeOutput);
 
+        // Color Block with Dye
+        colorBlockWithDye(recipeOutput, DYES, ATMS, "atm");
+
         // Simple Cooking Recipe
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(WORM), RecipeCategory.FOOD, COOKED_WORM, 0.35F, 200)
                 .unlockedBy(getHasName(WORM.get()), has(WORM)).save(recipeOutput);
         SimpleCookingRecipeBuilder.smoking(Ingredient.of(WORM), RecipeCategory.FOOD, COOKED_WORM, 0.35F, 100)
-                .unlockedBy(getHasName(WORM.get()), has(WORM)).save(recipeOutput, getItemName(WORM) + "_from_smoking");
+                .unlockedBy(getHasName(WORM.get()), has(WORM)).save(recipeOutput, VillageCraft3Essentials.MODID + ":" + getItemName(WORM) + "_from_smoking");
         SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(WORM), RecipeCategory.FOOD, COOKED_WORM, 0.35F, 600)
-                .unlockedBy(getHasName(WORM.get()), has(WORM)).save(recipeOutput, getItemName(WORM) + "_from_campfire_cooking");
+                .unlockedBy(getHasName(WORM.get()), has(WORM)).save(recipeOutput, VillageCraft3Essentials.MODID + ":" + getItemName(WORM) + "_from_campfire_cooking");
 
         // Ore Smelting
         oreSmelting(recipeOutput, RUBY_SMELTABLES, RecipeCategory.MISC, RUBY.get(), 1.0F, 200, "ruby");
@@ -244,15 +251,40 @@ public class DataRecipes extends RecipeProvider implements IConditionBuilder {
     }
 
     // Generate Methods
-    protected static void rubyNetheriteSmithing(RecipeOutput pRecipeOutput, Item pIngredientItem, RecipeCategory pCategory, Item pResultItem) {
-        SmithingTransformRecipeBuilder.smithing(Ingredient.of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE), Ingredient.of(pIngredientItem), Ingredient.of(Items.NETHERITE_INGOT), pCategory, pResultItem)
-                .unlocks("has_netherite_ingot", has(Items.NETHERITE_INGOT))
-                .save(pRecipeOutput, getItemName(pResultItem) + "_ruby_smithing");
+    protected static void oreSmelting(RecipeOutput recipeOutput, List<ItemLike> ingredients, RecipeCategory category, ItemLike result, float experience, int cookingTime, String group) {
+        oreCooking(recipeOutput, RecipeSerializer.SMELTING_RECIPE, SmeltingRecipe::new, ingredients, category, result,
+                experience, cookingTime, group, "_from_smelting");
     }
 
-    protected static void amberNetheriteSmithing(RecipeOutput pRecipeOutput, Item pIngredientItem, RecipeCategory pCategory, Item pResultItem) {
-        SmithingTransformRecipeBuilder.smithing(Ingredient.of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE), Ingredient.of(pIngredientItem), Ingredient.of(Items.NETHERITE_INGOT), pCategory, pResultItem)
+    protected static void oreBlasting(RecipeOutput recipeOutput, List<ItemLike> ingredients, RecipeCategory category, ItemLike result, float experience, int cookingTime, String group) {
+        oreCooking(recipeOutput, RecipeSerializer.BLASTING_RECIPE, BlastingRecipe::new, ingredients, category, result,
+                experience, cookingTime, group, "_from_blasting");
+    }
+
+    protected static <T extends AbstractCookingRecipe> void oreCooking(RecipeOutput recipeOutput, RecipeSerializer<T> cookingSerializer, AbstractCookingRecipe.Factory<T> factory, List<ItemLike> ingredients, RecipeCategory category, ItemLike result, float experience, int cookingTime, String group, String recipeName) {
+        for(ItemLike itemlike : ingredients) {
+            SimpleCookingRecipeBuilder.generic(Ingredient.of(itemlike), category, result, experience, cookingTime, cookingSerializer, factory).group(group).unlockedBy(getHasName(itemlike), has(itemlike))
+                    .save(recipeOutput, VillageCraft3Essentials.MODID + ":" + getItemName(result) + recipeName + "_" + getItemName(itemlike));
+        }
+    }
+
+    protected static void colorBlockWithDye(RecipeOutput recipeOutput, List<Item> dyes, List<Item> dyeableItems, String group) {
+        for(int i = 0; i < dyes.size(); ++i) {
+            Item item = dyes.get(i);
+            Item item1 = dyeableItems.get(i);
+            ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, item1).requires(item).requires(Ingredient.of(dyeableItems.stream().filter((p_288265_) -> !p_288265_.equals(item1)).map(ItemStack::new))).group(group).unlockedBy("has_needed_dye", has(item)).save(recipeOutput, VillageCraft3Essentials.MODID + ":dye_" + getItemName(item1));
+        }
+    }
+
+    protected static void rubyNetheriteSmithing(RecipeOutput recipeOutput, Item ingredient, RecipeCategory category, Item result) {
+        SmithingTransformRecipeBuilder.smithing(Ingredient.of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE), Ingredient.of(ingredient), Ingredient.of(Items.NETHERITE_INGOT), category, result)
                 .unlocks("has_netherite_ingot", has(Items.NETHERITE_INGOT))
-                .save(pRecipeOutput, getItemName(pResultItem) + "_amber_smithing");
+                .save(recipeOutput, VillageCraft3Essentials.MODID + ":" + getItemName(result) + "_ruby_smithing");
+    }
+
+    protected static void amberNetheriteSmithing(RecipeOutput recipeOutput, Item ingredient, RecipeCategory category, Item result) {
+        SmithingTransformRecipeBuilder.smithing(Ingredient.of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE), Ingredient.of(ingredient), Ingredient.of(Items.NETHERITE_INGOT), category, result)
+                .unlocks("has_netherite_ingot", has(Items.NETHERITE_INGOT))
+                .save(recipeOutput, VillageCraft3Essentials.MODID + ":" + getItemName(result) + "_amber_smithing");
     }
 }

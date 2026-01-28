@@ -1,0 +1,61 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "atm",
+  "ingredients": [
+    {
+      "item": "minecraft:purple_dye"
+    },
+    [
+      {
+        "item": "villagecraft3essentials:black_atm"
+      },
+      {
+        "item": "villagecraft3essentials:blue_atm"
+      },
+      {
+        "item": "villagecraft3essentials:brown_atm"
+      },
+      {
+        "item": "villagecraft3essentials:cyan_atm"
+      },
+      {
+        "item": "villagecraft3essentials:gray_atm"
+      },
+      {
+        "item": "villagecraft3essentials:green_atm"
+      },
+      {
+        "item": "villagecraft3essentials:light_blue_atm"
+      },
+      {
+        "item": "villagecraft3essentials:light_gray_atm"
+      },
+      {
+        "item": "villagecraft3essentials:lime_atm"
+      },
+      {
+        "item": "villagecraft3essentials:magenta_atm"
+      },
+      {
+        "item": "villagecraft3essentials:orange_atm"
+      },
+      {
+        "item": "villagecraft3essentials:pink_atm"
+      },
+      {
+        "item": "villagecraft3essentials:red_atm"
+      },
+      {
+        "item": "villagecraft3essentials:yellow_atm"
+      },
+      {
+        "item": "villagecraft3essentials:white_atm"
+      }
+    ]
+  ],
+  "result": {
+    "count": 1,
+    "id": "villagecraft3essentials:purple_atm"
+  }
+}
