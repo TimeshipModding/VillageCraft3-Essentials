@@ -37,7 +37,7 @@ public class ModEvents {
     public static final Map<UUID, TeleportCommandsData> pendingTeleports = new HashMap<>();
     public static final Map<UUID, TpaCommandData> pendingTPAs = new HashMap<>();
     public record TeleportCommandsData(ServerLevel serverLevel, int ticksLeft, Vec3 startPos, int[] destination, Component teleportMessage) {}
-    public record TpaCommandData(ServerLevel serverLevel, int ticksLeft, Vec3 startPos, double[] destination, ServerPlayer targetPlayer, Component targetPlayerMessage, Component requestingPlayerMessage, String teleportType) {}
+    public record TpaCommandData(ServerLevel serverLevel, int ticksLeft, Vec3 startPos, ServerPlayer targetPlayer, ServerPlayer requestingPlayer, Component targetPlayerMessage, Component requestingPlayerMessage, String teleportType) {}
 
     @SubscribeEvent
     public static void onCommandsRegister(RegisterCommandsEvent event) {
@@ -146,8 +146,7 @@ public class ModEvents {
                 }
 
                 if (data.ticksLeft <= 0) {
-                    double[] destination = data.destination;
-                    player.teleportTo(data.serverLevel, destination[0], destination[1], destination[2], player.getYRot(), player.getXRot());
+                    player.teleportTo(data.serverLevel, data.targetPlayer.getX(), data.targetPlayer.getY(), data.targetPlayer.getZ(), player.getYRot(), player.getXRot());
                     player.sendSystemMessage(data.requestingPlayerMessage);
                     data.targetPlayer.sendSystemMessage(data.targetPlayerMessage);
                     pendingTPAs.remove(uuid);
@@ -160,7 +159,7 @@ public class ModEvents {
                         data.targetPlayer.displayClientMessage(targetPlayerMessage, true);
                     }
 
-                    pendingTPAs.put(uuid, new TpaCommandData(data.serverLevel, data.ticksLeft - 1, data.startPos, data.destination(), data.targetPlayer(), data.targetPlayerMessage(), data.requestingPlayerMessage(), data.teleportType()));
+                    pendingTPAs.put(uuid, new TpaCommandData(data.serverLevel, data.ticksLeft - 1, data.startPos, data.targetPlayer(), data.requestingPlayer(), data.targetPlayerMessage(), data.requestingPlayerMessage(), data.teleportType()));
                 }
 
             } else if (Objects.equals(data.teleportType, "tpahere")) {
@@ -181,8 +180,7 @@ public class ModEvents {
                 }
 
                 if (data.ticksLeft <= 0) {
-                    double[] destination = data.destination;
-                    data.targetPlayer.teleportTo(data.serverLevel, destination[0], destination[1], destination[2], data.targetPlayer.getYRot(), data.targetPlayer.getXRot());
+                    data.targetPlayer.teleportTo(data.serverLevel, data.requestingPlayer.getX(), data.requestingPlayer.getY(), data.requestingPlayer.getZ(), data.targetPlayer.getYRot(), data.targetPlayer.getXRot());
                     data.targetPlayer.sendSystemMessage(data.targetPlayerMessage);
                     player.sendSystemMessage(data.requestingPlayerMessage);
                     pendingTPAs.remove(uuid);
@@ -195,7 +193,7 @@ public class ModEvents {
                         player.displayClientMessage(requestingPlayerMessage, true);
                     }
 
-                    pendingTPAs.put(uuid, new TpaCommandData(data.serverLevel, data.ticksLeft - 1, data.startPos, data.destination, data.targetPlayer, data.targetPlayerMessage, data.requestingPlayerMessage, data.teleportType));
+                    pendingTPAs.put(uuid, new TpaCommandData(data.serverLevel, data.ticksLeft - 1, data.startPos, data.targetPlayer, data.requestingPlayer, data.targetPlayerMessage, data.requestingPlayerMessage, data.teleportType));
                 }
             }
         }

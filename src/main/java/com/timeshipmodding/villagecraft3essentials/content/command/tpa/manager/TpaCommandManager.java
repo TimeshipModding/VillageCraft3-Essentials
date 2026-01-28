@@ -70,7 +70,7 @@ public class TpaCommandManager {
             targetPlayerMessage.append(" has requested to TPA to you! Type ");
             targetPlayerMessage.append(Component.literal("/tpaccept").withStyle(ChatFormatting.GREEN));
             targetPlayerMessage.append(Component.literal(" to accept or "));
-            targetPlayerMessage.append(Component.literal("/tpdeny").withStyle(ChatFormatting.RED));
+            targetPlayerMessage.append(Component.literal("/tpadeny").withStyle(ChatFormatting.RED));
             targetPlayerMessage.append(Component.literal(" to deny."));
             requestingPlayer.sendSystemMessage(requestingPlayerMessage);
             targetPlayer.sendSystemMessage(targetPlayerMessage);
@@ -85,7 +85,7 @@ public class TpaCommandManager {
             targetPlayerMessage.append(" has requested to TPA here to them! Type ");
             targetPlayerMessage.append(Component.literal("/tpaccept").withStyle(ChatFormatting.GREEN));
             targetPlayerMessage.append(Component.literal(" to accept or "));
-            targetPlayerMessage.append(Component.literal("/tpdeny").withStyle(ChatFormatting.RED));
+            targetPlayerMessage.append(Component.literal("/tpadeny").withStyle(ChatFormatting.RED));
             targetPlayerMessage.append(Component.literal(" to deny."));
             requestingPlayer.sendSystemMessage(requestingPlayerMessage);
             targetPlayer.sendSystemMessage(targetPlayerMessage);
@@ -114,10 +114,10 @@ public class TpaCommandManager {
 
                 ModEvents.pendingTPAs.put(requestingPlayer.getUUID(), new ModEvents.TpaCommandData(
                         serverlevel,
-                        60,
+                        40,
                         requestingPlayer.position(),
-                        new double[]{targetPlayer.getX(), targetPlayer.getY(), targetPlayer.getZ()},
                         targetPlayer,
+                        requestingPlayer,
                         targetPlayerMessage,
                         requestingPlayerMessage,
                         "tpa"
@@ -132,10 +132,10 @@ public class TpaCommandManager {
 
                 ModEvents.pendingTPAs.put(requestingPlayer.getUUID(), new ModEvents.TpaCommandData(
                         serverlevel,
-                        60,
+                        40,
                         targetPlayer.position(),
-                        new double[]{requestingPlayer.getX(), requestingPlayer.getY(), requestingPlayer.getZ()},
                         targetPlayer,
+                        requestingPlayer,
                         targetPlayerMessage,
                         requestingPlayerMessage,
                         "tpahere"
@@ -173,7 +173,7 @@ public class TpaCommandManager {
                 player.sendSystemMessage(message);
             }
 
-            MutableComponent message = Component.literal("You denied a teleport request from");
+            MutableComponent message = Component.literal("You denied a teleport request from ");
             message.append(data.requestingPlayerName().copy());
             targetPlayer.sendSystemMessage(message);
             pendingTpaRequests.remove(requestingPlayerUuid);
