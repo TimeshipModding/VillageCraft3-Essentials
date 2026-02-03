@@ -111,10 +111,13 @@ public class ModServerEvents {
     private static void refreshPlayerTab(ServerPlayer player) {
         updateTabListHeaderFooter(player);
 
-        if (ModList.get().isLoaded("luckperms")) {
+        if (ServerConfig.CHAT_TAB_NAME_FORMATTING.get() || ServerConfig.ENABLE_VILLAGECRAFT3_LOGO_TABLIST.get()) {
             player.refreshTabListName();
             player.refreshDisplayName();
-            LuckpermsMethods.updatePlayerTeam(player);
+
+            if (ModList.get().isLoaded("luckperms")) {
+                LuckpermsMethods.updatePlayerTeam(player);
+            }
         }
     }
 
