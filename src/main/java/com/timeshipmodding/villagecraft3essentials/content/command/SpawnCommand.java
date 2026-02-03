@@ -13,9 +13,9 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 
-public class WorldSpawnCommand {
-    public WorldSpawnCommand(CommandDispatcher<CommandSourceStack> dispatcher) {
-        dispatcher.register(Commands.literal("worldspawn").executes(this::execute));
+public class SpawnCommand {
+    public SpawnCommand(CommandDispatcher<CommandSourceStack> dispatcher) {
+        dispatcher.register(Commands.literal("spawn").executes(this::execute));
     }
 
     private int execute(CommandContext<CommandSourceStack> context) {
@@ -29,7 +29,7 @@ public class WorldSpawnCommand {
             int playerYaw = (int) player.getYRot();
             int playerPitch = (int) player.getXRot();
             MutableComponent message = Component.literal("You have been teleported to ");
-            message.append(Component.literal("World spawn").withStyle(ChatFormatting.GREEN));
+            message.append(Component.literal("World Spawn").withStyle(ChatFormatting.GREEN));
             message.append(Component.literal("!"));
 
             ModEvents.pendingTeleports.put(player.getUUID(), new ModEvents.TeleportCommandsData(

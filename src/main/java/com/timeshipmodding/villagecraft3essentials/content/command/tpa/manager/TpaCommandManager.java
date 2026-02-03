@@ -3,8 +3,7 @@ package com.timeshipmodding.villagecraft3essentials.content.command.tpa.manager;
 import com.timeshipmodding.villagecraft3essentials.event.registries.ModEvents;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.data.TpaCommandData;
 import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.network.chat.*;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -20,6 +19,13 @@ import java.util.concurrent.TimeUnit;
 public class TpaCommandManager {
     private static final Map<UUID, TpaCommandData> pendingTpaRequests = new ConcurrentHashMap<>();
     private static final long TIMEOUT_DURATION_MS = TimeUnit.MINUTES.toMillis(5);
+
+    private static final Style TPACCEPT = Style.EMPTY.withColor(ChatFormatting.GREEN)
+            .withClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/tpaccept"))
+            .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, Component.literal("/tpaccept").withStyle(ChatFormatting.GREEN)));
+    private static final Style TPADENY = Style.EMPTY.withColor(ChatFormatting.RED)
+            .withClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/tpadeny"))
+            .withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, Component.literal("/tpadeny").withStyle(ChatFormatting.RED)));
 
     public static void requestTpa(ServerPlayer requestingPlayer, ServerPlayer targetPlayer, String type) {
         if (requestingPlayer.getUUID().equals(targetPlayer.getUUID())) {
@@ -66,10 +72,10 @@ public class TpaCommandManager {
             requestingPlayerMessage.append(Component.literal("/tpaccept").withStyle(ChatFormatting.GREEN));
             requestingPlayerMessage.append(Component.literal("..."));
             MutableComponent targetPlayerMessage = data.requestingPlayerName().copy();
-            targetPlayerMessage.append(" has requested to TPA to you! Type ");
-            targetPlayerMessage.append(Component.literal("/tpaccept").withStyle(ChatFormatting.GREEN));
+            targetPlayerMessage.append(" has requested to TPA to you! Type or press ");
+            targetPlayerMessage.append(Component.literal("/tpaccept").setStyle(TPACCEPT));
             targetPlayerMessage.append(Component.literal(" to accept or "));
-            targetPlayerMessage.append(Component.literal("/tpadeny").withStyle(ChatFormatting.RED));
+            targetPlayerMessage.append(Component.literal("/tpadeny").setStyle(TPADENY));
             targetPlayerMessage.append(Component.literal(" to deny."));
             requestingPlayer.sendSystemMessage(requestingPlayerMessage);
             targetPlayer.sendSystemMessage(targetPlayerMessage);
@@ -81,10 +87,10 @@ public class TpaCommandManager {
             requestingPlayerMessage.append(Component.literal("/tpaccept").withStyle(ChatFormatting.GREEN));
             requestingPlayerMessage.append(Component.literal("..."));
             MutableComponent targetPlayerMessage = data.requestingPlayerName().copy();
-            targetPlayerMessage.append(" has requested to TPA here to them! Type ");
-            targetPlayerMessage.append(Component.literal("/tpaccept").withStyle(ChatFormatting.GREEN));
+            targetPlayerMessage.append(" has requested to TPA here to them! Type or press ");
+            targetPlayerMessage.append(Component.literal("/tpaccept").setStyle(TPACCEPT));
             targetPlayerMessage.append(Component.literal(" to accept or "));
-            targetPlayerMessage.append(Component.literal("/tpadeny").withStyle(ChatFormatting.RED));
+            targetPlayerMessage.append(Component.literal("/tpadeny").setStyle(TPADENY));
             targetPlayerMessage.append(Component.literal(" to deny."));
             requestingPlayer.sendSystemMessage(requestingPlayerMessage);
             targetPlayer.sendSystemMessage(targetPlayerMessage);

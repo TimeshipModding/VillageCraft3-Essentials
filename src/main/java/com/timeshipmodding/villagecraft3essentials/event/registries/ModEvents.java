@@ -1,7 +1,7 @@
 package com.timeshipmodding.villagecraft3essentials.event.registries;
 
 import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
-import com.timeshipmodding.villagecraft3essentials.content.command.WorldSpawnCommand;
+import com.timeshipmodding.villagecraft3essentials.content.command.SpawnCommand;
 import com.timeshipmodding.villagecraft3essentials.content.command.ambercaves.*;
 import com.timeshipmodding.villagecraft3essentials.content.command.grippercity.*;
 import com.timeshipmodding.villagecraft3essentials.content.command.tpa.TpaCommand;
@@ -69,7 +69,7 @@ public class ModEvents {
         new VillageCraftCitySetSpawnCommand(event.getDispatcher());
         new VillageCraftCitySpawnCommand(event.getDispatcher());
         new VillageCraftCityWhitelistCommand(event.getDispatcher());
-        new WorldSpawnCommand(event.getDispatcher());
+        new SpawnCommand(event.getDispatcher());
 
         ConfigCommand.register(event.getDispatcher());
     }
@@ -104,7 +104,7 @@ public class ModEvents {
         if (pendingTeleports.containsKey(uuid)) {
             TeleportCommandsData data = pendingTeleports.get(uuid);
 
-            if (player.position().distanceToSqr(data.startPos) > 0.01) {
+            if (distanceToPlayerXZCoordinates(player, data.startPos.x, data.startPos.z) > 0.25 && data.ticksLeft <= 50) {
                 player.sendSystemMessage(Component.literal("Teleport cancelled: you moved.").withStyle(ChatFormatting.RED));
                 pendingTeleports.remove(uuid);
                 return;
@@ -129,7 +129,7 @@ public class ModEvents {
             TpaCommandData data = pendingTPAs.get(uuid);
 
             if (Objects.equals(data.teleportType, "tpa")) {
-                if (player.position().distanceToSqr(data.startPos) > 0.01) {
+                if (distanceToPlayerXZCoordinates(player, data.startPos.x, data.startPos.z) > 0.25 && data.ticksLeft <= 30) {
                     player.sendSystemMessage(Component.literal("TPA cancelled: you moved.").withStyle(ChatFormatting.RED));
                     MutableComponent targetPlayerMessage = Component.literal("TPA cancelled: ").withStyle(ChatFormatting.RED);
 
@@ -163,7 +163,7 @@ public class ModEvents {
                 }
 
             } else if (Objects.equals(data.teleportType, "tpahere")) {
-                if (data.targetPlayer.position().distanceToSqr(data.startPos) > 0.01) {
+                if (distanceToPlayerXZCoordinates(player, data.startPos.x, data.startPos.z) > 0.25 && data.ticksLeft <= 30) {
                     data.targetPlayer.sendSystemMessage(Component.literal("TPA here cancelled: you moved.").withStyle(ChatFormatting.RED));
                     MutableComponent requestingPlayerMessage = Component.literal("TPA here cancelled: ").withStyle(ChatFormatting.RED);
 
@@ -197,5 +197,11 @@ public class ModEvents {
                 }
             }
         }
+    }
+
+    public static double distanceToPlayerXZCoordinates(ServerPlayer player, double x, double z) {
+        double d0 = x - player.getX();
+        double d2 = z - player.getZ();
+        return d0 * d0 + d2 * d2;
     }
 }
