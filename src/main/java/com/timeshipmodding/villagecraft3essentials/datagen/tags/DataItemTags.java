@@ -113,5 +113,9 @@ public class DataItemTags extends ItemTagsProvider {
                 .add(AMBER_LEGGINGS.get())
                 .add(AMBER_BOOTS.get())
                 .add(AMBER_HORSE_ARMOR.get());
+        tag(CURRENCY_GEMS)
+                .add(DIAMOND)
+                .add(RUBY.get())
+                .add(AMBER.get());
     }
 }

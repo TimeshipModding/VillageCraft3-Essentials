@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_amber": {
+    "has_spire_armor_trim_smithing_template": {
       "conditions": {
         "items": [
           {
-            "items": "villagecraft3essentials:amber"
+            "items": "minecraft:spire_armor_trim_smithing_template"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:amber_block"
+        "recipe": "minecraft:spire_armor_trim_smithing_template_using_currency_gems"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_amber"
+      "has_spire_armor_trim_smithing_template"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:amber_block"
+      "minecraft:spire_armor_trim_smithing_template_using_currency_gems"
     ]
   }
 }

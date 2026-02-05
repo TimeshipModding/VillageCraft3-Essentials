@@ -1,6 +1,7 @@
 package com.timeshipmodding.villagecraft3essentials.datagen;
 
 import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
+import com.timeshipmodding.villagecraft3essentials.infrastructure.tags.registries.ModItemTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
@@ -202,6 +203,102 @@ public class DataRecipes extends RecipeProvider implements IConditionBuilder {
                 .pattern("# ")
                 .pattern(" X")
                 .define('#', FISHING_ROD).define('X', WORM.get()).group("villagecraft3essentials").unlockedBy(getHasName(WORM.get()), has(WORM.get())).save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, BOLT_ARMOR_TRIM_SMITHING_TEMPLATE, 2)
+                .pattern("#S#")
+                .pattern("#C#")
+                .pattern("###")
+                .define('#', ModItemTags.CURRENCY_GEMS).define('C', Ingredient.of(COPPER_BLOCK, WAXED_COPPER_BLOCK)).define('S', BOLT_ARMOR_TRIM_SMITHING_TEMPLATE).group("villagecraft3essentials").unlockedBy(getHasName(BOLT_ARMOR_TRIM_SMITHING_TEMPLATE), has(BOLT_ARMOR_TRIM_SMITHING_TEMPLATE)).save(recipeOutput, BOLT_ARMOR_TRIM_SMITHING_TEMPLATE + "_using_currency_gems");
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, COAST_ARMOR_TRIM_SMITHING_TEMPLATE, 2)
+                .pattern("#S#")
+                .pattern("#C#")
+                .pattern("###")
+                .define('#', ModItemTags.CURRENCY_GEMS).define('C', COBBLESTONE).define('S', COAST_ARMOR_TRIM_SMITHING_TEMPLATE).group("villagecraft3essentials").unlockedBy(getHasName(COAST_ARMOR_TRIM_SMITHING_TEMPLATE), has(COAST_ARMOR_TRIM_SMITHING_TEMPLATE)).save(recipeOutput, COAST_ARMOR_TRIM_SMITHING_TEMPLATE + "_using_currency_gems");
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, DUNE_ARMOR_TRIM_SMITHING_TEMPLATE, 2)
+                .pattern("#S#")
+                .pattern("#C#")
+                .pattern("###")
+                .define('#', ModItemTags.CURRENCY_GEMS).define('C', SANDSTONE).define('S', DUNE_ARMOR_TRIM_SMITHING_TEMPLATE).group("villagecraft3essentials").unlockedBy(getHasName(DUNE_ARMOR_TRIM_SMITHING_TEMPLATE), has(DUNE_ARMOR_TRIM_SMITHING_TEMPLATE)).save(recipeOutput, DUNE_ARMOR_TRIM_SMITHING_TEMPLATE + "_using_currency_gems");
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, EYE_ARMOR_TRIM_SMITHING_TEMPLATE, 2)
+                .pattern("#S#")
+                .pattern("#C#")
+                .pattern("###")
+                .define('#', ModItemTags.CURRENCY_GEMS).define('C', END_STONE).define('S', EYE_ARMOR_TRIM_SMITHING_TEMPLATE).group("villagecraft3essentials").unlockedBy(getHasName(EYE_ARMOR_TRIM_SMITHING_TEMPLATE), has(EYE_ARMOR_TRIM_SMITHING_TEMPLATE)).save(recipeOutput, EYE_ARMOR_TRIM_SMITHING_TEMPLATE + "_using_currency_gems");
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, FLOW_ARMOR_TRIM_SMITHING_TEMPLATE, 2)
+                .pattern("#S#")
+                .pattern("#C#")
+                .pattern("###")
+                .define('#', ModItemTags.CURRENCY_GEMS).define('C', BREEZE_ROD).define('S', FLOW_ARMOR_TRIM_SMITHING_TEMPLATE).group("villagecraft3essentials").unlockedBy(getHasName(FLOW_ARMOR_TRIM_SMITHING_TEMPLATE), has(FLOW_ARMOR_TRIM_SMITHING_TEMPLATE)).save(recipeOutput, FLOW_ARMOR_TRIM_SMITHING_TEMPLATE + "_using_currency_gems");
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, HOST_ARMOR_TRIM_SMITHING_TEMPLATE, 2)
+                .pattern("#S#")
+                .pattern("#C#")
+                .pattern("###")
+                .define('#', ModItemTags.CURRENCY_GEMS).define('C', TERRACOTTA).define('S', HOST_ARMOR_TRIM_SMITHING_TEMPLATE).group("villagecraft3essentials").unlockedBy(getHasName(HOST_ARMOR_TRIM_SMITHING_TEMPLATE), has(HOST_ARMOR_TRIM_SMITHING_TEMPLATE)).save(recipeOutput, HOST_ARMOR_TRIM_SMITHING_TEMPLATE + "_using_currency_gems");
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, NETHERITE_UPGRADE_SMITHING_TEMPLATE, 2)
+                .pattern("#S#")
+                .pattern("#C#")
+                .pattern("###")
+                .define('#', ModItemTags.CURRENCY_GEMS).define('C', NETHERRACK).define('S', NETHERITE_UPGRADE_SMITHING_TEMPLATE).group("villagecraft3essentials").unlockedBy(getHasName(NETHERITE_UPGRADE_SMITHING_TEMPLATE), has(NETHERITE_UPGRADE_SMITHING_TEMPLATE)).save(recipeOutput, NETHERITE_UPGRADE_SMITHING_TEMPLATE + "_using_currency_gems");
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RAISER_ARMOR_TRIM_SMITHING_TEMPLATE, 2)
+                .pattern("#S#")
+                .pattern("#C#")
+                .pattern("###")
+                .define('#', ModItemTags.CURRENCY_GEMS).define('C', TERRACOTTA).define('S', RAISER_ARMOR_TRIM_SMITHING_TEMPLATE).group("villagecraft3essentials").unlockedBy(getHasName(RAISER_ARMOR_TRIM_SMITHING_TEMPLATE), has(RAISER_ARMOR_TRIM_SMITHING_TEMPLATE)).save(recipeOutput, RAISER_ARMOR_TRIM_SMITHING_TEMPLATE + "_using_currency_gems");
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, RIB_ARMOR_TRIM_SMITHING_TEMPLATE, 2)
+                .pattern("#S#")
+                .pattern("#C#")
+                .pattern("###")
+                .define('#', ModItemTags.CURRENCY_GEMS).define('C', NETHERRACK).define('S', RIB_ARMOR_TRIM_SMITHING_TEMPLATE).group("villagecraft3essentials").unlockedBy(getHasName(RIB_ARMOR_TRIM_SMITHING_TEMPLATE), has(RIB_ARMOR_TRIM_SMITHING_TEMPLATE)).save(recipeOutput, RIB_ARMOR_TRIM_SMITHING_TEMPLATE + "_using_currency_gems");
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SENTRY_ARMOR_TRIM_SMITHING_TEMPLATE, 2)
+                .pattern("#S#")
+                .pattern("#C#")
+                .pattern("###")
+                .define('#', ModItemTags.CURRENCY_GEMS).define('C', COBBLESTONE).define('S', SENTRY_ARMOR_TRIM_SMITHING_TEMPLATE).group("villagecraft3essentials").unlockedBy(getHasName(SENTRY_ARMOR_TRIM_SMITHING_TEMPLATE), has(SENTRY_ARMOR_TRIM_SMITHING_TEMPLATE)).save(recipeOutput, SENTRY_ARMOR_TRIM_SMITHING_TEMPLATE + "_using_currency_gems");
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SHAPER_ARMOR_TRIM_SMITHING_TEMPLATE, 2)
+                .pattern("#S#")
+                .pattern("#C#")
+                .pattern("###")
+                .define('#', ModItemTags.CURRENCY_GEMS).define('C', TERRACOTTA).define('S', SHAPER_ARMOR_TRIM_SMITHING_TEMPLATE).group("villagecraft3essentials").unlockedBy(getHasName(SHAPER_ARMOR_TRIM_SMITHING_TEMPLATE), has(SHAPER_ARMOR_TRIM_SMITHING_TEMPLATE)).save(recipeOutput, SHAPER_ARMOR_TRIM_SMITHING_TEMPLATE + "_using_currency_gems");
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SILENCE_ARMOR_TRIM_SMITHING_TEMPLATE, 2)
+                .pattern("#S#")
+                .pattern("#C#")
+                .pattern("###")
+                .define('#', ModItemTags.CURRENCY_GEMS).define('C', COBBLED_DEEPSLATE).define('S', SILENCE_ARMOR_TRIM_SMITHING_TEMPLATE).group("villagecraft3essentials").unlockedBy(getHasName(SILENCE_ARMOR_TRIM_SMITHING_TEMPLATE), has(SILENCE_ARMOR_TRIM_SMITHING_TEMPLATE)).save(recipeOutput, SILENCE_ARMOR_TRIM_SMITHING_TEMPLATE + "_using_currency_gems");
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SNOUT_ARMOR_TRIM_SMITHING_TEMPLATE, 2)
+                .pattern("#S#")
+                .pattern("#C#")
+                .pattern("###")
+                .define('#', ModItemTags.CURRENCY_GEMS).define('C', BLACKSTONE).define('S', SNOUT_ARMOR_TRIM_SMITHING_TEMPLATE).group("villagecraft3essentials").unlockedBy(getHasName(SNOUT_ARMOR_TRIM_SMITHING_TEMPLATE), has(SNOUT_ARMOR_TRIM_SMITHING_TEMPLATE)).save(recipeOutput, SNOUT_ARMOR_TRIM_SMITHING_TEMPLATE + "_using_currency_gems");
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SPIRE_ARMOR_TRIM_SMITHING_TEMPLATE, 2)
+                .pattern("#S#")
+                .pattern("#C#")
+                .pattern("###")
+                .define('#', ModItemTags.CURRENCY_GEMS).define('C', PURPUR_BLOCK).define('S', SPIRE_ARMOR_TRIM_SMITHING_TEMPLATE).group("villagecraft3essentials").unlockedBy(getHasName(SPIRE_ARMOR_TRIM_SMITHING_TEMPLATE), has(SPIRE_ARMOR_TRIM_SMITHING_TEMPLATE)).save(recipeOutput, SPIRE_ARMOR_TRIM_SMITHING_TEMPLATE + "_using_currency_gems");
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, TIDE_ARMOR_TRIM_SMITHING_TEMPLATE, 2)
+                .pattern("#S#")
+                .pattern("#C#")
+                .pattern("###")
+                .define('#', ModItemTags.CURRENCY_GEMS).define('C', PRISMARINE).define('S', TIDE_ARMOR_TRIM_SMITHING_TEMPLATE).group("villagecraft3essentials").unlockedBy(getHasName(TIDE_ARMOR_TRIM_SMITHING_TEMPLATE), has(TIDE_ARMOR_TRIM_SMITHING_TEMPLATE)).save(recipeOutput, TIDE_ARMOR_TRIM_SMITHING_TEMPLATE + "_using_currency_gems");
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, VEX_ARMOR_TRIM_SMITHING_TEMPLATE, 2)
+                .pattern("#S#")
+                .pattern("#C#")
+                .pattern("###")
+                .define('#', ModItemTags.CURRENCY_GEMS).define('C', COBBLESTONE).define('S', VEX_ARMOR_TRIM_SMITHING_TEMPLATE).group("villagecraft3essentials").unlockedBy(getHasName(VEX_ARMOR_TRIM_SMITHING_TEMPLATE), has(VEX_ARMOR_TRIM_SMITHING_TEMPLATE)).save(recipeOutput, VEX_ARMOR_TRIM_SMITHING_TEMPLATE + "_using_currency_gems");
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, WARD_ARMOR_TRIM_SMITHING_TEMPLATE, 2)
+                .pattern("#S#")
+                .pattern("#C#")
+                .pattern("###")
+                .define('#', ModItemTags.CURRENCY_GEMS).define('C', COBBLED_DEEPSLATE).define('S', WARD_ARMOR_TRIM_SMITHING_TEMPLATE).group("villagecraft3essentials").unlockedBy(getHasName(WARD_ARMOR_TRIM_SMITHING_TEMPLATE), has(WARD_ARMOR_TRIM_SMITHING_TEMPLATE)).save(recipeOutput, WARD_ARMOR_TRIM_SMITHING_TEMPLATE + "_using_currency_gems");
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, WAYFINDER_ARMOR_TRIM_SMITHING_TEMPLATE, 2)
+                .pattern("#S#")
+                .pattern("#C#")
+                .pattern("###")
+                .define('#', ModItemTags.CURRENCY_GEMS).define('C', TERRACOTTA).define('S', WAYFINDER_ARMOR_TRIM_SMITHING_TEMPLATE).group("villagecraft3essentials").unlockedBy(getHasName(WAYFINDER_ARMOR_TRIM_SMITHING_TEMPLATE), has(WAYFINDER_ARMOR_TRIM_SMITHING_TEMPLATE)).save(recipeOutput, WAYFINDER_ARMOR_TRIM_SMITHING_TEMPLATE + "_using_currency_gems");
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, WILD_ARMOR_TRIM_SMITHING_TEMPLATE, 2)
+                .pattern("#S#")
+                .pattern("#C#")
+                .pattern("###")
+                .define('#', ModItemTags.CURRENCY_GEMS).define('C', MOSSY_COBBLESTONE).define('S', WILD_ARMOR_TRIM_SMITHING_TEMPLATE).group("villagecraft3essentials").unlockedBy(getHasName(WILD_ARMOR_TRIM_SMITHING_TEMPLATE), has(WILD_ARMOR_TRIM_SMITHING_TEMPLATE)).save(recipeOutput, WILD_ARMOR_TRIM_SMITHING_TEMPLATE + "_using_currency_gems");
+
 
         // Shapeless Crafting
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RUBY.get(), 9).requires(RUBY_BLOCK.get()).group("villagecraft3essentials").unlockedBy(getHasName(RUBY_BLOCK.get()), has(RUBY_BLOCK.get())).save(recipeOutput);
