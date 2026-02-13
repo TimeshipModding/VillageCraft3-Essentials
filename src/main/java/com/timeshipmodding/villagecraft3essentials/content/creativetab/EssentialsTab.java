@@ -20,7 +20,7 @@ public class EssentialsTab {
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> ESSENTIALS_TAB = CREATIVE_MODE_TABS.register("essentials_tab", () -> CreativeModeTab.builder()
             .title(Component.translatable("creativemodetab.villagecraft3essentials.essentialstab"))
-            .icon(() -> new ItemStack(Blocks.BEACON))
+            .icon(() -> new ItemStack(DIAMOND_CORE))
             .displayItems((parameters, pOutput) -> {
                 pOutput.accept(Blocks.DIAMOND_BLOCK);
                 pOutput.accept(RUBY_BLOCK);
@@ -47,6 +47,9 @@ public class EssentialsTab {
                 pOutput.accept(PURPLE_ATM);
                 pOutput.accept(MAGENTA_ATM);
                 pOutput.accept(PINK_ATM);
+                pOutput.accept(DIAMOND_CORE);
+                pOutput.accept(RUBY_CORE);
+                pOutput.accept(AMBER_CORE);
                 pOutput.accept(DIAMOND_SHOVEL);
                 pOutput.accept(DIAMOND_PICKAXE);
                 pOutput.accept(DIAMOND_AXE);

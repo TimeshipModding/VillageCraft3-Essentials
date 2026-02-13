@@ -4,6 +4,9 @@ import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.level.block.SoundType;
+import net.neoforged.neoforge.common.util.DeferredSoundType;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
@@ -15,6 +18,10 @@ public class ModSounds {
     public static final Supplier<SoundEvent> MOLE_HURT = registerSoundEvent("mole_hurt");
     public static final Supplier<SoundEvent> MOLE_AMBIENT = registerSoundEvent("mole_ambient");
     public static final Supplier<SoundEvent> ATM_USE = registerSoundEvent("atm_use");
+
+    public static final SoundType CORE_BLOCK_SOUNDS = new SoundType(1f, 1f,
+            SoundEvents.BEACON_DEACTIVATE, SoundEvents.STONE_STEP, SoundEvents.STONE_PLACE,
+            SoundEvents.STONE_HIT, SoundEvents.STONE_FALL);
 
     private static Supplier<SoundEvent> registerSoundEvent(String name) {
         ResourceLocation id = ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, name);

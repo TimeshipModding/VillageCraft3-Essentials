@@ -3,6 +3,7 @@ package com.timeshipmodding.villagecraft3essentials.content.block.registries;
 import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
 import com.timeshipmodding.villagecraft3essentials.content.block.AtmBlock;
 import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems;
+import com.timeshipmodding.villagecraft3essentials.content.sound.registries.ModSounds;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.DyeColor;
@@ -43,6 +44,9 @@ public class ModBlocks {
     public static final DeferredBlock<AtmBlock> RED_ATM = registerBlock("red_atm", () -> new AtmBlock(14, BlockBehaviour.Properties.of().noOcclusion().mapColor(DyeColor.RED).requiresCorrectToolForDrops().strength(1.8F)));
     public static final DeferredBlock<AtmBlock> WHITE_ATM = registerBlock("white_atm", () -> new AtmBlock(15, BlockBehaviour.Properties.of().noOcclusion().mapColor(DyeColor.WHITE).requiresCorrectToolForDrops().strength(1.8F)));
     public static final DeferredBlock<AtmBlock> YELLOW_ATM = registerBlock("yellow_atm", () -> new AtmBlock(16, BlockBehaviour.Properties.of().noOcclusion().mapColor(DyeColor.YELLOW).requiresCorrectToolForDrops().strength(1.8F)));
+    public static final DeferredBlock<Block> DIAMOND_CORE = registerBlock("diamond_core", () -> new Block(BlockBehaviour.Properties.of().strength(2.0F).lightLevel(p_152688_ -> 15).noOcclusion().noLootTable().sound(ModSounds.CORE_BLOCK_SOUNDS)));
+    public static final DeferredBlock<Block> RUBY_CORE = registerBlock("ruby_core", () -> new Block(BlockBehaviour.Properties.of().strength(2.0F).lightLevel(p_152688_ -> 15).noOcclusion().noLootTable().sound(ModSounds.CORE_BLOCK_SOUNDS)));
+    public static final DeferredBlock<Block> AMBER_CORE = registerBlock("amber_core", () -> new Block(BlockBehaviour.Properties.of().strength(2.0F).lightLevel(p_152688_ -> 15).noOcclusion().noLootTable().sound(ModSounds.CORE_BLOCK_SOUNDS)));
 
     // Register Methods
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {

@@ -19,6 +19,12 @@ public class ServerConfig {
     public static ModConfigSpec.ConfigValue<String> JAILED_GROUP_NAME;
     public static ModConfigSpec.BooleanValue CHAT_TAB_NAME_FORMATTING;
     public static ModConfigSpec.BooleanValue ENABLE_VILLAGECRAFT3_LOGO_TABLIST;
+    public static ModConfigSpec.BooleanValue ENABLE_WAR_SYSTEM_FEATURES;
+    public static ModConfigSpec.IntValue CORE_RESPAWN_TIME_MIN;
+    public static ModConfigSpec.IntValue CORE_RESPAWN_TIME_MAX;
+    public static ModConfigSpec.IntValue VILLAGECRAFTCITY_POINT_MULTIPLIER;
+    public static ModConfigSpec.IntValue GRIPPERCITY_POINT_MULTIPLIER;
+    public static ModConfigSpec.IntValue AMBERCAVES_POINT_MULTIPLIER;
     public static final ModConfigSpec SPEC;
 
     static {
@@ -85,6 +91,30 @@ public class ServerConfig {
 
         ENABLE_VILLAGECRAFT3_LOGO_TABLIST = BUILDER
                 .define("enableVillageCraft3LogoTablist", false);
+
+        BUILDER.pop();
+        BUILDER.push("War System Config");
+
+        ENABLE_WAR_SYSTEM_FEATURES = BUILDER
+                .comment("Enables the features required for VillageCraft 3's War System")
+                .define("enableWarSystemFeatures", false);
+        CORE_RESPAWN_TIME_MIN = BUILDER
+                .comment("The minimum time in hours for a core to respawn")
+                .defineInRange("coreRespawnTimeMin", 2, 0, Integer.MAX_VALUE);
+        CORE_RESPAWN_TIME_MAX = BUILDER
+                .comment("The maximum time in hours for a core to respawn")
+                .defineInRange("coreRespawnTimeMax", 4, 0, Integer.MAX_VALUE);
+        VILLAGECRAFTCITY_POINT_MULTIPLIER = BUILDER
+                .comment("The amount VillageCraft City's score is multiplied by to get VillageCraft City's points")
+                .defineInRange("villagecraftCityPointMultipler", 1, 1, Integer.MAX_VALUE);
+        GRIPPERCITY_POINT_MULTIPLIER = BUILDER
+                .comment("The amount VillageCraft City's score is multiplied by to get Gripper City's points")
+                .defineInRange("gripperCityPointMultipler", 1, 1, Integer.MAX_VALUE);
+        AMBERCAVES_POINT_MULTIPLIER = BUILDER
+                .comment("The amount VillageCraft City's score is multiplied by to get Amber Caves' points")
+                .defineInRange("amberCavesPointMultipler", 1, 1, Integer.MAX_VALUE);
+
+        BUILDER.pop();
 
         BUILDER.pop();
         SPEC = BUILDER.build();

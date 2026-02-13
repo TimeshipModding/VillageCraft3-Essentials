@@ -24,6 +24,9 @@
   "block.villagecraft3essentials.red_atm": "Red ATM",
   "block.villagecraft3essentials.white_atm": "White ATM",
   "block.villagecraft3essentials.yellow_atm": "Yellow ATM",
+  "block.villagecraft3essentials.diamond_core": "Diamond Core",
+  "block.villagecraft3essentials.ruby_core": "Ruby Core",
+  "block.villagecraft3essentials.amber_core": "Amber Core",
 
   "blockentity.villagecraft3essentials.atm.toolconvert": "ATM - Convert Currency Tools",
   "blockentity.villagecraft3essentials.atm.randomconvert": "ATM - Currency Conversion",

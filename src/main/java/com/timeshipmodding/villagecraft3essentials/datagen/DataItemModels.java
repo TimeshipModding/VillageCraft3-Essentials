@@ -19,6 +19,7 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import java.util.LinkedHashMap;
 import java.util.Objects;
 
+import static com.timeshipmodding.villagecraft3essentials.content.block.registries.ModBlocks.*;
 import static com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems.*;
 
 public class DataItemModels extends ItemModelProvider {
@@ -76,6 +77,27 @@ public class DataItemModels extends ItemModelProvider {
         trimmedArmorItem(AMBER_BOOTS);
         basicItem(AMBER_HORSE_ARMOR.get());
 
+        // Simple Block Item
+        simpleBlockItem(BLACK_ATM.get());
+        simpleBlockItem(BLUE_ATM.get());
+        simpleBlockItem(BROWN_ATM.get());
+        simpleBlockItem(CYAN_ATM.get());
+        simpleBlockItem(GRAY_ATM.get());
+        simpleBlockItem(GREEN_ATM.get());
+        simpleBlockItem(LIGHT_BLUE_ATM.get());
+        simpleBlockItem(LIGHT_GRAY_ATM.get());
+        simpleBlockItem(LIME_ATM.get());
+        simpleBlockItem(MAGENTA_ATM.get());
+        simpleBlockItem(ORANGE_ATM.get());
+        simpleBlockItem(PINK_ATM.get());
+        simpleBlockItem(PURPLE_ATM.get());
+        simpleBlockItem(RED_ATM.get());
+        simpleBlockItem(WHITE_ATM.get());
+        simpleBlockItem(YELLOW_ATM.get());
+        simpleBlockItem(DIAMOND_CORE.get());
+        simpleBlockItem(RUBY_CORE.get());
+        simpleBlockItem(AMBER_CORE.get());
+
         // withExistingParent
         withExistingParent(MOLE_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
     }
@@ -129,8 +151,7 @@ public class DataItemModels extends ItemModelProvider {
                         .texture("layer0", armorItemResLoc.getNamespace() + ":item/" + armorItemResLoc.getPath())
                         .texture("layer1", trimResLoc);
 
-                this.withExistingParent(itemDeferredItem.getId().getPath(),
-                                mcLoc("item/generated"))
+                this.withExistingParent(itemDeferredItem.getId().getPath(), mcLoc("item/generated"))
                         .override()
                         .model(new ModelFile.UncheckedModelFile(trimNameResLoc.getNamespace() + ":item/" + trimNameResLoc.getPath()))
                         .predicate(mcLoc("trim_type"), trimValue).end()

@@ -14,6 +14,8 @@ import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.protocol.game.ClientboundTabListPacket;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.scores.Scoreboard;
+import net.minecraft.world.scores.criteria.ObjectiveCriteria;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -21,8 +23,7 @@ import net.neoforged.neoforge.event.ServerChatEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import net.neoforged.neoforge.event.tick.ServerTickEvent;
 
-import java.util.Arrays;
-import java.util.Random;
+import java.util.*;
 
 @EventBusSubscriber(modid = VillageCraft3Essentials.MODID)
 public class ModServerEvents {
@@ -32,6 +33,7 @@ public class ModServerEvents {
     public static void onServerStarting(ServerStartingEvent event) {
         if (ModList.get().isLoaded("luckperms")) {
             VillageCraft3Essentials.LOGGER.info("Luckperms is installed. VillageCraft 3 Essentials luckperms features Enabled.");
+
         } else {
             VillageCraft3Essentials.LOGGER.info("Luckperms is not installed. VillageCraft 3 Essentials luckperms features Disabled.");
         }
@@ -61,6 +63,18 @@ public class ModServerEvents {
         VillageCraft3Essentials.LOGGER.info("Currency Conversions Randomized - RubyToAmber{}", Arrays.toString(rubyToAmber));
         VillageCraft3Essentials.LOGGER.info("Currency Conversions Randomized - AmberToDiamond{}", Arrays.toString(amberToDiamond));
         VillageCraft3Essentials.LOGGER.info("Currency Conversions Randomized - AmberToRuby{}", Arrays.toString(amberToRuby));
+        Scoreboard scoreboard = event.getServer().getScoreboard();
+
+        if (ServerConfig.ENABLE_WAR_SYSTEM_FEATURES.get() && scoreboard.getObjective("war_points_leaderboard") == null) {
+            scoreboard.addObjective(
+                    "war_points_leaderboard",
+                    ObjectiveCriteria.DUMMY,
+                    Component.literal("War Points Leaderboard").withStyle(ChatFormatting.BOLD),
+                    ObjectiveCriteria.RenderType.INTEGER,
+                    true,
+                    null
+            );
+        }
     }
 
     @SubscribeEvent
@@ -98,16 +112,6 @@ public class ModServerEvents {
         }
     }
 
-    public static int randomRubyCurrencyConversion() {
-        Random random = new Random();
-        return random.nextInt(CommonConfig.RUBY_CURRENCY_CONVERSION_RATE_MIN.getAsInt(), CommonConfig.RUBY_CURRENCY_CONVERSION_RATE_MAX.getAsInt());
-    }
-
-    public static int randomAmberCurrencyConversion() {
-        Random random = new Random();
-        return random.nextInt(CommonConfig.AMBER_CURRENCY_CONVERSION_RATE_MIN.getAsInt(), CommonConfig.AMBER_CURRENCY_CONVERSION_RATE_MAX.getAsInt());
-    }
-
     private static void refreshPlayerTab(ServerPlayer player) {
         updateTabListHeaderFooter(player);
 
@@ -126,6 +130,7 @@ public class ModServerEvents {
 
         if (ServerConfig.CHAT_TAB_NAME_FORMATTING.get()) {
             header = TabListVariables.tablistChars("     \uE001\uF801\uE002#N#N#N#N#N", player);
+
         } else {
             header = TabListVariables.tablistChars("", player);
         }
@@ -133,5 +138,15 @@ public class ModServerEvents {
         String footer = TabListVariables.tablistChars("#N&fOnline: &e#PLAYERCOUNT #N&7| TPS: &a#TPS &7 MSPT: &a#MSPT &7 Uptime: &a#UPTIME &7|", player);
         ClientboundTabListPacket packet = new ClientboundTabListPacket(Component.literal(header), Component.literal(footer));
         player.connection.send(packet);
+    }
+
+    public static int randomRubyCurrencyConversion() {
+        Random random = new Random();
+        return random.nextInt(CommonConfig.RUBY_CURRENCY_CONVERSION_RATE_MIN.getAsInt(), CommonConfig.RUBY_CURRENCY_CONVERSION_RATE_MAX.getAsInt());
+    }
+
+    public static int randomAmberCurrencyConversion() {
+        Random random = new Random();
+        return random.nextInt(CommonConfig.AMBER_CURRENCY_CONVERSION_RATE_MIN.getAsInt(), CommonConfig.AMBER_CURRENCY_CONVERSION_RATE_MAX.getAsInt());
     }
 }
