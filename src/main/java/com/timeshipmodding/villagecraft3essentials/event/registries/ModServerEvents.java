@@ -43,14 +43,14 @@ public class ModServerEvents {
         int diamond_amber = randomAmberCurrencyConversion();
         int ruby = randomRubyCurrencyConversion();
         int amber = randomAmberCurrencyConversion();
-        int[] diamondToRuby = new int[]{diamond_ruby, ruby};
-        int[] diamondToAmber = new int[]{diamond_amber, amber};
-        int[] rubyToDiamond = new int[]{ruby, diamond_ruby};
         int[] scaledArray1 = new int[]{(diamond_ruby * diamond_amber), (ruby * diamond_amber)};
         int[] scaledArray2 = new int[]{(diamond_amber * diamond_ruby), (amber * diamond_ruby)};
-        int[] rubyToAmber = new int[]{scaledArray1[1], scaledArray2[1]};
-        int[] amberToDiamond = new int[]{amber, diamond_amber};
-        int[] amberToRuby = new int[]{scaledArray2[1], scaledArray1[1]};
+        int[] diamondToRuby = new int[]{diamond_ruby / findHighestCommonFactor(diamond_ruby, ruby), ruby / findHighestCommonFactor(diamond_ruby, ruby)};
+        int[] diamondToAmber = new int[]{diamond_amber / findHighestCommonFactor(diamond_amber, amber), amber / findHighestCommonFactor(diamond_amber, amber)};
+        int[] rubyToDiamond = new int[]{ruby / findHighestCommonFactor(ruby, diamond_ruby), diamond_ruby / findHighestCommonFactor(diamond_ruby, ruby)};
+        int[] rubyToAmber = new int[]{scaledArray1[1] / findHighestCommonFactor(scaledArray1[1], scaledArray2[1]), scaledArray2[1] / findHighestCommonFactor(scaledArray2[1], scaledArray1[1])};
+        int[] amberToDiamond = new int[]{amber / findHighestCommonFactor(diamond_amber, amber), diamond_amber / findHighestCommonFactor(diamond_amber, amber)};
+        int[] amberToRuby = new int[]{scaledArray2[1] / findHighestCommonFactor(scaledArray2[1], scaledArray1[1]), scaledArray1[1] / findHighestCommonFactor(scaledArray2[1], scaledArray1[1])};
         data.setDiamondToRuby(diamondToRuby);
         data.setDiamondToAmber(diamondToAmber);
         data.setRubyToDiamond(rubyToDiamond);
@@ -138,6 +138,19 @@ public class ModServerEvents {
         String footer = TabListVariables.tablistChars("#N&fOnline: &e#PLAYERCOUNT #N&7| TPS: &a#TPS &7 MSPT: &a#MSPT &7 Uptime: &a#UPTIME &7|", player);
         ClientboundTabListPacket packet = new ClientboundTabListPacket(Component.literal(header), Component.literal(footer));
         player.connection.send(packet);
+    }
+
+    public static int findHighestCommonFactor(int a, int b) {
+        a = Math.abs(a);
+        b = Math.abs(b);
+
+        while (b != 0) {
+            int temp = b;
+            b = a % b;
+            a = temp;
+        }
+
+        return a;
     }
 
     public static int randomRubyCurrencyConversion() {
