@@ -115,8 +115,6 @@ public class ServerConfig {
                 .defineInRange("amberCavesPointMultipler", 1, 1, Integer.MAX_VALUE);
 
         BUILDER.pop();
-
-        BUILDER.pop();
         SPEC = BUILDER.build();
     }
 }

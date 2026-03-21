@@ -1,0 +1,7 @@
+{
+  "type": "villagecraft3essentials:swap_item_loot_modifier",
+  "conditions": [],
+  "currency1": "villagecraft3essentials:ruby_chestplate",
+  "currency2": "villagecraft3essentials:amber_chestplate",
+  "target": "minecraft:diamond_chestplate"
+}

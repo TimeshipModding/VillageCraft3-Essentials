@@ -1,0 +1,7 @@
+{
+  "type": "villagecraft3essentials:swap_item_loot_modifier",
+  "conditions": [],
+  "currency1": "villagecraft3essentials:ruby_boots",
+  "currency2": "villagecraft3essentials:amber_boots",
+  "target": "minecraft:diamond_boots"
+}

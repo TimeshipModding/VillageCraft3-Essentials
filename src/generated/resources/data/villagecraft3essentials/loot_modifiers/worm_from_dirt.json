@@ -1,0 +1,14 @@
+{
+  "type": "villagecraft3essentials:add_item_loot_modifier",
+  "conditions": [
+    {
+      "block": "minecraft:dirt",
+      "condition": "minecraft:block_state_property"
+    },
+    {
+      "chance": 0.022,
+      "condition": "minecraft:random_chance"
+    }
+  ],
+  "item": "villagecraft3essentials:worm"
+}

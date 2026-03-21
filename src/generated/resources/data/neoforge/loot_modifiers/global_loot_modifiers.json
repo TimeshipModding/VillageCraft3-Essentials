@@ -1,0 +1,25 @@
+{
+  "entries": [
+    "villagecraft3essentials:worm_from_coarse_dirt",
+    "villagecraft3essentials:worm_from_dirt",
+    "villagecraft3essentials:worm_from_grass_block",
+    "villagecraft3essentials:worm_from_moss_block",
+    "villagecraft3essentials:worm_from_podzol",
+    "villagecraft3essentials:worm_from_rooted_dirt",
+    "villagecraft3essentials:swap_diamond_block",
+    "villagecraft3essentials:swap_diamond_ore",
+    "villagecraft3essentials:swap_deepslate_diamond_ore",
+    "villagecraft3essentials:swap_diamond_shovel",
+    "villagecraft3essentials:swap_diamond_pickaxe",
+    "villagecraft3essentials:swap_diamond_axe",
+    "villagecraft3essentials:swap_diamond_hoe",
+    "villagecraft3essentials:swap_diamond_sword",
+    "villagecraft3essentials:swap_diamond_helmet",
+    "villagecraft3essentials:swap_diamond_chestplate",
+    "villagecraft3essentials:swap_diamond_leggings",
+    "villagecraft3essentials:swap_diamond_boots",
+    "villagecraft3essentials:swap_diamond_horse_armor",
+    "villagecraft3essentials:swap_diamond"
+  ],
+  "replace": false
+}

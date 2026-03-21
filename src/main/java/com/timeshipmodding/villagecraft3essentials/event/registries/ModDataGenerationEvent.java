@@ -2,6 +2,7 @@ package com.timeshipmodding.villagecraft3essentials.event.registries;
 
 import com.timeshipmodding.villagecraft3essentials.datagen.*;
 import com.timeshipmodding.villagecraft3essentials.datagen.loot.DataBlockLootTables;
+import com.timeshipmodding.villagecraft3essentials.datagen.loot.DataGlobalLootModifiers;
 import com.timeshipmodding.villagecraft3essentials.datagen.tags.DataBlockTags;
 import com.timeshipmodding.villagecraft3essentials.datagen.tags.DataItemTags;
 import net.minecraft.core.HolderLookup;
@@ -30,6 +31,7 @@ public class ModDataGenerationEvent {
 
         generator.addProvider(event.includeServer(), new DataRecipes(packOutput, lookupProvider));
         generator.addProvider(event.includeServer(), new DataWorldgenAndDatapack(packOutput, lookupProvider));
+        generator.addProvider(event.includeServer(), new DataGlobalLootModifiers(packOutput, lookupProvider));
         generator.addProvider(event.includeServer(), new LootTableProvider(packOutput, Collections.emptySet(),
                 List.of(new LootTableProvider.SubProviderEntry(DataBlockLootTables::new, LootContextParamSets.BLOCK)), lookupProvider));
 

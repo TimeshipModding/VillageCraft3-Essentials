@@ -1,0 +1,7 @@
+{
+  "type": "villagecraft3essentials:swap_item_loot_modifier",
+  "conditions": [],
+  "currency1": "villagecraft3essentials:ruby_pickaxe",
+  "currency2": "villagecraft3essentials:amber_pickaxe",
+  "target": "minecraft:diamond_pickaxe"
+}
