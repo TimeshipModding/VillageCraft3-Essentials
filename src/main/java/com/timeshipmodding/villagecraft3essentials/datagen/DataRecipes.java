@@ -11,7 +11,9 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
+import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.common.conditions.IConditionBuilder;
+import vectorwing.farmersdelight.common.registry.ModItems;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -299,6 +301,17 @@ public class DataRecipes extends RecipeProvider implements IConditionBuilder {
                 .pattern("###")
                 .define('#', ModItemTags.CURRENCY_GEMS).define('C', MOSSY_COBBLESTONE).define('S', WILD_ARMOR_TRIM_SMITHING_TEMPLATE).group("villagecraft3essentials").unlockedBy(getHasName(WILD_ARMOR_TRIM_SMITHING_TEMPLATE), has(WILD_ARMOR_TRIM_SMITHING_TEMPLATE)).save(recipeOutput, WILD_ARMOR_TRIM_SMITHING_TEMPLATE + "_using_currency_gems");
 
+        if (ModList.get().isLoaded("farmersdelight")) {
+            ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, RUBY_KNIFE.get())
+                    .pattern("#")
+                    .pattern("!")
+                    .define('#', RUBY.get()).define('!', Items.STICK).group("villagecraft3essentials").unlockedBy(getHasName(RUBY.get()), has(RUBY.get())).unlockedBy(getHasName(Items.STICK), has(Items.STICK)).save(recipeOutput);
+            ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, AMBER_KNIFE.get())
+                    .pattern("#")
+                    .pattern("!")
+                    .define('#', AMBER.get()).define('!', Items.STICK).group("villagecraft3essentials").unlockedBy(getHasName(AMBER.get()), has(AMBER.get())).unlockedBy(getHasName(Items.STICK), has(Items.STICK)).save(recipeOutput);
+        }
+
 
         // Shapeless Crafting
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RUBY.get(), 9).requires(RUBY_BLOCK.get()).group("villagecraft3essentials").unlockedBy(getHasName(RUBY_BLOCK.get()), has(RUBY_BLOCK.get())).save(recipeOutput);
@@ -332,6 +345,7 @@ public class DataRecipes extends RecipeProvider implements IConditionBuilder {
         rubyNetheriteSmithing(recipeOutput, RUBY_PICKAXE.get(), RecipeCategory.TOOLS, NETHERITE_PICKAXE);
         rubyNetheriteSmithing(recipeOutput, RUBY_SHOVEL.get(), RecipeCategory.TOOLS, NETHERITE_SHOVEL);
         rubyNetheriteSmithing(recipeOutput, RUBY_SWORD.get(), RecipeCategory.TOOLS, NETHERITE_SWORD);
+        rubyNetheriteSmithing(recipeOutput, RUBY_KNIFE.get(), RecipeCategory.TOOLS, ModItems.NETHERITE_KNIFE.get());
         rubyNetheriteSmithing(recipeOutput, RUBY_HELMET.get(), RecipeCategory.TOOLS, NETHERITE_HELMET);
         rubyNetheriteSmithing(recipeOutput, RUBY_CHESTPLATE.get(), RecipeCategory.TOOLS, NETHERITE_CHESTPLATE);
         rubyNetheriteSmithing(recipeOutput, RUBY_LEGGINGS.get(), RecipeCategory.TOOLS, NETHERITE_LEGGINGS);
@@ -341,10 +355,12 @@ public class DataRecipes extends RecipeProvider implements IConditionBuilder {
         amberNetheriteSmithing(recipeOutput, AMBER_PICKAXE.get(), RecipeCategory.TOOLS, NETHERITE_PICKAXE);
         amberNetheriteSmithing(recipeOutput, AMBER_SHOVEL.get(), RecipeCategory.TOOLS, NETHERITE_SHOVEL);
         amberNetheriteSmithing(recipeOutput, AMBER_SWORD.get(), RecipeCategory.TOOLS, NETHERITE_SWORD);
+        amberNetheriteSmithing(recipeOutput, AMBER_KNIFE.get(), RecipeCategory.TOOLS, ModItems.NETHERITE_KNIFE.get());
         amberNetheriteSmithing(recipeOutput, AMBER_HELMET.get(), RecipeCategory.TOOLS, NETHERITE_HELMET);
         amberNetheriteSmithing(recipeOutput, AMBER_CHESTPLATE.get(), RecipeCategory.TOOLS, NETHERITE_CHESTPLATE);
         amberNetheriteSmithing(recipeOutput, AMBER_LEGGINGS.get(), RecipeCategory.TOOLS, NETHERITE_LEGGINGS);
         amberNetheriteSmithing(recipeOutput, AMBER_BOOTS.get(), RecipeCategory.TOOLS, NETHERITE_BOOTS);
+
     }
 
     // Generate Methods

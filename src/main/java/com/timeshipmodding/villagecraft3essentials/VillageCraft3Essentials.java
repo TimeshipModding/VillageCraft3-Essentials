@@ -32,6 +32,7 @@ public class VillageCraft3Essentials {
         ModEntities.ENTITY_TYPES.register(modEventBus);
         ModArmorMaterials.ARMOR_MATERIALS.register(modEventBus);
         ModItems.ITEMS.register(modEventBus);
+        ModItems.registerCompatItems();
         ModLootModifiers.GLOBAL_LOOT_MODIFIERS.register(modEventBus);
         ModMenus.MENUS.register(modEventBus);
         ModSounds.SOUND_EVENTS.register(modEventBus);

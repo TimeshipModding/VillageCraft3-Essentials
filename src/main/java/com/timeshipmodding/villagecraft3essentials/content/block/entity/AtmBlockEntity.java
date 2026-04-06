@@ -24,6 +24,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import org.jetbrains.annotations.Nullable;
 
@@ -256,6 +257,10 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
                 inputStack = new ItemStack(ModItems.RUBY_HOE.get());
                 outputStack = new ItemStack(Items.DIAMOND_HOE);
 
+            } else if (inputItem == ModItems.RUBY_KNIFE.get() && ModList.get().isLoaded("farmersdelight")) {
+                inputStack = new ItemStack(ModItems.RUBY_KNIFE.get());
+                outputStack = new ItemStack(vectorwing.farmersdelight.common.registry.ModItems.DIAMOND_KNIFE.get());
+
             } else if (inputItem == ModItems.RUBY_HELMET.get()) {
                 inputStack = new ItemStack(ModItems.RUBY_HELMET.get());
                 outputStack = new ItemStack(Items.DIAMOND_HELMET);
@@ -295,6 +300,10 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
             } else if (inputItem == ModItems.AMBER_HOE.get()) {
                 inputStack = new ItemStack(ModItems.AMBER_HOE.get());
                 outputStack = new ItemStack(Items.DIAMOND_HOE);
+
+            } else if (inputItem == ModItems.AMBER_KNIFE.get() && ModList.get().isLoaded("farmersdelight")) {
+                inputStack = new ItemStack(ModItems.AMBER_KNIFE.get());
+                outputStack = new ItemStack(vectorwing.farmersdelight.common.registry.ModItems.DIAMOND_KNIFE.get());
 
             } else if (inputItem == ModItems.AMBER_HELMET.get()) {
                 inputStack = new ItemStack(ModItems.AMBER_HELMET.get());
@@ -338,6 +347,10 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
                 inputStack = new ItemStack(Items.DIAMOND_HOE);
                 outputStack = new ItemStack(ModItems.RUBY_HOE.get());
 
+            } else if (inputItem == vectorwing.farmersdelight.common.registry.ModItems.DIAMOND_KNIFE.get() && ModList.get().isLoaded("farmersdelight")) {
+                inputStack = new ItemStack(vectorwing.farmersdelight.common.registry.ModItems.DIAMOND_KNIFE.get());
+                outputStack = new ItemStack(ModItems.RUBY_KNIFE.get());
+
             } else if (inputItem == Items.DIAMOND_HELMET) {
                 inputStack = new ItemStack(Items.DIAMOND_HELMET);
                 outputStack = new ItemStack(ModItems.RUBY_HELMET.get());
@@ -377,6 +390,10 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
             } else if (inputItem == ModItems.AMBER_HOE.get()) {
                 inputStack = new ItemStack(ModItems.AMBER_HOE.get());
                 outputStack = new ItemStack(ModItems.RUBY_HOE.get());
+
+            } else if (inputItem == ModItems.AMBER_KNIFE.get() && ModList.get().isLoaded("farmersdelight")) {
+                inputStack = new ItemStack(ModItems.AMBER_KNIFE.get());
+                outputStack = new ItemStack(ModItems.RUBY_KNIFE.get());
 
             } else if (inputItem == ModItems.AMBER_HELMET.get()) {
                 inputStack = new ItemStack(ModItems.AMBER_HELMET.get());
@@ -420,6 +437,10 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
                 inputStack = new ItemStack(Items.DIAMOND_HOE);
                 outputStack = new ItemStack(ModItems.AMBER_HOE.get());
 
+            } else if (inputItem == vectorwing.farmersdelight.common.registry.ModItems.DIAMOND_KNIFE.get() && ModList.get().isLoaded("farmersdelight")) {
+                inputStack = new ItemStack(vectorwing.farmersdelight.common.registry.ModItems.DIAMOND_KNIFE.get());
+                outputStack = new ItemStack(ModItems.AMBER_KNIFE.get());
+
             } else if (inputItem == Items.DIAMOND_HELMET) {
                 inputStack = new ItemStack(Items.DIAMOND_HELMET);
                 outputStack = new ItemStack(ModItems.AMBER_HELMET.get());
@@ -459,6 +480,10 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
             } else if (inputItem == ModItems.RUBY_HOE.get()) {
                 inputStack = new ItemStack(ModItems.RUBY_HOE.get());
                 outputStack = new ItemStack(ModItems.AMBER_HOE.get());
+
+            } else if (inputItem == ModItems.RUBY_KNIFE.get() && ModList.get().isLoaded("farmersdelight")) {
+                inputStack = new ItemStack(ModItems.RUBY_KNIFE.get());
+                outputStack = new ItemStack(ModItems.AMBER_KNIFE.get());
 
             } else if (inputItem == ModItems.RUBY_HELMET.get()) {
                 inputStack = new ItemStack(ModItems.RUBY_HELMET.get());

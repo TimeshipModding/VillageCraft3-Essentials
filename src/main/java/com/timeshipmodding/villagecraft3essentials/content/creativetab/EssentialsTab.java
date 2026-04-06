@@ -5,8 +5,10 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Blocks;
+import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import vectorwing.farmersdelight.common.registry.ModItems;
 
 import static net.minecraft.world.item.Items.*;
 
@@ -55,21 +57,41 @@ public class EssentialsTab {
                 pOutput.accept(DIAMOND_AXE);
                 pOutput.accept(DIAMOND_HOE);
                 pOutput.accept(DIAMOND_SWORD);
+
+                if (ModList.get().isLoaded("farmersdelight")) {
+                    pOutput.accept(ModItems.DIAMOND_KNIFE.get());
+                }
+
                 pOutput.accept(RUBY_SHOVEL);
                 pOutput.accept(RUBY_PICKAXE);
                 pOutput.accept(RUBY_AXE);
                 pOutput.accept(RUBY_HOE);
                 pOutput.accept(RUBY_SWORD);
+
+                if (ModList.get().isLoaded("farmersdelight")) {
+                    pOutput.accept(RUBY_KNIFE.get());
+                }
+
                 pOutput.accept(AMBER_SHOVEL);
                 pOutput.accept(AMBER_PICKAXE);
                 pOutput.accept(AMBER_AXE);
                 pOutput.accept(AMBER_HOE);
                 pOutput.accept(AMBER_SWORD);
+
+                if (ModList.get().isLoaded("farmersdelight")) {
+                    pOutput.accept(AMBER_KNIFE.get());
+                }
+
                 pOutput.accept(NETHERITE_SHOVEL);
                 pOutput.accept(NETHERITE_PICKAXE);
                 pOutput.accept(NETHERITE_AXE);
                 pOutput.accept(NETHERITE_HOE);
                 pOutput.accept(NETHERITE_SWORD);
+
+                if (ModList.get().isLoaded("farmersdelight")) {
+                    pOutput.accept(ModItems.NETHERITE_KNIFE.get());
+                }
+
                 pOutput.accept(DIAMOND_HELMET);
                 pOutput.accept(DIAMOND_CHESTPLATE);
                 pOutput.accept(DIAMOND_LEGGINGS);

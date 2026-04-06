@@ -10,6 +10,7 @@ import net.minecraft.server.packs.PackType;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.armortrim.TrimMaterial;
 import net.minecraft.world.item.armortrim.TrimMaterials;
+import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
@@ -57,11 +58,13 @@ public class DataItemModels extends ItemModelProvider {
         handheldItem(RUBY_PICKAXE.get());
         handheldItem(RUBY_AXE.get());
         handheldItem(RUBY_HOE.get());
+        handheldItem(RUBY_KNIFE.get());
         handheldItem(AMBER_SWORD.get());
         handheldItem(AMBER_SHOVEL.get());
         handheldItem(AMBER_PICKAXE.get());
         handheldItem(AMBER_AXE.get());
         handheldItem(AMBER_HOE.get());
+        handheldItem(AMBER_KNIFE.get());
         handheldItem(POLICE_BATON.get());
         handheldRodItem(WORM_ON_A_STICK.get());
 

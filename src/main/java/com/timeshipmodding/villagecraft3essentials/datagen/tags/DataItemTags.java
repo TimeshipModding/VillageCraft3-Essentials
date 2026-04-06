@@ -1,12 +1,17 @@
 package com.timeshipmodding.villagecraft3essentials.datagen.tags;
 
 import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
+import com.timeshipmodding.villagecraft3essentials.compat.farmersdelight.FDMethods;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.block.Block;
+import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import vectorwing.farmersdelight.common.registry.ModItems;
+import vectorwing.farmersdelight.common.tag.CommonTags;
+import vectorwing.farmersdelight.common.tag.ModTags;
 
 import javax.annotation.Nullable;
 import java.util.concurrent.CompletableFuture;
@@ -86,6 +91,7 @@ public class DataItemTags extends ItemTagsProvider {
                 .add(DIAMOND_PICKAXE)
                 .add(DIAMOND_AXE)
                 .add(DIAMOND_HOE)
+                .add(ModItems.DIAMOND_KNIFE.get())
                 .add(DIAMOND_HELMET)
                 .add(DIAMOND_CHESTPLATE)
                 .add(DIAMOND_LEGGINGS)
@@ -97,6 +103,7 @@ public class DataItemTags extends ItemTagsProvider {
                 .add(RUBY_PICKAXE.get())
                 .add(RUBY_AXE.get())
                 .add(RUBY_HOE.get())
+                .add(RUBY_KNIFE.get())
                 .add(RUBY_HELMET.get())
                 .add(RUBY_CHESTPLATE.get())
                 .add(RUBY_LEGGINGS.get())
@@ -108,6 +115,7 @@ public class DataItemTags extends ItemTagsProvider {
                 .add(AMBER_PICKAXE.get())
                 .add(AMBER_AXE.get())
                 .add(AMBER_HOE.get())
+                .add(AMBER_KNIFE.get())
                 .add(AMBER_HELMET.get())
                 .add(AMBER_CHESTPLATE.get())
                 .add(AMBER_LEGGINGS.get())
@@ -117,5 +125,13 @@ public class DataItemTags extends ItemTagsProvider {
                 .add(DIAMOND)
                 .add(RUBY.get())
                 .add(AMBER.get());
+
+        // Farmer's Delight Tags
+        tag(FDMethods.getKnivesTag())
+                .add(RUBY_KNIFE.get())
+                .add(AMBER_KNIFE.get());
+        tag(FDMethods.getToolsKnifeCommonTag())
+                    .add(RUBY_KNIFE.get())
+                    .add(AMBER_KNIFE.get());
     }
 }

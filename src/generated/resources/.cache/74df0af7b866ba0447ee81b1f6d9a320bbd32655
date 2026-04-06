@@ -1,4 +1,6 @@
-// 1.21.1	2026-02-05T20:10:22.832418	Tags for minecraft:item mod id villagecraft3essentials
+// 1.21.1	2026-04-06T15:20:13.3837527	Tags for minecraft:item mod id villagecraft3essentials
+b58b5f4e6203923206fce9719bc86e489a61cb4f data/c/tags/item/tools/knife.json
+b58b5f4e6203923206fce9719bc86e489a61cb4f data/farmersdelight/tags/item/tools/knives.json
 b1c74e437e0593ddf4f5ee19f47a5eabf582572f data/minecraft/tags/item/axes.json
 d03fa87e10535e7ddd298826de46878b10e461b2 data/minecraft/tags/item/beacon_payment_items.json
 649b29e6b6d8a5a0e4b103006266698f0d2c937e data/minecraft/tags/item/breaks_decorated_pots.json
@@ -16,8 +18,8 @@ bf4bf7acc3ce5a96922fb05f71ffaec04d3d3f9e data/minecraft/tags/item/pickaxes.json
 e6c7295c8a74347127b325cdeeefc14cc28c00fc data/minecraft/tags/item/swords.json
 44302f61f46fba400b2545da27bf3431462b8c01 data/minecraft/tags/item/trimmable_armor.json
 d03fa87e10535e7ddd298826de46878b10e461b2 data/minecraft/tags/item/trim_materials.json
-31d147985b3a8d193c6c1f336df6c5336bfa5df6 data/villagecraft3essentials/tags/item/amber_convertible_tools.json
+81e3574ebc3eb434bccb1a7c604bc67de596b262 data/villagecraft3essentials/tags/item/amber_convertible_tools.json
 886af41aed989b5369edefdda8d85715456cc021 data/villagecraft3essentials/tags/item/currency_gems.json
-ef7dca0c5ba556ba1c1afbd9f8b1e215f5a486e4 data/villagecraft3essentials/tags/item/diamond_convertible_tools.json
+43991627aa16c7b39c27d1c67a2bcb5660b8b850 data/villagecraft3essentials/tags/item/diamond_convertible_tools.json
 bbbe68f23d94ae2a72f5380fb7195d7486f0955f data/villagecraft3essentials/tags/item/mole_food.json
-f43a9e60b4ebb3f4ebe01d2fe0eef8d2f834700f data/villagecraft3essentials/tags/item/ruby_convertible_tools.json
+c0bf5323a02c78a6f01df8ab6f3958c466ad833e data/villagecraft3essentials/tags/item/ruby_convertible_tools.json
