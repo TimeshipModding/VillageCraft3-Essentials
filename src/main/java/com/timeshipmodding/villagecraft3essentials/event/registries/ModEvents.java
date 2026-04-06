@@ -1,6 +1,7 @@
 package com.timeshipmodding.villagecraft3essentials.event.registries;
 
 import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
+import com.timeshipmodding.villagecraft3essentials.compat.aquaculture.AquaMethods;
 import com.timeshipmodding.villagecraft3essentials.compat.luckperms.LuckpermsMethods;
 import com.timeshipmodding.villagecraft3essentials.content.block.registries.ModBlocks;
 import com.timeshipmodding.villagecraft3essentials.content.command.SpawnCommand;
@@ -9,21 +10,27 @@ import com.timeshipmodding.villagecraft3essentials.content.command.grippercity.*
 import com.timeshipmodding.villagecraft3essentials.content.command.tpa.*;
 import com.timeshipmodding.villagecraft3essentials.content.command.villagecraftcity.*;
 import com.timeshipmodding.villagecraft3essentials.content.command.warscore.*;
+import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.config.ServerConfig;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.data.CoreRespawnData;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.data.saveddata.WarPointsSavedData;
+import com.timeshipmodding.villagecraft3essentials.infrastructure.itemhandler.HorseCurrencyArmorItemHandler;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.networking.packet.atm.AtmRandomConversionRatesPacket;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.data.saveddata.AtmRandomConversionRatesSavedData;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.capabilities.EntityCapability;
+import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.event.OnDatapackSyncEvent;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
@@ -41,6 +48,7 @@ public class ModEvents {
     public record TeleportCommandsData(ServerLevel serverLevel, int ticksLeft, Vec3 startPos, int[] destination, Component teleportMessage) {}
     public record TpaCommandData(ServerLevel serverLevel, int ticksLeft, Vec3 startPos, ServerPlayer targetPlayer, ServerPlayer requestingPlayer, Component targetPlayerMessage, Component requestingPlayerMessage, String teleportType) {}
     private static final List<CoreRespawnData> PENDING_CORE_RESPAWNS = new ArrayList<>();
+    public static final EntityCapability<HorseCurrencyArmorItemHandler, Void> HORSE_ARMOR_CAPABILITY = EntityCapability.createVoid(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "horse_armor_handler"), HorseCurrencyArmorItemHandler.class);
 
     @SubscribeEvent
     public static void onCommandsRegister(RegisterCommandsEvent event) {
@@ -316,6 +324,20 @@ public class ModEvents {
                     iterator.remove();
                 }
             }
+        }
+    }
+
+    @SubscribeEvent
+    public static void registerCapabilities(RegisterCapabilitiesEvent event) {
+        event.registerEntity(
+                HORSE_ARMOR_CAPABILITY,
+                EntityType.HORSE,
+                (entity, context) -> new HorseCurrencyArmorItemHandler(entity)
+        );
+
+        if (ModList.get().isLoaded("aquaculture")) {
+            AquaMethods.registerAquaFishingRodCapability(event, ModItems.RUBY_FISHING_ROD.get());
+            AquaMethods.registerAquaFishingRodCapability(event, ModItems.AMBER_FISHING_ROD.get());
         }
     }
 

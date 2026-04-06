@@ -140,7 +140,7 @@ public class ModCurrencyToolsEvents {
             }
 
             if (event.getTarget() instanceof AbstractHorse && stack.getItem() instanceof AnimalArmorItem) {
-                HorseCurrencyArmorItemHandler handler = event.getTarget().getCapability(ModCapabilityEvents.HORSE_ARMOR_CAPABILITY);
+                HorseCurrencyArmorItemHandler handler = event.getTarget().getCapability(ModEvents.HORSE_ARMOR_CAPABILITY);
                 boolean canEquip = false;
 
                 if (handler != null) {
@@ -187,7 +187,7 @@ public class ModCurrencyToolsEvents {
                 ItemStack stack = horseInventoryMenu.getSlot(1).getItem();
 
                 if (!stack.isEmpty() && horseInventoryMenu instanceof IHorseInventoryMenuEntity iHorseInventoryMenuEntity) {
-                    HorseCurrencyArmorItemHandler handler = iHorseInventoryMenuEntity.getEntity().getCapability(ModCapabilityEvents.HORSE_ARMOR_CAPABILITY);
+                    HorseCurrencyArmorItemHandler handler = iHorseInventoryMenuEntity.getEntity().getCapability(ModEvents.HORSE_ARMOR_CAPABILITY);
 
                     if (handler != null && !handler.canPlayerEquip(event.getEntity(), stack)) {
                         ItemStack stackToDrop = horseInventoryMenu.getSlot(1).remove(stack.getCount());

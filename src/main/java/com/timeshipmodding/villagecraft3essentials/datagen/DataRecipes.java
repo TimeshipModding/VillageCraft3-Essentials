@@ -1,5 +1,6 @@
 package com.timeshipmodding.villagecraft3essentials.datagen;
 
+import com.teammetallurgy.aquaculture.init.AquaItems;
 import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.tags.registries.ModItemTags;
 import net.minecraft.core.HolderLookup;
@@ -300,18 +301,44 @@ public class DataRecipes extends RecipeProvider implements IConditionBuilder {
                 .pattern("#C#")
                 .pattern("###")
                 .define('#', ModItemTags.CURRENCY_GEMS).define('C', MOSSY_COBBLESTONE).define('S', WILD_ARMOR_TRIM_SMITHING_TEMPLATE).group("villagecraft3essentials").unlockedBy(getHasName(WILD_ARMOR_TRIM_SMITHING_TEMPLATE), has(WILD_ARMOR_TRIM_SMITHING_TEMPLATE)).save(recipeOutput, WILD_ARMOR_TRIM_SMITHING_TEMPLATE + "_using_currency_gems");
-
-        if (ModList.get().isLoaded("farmersdelight")) {
-            ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, RUBY_KNIFE.get())
-                    .pattern("#")
-                    .pattern("!")
-                    .define('#', RUBY.get()).define('!', Items.STICK).group("villagecraft3essentials").unlockedBy(getHasName(RUBY.get()), has(RUBY.get())).unlockedBy(getHasName(Items.STICK), has(Items.STICK)).save(recipeOutput);
-            ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, AMBER_KNIFE.get())
-                    .pattern("#")
-                    .pattern("!")
-                    .define('#', AMBER.get()).define('!', Items.STICK).group("villagecraft3essentials").unlockedBy(getHasName(AMBER.get()), has(AMBER.get())).unlockedBy(getHasName(Items.STICK), has(Items.STICK)).save(recipeOutput);
-        }
-
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, RUBY_KNIFE.get())
+                .pattern("#")
+                .pattern("!")
+                .define('#', RUBY.get()).define('!', STICK).group("villagecraft3essentials").unlockedBy(getHasName(RUBY.get()), has(RUBY.get())).unlockedBy(getHasName(STICK), has(STICK)).save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, AMBER_KNIFE.get())
+                .pattern("#")
+                .pattern("!")
+                .define('#', AMBER.get()).define('!', STICK).group("villagecraft3essentials").unlockedBy(getHasName(AMBER.get()), has(AMBER.get())).unlockedBy(getHasName(STICK), has(STICK)).save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, RUBY_FISHING_ROD.get())
+                .pattern("  #")
+                .pattern(" #S")
+                .pattern("! S")
+                .define('#', RUBY.get()).define('!', STICK).define('S', STRING).group("villagecraft3essentials").unlockedBy(getHasName(RUBY.get()), has(RUBY.get())).unlockedBy(getHasName(STICK), has(STICK)).unlockedBy(getHasName(STRING), has(STRING)).save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, AMBER_FISHING_ROD.get())
+                .pattern("  #")
+                .pattern(" #S")
+                .pattern("! S")
+                .define('#', AMBER.get()).define('!', STICK).define('S', STRING).group("villagecraft3essentials").unlockedBy(getHasName(AMBER.get()), has(AMBER.get())).unlockedBy(getHasName(STICK), has(STICK)).unlockedBy(getHasName(STRING), has(STRING)).save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, RUBY_FILLET_KNIFE.get())
+                .pattern("  #")
+                .pattern(" # ")
+                .pattern("!  ")
+                .define('#', RUBY.get()).define('!', STICK).group("villagecraft3essentials").unlockedBy(getHasName(RUBY.get()), has(RUBY.get())).unlockedBy(getHasName(STICK), has(STICK)).save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, AMBER_FILLET_KNIFE.get())
+                .pattern("  #")
+                .pattern(" # ")
+                .pattern("!  ")
+                .define('#', AMBER.get()).define('!', STICK).group("villagecraft3essentials").unlockedBy(getHasName(AMBER.get()), has(AMBER.get())).unlockedBy(getHasName(STICK), has(STICK)).save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, RUBY_HOOK.get())
+                .pattern(" # ")
+                .pattern("#!#")
+                .pattern(" # ")
+                .define('#', RUBY.get()).define('!', AquaItems.IRON_HOOK.get()).group("villagecraft3essentials").unlockedBy(getHasName(RUBY.get()), has(RUBY.get())).unlockedBy(getHasName(AquaItems.IRON_HOOK.get()), has(AquaItems.IRON_HOOK.get())).save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, AMBER_HOOK.get())
+                .pattern(" # ")
+                .pattern("#!#")
+                .pattern(" # ")
+                .define('#', AMBER.get()).define('!', AquaItems.IRON_HOOK.get()).group("villagecraft3essentials").unlockedBy(getHasName(AMBER.get()), has(AMBER.get())).unlockedBy(getHasName(AquaItems.IRON_HOOK.get()), has(AquaItems.IRON_HOOK.get())).save(recipeOutput);
 
         // Shapeless Crafting
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RUBY.get(), 9).requires(RUBY_BLOCK.get()).group("villagecraft3essentials").unlockedBy(getHasName(RUBY_BLOCK.get()), has(RUBY_BLOCK.get())).save(recipeOutput);

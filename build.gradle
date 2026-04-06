@@ -16,6 +16,10 @@ repositories {
     mavenCentral()
 
     maven {
+        url "https://girafi.dk/maven/"
+    }
+
+    maven {
         url "https://cursemaven.com"
         content {
             includeGroup "curse.maven"
@@ -100,6 +104,9 @@ dependencies {
 
     // Farmer's Delight Dependency
     implementation "curse.maven:farmers-delight-398521:7801529"
+
+    // Aquaculture 2 Dependency
+    implementation "com.teammetallurgy.aquaculture:aquaculture2_1.21.1:1.21.1-2.7.19"
 }
 
 // gradle.properties entries
@@ -110,6 +117,7 @@ var generateModMetadata = tasks.register("generateModMetadata", ProcessResources
             neo_version            : neo_version,
             loader_version_range   : loader_version_range,
             jei_version            : jei_version,
+            aquaculture_version    : aquaculture_version,
             mc_version             : mc_version,
             mod_id                 : mod_id,
             mod_name               : mod_name,

@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "villagecraft3essentials",
+  "key": {
+    "!": {
+      "item": "minecraft:stick"
+    },
+    "#": {
+      "item": "villagecraft3essentials:amber"
+    },
+    "S": {
+      "item": "minecraft:string"
+    }
+  },
+  "pattern": [
+    "  #",
+    " #S",
+    "! S"
+  ],
+  "result": {
+    "count": 1,
+    "id": "villagecraft3essentials:amber_fishing_rod"
+  }
+}

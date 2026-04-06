@@ -1,5 +1,6 @@
 package com.timeshipmodding.villagecraft3essentials.content.creativetab;
 
+import com.teammetallurgy.aquaculture.init.AquaItems;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -62,6 +63,12 @@ public class EssentialsTab {
                     pOutput.accept(ModItems.DIAMOND_KNIFE.get());
                 }
 
+                if (ModList.get().isLoaded("aquaculture")) {
+                    pOutput.accept(AquaItems.DIAMOND_FILLET_KNIFE.get());
+                    pOutput.accept(AquaItems.DIAMOND_FISHING_ROD.get());
+                    pOutput.accept(AquaItems.DIAMOND_HOOK.get());
+                }
+
                 pOutput.accept(RUBY_SHOVEL);
                 pOutput.accept(RUBY_PICKAXE);
                 pOutput.accept(RUBY_AXE);
@@ -72,6 +79,12 @@ public class EssentialsTab {
                     pOutput.accept(RUBY_KNIFE.get());
                 }
 
+                if (ModList.get().isLoaded("aquaculture")) {
+                    pOutput.accept(RUBY_FILLET_KNIFE.get());
+                    pOutput.accept(RUBY_FISHING_ROD.get());
+                    pOutput.accept(RUBY_HOOK.get());
+                }
+
                 pOutput.accept(AMBER_SHOVEL);
                 pOutput.accept(AMBER_PICKAXE);
                 pOutput.accept(AMBER_AXE);
@@ -80,6 +93,12 @@ public class EssentialsTab {
 
                 if (ModList.get().isLoaded("farmersdelight")) {
                     pOutput.accept(AMBER_KNIFE.get());
+                }
+
+                if (ModList.get().isLoaded("aquaculture")) {
+                    pOutput.accept(AMBER_FILLET_KNIFE.get());
+                    pOutput.accept(AMBER_FISHING_ROD.get());
+                    pOutput.accept(AMBER_HOOK.get());
                 }
 
                 pOutput.accept(NETHERITE_SHOVEL);

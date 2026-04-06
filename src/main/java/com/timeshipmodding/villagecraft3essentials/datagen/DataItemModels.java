@@ -48,7 +48,9 @@ public class DataItemModels extends ItemModelProvider {
     protected void registerModels() {
         // Items
         basicItem(RUBY.get());
+        basicItem(RUBY_HOOK.get());
         basicItem(AMBER.get());
+        basicItem(AMBER_HOOK.get());
         basicItem(COOKED_WORM.get());
         basicItem(WORM.get());
 
@@ -59,13 +61,16 @@ public class DataItemModels extends ItemModelProvider {
         handheldItem(RUBY_AXE.get());
         handheldItem(RUBY_HOE.get());
         handheldItem(RUBY_KNIFE.get());
+        handheldItem(RUBY_FILLET_KNIFE.get());
         handheldItem(AMBER_SWORD.get());
         handheldItem(AMBER_SHOVEL.get());
         handheldItem(AMBER_PICKAXE.get());
         handheldItem(AMBER_AXE.get());
         handheldItem(AMBER_HOE.get());
         handheldItem(AMBER_KNIFE.get());
+        handheldItem(AMBER_FILLET_KNIFE.get());
         handheldItem(POLICE_BATON.get());
+        handheldRodItem(WORM_ON_A_STICK.get());
         handheldRodItem(WORM_ON_A_STICK.get());
 
         // Armor Items

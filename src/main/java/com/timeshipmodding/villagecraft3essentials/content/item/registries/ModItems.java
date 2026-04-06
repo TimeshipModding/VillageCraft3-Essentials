@@ -1,6 +1,8 @@
 package com.timeshipmodding.villagecraft3essentials.content.item.registries;
 
+import com.teammetallurgy.aquaculture.item.AquaFishingRodItem;
 import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
+import com.timeshipmodding.villagecraft3essentials.compat.aquaculture.AquaMethods;
 import com.timeshipmodding.villagecraft3essentials.compat.farmersdelight.FDMethods;
 import com.timeshipmodding.villagecraft3essentials.content.entity.client.registries.ModEntities;
 import net.minecraft.core.component.DataComponents;
@@ -43,11 +45,26 @@ public class ModItems {
 
     public static DeferredItem<Item> RUBY_KNIFE;
     public static DeferredItem<Item> AMBER_KNIFE;
+    public static DeferredItem<Item> RUBY_FISHING_ROD;
+    public static DeferredItem<Item> AMBER_FISHING_ROD;
+    public static DeferredItem<Item> RUBY_FILLET_KNIFE;
+    public static DeferredItem<Item> AMBER_FILLET_KNIFE;
+    public static DeferredItem<Item> RUBY_HOOK;
+    public static DeferredItem<Item> AMBER_HOOK;
 
     public static void registerCompatItems() {
         if (ModList.get().isLoaded("farmersdelight")) {
             RUBY_KNIFE = ITEMS.register("ruby_knife", FDMethods.getKnifeItemSupplier(ModToolTiers.RUBY, 0.5f, -2.0F));
             AMBER_KNIFE = ITEMS.register("amber_knife", FDMethods.getKnifeItemSupplier(ModToolTiers.AMBER, 0.5f, -2.0F));
+        }
+
+        if (ModList.get().isLoaded("aquaculture")) {
+            RUBY_FISHING_ROD = ITEMS.register("ruby_fishing_rod", AquaMethods.getAquaFishingRodItemSupplier(ModToolTiers.RUBY));
+            AMBER_FISHING_ROD = ITEMS.register("amber_fishing_rod", AquaMethods.getAquaFishingRodItemSupplier(ModToolTiers.AMBER));
+            RUBY_FILLET_KNIFE = ITEMS.register("ruby_fillet_knife", AquaMethods.getFilletKnifeItemSupplier(ModToolTiers.RUBY));
+            AMBER_FILLET_KNIFE = ITEMS.register("amber_fillet_knife", AquaMethods.getFilletKnifeItemSupplier(ModToolTiers.AMBER));
+            RUBY_HOOK = AquaMethods.registerHook("ruby");
+            AMBER_HOOK = AquaMethods.registerHook("amber");
         }
     }
 }

@@ -1,8 +1,10 @@
 package com.timeshipmodding.villagecraft3essentials.event.registries;
 
 import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
+import com.timeshipmodding.villagecraft3essentials.compat.aquaculture.AquaMethods;
 import com.timeshipmodding.villagecraft3essentials.content.entity.client.registries.ModEntities;
 import com.timeshipmodding.villagecraft3essentials.content.entity.client.renderers.MoleRenderer;
+import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems;
 import com.timeshipmodding.villagecraft3essentials.content.menu.registries.ModMenus;
 import com.timeshipmodding.villagecraft3essentials.content.screen.AtmScreen;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.tags.registries.ModItemTags;
@@ -13,6 +15,7 @@ import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
@@ -23,6 +26,11 @@ public class ModClientEvents {
     @SubscribeEvent
     public static void onClientSetup(FMLClientSetupEvent event) {
         EntityRenderers.register(ModEntities.MOLE.get(), MoleRenderer::new);
+
+        if (ModList.get().isLoaded("aquaculture")) {
+            AquaMethods.registerAquaFishingRodModelProperties(ModItems.RUBY_FISHING_ROD.get());
+            AquaMethods.registerAquaFishingRodModelProperties(ModItems.AMBER_FISHING_ROD.get());
+        }
     }
 
     @SubscribeEvent
