@@ -1,22 +1,17 @@
 package com.timeshipmodding.villagecraft3essentials.compat.aquaculture;
 
-import com.teammetallurgy.aquaculture.api.AquacultureAPI;
 import com.teammetallurgy.aquaculture.api.fishing.Hook;
 import com.teammetallurgy.aquaculture.client.ClientHandler;
-import com.teammetallurgy.aquaculture.init.AquaItems;
 import com.teammetallurgy.aquaculture.item.AquaFishingRodItem;
 import com.teammetallurgy.aquaculture.item.HookItem;
 import com.teammetallurgy.aquaculture.item.ItemFilletKnife;
 import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems;
 import net.minecraft.ChatFormatting;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Tier;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.registries.DeferredItem;
-import vectorwing.farmersdelight.common.tag.CommonTags;
-import vectorwing.farmersdelight.common.tag.ModTags;
 
 import java.util.Objects;
 import java.util.function.Supplier;
@@ -57,13 +52,5 @@ public class AquaMethods {
 
     public static void registerAquaFishingRodModelProperties(Item item) {
         ClientHandler.registerFishingRodModelProperties(item);
-    }
-
-    public static TagKey<Item> getTooltipTag() {
-        return AquacultureAPI.Tags.TOOLTIP;
-    }
-
-    public static TagKey<Item> getKnifeTag() {
-        return AquacultureAPI.Tags.KNIFE;
     }
 }

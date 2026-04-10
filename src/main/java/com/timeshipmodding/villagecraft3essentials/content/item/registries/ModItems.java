@@ -3,8 +3,11 @@ package com.timeshipmodding.villagecraft3essentials.content.item.registries;
 import com.teammetallurgy.aquaculture.item.AquaFishingRodItem;
 import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
 import com.timeshipmodding.villagecraft3essentials.compat.aquaculture.AquaMethods;
+import com.timeshipmodding.villagecraft3essentials.compat.betterarcheology.BAMethods;
 import com.timeshipmodding.villagecraft3essentials.compat.farmersdelight.FDMethods;
 import com.timeshipmodding.villagecraft3essentials.content.entity.client.registries.ModEntities;
+import net.Pandarix.item.BetterBrushItem;
+import net.Pandarix.util.BetterBrushTiers;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.*;
 import net.neoforged.fml.ModList;
@@ -51,6 +54,8 @@ public class ModItems {
     public static DeferredItem<Item> AMBER_FILLET_KNIFE;
     public static DeferredItem<Item> RUBY_HOOK;
     public static DeferredItem<Item> AMBER_HOOK;
+    public static DeferredItem<Item> RUBY_BRUSH;
+    public static DeferredItem<Item> AMBER_BRUSH;
 
     public static void registerCompatItems() {
         if (ModList.get().isLoaded("farmersdelight")) {
@@ -65,6 +70,11 @@ public class ModItems {
             AMBER_FILLET_KNIFE = ITEMS.register("amber_fillet_knife", AquaMethods.getFilletKnifeItemSupplier(ModToolTiers.AMBER));
             RUBY_HOOK = AquaMethods.registerHook("ruby");
             AMBER_HOOK = AquaMethods.registerHook("amber");
+        }
+
+        if (ModList.get().isLoaded("betterarcheology")) {
+            RUBY_BRUSH = ITEMS.register("ruby_brush", BAMethods.getBetterBrushItemSupplier());
+            AMBER_BRUSH = ITEMS.register("amber_brush", BAMethods.getBetterBrushItemSupplier());
         }
     }
 }

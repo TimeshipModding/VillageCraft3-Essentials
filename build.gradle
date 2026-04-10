@@ -107,6 +107,9 @@ dependencies {
 
     // Aquaculture 2 Dependency
     implementation "com.teammetallurgy.aquaculture:aquaculture2_1.21.1:1.21.1-2.7.19"
+
+    // Better Archeology Dependency
+    implementation "curse.maven:better-archeology-835687:7756575"
 }
 
 // gradle.properties entries

@@ -1,22 +1,26 @@
 package com.timeshipmodding.villagecraft3essentials.datagen.tags;
 
+import com.teammetallurgy.aquaculture.api.AquacultureAPI;
 import com.teammetallurgy.aquaculture.init.AquaItems;
 import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
-import com.timeshipmodding.villagecraft3essentials.compat.aquaculture.AquaMethods;
-import com.timeshipmodding.villagecraft3essentials.compat.farmersdelight.FDMethods;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import vectorwing.farmersdelight.common.registry.ModItems;
+import vectorwing.farmersdelight.common.tag.CommonTags;
+import vectorwing.farmersdelight.common.tag.ModTags;
 
 import javax.annotation.Nullable;
 import java.util.concurrent.CompletableFuture;
 
 import static com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems.*;
 import static com.timeshipmodding.villagecraft3essentials.infrastructure.tags.registries.ModItemTags.*;
+import static com.timeshipmodding.villagecraft3essentials.infrastructure.tags.registries.CommonItemTags.*;
 import static net.minecraft.world.item.Items.*;
 
 public class DataItemTags extends ItemTagsProvider {
@@ -80,10 +84,15 @@ public class DataItemTags extends ItemTagsProvider {
         tag(ItemTags.DURABILITY_ENCHANTABLE)
                 .add(POLICE_BATON.get())
                 .add(RUBY_FISHING_ROD.get())
-                .add(AMBER_FISHING_ROD.get());
+                .add(AMBER_FISHING_ROD.get())
+                .add(RUBY_BRUSH.get())
+                .add(AMBER_BRUSH.get());
         tag(ItemTags.FISHING_ENCHANTABLE)
                 .add(RUBY_FISHING_ROD.get())
                 .add(AMBER_FISHING_ROD.get());
+        tag(ItemTags.VANISHING_ENCHANTABLE)
+                .add(RUBY_BRUSH.get())
+                .add(AMBER_BRUSH.get());
 
         // VillageCraft 3 Essentials Tags
         tag(MOLE_FOOD)
@@ -99,6 +108,7 @@ public class DataItemTags extends ItemTagsProvider {
                 .add(AquaItems.DIAMOND_FILLET_KNIFE.get())
                 .add(AquaItems.DIAMOND_FISHING_ROD.get())
                 .add(AquaItems.DIAMOND_HOOK.get())
+                .add(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("betterarcheology", "diamond_brush")))
                 .add(DIAMOND_HELMET)
                 .add(DIAMOND_CHESTPLATE)
                 .add(DIAMOND_LEGGINGS)
@@ -114,6 +124,7 @@ public class DataItemTags extends ItemTagsProvider {
                 .add(RUBY_FILLET_KNIFE.get())
                 .add(RUBY_FISHING_ROD.get())
                 .add(RUBY_HOOK.get())
+                .add(RUBY_BRUSH.get())
                 .add(RUBY_HELMET.get())
                 .add(RUBY_CHESTPLATE.get())
                 .add(RUBY_LEGGINGS.get())
@@ -129,6 +140,7 @@ public class DataItemTags extends ItemTagsProvider {
                 .add(AMBER_FILLET_KNIFE.get())
                 .add(AMBER_FISHING_ROD.get())
                 .add(AMBER_HOOK.get())
+                .add(AMBER_BRUSH.get())
                 .add(AMBER_HELMET.get())
                 .add(AMBER_CHESTPLATE.get())
                 .add(AMBER_LEGGINGS.get())
@@ -138,20 +150,26 @@ public class DataItemTags extends ItemTagsProvider {
                 .add(DIAMOND)
                 .add(RUBY.get())
                 .add(AMBER.get());
+        tag(TOOLS_FISHING_ROD)
+                .add(RUBY_FISHING_ROD.get())
+                .add(AMBER_FISHING_ROD.get());
+        tag(TOOLS_BRUSH)
+                .add(RUBY_BRUSH.get())
+                .add(AMBER_BRUSH.get());
 
         // Farmer's Delight Tags
-        tag(FDMethods.getKnivesTag())
+        tag(ModTags.KNIVES)
                 .add(RUBY_KNIFE.get())
                 .add(AMBER_KNIFE.get());
-        tag(FDMethods.getToolsKnifeCommonTag())
+        tag(CommonTags.TOOLS_KNIFE)
                 .add(RUBY_KNIFE.get())
                 .add(AMBER_KNIFE.get());
 
         // Aquaculture 2 Tags
-        tag(AquaMethods.getTooltipTag())
+        tag(AquacultureAPI.Tags.TOOLTIP)
                 .add(RUBY_HOOK.get())
                 .add(AMBER_HOOK.get());
-        tag(AquaMethods.getKnifeTag())
+        tag(AquacultureAPI.Tags.KNIFE)
                 .add(RUBY_FILLET_KNIFE.get())
                 .add(AMBER_FILLET_KNIFE.get());
     }

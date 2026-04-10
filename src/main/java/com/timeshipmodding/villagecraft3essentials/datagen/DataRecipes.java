@@ -3,9 +3,15 @@ package com.timeshipmodding.villagecraft3essentials.datagen;
 import com.teammetallurgy.aquaculture.init.AquaItems;
 import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.tags.registries.ModItemTags;
+import net.minecraft.core.Holder;
+import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -339,6 +345,16 @@ public class DataRecipes extends RecipeProvider implements IConditionBuilder {
                 .pattern("#!#")
                 .pattern(" # ")
                 .define('#', AMBER.get()).define('!', AquaItems.IRON_HOOK.get()).group("villagecraft3essentials").unlockedBy(getHasName(AMBER.get()), has(AMBER.get())).unlockedBy(getHasName(AquaItems.IRON_HOOK.get()), has(AquaItems.IRON_HOOK.get())).save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, RUBY_BRUSH.get())
+                .pattern("!")
+                .pattern("#")
+                .pattern("S")
+                .define('#', RUBY.get()).define('!', FEATHER).define('S', STICK).group("villagecraft3essentials").unlockedBy(getHasName(RUBY.get()), has(RUBY.get())).unlockedBy(getHasName(FEATHER), has(FEATHER)).unlockedBy(getHasName(STICK), has(STICK)).save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, AMBER_BRUSH.get())
+                .pattern("!")
+                .pattern("#")
+                .pattern("S")
+                .define('#', AMBER.get()).define('!', FEATHER).define('S', STICK).group("villagecraft3essentials").unlockedBy(getHasName(AMBER.get()), has(AMBER.get())).unlockedBy(getHasName(FEATHER), has(FEATHER)).unlockedBy(getHasName(STICK), has(STICK)).save(recipeOutput);
 
         // Shapeless Crafting
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RUBY.get(), 9).requires(RUBY_BLOCK.get()).group("villagecraft3essentials").unlockedBy(getHasName(RUBY_BLOCK.get()), has(RUBY_BLOCK.get())).save(recipeOutput);
@@ -371,8 +387,9 @@ public class DataRecipes extends RecipeProvider implements IConditionBuilder {
         rubyNetheriteSmithing(recipeOutput, RUBY_HOE.get(), RecipeCategory.TOOLS, NETHERITE_HOE);
         rubyNetheriteSmithing(recipeOutput, RUBY_PICKAXE.get(), RecipeCategory.TOOLS, NETHERITE_PICKAXE);
         rubyNetheriteSmithing(recipeOutput, RUBY_SHOVEL.get(), RecipeCategory.TOOLS, NETHERITE_SHOVEL);
-        rubyNetheriteSmithing(recipeOutput, RUBY_SWORD.get(), RecipeCategory.TOOLS, NETHERITE_SWORD);
-        rubyNetheriteSmithing(recipeOutput, RUBY_KNIFE.get(), RecipeCategory.TOOLS, ModItems.NETHERITE_KNIFE.get());
+        rubyNetheriteSmithing(recipeOutput, RUBY_SWORD.get(), RecipeCategory.COMBAT, NETHERITE_SWORD);
+        rubyNetheriteSmithing(recipeOutput, RUBY_KNIFE.get(), RecipeCategory.COMBAT, ModItems.NETHERITE_KNIFE.get());
+        rubyNetheriteSmithing(recipeOutput, RUBY_BRUSH.get(), RecipeCategory.TOOLS, BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("betterarcheology", "netherite_brush")));
         rubyNetheriteSmithing(recipeOutput, RUBY_HELMET.get(), RecipeCategory.TOOLS, NETHERITE_HELMET);
         rubyNetheriteSmithing(recipeOutput, RUBY_CHESTPLATE.get(), RecipeCategory.TOOLS, NETHERITE_CHESTPLATE);
         rubyNetheriteSmithing(recipeOutput, RUBY_LEGGINGS.get(), RecipeCategory.TOOLS, NETHERITE_LEGGINGS);
@@ -381,8 +398,9 @@ public class DataRecipes extends RecipeProvider implements IConditionBuilder {
         amberNetheriteSmithing(recipeOutput, AMBER_HOE.get(), RecipeCategory.TOOLS, NETHERITE_HOE);
         amberNetheriteSmithing(recipeOutput, AMBER_PICKAXE.get(), RecipeCategory.TOOLS, NETHERITE_PICKAXE);
         amberNetheriteSmithing(recipeOutput, AMBER_SHOVEL.get(), RecipeCategory.TOOLS, NETHERITE_SHOVEL);
-        amberNetheriteSmithing(recipeOutput, AMBER_SWORD.get(), RecipeCategory.TOOLS, NETHERITE_SWORD);
-        amberNetheriteSmithing(recipeOutput, AMBER_KNIFE.get(), RecipeCategory.TOOLS, ModItems.NETHERITE_KNIFE.get());
+        amberNetheriteSmithing(recipeOutput, AMBER_SWORD.get(), RecipeCategory.COMBAT, NETHERITE_SWORD);
+        amberNetheriteSmithing(recipeOutput, AMBER_KNIFE.get(), RecipeCategory.COMBAT, ModItems.NETHERITE_KNIFE.get());;
+        amberNetheriteSmithing(recipeOutput, AMBER_BRUSH.get(), RecipeCategory.TOOLS, BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("betterarcheology", "netherite_brush")));
         amberNetheriteSmithing(recipeOutput, AMBER_HELMET.get(), RecipeCategory.TOOLS, NETHERITE_HELMET);
         amberNetheriteSmithing(recipeOutput, AMBER_CHESTPLATE.get(), RecipeCategory.TOOLS, NETHERITE_CHESTPLATE);
         amberNetheriteSmithing(recipeOutput, AMBER_LEGGINGS.get(), RecipeCategory.TOOLS, NETHERITE_LEGGINGS);

@@ -1,8 +1,10 @@
 package com.timeshipmodding.villagecraft3essentials.content.creativetab;
 
 import com.teammetallurgy.aquaculture.init.AquaItems;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Blocks;
@@ -64,9 +66,13 @@ public class EssentialsTab {
                 }
 
                 if (ModList.get().isLoaded("aquaculture")) {
-                    pOutput.accept(AquaItems.DIAMOND_FILLET_KNIFE.get());
                     pOutput.accept(AquaItems.DIAMOND_FISHING_ROD.get());
+                    pOutput.accept(AquaItems.DIAMOND_FILLET_KNIFE.get());
                     pOutput.accept(AquaItems.DIAMOND_HOOK.get());
+                }
+
+                if (ModList.get().isLoaded("betterarcheology")) {
+                    pOutput.accept(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("betterarcheology", "diamond_brush")));
                 }
 
                 pOutput.accept(RUBY_SHOVEL);
@@ -80,9 +86,13 @@ public class EssentialsTab {
                 }
 
                 if (ModList.get().isLoaded("aquaculture")) {
-                    pOutput.accept(RUBY_FILLET_KNIFE.get());
                     pOutput.accept(RUBY_FISHING_ROD.get());
+                    pOutput.accept(RUBY_FILLET_KNIFE.get());
                     pOutput.accept(RUBY_HOOK.get());
+                }
+
+                if (ModList.get().isLoaded("betterarcheology")) {
+                    pOutput.accept(RUBY_BRUSH.get());
                 }
 
                 pOutput.accept(AMBER_SHOVEL);
@@ -96,9 +106,13 @@ public class EssentialsTab {
                 }
 
                 if (ModList.get().isLoaded("aquaculture")) {
-                    pOutput.accept(AMBER_FILLET_KNIFE.get());
                     pOutput.accept(AMBER_FISHING_ROD.get());
+                    pOutput.accept(AMBER_FILLET_KNIFE.get());
                     pOutput.accept(AMBER_HOOK.get());
+                }
+
+                if (ModList.get().isLoaded("betterarcheology")) {
+                    pOutput.accept(AMBER_BRUSH.get());
                 }
 
                 pOutput.accept(NETHERITE_SHOVEL);
@@ -109,6 +123,10 @@ public class EssentialsTab {
 
                 if (ModList.get().isLoaded("farmersdelight")) {
                     pOutput.accept(ModItems.NETHERITE_KNIFE.get());
+                }
+
+                if (ModList.get().isLoaded("betterarcheology")) {
+                    pOutput.accept(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("betterarcheology", "netherite_brush")));
                 }
 
                 pOutput.accept(DIAMOND_HELMET);
