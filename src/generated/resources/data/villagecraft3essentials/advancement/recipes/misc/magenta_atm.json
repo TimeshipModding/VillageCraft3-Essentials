@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_amber": {
+    "has_hopper": {
       "conditions": {
         "items": [
           {
-            "items": "villagecraft3essentials:amber"
+            "items": "minecraft:hopper"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_amber"
+      "has_hopper"
     ]
   ],
   "rewards": {

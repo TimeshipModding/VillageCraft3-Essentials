@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_mace": {
+    "has_black_dye": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:mace"
+            "items": "minecraft:black_dye"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_mace"
+      "has_black_dye"
     ]
   ],
   "rewards": {

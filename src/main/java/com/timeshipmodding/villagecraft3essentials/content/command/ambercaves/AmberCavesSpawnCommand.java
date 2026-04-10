@@ -15,7 +15,6 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.fml.ModList;
-import net.neoforged.fml.common.Mod;
 
 public class AmberCavesSpawnCommand {
     public AmberCavesSpawnCommand(CommandDispatcher<CommandSourceStack> dispatcher) {

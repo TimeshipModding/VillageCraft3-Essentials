@@ -31,8 +31,6 @@ public record HorseSyncCurrencyArmorEquipPacket(boolean canEquip) implements Cus
     }
 
     public static void handle(HorseSyncCurrencyArmorEquipPacket message, IPayloadContext context) {
-        context.enqueueWork(() -> {
-            HorseCurrencyArmorClientHandler.setCanEquipState(message.canEquip);
-        });
+        context.enqueueWork(() -> HorseCurrencyArmorClientHandler.setCanEquipState(message.canEquip));
     }
 }

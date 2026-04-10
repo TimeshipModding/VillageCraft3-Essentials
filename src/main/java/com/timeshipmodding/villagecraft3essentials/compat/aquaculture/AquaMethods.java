@@ -26,13 +26,14 @@ public class AquaMethods {
     }
 
     public static DeferredItem<Item> registerHook(String hook) {
-        Hook RUBY = (new Hook.HookBuilder("ruby")).setColor(ChatFormatting.RED).setDurabilityChance((double)0.5).build();
-        Hook AMBER = (new Hook.HookBuilder("amber")).setColor(ChatFormatting.GOLD).setDurabilityChance((double)0.5).build();
+        Hook RUBY = (new Hook.HookBuilder("ruby")).setColor(ChatFormatting.RED).setDurabilityChance(0.5).build();
+        Hook AMBER = (new Hook.HookBuilder("amber")).setColor(ChatFormatting.GOLD).setDurabilityChance(0.5).build();
 
         if (Objects.equals(hook, "ruby")) {
             DeferredItem<Item> hookItem = ModItems.ITEMS.register(RUBY.getName() + "_hook", () -> new HookItem(RUBY));
             Hook.HOOKS.put(RUBY.getName(), hookItem);
             return hookItem;
+
         } else if (Objects.equals(hook, "amber")) {
             DeferredItem<Item> hookItem = ModItems.ITEMS.register(AMBER.getName() + "_hook", () -> new HookItem(RUBY));
             Hook.HOOKS.put(AMBER.getName(), hookItem);

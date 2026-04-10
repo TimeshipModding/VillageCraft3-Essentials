@@ -163,6 +163,7 @@ public class ModCurrencyToolsEvents {
 
                     if (event.getEntity() instanceof ServerPlayer serverPlayer && event.getTarget() instanceof Horse horse) {
                         List<SynchedEntityData.DataValue<?>> changes = horse.getEntityData().packDirty();
+
                         if (changes != null && !changes.isEmpty()) {
                             ClientboundSetEntityDataPacket packet = new ClientboundSetEntityDataPacket(horse.getId(), changes);
                             serverPlayer.connection.send(packet);

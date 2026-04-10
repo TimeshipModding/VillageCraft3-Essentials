@@ -292,8 +292,8 @@ public class ModEvents {
     public static void onLevelTick(LevelTickEvent.Post event) {
         if (ServerConfig.ENABLE_WAR_SYSTEM_FEATURES.get() && event.getLevel() instanceof ServerLevel serverLevel && ToggleWarScoreGainingCommand.gainWarPoints) {
             long currentTime = serverLevel.getGameTime();
-
             Iterator<CoreRespawnData> iterator = PENDING_CORE_RESPAWNS.iterator();
+
             while (iterator.hasNext()) {
                 CoreRespawnData task = iterator.next();
                 if (currentTime >= task.respawnTime()) {
@@ -332,7 +332,7 @@ public class ModEvents {
         event.registerEntity(
                 HORSE_ARMOR_CAPABILITY,
                 EntityType.HORSE,
-                (entity, context) -> new HorseCurrencyArmorItemHandler(entity)
+                (entity, context) -> new HorseCurrencyArmorItemHandler()
         );
 
         if (ModList.get().isLoaded("aquaculture")) {

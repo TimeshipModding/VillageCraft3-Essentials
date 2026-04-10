@@ -75,7 +75,7 @@ public class MoleEntity extends Animal implements ItemSteerable, Saddleable {
         return level.getRawBrightness(pos, 0) > 8;
     }
 
-    @javax.annotation.Nullable
+    @Nullable
     @Override
     public LivingEntity getControllingPassenger() {
         return this.isSaddled() && this.getFirstPassenger() instanceof Player player && player.isHolding(ModItems.WORM_ON_A_STICK.get()) ? player : super.getControllingPassenger();
@@ -135,6 +135,7 @@ public class MoleEntity extends Animal implements ItemSteerable, Saddleable {
             if (!this.level().isClientSide) {
                 player.startRiding(this);
             }
+
             return InteractionResult.sidedSuccess(this.level().isClientSide);
 
         } else if (this.isFood(itemstack)) {
@@ -145,6 +146,7 @@ public class MoleEntity extends Animal implements ItemSteerable, Saddleable {
 
             if (!interactionresult.consumesAction()) {
                 return itemstack.is(Items.SADDLE) ? itemstack.interactLivingEntity(player, this, hand) : InteractionResult.PASS;
+
             } else {
                 return interactionresult;
             }

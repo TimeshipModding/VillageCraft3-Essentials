@@ -9,11 +9,13 @@ import com.timeshipmodding.villagecraft3essentials.infrastructure.tags.registrie
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponentMap;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
@@ -274,6 +276,10 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
                 inputStack = new ItemStack(ModItems.RUBY_HOOK.get());
                 outputStack = new ItemStack(AquaItems.DIAMOND_HOOK.get());
 
+            } else if (inputItem == ModItems.RUBY_BRUSH.get() && ModList.get().isLoaded("betterarcheology")) {
+                inputStack = new ItemStack(ModItems.RUBY_BRUSH.get());
+                outputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("betterarcheology", "diamond_brush")));
+
             } else if (inputItem == ModItems.RUBY_HELMET.get()) {
                 inputStack = new ItemStack(ModItems.RUBY_HELMET.get());
                 outputStack = new ItemStack(Items.DIAMOND_HELMET);
@@ -329,6 +335,10 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
             } else if (inputItem == ModItems.AMBER_HOOK.get() && ModList.get().isLoaded("aquaculture")) {
                 inputStack = new ItemStack(ModItems.AMBER_HOOK.get());
                 outputStack = new ItemStack(AquaItems.DIAMOND_HOOK.get());
+
+            } else if (inputItem == ModItems.AMBER_BRUSH.get() && ModList.get().isLoaded("betterarcheology")) {
+                inputStack = new ItemStack(ModItems.AMBER_BRUSH.get());
+                outputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("betterarcheology", "diamond_brush")));
 
             } else if (inputItem == ModItems.AMBER_HELMET.get()) {
                 inputStack = new ItemStack(ModItems.AMBER_HELMET.get());
@@ -388,6 +398,10 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
                 inputStack = new ItemStack(AquaItems.DIAMOND_HOOK.get());
                 outputStack = new ItemStack(ModItems.RUBY_HOOK.get());
 
+            } else if (inputItem == BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("betterarcheology", "diamond_brush")) && ModList.get().isLoaded("betterarcheology")) {
+                inputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("betterarcheology", "diamond_brush")));
+                outputStack = new ItemStack(ModItems.RUBY_BRUSH.get());
+
             } else if (inputItem == Items.DIAMOND_HELMET) {
                 inputStack = new ItemStack(Items.DIAMOND_HELMET);
                 outputStack = new ItemStack(ModItems.RUBY_HELMET.get());
@@ -443,6 +457,10 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
             } else if (inputItem == ModItems.AMBER_HOOK.get() && ModList.get().isLoaded("aquaculture")) {
                 inputStack = new ItemStack(ModItems.AMBER_HOOK.get());
                 outputStack = new ItemStack(ModItems.RUBY_HOOK.get());
+
+            } else if (inputItem == ModItems.AMBER_BRUSH.get() && ModList.get().isLoaded("betterarcheology")) {
+                inputStack = new ItemStack(ModItems.AMBER_BRUSH.get());
+                outputStack = new ItemStack(ModItems.RUBY_BRUSH.get());
 
             } else if (inputItem == ModItems.AMBER_HELMET.get()) {
                 inputStack = new ItemStack(ModItems.AMBER_HELMET.get());
@@ -502,6 +520,10 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
                 inputStack = new ItemStack(AquaItems.DIAMOND_HOOK.get());
                 outputStack = new ItemStack(ModItems.AMBER_HOOK.get());
 
+            } else if (inputItem == BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("betterarcheology", "diamond_brush")) && ModList.get().isLoaded("betterarcheology")) {
+                inputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("betterarcheology", "diamond_brush")));
+                outputStack = new ItemStack(ModItems.AMBER_BRUSH.get());
+
             } else if (inputItem == Items.DIAMOND_HELMET) {
                 inputStack = new ItemStack(Items.DIAMOND_HELMET);
                 outputStack = new ItemStack(ModItems.AMBER_HELMET.get());
@@ -557,6 +579,10 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
             } else if (inputItem == ModItems.RUBY_HOOK.get() && ModList.get().isLoaded("aquaculture")) {
                 inputStack = new ItemStack(ModItems.RUBY_HOOK.get());
                 outputStack = new ItemStack(ModItems.AMBER_HOOK.get());
+
+            } else if (inputItem == ModItems.RUBY_BRUSH.get() && ModList.get().isLoaded("betterarcheology")) {
+                inputStack = new ItemStack(ModItems.RUBY_BRUSH.get());
+                outputStack = new ItemStack(ModItems.AMBER_BRUSH.get());
 
             } else if (inputItem == ModItems.RUBY_HELMET.get()) {
                 inputStack = new ItemStack(ModItems.RUBY_HELMET.get());

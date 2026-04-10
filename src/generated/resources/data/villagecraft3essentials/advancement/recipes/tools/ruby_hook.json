@@ -1,16 +1,6 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_iron_hook": {
-      "conditions": {
-        "items": [
-          {
-            "items": "aquaculture:iron_hook"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
     "has_ruby": {
       "conditions": {
         "items": [
@@ -31,8 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_ruby",
-      "has_iron_hook"
+      "has_ruby"
     ]
   ],
   "rewards": {

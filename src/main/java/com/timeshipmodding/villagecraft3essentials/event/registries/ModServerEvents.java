@@ -129,13 +129,13 @@ public class ModServerEvents {
         String header;
 
         if (ServerConfig.CHAT_TAB_NAME_FORMATTING.get()) {
-            header = TabListVariables.tablistChars("     \uE001\uF801\uE002#N#N#N#N#N", player);
+            header = TabListVariables.tablistCharacters("     \uE001\uF801\uE002#N#N#N#N#N");
 
         } else {
-            header = TabListVariables.tablistChars("", player);
+            header = TabListVariables.tablistCharacters("");
         }
 
-        String footer = TabListVariables.tablistChars("#N&fOnline: &e#PLAYERCOUNT #N&7| TPS: &a#TPS &7 MSPT: &a#MSPT &7 Uptime: &a#UPTIME &7|", player);
+        String footer = TabListVariables.tablistCharacters("#N&fOnline: &e#PLAYERCOUNT #N&7| TPS: &a#TPS &7 MSPT: &a#MSPT &7 Uptime: &a#UPTIME &7|");
         ClientboundTabListPacket packet = new ClientboundTabListPacket(Component.literal(header), Component.literal(footer));
         player.connection.send(packet);
     }

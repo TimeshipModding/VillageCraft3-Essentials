@@ -29,21 +29,23 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
             ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID,"widget/toolconvert_button"),
             ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID,"widget/toolconvert_button_highlighted")
     );
+
     private static final WidgetSprites CURRENCY_CONVERT_SPRITES = new WidgetSprites(
             ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID,"widget/randomconvert_button"),
             ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID,"widget/randomconvert_button_highlighted")
     );
+
     private static final WidgetSprites PREVIOUS_MENU_SPRITES = new WidgetSprites(
             ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID,"widget/previous_menu_button"),
             ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID,"widget/previous_menu_button_highlighted")
     );
+
     private static final WidgetSprites NEXT_MENU_SPRITES = new WidgetSprites(
             ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID,"widget/next_menu_button"),
             ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID,"widget/next_menu_button_highlighted")
     );
 
     private static final ResourceLocation SCROLLER_SPRITE = ResourceLocation.withDefaultNamespace("container/stonecutter/scroller");
-
     private static final int SCROLLER_WIDTH = 12;
     private static final int SCROLLER_HEIGHT = 15;
     private static final int RECIPES_COLUMNS = 1;
@@ -62,7 +64,6 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
     private ImageButton toolConvertButtonAmber;
     private ImageButton nextMenuButton;
     private ImageButton previousMenuButton;
-
     private int[] diamondToRuby;
     private int[] diamondToAmber;
     private int[] rubyToDiamond;

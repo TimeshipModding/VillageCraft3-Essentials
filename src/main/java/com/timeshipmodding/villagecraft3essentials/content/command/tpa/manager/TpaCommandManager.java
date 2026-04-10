@@ -46,12 +46,14 @@ public class TpaCommandManager {
 
             if ((Objects.equals(data.type(), "tpa"))) {
                 message = Component.literal("You already sent a TPA request to ").withStyle(ChatFormatting.RED);
+
             } else if ((Objects.equals(data.type(), "tpahere"))) {
                 message = Component.literal("You already sent a TPA here request to ").withStyle(ChatFormatting.RED);
             }
 
             if (ModList.get().isLoaded("luckperms")) {
                 message.append(data.targetPlayerName().copy());
+
             } else {
                 message.append(data.targetPlayerName().copy().withStyle(ChatFormatting.WHITE));
             }
@@ -170,6 +172,7 @@ public class TpaCommandManager {
 
                 if (ModList.get().isLoaded("luckperms")) {
                     message.append(data.targetPlayerName().copy());
+
                 } else {
                     message.append(data.targetPlayerName().copy().withStyle(ChatFormatting.WHITE));
                 }

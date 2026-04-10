@@ -1,13 +1,10 @@
 package com.timeshipmodding.villagecraft3essentials.content.item.registries;
 
-import com.teammetallurgy.aquaculture.item.AquaFishingRodItem;
 import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
 import com.timeshipmodding.villagecraft3essentials.compat.aquaculture.AquaMethods;
 import com.timeshipmodding.villagecraft3essentials.compat.betterarcheology.BAMethods;
 import com.timeshipmodding.villagecraft3essentials.compat.farmersdelight.FDMethods;
 import com.timeshipmodding.villagecraft3essentials.content.entity.client.registries.ModEntities;
-import net.Pandarix.item.BetterBrushItem;
-import net.Pandarix.util.BetterBrushTiers;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.*;
 import net.neoforged.fml.ModList;

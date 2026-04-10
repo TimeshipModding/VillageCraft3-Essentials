@@ -3,7 +3,6 @@ package com.timeshipmodding.villagecraft3essentials.infrastructure.itemhandler;
 import com.timeshipmodding.villagecraft3essentials.compat.luckperms.LuckpermsMethods;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.config.ServerConfig;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.tags.registries.ModItemTags;
-import net.minecraft.world.entity.animal.horse.Horse;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.AnimalArmorItem;
 import net.minecraft.world.item.ItemStack;
@@ -11,11 +10,8 @@ import net.neoforged.neoforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 
 public class HorseCurrencyArmorItemHandler extends ItemStackHandler {
-    private final Horse horse;
-
-    public HorseCurrencyArmorItemHandler(Horse horse) {
+    public HorseCurrencyArmorItemHandler() {
         super(2);
-        this.horse = horse;
     }
 
     @Override
@@ -30,16 +26,10 @@ public class HorseCurrencyArmorItemHandler extends ItemStackHandler {
     @Override
     public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) {
         if (slot == 0 && stack.getItem() instanceof AnimalArmorItem) {
-            if (!canEquipGeneral(horse, stack)) {
-                return stack;
-            }
+            return stack;
         }
 
         return super.insertItem(slot, stack, simulate);
-    }
-
-    private boolean canEquipGeneral(Horse horse, ItemStack armor) {
-        return false;
     }
 
     public boolean canPlayerEquip(Player player, ItemStack stack) {

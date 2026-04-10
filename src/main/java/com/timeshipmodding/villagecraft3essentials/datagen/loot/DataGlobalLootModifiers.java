@@ -55,6 +55,5 @@ public class DataGlobalLootModifiers extends GlobalLootModifierProvider {
         add("swap_diamond_boots", new SwapItemLootModifier(new LootItemCondition[]{}, Items.DIAMOND_BOOTS, ModItems.RUBY_BOOTS.get(), ModItems.AMBER_BOOTS.get()));
         add("swap_diamond_horse_armor", new SwapItemLootModifier(new LootItemCondition[]{}, Items.DIAMOND_HORSE_ARMOR, ModItems.RUBY_HORSE_ARMOR.get(), ModItems.AMBER_HORSE_ARMOR.get()));
         add("swap_diamond", new SwapItemLootModifier(new LootItemCondition[]{}, Items.DIAMOND, ModItems.RUBY.get(), ModItems.AMBER.get()));
-
     }
 }

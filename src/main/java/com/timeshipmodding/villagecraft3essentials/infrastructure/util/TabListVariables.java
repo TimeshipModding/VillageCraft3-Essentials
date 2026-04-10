@@ -1,7 +1,6 @@
 package com.timeshipmodding.villagecraft3essentials.infrastructure.util;
 
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.neoforge.server.ServerLifecycleHooks;
 
 import java.lang.management.ManagementFactory;
@@ -9,9 +8,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class TabListVariables {
-    public static String tablistChars(String template, ServerPlayer player) {
+    public static String tablistCharacters(String template) {
         MinecraftServer server = ServerLifecycleHooks.getCurrentServer();
-        if (server == null || template == null) return "";
+
+        if (server == null || template == null) {
+            return "";
+        }
+
         String output = template;
         Map<String, String> placeholders = new HashMap<>();
         placeholders.put("#TPS", String.format("%.1f", getTPS(server)));

@@ -15,7 +15,8 @@ public record AtmRandomConversionRatesPacket(int[] diamondToRuby, int[] diamondT
     public static final Type<AtmRandomConversionRatesPacket> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "atm_random_conversion_rates"));
     public static final StreamCodec<RegistryFriendlyByteBuf, AtmRandomConversionRatesPacket> STREAM_CODEC = StreamCodec.of(
                     AtmRandomConversionRatesPacket::encode,
-                    AtmRandomConversionRatesPacket::decode);
+                    AtmRandomConversionRatesPacket::decode
+    );
 
     private static void encode(RegistryFriendlyByteBuf buf, AtmRandomConversionRatesPacket payload) {
         buf.writeVarIntArray(payload.diamondToRuby());

@@ -1,7 +1,7 @@
 plugins {
     id 'java-library'
     id 'maven-publish'
-    id 'net.neoforged.moddev' version '2.0.110'
+    id 'net.neoforged.moddev' version '2.0.141'
     id 'idea'
 }
 
@@ -106,7 +106,7 @@ dependencies {
     implementation "curse.maven:farmers-delight-398521:7801529"
 
     // Aquaculture 2 Dependency
-    implementation "com.teammetallurgy.aquaculture:aquaculture2_1.21.1:1.21.1-2.7.19"
+    implementation "com.teammetallurgy.aquaculture:aquaculture2_${mc_version}:${mc_version}-${aquaculture_version}"
 
     // Better Archeology Dependency
     implementation "curse.maven:better-archeology-835687:7756575"
