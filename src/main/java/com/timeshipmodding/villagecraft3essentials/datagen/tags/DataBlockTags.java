@@ -13,6 +13,8 @@ import org.jetbrains.annotations.Nullable;
 import java.util.concurrent.CompletableFuture;
 
 import static com.timeshipmodding.villagecraft3essentials.content.block.registries.ModBlocks.*;
+import static com.timeshipmodding.villagecraft3essentials.infrastructure.tags.registries.ModBlockTags.*;
+import static com.timeshipmodding.villagecraft3essentials.infrastructure.tags.registries.CommonBlockTags.*;
 
 public class DataBlockTags extends BlockTagsProvider {
     public DataBlockTags(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, @Nullable ExistingFileHelper existingFileHelper) {
@@ -21,14 +23,6 @@ public class DataBlockTags extends BlockTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
-        // VillageCraft 3 Essentials Tags
-        tag(ModBlockTags.MOLES_SPAWNABLE_ON)
-                .add(Blocks.DIRT)
-                .add(Blocks.COARSE_DIRT)
-                .add(Blocks.GRASS_BLOCK)
-                .add(Blocks.MOSS_BLOCK)
-                .add(Blocks.PODZOL);
-
         // Minecraft Tags
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(RUBY_ORE.get())
@@ -80,5 +74,44 @@ public class DataBlockTags extends BlockTagsProvider {
         tag(BlockTags.BEACON_BASE_BLOCKS)
                 .add(RUBY_BLOCK.get())
                 .add(AMBER_BLOCK.get());
+
+        // Common Tags
+        tag(STORAGE_BLOCKS)
+                .add(RUBY_BLOCK.get())
+                .add(AMBER_BLOCK.get());
+        tag(RUBY_STORAGE_BLOCKS)
+                .add(RUBY_BLOCK.get());
+        tag(AMBER_STORAGE_BLOCKS)
+                .add(AMBER_BLOCK.get());
+        tag(ORES_RUBY)
+                .add(RUBY_ORE.get())
+                .add(DEEPSLATE_RUBY_ORE.get());
+        tag(ORES_AMBER)
+                .add(AMBER_ORE.get())
+                .add(DEEPSLATE_AMBER_ORE.get());
+        tag(ORES_IN_GROUND_STONE)
+                .add(RUBY_ORE.get())
+                .add(AMBER_ORE.get());
+        tag(ORES_IN_GROUND_DEEPSLATE)
+                .add(DEEPSLATE_RUBY_ORE.get())
+                .add(DEEPSLATE_AMBER_ORE.get());
+        tag(ORE_RATES_SINGULAR)
+                .add(RUBY_ORE.get())
+                .add(DEEPSLATE_RUBY_ORE.get())
+                .add(AMBER_ORE.get())
+                .add(DEEPSLATE_AMBER_ORE.get());
+        tag(ORES)
+                .add(RUBY_ORE.get())
+                .add(DEEPSLATE_RUBY_ORE.get())
+                .add(AMBER_ORE.get())
+                .add(DEEPSLATE_AMBER_ORE.get());
+
+        // VillageCraft 3 Essentials Tags
+        tag(MOLES_SPAWNABLE_ON)
+                .add(Blocks.DIRT)
+                .add(Blocks.COARSE_DIRT)
+                .add(Blocks.GRASS_BLOCK)
+                .add(Blocks.MOSS_BLOCK)
+                .add(Blocks.PODZOL);
     }
 }

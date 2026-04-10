@@ -1,4 +1,13 @@
-// 1.21.1	2025-12-26T22:40:51.7797432	Tags for minecraft:block mod id villagecraft3essentials
+// 1.21.1	2026-04-10T20:25:48.6928748	Tags for minecraft:block mod id villagecraft3essentials
+7f8c67ff51373570232c2b505c401b7591e025a2 data/c/tags/block/ores.json
+a48b7a71beef6a16fff4f22aa425b7a2f8d29619 data/c/tags/block/ores/amber.json
+a88ef028b01a4c1e101099c2ca841aef3c1a1072 data/c/tags/block/ores/ruby.json
+310944de3673a48bb1c06d50a27e6067fbb9094f data/c/tags/block/ores_in_ground/deepslate.json
+31cf04e87f1e17854ba4fd23e059bf7ea9e0a3f9 data/c/tags/block/ores_in_ground/stone.json
+7f8c67ff51373570232c2b505c401b7591e025a2 data/c/tags/block/ore_rates/singular.json
+a4fe894fc448e7b5f125cb64494a227f313dd7d5 data/c/tags/block/storage_blocks.json
+9d4b72448088a020e03636ef42e79ad48928967b data/c/tags/block/storage_blocks/amber.json
+a797c5813801e8ef3a238a3b0f667e2a11d0e10e data/c/tags/block/storage_blocks/ruby.json
 a4fe894fc448e7b5f125cb64494a227f313dd7d5 data/minecraft/tags/block/beacon_base_blocks.json
 8f5a3c8803fb81fef2cec63b7b680a7a151a5e29 data/minecraft/tags/block/mineable/pickaxe.json
 768879bbe291047e79af33354875048d5bc52784 data/minecraft/tags/block/needs_iron_tool.json
