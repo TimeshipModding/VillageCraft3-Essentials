@@ -19,6 +19,7 @@ public class ServerConfig {
     public static ModConfigSpec.ConfigValue<String> JAILED_GROUP_NAME;
     public static ModConfigSpec.BooleanValue CHAT_TAB_NAME_FORMATTING;
     public static ModConfigSpec.BooleanValue ENABLE_VILLAGECRAFT3_LOGO_TABLIST;
+    public static ModConfigSpec.IntValue JAIL_COMMAND_COOLDOWN;
     public static ModConfigSpec.BooleanValue ENABLE_WAR_SYSTEM_FEATURES;
     public static ModConfigSpec.IntValue CORE_RESPAWN_TIME_MIN;
     public static ModConfigSpec.IntValue CORE_RESPAWN_TIME_MAX;
@@ -91,6 +92,13 @@ public class ServerConfig {
 
         ENABLE_VILLAGECRAFT3_LOGO_TABLIST = BUILDER
                 .define("enableVillageCraft3LogoTablist", false);
+
+        BUILDER.pop();
+        BUILDER.push("Jail Command Config");
+
+        JAIL_COMMAND_COOLDOWN = BUILDER
+                .comment("The cooldown in milliseconds between jailing players using /{town} jail")
+                .defineInRange("jailCommandCooldown", 36000000, 0, Integer.MAX_VALUE);
 
         BUILDER.pop();
         BUILDER.push("War System Config");

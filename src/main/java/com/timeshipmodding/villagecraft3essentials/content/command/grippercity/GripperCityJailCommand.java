@@ -18,8 +18,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.level.GameType;
 import net.neoforged.fml.ModList;
 
-import java.util.Collection;
-import java.util.Objects;
+import java.util.*;
 
 public class GripperCityJailCommand {
     public GripperCityJailCommand(CommandDispatcher<CommandSourceStack> dispatcher) {
@@ -30,6 +29,7 @@ public class GripperCityJailCommand {
                 )));
     }
 
+    private static final Map<UUID, Long> COOLDOWN_MAP = new HashMap<>();
     private Component targetPlayerUsername;
 
     private int execute(CommandContext<CommandSourceStack> context, Collection<? extends ServerPlayer> targets) {
@@ -38,6 +38,17 @@ public class GripperCityJailCommand {
         JailSavedData savedData = JailSavedData.getData(server);
         int[] jail = savedData.getGripperCityJail();
         ChatFormatting groupStyling = ChatFormatting.WHITE;
+        long currentTime = System.currentTimeMillis();
+        UUID uuid = context.getSource().getPlayer().getUUID();
+
+        if (COOLDOWN_MAP.containsKey(uuid)) {
+            long timeLeft = (COOLDOWN_MAP.get(uuid) + ServerConfig.JAIL_COMMAND_COOLDOWN.get()) - currentTime;
+
+            if (timeLeft > 0) {
+                context.getSource().sendFailure(Component.literal("You have already jailed a player, wait " + (timeLeft / 3600000) + " more hours to jail another."));
+                return -1;
+            }
+        }
 
         if (ModList.get().isLoaded("luckperms")) {
             groupStyling = LuckpermsMethods.getGroupStyling(ServerConfig.GRIPPERCITY_GROUP_NAME.get());
@@ -66,6 +77,7 @@ public class GripperCityJailCommand {
             message.append(Component.literal("Gripper City's").withStyle(groupStyling));
             message.append(Component.literal(" jail!"));
             context.getSource().sendSuccess(() -> message, false);
+            COOLDOWN_MAP.put(uuid, currentTime);
             return 1;
 
         } else {
