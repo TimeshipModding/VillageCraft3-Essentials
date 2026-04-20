@@ -350,6 +350,11 @@ public class DataRecipes extends RecipeProvider implements IConditionBuilder {
                 .pattern("#")
                 .pattern("S")
                 .define('#', AMBER).define('!', FEATHER).define('S', STICK).group("villagecraft3essentials").unlockedBy("has_amber", has(AMBER)).save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, Blocks.ENCHANTING_TABLE)
+                .pattern(" B ")
+                .pattern("D#D")
+                .pattern("###")
+                .define('B', Items.BOOK).define('#', Blocks.OBSIDIAN).define('D', ModItemTags.CURRENCY_GEMS).unlockedBy("has_obsidian", has(Blocks.OBSIDIAN)).save(recipeOutput, ENCHANTING_TABLE + "_using_currency_gems");
 
         // Shapeless Crafting
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RUBY, 9).requires(RUBY_BLOCK).group("villagecraft3essentials").unlockedBy("has_ruby_block", has(RUBY_BLOCK)).save(recipeOutput);
