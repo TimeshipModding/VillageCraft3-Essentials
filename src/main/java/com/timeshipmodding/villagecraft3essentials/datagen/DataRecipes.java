@@ -8,6 +8,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -354,7 +355,12 @@ public class DataRecipes extends RecipeProvider implements IConditionBuilder {
                 .pattern(" B ")
                 .pattern("D#D")
                 .pattern("###")
-                .define('B', Items.BOOK).define('#', Blocks.OBSIDIAN).define('D', ModItemTags.CURRENCY_GEMS).unlockedBy("has_obsidian", has(Blocks.OBSIDIAN)).save(recipeOutput, ENCHANTING_TABLE + "_using_currency_gems");
+                .define('B', BOOK).define('#', OBSIDIAN).define('D', ModItemTags.CURRENCY_GEMS).unlockedBy("has_obsidian", has(OBSIDIAN)).save(recipeOutput, ENCHANTING_TABLE + "_using_currency_gems");
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, Blocks.JUKEBOX)
+                .pattern("###")
+                .pattern("#X#")
+                .pattern("###")
+                .define('#', ItemTags.PLANKS).define('X', ModItemTags.CURRENCY_GEMS).unlockedBy("has_currency_gems", has(ModItemTags.CURRENCY_GEMS)).save(recipeOutput, JUKEBOX + "_using_currency_gems");
 
         // Shapeless Crafting
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RUBY, 9).requires(RUBY_BLOCK).group("villagecraft3essentials").unlockedBy("has_ruby_block", has(RUBY_BLOCK)).save(recipeOutput);
