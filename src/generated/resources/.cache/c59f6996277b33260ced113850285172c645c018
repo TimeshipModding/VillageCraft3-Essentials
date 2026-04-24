@@ -1,4 +1,4 @@
-// 1.21.1	2026-04-06T22:04:06.5988522	Item Models: villagecraft3essentials
+// 1.21.1	2026-04-24T20:22:32.9051983	Item Models: villagecraft3essentials
 b561339f3135d8189e8c687143e3c255ad9365ee assets/villagecraft3essentials/models/item/amber.json
 e5eaf01e189a5f62cb633c07077789fa2db9de9d assets/villagecraft3essentials/models/item/amber_axe.json
 4bf8075fbed485ee746f7dde059cfce5c47e1b5a assets/villagecraft3essentials/models/item/amber_boots.json
@@ -66,6 +66,9 @@ acaf1641b4c51f46649565031aba2a84177c445a assets/villagecraft3essentials/models/i
 00b96a10244641fbd8d4aafe4d7e4fe1288dabaa assets/villagecraft3essentials/models/item/blue_atm.json
 5e4dbfd1d5c985c58736f0bb04d7674fdaf4e9af assets/villagecraft3essentials/models/item/brown_atm.json
 1eee544a8df71beaeeb4facc27266968ce134730 assets/villagecraft3essentials/models/item/cooked_worm.json
+bcb6227b9fcfbdaadb379f50919882eaa410fd1f assets/villagecraft3essentials/models/item/cracked_amber.json
+77767719f34acb64240a4a87815f51ba7a65c5ac assets/villagecraft3essentials/models/item/cracked_diamond.json
+cbcd18cff09683dc4dbb12d656212a300ec8986c assets/villagecraft3essentials/models/item/cracked_ruby.json
 aaef040911a430411a5d02b54ec1cdd598ffcf5d assets/villagecraft3essentials/models/item/cyan_atm.json
 9c3cbcd1a3e8553218ebcc4d16f1f343ce14d87b assets/villagecraft3essentials/models/item/diamond_core.json
 322734061de60067ced7262799ab80384e7e87fb assets/villagecraft3essentials/models/item/gray_atm.json

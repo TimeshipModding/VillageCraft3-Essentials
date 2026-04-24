@@ -46,8 +46,11 @@ public class DataItemModels extends ItemModelProvider {
     @Override
     protected void registerModels() {
         // Items
+        basicItem(CRACKED_DIAMOND.get());
+        basicItem(CRACKED_RUBY.get());
         basicItem(RUBY.get());
         basicItem(RUBY_HOOK.get());
+        basicItem(CRACKED_AMBER.get());
         basicItem(AMBER.get());
         basicItem(AMBER_HOOK.get());
         basicItem(COOKED_WORM.get());

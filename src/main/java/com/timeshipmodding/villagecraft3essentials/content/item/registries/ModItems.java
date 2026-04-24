@@ -15,7 +15,9 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(VillageCraft3Essentials.MODID);
 
+    public static final DeferredItem<Item> CRACKED_DIAMOND = ITEMS.register("cracked_diamond", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> RUBY = ITEMS.register("ruby", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> CRACKED_RUBY = ITEMS.register("cracked_ruby", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> RUBY_SWORD = ITEMS.register("ruby_sword", () -> new SwordItem(ModToolTiers.RUBY, new Item.Properties().attributes(SwordItem.createAttributes(ModToolTiers.RUBY, 3, -2.4f))));
     public static final DeferredItem<Item> RUBY_SHOVEL = ITEMS.register("ruby_shovel", () -> new ShovelItem(ModToolTiers.RUBY, new Item.Properties().attributes(ShovelItem.createAttributes(ModToolTiers.RUBY, 1.5f, -3.0f))));
     public static final DeferredItem<Item> RUBY_PICKAXE = ITEMS.register("ruby_pickaxe", () -> new PickaxeItem(ModToolTiers.RUBY, new Item.Properties().attributes(PickaxeItem.createAttributes(ModToolTiers.RUBY, 1.0f, -2.8f))));
@@ -27,6 +29,7 @@ public class ModItems {
     public static final DeferredItem<Item> RUBY_BOOTS = ITEMS.register("ruby_boots", () -> new ArmorItem(ModArmorMaterials.RUBY, ArmorItem.Type.BOOTS, new Item.Properties().durability(ArmorItem.Type.BOOTS.getDurability(33))));
     public static final DeferredItem<Item> RUBY_HORSE_ARMOR = ITEMS.register("ruby_horse_armor",() -> new AnimalArmorItem(ModArmorMaterials.RUBY, AnimalArmorItem.BodyType.EQUESTRIAN, false, new Item.Properties().stacksTo(1)));
     public static final DeferredItem<Item> AMBER = ITEMS.register("amber", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> CRACKED_AMBER = ITEMS.register("cracked_amber", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> AMBER_SWORD = ITEMS.register("amber_sword", () -> new SwordItem(ModToolTiers.AMBER, new Item.Properties().attributes(SwordItem.createAttributes(ModToolTiers.AMBER, 3, -2.4f))));
     public static final DeferredItem<Item> AMBER_SHOVEL = ITEMS.register("amber_shovel", () -> new ShovelItem(ModToolTiers.AMBER, new Item.Properties().attributes(ShovelItem.createAttributes(ModToolTiers.AMBER, 1.5f, -3.0f))));
     public static final DeferredItem<Item> AMBER_PICKAXE = ITEMS.register("amber_pickaxe", () -> new PickaxeItem(ModToolTiers.AMBER, new Item.Properties().attributes(PickaxeItem.createAttributes(ModToolTiers.AMBER, 1.0f, -2.8f))));

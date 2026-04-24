@@ -17,4 +17,6 @@ public class ModLootModifiers {
             GLOBAL_LOOT_MODIFIERS.register("add_item_loot_modifier", () -> AddItemLootModifier.CODEC);
     public static final Supplier<MapCodec<SwapItemLootModifier>> SWAP_ITEM_LOOT_MODIFIER =
             GLOBAL_LOOT_MODIFIERS.register("swap_item_loot_modifier", () -> SwapItemLootModifier.CODEC);
+    public static final Supplier<MapCodec<ReplaceNonPlayerItemLootModifier>> REPLACE_NON_PLAYER_ITEM_LOOT_MODIFIER =
+            GLOBAL_LOOT_MODIFIERS.register("replace_non_player_item_loot_modifier", () -> ReplaceNonPlayerItemLootModifier.CODEC);
 }

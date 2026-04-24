@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "create"
+    }
+  ],
+  "type": "create:mixing",
+  "heat_requirement": "superheated",
+  "ingredients": [
+    {
+      "item": "villagecraft3essentials:cracked_ruby"
+    }
+  ],
+  "results": [
+    {
+      "count": 1,
+      "chance": 0.05,
+      "id": "villagecraft3essentials:ruby"
+    }
+  ]
+}

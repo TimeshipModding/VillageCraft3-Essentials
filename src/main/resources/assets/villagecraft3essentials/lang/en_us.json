@@ -35,7 +35,9 @@
 
   "entity.villagecraft3essentials.mole": "Mole",
 
+  "item.villagecraft3essentials.cracked_diamond": "Punctured Diamond",
   "item.villagecraft3essentials.ruby": "Ruby",
+  "item.villagecraft3essentials.cracked_ruby": "Pulverized Ruby",
   "item.villagecraft3essentials.ruby_sword": "Ruby Sword",
   "item.villagecraft3essentials.ruby_shovel": "Ruby Shovel",
   "item.villagecraft3essentials.ruby_pickaxe": "Ruby Pickaxe",
@@ -52,6 +54,7 @@
   "item.villagecraft3essentials.ruby_boots": "Ruby Boots",
   "item.villagecraft3essentials.ruby_horse_armor": "Ruby Horse Armor",
   "item.villagecraft3essentials.amber": "Amber",
+  "item.villagecraft3essentials.cracked_amber": "Fractured Amber",
   "item.villagecraft3essentials.amber_sword": "Amber Sword",
   "item.villagecraft3essentials.amber_shovel": "Amber Shovel",
   "item.villagecraft3essentials.amber_pickaxe": "Amber Pickaxe",

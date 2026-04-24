@@ -1,0 +1,10 @@
+{
+  "type": "villagecraft3essentials:replace_non_player_item_loot_modifier",
+  "conditions": [
+    {
+      "block": "minecraft:diamond_ore",
+      "condition": "minecraft:block_state_property"
+    }
+  ],
+  "item": "villagecraft3essentials:cracked_diamond"
+}

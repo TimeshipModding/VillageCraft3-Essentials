@@ -155,6 +155,9 @@ public class EssentialsTab {
                 pOutput.accept(DIAMOND);
                 pOutput.accept(RUBY);
                 pOutput.accept(AMBER);
+                pOutput.accept(CRACKED_DIAMOND);
+                pOutput.accept(CRACKED_RUBY);
+                pOutput.accept(CRACKED_AMBER);
                 pOutput.accept(NETHERITE_INGOT);
                 pOutput.accept(MOLE_SPAWN_EGG);
             }).build());
