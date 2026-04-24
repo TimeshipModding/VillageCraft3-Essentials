@@ -11,6 +11,7 @@ import com.timeshipmodding.villagecraft3essentials.content.menu.registries.ModMe
 import com.timeshipmodding.villagecraft3essentials.content.sound.registries.ModSounds;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.config.CommonConfig;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.config.ServerConfig;
+import com.timeshipmodding.villagecraft3essentials.infrastructure.data.attachment.registries.ModDataAttachments;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.config.ModConfig;
 import org.slf4j.Logger;
@@ -36,6 +37,7 @@ public class VillageCraft3Essentials {
         ModLootModifiers.GLOBAL_LOOT_MODIFIERS.register(modEventBus);
         ModMenus.MENUS.register(modEventBus);
         ModSounds.SOUND_EVENTS.register(modEventBus);
+        ModDataAttachments.ATTACHMENT_TYPES.register(modEventBus);
 
         // Register creative mode tab
         EssentialsTab.CREATIVE_MODE_TABS.register(modEventBus);

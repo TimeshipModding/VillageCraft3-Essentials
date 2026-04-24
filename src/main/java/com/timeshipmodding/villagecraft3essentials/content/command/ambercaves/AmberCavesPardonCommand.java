@@ -4,6 +4,8 @@ import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
 import com.timeshipmodding.villagecraft3essentials.compat.luckperms.LuckpermsMethods;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.config.ServerConfig;
+import com.timeshipmodding.villagecraft3essentials.infrastructure.data.JailAndPardonCommandData;
+import com.timeshipmodding.villagecraft3essentials.infrastructure.data.attachment.registries.ModDataAttachments;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.data.saveddata.SpawnSavedData;
 import net.minecraft.ChatFormatting;
 import net.minecraft.commands.CommandSourceStack;
@@ -38,26 +40,38 @@ public class AmberCavesPardonCommand {
         SpawnSavedData savedData = SpawnSavedData.getData(server);
         int[] spawn = savedData.getAmberCavesSpawn();
         ChatFormatting groupStyling = ChatFormatting.WHITE;
+        MutableComponent targetPlayerMessage;
+        BlockPos blockpos = serverlevel.getSharedSpawnPos();
 
         if (ModList.get().isLoaded("luckperms")) {
             groupStyling = LuckpermsMethods.getGroupStyling(ServerConfig.AMBERCAVES_GROUP_NAME.get());
         }
 
+        for (ServerPlayer player : targets) {
+            player.setGameMode(GameType.SURVIVAL);
+            player.setRespawnPosition(ServerLevel.OVERWORLD, blockpos, player.getYRot(), true, false);
+            targetPlayerUsername = Objects.requireNonNull(player.getDisplayName());
+
+            if (player.hasData(ModDataAttachments.JAIL_COMMAND_DATA)) {
+                JailAndPardonCommandData jailCommandData = player.getData(ModDataAttachments.JAIL_COMMAND_DATA);
+
+                if (jailCommandData.jailReleaseTime() > 0) {
+                    player.setData(ModDataAttachments.JAIL_COMMAND_DATA, jailCommandData.reset());
+                }
+            }
+
+            if (ModList.get().isLoaded("luckperms")) {
+                LuckpermsMethods.removeGroup(player, ServerConfig.JAILED_GROUP_NAME.get());
+            }
+        }
+
         if (spawn[3] != 0 && spawn[4] != 0 && serverlevel != null) {
             for (ServerPlayer player : targets) {
                 player.teleportTo(serverlevel, spawn[0] + 0.5, spawn[1], spawn[2] + 0.5, spawn[3], spawn[4]);
-                player.setGameMode(GameType.SURVIVAL);
-                BlockPos blockpos = serverlevel.getSharedSpawnPos();
-                player.setRespawnPosition(ServerLevel.OVERWORLD, blockpos, player.getYRot(), true, false);
                 MutableComponent message = Component.literal("You have been pardoned from jail and teleported to ");
                 message.append(Component.literal("The Amber Caves'").withStyle(groupStyling));
                 message.append(Component.literal(" spawn!"));
                 player.sendSystemMessage(message, false);
-                targetPlayerUsername = Objects.requireNonNull(player.getDisplayName());
-
-                if (ModList.get().isLoaded("luckperms")) {
-                    LuckpermsMethods.removeGroup(player, ServerConfig.JAILED_GROUP_NAME.get());
-                }
             }
 
             MutableComponent message = Component.literal("You have pardoned ");
@@ -69,11 +83,25 @@ public class AmberCavesPardonCommand {
             return 1;
 
         } else {
-            MutableComponent message = Component.literal("No ").withStyle(ChatFormatting.RED);
-            message.append(Component.literal("Amber Caves").withStyle(groupStyling));
-            message.append(Component.literal(" spawn position has been set.").withStyle(ChatFormatting.RED));
-            context.getSource().sendFailure(message);
-            return -1;
+            for (ServerPlayer player : targets) {
+                int playerYaw = (int) player.getYRot();
+                int playerPitch = (int) player.getXRot();
+                player.teleportTo(serverlevel, blockpos.getX(), blockpos.getY(), blockpos.getZ(), playerYaw, playerPitch);
+                targetPlayerMessage = Component.literal("You have been pardoned from jail and teleported to ");
+                targetPlayerMessage.append(Component.literal("World Spawn").withStyle(ChatFormatting.GREEN));
+                targetPlayerMessage.append(Component.literal("!"));
+                player.sendSystemMessage(targetPlayerMessage, false);
+            }
+
+            MutableComponent message = Component.literal("You have pardoned ");
+            message.append(targetPlayerUsername);
+            message.append(Component.literal(" from jail and teleported them to "));
+            message.append(Component.literal("World spawn").withStyle(ChatFormatting.GREEN));
+            message.append(Component.literal("due to "));
+            message.append(Component.literal("Amber Caves'").withStyle(groupStyling));
+            message.append(Component.literal(" unset spawn position."));
+            context.getSource().sendSuccess(() -> message, false);
+            return 1;
         }
     }
 }

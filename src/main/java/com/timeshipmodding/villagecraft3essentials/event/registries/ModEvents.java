@@ -13,11 +13,15 @@ import com.timeshipmodding.villagecraft3essentials.content.command.warscore.*;
 import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.config.ServerConfig;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.data.CoreRespawnData;
+import com.timeshipmodding.villagecraft3essentials.infrastructure.data.JailAndPardonCommandData;
+import com.timeshipmodding.villagecraft3essentials.infrastructure.data.attachment.registries.ModDataAttachments;
+import com.timeshipmodding.villagecraft3essentials.infrastructure.data.saveddata.SpawnSavedData;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.data.saveddata.WarPointsSavedData;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.itemhandler.HorseCurrencyArmorItemHandler;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.networking.packet.atm.AtmRandomConversionRatesPacket;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.data.saveddata.AtmRandomConversionRatesSavedData;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
@@ -25,6 +29,7 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.level.GameType;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModList;
@@ -118,34 +123,34 @@ public class ModEvents {
         UUID uuid = player.getUUID();
 
         if (pendingTeleports.containsKey(uuid)) {
-            TeleportCommandsData data = pendingTeleports.get(uuid);
+            TeleportCommandsData teleportCommandsData = pendingTeleports.get(uuid);
 
-            if (distanceToPlayerXZCoordinates(player, data.startPos.x, data.startPos.z) > 0.25 && data.ticksLeft <= 50) {
+            if (distanceToPlayerXZCoordinates(player, teleportCommandsData.startPos.x, teleportCommandsData.startPos.z) > 0.25 && teleportCommandsData.ticksLeft <= 50) {
                 player.sendSystemMessage(Component.literal("Teleport cancelled: you moved.").withStyle(ChatFormatting.RED));
                 pendingTeleports.remove(uuid);
                 return;
             }
 
-            if (data.ticksLeft <= 0) {
-                int[] destination = data.destination;
-                player.teleportTo(data.serverLevel, destination[0] + 0.5, destination[1], destination[2] + 0.5, destination[3], destination[4]);
-                player.sendSystemMessage(data.teleportMessage);
+            if (teleportCommandsData.ticksLeft <= 0) {
+                int[] destination = teleportCommandsData.destination;
+                player.teleportTo(teleportCommandsData.serverLevel, destination[0] + 0.5, destination[1], destination[2] + 0.5, destination[3], destination[4]);
+                player.sendSystemMessage(teleportCommandsData.teleportMessage);
                 pendingTeleports.remove(uuid);
 
             } else {
-                if (data.ticksLeft % 20 == 0) {
-                    player.displayClientMessage(Component.literal("Teleporting in " + (data.ticksLeft / 20) + "...").withStyle(ChatFormatting.GOLD), true);
+                if (teleportCommandsData.ticksLeft % 20 == 0) {
+                    player.displayClientMessage(Component.literal("Teleporting in " + (teleportCommandsData.ticksLeft / 20) + "...").withStyle(ChatFormatting.GOLD), true);
                 }
 
-                pendingTeleports.put(uuid, new TeleportCommandsData(data.serverLevel, data.ticksLeft - 1, data.startPos, data.destination, data.teleportMessage));
+                pendingTeleports.put(uuid, new TeleportCommandsData(teleportCommandsData.serverLevel, teleportCommandsData.ticksLeft - 1, teleportCommandsData.startPos, teleportCommandsData.destination, teleportCommandsData.teleportMessage));
             }
         }
 
         if (pendingTPAs.containsKey(uuid)) {
-            TpaCommandData data = pendingTPAs.get(uuid);
+            TpaCommandData teleportCommandsData = pendingTPAs.get(uuid);
 
-            if (Objects.equals(data.teleportType, "tpa")) {
-                if (distanceToPlayerXZCoordinates(player, data.startPos.x, data.startPos.z) > 0.25 && data.ticksLeft <= 30) {
+            if (Objects.equals(teleportCommandsData.teleportType, "tpa")) {
+                if (distanceToPlayerXZCoordinates(player, teleportCommandsData.startPos.x, teleportCommandsData.startPos.z) > 0.25 && teleportCommandsData.ticksLeft <= 30) {
                     player.sendSystemMessage(Component.literal("TPA cancelled: you moved.").withStyle(ChatFormatting.RED));
                     MutableComponent targetPlayerMessage = Component.literal("TPA cancelled: ").withStyle(ChatFormatting.RED);
 
@@ -157,38 +162,38 @@ public class ModEvents {
                     }
 
                     targetPlayerMessage.append(Component.literal(" moved.").withStyle(ChatFormatting.RED));
-                    data.targetPlayer.sendSystemMessage(targetPlayerMessage);
+                    teleportCommandsData.targetPlayer.sendSystemMessage(targetPlayerMessage);
                     pendingTPAs.remove(uuid);
                     return;
                 }
 
-                if (data.ticksLeft <= 0) {
-                    player.teleportTo(data.serverLevel, data.targetPlayer.getX(), data.targetPlayer.getY(), data.targetPlayer.getZ(), player.getYRot(), player.getXRot());
-                    player.sendSystemMessage(data.requestingPlayerMessage);
-                    data.targetPlayer.sendSystemMessage(data.targetPlayerMessage);
+                if (teleportCommandsData.ticksLeft <= 0) {
+                    player.teleportTo(teleportCommandsData.serverLevel, teleportCommandsData.targetPlayer.getX(), teleportCommandsData.targetPlayer.getY(), teleportCommandsData.targetPlayer.getZ(), player.getYRot(), player.getXRot());
+                    player.sendSystemMessage(teleportCommandsData.requestingPlayerMessage);
+                    teleportCommandsData.targetPlayer.sendSystemMessage(teleportCommandsData.targetPlayerMessage);
                     pendingTPAs.remove(uuid);
 
                 } else {
-                    if (data.ticksLeft % 20 == 0) {
-                        player.displayClientMessage(Component.literal("Teleporting in " + (data.ticksLeft / 20) + "...").withStyle(ChatFormatting.GOLD), true);
+                    if (teleportCommandsData.ticksLeft % 20 == 0) {
+                        player.displayClientMessage(Component.literal("Teleporting in " + (teleportCommandsData.ticksLeft / 20) + "...").withStyle(ChatFormatting.GOLD), true);
                         MutableComponent targetPlayerMessage = player.getDisplayName().copy();
-                        targetPlayerMessage.append(Component.literal(" is teleporting to you in " + (data.ticksLeft / 20) + "...").withStyle(ChatFormatting.GOLD));
-                        data.targetPlayer.displayClientMessage(targetPlayerMessage, true);
+                        targetPlayerMessage.append(Component.literal(" is teleporting to you in " + (teleportCommandsData.ticksLeft / 20) + "...").withStyle(ChatFormatting.GOLD));
+                        teleportCommandsData.targetPlayer.displayClientMessage(targetPlayerMessage, true);
                     }
 
-                    pendingTPAs.put(uuid, new TpaCommandData(data.serverLevel, data.ticksLeft - 1, data.startPos, data.targetPlayer(), data.requestingPlayer(), data.targetPlayerMessage(), data.requestingPlayerMessage(), data.teleportType()));
+                    pendingTPAs.put(uuid, new TpaCommandData(teleportCommandsData.serverLevel, teleportCommandsData.ticksLeft - 1, teleportCommandsData.startPos, teleportCommandsData.targetPlayer(), teleportCommandsData.requestingPlayer(), teleportCommandsData.targetPlayerMessage(), teleportCommandsData.requestingPlayerMessage(), teleportCommandsData.teleportType()));
                 }
 
-            } else if (Objects.equals(data.teleportType, "tpahere")) {
-                if (distanceToPlayerXZCoordinates(player, data.startPos.x, data.startPos.z) > 0.25 && data.ticksLeft <= 30) {
-                    data.targetPlayer.sendSystemMessage(Component.literal("TPA here cancelled: you moved.").withStyle(ChatFormatting.RED));
+            } else if (Objects.equals(teleportCommandsData.teleportType, "tpahere")) {
+                if (distanceToPlayerXZCoordinates(player, teleportCommandsData.startPos.x, teleportCommandsData.startPos.z) > 0.25 && teleportCommandsData.ticksLeft <= 30) {
+                    teleportCommandsData.targetPlayer.sendSystemMessage(Component.literal("TPA here cancelled: you moved.").withStyle(ChatFormatting.RED));
                     MutableComponent requestingPlayerMessage = Component.literal("TPA here cancelled: ").withStyle(ChatFormatting.RED);
 
                     if (ModList.get().isLoaded("luckperms")) {
-                        requestingPlayerMessage.append(data.targetPlayer.getDisplayName().copy());
+                        requestingPlayerMessage.append(teleportCommandsData.targetPlayer.getDisplayName().copy());
 
                     } else {
-                        requestingPlayerMessage.append(data.targetPlayer.getDisplayName().copy().withStyle(ChatFormatting.WHITE));
+                        requestingPlayerMessage.append(teleportCommandsData.targetPlayer.getDisplayName().copy().withStyle(ChatFormatting.WHITE));
                     }
 
                     requestingPlayerMessage.append(Component.literal(" moved.").withStyle(ChatFormatting.RED));
@@ -197,21 +202,87 @@ public class ModEvents {
                     return;
                 }
 
-                if (data.ticksLeft <= 0) {
-                    data.targetPlayer.teleportTo(data.serverLevel, data.requestingPlayer.getX(), data.requestingPlayer.getY(), data.requestingPlayer.getZ(), data.targetPlayer.getYRot(), data.targetPlayer.getXRot());
-                    data.targetPlayer.sendSystemMessage(data.targetPlayerMessage);
-                    player.sendSystemMessage(data.requestingPlayerMessage);
+                if (teleportCommandsData.ticksLeft <= 0) {
+                    teleportCommandsData.targetPlayer.teleportTo(teleportCommandsData.serverLevel, teleportCommandsData.requestingPlayer.getX(), teleportCommandsData.requestingPlayer.getY(), teleportCommandsData.requestingPlayer.getZ(), teleportCommandsData.targetPlayer.getYRot(), teleportCommandsData.targetPlayer.getXRot());
+                    teleportCommandsData.targetPlayer.sendSystemMessage(teleportCommandsData.targetPlayerMessage);
+                    player.sendSystemMessage(teleportCommandsData.requestingPlayerMessage);
                     pendingTPAs.remove(uuid);
 
                 } else {
-                    if (data.ticksLeft % 20 == 0) {
-                        data.targetPlayer.displayClientMessage(Component.literal("Teleporting in " + (data.ticksLeft / 20) + "...").withStyle(ChatFormatting.GOLD), true);
-                        MutableComponent requestingPlayerMessage = data.targetPlayer.getDisplayName().copy();
-                        requestingPlayerMessage.append(Component.literal(" is teleporting to you in " + (data.ticksLeft / 20) + "...").withStyle(ChatFormatting.GOLD));
+                    if (teleportCommandsData.ticksLeft % 20 == 0) {
+                        teleportCommandsData.targetPlayer.displayClientMessage(Component.literal("Teleporting in " + (teleportCommandsData.ticksLeft / 20) + "...").withStyle(ChatFormatting.GOLD), true);
+                        MutableComponent requestingPlayerMessage = teleportCommandsData.targetPlayer.getDisplayName().copy();
+                        requestingPlayerMessage.append(Component.literal(" is teleporting to you in " + (teleportCommandsData.ticksLeft / 20) + "...").withStyle(ChatFormatting.GOLD));
                         player.displayClientMessage(requestingPlayerMessage, true);
                     }
 
-                    pendingTPAs.put(uuid, new TpaCommandData(data.serverLevel, data.ticksLeft - 1, data.startPos, data.targetPlayer, data.requestingPlayer, data.targetPlayerMessage, data.requestingPlayerMessage, data.teleportType));
+                    pendingTPAs.put(uuid, new TpaCommandData(teleportCommandsData.serverLevel, teleportCommandsData.ticksLeft - 1, teleportCommandsData.startPos, teleportCommandsData.targetPlayer, teleportCommandsData.requestingPlayer, teleportCommandsData.targetPlayerMessage, teleportCommandsData.requestingPlayerMessage, teleportCommandsData.teleportType));
+                }
+            }
+        }
+
+        if (player.hasData(ModDataAttachments.JAIL_COMMAND_DATA)) {
+            JailAndPardonCommandData jailCommandData = player.getData(ModDataAttachments.JAIL_COMMAND_DATA);
+
+            if (jailCommandData.jailReleaseTime() > 0) {
+                player.setData(ModDataAttachments.JAIL_COMMAND_DATA, jailCommandData.tick());
+
+                if (jailCommandData.jailReleaseTime() - 1 == 0) {
+                    MinecraftServer server = event.getEntity().getServer();
+                    ServerLevel serverlevel = server.getLevel(ServerLevel.OVERWORLD);
+                    SpawnSavedData savedData = SpawnSavedData.getData(server);
+                    int[] spawn = null;
+                    MutableComponent targetPlayerMessage;
+                    BlockPos blockpos = serverlevel.getSharedSpawnPos();
+                    player.setGameMode(GameType.SURVIVAL);
+                    player.setRespawnPosition(ServerLevel.OVERWORLD, blockpos, player.getYRot(), true, false);
+
+                    if (jailCommandData.townComponent().contains(Component.literal("VillageCraft City's"))) {
+                        spawn = savedData.getVillagecraftCitySpawn();
+
+                    } else if (jailCommandData.townComponent().contains(Component.literal("Gripper City's"))) {
+                        spawn = savedData.getGripperCitySpawn();
+
+                    } else if (jailCommandData.townComponent().contains(Component.literal("Amber Caves'"))) {
+                        spawn = savedData.getAmberCavesSpawn();
+                    }
+
+                    if (ModList.get().isLoaded("luckperms")) {
+                        LuckpermsMethods.removeGroup(player, ServerConfig.JAILED_GROUP_NAME.get());
+                    }
+
+                    if (spawn[3] != 0 && spawn[4] != 0) {
+                        player.teleportTo(serverlevel, spawn[0] + 0.5, spawn[1], spawn[2] + 0.5, spawn[3], spawn[4]);
+                        targetPlayerMessage = Component.literal("You have been pardoned from jail and teleported to ");
+                        targetPlayerMessage.append(jailCommandData.townComponent());
+                        targetPlayerMessage.append(Component.literal(" spawn!"));
+                        player.sendSystemMessage(targetPlayerMessage, false);
+
+                        ServerPlayer jailerPlayer = event.getEntity().getServer().getPlayerList().getPlayerByName(jailCommandData.jailerUsername());
+                        MutableComponent jailerPlayerMessage = Component.literal(player.getDisplayName().getString() + " has reached the maximum jail time. They have been automatically pardoned and teleported to ");
+                        jailerPlayerMessage.append(jailCommandData.townComponent());
+                        jailerPlayerMessage.append(Component.literal(" spawn!"));
+                        jailerPlayer.sendSystemMessage(jailerPlayerMessage, false);
+
+                    } else {
+                        int playerYaw = (int) player.getYRot();
+                        int playerPitch = (int) player.getXRot();
+                        player.teleportTo(serverlevel, blockpos.getX(), blockpos.getY(), blockpos.getZ(), playerYaw, playerPitch);
+                        targetPlayerMessage = Component.literal("You have been pardoned from jail and teleported to ");
+                        targetPlayerMessage.append(Component.literal("World Spawn").withStyle(ChatFormatting.GREEN));
+                        targetPlayerMessage.append(Component.literal("!"));
+                        player.sendSystemMessage(targetPlayerMessage, false);
+
+                        ServerPlayer jailerPlayer = event.getEntity().getServer().getPlayerList().getPlayerByName(jailCommandData.jailerUsername());
+                        MutableComponent jailerPlayerMessage = Component.literal(player.getDisplayName().getString() + " has reached the maximum jail time. They have been automatically pardoned and teleported to ");
+                        jailerPlayerMessage.append(Component.literal("World spawn").withStyle(ChatFormatting.GREEN));
+                        jailerPlayerMessage.append(Component.literal(" due to "));
+                        jailerPlayerMessage.append(jailCommandData.townComponent());
+                        jailerPlayerMessage.append(Component.literal(" unset spawn position."));
+                        jailerPlayer.sendSystemMessage(jailerPlayerMessage, false);
+                    }
+
+                    player.setData(ModDataAttachments.JAIL_COMMAND_DATA, jailCommandData.reset());
                 }
             }
         }
