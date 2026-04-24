@@ -12,6 +12,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.protocol.game.ClientboundTabListPacket;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.scores.Scoreboard;
@@ -125,19 +126,29 @@ public class ModServerEvents {
         }
     }
 
-    private static void updateTabListHeaderFooter(ServerPlayer player) {
-        String header;
+    private static final ResourceLocation LOGO_FONT = ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "default");
 
-        if (ServerConfig.CHAT_TAB_NAME_FORMATTING.get()) {
-            header = TabListVariables.tablistCharacters("     \uE001\uF801\uE002#N#N#N#N#N");
+    private static void updateTabListHeaderFooter(ServerPlayer player) {
+        MutableComponent header;
+
+        if (ServerConfig.ENABLE_VILLAGECRAFT3_LOGO_TABLIST.get()) {
+            MutableComponent logo = Component.literal("\uE001\uF801\uE002")
+                    .withStyle(style -> style
+                            .withColor(0x4E5C24) // Trigger for the shader
+                            .withFont(LOGO_FONT) // Points to your default.json
+                    );
+
+            header = Component.literal("     ")
+                    .append(logo)
+                    .append(Component.literal("\n\n\n\n\n").withStyle(ChatFormatting.RESET));
 
         } else {
-            header = TabListVariables.tablistCharacters("");
+            header = Component.literal(TabListVariables.tablistCharacters(""));
         }
 
-        String footer = TabListVariables.tablistCharacters("#N&fOnline: &e#PLAYERCOUNT #N&7| TPS: &a#TPS &7 MSPT: &a#MSPT &7 Uptime: &a#UPTIME &7|");
-        ClientboundTabListPacket packet = new ClientboundTabListPacket(Component.literal(header), Component.literal(footer));
-        player.connection.send(packet);
+        String footerString = TabListVariables.tablistCharacters("#N&fOnline: &e#PLAYERCOUNT #N&7| TPS: &a#TPS &7 MSPT: &a#MSPT &7 Uptime: &a#UPTIME &7|");
+        Component footer = Component.literal(footerString);
+        player.connection.send(new ClientboundTabListPacket(header, footer));
     }
 
     public static int findHighestCommonFactor(int a, int b) {

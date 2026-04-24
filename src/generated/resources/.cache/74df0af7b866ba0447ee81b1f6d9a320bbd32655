@@ -1,4 +1,4 @@
-// 1.21.1	2026-04-10T20:43:50.9771014	Tags for minecraft:item mod id villagecraft3essentials
+// 1.21.1	2026-04-11T13:30:38.7282456	Tags for minecraft:item mod id villagecraft3essentials
 ea3a6412eb7a8b00dffb761f92132aed64240325 data/aquaculture/tags/item/tooltip.json
 bbbe68f23d94ae2a72f5380fb7195d7486f0955f data/c/tags/item/animal_foods.json
 7e5e89f0ee536e398a5a15f128e8188c8a5de581 data/c/tags/item/foods/cooked_meat.json
@@ -49,3 +49,4 @@ d03fa87e10535e7ddd298826de46878b10e461b2 data/minecraft/tags/item/trim_materials
 8266cd25f31d0f42600541b5550738901ba11ee1 data/villagecraft3essentials/tags/item/diamond_convertible_tools.json
 bbbe68f23d94ae2a72f5380fb7195d7486f0955f data/villagecraft3essentials/tags/item/mole_food.json
 2f5838c0976881bf15520cbb911213cad5a14578 data/villagecraft3essentials/tags/item/ruby_convertible_tools.json
+7c161b4b887f1fc7dd818a05dc4a22e9695f08bb data/villagecraft3essentials/tags/item/wallet_accepted_items.json
