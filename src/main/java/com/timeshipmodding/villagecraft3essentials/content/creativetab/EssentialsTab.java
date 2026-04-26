@@ -13,10 +13,12 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import vectorwing.farmersdelight.common.registry.ModItems;
 
+import static com.timeshipmodding.villagecraft3essentials.content.item.registries.ModCompatItems.*;
 import static net.minecraft.world.item.Items.*;
 
 import static com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems.*;
 import static com.timeshipmodding.villagecraft3essentials.content.block.registries.ModBlocks.*;
+import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModCompatItems.*;
 
 import static com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials.MODID;
 

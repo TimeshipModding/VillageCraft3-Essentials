@@ -10,6 +10,7 @@ import com.timeshipmodding.villagecraft3essentials.content.command.grippercity.*
 import com.timeshipmodding.villagecraft3essentials.content.command.tpa.*;
 import com.timeshipmodding.villagecraft3essentials.content.command.villagecraftcity.*;
 import com.timeshipmodding.villagecraft3essentials.content.command.warscore.*;
+import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModCompatItems;
 import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.config.ServerConfig;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.data.CoreRespawnData;
@@ -407,8 +408,8 @@ public class ModEvents {
         );
 
         if (ModList.get().isLoaded("aquaculture")) {
-            AquaMethods.registerAquaFishingRodCapability(event, ModItems.RUBY_FISHING_ROD.get());
-            AquaMethods.registerAquaFishingRodCapability(event, ModItems.AMBER_FISHING_ROD.get());
+            AquaMethods.registerAquaFishingRodCapability(event, ModCompatItems.RUBY_FISHING_ROD.get());
+            AquaMethods.registerAquaFishingRodCapability(event, ModCompatItems.AMBER_FISHING_ROD.get());
         }
     }
 

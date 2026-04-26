@@ -5,16 +5,19 @@ import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.tags.registries.ModItemTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
+import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.common.conditions.IConditionBuilder;
 import vectorwing.farmersdelight.common.registry.ModItems;
 
@@ -22,6 +25,9 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 import static com.timeshipmodding.villagecraft3essentials.content.block.registries.ModBlocks.*;
+import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModCompatItems.*;
+
+import static com.timeshipmodding.villagecraft3essentials.content.item.registries.ModCompatItems.*;
 import static com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems.*;
 import static net.minecraft.world.item.Items.*;
 
@@ -34,6 +40,13 @@ public class DataRecipes extends RecipeProvider implements IConditionBuilder {
     private static final List<ItemLike> AMBER_SMELTABLES = List.of(AMBER_ORE, DEEPSLATE_AMBER_ORE);
     private static final List<Item> DYES = List.of(Items.BLACK_DYE, Items.BLUE_DYE, Items.BROWN_DYE, Items.CYAN_DYE, Items.GRAY_DYE, Items.GREEN_DYE, Items.LIGHT_BLUE_DYE, Items.LIGHT_GRAY_DYE, Items.LIME_DYE, Items.MAGENTA_DYE, Items.ORANGE_DYE, Items.PINK_DYE, Items.PURPLE_DYE, Items.RED_DYE, Items.YELLOW_DYE, Items.WHITE_DYE);
     private static final List<Item> ATMS = List.of(BLACK_ATM.asItem(), BLUE_ATM.asItem(), BROWN_ATM.asItem(), CYAN_ATM.asItem(), GRAY_ATM.asItem(), GREEN_ATM.asItem(), LIGHT_BLUE_ATM.asItem(), LIGHT_GRAY_ATM.asItem(), LIME_ATM.asItem(), MAGENTA_ATM.asItem(), ORANGE_ATM.asItem(), PINK_ATM.asItem(), PURPLE_ATM.asItem(), RED_ATM.asItem(), YELLOW_ATM.asItem(), WHITE_ATM.asItem());
+
+    Ingredient rubyHookIngredient = ModList.get().isLoaded("aquaculture")
+            ? Ingredient.of(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("aquaculture", "iron_hook")))
+            : Ingredient.of(Items.IRON_INGOT);
+    Ingredient amberHookIngredient = ModList.get().isLoaded("aquaculture")
+            ? Ingredient.of(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("aquaculture", "iron_hook")))
+            : Ingredient.of(Items.IRON_INGOT);
 
     @Override
     protected void buildRecipes(RecipeOutput recipeOutput) {
@@ -303,54 +316,6 @@ public class DataRecipes extends RecipeProvider implements IConditionBuilder {
                 .pattern("#C#")
                 .pattern("###")
                 .define('#', ModItemTags.CURRENCY_GEMS).define('C', MOSSY_COBBLESTONE).define('S', WILD_ARMOR_TRIM_SMITHING_TEMPLATE).group("villagecraft3essentials").unlockedBy("has_wild_armor_trim_smithing_template", has(WILD_ARMOR_TRIM_SMITHING_TEMPLATE)).save(recipeOutput, WILD_ARMOR_TRIM_SMITHING_TEMPLATE + "_using_currency_gems");
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, RUBY_KNIFE)
-                .pattern("#")
-                .pattern("!")
-                .define('#', RUBY).define('!', STICK).group("villagecraft3essentials").unlockedBy("has_ruby", has(RUBY)).save(recipeOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, AMBER_KNIFE)
-                .pattern("#")
-                .pattern("!")
-                .define('#', AMBER).define('!', STICK).group("villagecraft3essentials").unlockedBy("has_amber", has(AMBER)).save(recipeOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, RUBY_FISHING_ROD)
-                .pattern("  #")
-                .pattern(" #S")
-                .pattern("! S")
-                .define('#', RUBY).define('!', STICK).define('S', STRING).group("villagecraft3essentials").unlockedBy("has_ruby", has(RUBY)).save(recipeOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, AMBER_FISHING_ROD)
-                .pattern("  #")
-                .pattern(" #S")
-                .pattern("! S")
-                .define('#', AMBER).define('!', STICK).define('S', STRING).group("villagecraft3essentials").unlockedBy("has_amber", has(AMBER)).save(recipeOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, RUBY_FILLET_KNIFE)
-                .pattern("  #")
-                .pattern(" # ")
-                .pattern("!  ")
-                .define('#', RUBY).define('!', STICK).group("villagecraft3essentials").unlockedBy("has_ruby", has(RUBY)).save(recipeOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, AMBER_FILLET_KNIFE)
-                .pattern("  #")
-                .pattern(" # ")
-                .pattern("!  ")
-                .define('#', AMBER).define('!', STICK).group("villagecraft3essentials").unlockedBy("has_amber", has(AMBER)).save(recipeOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, RUBY_HOOK)
-                .pattern(" # ")
-                .pattern("#!#")
-                .pattern(" # ")
-                .define('#', RUBY).define('!', AquaItems.IRON_HOOK).group("villagecraft3essentials").unlockedBy("has_ruby", has(RUBY)).save(recipeOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, AMBER_HOOK)
-                .pattern(" # ")
-                .pattern("#!#")
-                .pattern(" # ")
-                .define('#', AMBER).define('!', AquaItems.IRON_HOOK).group("villagecraft3essentials").unlockedBy("has_amber", has(AMBER)).save(recipeOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, RUBY_BRUSH)
-                .pattern("!")
-                .pattern("#")
-                .pattern("S")
-                .define('#', RUBY).define('!', FEATHER).define('S', STICK).group("villagecraft3essentials").unlockedBy("has_ruby", has(RUBY)).save(recipeOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, AMBER_BRUSH)
-                .pattern("!")
-                .pattern("#")
-                .pattern("S")
-                .define('#', AMBER).define('!', FEATHER).define('S', STICK).group("villagecraft3essentials").unlockedBy("has_amber", has(AMBER)).save(recipeOutput);
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, Blocks.ENCHANTING_TABLE)
                 .pattern(" B ")
                 .pattern("D#D")
@@ -394,8 +359,6 @@ public class DataRecipes extends RecipeProvider implements IConditionBuilder {
         rubyNetheriteSmithing(recipeOutput, RUBY_PICKAXE.get(), RecipeCategory.TOOLS, NETHERITE_PICKAXE);
         rubyNetheriteSmithing(recipeOutput, RUBY_SHOVEL.get(), RecipeCategory.TOOLS, NETHERITE_SHOVEL);
         rubyNetheriteSmithing(recipeOutput, RUBY_SWORD.get(), RecipeCategory.COMBAT, NETHERITE_SWORD);
-        rubyNetheriteSmithing(recipeOutput, RUBY_KNIFE.get(), RecipeCategory.COMBAT, ModItems.NETHERITE_KNIFE.get());
-        rubyNetheriteSmithing(recipeOutput, RUBY_BRUSH.get(), RecipeCategory.TOOLS, BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("betterarcheology", "netherite_brush")));
         rubyNetheriteSmithing(recipeOutput, RUBY_HELMET.get(), RecipeCategory.COMBAT, NETHERITE_HELMET);
         rubyNetheriteSmithing(recipeOutput, RUBY_CHESTPLATE.get(), RecipeCategory.COMBAT, NETHERITE_CHESTPLATE);
         rubyNetheriteSmithing(recipeOutput, RUBY_LEGGINGS.get(), RecipeCategory.COMBAT, NETHERITE_LEGGINGS);
@@ -405,8 +368,6 @@ public class DataRecipes extends RecipeProvider implements IConditionBuilder {
         amberNetheriteSmithing(recipeOutput, AMBER_PICKAXE.get(), RecipeCategory.TOOLS, NETHERITE_PICKAXE);
         amberNetheriteSmithing(recipeOutput, AMBER_SHOVEL.get(), RecipeCategory.TOOLS, NETHERITE_SHOVEL);
         amberNetheriteSmithing(recipeOutput, AMBER_SWORD.get(), RecipeCategory.COMBAT, NETHERITE_SWORD);
-        amberNetheriteSmithing(recipeOutput, AMBER_KNIFE.get(), RecipeCategory.COMBAT, ModItems.NETHERITE_KNIFE.get());;
-        amberNetheriteSmithing(recipeOutput, AMBER_BRUSH.get(), RecipeCategory.TOOLS, BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("betterarcheology", "netherite_brush")));
         amberNetheriteSmithing(recipeOutput, AMBER_HELMET.get(), RecipeCategory.COMBAT, NETHERITE_HELMET);
         amberNetheriteSmithing(recipeOutput, AMBER_CHESTPLATE.get(), RecipeCategory.COMBAT, NETHERITE_CHESTPLATE);
         amberNetheriteSmithing(recipeOutput, AMBER_LEGGINGS.get(), RecipeCategory.COMBAT, NETHERITE_LEGGINGS);

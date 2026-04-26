@@ -1,6 +1,12 @@
 {
   "values": [
-    "villagecraft3essentials:ruby_hook",
-    "villagecraft3essentials:amber_hook"
+    {
+      "id": "villagecraft3essentials:ruby_hook",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:amber_hook",
+      "required": false
+    }
   ]
 }

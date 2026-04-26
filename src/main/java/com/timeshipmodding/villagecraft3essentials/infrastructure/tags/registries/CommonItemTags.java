@@ -27,6 +27,7 @@ public class CommonItemTags {
     public static TagKey<Item> GEMS = createTag("gems");
     public static TagKey<Item> RUBY_GEMS = createTag("gems/ruby");
     public static TagKey<Item> AMBER_GEMS = createTag("gems/amber");
+    public static TagKey<Item> KNIFE = createTag("tools/knife");
 
     private static TagKey<Item> createTag(String name) {
         return ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", name));

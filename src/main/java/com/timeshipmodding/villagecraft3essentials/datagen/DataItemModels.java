@@ -20,6 +20,9 @@ import java.util.LinkedHashMap;
 import java.util.Objects;
 
 import static com.timeshipmodding.villagecraft3essentials.content.block.registries.ModBlocks.*;
+import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModCompatItems.*;
+
+import static com.timeshipmodding.villagecraft3essentials.content.item.registries.ModCompatItems.*;
 import static com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems.*;
 
 public class DataItemModels extends ItemModelProvider {

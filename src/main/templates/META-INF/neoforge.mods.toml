@@ -19,6 +19,14 @@ file="META-INF/accesstransformer.cfg"
 [[mixins]]
 config="${mod_id}.mixins.json"
 
+# Dependency for Minecraft
+[[dependencies.${mod_id}]]
+    modId="minecraft"
+    type="required"
+    versionRange="${minecraft_version_range}"
+    ordering="NONE"
+    side="BOTH"
+
 # Dependency for NeoForge
 [[dependencies.${mod_id}]]
     modId="neoforge"
@@ -27,10 +35,42 @@ config="${mod_id}.mixins.json"
     ordering="NONE"
     side="BOTH"
 
-# Dependency for Minecraft
+# Dependency for JEI
 [[dependencies.${mod_id}]]
-    modId="minecraft"
-    type="required"
-    versionRange="${minecraft_version_range}"
-    ordering="NONE"
+    modId="jei"
+    type="optional"
+    versionRange="[19.27.0.336,)"
+    ordering="AFTER"
+    side="BOTH"
+
+# Dependency for Luckperms
+[[dependencies.${mod_id}]]
+    modId="luckperms"
+    type="optional"
+    versionRange="[5.4.140,)"
+    ordering="AFTER"
+    side="SERVER"
+
+# Dependency for Farmer's Delight
+[[dependencies.${mod_id}]]
+    modId="farmersdelight"
+    type="optional"
+    versionRange="[1.2.11a,)"
+    ordering="AFTER"
+    side="BOTH"
+
+# Dependency for Aquaculture 2
+[[dependencies.${mod_id}]]
+    modId="aquaculture"
+    type="optional"
+    versionRange="[2.7.21,)"
+    ordering="AFTER"
+    side="BOTH"
+
+# Dependency for Better Archeology
+[[dependencies.${mod_id}]]
+    modId="betterarcheology"
+    type="optional"
+    versionRange="[1.3.4,)"
+    ordering="AFTER"
     side="BOTH"

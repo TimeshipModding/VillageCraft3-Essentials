@@ -71,6 +71,11 @@ neoForge {
 
             // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
             programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
+
+            // Add required mods for data generation
+            programArguments.addAll '--existing-mod', 'farmersdelight'
+            programArguments.addAll '--existing-mod', 'aquaculture'
+            programArguments.addAll '--existing-mod', 'betterarcheology'
         }
 
         configureEach {
@@ -103,13 +108,16 @@ dependencies {
     compileOnly 'net.luckperms:api:5.4'
 
     // Farmer's Delight Dependency
-    implementation "curse.maven:farmers-delight-398521:7801529"
+    compileOnly "curse.maven:farmers-delight-398521:7801529"
+    dataAdditionalRuntimeClasspath "curse.maven:farmers-delight-398521:7801529"
 
     // Aquaculture 2 Dependency
-    implementation "com.teammetallurgy.aquaculture:aquaculture2_${mc_version}:${mc_version}-${aquaculture_version}"
+    compileOnly "com.teammetallurgy.aquaculture:aquaculture2_${mc_version}:${mc_version}-${aquaculture_version}"
+    dataAdditionalRuntimeClasspath "com.teammetallurgy.aquaculture:aquaculture2_${mc_version}:${mc_version}-${aquaculture_version}"
 
     // Better Archeology Dependency
-    implementation "curse.maven:better-archeology-835687:7756575"
+    compileOnly "curse.maven:better-archeology-835687:7756575"
+    dataAdditionalRuntimeClasspath "curse.maven:better-archeology-835687:7756575"
 }
 
 // gradle.properties entries
