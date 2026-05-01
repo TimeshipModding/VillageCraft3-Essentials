@@ -4,12 +4,15 @@ import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
 import com.timeshipmodding.villagecraft3essentials.content.loot.modifier.*;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.loot.predicates.*;
 import net.neoforged.neoforge.common.data.GlobalLootModifierProvider;
+import net.neoforged.neoforge.common.loot.LootTableIdCondition;
 
 import java.util.concurrent.CompletableFuture;
+import java.util.regex.Pattern;
 
 import static com.timeshipmodding.villagecraft3essentials.content.block.registries.ModBlocks.*;
 import static com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems.*;
@@ -42,20 +45,37 @@ public class DataGlobalLootModifiers extends GlobalLootModifierProvider {
                 LootItemRandomChanceCondition.randomChance(0.0225f).build()}, WORM.get()));
 
         // Swap Item Loot Modifiers
-        add("swap_diamond_block", new SwapItemLootModifier(new LootItemCondition[]{}, Blocks.DIAMOND_BLOCK.asItem(), RUBY_BLOCK.get().asItem(), AMBER_BLOCK.get().asItem()));
-        add("swap_diamond_ore", new SwapItemLootModifier(new LootItemCondition[]{}, Blocks.DIAMOND_ORE.asItem(), RUBY_ORE.get().asItem(), AMBER_ORE.get().asItem()));
-        add("swap_deepslate_diamond_ore", new SwapItemLootModifier(new LootItemCondition[]{}, Blocks.DEEPSLATE_DIAMOND_ORE.asItem(), DEEPSLATE_RUBY_ORE.get().asItem(), DEEPSLATE_AMBER_ORE.get().asItem()));
-        add("swap_diamond_shovel", new SwapItemLootModifier(new LootItemCondition[]{}, Items.DIAMOND_SHOVEL, RUBY_SHOVEL.get(), AMBER_SHOVEL.get()));
-        add("swap_diamond_pickaxe", new SwapItemLootModifier(new LootItemCondition[]{}, Items.DIAMOND_PICKAXE, RUBY_PICKAXE.get(), AMBER_PICKAXE.get()));
-        add("swap_diamond_axe", new SwapItemLootModifier(new LootItemCondition[]{}, Items.DIAMOND_AXE, RUBY_AXE.get(), AMBER_AXE.get()));
-        add("swap_diamond_hoe", new SwapItemLootModifier(new LootItemCondition[]{}, Items.DIAMOND_HOE, RUBY_HOE.get(), AMBER_HOE.get()));
-        add("swap_diamond_sword", new SwapItemLootModifier(new LootItemCondition[]{}, Items.DIAMOND_SWORD, RUBY_SWORD.get(), AMBER_SWORD.get()));
-        add("swap_diamond_helmet", new SwapItemLootModifier(new LootItemCondition[]{}, Items.DIAMOND_HELMET, RUBY_HELMET.get(), AMBER_HELMET.get()));
-        add("swap_diamond_chestplate", new SwapItemLootModifier(new LootItemCondition[]{}, Items.DIAMOND_CHESTPLATE, RUBY_CHESTPLATE.get(), AMBER_CHESTPLATE.get()));
-        add("swap_diamond_leggings", new SwapItemLootModifier(new LootItemCondition[]{}, Items.DIAMOND_LEGGINGS, RUBY_LEGGINGS.get(), AMBER_LEGGINGS.get()));
-        add("swap_diamond_boots", new SwapItemLootModifier(new LootItemCondition[]{}, Items.DIAMOND_BOOTS, RUBY_BOOTS.get(), AMBER_BOOTS.get()));
-        add("swap_diamond_horse_armor", new SwapItemLootModifier(new LootItemCondition[]{}, Items.DIAMOND_HORSE_ARMOR, RUBY_HORSE_ARMOR.get(), AMBER_HORSE_ARMOR.get()));
-        add("swap_diamond", new SwapItemLootModifier(new LootItemCondition[]{}, Items.DIAMOND, RUBY.get(), AMBER.get()));
+        add("swap_diamond_block", new SwapItemLootModifier(new LootItemCondition[]{
+                InvertedLootItemCondition.invert(LootItemBlockStatePropertyCondition.hasBlockStateProperties(Blocks.DIAMOND_BLOCK)).build()},
+                Blocks.DIAMOND_BLOCK.asItem(), RUBY_BLOCK.get().asItem(), AMBER_BLOCK.get().asItem()));
+        add("swap_diamond_ore", new SwapItemLootModifier(new LootItemCondition[]{
+                InvertedLootItemCondition.invert(LootItemBlockStatePropertyCondition.hasBlockStateProperties(Blocks.DIAMOND_ORE)).build()},
+                Blocks.DIAMOND_ORE.asItem(), RUBY_ORE.get().asItem(), AMBER_ORE.get().asItem()));
+        add("swap_deepslate_diamond_ore", new SwapItemLootModifier(new LootItemCondition[]{
+                InvertedLootItemCondition.invert(LootItemBlockStatePropertyCondition.hasBlockStateProperties(Blocks.DEEPSLATE_DIAMOND_ORE)).build()},
+                Blocks.DEEPSLATE_DIAMOND_ORE.asItem(), DEEPSLATE_RUBY_ORE.get().asItem(), DEEPSLATE_AMBER_ORE.get().asItem()));
+        add("swap_diamond_shovel", new SwapItemLootModifier(new LootItemCondition[]{},
+                Items.DIAMOND_SHOVEL, RUBY_SHOVEL.get(), AMBER_SHOVEL.get()));
+        add("swap_diamond_pickaxe", new SwapItemLootModifier(new LootItemCondition[]{},
+                Items.DIAMOND_PICKAXE, RUBY_PICKAXE.get(), AMBER_PICKAXE.get()));
+        add("swap_diamond_axe", new SwapItemLootModifier(new LootItemCondition[]{},
+                Items.DIAMOND_AXE, RUBY_AXE.get(), AMBER_AXE.get()));
+        add("swap_diamond_hoe", new SwapItemLootModifier(new LootItemCondition[]{},
+                Items.DIAMOND_HOE, RUBY_HOE.get(), AMBER_HOE.get()));
+        add("swap_diamond_sword", new SwapItemLootModifier(new LootItemCondition[]{},
+                Items.DIAMOND_SWORD, RUBY_SWORD.get(), AMBER_SWORD.get()));
+        add("swap_diamond_helmet", new SwapItemLootModifier(new LootItemCondition[]{},
+                Items.DIAMOND_HELMET, RUBY_HELMET.get(), AMBER_HELMET.get()));
+        add("swap_diamond_chestplate", new SwapItemLootModifier(new LootItemCondition[]{},
+                Items.DIAMOND_CHESTPLATE, RUBY_CHESTPLATE.get(), AMBER_CHESTPLATE.get()));
+        add("swap_diamond_leggings", new SwapItemLootModifier(new LootItemCondition[]{},
+                Items.DIAMOND_LEGGINGS, RUBY_LEGGINGS.get(), AMBER_LEGGINGS.get()));
+        add("swap_diamond_boots", new SwapItemLootModifier(new LootItemCondition[]{},
+                Items.DIAMOND_BOOTS, RUBY_BOOTS.get(), AMBER_BOOTS.get()));
+        add("swap_diamond_horse_armor", new SwapItemLootModifier(new LootItemCondition[]{},
+                Items.DIAMOND_HORSE_ARMOR, RUBY_HORSE_ARMOR.get(), AMBER_HORSE_ARMOR.get()));
+        add("swap_diamond", new SwapItemLootModifier(new LootItemCondition[]{},
+                Items.DIAMOND, RUBY.get(), AMBER.get()));
 
         // Replace Non Player Drop Item Loot Modifiers
         add("replace_diamond_ore_item_drop", new ReplaceNonPlayerItemLootModifier(new LootItemCondition[]{
