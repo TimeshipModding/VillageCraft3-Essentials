@@ -25,7 +25,7 @@ import java.util.Objects;
 
 public class GripperCityPardonCommand {
     public GripperCityPardonCommand(CommandDispatcher<CommandSourceStack> dispatcher) {
-        dispatcher.register(Commands.literal("gripperity").then(Commands.literal("pardon")
+        dispatcher.register(Commands.literal("grippercity").then(Commands.literal("pardon")
                 .then(
                         Commands.argument("targets", EntityArgument.players())
                                 .executes(p_137810_ -> execute(p_137810_, EntityArgument.getPlayers(p_137810_, "targets")))

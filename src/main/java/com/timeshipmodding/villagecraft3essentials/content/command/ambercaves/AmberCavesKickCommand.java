@@ -5,6 +5,7 @@ import com.mojang.brigadier.arguments.BoolArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.timeshipmodding.villagecraft3essentials.compat.luckperms.LuckpermsMethods;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.config.ServerConfig;
+import com.timeshipmodding.villagecraft3essentials.infrastructure.data.attachment.registries.ModDataAttachments;
 import net.minecraft.ChatFormatting;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
@@ -40,12 +41,33 @@ public class AmberCavesKickCommand {
         assert serverlevel != null;
         BlockPos blockpos = serverlevel.getSharedSpawnPos();
         ChatFormatting groupStyling = ChatFormatting.WHITE;
+        long currentTime = System.currentTimeMillis();
 
         if (ModList.get().isLoaded("luckperms")) {
             groupStyling = LuckpermsMethods.getGroupStyling(ServerConfig.AMBERCAVES_GROUP_NAME.get());
         }
 
         for (ServerPlayer player : targets) {
+            long lastKicked = player.getData(ModDataAttachments.KICK_COMMAND_DATA).amberCavesKickCommandCooldown();
+            long cooldownMs = ServerConfig.KICK_COMMAND_COOLDOWN.get() * 1000L;
+            long timeLeft = (lastKicked + cooldownMs) - currentTime;
+
+            if (lastKicked != 0 && timeLeft > 0) {
+                long hoursLeft = timeLeft / 3600000L;
+                long minutesLeft = (timeLeft % 3600000L) / 60000L;
+
+                String timeString = hoursLeft > 0 ?
+                        hoursLeft + " hours and " + minutesLeft + " minutes" :
+                        minutesLeft + " minutes";
+
+                MutableComponent message = targetPlayerUsername.copy();
+                message.append(Component.literal(" has already been kicked from "));
+                message.append(Component.literal("The Amber Caves").withStyle(groupStyling));
+                message.append(Component.literal("! Wait " + timeString + " to kick them again."));
+                context.getSource().sendFailure(message);
+                return -1;
+            }
+
             int playerYaw = (int) player.getYRot();
             int playerPitch = (int) player.getXRot();
             player.teleportTo(serverlevel, blockpos.getX() + 0.5, blockpos.getY(), blockpos.getZ() + 0.5, playerYaw, playerPitch);
@@ -59,6 +81,7 @@ public class AmberCavesKickCommand {
             }
 
             targetPlayerUsername = Objects.requireNonNull(player.getDisplayName());
+            player.setData(ModDataAttachments.KICK_COMMAND_DATA, player.getData(ModDataAttachments.KICK_COMMAND_DATA).amberCavesSetData(currentTime));
         }
 
         MutableComponent message = Component.literal("You have kicked ");

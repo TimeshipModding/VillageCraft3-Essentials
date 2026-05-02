@@ -61,7 +61,7 @@ public class GripperCityJailCommand {
                             minutesLeft + " minutes";
 
                     MutableComponent message = targetPlayerUsername.copy();
-                    message.append(Component.literal(" has already been jailed! Wait " + timeString + " to jail them again or jail another."));
+                    message.append(Component.literal(" has already been jailed! Wait " + timeString + " to jail them again."));
                     context.getSource().sendFailure(message);
                     return -1;
                 }
