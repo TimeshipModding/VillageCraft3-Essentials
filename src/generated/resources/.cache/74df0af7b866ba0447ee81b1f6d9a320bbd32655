@@ -1,5 +1,5 @@
-// 1.21.1	2026-04-11T13:30:38.7282456	Tags for minecraft:item mod id villagecraft3essentials
-ea3a6412eb7a8b00dffb761f92132aed64240325 data/aquaculture/tags/item/tooltip.json
+// 1.21.1	2026-04-26T17:57:14.5791725	Tags for minecraft:item mod id villagecraft3essentials
+e2340f6f4cde29cf07c5348aaf0af892d818b555 data/aquaculture/tags/item/tooltip.json
 bbbe68f23d94ae2a72f5380fb7195d7486f0955f data/c/tags/item/animal_foods.json
 7e5e89f0ee536e398a5a15f128e8188c8a5de581 data/c/tags/item/foods/cooked_meat.json
 550a233033269cde36cc80d45923328774d820d4 data/c/tags/item/foods/food_poisoning.json
@@ -16,23 +16,23 @@ a88ef028b01a4c1e101099c2ca841aef3c1a1072 data/c/tags/item/ores/ruby.json
 a4fe894fc448e7b5f125cb64494a227f313dd7d5 data/c/tags/item/storage_blocks.json
 9d4b72448088a020e03636ef42e79ad48928967b data/c/tags/item/storage_blocks/amber.json
 a797c5813801e8ef3a238a3b0f667e2a11d0e10e data/c/tags/item/storage_blocks/ruby.json
-0e4c6fb16eb05ec19ecb82c201c40ca65680310e data/c/tags/item/tools/brush.json
-40b614cd24317ffdd4e165b3d77634eab28decf8 data/c/tags/item/tools/fishing_rod.json
-635878380e21ac224ca26f32052cd485a6834e30 data/c/tags/item/tools/knife.json
+10308491f5f379393018ff8b1e41144593b6b9a6 data/c/tags/item/tools/brush.json
+297a695be2389729fe80fced508635054a0f9469 data/c/tags/item/tools/fishing_rod.json
+303fbe9ed692b8fd0ceebb73da65a003f1150b4a data/c/tags/item/tools/knife.json
 649b29e6b6d8a5a0e4b103006266698f0d2c937e data/c/tags/item/tools/mace.json
 5fa3beae720aa64a3a3aaf79c6c129412b0f1c51 data/c/tags/item/tools/melee_weapon.json
 bf4bf7acc3ce5a96922fb05f71ffaec04d3d3f9e data/c/tags/item/tools/mining_tool.json
-b58b5f4e6203923206fce9719bc86e489a61cb4f data/farmersdelight/tags/item/tools/knives.json
+bbe6bb456aac09744bfdee30d5eabf75d473d739 data/farmersdelight/tags/item/tools/knives.json
 b1c74e437e0593ddf4f5ee19f47a5eabf582572f data/minecraft/tags/item/axes.json
 d03fa87e10535e7ddd298826de46878b10e461b2 data/minecraft/tags/item/beacon_payment_items.json
 649b29e6b6d8a5a0e4b103006266698f0d2c937e data/minecraft/tags/item/breaks_decorated_pots.json
 526d09e906c729a7a033c4c6b889ebf415a2a689 data/minecraft/tags/item/chest_armor.json
 bf4bf7acc3ce5a96922fb05f71ffaec04d3d3f9e data/minecraft/tags/item/cluster_max_harvestables.json
-e2fb9f37f80b9b96596f332679bb19464d181041 data/minecraft/tags/item/enchantable/durability.json
+88bc8515c0f4a2500e998aba5007e322be1cfa11 data/minecraft/tags/item/enchantable/durability.json
 649b29e6b6d8a5a0e4b103006266698f0d2c937e data/minecraft/tags/item/enchantable/fire_aspect.json
-40b614cd24317ffdd4e165b3d77634eab28decf8 data/minecraft/tags/item/enchantable/fishing.json
+297a695be2389729fe80fced508635054a0f9469 data/minecraft/tags/item/enchantable/fishing.json
 649b29e6b6d8a5a0e4b103006266698f0d2c937e data/minecraft/tags/item/enchantable/mace.json
-0fb6d0b0603479f739704b0e7aa42bfb3625b3f2 data/minecraft/tags/item/enchantable/vanishing.json
+257c94b1d36bb71e99b766466dc696c462072d61 data/minecraft/tags/item/enchantable/vanishing.json
 649b29e6b6d8a5a0e4b103006266698f0d2c937e data/minecraft/tags/item/enchantable/weapon.json
 36f870599a90a564f8d06d05ab699f8ad90a18fe data/minecraft/tags/item/foot_armor.json
 e14000d5a438bc890ed1b7866bac8ff89c1cc032 data/minecraft/tags/item/head_armor.json
@@ -44,9 +44,8 @@ bf4bf7acc3ce5a96922fb05f71ffaec04d3d3f9e data/minecraft/tags/item/pickaxes.json
 e6c7295c8a74347127b325cdeeefc14cc28c00fc data/minecraft/tags/item/swords.json
 44302f61f46fba400b2545da27bf3431462b8c01 data/minecraft/tags/item/trimmable_armor.json
 d03fa87e10535e7ddd298826de46878b10e461b2 data/minecraft/tags/item/trim_materials.json
-3806d3462e00d10fddc1cc544548d198a0c06c8b data/villagecraft3essentials/tags/item/amber_convertible_tools.json
+2e104562a1200c401f3cb22ee40f4ccc1d262050 data/villagecraft3essentials/tags/item/amber_convertible_tools.json
 886af41aed989b5369edefdda8d85715456cc021 data/villagecraft3essentials/tags/item/currency_gems.json
-8266cd25f31d0f42600541b5550738901ba11ee1 data/villagecraft3essentials/tags/item/diamond_convertible_tools.json
+884f13d773791672e7a735ad9569609e7fd0a9b9 data/villagecraft3essentials/tags/item/diamond_convertible_tools.json
 bbbe68f23d94ae2a72f5380fb7195d7486f0955f data/villagecraft3essentials/tags/item/mole_food.json
-2f5838c0976881bf15520cbb911213cad5a14578 data/villagecraft3essentials/tags/item/ruby_convertible_tools.json
-7c161b4b887f1fc7dd818a05dc4a22e9695f08bb data/villagecraft3essentials/tags/item/wallet_accepted_items.json
+64bb9f91844e4aa7eb42fb2d95ceb9a749f19479 data/villagecraft3essentials/tags/item/ruby_convertible_tools.json

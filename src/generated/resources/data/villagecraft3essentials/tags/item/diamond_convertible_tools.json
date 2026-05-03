@@ -5,15 +5,30 @@
     "minecraft:diamond_pickaxe",
     "minecraft:diamond_axe",
     "minecraft:diamond_hoe",
-    "farmersdelight:diamond_knife",
-    "aquaculture:diamond_fillet_knife",
-    "aquaculture:diamond_fishing_rod",
-    "aquaculture:diamond_hook",
-    "betterarcheology:diamond_brush",
     "minecraft:diamond_helmet",
     "minecraft:diamond_chestplate",
     "minecraft:diamond_leggings",
     "minecraft:diamond_boots",
-    "minecraft:diamond_horse_armor"
+    "minecraft:diamond_horse_armor",
+    {
+      "id": "farmersdelight:diamond_knife",
+      "required": false
+    },
+    {
+      "id": "aquaculture:diamond_fillet_knife",
+      "required": false
+    },
+    {
+      "id": "aquaculture:diamond_fishing_rod",
+      "required": false
+    },
+    {
+      "id": "aquaculture:diamond_hook",
+      "required": false
+    },
+    {
+      "id": "betterarcheology:diamond_brush",
+      "required": false
+    }
   ]
 }

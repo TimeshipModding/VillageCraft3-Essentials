@@ -81,7 +81,7 @@ public class ModServerEvents {
     @SubscribeEvent
     public static void onServerTick(ServerTickEvent.Post event) {
         if (event.getServer().getTickCount() % 100 == 0) {
-            TpaCommandManager.cleanupTimedOutChallenges(event.getServer());
+            TpaCommandManager.cleanupTimedOutRequests(event.getServer());
         }
 
         if (ServerConfig.CHAT_TAB_NAME_FORMATTING.get()) {

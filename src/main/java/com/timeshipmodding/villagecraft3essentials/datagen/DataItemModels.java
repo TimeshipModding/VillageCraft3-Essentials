@@ -20,6 +20,9 @@ import java.util.LinkedHashMap;
 import java.util.Objects;
 
 import static com.timeshipmodding.villagecraft3essentials.content.block.registries.ModBlocks.*;
+import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModCompatItems.*;
+
+import static com.timeshipmodding.villagecraft3essentials.content.item.registries.ModCompatItems.*;
 import static com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems.*;
 
 public class DataItemModels extends ItemModelProvider {
@@ -46,8 +49,11 @@ public class DataItemModels extends ItemModelProvider {
     @Override
     protected void registerModels() {
         // Items
+        basicItem(CRACKED_DIAMOND.get());
+        basicItem(CRACKED_RUBY.get());
         basicItem(RUBY.get());
         basicItem(RUBY_HOOK.get());
+        basicItem(CRACKED_AMBER.get());
         basicItem(AMBER.get());
         basicItem(AMBER_HOOK.get());
         basicItem(COOKED_WORM.get());

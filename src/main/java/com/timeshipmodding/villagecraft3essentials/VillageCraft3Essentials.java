@@ -5,6 +5,7 @@ import com.timeshipmodding.villagecraft3essentials.content.block.entity.registri
 import com.timeshipmodding.villagecraft3essentials.content.creativetab.EssentialsTab;
 import com.timeshipmodding.villagecraft3essentials.content.entity.client.registries.ModEntities;
 import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModArmorMaterials;
+import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModCompatItems;
 import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems;
 import com.timeshipmodding.villagecraft3essentials.content.loot.modifier.registries.ModLootModifiers;
 import com.timeshipmodding.villagecraft3essentials.content.menu.registries.ModMenus;
@@ -32,8 +33,8 @@ public class VillageCraft3Essentials {
         ModBlockEntities.BLOCK_ENTITIES.register(modEventBus);
         ModEntities.ENTITY_TYPES.register(modEventBus);
         ModArmorMaterials.ARMOR_MATERIALS.register(modEventBus);
+        ModCompatItems.ITEMS.register(modEventBus);
         ModItems.ITEMS.register(modEventBus);
-        ModItems.registerCompatItems();
         ModLootModifiers.GLOBAL_LOOT_MODIFIERS.register(modEventBus);
         ModMenus.MENUS.register(modEventBus);
         ModSounds.SOUND_EVENTS.register(modEventBus);

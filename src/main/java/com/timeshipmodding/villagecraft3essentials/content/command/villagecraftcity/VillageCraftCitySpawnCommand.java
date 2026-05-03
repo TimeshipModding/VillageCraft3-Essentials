@@ -51,7 +51,7 @@ public class VillageCraftCitySpawnCommand {
         } else {
             MutableComponent message = Component.literal("No ").withStyle(ChatFormatting.RED);
             message.append(Component.literal("VillageCraft City").withStyle(groupStyling));
-            message.append(Component.literal(" spawn position has been set.").withStyle(ChatFormatting.RED) );
+            message.append(Component.literal(" spawn position has been set.").withStyle(ChatFormatting.RED));
             context.getSource().sendFailure(message);
             return -1;
         }

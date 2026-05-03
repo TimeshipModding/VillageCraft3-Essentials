@@ -1,24 +1,23 @@
 package com.timeshipmodding.villagecraft3essentials.infrastructure.data.attachment.registries;
 
 import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
-import io.netty.buffer.ByteBuf;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.attachment.AttachmentSyncHandler;
+import com.timeshipmodding.villagecraft3essentials.infrastructure.data.JailAndPardonCommandData;
+import com.timeshipmodding.villagecraft3essentials.infrastructure.data.KickCommandData;
+import net.minecraft.network.chat.Component;
 import net.neoforged.neoforge.attachment.AttachmentType;
 import net.neoforged.neoforge.attachment.IAttachmentHolder;
 import net.neoforged.neoforge.items.ItemStackHandler;
-import net.neoforged.neoforge.network.configuration.SyncConfig;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
-import javax.swing.text.html.parser.Entity;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.BiPredicate;
 import java.util.function.Supplier;
 
 public class ModDataAttachments {
@@ -64,5 +63,19 @@ public class ModDataAttachments {
                                     return true;
                                 }
                             })
+                            .build());
+
+    public static final Supplier<AttachmentType<JailAndPardonCommandData>> JAIL_COMMAND_DATA =
+            ATTACHMENT_TYPES.register("jail_commmand_data", () ->
+                    AttachmentType.builder(() -> new JailAndPardonCommandData("", Component.empty(), -1, 0L))
+                            .serialize(JailAndPardonCommandData.CODEC)
+                            .copyOnDeath()
+                            .build());
+
+    public static final Supplier<AttachmentType<KickCommandData>> KICK_COMMAND_DATA =
+            ATTACHMENT_TYPES.register("kick_command_data", () ->
+                    AttachmentType.builder(() -> new KickCommandData(-1, -1, -1))
+                            .serialize(KickCommandData.CODEC)
+                            .copyOnDeath()
                             .build());
 }

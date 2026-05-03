@@ -1,7 +1,7 @@
 package com.timeshipmodding.villagecraft3essentials.compat.jei;
 
 import com.timeshipmodding.villagecraft3essentials.compat.jei.transfer.WalletRecipeTransferHandler;
-import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems;
+import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModCompatItems;
 import com.timeshipmodding.villagecraft3essentials.content.screen.WalletScreen;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
@@ -29,8 +29,8 @@ public class JEIPlugin implements IModPlugin {
     @Override
     public void registerRecipes (IRecipeRegistration registration) {
         if (ModList.get().isLoaded("farmersdelight")) {
-            registration.addIngredientInfo(new ItemStack(ModItems.RUBY_KNIFE.get()), VanillaTypes.ITEM_STACK, KNIFE_INFO);
-            registration.addIngredientInfo(new ItemStack(ModItems.AMBER_KNIFE.get()), VanillaTypes.ITEM_STACK, KNIFE_INFO);
+            registration.addIngredientInfo(new ItemStack(ModCompatItems.RUBY_KNIFE.get()), VanillaTypes.ITEM_STACK, KNIFE_INFO);
+            registration.addIngredientInfo(new ItemStack(ModCompatItems.AMBER_KNIFE.get()), VanillaTypes.ITEM_STACK, KNIFE_INFO);
         }
     }
 

@@ -19,7 +19,9 @@ public class ServerConfig {
     public static ModConfigSpec.ConfigValue<String> JAILED_GROUP_NAME;
     public static ModConfigSpec.BooleanValue CHAT_TAB_NAME_FORMATTING;
     public static ModConfigSpec.BooleanValue ENABLE_VILLAGECRAFT3_LOGO_TABLIST;
-    public static ModConfigSpec.IntValue JAIL_COMMAND_COOLDOWN;
+    public static ModConfigSpec.LongValue JAIL_COMMAND_COOLDOWN;
+    public static ModConfigSpec.IntValue JAIL_RELEASE_TIME;
+    public static ModConfigSpec.LongValue KICK_COMMAND_COOLDOWN;
     public static ModConfigSpec.BooleanValue ENABLE_WAR_SYSTEM_FEATURES;
     public static ModConfigSpec.IntValue CORE_RESPAWN_TIME_MIN;
     public static ModConfigSpec.IntValue CORE_RESPAWN_TIME_MAX;
@@ -98,8 +100,18 @@ public class ServerConfig {
         BUILDER.push("Jail Command Config");
 
         JAIL_COMMAND_COOLDOWN = BUILDER
-                .comment("The cooldown in milliseconds between jailing players using /{town} jail")
-                .defineInRange("jailCommandCooldown", 36000000, 0, Integer.MAX_VALUE);
+                .comment("The cooldown in seconds between jailing players using /{town} jail")
+                .defineInRange("jailCommandCooldown", 64800, 0, Long.MAX_VALUE);
+        JAIL_RELEASE_TIME = BUILDER
+                .comment("The time in seconds after a player is jailed to when they are automatically pardoned")
+                .defineInRange("jailReleaseTime", 43200, 0, Integer.MAX_VALUE);
+
+        BUILDER.pop();
+        BUILDER.push("Kick Command Config");
+
+        KICK_COMMAND_COOLDOWN = BUILDER
+                .comment("The cooldown in seconds between kicking players from towns using /{town} kick")
+                .defineInRange("kickCommandCooldown", 600, 0, Long.MAX_VALUE);
 
         BUILDER.pop();
         BUILDER.push("War System Config");

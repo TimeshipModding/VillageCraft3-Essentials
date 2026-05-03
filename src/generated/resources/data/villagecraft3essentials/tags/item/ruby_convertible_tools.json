@@ -5,15 +5,30 @@
     "villagecraft3essentials:ruby_pickaxe",
     "villagecraft3essentials:ruby_axe",
     "villagecraft3essentials:ruby_hoe",
-    "villagecraft3essentials:ruby_knife",
-    "villagecraft3essentials:ruby_fillet_knife",
-    "villagecraft3essentials:ruby_fishing_rod",
-    "villagecraft3essentials:ruby_hook",
-    "villagecraft3essentials:ruby_brush",
     "villagecraft3essentials:ruby_helmet",
     "villagecraft3essentials:ruby_chestplate",
     "villagecraft3essentials:ruby_leggings",
     "villagecraft3essentials:ruby_boots",
-    "villagecraft3essentials:ruby_horse_armor"
+    "villagecraft3essentials:ruby_horse_armor",
+    {
+      "id": "villagecraft3essentials:ruby_knife",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:ruby_fillet_knife",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:ruby_fishing_rod",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:ruby_hook",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:ruby_brush",
+      "required": false
+    }
   ]
 }

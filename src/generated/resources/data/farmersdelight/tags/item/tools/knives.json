@@ -1,6 +1,12 @@
 {
   "values": [
-    "villagecraft3essentials:ruby_knife",
-    "villagecraft3essentials:amber_knife"
+    {
+      "id": "villagecraft3essentials:ruby_knife",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:amber_knife",
+      "required": false
+    }
   ]
 }

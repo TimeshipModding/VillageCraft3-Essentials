@@ -5,15 +5,30 @@
     "villagecraft3essentials:amber_pickaxe",
     "villagecraft3essentials:amber_axe",
     "villagecraft3essentials:amber_hoe",
-    "villagecraft3essentials:amber_knife",
-    "villagecraft3essentials:amber_fillet_knife",
-    "villagecraft3essentials:amber_fishing_rod",
-    "villagecraft3essentials:amber_hook",
-    "villagecraft3essentials:amber_brush",
     "villagecraft3essentials:amber_helmet",
     "villagecraft3essentials:amber_chestplate",
     "villagecraft3essentials:amber_leggings",
     "villagecraft3essentials:amber_boots",
-    "villagecraft3essentials:amber_horse_armor"
+    "villagecraft3essentials:amber_horse_armor",
+    {
+      "id": "villagecraft3essentials:amber_knife",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:amber_fillet_knife",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:amber_fishing_rod",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:amber_hook",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:amber_brush",
+      "required": false
+    }
   ]
 }

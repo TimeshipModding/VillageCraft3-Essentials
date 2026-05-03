@@ -193,7 +193,7 @@ public class TpaCommandManager {
         }
     }
 
-    public static void cleanupTimedOutChallenges(MinecraftServer server) {
+    public static void cleanupTimedOutRequests(MinecraftServer server) {
         long currentTime = System.currentTimeMillis();
         Iterator<Map.Entry<UUID, TpaCommandData>> iterator = pendingTpaRequests.entrySet().iterator();
 

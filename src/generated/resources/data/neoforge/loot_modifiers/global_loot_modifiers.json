@@ -19,7 +19,13 @@
     "villagecraft3essentials:swap_diamond_leggings",
     "villagecraft3essentials:swap_diamond_boots",
     "villagecraft3essentials:swap_diamond_horse_armor",
-    "villagecraft3essentials:swap_diamond"
+    "villagecraft3essentials:swap_diamond",
+    "villagecraft3essentials:replace_diamond_ore_item_drop",
+    "villagecraft3essentials:replace_deepslate_diamond_ore_item_drop",
+    "villagecraft3essentials:replace_ruby_ore_item_drop",
+    "villagecraft3essentials:replace_deepslate_ruby_ore_item_drop",
+    "villagecraft3essentials:replace_amber_ore_item_drop",
+    "villagecraft3essentials:replace_deepslate_amber_ore_item_drop"
   ],
   "replace": false
 }

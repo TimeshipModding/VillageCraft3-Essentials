@@ -1,6 +1,12 @@
 {
   "values": [
-    "villagecraft3essentials:ruby_fishing_rod",
-    "villagecraft3essentials:amber_fishing_rod"
+    {
+      "id": "villagecraft3essentials:ruby_fishing_rod",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:amber_fishing_rod",
+      "required": false
+    }
   ]
 }

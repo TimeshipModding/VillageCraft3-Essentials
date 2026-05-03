@@ -21,6 +21,7 @@ import static com.timeshipmodding.villagecraft3essentials.content.item.registrie
 import static com.timeshipmodding.villagecraft3essentials.content.block.registries.ModBlocks.*;
 import static com.timeshipmodding.villagecraft3essentials.infrastructure.tags.registries.ModItemTags.*;
 import static com.timeshipmodding.villagecraft3essentials.infrastructure.tags.registries.CommonItemTags.*;
+import static com.timeshipmodding.villagecraft3essentials.infrastructure.tags.registries.CompatItemTags.*;
 
 import static net.minecraft.tags.ItemTags.*;
 import static net.minecraft.world.item.Items.*;
@@ -85,18 +86,18 @@ public class DataItemTags extends ItemTagsProvider {
                 .add(POLICE_BATON.get());
         tag(DURABILITY_ENCHANTABLE)
                 .add(POLICE_BATON.get())
-                .add(RUBY_FISHING_ROD.get())
-                .add(AMBER_FISHING_ROD.get())
-                .add(RUBY_BRUSH.get())
-                .add(AMBER_BRUSH.get())
-                .add(WORM_ON_A_STICK.get());
+                .add(WORM_ON_A_STICK.get())
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "ruby_fishing_rod"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "amber_fishing_rod"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "ruby_brush"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "amber_brush"));
         tag(FISHING_ENCHANTABLE)
-                .add(RUBY_FISHING_ROD.get())
-                .add(AMBER_FISHING_ROD.get());
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "ruby_fishing_rod"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "amber_fishing_rod"));
         tag(VANISHING_ENCHANTABLE)
-                .add(RUBY_BRUSH.get())
-                .add(AMBER_BRUSH.get())
-                .add(WORM_ON_A_STICK.get());
+                .add(WORM_ON_A_STICK.get())
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "ruby_brush"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "amber_brush"));
         tag(CLUSTER_MAX_HARVESTABLES)
                 .add(RUBY_PICKAXE.get())
                 .add(AMBER_PICKAXE.get());
@@ -106,11 +107,11 @@ public class DataItemTags extends ItemTagsProvider {
 
         // Common Tags
         tag(TOOLS_FISHING_ROD)
-                .add(RUBY_FISHING_ROD.get())
-                .add(AMBER_FISHING_ROD.get());
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "ruby_fishing_rod"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "amber_fishing_rod"));
         tag(TOOLS_BRUSH)
-                .add(RUBY_BRUSH.get())
-                .add(AMBER_BRUSH.get());
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "ruby_brush"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "amber_brush"));
         tag(STORAGE_BLOCKS)
                 .add(RUBY_BLOCK.asItem())
                 .add(AMBER_BLOCK.asItem());
@@ -178,48 +179,48 @@ public class DataItemTags extends ItemTagsProvider {
                 .add(DIAMOND_PICKAXE)
                 .add(DIAMOND_AXE)
                 .add(DIAMOND_HOE)
-                .add(ModItems.DIAMOND_KNIFE.get())
-                .add(AquaItems.DIAMOND_FILLET_KNIFE.get())
-                .add(AquaItems.DIAMOND_FISHING_ROD.get())
-                .add(AquaItems.DIAMOND_HOOK.get())
-                .add(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("betterarcheology", "diamond_brush")))
                 .add(DIAMOND_HELMET)
                 .add(DIAMOND_CHESTPLATE)
                 .add(DIAMOND_LEGGINGS)
                 .add(DIAMOND_BOOTS)
-                .add(DIAMOND_HORSE_ARMOR);
+                .add(DIAMOND_HORSE_ARMOR)
+                .addOptional(ResourceLocation.fromNamespaceAndPath("farmersdelight", "diamond_knife"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath("aquaculture", "diamond_fillet_knife"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath("aquaculture", "diamond_fishing_rod"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath("aquaculture", "diamond_hook"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath("betterarcheology", "diamond_brush"));
         tag(RUBY_CONVERTIBLE_TOOLS)
                 .add(RUBY_SWORD.get())
                 .add(RUBY_SHOVEL.get())
                 .add(RUBY_PICKAXE.get())
                 .add(RUBY_AXE.get())
                 .add(RUBY_HOE.get())
-                .add(RUBY_KNIFE.get())
-                .add(RUBY_FILLET_KNIFE.get())
-                .add(RUBY_FISHING_ROD.get())
-                .add(RUBY_HOOK.get())
-                .add(RUBY_BRUSH.get())
                 .add(RUBY_HELMET.get())
                 .add(RUBY_CHESTPLATE.get())
                 .add(RUBY_LEGGINGS.get())
                 .add(RUBY_BOOTS.get())
-                .add(RUBY_HORSE_ARMOR.get());
+                .add(RUBY_HORSE_ARMOR.get())
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "ruby_knife"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "ruby_fillet_knife"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "ruby_fishing_rod"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "ruby_hook"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "ruby_brush"));
         tag(AMBER_CONVERTIBLE_TOOLS)
                 .add(AMBER_SWORD.get())
                 .add(AMBER_SHOVEL.get())
                 .add(AMBER_PICKAXE.get())
                 .add(AMBER_AXE.get())
                 .add(AMBER_HOE.get())
-                .add(AMBER_KNIFE.get())
-                .add(AMBER_FILLET_KNIFE.get())
-                .add(AMBER_FISHING_ROD.get())
-                .add(AMBER_HOOK.get())
-                .add(AMBER_BRUSH.get())
                 .add(AMBER_HELMET.get())
                 .add(AMBER_CHESTPLATE.get())
                 .add(AMBER_LEGGINGS.get())
                 .add(AMBER_BOOTS.get())
-                .add(AMBER_HORSE_ARMOR.get());
+                .add(AMBER_HORSE_ARMOR.get())
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "amber_knife"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "amber_fillet_knife"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "amber_fishing_rod"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "amber_hook"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "amber_brush"));
         tag(CURRENCY_GEMS)
                 .add(DIAMOND)
                 .add(RUBY.get())
@@ -235,19 +236,19 @@ public class DataItemTags extends ItemTagsProvider {
                 .add(EMERALD_BLOCK);
 
         // Farmer's Delight Tags
-        tag(ModTags.KNIVES)
-                .add(RUBY_KNIFE.get())
-                .add(AMBER_KNIFE.get());
-        tag(CommonTags.TOOLS_KNIFE)
-                .add(RUBY_KNIFE.get())
-                .add(AMBER_KNIFE.get());
+        tag(FARMERSDELIGHT_KNIVES)
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "ruby_knife"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "amber_knife"));
+        tag(KNIFE)
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "ruby_knife"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "amber_knife"));
 
         // Aquaculture 2 Tags
-        tag(AquacultureAPI.Tags.TOOLTIP)
-                .add(RUBY_HOOK.get())
-                .add(AMBER_HOOK.get());
-        tag(AquacultureAPI.Tags.KNIFE)
-                .add(RUBY_FILLET_KNIFE.get())
-                .add(AMBER_FILLET_KNIFE.get());
+        tag(AQUACULTURE_HOOK_TOOLTIP)
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "ruby_hook"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "amber_hook"));
+        tag(KNIFE)
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "ruby_fillet_knife"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "amber_fillet_knife"));
     }
 }
