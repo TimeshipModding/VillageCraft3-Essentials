@@ -2,6 +2,7 @@ package com.timeshipmodding.villagecraft3essentials.content.command.grippercity;
 
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
+import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
 import com.timeshipmodding.villagecraft3essentials.compat.luckperms.LuckpermsMethods;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.config.ServerConfig;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.data.saveddata.JailSavedData;
@@ -53,6 +54,7 @@ public class GripperCitySetJailCommand {
             message.append(Component.literal("Gripper City's").withStyle(groupStyling));
             message.append(Component.literal(" jail to " + positionString + "!"));
             context.getSource().sendSuccess(() -> message, true);
+            VillageCraft3Essentials.LOGGER.info("[{}: Set Gripper City's jail to {}, {}, {}]", context.getSource().getTextName(), jail[0], jail[1], jail[2]);
             return 1;
         }
     }

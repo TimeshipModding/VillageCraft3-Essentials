@@ -11,6 +11,7 @@ import com.timeshipmodding.villagecraft3essentials.content.command.tpa.*;
 import com.timeshipmodding.villagecraft3essentials.content.command.villagecraftcity.*;
 import com.timeshipmodding.villagecraft3essentials.content.command.warscore.*;
 import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModCompatItems;
+import com.timeshipmodding.villagecraft3essentials.infrastructure.config.CommonConfig;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.config.ServerConfig;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.data.CoreRespawnData;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.data.attachment.registries.ModDataAttachments;
@@ -430,7 +431,7 @@ public class ModEvents {
                 return;
             }
 
-            int amountToDrop = Math.max(1, (int) (totalItems * ServerConfig.WALLET_PERCENTAGE_DROPPED_ON_DEATH.get()));
+            int amountToDrop = Math.max(1, (int) (totalItems * CommonConfig.WALLET_PERCENTAGE_DROPPED_ON_DEATH.get()));
             int droppedSoFar = 0;
 
             for (int i = 0; i < wallet.getSlots() && droppedSoFar < amountToDrop; i++) {

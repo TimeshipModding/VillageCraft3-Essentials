@@ -2,7 +2,9 @@ package com.timeshipmodding.villagecraft3essentials.content.command.grippercity;
 
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
+import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
 import com.timeshipmodding.villagecraft3essentials.compat.luckperms.LuckpermsMethods;
+import com.timeshipmodding.villagecraft3essentials.infrastructure.config.CommonConfig;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.config.ServerConfig;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.data.JailAndPardonCommandData;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.data.attachment.registries.ModDataAttachments;
@@ -49,7 +51,7 @@ public class GripperCityJailCommand {
             for (ServerPlayer player : targets) {
                 targetPlayerUsername = Objects.requireNonNull(player.getDisplayName());
                 long lastJailed = player.getData(ModDataAttachments.JAIL_COMMAND_DATA).jailCommandCooldown();
-                long cooldownMs = ServerConfig.JAIL_COMMAND_COOLDOWN.get() * 1000L;
+                long cooldownMs = CommonConfig.JAIL_COMMAND_COOLDOWN.get() * 1000L;
                 long timeLeft = (lastJailed + cooldownMs) - currentTime;
 
                 if (lastJailed != 0 && timeLeft > 0) {
@@ -75,7 +77,8 @@ public class GripperCityJailCommand {
                 message.append(Component.literal(" jail!"));
                 player.sendSystemMessage(message, false);
                 Component jailerPlayerUsername = Objects.requireNonNull(context.getSource().getPlayer().getDisplayName());
-                player.setData(ModDataAttachments.JAIL_COMMAND_DATA, new JailAndPardonCommandData(jailerPlayerUsername.getString(), Component.literal("Gripper City's").withStyle(groupStyling), ServerConfig.JAIL_RELEASE_TIME.get() * 20, currentTime));
+                VillageCraft3Essentials.LOGGER.info("[{}: Arrested {} and teleported them to Gripper City's jail at {}, {}, {}]", context.getSource().getTextName(), targetPlayerUsername.getString(), jail[0], jail[1], jail[2]);
+                player.setData(ModDataAttachments.JAIL_COMMAND_DATA, new JailAndPardonCommandData(jailerPlayerUsername.getString(), Component.literal("Gripper City's").withStyle(groupStyling), CommonConfig.JAIL_RELEASE_TIME.get() * 20, currentTime));
 
                 if (ModList.get().isLoaded("luckperms")) {
                     LuckpermsMethods.addGroup(player, ServerConfig.JAILED_GROUP_NAME.get());

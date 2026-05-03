@@ -3,7 +3,9 @@ package com.timeshipmodding.villagecraft3essentials.content.command.villagecraft
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.BoolArgumentType;
 import com.mojang.brigadier.context.CommandContext;
+import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
 import com.timeshipmodding.villagecraft3essentials.compat.luckperms.LuckpermsMethods;
+import com.timeshipmodding.villagecraft3essentials.infrastructure.config.CommonConfig;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.config.ServerConfig;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.data.attachment.registries.ModDataAttachments;
 import net.minecraft.ChatFormatting;
@@ -49,8 +51,9 @@ public class VillageCraftCityKickCommand {
 
         for (ServerPlayer player : targets) {
             long lastKicked = player.getData(ModDataAttachments.KICK_COMMAND_DATA).villagecraftCityKickCommandCooldown();
-            long cooldownMs = ServerConfig.KICK_COMMAND_COOLDOWN.get() * 1000L;
+            long cooldownMs = CommonConfig.KICK_COMMAND_COOLDOWN.get() * 1000L;
             long timeLeft = (lastKicked + cooldownMs) - currentTime;
+            targetPlayerUsername = Objects.requireNonNull(player.getDisplayName());
 
             if (lastKicked != 0 && timeLeft > 0) {
                 long hoursLeft = timeLeft / 3600000L;
@@ -76,11 +79,11 @@ public class VillageCraftCityKickCommand {
                 MutableComponent message = Component.literal("You have been kicked from ");
                 message.append(Component.literal("VillageCraft City").withStyle(groupStyling));
                 message.append(Component.literal(" and teleported to "));
-                message.append(Component.literal("World spawn!").withStyle(ChatFormatting.GREEN));
+                message.append(Component.literal("World Spawn!").withStyle(ChatFormatting.GREEN));
                 player.sendSystemMessage(message, false);
             }
 
-            targetPlayerUsername = Objects.requireNonNull(player.getDisplayName());
+            VillageCraft3Essentials.LOGGER.info("[{}: Kicked {} from VillageCraft City and teleported them to World Spawn]", context.getSource().getTextName(), targetPlayerUsername.getString());
             player.setData(ModDataAttachments.KICK_COMMAND_DATA, player.getData(ModDataAttachments.KICK_COMMAND_DATA).villagecraftCitySetData(currentTime));
         }
 
@@ -89,7 +92,7 @@ public class VillageCraftCityKickCommand {
         message.append(Component.literal(" from "));
         message.append(Component.literal("VillageCraft City").withStyle(groupStyling));
         message.append(Component.literal(" and teleported them to "));
-        message.append(Component.literal("World spawn!").withStyle(ChatFormatting.GREEN));
+        message.append(Component.literal("World Spawn!").withStyle(ChatFormatting.GREEN));
         context.getSource().sendSuccess(() -> message, false);
         return 1;
     }

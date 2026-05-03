@@ -2,6 +2,7 @@ package com.timeshipmodding.villagecraft3essentials.content.command.ambercaves;
 
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
+import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
 import com.timeshipmodding.villagecraft3essentials.compat.luckperms.LuckpermsMethods;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.config.ServerConfig;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.data.JailAndPardonCommandData;
@@ -72,6 +73,7 @@ public class AmberCavesPardonCommand {
                 message.append(Component.literal("The Amber Caves'").withStyle(groupStyling));
                 message.append(Component.literal(" spawn!"));
                 player.sendSystemMessage(message, false);
+                VillageCraft3Essentials.LOGGER.info("[{}: Pardoned {} and teleported them to The Amber Caves' spawn at {}, {}, {}]", context.getSource().getTextName(), targetPlayerUsername.getString(), spawn[0], spawn[1], spawn[2]);
             }
 
             MutableComponent message = Component.literal("You have pardoned ");
@@ -91,12 +93,13 @@ public class AmberCavesPardonCommand {
                 targetPlayerMessage.append(Component.literal("World Spawn").withStyle(ChatFormatting.GREEN));
                 targetPlayerMessage.append(Component.literal("!"));
                 player.sendSystemMessage(targetPlayerMessage, false);
+                VillageCraft3Essentials.LOGGER.info("[{}: Pardoned {} and teleported them to World Spawn]", context.getSource().getTextName(), targetPlayerUsername.getString());
             }
 
             MutableComponent message = Component.literal("You have pardoned ");
             message.append(targetPlayerUsername);
             message.append(Component.literal(" from jail and teleported them to "));
-            message.append(Component.literal("World spawn").withStyle(ChatFormatting.GREEN));
+            message.append(Component.literal("World Spawn").withStyle(ChatFormatting.GREEN));
             message.append(Component.literal("due to "));
             message.append(Component.literal("Amber Caves'").withStyle(groupStyling));
             message.append(Component.literal(" unset spawn position."));
