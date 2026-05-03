@@ -26,6 +26,7 @@ public class ServerConfig {
     public static ModConfigSpec.IntValue VILLAGECRAFTCITY_POINT_MULTIPLIER;
     public static ModConfigSpec.IntValue GRIPPERCITY_POINT_MULTIPLIER;
     public static ModConfigSpec.IntValue AMBERCAVES_POINT_MULTIPLIER;
+    public static ModConfigSpec.DoubleValue WALLET_PERCENTAGE_DROPPED_ON_DEATH;
     public static final ModConfigSpec SPEC;
 
     static {
@@ -121,6 +122,13 @@ public class ServerConfig {
         AMBERCAVES_POINT_MULTIPLIER = BUILDER
                 .comment("The amount VillageCraft City's score is multiplied by to get Amber Caves' points")
                 .defineInRange("amberCavesPointMultipler", 1, 1, Integer.MAX_VALUE);
+
+        BUILDER.pop();
+        BUILDER.push("Wallet Config");
+
+        WALLET_PERCENTAGE_DROPPED_ON_DEATH = BUILDER
+                .comment("The percentage of total items stored in a player's wallet that is dropped on death")
+                .defineInRange("walletPercentageDroppedOnDeath", 0.25, 0, 1);
 
         BUILDER.pop();
         SPEC = BUILDER.build();

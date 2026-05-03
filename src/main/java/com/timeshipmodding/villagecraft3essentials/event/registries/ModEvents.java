@@ -13,8 +13,9 @@ import com.timeshipmodding.villagecraft3essentials.content.command.warscore.*;
 import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.config.ServerConfig;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.data.CoreRespawnData;
+import com.timeshipmodding.villagecraft3essentials.infrastructure.data.attachment.registries.ModDataAttachments;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.data.saveddata.WarPointsSavedData;
-import com.timeshipmodding.villagecraft3essentials.infrastructure.itemhandler.HorseCurrencyArmorItemHandler;
+import com.timeshipmodding.villagecraft3essentials.infrastructure.handler.item.HorseCurrencyArmorItemHandler;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.networking.packet.atm.AtmRandomConversionRatesPacket;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.data.saveddata.AtmRandomConversionRatesSavedData;
 import net.minecraft.ChatFormatting;
@@ -25,6 +26,8 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModList;
@@ -33,9 +36,11 @@ import net.neoforged.neoforge.capabilities.EntityCapability;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.event.OnDatapackSyncEvent;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
+import net.neoforged.neoforge.event.entity.living.LivingDropsEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.event.tick.LevelTickEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
+import net.neoforged.neoforge.items.ItemStackHandler;
 import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.neoforge.server.command.ConfigCommand;
 
@@ -338,6 +343,43 @@ public class ModEvents {
         if (ModList.get().isLoaded("aquaculture")) {
             AquaMethods.registerAquaFishingRodCapability(event, ModItems.RUBY_FISHING_ROD.get());
             AquaMethods.registerAquaFishingRodCapability(event, ModItems.AMBER_FISHING_ROD.get());
+        }
+    }
+
+    @SubscribeEvent
+    public static void onPlayerDrops(LivingDropsEvent event) {
+        if (event.getEntity() instanceof ServerPlayer player) {
+            ItemStackHandler wallet = player.getData(ModDataAttachments.WALLET);
+            int totalItems = 0;
+
+            for (int i = 0; i < wallet.getSlots(); i++) {
+                totalItems += wallet.getStackInSlot(i).getCount();
+            }
+
+            if (totalItems <= 0) {
+                return;
+            }
+
+            int amountToDrop = Math.max(1, (int) (totalItems * ServerConfig.WALLET_PERCENTAGE_DROPPED_ON_DEATH.get()));
+            int droppedSoFar = 0;
+
+            for (int i = 0; i < wallet.getSlots() && droppedSoFar < amountToDrop; i++) {
+                ItemStack stack = wallet.getStackInSlot(i);
+
+                if (stack.isEmpty()) {
+                    continue;
+                }
+
+                int remainingToDrop = amountToDrop - droppedSoFar;
+                int toTake = Math.min(stack.getCount(), remainingToDrop);
+                ItemStack dropStack = stack.split(toTake);
+                ItemEntity entity = new ItemEntity(player.level(), player.getX(), player.getY(), player.getZ(), dropStack);
+                event.getDrops().add(entity);
+                droppedSoFar += toTake;
+                wallet.setStackInSlot(i, stack);
+            }
+
+            player.setData(ModDataAttachments.WALLET, wallet);
         }
     }
 

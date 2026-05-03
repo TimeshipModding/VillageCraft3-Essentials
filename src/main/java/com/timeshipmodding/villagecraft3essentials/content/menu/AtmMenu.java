@@ -6,7 +6,7 @@ import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModIt
 import com.timeshipmodding.villagecraft3essentials.content.menu.registries.ModMenus;
 import com.timeshipmodding.villagecraft3essentials.content.sound.registries.ModSounds;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.networking.packet.atm.button.AtmSyncSlotPositionsPacket;
-import com.timeshipmodding.villagecraft3essentials.infrastructure.itemhandler.slot.AtmOutputSlotItemHandler;
+import com.timeshipmodding.villagecraft3essentials.infrastructure.handler.item.slot.AtmOutputSlotItemHandler;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.tags.registries.ModItemTags;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;

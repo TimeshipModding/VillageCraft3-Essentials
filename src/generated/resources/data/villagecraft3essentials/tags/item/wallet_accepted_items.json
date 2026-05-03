@@ -1,0 +1,12 @@
+{
+  "values": [
+    "minecraft:diamond",
+    "minecraft:diamond_block",
+    "villagecraft3essentials:ruby",
+    "villagecraft3essentials:ruby_block",
+    "villagecraft3essentials:amber",
+    "villagecraft3essentials:amber_block",
+    "minecraft:emerald",
+    "minecraft:emerald_block"
+  ]
+}

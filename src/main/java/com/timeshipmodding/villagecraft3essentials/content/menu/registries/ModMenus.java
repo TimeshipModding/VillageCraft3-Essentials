@@ -2,6 +2,7 @@ package com.timeshipmodding.villagecraft3essentials.content.menu.registries;
 
 import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
 import com.timeshipmodding.villagecraft3essentials.content.menu.AtmMenu;
+import com.timeshipmodding.villagecraft3essentials.content.menu.WalletMenu;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
@@ -15,6 +16,8 @@ public class ModMenus {
 
     public static final DeferredHolder<MenuType<?>, MenuType<AtmMenu>> ATM_MENU =
             registerMenuType("atm_menu", AtmMenu::new);
+    public static final DeferredHolder<MenuType<?>, MenuType<WalletMenu>> WALLET_MENU =
+            registerMenuType("wallet_menu", WalletMenu::new);
 
     private static <T extends AbstractContainerMenu> DeferredHolder<MenuType<?>, MenuType<T>> registerMenuType(String name, IContainerFactory<T> factory) {
         return MENUS.register(name, () -> IMenuTypeExtension.create(factory));

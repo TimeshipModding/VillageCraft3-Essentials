@@ -1,4 +1,4 @@
-package com.timeshipmodding.villagecraft3essentials.infrastructure.itemhandler;
+package com.timeshipmodding.villagecraft3essentials.infrastructure.handler.item;
 
 import com.timeshipmodding.villagecraft3essentials.compat.luckperms.LuckpermsMethods;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.config.ServerConfig;
