@@ -1,6 +1,7 @@
 package com.timeshipmodding.villagecraft3essentials.event.registries;
 
 import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
+import com.timeshipmodding.villagecraft3essentials.compat.dcintegration.DiscordIntegrationMethods;
 import com.timeshipmodding.villagecraft3essentials.compat.luckperms.LuckpermsMethods;
 import com.timeshipmodding.villagecraft3essentials.content.command.tpa.manager.TpaCommandManager;
 import com.timeshipmodding.villagecraft3essentials.event.ServerMessageEvent;
@@ -100,16 +101,20 @@ public class ModServerEvents {
     @SubscribeEvent
     public static void onServerChat(ServerChatEvent event) {
         if (ServerConfig.CHAT_TAB_NAME_FORMATTING.get()) {
-            Component msg = event.getMessage();
             ServerPlayer player = event.getPlayer();
             MutableComponent formattedMsg = (MutableComponent) player.getDisplayName();
             formattedMsg.append(Component.literal(" >> ").withStyle(ChatFormatting.GRAY));
-            formattedMsg.append(msg);
+            formattedMsg.append(event.getMessage());
+
             event.setCanceled(true);
 
             player.server.execute(() -> {
                 ServerMessageEvent.broadcastMessage(player.level(), formattedMsg);
             });
+
+            if (ModList.get().isLoaded("dcintegration")) {
+                DiscordIntegrationMethods.sendMessage(formattedMsg);
+            }
         }
     }
 

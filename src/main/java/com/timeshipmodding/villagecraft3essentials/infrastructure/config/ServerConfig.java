@@ -25,6 +25,8 @@ public class ServerConfig {
     public static ModConfigSpec.IntValue VILLAGECRAFTCITY_POINT_MULTIPLIER;
     public static ModConfigSpec.IntValue GRIPPERCITY_POINT_MULTIPLIER;
     public static ModConfigSpec.IntValue AMBERCAVES_POINT_MULTIPLIER;
+    public static ModConfigSpec.ConfigValue<String> DISCORD_SERVER_ID;
+    public static ModConfigSpec.ConfigValue<String> DISCORD_JAIL_ROLE_ID;
     public static final ModConfigSpec SPEC;
 
     static {
@@ -113,6 +115,15 @@ public class ServerConfig {
         AMBERCAVES_POINT_MULTIPLIER = BUILDER
                 .comment("The amount VillageCraft City's score is multiplied by to get Amber Caves' points")
                 .defineInRange("amberCavesPointMultipler", 1, 1, Integer.MAX_VALUE);
+
+        BUILDER.pop();
+        BUILDER.push("Discord Integration Config");
+        BUILDER.comment("IDs needed for VillageCraft 3 Essentials' Discord Integration features");
+
+        DISCORD_SERVER_ID = BUILDER
+                .define("discordServerID", "");
+        DISCORD_JAIL_ROLE_ID = BUILDER
+                .define("discordJailRoleID", "");
 
         BUILDER.pop();
         SPEC = BUILDER.build();

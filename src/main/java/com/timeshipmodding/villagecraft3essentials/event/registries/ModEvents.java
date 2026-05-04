@@ -3,6 +3,7 @@ package com.timeshipmodding.villagecraft3essentials.event.registries;
 import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
 import com.timeshipmodding.villagecraft3essentials.compat.aquaculture.AquaMethods;
 import com.timeshipmodding.villagecraft3essentials.compat.luckperms.LuckpermsMethods;
+import com.timeshipmodding.villagecraft3essentials.content.command.DiscordLinkPlayerCommand;
 import com.timeshipmodding.villagecraft3essentials.content.block.registries.ModBlocks;
 import com.timeshipmodding.villagecraft3essentials.content.command.SpawnCommand;
 import com.timeshipmodding.villagecraft3essentials.content.command.ambercaves.*;
@@ -96,6 +97,10 @@ public class ModEvents {
         new WarScoreRemoveCommand(event.getDispatcher());
         new WarScoreResetCommand(event.getDispatcher());
         new SpawnCommand(event.getDispatcher());
+
+        if (ModList.get().isLoaded("dcintegration")) {
+            new DiscordLinkPlayerCommand(event.getDispatcher());
+        }
 
         ConfigCommand.register(event.getDispatcher());
     }

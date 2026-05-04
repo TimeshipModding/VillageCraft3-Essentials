@@ -2,7 +2,6 @@ package com.timeshipmodding.villagecraft3essentials.content.command.ambercaves;
 
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
-import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
 import com.timeshipmodding.villagecraft3essentials.compat.luckperms.LuckpermsMethods;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.config.ServerConfig;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.data.saveddata.JailSavedData;
@@ -54,7 +53,6 @@ public class AmberCavesSetJailCommand {
             message.append(Component.literal("The Amber Caves'").withStyle(groupStyling));
             message.append(Component.literal(" jail to " + positionString + "!"));
             context.getSource().sendSuccess(() -> message, true);
-            VillageCraft3Essentials.LOGGER.info("[{}: Set The Amber Caves jail to {}, {}, {}]", context.getSource().getTextName(), jail[0], jail[1], jail[2]);
             return 1;
         }
     }

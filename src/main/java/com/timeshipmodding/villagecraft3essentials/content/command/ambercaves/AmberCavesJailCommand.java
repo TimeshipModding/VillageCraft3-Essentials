@@ -3,6 +3,7 @@ package com.timeshipmodding.villagecraft3essentials.content.command.ambercaves;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
 import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
+import com.timeshipmodding.villagecraft3essentials.compat.dcintegration.DiscordIntegrationMethods;
 import com.timeshipmodding.villagecraft3essentials.compat.luckperms.LuckpermsMethods;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.config.CommonConfig;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.config.ServerConfig;
@@ -82,6 +83,10 @@ public class AmberCavesJailCommand {
 
                 if (ModList.get().isLoaded("luckperms")) {
                     LuckpermsMethods.addGroup(player, ServerConfig.JAILED_GROUP_NAME.get());
+                }
+
+                if (ModList.get().isLoaded("dcintegration")) {
+                    DiscordIntegrationMethods.giveDiscordRole(player, ServerConfig.DISCORD_JAIL_ROLE_ID.get());
                 }
             }
 

@@ -2,7 +2,6 @@ package com.timeshipmodding.villagecraft3essentials.content.command.ambercaves;
 
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
-import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
 import com.timeshipmodding.villagecraft3essentials.compat.luckperms.LuckpermsMethods;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.config.ServerConfig;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.data.saveddata.SpawnSavedData;
@@ -47,7 +46,6 @@ public class AmberCavesSetSpawnCommand {
             message.append(Component.literal("The Amber Caves'").withStyle(groupStyling));
             message.append(Component.literal(" spawn in the overworld.").withStyle(ChatFormatting.RED));
             context.getSource().sendFailure(message);
-            VillageCraft3Essentials.LOGGER.info("[{}: Set The Amber Caves spawn to {}, {}, {}]", context.getSource().getTextName(), spawn[0], spawn[1], spawn[2]);
             return 0;
 
         } else {
