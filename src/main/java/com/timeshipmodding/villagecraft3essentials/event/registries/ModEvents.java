@@ -7,6 +7,8 @@ import com.timeshipmodding.villagecraft3essentials.content.block.registries.ModB
 import com.timeshipmodding.villagecraft3essentials.content.command.SpawnCommand;
 import com.timeshipmodding.villagecraft3essentials.content.command.ambercaves.*;
 import com.timeshipmodding.villagecraft3essentials.content.command.grippercity.*;
+import com.timeshipmodding.villagecraft3essentials.content.command.removecooldown.RemoveCooldownJailCommand;
+import com.timeshipmodding.villagecraft3essentials.content.command.removecooldown.RemoveCooldownKickCommand;
 import com.timeshipmodding.villagecraft3essentials.content.command.tpa.*;
 import com.timeshipmodding.villagecraft3essentials.content.command.villagecraftcity.*;
 import com.timeshipmodding.villagecraft3essentials.content.command.warscore.*;
@@ -74,6 +76,8 @@ public class ModEvents {
         new GripperCitySetSpawnCommand(event.getDispatcher());
         new GripperCitySpawnCommand(event.getDispatcher());
         new GripperCityWhitelistCommand(event.getDispatcher());
+        new RemoveCooldownJailCommand(event.getDispatcher());
+        new RemoveCooldownKickCommand(event.getDispatcher());
         new TpacceptCommand(event.getDispatcher());
         new TpaCommand(event.getDispatcher());
         new TpadenyCommand(event.getDispatcher());
@@ -224,6 +228,7 @@ public class ModEvents {
 
         if (player.hasData(ModDataAttachments.JAIL_COMMAND_DATA)) {
             JailAndPardonCommandData jailCommandData = player.getData(ModDataAttachments.JAIL_COMMAND_DATA);
+            player.setData(ModDataAttachments.JAIL_COMMAND_DATA, jailCommandData.tick());
 
             if (jailCommandData.jailReleaseTime() > 0) {
                 player.setData(ModDataAttachments.JAIL_COMMAND_DATA, jailCommandData.tick());
@@ -263,7 +268,10 @@ public class ModEvents {
                         MutableComponent jailerPlayerMessage = Component.literal(player.getDisplayName().getString() + " has reached the maximum jail time. They have been automatically pardoned and teleported to ");
                         jailerPlayerMessage.append(jailCommandData.townComponent());
                         jailerPlayerMessage.append(Component.literal(" spawn!"));
-                        jailerPlayer.sendSystemMessage(jailerPlayerMessage, false);
+                        
+                        if (jailerPlayer != null) {
+                            jailerPlayer.sendSystemMessage(jailerPlayerMessage, false);
+                        }
 
                     } else {
                         int playerYaw = (int) player.getYRot();
@@ -280,10 +288,13 @@ public class ModEvents {
                         jailerPlayerMessage.append(Component.literal(" due to "));
                         jailerPlayerMessage.append(jailCommandData.townComponent());
                         jailerPlayerMessage.append(Component.literal(" unset spawn position."));
-                        jailerPlayer.sendSystemMessage(jailerPlayerMessage, false);
+
+                        if (jailerPlayer != null) {
+                            jailerPlayer.sendSystemMessage(jailerPlayerMessage, false);
+                        }
                     }
 
-                    player.setData(ModDataAttachments.JAIL_COMMAND_DATA, jailCommandData.reset());
+                    player.setData(ModDataAttachments.JAIL_COMMAND_DATA, jailCommandData.releaseTimeReset());
                 }
             }
         }

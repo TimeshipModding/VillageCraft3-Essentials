@@ -19,7 +19,7 @@ public class ServerConfig {
     public static ModConfigSpec.ConfigValue<String> JAILED_GROUP_NAME;
     public static ModConfigSpec.BooleanValue CHAT_TAB_NAME_FORMATTING;
     public static ModConfigSpec.BooleanValue ENABLE_VILLAGECRAFT3_LOGO_TABLIST;
-    public static ModConfigSpec.LongValue JAIL_COMMAND_COOLDOWN;
+    public static ModConfigSpec.IntValue JAIL_COMMAND_COOLDOWN;
     public static ModConfigSpec.IntValue JAIL_RELEASE_TIME;
     public static ModConfigSpec.LongValue KICK_COMMAND_COOLDOWN;
     public static ModConfigSpec.BooleanValue ENABLE_WAR_SYSTEM_FEATURES;
@@ -100,7 +100,7 @@ public class ServerConfig {
 
         JAIL_COMMAND_COOLDOWN = BUILDER
                 .comment("The cooldown in seconds between jailing players using /{town} jail")
-                .defineInRange("jailCommandCooldown", 64800, 0, Long.MAX_VALUE);
+                .defineInRange("jailCommandCooldown", 64800, 0, Integer.MAX_VALUE);
         JAIL_RELEASE_TIME = BUILDER
                 .comment("The time in seconds after a player is jailed to when they are automatically pardoned")
                 .defineInRange("jailReleaseTime", 43200, 0, Integer.MAX_VALUE);

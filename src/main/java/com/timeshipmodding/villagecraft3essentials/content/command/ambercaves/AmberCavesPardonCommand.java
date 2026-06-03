@@ -56,7 +56,7 @@ public class AmberCavesPardonCommand {
                 JailAndPardonCommandData jailCommandData = player.getData(ModDataAttachments.JAIL_COMMAND_DATA);
 
                 if (jailCommandData.jailReleaseTime() > 0) {
-                    player.setData(ModDataAttachments.JAIL_COMMAND_DATA, jailCommandData.reset());
+                    player.setData(ModDataAttachments.JAIL_COMMAND_DATA, jailCommandData.releaseTimeReset());
                 }
             }
 
@@ -97,7 +97,7 @@ public class AmberCavesPardonCommand {
             message.append(targetPlayerUsername);
             message.append(Component.literal(" from jail and teleported them to "));
             message.append(Component.literal("World spawn").withStyle(ChatFormatting.GREEN));
-            message.append(Component.literal("due to "));
+            message.append(Component.literal(" due to "));
             message.append(Component.literal("Amber Caves'").withStyle(groupStyling));
             message.append(Component.literal(" unset spawn position."));
             context.getSource().sendSuccess(() -> message, false);

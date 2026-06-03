@@ -24,4 +24,16 @@ public record KickCommandData(long villagecraftCityKickCommandCooldown, long gri
     public KickCommandData amberCavesSetData(long currentTime) {
         return new KickCommandData(villagecraftCityKickCommandCooldown, gripperCityKickCommandCooldown, currentTime);
     }
+
+    public KickCommandData villagecraftCityReset() {
+        return new KickCommandData(-1, gripperCityKickCommandCooldown, amberCavesKickCommandCooldown);
+    }
+
+    public KickCommandData gripperCityReset() {
+        return new KickCommandData(villagecraftCityKickCommandCooldown, -1, amberCavesKickCommandCooldown);
+    }
+
+    public KickCommandData amberCavesReset() {
+        return new KickCommandData(villagecraftCityKickCommandCooldown, gripperCityKickCommandCooldown, -1);
+    }
 }

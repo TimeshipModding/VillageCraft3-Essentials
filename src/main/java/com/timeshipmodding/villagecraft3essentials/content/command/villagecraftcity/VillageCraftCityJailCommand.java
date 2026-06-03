@@ -39,7 +39,6 @@ public class VillageCraftCityJailCommand {
         JailSavedData savedData = JailSavedData.getData(server);
         int[] jail = savedData.getVillagecraftCityJail();
         ChatFormatting groupStyling = ChatFormatting.WHITE;
-        long currentTime = System.currentTimeMillis();
 
         if (ModList.get().isLoaded("luckperms")) {
             groupStyling = LuckpermsMethods.getGroupStyling(ServerConfig.VILLAGECRAFTCITY_GROUP_NAME.get());
@@ -48,13 +47,11 @@ public class VillageCraftCityJailCommand {
         if (jail[3] != 0 && jail[4] != 0 && serverlevel != null) {
             for (ServerPlayer player : targets) {
                 targetPlayerUsername = Objects.requireNonNull(player.getDisplayName());
-                long lastJailed = player.getData(ModDataAttachments.JAIL_COMMAND_DATA).jailCommandCooldown();
-                long cooldownMs = ServerConfig.JAIL_COMMAND_COOLDOWN.get() * 1000L;
-                long timeLeft = (lastJailed + cooldownMs) - currentTime;
+                int canJailAtTick = player.getData(ModDataAttachments.JAIL_COMMAND_DATA).jailCommandCooldown();
 
-                if (lastJailed != 0 && timeLeft > 0) {
-                    long hoursLeft = timeLeft / 3600000L;
-                    long minutesLeft = (timeLeft % 3600000L) / 60000L;
+                if (canJailAtTick > 0) {
+                    long hoursLeft = canJailAtTick / 72000;
+                    long minutesLeft = (canJailAtTick % 72000) / 1200;
 
                     String timeString = hoursLeft > 0 ?
                                 hoursLeft + " hours and " + minutesLeft + " minutes" :
@@ -75,7 +72,7 @@ public class VillageCraftCityJailCommand {
                 message.append(Component.literal(" jail!"));
                 player.sendSystemMessage(message, false);
                 Component jailerPlayerUsername = Objects.requireNonNull(context.getSource().getPlayer().getDisplayName());
-                player.setData(ModDataAttachments.JAIL_COMMAND_DATA, new JailAndPardonCommandData(jailerPlayerUsername.getString(), Component.literal("VillageCraft City's").withStyle(groupStyling), ServerConfig.JAIL_RELEASE_TIME.get() * 20, currentTime));
+                player.setData(ModDataAttachments.JAIL_COMMAND_DATA, new JailAndPardonCommandData(jailerPlayerUsername.getString(), Component.literal("VillageCraft City's").withStyle(groupStyling), ServerConfig.JAIL_RELEASE_TIME.get() * 20, ServerConfig.JAIL_COMMAND_COOLDOWN.get() * 20));
 
                 if (ModList.get().isLoaded("luckperms")) {
                     LuckpermsMethods.addGroup(player, ServerConfig.JAILED_GROUP_NAME.get());

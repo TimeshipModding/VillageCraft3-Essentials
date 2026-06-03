@@ -48,6 +48,7 @@ public class GripperCityKickCommand {
         }
 
         for (ServerPlayer player : targets) {
+            targetPlayerUsername = Objects.requireNonNull(player.getDisplayName());
             long lastKicked = player.getData(ModDataAttachments.KICK_COMMAND_DATA).gripperCityKickCommandCooldown();
             long cooldownMs = ServerConfig.KICK_COMMAND_COOLDOWN.get() * 1000L;
             long timeLeft = (lastKicked + cooldownMs) - currentTime;
@@ -81,7 +82,6 @@ public class GripperCityKickCommand {
                 player.sendSystemMessage(message, false);
             }
 
-            targetPlayerUsername = Objects.requireNonNull(player.getDisplayName());
             player.setData(ModDataAttachments.KICK_COMMAND_DATA, player.getData(ModDataAttachments.KICK_COMMAND_DATA).gripperCitySetData(currentTime));
         }
 

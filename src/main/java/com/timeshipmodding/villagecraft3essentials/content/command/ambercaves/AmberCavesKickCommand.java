@@ -48,6 +48,7 @@ public class AmberCavesKickCommand {
         }
 
         for (ServerPlayer player : targets) {
+            targetPlayerUsername = Objects.requireNonNull(player.getDisplayName());
             long lastKicked = player.getData(ModDataAttachments.KICK_COMMAND_DATA).amberCavesKickCommandCooldown();
             long cooldownMs = ServerConfig.KICK_COMMAND_COOLDOWN.get() * 1000L;
             long timeLeft = (lastKicked + cooldownMs) - currentTime;
@@ -80,7 +81,6 @@ public class AmberCavesKickCommand {
                 player.sendSystemMessage(message, false);
             }
 
-            targetPlayerUsername = Objects.requireNonNull(player.getDisplayName());
             player.setData(ModDataAttachments.KICK_COMMAND_DATA, player.getData(ModDataAttachments.KICK_COMMAND_DATA).amberCavesSetData(currentTime));
         }
 

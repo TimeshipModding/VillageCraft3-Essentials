@@ -1,6 +1,5 @@
 package com.timeshipmodding.villagecraft3essentials.infrastructure.data.attachment.registries;
 
-import com.mojang.serialization.Codec;
 import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.data.JailAndPardonCommandData;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.data.KickCommandData;
@@ -17,7 +16,7 @@ public class ModDataAttachments {
 
     public static final Supplier<AttachmentType<JailAndPardonCommandData>> JAIL_COMMAND_DATA =
             ATTACHMENT_TYPES.register("jail_commmand_data", () ->
-                    AttachmentType.builder(() -> new JailAndPardonCommandData("", Component.empty(), -1, 0L))
+                    AttachmentType.builder(() -> new JailAndPardonCommandData("", Component.empty(), -1, -1))
                             .serialize(JailAndPardonCommandData.CODEC)
                             .copyOnDeath()
                             .build());
