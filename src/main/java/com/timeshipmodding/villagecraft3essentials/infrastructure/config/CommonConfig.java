@@ -8,7 +8,7 @@ public class CommonConfig {
     public static ModConfigSpec.IntValue RUBY_CURRENCY_CONVERSION_RATE_MAX;
     public static ModConfigSpec.IntValue AMBER_CURRENCY_CONVERSION_RATE_MIN;
     public static ModConfigSpec.IntValue AMBER_CURRENCY_CONVERSION_RATE_MAX;
-    public static ModConfigSpec.LongValue JAIL_COMMAND_COOLDOWN;
+    public static ModConfigSpec.IntValue JAIL_COMMAND_COOLDOWN;
     public static ModConfigSpec.IntValue JAIL_RELEASE_TIME;
     public static ModConfigSpec.LongValue KICK_COMMAND_COOLDOWN;
     public static ModConfigSpec.DoubleValue WALLET_PERCENTAGE_DROPPED_ON_DEATH;
@@ -35,7 +35,7 @@ public class CommonConfig {
 
         JAIL_COMMAND_COOLDOWN = BUILDER
                 .comment("The cooldown in seconds between jailing players using /{town} jail")
-                .defineInRange("jailCommandCooldown", 64800, 0, Long.MAX_VALUE);
+                .defineInRange("jailCommandCooldown", 64800, 0, Integer.MAX_VALUE);
         JAIL_RELEASE_TIME = BUILDER
                 .comment("The time in seconds after a player is jailed to when they are automatically pardoned")
                 .defineInRange("jailReleaseTime", 43200, 0, Integer.MAX_VALUE);

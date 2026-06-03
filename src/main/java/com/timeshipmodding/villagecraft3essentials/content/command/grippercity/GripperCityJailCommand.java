@@ -76,7 +76,7 @@ public class GripperCityJailCommand {
                 message.append(Component.literal(" jail!"));
                 player.sendSystemMessage(message, false);
                 Component jailerPlayerUsername = Objects.requireNonNull(context.getSource().getPlayer().getDisplayName());
-                player.setData(ModDataAttachments.JAIL_COMMAND_DATA, new JailAndPardonCommandData(jailerPlayerUsername.getString(), Component.literal("Gripper City's").withStyle(groupStyling), ServerConfig.JAIL_RELEASE_TIME.get() * 20, ServerConfig.JAIL_COMMAND_COOLDOWN.get() * 20));
+                player.setData(ModDataAttachments.JAIL_COMMAND_DATA, new JailAndPardonCommandData(jailerPlayerUsername.getString(), Component.literal("Gripper City's").withStyle(groupStyling), CommonConfig.JAIL_RELEASE_TIME.get() * 20, CommonConfig.JAIL_COMMAND_COOLDOWN.get() * 20));
                 VillageCraft3Essentials.LOGGER.info("[{}: Arrested {} and teleported them to Gripper City's jail at {}, {}, {}]", context.getSource().getTextName(), targetPlayerUsername.getString(), jail[0], jail[1], jail[2]);
 
                 if (ModList.get().isLoaded("luckperms")) {
