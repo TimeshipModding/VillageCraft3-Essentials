@@ -1,10 +1,16 @@
 package com.timeshipmodding.villagecraft3essentials.compat.jei;
 
+import com.timeshipmodding.villagecraft3essentials.compat.jei.transfer.WalletRecipeTransferHandler;
 import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModCompatItems;
+import com.timeshipmodding.villagecraft3essentials.content.screen.WalletScreen;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
+import mezz.jei.api.constants.RecipeTypes;
 import mezz.jei.api.constants.VanillaTypes;
+import mezz.jei.api.recipe.transfer.IRecipeTransferHandlerHelper;
+import mezz.jei.api.registration.IGuiHandlerRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
+import mezz.jei.api.registration.IRecipeTransferRegistration;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -28,9 +34,20 @@ public class JEIPlugin implements IModPlugin {
         }
     }
 
-
     @Override
     public ResourceLocation getPluginUid() {
         return ResourceLocation.fromNamespaceAndPath(FarmersDelight.MODID, "jei_plugin");
+    }
+
+    @Override
+    public void registerGuiHandlers(IGuiHandlerRegistration registration) {
+        registration.addRecipeClickArea(WalletScreen.class, 137, 29, 10, 13, RecipeTypes.CRAFTING);
+    }
+
+    @Override
+    public void registerRecipeTransferHandlers(IRecipeTransferRegistration registration) {
+        IRecipeTransferHandlerHelper transferHelper = registration.getTransferHelper();
+        WalletRecipeTransferHandler recipeTransferHandler = new WalletRecipeTransferHandler(transferHelper);
+        registration.addRecipeTransferHandler(recipeTransferHandler, RecipeTypes.CRAFTING);
     }
 }

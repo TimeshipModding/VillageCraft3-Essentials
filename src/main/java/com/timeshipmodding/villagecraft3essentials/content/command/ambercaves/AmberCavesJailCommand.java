@@ -2,6 +2,8 @@ package com.timeshipmodding.villagecraft3essentials.content.command.ambercaves;
 
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
+import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
+import com.timeshipmodding.villagecraft3essentials.compat.dcintegration.DiscordIntegrationMethods;
 import com.timeshipmodding.villagecraft3essentials.compat.luckperms.LuckpermsMethods;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.config.ServerConfig;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.data.JailAndPardonCommandData;
@@ -73,10 +75,15 @@ public class AmberCavesJailCommand {
                 message.append(Component.literal(" Jail!"));
                 player.sendSystemMessage(message, false);
                 Component jailerPlayerUsername = Objects.requireNonNull(context.getSource().getPlayer().getDisplayName());
+                VillageCraft3Essentials.LOGGER.info("[{}: Arrested {} and teleported them to The Amber Caves' jail at {}, {}, {}]", context.getSource().getTextName(), targetPlayerUsername.getString(), jail[0], jail[1], jail[2]);
                 player.setData(ModDataAttachments.JAIL_COMMAND_DATA, new JailAndPardonCommandData(jailerPlayerUsername.getString(), Component.literal("Amber Caves'").withStyle(groupStyling), ServerConfig.JAIL_RELEASE_TIME.get() * 20, ServerConfig.JAIL_COMMAND_COOLDOWN.get() * 20));
 
                 if (ModList.get().isLoaded("luckperms")) {
                     LuckpermsMethods.addGroup(player, ServerConfig.JAILED_GROUP_NAME.get());
+                }
+
+                if (ModList.get().isLoaded("dcintegration")) {
+                    DiscordIntegrationMethods.giveDiscordRole(player, ServerConfig.DISCORD_JAIL_ROLE_ID.get());
                 }
             }
 

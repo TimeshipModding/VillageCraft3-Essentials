@@ -225,6 +225,15 @@ public class DataItemTags extends ItemTagsProvider {
                 .add(DIAMOND)
                 .add(RUBY.get())
                 .add(AMBER.get());
+        tag(WALLET_ACCEPTED_ITEMS)
+                .add(DIAMOND)
+                .add(DIAMOND_BLOCK)
+                .add(RUBY.get())
+                .add(RUBY_BLOCK.get().asItem())
+                .add(AMBER.get())
+                .add(AMBER_BLOCK.get().asItem())
+                .add(EMERALD)
+                .add(EMERALD_BLOCK);
 
         // Farmer's Delight Tags
         tag(FARMERSDELIGHT_KNIVES)

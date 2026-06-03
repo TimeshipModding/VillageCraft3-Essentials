@@ -19,15 +19,14 @@ public class ServerConfig {
     public static ModConfigSpec.ConfigValue<String> JAILED_GROUP_NAME;
     public static ModConfigSpec.BooleanValue CHAT_TAB_NAME_FORMATTING;
     public static ModConfigSpec.BooleanValue ENABLE_VILLAGECRAFT3_LOGO_TABLIST;
-    public static ModConfigSpec.IntValue JAIL_COMMAND_COOLDOWN;
-    public static ModConfigSpec.IntValue JAIL_RELEASE_TIME;
-    public static ModConfigSpec.LongValue KICK_COMMAND_COOLDOWN;
     public static ModConfigSpec.BooleanValue ENABLE_WAR_SYSTEM_FEATURES;
     public static ModConfigSpec.IntValue CORE_RESPAWN_TIME_MIN;
     public static ModConfigSpec.IntValue CORE_RESPAWN_TIME_MAX;
     public static ModConfigSpec.IntValue VILLAGECRAFTCITY_POINT_MULTIPLIER;
     public static ModConfigSpec.IntValue GRIPPERCITY_POINT_MULTIPLIER;
     public static ModConfigSpec.IntValue AMBERCAVES_POINT_MULTIPLIER;
+    public static ModConfigSpec.ConfigValue<String> DISCORD_SERVER_ID;
+    public static ModConfigSpec.ConfigValue<String> DISCORD_JAIL_ROLE_ID;
     public static final ModConfigSpec SPEC;
 
     static {
@@ -96,23 +95,6 @@ public class ServerConfig {
                 .define("enableVillageCraft3LogoTablist", false);
 
         BUILDER.pop();
-        BUILDER.push("Jail Command Config");
-
-        JAIL_COMMAND_COOLDOWN = BUILDER
-                .comment("The cooldown in seconds between jailing players using /{town} jail")
-                .defineInRange("jailCommandCooldown", 64800, 0, Integer.MAX_VALUE);
-        JAIL_RELEASE_TIME = BUILDER
-                .comment("The time in seconds after a player is jailed to when they are automatically pardoned")
-                .defineInRange("jailReleaseTime", 43200, 0, Integer.MAX_VALUE);
-
-        BUILDER.pop();
-        BUILDER.push("Kick Command Config");
-
-        KICK_COMMAND_COOLDOWN = BUILDER
-                .comment("The cooldown in seconds between kicking players from towns using /{town} kick")
-                .defineInRange("kickCommandCooldown", 600, 0, Long.MAX_VALUE);
-
-        BUILDER.pop();
         BUILDER.push("War System Config");
 
         ENABLE_WAR_SYSTEM_FEATURES = BUILDER
@@ -133,6 +115,15 @@ public class ServerConfig {
         AMBERCAVES_POINT_MULTIPLIER = BUILDER
                 .comment("The amount VillageCraft City's score is multiplied by to get Amber Caves' points")
                 .defineInRange("amberCavesPointMultipler", 1, 1, Integer.MAX_VALUE);
+
+        BUILDER.pop();
+        BUILDER.push("Discord Integration Config");
+        BUILDER.comment("IDs needed for VillageCraft 3 Essentials' Discord Integration features");
+
+        DISCORD_SERVER_ID = BUILDER
+                .define("discordServerID", "");
+        DISCORD_JAIL_ROLE_ID = BUILDER
+                .define("discordJailRoleID", "");
 
         BUILDER.pop();
         SPEC = BUILDER.build();

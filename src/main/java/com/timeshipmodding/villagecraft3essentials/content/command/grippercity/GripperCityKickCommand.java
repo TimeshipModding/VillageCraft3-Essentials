@@ -3,7 +3,9 @@ package com.timeshipmodding.villagecraft3essentials.content.command.grippercity;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.BoolArgumentType;
 import com.mojang.brigadier.context.CommandContext;
+import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
 import com.timeshipmodding.villagecraft3essentials.compat.luckperms.LuckpermsMethods;
+import com.timeshipmodding.villagecraft3essentials.infrastructure.config.CommonConfig;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.config.ServerConfig;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.data.attachment.registries.ModDataAttachments;
 import net.minecraft.ChatFormatting;
@@ -50,7 +52,7 @@ public class GripperCityKickCommand {
         for (ServerPlayer player : targets) {
             targetPlayerUsername = Objects.requireNonNull(player.getDisplayName());
             long lastKicked = player.getData(ModDataAttachments.KICK_COMMAND_DATA).gripperCityKickCommandCooldown();
-            long cooldownMs = ServerConfig.KICK_COMMAND_COOLDOWN.get() * 1000L;
+            long cooldownMs = CommonConfig.KICK_COMMAND_COOLDOWN.get() * 1000L;
             long timeLeft = (lastKicked + cooldownMs) - currentTime;
 
             if (lastKicked != 0 && timeLeft > 0) {
@@ -78,10 +80,11 @@ public class GripperCityKickCommand {
                 MutableComponent message = Component.literal("You have been kicked from ");
                 message.append(Component.literal("Gripper City").withStyle(groupStyling));
                 message.append(Component.literal(" and teleported to "));
-                message.append(Component.literal("World spawn!").withStyle(ChatFormatting.GREEN));
+                message.append(Component.literal("World Spawn!").withStyle(ChatFormatting.GREEN));
                 player.sendSystemMessage(message, false);
             }
 
+            VillageCraft3Essentials.LOGGER.info("[{}: Kicked {} from Gripper City and teleported them to World Spawn]", context.getSource().getTextName(), targetPlayerUsername.getString());
             player.setData(ModDataAttachments.KICK_COMMAND_DATA, player.getData(ModDataAttachments.KICK_COMMAND_DATA).gripperCitySetData(currentTime));
         }
 
@@ -90,7 +93,7 @@ public class GripperCityKickCommand {
         message.append(Component.literal(" from "));
         message.append(Component.literal("Gripper City").withStyle(groupStyling));
         message.append(Component.literal(" and teleported them to "));
-        message.append(Component.literal("World spawn!").withStyle(ChatFormatting.GREEN));
+        message.append(Component.literal("World Spawn!").withStyle(ChatFormatting.GREEN));
         context.getSource().sendSuccess(() -> message, false);
         return 1;
     }

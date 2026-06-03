@@ -2,6 +2,8 @@ package com.timeshipmodding.villagecraft3essentials.content.command.ambercaves;
 
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
+import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
+import com.timeshipmodding.villagecraft3essentials.compat.dcintegration.DiscordIntegrationMethods;
 import com.timeshipmodding.villagecraft3essentials.compat.luckperms.LuckpermsMethods;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.config.ServerConfig;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.data.JailAndPardonCommandData;
@@ -72,6 +74,11 @@ public class AmberCavesPardonCommand {
                 message.append(Component.literal("The Amber Caves'").withStyle(groupStyling));
                 message.append(Component.literal(" spawn!"));
                 player.sendSystemMessage(message, false);
+                VillageCraft3Essentials.LOGGER.info("[{}: Pardoned {} and teleported them to The Amber Caves' spawn at {}, {}, {}]", context.getSource().getTextName(), targetPlayerUsername.getString(), spawn[0], spawn[1], spawn[2]);
+
+                if (ModList.get().isLoaded("dcintegration")) {
+                    DiscordIntegrationMethods.removeDiscordRole(player, ServerConfig.DISCORD_JAIL_ROLE_ID.get());
+                }
             }
 
             MutableComponent message = Component.literal("You have pardoned ");
@@ -80,7 +87,6 @@ public class AmberCavesPardonCommand {
             message.append(Component.literal("The Amber Caves'").withStyle(groupStyling));
             message.append(Component.literal(" spawn!"));
             context.getSource().sendSuccess(() -> message, false);
-            return 1;
 
         } else {
             for (ServerPlayer player : targets) {
@@ -91,17 +97,22 @@ public class AmberCavesPardonCommand {
                 targetPlayerMessage.append(Component.literal("World Spawn").withStyle(ChatFormatting.GREEN));
                 targetPlayerMessage.append(Component.literal("!"));
                 player.sendSystemMessage(targetPlayerMessage, false);
+                VillageCraft3Essentials.LOGGER.info("[{}: Pardoned {} and teleported them to World Spawn]", context.getSource().getTextName(), targetPlayerUsername.getString());
+
+                if (ModList.get().isLoaded("dcintegration")) {
+                    DiscordIntegrationMethods.removeDiscordRole(player, ServerConfig.DISCORD_JAIL_ROLE_ID.get());
+                }
             }
 
             MutableComponent message = Component.literal("You have pardoned ");
             message.append(targetPlayerUsername);
             message.append(Component.literal(" from jail and teleported them to "));
-            message.append(Component.literal("World spawn").withStyle(ChatFormatting.GREEN));
+            message.append(Component.literal("World Spawn").withStyle(ChatFormatting.GREEN));
             message.append(Component.literal(" due to "));
             message.append(Component.literal("Amber Caves'").withStyle(groupStyling));
             message.append(Component.literal(" unset spawn position."));
             context.getSource().sendSuccess(() -> message, false);
-            return 1;
         }
+        return 1;
     }
 }
