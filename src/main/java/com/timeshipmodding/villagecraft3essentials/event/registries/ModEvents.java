@@ -51,6 +51,7 @@ import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.neoforge.server.command.ConfigCommand;
+import org.checkerframework.checker.units.qual.C;
 
 import java.util.*;
 
@@ -95,6 +96,8 @@ public class ModEvents {
         new VillageCraftCitySetSpawnCommand(event.getDispatcher());
         new VillageCraftCitySpawnCommand(event.getDispatcher());
         new VillageCraftCityWhitelistCommand(event.getDispatcher());
+        new CompletedMissionsGetCommand(event.getDispatcher());
+        new CompletedMissionsResetCommand(event.getDispatcher());
         new ToggleWarScoreGainingCommand(event.getDispatcher());
         new WarScoreAddCommand(event.getDispatcher());
         new WarScoreGetCommand(event.getDispatcher());

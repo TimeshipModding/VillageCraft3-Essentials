@@ -1,5 +1,6 @@
 package com.timeshipmodding.villagecraft3essentials;
 
+import com.timeshipmodding.villagecraft3essentials.compat.brassworksmissions.event.registries.ModBrassworksMissionsEvents;
 import com.timeshipmodding.villagecraft3essentials.content.block.registries.ModBlocks;
 import com.timeshipmodding.villagecraft3essentials.content.block.entity.registries.ModBlockEntities;
 import com.timeshipmodding.villagecraft3essentials.content.creativetab.EssentialsTab;
@@ -14,6 +15,7 @@ import com.timeshipmodding.villagecraft3essentials.infrastructure.config.CommonC
 import com.timeshipmodding.villagecraft3essentials.infrastructure.config.ServerConfig;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.data.attachment.registries.ModDataAttachments;
 import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.ModList;
 import net.neoforged.fml.config.ModConfig;
 import org.slf4j.Logger;
 
@@ -46,5 +48,10 @@ public class VillageCraft3Essentials {
         // Register mod configs
         modContainer.registerConfig(ModConfig.Type.COMMON, CommonConfig.SPEC);
         modContainer.registerConfig(ModConfig.Type.SERVER, ServerConfig.SPEC);
+
+        // Register Create: Brassworks Missions events
+        if (ModList.get().isLoaded("brassworksmissions")) {
+            ModBrassworksMissionsEvents.registerEvents();
+        }
     }
 }
