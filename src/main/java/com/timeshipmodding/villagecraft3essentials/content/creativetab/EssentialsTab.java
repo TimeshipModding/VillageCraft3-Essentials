@@ -117,20 +117,6 @@ public class EssentialsTab {
                     pOutput.accept(AMBER_BRUSH.get());
                 }
 
-                pOutput.accept(NETHERITE_SHOVEL);
-                pOutput.accept(NETHERITE_PICKAXE);
-                pOutput.accept(NETHERITE_AXE);
-                pOutput.accept(NETHERITE_HOE);
-                pOutput.accept(NETHERITE_SWORD);
-
-                if (ModList.get().isLoaded("farmersdelight")) {
-                    pOutput.accept(ModItems.NETHERITE_KNIFE.get());
-                }
-
-                if (ModList.get().isLoaded("betterarcheology")) {
-                    pOutput.accept(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("betterarcheology", "netherite_brush")));
-                }
-
                 pOutput.accept(DIAMOND_HELMET);
                 pOutput.accept(DIAMOND_CHESTPLATE);
                 pOutput.accept(DIAMOND_LEGGINGS);
@@ -146,10 +132,6 @@ public class EssentialsTab {
                 pOutput.accept(AMBER_LEGGINGS);
                 pOutput.accept(AMBER_BOOTS);
                 pOutput.accept(AMBER_HORSE_ARMOR);
-                pOutput.accept(NETHERITE_HELMET);
-                pOutput.accept(NETHERITE_CHESTPLATE);
-                pOutput.accept(NETHERITE_LEGGINGS);
-                pOutput.accept(NETHERITE_BOOTS);
                 pOutput.accept(POLICE_BATON);
                 pOutput.accept(WORM_ON_A_STICK);
                 pOutput.accept(WORM);
@@ -160,7 +142,6 @@ public class EssentialsTab {
                 pOutput.accept(CRACKED_DIAMOND);
                 pOutput.accept(CRACKED_RUBY);
                 pOutput.accept(CRACKED_AMBER);
-                pOutput.accept(NETHERITE_INGOT);
                 pOutput.accept(MOLE_SPAWN_EGG);
             }).build());
 }
