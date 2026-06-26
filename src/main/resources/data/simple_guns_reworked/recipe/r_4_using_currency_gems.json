@@ -1,0 +1,34 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "simple_guns_reworked"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "villagecraft3essentials",
+  "pattern": [
+    "aba",
+    "ccc",
+    "ada"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:iron_nugget"
+    },
+    "b": {
+      "tag": "villagecraft3essentials:currency_gems"
+    },
+    "c": {
+      "item": "minecraft:gunpowder"
+    },
+    "d": {
+      "item": "minecraft:stone_button"
+    }
+  },
+  "result": {
+    "id": "simple_guns_reworked:sniper_ammo",
+    "count": 4
+  }
+}
