@@ -1,6 +1,21 @@
 {
   "type": "villagecraft3essentials:swap_item_loot_modifier",
-  "conditions": [],
+  "conditions": [
+    {
+      "condition": "minecraft:inverted",
+      "term": {
+        "block": "minecraft:diamond_ore",
+        "condition": "minecraft:block_state_property"
+      }
+    },
+    {
+      "condition": "minecraft:inverted",
+      "term": {
+        "block": "minecraft:deepslate_diamond_ore",
+        "condition": "minecraft:block_state_property"
+      }
+    }
+  ],
   "currency1": "villagecraft3essentials:ruby",
   "currency2": "villagecraft3essentials:amber",
   "target": "minecraft:diamond"

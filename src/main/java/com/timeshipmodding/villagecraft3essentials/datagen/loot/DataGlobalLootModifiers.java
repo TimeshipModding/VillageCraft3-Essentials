@@ -74,7 +74,9 @@ public class DataGlobalLootModifiers extends GlobalLootModifierProvider {
                 Items.DIAMOND_BOOTS, RUBY_BOOTS.get(), AMBER_BOOTS.get()));
         add("swap_diamond_horse_armor", new SwapItemLootModifier(new LootItemCondition[]{},
                 Items.DIAMOND_HORSE_ARMOR, RUBY_HORSE_ARMOR.get(), AMBER_HORSE_ARMOR.get()));
-        add("swap_diamond", new SwapItemLootModifier(new LootItemCondition[]{},
+        add("swap_diamond", new SwapItemLootModifier(new LootItemCondition[]{
+                InvertedLootItemCondition.invert(LootItemBlockStatePropertyCondition.hasBlockStateProperties(Blocks.DIAMOND_ORE)).build(),
+                InvertedLootItemCondition.invert(LootItemBlockStatePropertyCondition.hasBlockStateProperties(Blocks.DEEPSLATE_DIAMOND_ORE)).build()},
                 Items.DIAMOND, RUBY.get(), AMBER.get()));
 
         // Replace Non Player Drop Item Loot Modifiers

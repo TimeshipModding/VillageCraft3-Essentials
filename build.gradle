@@ -125,7 +125,7 @@ dependencies {
 
     // Discord Integration Dependency
     compileOnly 'de.erdbeerbaerlp:dcintegration.common:3.0.7'
-    dataAdditionalRuntimeClasspath 'de.erdbeerbaerlp:dcintegration.common:3.0.7'
+    //dataAdditionalRuntimeClasspath 'de.erdbeerbaerlp:dcintegration.common:3.0.7'
 
     // Create: Brassworks Missions
     compileOnly "curse.maven:create-brassworks-missions-1348982:7912609"
