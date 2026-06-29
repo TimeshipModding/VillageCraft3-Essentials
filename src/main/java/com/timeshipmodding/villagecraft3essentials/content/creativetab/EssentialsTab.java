@@ -1,6 +1,8 @@
 package com.timeshipmodding.villagecraft3essentials.content.creativetab;
 
 import com.teammetallurgy.aquaculture.init.AquaItems;
+import com.timeshipmodding.villagecraft3essentials.compat.archers.ArchersEvents;
+import net.archers.item.ArcherWeapons;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -63,6 +65,10 @@ public class EssentialsTab {
                 pOutput.accept(DIAMOND_HOE);
                 pOutput.accept(DIAMOND_SWORD);
 
+                if (ModList.get().isLoaded("archers")) {
+                    pOutput.accept(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("archers", "diamond_spear")));
+                }
+
                 if (ModList.get().isLoaded("farmersdelight")) {
                     pOutput.accept(ModItems.DIAMOND_KNIFE.get());
                 }
@@ -83,6 +89,10 @@ public class EssentialsTab {
                 pOutput.accept(RUBY_HOE);
                 pOutput.accept(RUBY_SWORD);
 
+                if (ModList.get().isLoaded("archers")) {
+                    pOutput.accept(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "ruby_spear")));
+                }
+
                 if (ModList.get().isLoaded("farmersdelight")) {
                     pOutput.accept(RUBY_KNIFE.get());
                 }
@@ -102,6 +112,10 @@ public class EssentialsTab {
                 pOutput.accept(AMBER_AXE);
                 pOutput.accept(AMBER_HOE);
                 pOutput.accept(AMBER_SWORD);
+
+                if (ModList.get().isLoaded("archers")) {
+                    pOutput.accept(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "amber_spear")));
+                }
 
                 if (ModList.get().isLoaded("farmersdelight")) {
                     pOutput.accept(AMBER_KNIFE.get());

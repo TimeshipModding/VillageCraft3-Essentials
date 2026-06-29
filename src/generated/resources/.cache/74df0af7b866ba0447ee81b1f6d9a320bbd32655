@@ -1,5 +1,6 @@
-// 1.21.1	2026-06-28T22:33:20.8711158	Tags for minecraft:item mod id villagecraft3essentials
+// 1.21.1	2026-06-29T17:20:57.0654394	Tags for minecraft:item mod id villagecraft3essentials
 e2340f6f4cde29cf07c5348aaf0af892d818b555 data/aquaculture/tags/item/tooltip.json
+13687e455bc6ccf1cc2f9e9f937898dc8ebd0305 data/archers/tags/item/spears.json
 bbbe68f23d94ae2a72f5380fb7195d7486f0955f data/c/tags/item/animal_foods.json
 7e5e89f0ee536e398a5a15f128e8188c8a5de581 data/c/tags/item/foods/cooked_meat.json
 550a233033269cde36cc80d45923328774d820d4 data/c/tags/item/foods/food_poisoning.json
@@ -25,15 +26,16 @@ bf4bf7acc3ce5a96922fb05f71ffaec04d3d3f9e data/c/tags/item/tools/mining_tool.json
 bbe6bb456aac09744bfdee30d5eabf75d473d739 data/farmersdelight/tags/item/tools/knives.json
 b1c74e437e0593ddf4f5ee19f47a5eabf582572f data/minecraft/tags/item/axes.json
 d03fa87e10535e7ddd298826de46878b10e461b2 data/minecraft/tags/item/beacon_payment_items.json
-649b29e6b6d8a5a0e4b103006266698f0d2c937e data/minecraft/tags/item/breaks_decorated_pots.json
+055e9e2b7c7a6c144dede7c914ff17ff3da7cfdd data/minecraft/tags/item/breaks_decorated_pots.json
 526d09e906c729a7a033c4c6b889ebf415a2a689 data/minecraft/tags/item/chest_armor.json
 bf4bf7acc3ce5a96922fb05f71ffaec04d3d3f9e data/minecraft/tags/item/cluster_max_harvestables.json
-88bc8515c0f4a2500e998aba5007e322be1cfa11 data/minecraft/tags/item/enchantable/durability.json
-649b29e6b6d8a5a0e4b103006266698f0d2c937e data/minecraft/tags/item/enchantable/fire_aspect.json
+5fbe5ecc70ad988c293d21fecea7435bf1c722bc data/minecraft/tags/item/enchantable/durability.json
+055e9e2b7c7a6c144dede7c914ff17ff3da7cfdd data/minecraft/tags/item/enchantable/fire_aspect.json
 297a695be2389729fe80fced508635054a0f9469 data/minecraft/tags/item/enchantable/fishing.json
 649b29e6b6d8a5a0e4b103006266698f0d2c937e data/minecraft/tags/item/enchantable/mace.json
-257c94b1d36bb71e99b766466dc696c462072d61 data/minecraft/tags/item/enchantable/vanishing.json
-649b29e6b6d8a5a0e4b103006266698f0d2c937e data/minecraft/tags/item/enchantable/weapon.json
+13687e455bc6ccf1cc2f9e9f937898dc8ebd0305 data/minecraft/tags/item/enchantable/sharp_weapon.json
+27cbc23f94a1716fd8f4ddfb4ff2229da0e3f7fe data/minecraft/tags/item/enchantable/vanishing.json
+055e9e2b7c7a6c144dede7c914ff17ff3da7cfdd data/minecraft/tags/item/enchantable/weapon.json
 36f870599a90a564f8d06d05ab699f8ad90a18fe data/minecraft/tags/item/foot_armor.json
 e14000d5a438bc890ed1b7866bac8ff89c1cc032 data/minecraft/tags/item/head_armor.json
 9ddbb3b79fdbb3ed8493d8d9857ad6fd8bece62c data/minecraft/tags/item/hoes.json
@@ -41,9 +43,13 @@ e14000d5a438bc890ed1b7866bac8ff89c1cc032 data/minecraft/tags/item/head_armor.jso
 bbbe68f23d94ae2a72f5380fb7195d7486f0955f data/minecraft/tags/item/meat.json
 bf4bf7acc3ce5a96922fb05f71ffaec04d3d3f9e data/minecraft/tags/item/pickaxes.json
 0ba95b17323fc00803665f4009dc9761deff9cda data/minecraft/tags/item/shovels.json
-e6c7295c8a74347127b325cdeeefc14cc28c00fc data/minecraft/tags/item/swords.json
+f2ed79796779a236312813283dadeadbb8068e30 data/minecraft/tags/item/swords.json
 44302f61f46fba400b2545da27bf3431462b8c01 data/minecraft/tags/item/trimmable_armor.json
 d03fa87e10535e7ddd298826de46878b10e461b2 data/minecraft/tags/item/trim_materials.json
+13687e455bc6ccf1cc2f9e9f937898dc8ebd0305 data/rpg_series/tags/item/archetype/melee_damage_weapon.json
+13687e455bc6ccf1cc2f9e9f937898dc8ebd0305 data/rpg_series/tags/item/loot_tier/tier_2_weapons.json
+13687e455bc6ccf1cc2f9e9f937898dc8ebd0305 data/rpg_series/tags/item/weapon_type/spear.json
+13687e455bc6ccf1cc2f9e9f937898dc8ebd0305 data/spell_engine/tags/item/handheld.json
 2e104562a1200c401f3cb22ee40f4ccc1d262050 data/villagecraft3essentials/tags/item/amber_convertible_tools.json
 886af41aed989b5369edefdda8d85715456cc021 data/villagecraft3essentials/tags/item/currency_gems.json
 884f13d773791672e7a735ad9569609e7fd0a9b9 data/villagecraft3essentials/tags/item/diamond_convertible_tools.json

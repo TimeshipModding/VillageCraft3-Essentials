@@ -1,5 +1,13 @@
 {
   "values": [
-    "villagecraft3essentials:police_baton"
+    "villagecraft3essentials:police_baton",
+    {
+      "id": "villagecraft3essentials:ruby_spear",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:amber_spear",
+      "required": false
+    }
   ]
 }

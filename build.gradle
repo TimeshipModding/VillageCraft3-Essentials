@@ -27,6 +27,14 @@ repositories {
     }
 
     maven {
+        name = 'Modrinth'
+        url = 'https://api.modrinth.com/maven'
+        content {
+            includeGroup 'maven.modrinth'
+        }
+    }
+
+    maven {
         name = "Jared's maven"
         url = "https://maven.blamejared.com/"
     }
@@ -125,11 +133,22 @@ dependencies {
 
     // Discord Integration Dependency
     compileOnly 'de.erdbeerbaerlp:dcintegration.common:3.0.7'
-    //dataAdditionalRuntimeClasspath 'de.erdbeerbaerlp:dcintegration.common:3.0.7'
+    // dataAdditionalRuntimeClasspath 'de.erdbeerbaerlp:dcintegration.common:3.0.7'
 
     // Create: Brassworks Missions
     compileOnly "curse.maven:create-brassworks-missions-1348982:7912609"
     dataAdditionalRuntimeClasspath "curse.maven:create-brassworks-missions-1348982:7912609"
+
+    // Archers (RPG Series)
+    compileOnly "curse.maven:archers-932359:7690243"
+    //dataAdditionalRuntimeClasspath "curse.maven:archers-932359:7690243"
+
+    // Spell Engine
+    compileOnly "curse.maven:spell-engine-807653:7789251"
+    //dataAdditionalRuntimeClasspath "curse.maven:spell-engine-807653:7789251"
+
+    // Tiny Config
+    compileOnly "maven.modrinth:tiny-config:${project.tiny_config_version}-neoforge"
 }
 
 // gradle.properties entries
@@ -141,6 +160,7 @@ var generateModMetadata = tasks.register("generateModMetadata", ProcessResources
             loader_version_range   : loader_version_range,
             jei_version            : jei_version,
             aquaculture_version    : aquaculture_version,
+            tiny_config_version    : tiny_config_version,
             mc_version             : mc_version,
             mod_id                 : mod_id,
             mod_name               : mod_name,

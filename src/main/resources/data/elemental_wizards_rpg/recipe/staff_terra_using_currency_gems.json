@@ -1,0 +1,29 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "elemental_wizards_rpg"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "group": "villagecraft3essentials",
+  "key": {
+    "A": {
+      "tag": "villagecraft3essentials:currency_gems"
+    },
+    "B": {
+      "item": "minecraft:gold_ingot"
+    },
+    "C": {
+      "item": "minecraft:obsidian"
+    }
+  },
+  "pattern": [
+    " CA",
+    " BC",
+    "A  "
+  ],
+  "result": {
+    "id": "elemental_wizards_rpg:staff_terra"
+  }
+}

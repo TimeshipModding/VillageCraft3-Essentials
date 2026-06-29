@@ -1,18 +1,12 @@
 package com.timeshipmodding.villagecraft3essentials.datagen.tags;
 
-import com.teammetallurgy.aquaculture.api.AquacultureAPI;
-import com.teammetallurgy.aquaculture.init.AquaItems;
 import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
-import vectorwing.farmersdelight.common.registry.ModItems;
-import vectorwing.farmersdelight.common.tag.CommonTags;
-import vectorwing.farmersdelight.common.tag.ModTags;
 
 import javax.annotation.Nullable;
 import java.util.concurrent.CompletableFuture;
@@ -63,7 +57,9 @@ public class DataItemTags extends ItemTagsProvider {
                 .add(AMBER_HOE.get());
         tag(SWORDS)
                 .add(RUBY_SWORD.get())
-                .add(AMBER_SWORD.get());
+                .add(AMBER_SWORD.get())
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "ruby_spear"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "amber_spear"));
         tag(FOOT_ARMOR)
                 .add(RUBY_BOOTS.get())
                 .add(AMBER_BOOTS.get());
@@ -77,16 +73,24 @@ public class DataItemTags extends ItemTagsProvider {
                 .add(RUBY_HELMET.get())
                 .add(AMBER_HELMET.get());
         tag(BREAKS_DECORATED_POTS)
-                .add(POLICE_BATON.get());
+                .add(POLICE_BATON.get())
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "ruby_spear"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "amber_spear"));
         tag(FIRE_ASPECT_ENCHANTABLE)
-                .add(POLICE_BATON.get());
+                .add(POLICE_BATON.get())
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "ruby_spear"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "amber_spear"));
         tag(WEAPON_ENCHANTABLE)
-                .add(POLICE_BATON.get());
+                .add(POLICE_BATON.get())
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "ruby_spear"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "amber_spear"));;
         tag(MACE_ENCHANTABLE)
                 .add(POLICE_BATON.get());
         tag(DURABILITY_ENCHANTABLE)
                 .add(POLICE_BATON.get())
                 .add(WORM_ON_A_STICK.get())
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "ruby_spear"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "amber_spear"))
                 .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "ruby_fishing_rod"))
                 .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "amber_fishing_rod"))
                 .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "ruby_brush"))
@@ -96,6 +100,8 @@ public class DataItemTags extends ItemTagsProvider {
                 .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "amber_fishing_rod"));
         tag(VANISHING_ENCHANTABLE)
                 .add(WORM_ON_A_STICK.get())
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "ruby_spear"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "amber_spear"))
                 .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "ruby_brush"))
                 .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "amber_brush"));
         tag(CLUSTER_MAX_HARVESTABLES)
@@ -104,6 +110,9 @@ public class DataItemTags extends ItemTagsProvider {
         tag(MEAT)
                 .add(WORM.get())
                 .add(COOKED_WORM.get());
+        tag(SHARP_WEAPON_ENCHANTABLE)
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "ruby_spear"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "amber_spear"));
 
         // Common Tags
         tag(TOOLS_FISHING_ROD)
@@ -250,5 +259,26 @@ public class DataItemTags extends ItemTagsProvider {
         tag(KNIFE)
                 .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "ruby_fillet_knife"))
                 .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "amber_fillet_knife"));
+
+        // RPG Series Tags
+        tag(RPG_SERIES_LOOT_TIER_TIER_2_WEAPONS)
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "ruby_spear"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "amber_spear"));
+        tag(RPG_SERIES_WEAPON_TYPE_SPEAR)
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "ruby_spear"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "amber_spear"));
+        tag(RPG_SERIES_ARCHETYPE_MELEE_DAMAGE_WEAPON)
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "ruby_spear"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "amber_spear"));
+
+        // Spell Engine Tags
+        tag(SPELL_ENGINE_HANDHELD)
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "ruby_spear"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "amber_spear"));
+
+        // Archers Tags
+        tag(ARCHERS_SPEARS)
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "ruby_spear"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "amber_spear"));
     }
 }

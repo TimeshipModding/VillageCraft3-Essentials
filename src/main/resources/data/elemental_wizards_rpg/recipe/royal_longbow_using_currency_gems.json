@@ -1,0 +1,31 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "archers"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "villagecraft3essentials",
+  "key": {
+    "D": {
+      "tag": "villagecraft3essentials:currency_gems"
+    },
+    "G": {
+      "item": "minecraft:gold_ingot"
+    },
+    "X": {
+      "item": "minecraft:string"
+    }
+  },
+  "pattern": [
+    " GX",
+    "D X",
+    " GX"
+  ],
+  "result": {
+    "count": 1,
+    "id": "archers:royal_longbow"
+  }
+}

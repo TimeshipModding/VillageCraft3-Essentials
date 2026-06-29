@@ -3,6 +3,14 @@
     "villagecraft3essentials:police_baton",
     "villagecraft3essentials:worm_on_a_stick",
     {
+      "id": "villagecraft3essentials:ruby_spear",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:amber_spear",
+      "required": false
+    },
+    {
       "id": "villagecraft3essentials:ruby_fishing_rod",
       "required": false
     },
