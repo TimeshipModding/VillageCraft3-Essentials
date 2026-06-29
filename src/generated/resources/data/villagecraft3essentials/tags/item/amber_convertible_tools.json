@@ -11,6 +11,10 @@
     "villagecraft3essentials:amber_boots",
     "villagecraft3essentials:amber_horse_armor",
     {
+      "id": "villagecraft3essentials:amber_spear",
+      "required": false
+    },
+    {
       "id": "villagecraft3essentials:amber_knife",
       "required": false
     },

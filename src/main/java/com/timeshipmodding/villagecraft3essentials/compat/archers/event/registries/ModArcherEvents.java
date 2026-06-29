@@ -1,4 +1,4 @@
-package com.timeshipmodding.villagecraft3essentials.compat.archers;
+package com.timeshipmodding.villagecraft3essentials.compat.archers.event.registries;
 
 import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
 import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems;
@@ -17,7 +17,7 @@ import net.spell_engine.rpg_series.item.Weapons;
 import java.util.ArrayList;
 
 @EventBusSubscriber(modid = VillageCraft3Essentials.MODID)
-public class ArchersEvents {
+public class ModArcherEvents {
 
     @SubscribeEvent
     public static void registerItems(RegisterEvent event) {

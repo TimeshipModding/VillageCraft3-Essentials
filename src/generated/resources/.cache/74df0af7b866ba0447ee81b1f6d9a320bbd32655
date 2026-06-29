@@ -1,4 +1,4 @@
-// 1.21.1	2026-06-29T17:20:57.0654394	Tags for minecraft:item mod id villagecraft3essentials
+// 1.21.1	2026-06-29T18:09:18.8268052	Tags for minecraft:item mod id villagecraft3essentials
 e2340f6f4cde29cf07c5348aaf0af892d818b555 data/aquaculture/tags/item/tooltip.json
 13687e455bc6ccf1cc2f9e9f937898dc8ebd0305 data/archers/tags/item/spears.json
 bbbe68f23d94ae2a72f5380fb7195d7486f0955f data/c/tags/item/animal_foods.json
@@ -50,9 +50,9 @@ d03fa87e10535e7ddd298826de46878b10e461b2 data/minecraft/tags/item/trim_materials
 13687e455bc6ccf1cc2f9e9f937898dc8ebd0305 data/rpg_series/tags/item/loot_tier/tier_2_weapons.json
 13687e455bc6ccf1cc2f9e9f937898dc8ebd0305 data/rpg_series/tags/item/weapon_type/spear.json
 13687e455bc6ccf1cc2f9e9f937898dc8ebd0305 data/spell_engine/tags/item/handheld.json
-2e104562a1200c401f3cb22ee40f4ccc1d262050 data/villagecraft3essentials/tags/item/amber_convertible_tools.json
+3ffff5a498dff5abc363ba2a322beb517e158dcc data/villagecraft3essentials/tags/item/amber_convertible_tools.json
 886af41aed989b5369edefdda8d85715456cc021 data/villagecraft3essentials/tags/item/currency_gems.json
-884f13d773791672e7a735ad9569609e7fd0a9b9 data/villagecraft3essentials/tags/item/diamond_convertible_tools.json
+6ad1471f2395586766c340f4ff49b7b36b52be2d data/villagecraft3essentials/tags/item/diamond_convertible_tools.json
 bbbe68f23d94ae2a72f5380fb7195d7486f0955f data/villagecraft3essentials/tags/item/mole_food.json
-64bb9f91844e4aa7eb42fb2d95ceb9a749f19479 data/villagecraft3essentials/tags/item/ruby_convertible_tools.json
+e84ba38dfedc9954e2c76a9b1d2d6fc3d72daf75 data/villagecraft3essentials/tags/item/ruby_convertible_tools.json
 7c161b4b887f1fc7dd818a05dc4a22e9695f08bb data/villagecraft3essentials/tags/item/wallet_accepted_items.json

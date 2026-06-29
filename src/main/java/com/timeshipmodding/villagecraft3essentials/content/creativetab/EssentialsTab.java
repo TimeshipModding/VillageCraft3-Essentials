@@ -1,8 +1,6 @@
 package com.timeshipmodding.villagecraft3essentials.content.creativetab;
 
 import com.teammetallurgy.aquaculture.init.AquaItems;
-import com.timeshipmodding.villagecraft3essentials.compat.archers.ArchersEvents;
-import net.archers.item.ArcherWeapons;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -20,7 +18,6 @@ import static net.minecraft.world.item.Items.*;
 
 import static com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems.*;
 import static com.timeshipmodding.villagecraft3essentials.content.block.registries.ModBlocks.*;
-import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModCompatItems.*;
 
 import static com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials.MODID;
 

@@ -11,6 +11,10 @@
     "minecraft:diamond_boots",
     "minecraft:diamond_horse_armor",
     {
+      "id": "archers:diamond_spear",
+      "required": false
+    },
+    {
       "id": "farmersdelight:diamond_knife",
       "required": false
     },

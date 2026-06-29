@@ -11,6 +11,10 @@
     "villagecraft3essentials:ruby_boots",
     "villagecraft3essentials:ruby_horse_armor",
     {
+      "id": "villagecraft3essentials:ruby_spear",
+      "required": false
+    },
+    {
       "id": "villagecraft3essentials:ruby_knife",
       "required": false
     },
