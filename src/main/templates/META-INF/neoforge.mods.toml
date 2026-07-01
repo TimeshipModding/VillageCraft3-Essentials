@@ -170,3 +170,11 @@ license="${mod_license}"
     versionRange="[1.21.1-NeoForge-3.1.1,)"
     ordering="AFTER"
     side="BOTH"
+
+# Dependency for Bluemap
+[[dependencies.${mod_id}]]
+    modId="bluemap"
+    type="optional"
+    versionRange="[5.7,)"
+    ordering="AFTER"
+    side="BOTH"

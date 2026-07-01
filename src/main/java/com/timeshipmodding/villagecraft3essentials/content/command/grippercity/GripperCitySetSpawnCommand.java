@@ -2,6 +2,7 @@ package com.timeshipmodding.villagecraft3essentials.content.command.grippercity;
 
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
+import com.timeshipmodding.villagecraft3essentials.compat.bluemap.BlueMapMethods;
 import com.timeshipmodding.villagecraft3essentials.compat.luckperms.LuckpermsMethods;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.config.ServerConfig;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.data.saveddata.SpawnSavedData;
@@ -49,6 +50,10 @@ public class GripperCitySetSpawnCommand {
             return 0;
 
         } else {
+            if (ModList.get().isLoaded("bluemap")) {
+                BlueMapMethods.manageSpawnMarker(playerPos.getX(), playerPos.getY(), playerPos.getZ(), "VillageCraft City", "villagecraft-city", player);
+            }
+
             MutableComponent message = Component.literal("Set ");
             message.append(Component.literal("Gripper City's").withStyle(groupStyling));
             message.append(Component.literal(" spawn to " + positionString + "!"));
