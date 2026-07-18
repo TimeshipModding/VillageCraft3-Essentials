@@ -27,85 +27,61 @@ public class CompletedMissionsResetCommand {
     }
 
     private int executeResetAll(CommandContext<CommandSourceStack> context) {
-        if (ServerConfig.ENABLE_WAR_SYSTEM_FEATURES.get()) {
-            MinecraftServer server = context.getSource().getServer();
-            MissionSavedData data = MissionSavedData.getData(server);
-            data.resetVillagecraftCompletedMissions();
-            data.resetGripperCityCompletedMissions();
-            data.resetAmberCavesCompletedMissions();
-            MutableComponent message = Component.literal("All towns' completed missions count have been reset to 0.");
-            context.getSource().sendSuccess(() -> message, false);
-            return 1;
-        }
-
-        MutableComponent message = Component.literal("War features are not enabled. Enable them in the VillageCraft 3 Essentials Common Config.").withStyle(ChatFormatting.RED);
-        context.getSource().sendFailure(message);
-        return -1;
+        MinecraftServer server = context.getSource().getServer();
+        MissionSavedData data = MissionSavedData.getData(server);
+        data.resetVillagecraftCompletedMissions();
+        data.resetGripperCityCompletedMissions();
+        data.resetAmberCavesCompletedMissions();
+        MutableComponent message = Component.literal("All towns' completed missions count have been reset to 0.");
+        context.getSource().sendSuccess(() -> message, false);
+        return 1;
     }
 
     private int executeResetVillageCraftCity(CommandContext<CommandSourceStack> context) {
-        if (ServerConfig.ENABLE_WAR_SYSTEM_FEATURES.get()) {
-            MinecraftServer server = context.getSource().getServer();
-            MissionSavedData data = MissionSavedData.getData(server);
-            ChatFormatting groupStyling = ChatFormatting.WHITE;
+        MinecraftServer server = context.getSource().getServer();
+        MissionSavedData data = MissionSavedData.getData(server);
+        ChatFormatting groupStyling = ChatFormatting.WHITE;
 
-            if (ModList.get().isLoaded("luckperms")) {
-                groupStyling = LuckpermsMethods.getGroupStyling(ServerConfig.VILLAGECRAFTCITY_GROUP_NAME.get());
-            }
-
-            data.resetVillagecraftCompletedMissions();
-            MutableComponent message = Component.literal("VillageCraft City's").withStyle(groupStyling);
-            message.append(Component.literal(" completed missions count has been reset to 0."));
-            context.getSource().sendSuccess(() -> message, false);
-            return 1;
+        if (ModList.get().isLoaded("luckperms")) {
+            groupStyling = LuckpermsMethods.getGroupStyling(ServerConfig.VILLAGECRAFTCITY_GROUP_NAME.get());
         }
 
-        MutableComponent message = Component.literal("War features are not enabled. To use them, enable them in the VillageCraft 3 Essentials Common Config.").withStyle(ChatFormatting.RED);
-        context.getSource().sendFailure(message);
-        return -1;
+        data.resetVillagecraftCompletedMissions();
+        MutableComponent message = Component.literal("VillageCraft City's").withStyle(groupStyling);
+        message.append(Component.literal(" completed missions count has been reset to 0."));
+        context.getSource().sendSuccess(() -> message, false);
+        return 1;
     }
 
     private int executeResetGripperCity(CommandContext<CommandSourceStack> context) {
-        if (ServerConfig.ENABLE_WAR_SYSTEM_FEATURES.get()) {
-            MinecraftServer server = context.getSource().getServer();
-            MissionSavedData data = MissionSavedData.getData(server);
-            ChatFormatting groupStyling = ChatFormatting.WHITE;
+        MinecraftServer server = context.getSource().getServer();
+        MissionSavedData data = MissionSavedData.getData(server);
+        ChatFormatting groupStyling = ChatFormatting.WHITE;
 
-            if (ModList.get().isLoaded("luckperms")) {
-                groupStyling = LuckpermsMethods.getGroupStyling(ServerConfig.GRIPPERCITY_GROUP_NAME.get());
-            }
-
-            data.resetGripperCityCompletedMissions();
-            MutableComponent message = Component.literal("Gripper City's").withStyle(groupStyling);
-            message.append(Component.literal(" completed missions count has been reset to 0."));
-            context.getSource().sendSuccess(() -> message, false);
-            return 1;
+        if (ModList.get().isLoaded("luckperms")) {
+            groupStyling = LuckpermsMethods.getGroupStyling(ServerConfig.GRIPPERCITY_GROUP_NAME.get());
         }
 
-        MutableComponent message = Component.literal("War features are not enabled. To use them, enable them in the VillageCraft 3 Essentials Common Config.").withStyle(ChatFormatting.RED);
-        context.getSource().sendFailure(message);
-        return -1;
+        data.resetGripperCityCompletedMissions();
+        MutableComponent message = Component.literal("Gripper City's").withStyle(groupStyling);
+        message.append(Component.literal(" completed missions count has been reset to 0."));
+        context.getSource().sendSuccess(() -> message, false);
+        return 1;
     }
 
     private int executeResetAmberCaves(CommandContext<CommandSourceStack> context) {
-        if (ServerConfig.ENABLE_WAR_SYSTEM_FEATURES.get()) {
-            MinecraftServer server = context.getSource().getServer();
-            MissionSavedData data = MissionSavedData.getData(server);
-            ChatFormatting groupStyling = ChatFormatting.WHITE;
+        MinecraftServer server = context.getSource().getServer();
+        MissionSavedData data = MissionSavedData.getData(server);
+        ChatFormatting groupStyling = ChatFormatting.WHITE;
 
-            if (ModList.get().isLoaded("luckperms")) {
-                groupStyling = LuckpermsMethods.getGroupStyling(ServerConfig.AMBERCAVES_GROUP_NAME.get());
-            }
-
-            data.resetAmberCavesCompletedMissions();
-            MutableComponent message = Component.literal("Amber Caves's").withStyle(groupStyling);
-            message.append(Component.literal(" completed missions count has been reset to 0."));
-            context.getSource().sendSuccess(() -> message, false);
-            return 1;
+        if (ModList.get().isLoaded("luckperms")) {
+            groupStyling = LuckpermsMethods.getGroupStyling(ServerConfig.AMBERCAVES_GROUP_NAME.get());
         }
 
-        MutableComponent message = Component.literal("War features are not enabled. To use them, enable them in the VillageCraft 3 Essentials Common Config.").withStyle(ChatFormatting.RED);
-        context.getSource().sendFailure(message);
-        return -1;
+        data.resetAmberCavesCompletedMissions();
+        MutableComponent message = Component.literal("Amber Caves's").withStyle(groupStyling);
+        message.append(Component.literal(" completed missions count has been reset to 0."));
+        context.getSource().sendSuccess(() -> message, false);
+        return 1;
     }
 }

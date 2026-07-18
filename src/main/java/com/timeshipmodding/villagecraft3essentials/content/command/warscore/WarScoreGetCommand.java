@@ -46,7 +46,7 @@ public class WarScoreGetCommand {
             return 1;
         }
 
-        MutableComponent message = Component.literal("War features are not enabled. To use them, enable them in the VillageCraft 3 Essentials Common Config.").withStyle(ChatFormatting.RED);
+        MutableComponent message = Component.literal("War features are not enabled. To use them, enable them in the VillageCraft 3 Essentials Server Config.").withStyle(ChatFormatting.RED);
         context.getSource().sendFailure(message);
         return -1;
     }
@@ -75,7 +75,7 @@ public class WarScoreGetCommand {
             return 1;
         }
 
-        MutableComponent message = Component.literal("War features are not enabled. To use them, enable them in the VillageCraft 3 Essentials Common Config.").withStyle(ChatFormatting.RED);
+        MutableComponent message = Component.literal("War features are not enabled. To use them, enable them in the VillageCraft 3 Essentials Server Config.").withStyle(ChatFormatting.RED);
         context.getSource().sendFailure(message);
         return -1;
     }

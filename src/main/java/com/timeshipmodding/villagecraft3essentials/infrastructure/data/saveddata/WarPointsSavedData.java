@@ -43,24 +43,21 @@ public class WarPointsSavedData extends SavedData {
     }
 
     public void addVillagecraftCityWarScore(ServerLevel level, int score) {
-        MissionSavedData data = MissionSavedData.getData(level.getServer());
-        this.villagecraftCityWarPoints += ((score * ServerConfig.VILLAGECRAFTCITY_POINT_MULTIPLIER.getAsInt()) + data.getVillagecraftCompletedMissions());
+        this.villagecraftCityWarPoints += ((score * ServerConfig.VILLAGECRAFTCITY_POINT_MULTIPLIER.getAsInt()) + ServerConfig.VILLAGECRAFTCITY_COMPLETED_MISSIONS.getAsInt());
         this.villagecraftCityWarScore += score;
         this.syncDataToScoreboard(level);
         this.setDirty();
     }
 
     public void addGripperCityWarScore(ServerLevel level, int score) {
-        MissionSavedData data = MissionSavedData.getData(level.getServer());
-        this.gripperCityWarPoints += ((score * ServerConfig.GRIPPERCITY_POINT_MULTIPLIER.getAsInt()) + data.getGripperCityCompletedMissions());
+        this.gripperCityWarPoints += ((score * ServerConfig.GRIPPERCITY_POINT_MULTIPLIER.getAsInt()) + ServerConfig.GRIPPERCITY_COMPLETED_MISSIONS.getAsInt());
         this.gripperCityWarScore += score;
         this.syncDataToScoreboard(level);
         this.setDirty();
     }
 
     public void addAmberCavesWarScore(ServerLevel level, int score) {
-        MissionSavedData data = MissionSavedData.getData(level.getServer());
-        this.amberCavesWarPoints += ((score * ServerConfig.AMBERCAVES_POINT_MULTIPLIER.getAsInt()) + data.getAmberCavesCompletedMissions());
+        this.amberCavesWarPoints += ((score * ServerConfig.AMBERCAVES_POINT_MULTIPLIER.getAsInt()) + ServerConfig.AMBERCAVES_COMPLETED_MISSIONS.getAsInt());
         this.amberCavesWarScore += score;
         this.syncDataToScoreboard(level);
         this.setDirty();

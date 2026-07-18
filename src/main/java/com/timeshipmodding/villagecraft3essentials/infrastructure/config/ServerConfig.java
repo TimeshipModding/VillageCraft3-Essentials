@@ -25,6 +25,9 @@ public class ServerConfig {
     public static ModConfigSpec.IntValue VILLAGECRAFTCITY_POINT_MULTIPLIER;
     public static ModConfigSpec.IntValue GRIPPERCITY_POINT_MULTIPLIER;
     public static ModConfigSpec.IntValue AMBERCAVES_POINT_MULTIPLIER;
+    public static ModConfigSpec.IntValue VILLAGECRAFTCITY_COMPLETED_MISSIONS;
+    public static ModConfigSpec.IntValue GRIPPERCITY_COMPLETED_MISSIONS;
+    public static ModConfigSpec.IntValue AMBERCAVES_COMPLETED_MISSIONS;
     public static ModConfigSpec.ConfigValue<String> DISCORD_SERVER_ID;
     public static ModConfigSpec.ConfigValue<String> DISCORD_JAIL_ROLE_ID;
     public static final ModConfigSpec SPEC;
@@ -108,13 +111,22 @@ public class ServerConfig {
                 .defineInRange("coreRespawnTimeMax", 4, 0, Integer.MAX_VALUE);
         VILLAGECRAFTCITY_POINT_MULTIPLIER = BUILDER
                 .comment("The amount VillageCraft City's score is multiplied by to get VillageCraft City's points")
-                .defineInRange("villagecraftCityPointMultipler", 1, 1, Integer.MAX_VALUE);
+                .defineInRange("villagecraftCityPointMultiplier", 1, 1, Integer.MAX_VALUE);
         GRIPPERCITY_POINT_MULTIPLIER = BUILDER
                 .comment("The amount VillageCraft City's score is multiplied by to get Gripper City's points")
-                .defineInRange("gripperCityPointMultipler", 1, 1, Integer.MAX_VALUE);
+                .defineInRange("gripperCityPointMultiplier", 1, 1, Integer.MAX_VALUE);
         AMBERCAVES_POINT_MULTIPLIER = BUILDER
                 .comment("The amount VillageCraft City's score is multiplied by to get Amber Caves' points")
-                .defineInRange("amberCavesPointMultipler", 1, 1, Integer.MAX_VALUE);
+                .defineInRange("amberCavesPointMultiplier", 1, 1, Integer.MAX_VALUE);
+        VILLAGECRAFTCITY_COMPLETED_MISSIONS = BUILDER
+                .comment("Number of missions members of VillageCraft City has completed on the regular server. This value is added to VillageCraft City's points")
+                .defineInRange("villagecraftCityCompletedMissions", 0, 1, Integer.MAX_VALUE);
+        GRIPPERCITY_COMPLETED_MISSIONS = BUILDER
+                .comment("Number of missions members of Gripper City has completed on the regular server. This value is added to Gripper City's points")
+                .defineInRange("gripperCityCompletedMissions", 0, 1, Integer.MAX_VALUE);
+        AMBERCAVES_COMPLETED_MISSIONS = BUILDER
+                .comment("Number of missions members of Amber Caves have completed on the regular server. This value is added to Amber Caves' points")
+                .defineInRange("amberCavesCompletedMissions", 0, 1, Integer.MAX_VALUE);
 
         BUILDER.pop();
         BUILDER.push("Discord Integration Config");

@@ -17,7 +17,7 @@ public class ModBrassworksMissionsEvents {
     public static void onMissionComplete(MissionEvent.Completed event) {
         System.out.println("mission complete");
 
-        if (ModList.get().isLoaded("luckperms") && ModList.get().isLoaded("brassworksmissions") && (ServerConfig.ENABLE_WAR_SYSTEM_FEATURES.get())) {
+        if (ModList.get().isLoaded("luckperms") && ModList.get().isLoaded("brassworksmissions")) {
             MissionSavedData data = MissionSavedData.getData(event.getPlayer().server);
 
             if (LuckpermsMethods.isInGroup(event.getPlayer(), ServerConfig.VILLAGECRAFTCITY_GROUP_NAME.get())) {

@@ -21,31 +21,25 @@ public class CompletedMissionsGetCommand {
     }
 
     private int execute(CommandContext<CommandSourceStack> context) {
-        if (ServerConfig.ENABLE_WAR_SYSTEM_FEATURES.get()) {
-            MinecraftServer server = context.getSource().getServer();
-            MissionSavedData data = MissionSavedData.getData(server);
-            ChatFormatting villageCraftCityStyling = ChatFormatting.WHITE;
-            ChatFormatting gripperCityStyling = ChatFormatting.WHITE;
-            ChatFormatting amberCavesStyling = ChatFormatting.WHITE;
+        MinecraftServer server = context.getSource().getServer();
+        MissionSavedData data = MissionSavedData.getData(server);
+        ChatFormatting villageCraftCityStyling = ChatFormatting.WHITE;
+        ChatFormatting gripperCityStyling = ChatFormatting.WHITE;
+        ChatFormatting amberCavesStyling = ChatFormatting.WHITE;
 
-            if (ModList.get().isLoaded("luckperms")) {
-                villageCraftCityStyling = LuckpermsMethods.getGroupStyling(ServerConfig.VILLAGECRAFTCITY_GROUP_NAME.get());
-                gripperCityStyling = LuckpermsMethods.getGroupStyling(ServerConfig.GRIPPERCITY_GROUP_NAME.get());
-                amberCavesStyling = LuckpermsMethods.getGroupStyling(ServerConfig.AMBERCAVES_GROUP_NAME.get());
-            }
-
-            MutableComponent message = Component.literal("VillageCraft City").withStyle(villageCraftCityStyling);
-            message.append(Component.literal(" : " + data.getVillagecraftCompletedMissions()));
-            message.append(Component.literal("\nGripper City").withStyle(gripperCityStyling));
-            message.append(Component.literal(" : " + data.getGripperCityCompletedMissions()));
-            message.append(Component.literal("\nThe Amber Caves").withStyle(amberCavesStyling));
-            message.append(Component.literal(" : " + data.getAmberCavesCompletedMissions()));
-            context.getSource().sendSuccess(() -> message, false);
-            return 1;
+        if (ModList.get().isLoaded("luckperms")) {
+            villageCraftCityStyling = LuckpermsMethods.getGroupStyling(ServerConfig.VILLAGECRAFTCITY_GROUP_NAME.get());
+            gripperCityStyling = LuckpermsMethods.getGroupStyling(ServerConfig.GRIPPERCITY_GROUP_NAME.get());
+            amberCavesStyling = LuckpermsMethods.getGroupStyling(ServerConfig.AMBERCAVES_GROUP_NAME.get());
         }
 
-        MutableComponent message = Component.literal("War features are not enabled. To use them, enable them in the VillageCraft 3 Essentials Common Config.").withStyle(ChatFormatting.RED);
-        context.getSource().sendFailure(message);
-        return -1;
+        MutableComponent message = Component.literal("VillageCraft City").withStyle(villageCraftCityStyling);
+        message.append(Component.literal(" : " + data.getVillagecraftCompletedMissions()));
+        message.append(Component.literal("\nGripper City").withStyle(gripperCityStyling));
+        message.append(Component.literal(" : " + data.getGripperCityCompletedMissions()));
+        message.append(Component.literal("\nThe Amber Caves").withStyle(amberCavesStyling));
+        message.append(Component.literal(" : " + data.getAmberCavesCompletedMissions()));
+        context.getSource().sendSuccess(() -> message, false);
+        return 1;
     }
 }
