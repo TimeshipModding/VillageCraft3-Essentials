@@ -1,0 +1,34 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "illagerinvasion"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "villagecraft3essentials",
+  "key": {
+    "#": {
+      "item": "minecraft:amethyst_shard"
+    },
+    "B": {
+      "item": "illagerinvasion:unusual_dust"
+    },
+    "D": {
+      "tag": "villagecraft3essentials:currency_gems"
+    },
+    "R": {
+      "item": "illagerinvasion:illusionary_dust"
+    }
+  },
+  "pattern": [
+    "#B#",
+    "RDR",
+    "#B#"
+  ],
+  "result": {
+    "count": 1,
+    "id": "illagerinvasion:hallowed_gem"
+  }
+}
