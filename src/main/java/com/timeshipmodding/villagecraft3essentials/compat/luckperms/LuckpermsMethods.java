@@ -120,8 +120,8 @@ public class LuckpermsMethods {
                 if (isInGroup(player, ServerConfig.MAYOR_GROUP_NAME.get())) {
                     teamName = "011 _" + ServerConfig.MAYOR_GROUP_NAME.get();
 
-                } else if (isInGroup(player, ServerConfig.CHIEF_OF_POLICE_NAME.get())) {
-                    teamName = "012 _" + ServerConfig.CHIEF_OF_POLICE_NAME.get();
+                } else if (isInGroup(player, ServerConfig.SHERIFF_NAME.get())) {
+                    teamName = "012 _" + ServerConfig.SHERIFF_NAME.get();
 
                 } else if (isInGroup(player, ServerConfig.TREASURER_GROUP_NAME.get())) {
                     teamName = "013 _" + ServerConfig.TREASURER_GROUP_NAME.get();
@@ -136,8 +136,8 @@ public class LuckpermsMethods {
                 if (isInGroup(player, ServerConfig.MAYOR_GROUP_NAME.get())) {
                     teamName = "011 _" + ServerConfig.MAYOR_GROUP_NAME.get();
 
-                } else if (isInGroup(player, ServerConfig.CHIEF_OF_POLICE_NAME.get())) {
-                    teamName = "022 _" + ServerConfig.CHIEF_OF_POLICE_NAME.get();
+                } else if (isInGroup(player, ServerConfig.SHERIFF_NAME.get())) {
+                    teamName = "022 _" + ServerConfig.SHERIFF_NAME.get();
 
                 } else if (isInGroup(player, ServerConfig.TREASURER_GROUP_NAME.get())) {
                     teamName = "023 _" + ServerConfig.TREASURER_GROUP_NAME.get();
@@ -152,8 +152,8 @@ public class LuckpermsMethods {
                 if (isInGroup(player, ServerConfig.MAYOR_GROUP_NAME.get())) {
                     teamName = "031 _" + ServerConfig.MAYOR_GROUP_NAME.get();
 
-                } else if (isInGroup(player, ServerConfig.CHIEF_OF_POLICE_NAME.get())) {
-                    teamName = "032 _" + ServerConfig.CHIEF_OF_POLICE_NAME.get();
+                } else if (isInGroup(player, ServerConfig.SHERIFF_NAME.get())) {
+                    teamName = "032 _" + ServerConfig.SHERIFF_NAME.get();
 
                 } else if (isInGroup(player, ServerConfig.TREASURER_GROUP_NAME.get())) {
                     teamName = "033 _" + ServerConfig.TREASURER_GROUP_NAME.get();

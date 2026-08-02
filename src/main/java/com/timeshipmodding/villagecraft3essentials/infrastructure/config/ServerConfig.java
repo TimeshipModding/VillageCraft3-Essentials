@@ -14,7 +14,7 @@ public class ServerConfig {
     public static ModConfigSpec.ConfigValue<String> GRIPPERCITY_GOVERNMENT_GROUP_NAME;
     public static ModConfigSpec.ConfigValue<String> AMBERCAVES_GOVERNMENT_GROUP_NAME;
     public static ModConfigSpec.ConfigValue<String> MAYOR_GROUP_NAME;
-    public static ModConfigSpec.ConfigValue<String> CHIEF_OF_POLICE_NAME;
+    public static ModConfigSpec.ConfigValue<String> SHERIFF_NAME;
     public static ModConfigSpec.ConfigValue<String> TREASURER_GROUP_NAME;
     public static ModConfigSpec.ConfigValue<String> JAILED_GROUP_NAME;
     public static ModConfigSpec.BooleanValue CHAT_TAB_NAME_FORMATTING;
@@ -71,8 +71,8 @@ public class ServerConfig {
 
         MAYOR_GROUP_NAME = BUILDER
                 .define("mayorGroupName", "mayor");
-        CHIEF_OF_POLICE_NAME = BUILDER
-                .define("chiefOfPoliceGroupName", "chiefofpolice");
+        SHERIFF_NAME = BUILDER
+                .define("sheriffGroupName", "sheriff");
         TREASURER_GROUP_NAME = BUILDER
                 .define("treasurerGroupName", "treasurer");
 
