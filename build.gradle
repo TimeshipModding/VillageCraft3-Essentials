@@ -121,39 +121,39 @@ dependencies {
     runtimeOnly("mezz.jei:jei-${mc_version}-neoforge:${jei_version}")
 
     // LuckPerms Dependency
-    compileOnly 'net.luckperms:api:5.4'
+    compileOnly 'net.luckperms:api:5.5'
 
     // Farmer's Delight Dependency
-    compileOnly "curse.maven:farmers-delight-398521:7801529"
-    dataAdditionalRuntimeClasspath "curse.maven:farmers-delight-398521:7801529"
+    compileOnly "curse.maven:farmers-delight-398521:8083481"
+    dataAdditionalRuntimeClasspath "curse.maven:farmers-delight-398521:8083481"
 
     // Aquaculture 2 Dependency
     compileOnly "com.teammetallurgy.aquaculture:aquaculture2_${mc_version}:${mc_version}-${aquaculture_version}"
     dataAdditionalRuntimeClasspath "com.teammetallurgy.aquaculture:aquaculture2_${mc_version}:${mc_version}-${aquaculture_version}"
 
     // Better Archeology Dependency
-    compileOnly "curse.maven:better-archeology-835687:7756575"
-    dataAdditionalRuntimeClasspath "curse.maven:better-archeology-835687:7756575"
+    compileOnly "curse.maven:better-archeology-835687:8577242"
+    dataAdditionalRuntimeClasspath "curse.maven:better-archeology-835687:8577242"
 
     // Discord Integration Dependency
     compileOnly 'de.erdbeerbaerlp:dcintegration.common:3.0.7'
 
     // Create: Brassworks Missions Dependency
-    compileOnly "curse.maven:create-brassworks-missions-1348982:7912609"
-    dataAdditionalRuntimeClasspath "curse.maven:create-brassworks-missions-1348982:7912609"
+    compileOnly "curse.maven:create-brassworks-missions-1348982:8561618"
+    dataAdditionalRuntimeClasspath "curse.maven:create-brassworks-missions-1348982:8561618"
 
     // Archers (RPG Series) Dependency
-    compileOnly "curse.maven:archers-932359:7690243"
+    compileOnly "curse.maven:archers-932359:8549422"
 
     // Spell Engine Dependency
-    compileOnly "curse.maven:spell-engine-807653:7789251"
+    compileOnly "curse.maven:spell-engine-807653:8600773"
 
     // Tiny Config Dependency
     compileOnly "maven.modrinth:tiny-config:${project.tiny_config_version}-neoforge"
 
     // BlueMap Dependency
-    compileOnly "de.bluecolored:bluemap-api:2.7.7"
-    dataAdditionalRuntimeClasspath "de.bluecolored:bluemap-api:2.7.7"
+    compileOnly "de.bluecolored:bluemap-api:${project.bluemap_api_version}"
+    dataAdditionalRuntimeClasspath "de.bluecolored:bluemap-api:${project.bluemap_api_version}"
 }
 
 // gradle.properties entries
@@ -166,6 +166,7 @@ var generateModMetadata = tasks.register("generateModMetadata", ProcessResources
             jei_version            : jei_version,
             aquaculture_version    : aquaculture_version,
             tiny_config_version    : tiny_config_version,
+            bluemap_api_version    : bluemap_api_version,
             mc_version             : mc_version,
             mod_id                 : mod_id,
             mod_name               : mod_name,
