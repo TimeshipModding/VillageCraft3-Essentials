@@ -140,7 +140,6 @@ dependencies {
 
     // Create: Brassworks Missions Dependency
     compileOnly "curse.maven:create-brassworks-missions-1348982:8561618"
-    dataAdditionalRuntimeClasspath "curse.maven:create-brassworks-missions-1348982:8561618"
 
     // Archers (RPG Series) Dependency
     compileOnly "curse.maven:archers-932359:8549422"

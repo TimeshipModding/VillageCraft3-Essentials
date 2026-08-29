@@ -20,6 +20,7 @@ public class ServerConfig {
     public static ModConfigSpec.BooleanValue CHAT_TAB_NAME_FORMATTING;
     public static ModConfigSpec.BooleanValue ENABLE_VILLAGECRAFT3_LOGO_TABLIST;
     public static ModConfigSpec.BooleanValue ENABLE_WAR_SYSTEM_FEATURES;
+    public static ModConfigSpec.BooleanValue ENABLE_BRASSWORKS_MISSIONS_OVERRIDE;
     public static ModConfigSpec.IntValue CORE_RESPAWN_TIME_MIN;
     public static ModConfigSpec.IntValue CORE_RESPAWN_TIME_MAX;
     public static ModConfigSpec.IntValue VILLAGECRAFTCITY_POINT_MULTIPLIER;
@@ -96,6 +97,13 @@ public class ServerConfig {
 
         ENABLE_VILLAGECRAFT3_LOGO_TABLIST = BUILDER
                 .define("enableVillageCraft3LogoTablist", false);
+
+        BUILDER.pop();
+        BUILDER.push("Enable Create: Brassworks Missions Reward Override");
+        BUILDER.comment("Enables override and replacement of brassworks mission rewards with currency gems depending on luckperms groups");
+
+        ENABLE_BRASSWORKS_MISSIONS_OVERRIDE = BUILDER
+                .define("enableBrassworksMissionsRewardOverride", false);
 
         BUILDER.pop();
         BUILDER.push("War System Config");

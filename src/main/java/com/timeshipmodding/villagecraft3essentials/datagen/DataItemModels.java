@@ -58,6 +58,7 @@ public class DataItemModels extends ItemModelProvider {
         basicItem(AMBER_HOOK.get());
         basicItem(COOKED_WORM.get());
         basicItem(WORM.get());
+        basicItem(MISSION_REWARD_PLACEHOLDER.get());
 
         // Tool Items
         handheldItem(RUBY_SWORD.get());

@@ -1,4 +1,4 @@
-// 1.21.1	2026-06-29T17:31:23.7087568	Item Models: villagecraft3essentials
+// 1.21.1	2026-08-10T18:46:06.6213425	Item Models: villagecraft3essentials
 b561339f3135d8189e8c687143e3c255ad9365ee assets/villagecraft3essentials/models/item/amber.json
 e5eaf01e189a5f62cb633c07077789fa2db9de9d assets/villagecraft3essentials/models/item/amber_axe.json
 4bf8075fbed485ee746f7dde059cfce5c47e1b5a assets/villagecraft3essentials/models/item/amber_boots.json
@@ -77,6 +77,7 @@ a61612cad2a030acbd1e4a537c56ce6a3fac4ed9 assets/villagecraft3essentials/models/i
 371914050a176b37c6abd4192cf27fa915dbe91e assets/villagecraft3essentials/models/item/light_gray_atm.json
 9bdeaf185155cc800495368f0b3ab06bcab5b27f assets/villagecraft3essentials/models/item/lime_atm.json
 645ff8c6bcc431660530afb75e9f2c636e9e18a8 assets/villagecraft3essentials/models/item/magenta_atm.json
+7fc3a51b76e067651a21300e67835078b70e7ee0 assets/villagecraft3essentials/models/item/mission_reward_placeholder.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/villagecraft3essentials/models/item/mole_spawn_egg.json
 055d05b065dc7aa898b578a90607ec391503644b assets/villagecraft3essentials/models/item/orange_atm.json
 ffc59d119a7533b7e5e8e2d87e9daf3753af3fb2 assets/villagecraft3essentials/models/item/pink_atm.json

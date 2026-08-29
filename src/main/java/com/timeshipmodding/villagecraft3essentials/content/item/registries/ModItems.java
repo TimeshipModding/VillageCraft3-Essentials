@@ -1,13 +1,10 @@
 package com.timeshipmodding.villagecraft3essentials.content.item.registries;
 
 import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
-import com.timeshipmodding.villagecraft3essentials.compat.aquaculture.AquaMethods;
-import com.timeshipmodding.villagecraft3essentials.compat.betterarcheology.BAMethods;
-import com.timeshipmodding.villagecraft3essentials.compat.farmersdelight.FDMethods;
 import com.timeshipmodding.villagecraft3essentials.content.entity.client.registries.ModEntities;
+import com.timeshipmodding.villagecraft3essentials.content.item.MissionRewardPlaceholderItem;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.*;
-import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.common.DeferredSpawnEggItem;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -45,4 +42,5 @@ public class ModItems {
     public static final DeferredItem<Item> COOKED_WORM = ITEMS.register("cooked_worm", () -> new Item(new Item.Properties().food(ModFoodProperties.COOKED_WORM)));
     public static final DeferredItem<Item> WORM_ON_A_STICK = ITEMS.register("worm_on_a_stick", () -> new FoodOnAStickItem<>(new Item.Properties().durability(25), ModEntities.MOLE.get(), 7));
     public static final DeferredItem<Item> POLICE_BATON = ITEMS.register("police_baton", () -> new MaceItem(new Item.Properties().rarity(Rarity.EPIC).durability(500).component(DataComponents.TOOL, MaceItem.createToolProperties()).attributes(MaceItem.createAttributes())));
+    public static final DeferredItem<Item> MISSION_REWARD_PLACEHOLDER = ITEMS.register("mission_reward_placeholder", () -> new MissionRewardPlaceholderItem(new Item.Properties()));
 }

@@ -33,13 +33,6 @@ public class ModServerEvents {
 
     @SubscribeEvent
     public static void onServerStarting(ServerStartingEvent event) {
-        if (ModList.get().isLoaded("luckperms")) {
-            VillageCraft3Essentials.LOGGER.info("Luckperms is installed. VillageCraft 3 Essentials luckperms features Enabled.");
-
-        } else {
-            VillageCraft3Essentials.LOGGER.info("Luckperms is not installed. VillageCraft 3 Essentials luckperms features Disabled.");
-        }
-
         AtmRandomConversionRatesSavedData data = AtmRandomConversionRatesSavedData.getData(event.getServer());
         int diamond_ruby = randomRubyCurrencyConversion();
         int diamond_amber = randomAmberCurrencyConversion();
@@ -105,7 +98,6 @@ public class ModServerEvents {
             MutableComponent formattedMsg = (MutableComponent) player.getDisplayName();
             formattedMsg.append(Component.literal(" >> ").withStyle(ChatFormatting.GRAY));
             formattedMsg.append(event.getMessage());
-
             event.setCanceled(true);
 
             player.server.execute(() -> {
@@ -139,13 +131,11 @@ public class ModServerEvents {
         if (ServerConfig.ENABLE_VILLAGECRAFT3_LOGO_TABLIST.get()) {
             MutableComponent logo = Component.literal("\uE001\uF801\uE002")
                     .withStyle(style -> style
-                            .withColor(0x4E5C24) // Trigger for the shader
-                            .withFont(LOGO_FONT) // Points to your default.json
+                            .withColor(0x4E5C24)
+                            .withFont(LOGO_FONT)
                     );
 
-            header = Component.literal("     ")
-                    .append(logo)
-                    .append(Component.literal("\n\n\n\n\n").withStyle(ChatFormatting.RESET));
+            header = Component.literal("     ").append(logo).append(Component.literal("\n\n\n\n\n").withStyle(ChatFormatting.RESET));
 
         } else {
             header = Component.literal(TabListVariables.tablistCharacters(""));
