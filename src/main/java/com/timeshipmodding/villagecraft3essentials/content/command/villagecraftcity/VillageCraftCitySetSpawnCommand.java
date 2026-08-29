@@ -50,7 +50,7 @@ public class VillageCraftCitySetSpawnCommand {
             return 0;
 
         } else {
-            if (ModList.get().isLoaded("bluemap")) {
+            if (ModList.get().isLoaded("bluemap") && ServerConfig.ENABLE_SETSPAWN_BLUEMAP_MARKER_CREATION.get()) {
                 BlueMapMethods.manageSpawnMarker(playerPos.getX(), playerPos.getY(), playerPos.getZ(), "VillageCraft City", "villagecraft-city", player);
             }
 

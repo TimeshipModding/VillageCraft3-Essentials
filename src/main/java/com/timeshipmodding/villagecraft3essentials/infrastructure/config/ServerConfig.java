@@ -19,8 +19,9 @@ public class ServerConfig {
     public static ModConfigSpec.ConfigValue<String> JAILED_GROUP_NAME;
     public static ModConfigSpec.BooleanValue CHAT_TAB_NAME_FORMATTING;
     public static ModConfigSpec.BooleanValue ENABLE_VILLAGECRAFT3_LOGO_TABLIST;
-    public static ModConfigSpec.BooleanValue ENABLE_WAR_SYSTEM_FEATURES;
     public static ModConfigSpec.BooleanValue ENABLE_BRASSWORKS_MISSIONS_OVERRIDE;
+    public static ModConfigSpec.BooleanValue ENABLE_SETSPAWN_BLUEMAP_MARKER_CREATION;
+    public static ModConfigSpec.BooleanValue ENABLE_WAR_SYSTEM_FEATURES;
     public static ModConfigSpec.IntValue CORE_RESPAWN_TIME_MIN;
     public static ModConfigSpec.IntValue CORE_RESPAWN_TIME_MAX;
     public static ModConfigSpec.IntValue VILLAGECRAFTCITY_POINT_MULTIPLIER;
@@ -97,6 +98,13 @@ public class ServerConfig {
 
         ENABLE_VILLAGECRAFT3_LOGO_TABLIST = BUILDER
                 .define("enableVillageCraft3LogoTablist", false);
+
+        BUILDER.pop();
+        BUILDER.push("Enable setspawn Bluemap Marker Creation");
+        BUILDER.comment("Enables /{town} setspawn commands to create a bluemap poi marker");
+
+        ENABLE_SETSPAWN_BLUEMAP_MARKER_CREATION = BUILDER
+                .define("enableSetspawnBluemapMarkerCreation", false);
 
         BUILDER.pop();
         BUILDER.push("Enable Create: Brassworks Missions Reward Override");
