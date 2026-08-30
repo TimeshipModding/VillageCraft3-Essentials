@@ -18,15 +18,13 @@ public record AtmReturnItemPacket() implements CustomPacketPayload {
         return TYPE;
     }
 
-    public static class Handler {
-        public static void handle(final AtmReturnItemPacket payload, final IPayloadContext context) {
-            context.enqueueWork(() -> {
-                ServerPlayer player = (ServerPlayer) context.player();
+    public static void handle(final AtmReturnItemPacket payload, final IPayloadContext context) {
+        context.enqueueWork(() -> {
+            ServerPlayer player = (ServerPlayer) context.player();
 
-                if (player.containerMenu instanceof AtmMenu serverMenu) {
-                    serverMenu.returnItemsToPlayer(player);
-                }
-            });
-        }
+            if (player.containerMenu instanceof AtmMenu serverMenu) {
+                serverMenu.returnItemsToPlayer(player);
+            }
+        });
     }
 }

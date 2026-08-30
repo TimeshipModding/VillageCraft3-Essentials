@@ -1,5 +1,6 @@
 package com.timeshipmodding.villagecraft3essentials;
 
+import com.timeshipmodding.villagecraft3essentials.compat.bluemap.event.registries.ModBluemapEvents;
 import com.timeshipmodding.villagecraft3essentials.compat.brassworksmissions.event.registries.ModBrassworksMissionsEvents;
 import com.timeshipmodding.villagecraft3essentials.content.block.registries.ModBlocks;
 import com.timeshipmodding.villagecraft3essentials.content.block.entity.registries.ModBlockEntities;
@@ -49,9 +50,13 @@ public class VillageCraft3Essentials {
         modContainer.registerConfig(ModConfig.Type.COMMON, CommonConfig.SPEC);
         modContainer.registerConfig(ModConfig.Type.SERVER, ServerConfig.SPEC);
 
-        // Register Create: Brassworks Missions events
+        // Register compat events
         if (ModList.get().isLoaded("brassworksmissions")) {
             ModBrassworksMissionsEvents.registerEvents();
+        }
+
+        if (ModList.get().isLoaded("bluemap")) {
+            ModBluemapEvents.registerEvents();
         }
     }
 }

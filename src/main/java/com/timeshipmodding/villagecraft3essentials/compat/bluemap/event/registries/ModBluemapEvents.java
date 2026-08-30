@@ -1,6 +1,5 @@
 package com.timeshipmodding.villagecraft3essentials.compat.bluemap.event.registries;
 
-import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.config.ServerConfig;
 import de.bluecolored.bluemap.api.BlueMapAPI;
 import de.bluecolored.bluemap.api.BlueMapMap;
@@ -8,15 +7,18 @@ import de.bluecolored.bluemap.api.gson.MarkerGson;
 import de.bluecolored.bluemap.api.markers.MarkerSet;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModList;
-import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.server.ServerStartedEvent;
 
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-@EventBusSubscriber(modid = VillageCraft3Essentials.MODID)
-public class BluemapEvents {
+public class ModBluemapEvents {
+    public static void registerEvents() {
+        NeoForge.EVENT_BUS.register(ModBluemapEvents.class);
+    }
+
     @SubscribeEvent
     public static void onCommandsRegister(ServerStartedEvent event) {
         if (ModList.get().isLoaded("bluemap") && ServerConfig.ENABLE_SETSPAWN_BLUEMAP_MARKER_CREATION.get()) {

@@ -21,6 +21,7 @@ public class ServerConfig {
     public static ModConfigSpec.BooleanValue ENABLE_VILLAGECRAFT3_LOGO_TABLIST;
     public static ModConfigSpec.BooleanValue ENABLE_BRASSWORKS_MISSIONS_OVERRIDE;
     public static ModConfigSpec.BooleanValue ENABLE_SETSPAWN_BLUEMAP_MARKER_CREATION;
+    public static ModConfigSpec.BooleanValue ENABLE_TOWN_DEBUG_BLUEMAP_MARKERS;
     public static ModConfigSpec.BooleanValue ENABLE_WAR_SYSTEM_FEATURES;
     public static ModConfigSpec.IntValue CORE_RESPAWN_TIME_MIN;
     public static ModConfigSpec.IntValue CORE_RESPAWN_TIME_MAX;
@@ -100,18 +101,22 @@ public class ServerConfig {
                 .define("enableVillageCraft3LogoTablist", false);
 
         BUILDER.pop();
-        BUILDER.push("Enable setspawn Bluemap Marker Creation");
-        BUILDER.comment("Enables /{town} setspawn commands to create a bluemap poi marker");
-
-        ENABLE_SETSPAWN_BLUEMAP_MARKER_CREATION = BUILDER
-                .define("enableSetspawnBluemapMarkerCreation", false);
-
-        BUILDER.pop();
         BUILDER.push("Enable Create: Brassworks Missions Reward Override");
         BUILDER.comment("Enables override and replacement of brassworks mission rewards with currency gems depending on luckperms groups");
 
         ENABLE_BRASSWORKS_MISSIONS_OVERRIDE = BUILDER
                 .define("enableBrassworksMissionsRewardOverride", false);
+
+        BUILDER.pop();
+        BUILDER.push("Bluemap Compat Config");
+
+        ENABLE_SETSPAWN_BLUEMAP_MARKER_CREATION = BUILDER
+                .comment("Enables /{town} setspawn commands to create a bluemap poi marker")
+                .define("enableSetspawnBluemapMarkerCreation", false);
+
+        ENABLE_TOWN_DEBUG_BLUEMAP_MARKERS = BUILDER
+                .comment("Enables debug entry for which town the player is standing in based on bluemap town border markers")
+                .define("enableTownDebugBluemapMarkers", false);
 
         BUILDER.pop();
         BUILDER.push("War System Config");

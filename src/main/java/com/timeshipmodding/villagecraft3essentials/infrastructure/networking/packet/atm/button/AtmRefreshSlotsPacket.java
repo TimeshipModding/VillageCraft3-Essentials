@@ -23,15 +23,13 @@ public record AtmRefreshSlotsPacket(BlockPos pos) implements CustomPacketPayload
         return TYPE;
     }
 
-    public static class Handler {
-        public static void handle(final AtmRefreshSlotsPacket payload, final IPayloadContext context) {
-            context.enqueueWork(() -> {
-                if (context.player() instanceof ServerPlayer player) {
-                    if (player.containerMenu instanceof AtmMenu atmMenu) {
-                        atmMenu.refreshSlots();
-                    }
+    public static void handle(final AtmRefreshSlotsPacket payload, final IPayloadContext context) {
+        context.enqueueWork(() -> {
+            if (context.player() instanceof ServerPlayer player) {
+                if (player.containerMenu instanceof AtmMenu atmMenu) {
+                    atmMenu.refreshSlots();
                 }
-            });
-        }
+            }
+        });
     }
 }

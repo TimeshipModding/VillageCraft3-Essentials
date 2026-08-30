@@ -1,6 +1,7 @@
 package com.timeshipmodding.villagecraft3essentials.event.registries;
 
 import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
+import com.timeshipmodding.villagecraft3essentials.infrastructure.networking.packet.DebugTownPacket;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.networking.packet.HorseSyncCurrencyArmorEquipPacket;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.networking.packet.wallet.OpenWalletMenuPacket;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.networking.packet.atm.*;
@@ -35,15 +36,15 @@ public class ModNetworkingEvents {
         registrar.playToServer(
                 AtmRefreshSlotsPacket.TYPE,
                 AtmRefreshSlotsPacket.STREAM_CODEC,
-                AtmRefreshSlotsPacket.Handler::handle);
+                AtmRefreshSlotsPacket::handle);
         registrar.playToServer(
                 AtmReturnItemPacket.TYPE,
                 AtmReturnItemPacket.STREAM_CODEC,
-                AtmReturnItemPacket.Handler::handle);
+                AtmReturnItemPacket::handle);
         registrar.playToClient(
                 AtmSyncSlotPositionsPacket.TYPE,
                 AtmSyncSlotPositionsPacket.STREAM_CODEC,
-                AtmSyncSlotPositionsPacket.Handler::handle);
+                AtmSyncSlotPositionsPacket::handle);
         registrar.playToServer(
                 AtmToolConvertButtonPressedPacket.TYPE,
                 AtmToolConvertButtonPressedPacket.STREAM_CODEC,
@@ -59,7 +60,11 @@ public class ModNetworkingEvents {
         registrar.playToServer(
                 CloseWalletMenuPacket.TYPE,
                 CloseWalletMenuPacket.STREAM_CODEC,
-                CloseWalletMenuPacket.Handler::handle);
+                CloseWalletMenuPacket::handle);
+        registrar.playToClient(
+                DebugTownPacket.TYPE,
+                DebugTownPacket.STREAM_CODEC,
+                DebugTownPacket::handle);
         registrar.playBidirectional(
                 HorseSyncCurrencyArmorEquipPacket.TYPE,
                 HorseSyncCurrencyArmorEquipPacket.STREAM_CODEC,

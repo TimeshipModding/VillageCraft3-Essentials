@@ -1,7 +1,8 @@
 package com.timeshipmodding.villagecraft3essentials.event.registries;
 
-import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
+import  com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
 import com.timeshipmodding.villagecraft3essentials.compat.aquaculture.AquaMethods;
+import com.timeshipmodding.villagecraft3essentials.compat.bluemap.BlueMapMethods;
 import com.timeshipmodding.villagecraft3essentials.compat.luckperms.LuckpermsMethods;
 import com.timeshipmodding.villagecraft3essentials.content.command.DiscordLinkPlayerCommand;
 import com.timeshipmodding.villagecraft3essentials.content.block.registries.ModBlocks;
@@ -22,6 +23,7 @@ import com.timeshipmodding.villagecraft3essentials.infrastructure.data.JailAndPa
 import com.timeshipmodding.villagecraft3essentials.infrastructure.data.saveddata.SpawnSavedData;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.data.saveddata.WarPointsSavedData;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.handler.item.HorseCurrencyArmorItemHandler;
+import com.timeshipmodding.villagecraft3essentials.infrastructure.networking.packet.DebugTownPacket;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.networking.packet.atm.AtmRandomConversionRatesPacket;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.data.saveddata.AtmRandomConversionRatesSavedData;
 import net.minecraft.ChatFormatting;
@@ -51,7 +53,6 @@ import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.neoforge.server.command.ConfigCommand;
-import org.checkerframework.checker.units.qual.C;
 
 import java.util.*;
 
@@ -308,6 +309,13 @@ public class ModEvents {
 
                     player.setData(ModDataAttachments.JAIL_COMMAND_DATA, jailCommandData.releaseTimeReset());
                 }
+            }
+        }
+
+        if (ModList.get().isLoaded("bluemap") && ServerConfig.ENABLE_TOWN_DEBUG_BLUEMAP_MARKERS.get()) {
+            if (player.tickCount % 10 == 0) {
+                String town = BlueMapMethods.town(player);
+                PacketDistributor.sendToPlayer(player, new DebugTownPacket(town));
             }
         }
     }

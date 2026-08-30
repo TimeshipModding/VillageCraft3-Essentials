@@ -25,16 +25,14 @@ public record AtmSyncSlotPositionsPacket(int inputX, int inputY, int outputX, in
         return TYPE;
     }
 
-    public static class Handler {
-        public static void handle(final AtmSyncSlotPositionsPacket payload, final IPayloadContext context) {
-            context.enqueueWork(() -> {
-                if (Minecraft.getInstance().player.containerMenu instanceof AtmMenu atmMenu) {
-                    atmMenu.inputSlot.x = payload.inputX();
-                    atmMenu.inputSlot.y = payload.inputY();
-                    atmMenu.outputSlot.x = payload.outputX();
-                    atmMenu.outputSlot.y = payload.outputY();
-                }
-            });
-        }
+    public static void handle(final AtmSyncSlotPositionsPacket payload, final IPayloadContext context) {
+        context.enqueueWork(() -> {
+            if (Minecraft.getInstance().player.containerMenu instanceof AtmMenu atmMenu) {
+                atmMenu.inputSlot.x = payload.inputX();
+                atmMenu.inputSlot.y = payload.inputY();
+                atmMenu.outputSlot.x = payload.outputX();
+                atmMenu.outputSlot.y = payload.outputY();
+            }
+        });
     }
 }

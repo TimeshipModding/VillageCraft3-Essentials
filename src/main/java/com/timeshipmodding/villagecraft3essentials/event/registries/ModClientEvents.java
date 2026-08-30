@@ -5,10 +5,10 @@ import com.timeshipmodding.villagecraft3essentials.compat.aquaculture.AquaMethod
 import com.timeshipmodding.villagecraft3essentials.content.entity.client.registries.ModEntities;
 import com.timeshipmodding.villagecraft3essentials.content.entity.client.renderers.MoleRenderer;
 import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModCompatItems;
-import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems;
 import com.timeshipmodding.villagecraft3essentials.content.menu.registries.ModMenus;
 import com.timeshipmodding.villagecraft3essentials.content.screen.AtmScreen;
 import com.timeshipmodding.villagecraft3essentials.content.screen.WalletScreen;
+import com.timeshipmodding.villagecraft3essentials.infrastructure.data.cache.DebugTownDataCache;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.mixin.MouseHandlerMixinAccessor;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.networking.packet.wallet.OpenWalletMenuPacket;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.tags.registries.ModItemTags;
@@ -24,14 +24,18 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.neoforge.client.event.CustomizeGuiOverlayEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.client.event.ScreenEvent;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
+
+import java.util.List;
 
 @EventBusSubscriber(modid = VillageCraft3Essentials.MODID, value = Dist.CLIENT)
 public class ModClientEvents {
@@ -108,6 +112,17 @@ public class ModClientEvents {
             GuiGraphics graphics = event.getGuiGraphics();
             graphics.blitSprite(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "wallet_icon"), inventoryScreen.getGuiLeft() + 134, inventoryScreen.getGuiTop() + 62, 16, 16);
             walletButton.setX(inventoryScreen.getGuiLeft() + 132);
+        }
+    }
+
+    @SubscribeEvent(priority = EventPriority.HIGHEST)
+    public static void onRenderOverlay(CustomizeGuiOverlayEvent.DebugText event) {
+        List<String> town = event.getLeft();
+        String townName = DebugTownDataCache.getTown();
+
+        if (!townName.isEmpty()) {
+            town.add("");
+            town.add("[VillageCraft 3 Essentials] Town: " + townName);
         }
     }
 }

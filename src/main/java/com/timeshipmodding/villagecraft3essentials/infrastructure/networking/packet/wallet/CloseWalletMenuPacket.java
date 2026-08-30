@@ -20,29 +20,27 @@ public record CloseWalletMenuPacket() implements CustomPacketPayload {
         return TYPE;
     }
 
-    public static class Handler {
-        public static void handle(final CloseWalletMenuPacket payload, final IPayloadContext context) {
-            context.enqueueWork(() -> {
-                ServerPlayer player = (ServerPlayer) context.player();
-                InventoryMenu inventoryMenu = player.inventoryMenu;
+    public static void handle(final CloseWalletMenuPacket payload, final IPayloadContext context) {
+        context.enqueueWork(() -> {
+            ServerPlayer player = (ServerPlayer) context.player();
+            InventoryMenu inventoryMenu = player.inventoryMenu;
 
-                for (int i = 1; i <= 4; i++) {
-                    Slot slot = inventoryMenu.getSlot(i);
+            for (int i = 1; i <= 4; i++) {
+                Slot slot = inventoryMenu.getSlot(i);
 
-                    if (slot.hasItem()) {
-                        ItemStack stack = slot.getItem();
+                if (slot.hasItem()) {
+                    ItemStack stack = slot.getItem();
 
-                        if (!player.getInventory().add(stack)) {
-                            player.drop(stack, false);
-                        }
-
-                        slot.set(ItemStack.EMPTY);
+                    if (!player.getInventory().add(stack)) {
+                        player.drop(stack, false);
                     }
-                }
 
-                inventoryMenu.getSlot(0).set(ItemStack.EMPTY);
-                inventoryMenu.sendAllDataToRemote();
-            });
-        }
+                    slot.set(ItemStack.EMPTY);
+                }
+            }
+
+            inventoryMenu.getSlot(0).set(ItemStack.EMPTY);
+            inventoryMenu.sendAllDataToRemote();
+        });
     }
 }
