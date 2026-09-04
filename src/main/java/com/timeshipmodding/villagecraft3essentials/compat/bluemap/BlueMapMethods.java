@@ -27,12 +27,18 @@ public class BlueMapMethods {
             for (BlueMapMap map : world.getMaps()) {
                 if (map.getMarkerSets().get(markerSetId) != null) {
                     POIMarker spawnPointMarker = (POIMarker) map.getMarkerSets().get(markerSetId).getMarkers().get(markerSetId + "-spawn");
-                    spawnPointMarker.setPosition(new Vector3d(xPos + 0.5, yPos, zPos + 0.5));
 
-                    try (FileWriter writer = new FileWriter(new File(getMarkersFolder(), markerSetId + ".json"))) {
-                        MarkerGson.INSTANCE.toJson(map.getMarkerSets().get(markerSetId), writer);
-                    } catch (IOException ex) {
-                        ex.printStackTrace();
+                    if (spawnPointMarker != null) {
+                        spawnPointMarker.setPosition(new Vector3d(xPos + 0.5, yPos, zPos + 0.5));
+
+                        try (FileWriter writer = new FileWriter(new File(getMarkersFolder(), markerSetId + ".json"))) {
+                            MarkerGson.INSTANCE.toJson(map.getMarkerSets().get(markerSetId), writer);
+                        } catch (IOException ex) {
+                            ex.printStackTrace();
+                        }
+
+                    } else {
+                        createSpawnMarker(xPos + 0.5, yPos, zPos + 0.5, label, markerSetId, player);
                     }
 
                 } else {
@@ -42,7 +48,20 @@ public class BlueMapMethods {
         });
     }
 
-    public static String town(Player player) {
+    public static void removeSpawnMarker(String markerSetId, ServerPlayer player) {
+        BlueMapAPI.getInstance().flatMap(api -> api.getWorld(player.getServer().overworld())).ifPresent(world -> {
+            for (BlueMapMap map : world.getMaps()) {
+                map.getMarkerSets().get(markerSetId).getMarkers().remove(markerSetId + "-spawn");
+
+                try (FileWriter writer = new FileWriter(new File(getMarkersFolder(), markerSetId + ".json"))) {
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+    }
+
+    public static String townPlayerIsStandingIn(Player player) {
         if (ServerConfig.ENABLE_WAR_SYSTEM_FEATURES.get()) {
             return "The War Server";
         } else if (player.level().dimension() != Level.OVERWORLD) {

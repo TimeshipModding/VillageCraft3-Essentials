@@ -71,6 +71,7 @@ public class ModEvents {
         new AmberCavesJailCommand(event.getDispatcher());
         new AmberCavesKickCommand(event.getDispatcher());
         new AmberCavesPardonCommand(event.getDispatcher());
+        new AmberCavesRemoveSpawnCommand(event.getDispatcher());
         new AmberCavesSetJailCommand(event.getDispatcher());
         new AmberCavesSetSpawnCommand(event.getDispatcher());
         new AmberCavesSpawnCommand(event.getDispatcher());
@@ -79,6 +80,7 @@ public class ModEvents {
         new GripperCityJailCommand(event.getDispatcher());
         new GripperCityKickCommand(event.getDispatcher());
         new GripperCityPardonCommand(event.getDispatcher());
+        new GripperCityRemoveSpawnCommand(event.getDispatcher());
         new GripperCitySetJailCommand(event.getDispatcher());
         new GripperCitySetSpawnCommand(event.getDispatcher());
         new GripperCitySpawnCommand(event.getDispatcher());
@@ -93,6 +95,7 @@ public class ModEvents {
         new VillageCraftCityJailCommand(event.getDispatcher());
         new VillageCraftCityKickCommand(event.getDispatcher());
         new VillageCraftCityPardonCommand(event.getDispatcher());
+        new VillageCraftCityRemoveSpawnCommand(event.getDispatcher());
         new VillageCraftCitySetJailCommand(event.getDispatcher());
         new VillageCraftCitySetSpawnCommand(event.getDispatcher());
         new VillageCraftCitySpawnCommand(event.getDispatcher());
@@ -314,7 +317,7 @@ public class ModEvents {
 
         if (ModList.get().isLoaded("bluemap") && ServerConfig.ENABLE_TOWN_DEBUG_BLUEMAP_MARKERS.get()) {
             if (player.tickCount % 10 == 0) {
-                String town = BlueMapMethods.town(player);
+                String town = BlueMapMethods.townPlayerIsStandingIn(player);
                 PacketDistributor.sendToPlayer(player, new DebugTownPacket(town));
             }
         }
