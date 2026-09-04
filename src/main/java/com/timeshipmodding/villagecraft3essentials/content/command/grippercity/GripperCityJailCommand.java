@@ -20,6 +20,8 @@ import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.level.GameType;
 import net.neoforged.fml.ModList;
 
@@ -42,7 +44,6 @@ public class GripperCityJailCommand {
         JailSavedData savedData = JailSavedData.getData(server);
         int[] jail = savedData.getGripperCityJail();
         ChatFormatting groupStyling = ChatFormatting.WHITE;
-        long currentTime = System.currentTimeMillis();
 
         if (ModList.get().isLoaded("luckperms")) {
             groupStyling = LuckpermsMethods.getGroupStyling(ServerConfig.GRIPPERCITY_GROUP_NAME.get());
@@ -68,7 +69,9 @@ public class GripperCityJailCommand {
                 }
 
                 player.teleportTo(serverlevel, jail[0] + 0.5, jail[1], jail[2] + 0.5, jail[3], jail[4]);
-                player.setGameMode(GameType.ADVENTURE);
+                player.addEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, -1, 4, false, true));
+                player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, -1, 2, false, true));
+                player.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, -1, 2, false, true));
                 BlockPos playerPos = player.blockPosition();
                 player.setRespawnPosition(ServerLevel.OVERWORLD, playerPos, player.getYRot(), true, false);
                 MutableComponent message = Component.literal("You have been arrested and teleported to ");
