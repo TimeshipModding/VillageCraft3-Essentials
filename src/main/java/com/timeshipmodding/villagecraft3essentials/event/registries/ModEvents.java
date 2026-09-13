@@ -68,6 +68,7 @@ public class ModEvents {
     @SubscribeEvent
     public static void onCommandsRegister(RegisterCommandsEvent event) {
         new AmberCavesBlacklistCommand(event.getDispatcher());
+        new AmberCavesGetRoleplayItemCommand(event.getDispatcher(), event.getBuildContext());
         new AmberCavesJailCommand(event.getDispatcher());
         new AmberCavesKickCommand(event.getDispatcher());
         new AmberCavesPardonCommand(event.getDispatcher());
@@ -77,6 +78,7 @@ public class ModEvents {
         new AmberCavesSpawnCommand(event.getDispatcher());
         new AmberCavesWhitelistCommand(event.getDispatcher());
         new GripperCityBlacklistCommand(event.getDispatcher());
+        new GripperCityGetRoleplayItemCommand(event.getDispatcher(), event.getBuildContext());
         new GripperCityJailCommand(event.getDispatcher());
         new GripperCityKickCommand(event.getDispatcher());
         new GripperCityPardonCommand(event.getDispatcher());
@@ -92,6 +94,7 @@ public class ModEvents {
         new TpadenyCommand(event.getDispatcher());
         new TpahereCommand(event.getDispatcher());
         new VillageCraftCityBlacklistCommand(event.getDispatcher());
+        new VillageCraftCityGetRoleplayItemCommand(event.getDispatcher(), event.getBuildContext());
         new VillageCraftCityJailCommand(event.getDispatcher());
         new VillageCraftCityKickCommand(event.getDispatcher());
         new VillageCraftCityPardonCommand(event.getDispatcher());

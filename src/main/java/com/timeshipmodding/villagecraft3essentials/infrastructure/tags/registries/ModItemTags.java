@@ -13,6 +13,9 @@ public class ModItemTags {
     public static TagKey<Item> AMBER_CONVERTIBLE_TOOLS = createTag("amber_convertible_tools");
     public static TagKey<Item> CURRENCY_GEMS = createTag("currency_gems");
     public static TagKey<Item> WALLET_ACCEPTED_ITEMS = createTag("wallet_accepted_items");
+    public static TagKey<Item> VILLAGECRAFT_CITY_ROLEPLAY_ITEMS = createTag("villagecraft_city_roleplay_items");
+    public static TagKey<Item> GRIPPER_CITY_ROLEPLAY_ITEMS = createTag("gripper_city_roleplay_items");
+    public static TagKey<Item> AMBER_CAVES_ROLEPLAY_ITEMS = createTag("amber_caves_roleplay_items");
 
     private static TagKey<Item> createTag(String name) {
         return ItemTags.create(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, name));

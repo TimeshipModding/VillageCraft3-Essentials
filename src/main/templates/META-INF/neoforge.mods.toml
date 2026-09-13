@@ -35,6 +35,14 @@ license="${mod_license}"
     ordering="NONE"
     side="BOTH"
 
+# Dependency for NeoForge
+[[dependencies.${mod_id}]]
+    modId="accessories"
+    type="required"
+    versionRange="[1.1.0-beta.50+1.21.1,)"
+    ordering="NONE"
+    side="BOTH"
+
 # Dependency for JEI
 [[dependencies.${mod_id}]]
     modId="jei"

@@ -1,6 +1,7 @@
 package com.timeshipmodding.villagecraft3essentials.datagen.tags;
 
 import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
+import io.wispforest.accessories.api.data.AccessoriesTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
@@ -246,6 +247,10 @@ public class DataItemTags extends ItemTagsProvider {
                 .add(AMBER_BLOCK.get().asItem())
                 .add(EMERALD)
                 .add(EMERALD_BLOCK);
+
+        // Accessories Tags
+        tag(AccessoriesTags.HAT_TAG)
+                .add(GUBERNATORIAL_HAT_1.get());
 
         // Farmer's Delight Tags
         tag(FARMERSDELIGHT_KNIVES)

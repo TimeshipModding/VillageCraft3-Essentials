@@ -1,7 +1,7 @@
 plugins {
     id 'java-library'
     id 'maven-publish'
-    id 'net.neoforged.moddev' version '2.0.141'
+    id 'net.neoforged.moddev' version '2.0.146'
     id 'idea'
 }
 
@@ -15,9 +15,12 @@ group = mod_group_id
 repositories {
     mavenCentral()
 
-    maven {
-        url "https://girafi.dk/maven/"
-    }
+    maven { url 'https://maven.wispforest.io/releases' }
+    maven { url 'https://maven.su5ed.dev/releases' }
+    maven { url 'https://maven.fabricmc.net' }
+    maven {url "https://girafi.dk/maven/"}
+    maven {url "https://repo.erdbeerbaerlp.de/repository/maven-public/"}
+    maven {url "https://repo.bluecolored.de/releases"}
 
     maven {
         url "https://cursemaven.com"
@@ -37,14 +40,6 @@ repositories {
     maven {
         name = "Jared's maven"
         url = "https://maven.blamejared.com/"
-    }
-
-    maven {
-        url "https://repo.erdbeerbaerlp.de/repository/maven-public/"
-    }
-
-    maven {
-        url "https://repo.bluecolored.de/releases"
     }
 }
 
@@ -116,43 +111,48 @@ configurations {
 }
 
 dependencies {
+    // Accessories Dependency
+    implementation("io.wispforest:accessories-neoforge:${accessories_version}") {
+        exclude group: "com.flowpowered"
+    }
+
     // JEI Dependency
     compileOnly("mezz.jei:jei-${mc_version}-neoforge-api:${jei_version}")
     runtimeOnly("mezz.jei:jei-${mc_version}-neoforge:${jei_version}")
 
     // LuckPerms Dependency
-    compileOnly 'net.luckperms:api:5.5'
+    compileOnly("net.luckperms:api:5.5")
 
     // Farmer's Delight Dependency
-    compileOnly "curse.maven:farmers-delight-398521:8083481"
-    dataAdditionalRuntimeClasspath "curse.maven:farmers-delight-398521:8083481"
+    compileOnly("curse.maven:farmers-delight-398521:8083481")
+    dataAdditionalRuntimeClasspath("curse.maven:farmers-delight-398521:8083481")
 
     // Aquaculture 2 Dependency
-    compileOnly "com.teammetallurgy.aquaculture:aquaculture2_${mc_version}:${mc_version}-${aquaculture_version}"
-    dataAdditionalRuntimeClasspath "com.teammetallurgy.aquaculture:aquaculture2_${mc_version}:${mc_version}-${aquaculture_version}"
+    compileOnly("com.teammetallurgy.aquaculture:aquaculture2_${mc_version}:${mc_version}-${aquaculture_version}")
+    dataAdditionalRuntimeClasspath("com.teammetallurgy.aquaculture:aquaculture2_${mc_version}:${mc_version}-${aquaculture_version}")
 
     // Better Archeology Dependency
-    compileOnly "curse.maven:better-archeology-835687:8577242"
-    dataAdditionalRuntimeClasspath "curse.maven:better-archeology-835687:8577242"
+    compileOnly("curse.maven:better-archeology-835687:8577242")
+    dataAdditionalRuntimeClasspath("curse.maven:better-archeology-835687:8577242")
 
     // Discord Integration Dependency
-    compileOnly 'de.erdbeerbaerlp:dcintegration.common:3.0.7'
+    compileOnly("de.erdbeerbaerlp:dcintegration.common:3.0.7")
 
     // Create: Brassworks Missions Dependency
-    compileOnly "curse.maven:create-brassworks-missions-1348982:8561618"
+    compileOnly("curse.maven:create-brassworks-missions-1348982:8561618")
 
     // Archers (RPG Series) Dependency
-    compileOnly "curse.maven:archers-932359:8549422"
+    compileOnly("curse.maven:archers-932359:8549422")
 
     // Spell Engine Dependency
-    compileOnly "curse.maven:spell-engine-807653:8600773"
+    compileOnly("curse.maven:spell-engine-807653:8600773")
 
     // Tiny Config Dependency
-    compileOnly "maven.modrinth:tiny-config:${project.tiny_config_version}-neoforge"
+    compileOnly("maven.modrinth:tiny-config:${project.tiny_config_version}-neoforge")
 
     // BlueMap Dependency
-    compileOnly "de.bluecolored:bluemap-api:${project.bluemap_api_version}"
-    dataAdditionalRuntimeClasspath "de.bluecolored:bluemap-api:${project.bluemap_api_version}"
+    compileOnly ("de.bluecolored:bluemap-api:${project.bluemap_api_version}")
+    dataAdditionalRuntimeClasspath("de.bluecolored:bluemap-api:${project.bluemap_api_version}")
 }
 
 // gradle.properties entries
@@ -162,6 +162,7 @@ var generateModMetadata = tasks.register("generateModMetadata", ProcessResources
             minecraft_version_range: minecraft_version_range,
             neo_version            : neo_version,
             loader_version_range   : loader_version_range,
+            accessories_version    : accessories_version,
             jei_version            : jei_version,
             aquaculture_version    : aquaculture_version,
             tiny_config_version    : tiny_config_version,
