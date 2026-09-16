@@ -44,5 +44,4 @@ public class ModCompatItems {
     public static final DeferredItem<Item> AMBER_BRUSH = ITEMS.register("amber_brush", () -> ModList.get().isLoaded("betterarcheology")
             ? BAMethods.getBetterBrushItemSupplier().get()
             : new Item(new Item.Properties()));
-
 }

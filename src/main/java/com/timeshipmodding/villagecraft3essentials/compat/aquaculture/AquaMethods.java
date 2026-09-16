@@ -35,7 +35,7 @@ public class AquaMethods {
             return hookItem;
 
         } else if (Objects.equals(hook, "amber")) {
-            DeferredItem<Item> hookItem = ModItems.ITEMS.register(AMBER.getName() + "_hook", () -> new HookItem(RUBY));
+            DeferredItem<Item> hookItem = ModItems.ITEMS.register(AMBER.getName() + "_hook", () -> new HookItem(AMBER));
             Hook.HOOKS.put(AMBER.getName(), hookItem);
             return hookItem;
         }
