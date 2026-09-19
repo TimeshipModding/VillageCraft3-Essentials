@@ -250,6 +250,7 @@ public class DataItemTags extends ItemTagsProvider {
 
         // Accessories Tags
         tag(AccessoriesTags.HAT_TAG)
+                .add(PROPELLER_HAT.get())
                 .add(GUBERNATORIAL_HAT_1.get());
 
         // Farmer's Delight Tags

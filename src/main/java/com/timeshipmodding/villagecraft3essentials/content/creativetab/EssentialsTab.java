@@ -154,6 +154,7 @@ public class EssentialsTab {
                 pOutput.accept(CRACKED_RUBY);
                 pOutput.accept(CRACKED_AMBER);
                 pOutput.accept(MOLE_SPAWN_EGG);
+                pOutput.accept(PROPELLER_HAT);
                 pOutput.accept(GUBERNATORIAL_HAT_1);
             }).build());
 }

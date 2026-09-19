@@ -319,7 +319,7 @@ public class ModEvents {
         }
 
         if (ModList.get().isLoaded("bluemap") && ServerConfig.ENABLE_TOWN_DEBUG_BLUEMAP_MARKERS.get()) {
-            if (player.tickCount % 10 == 0) {
+            if (player.tickCount % 20 == 0) {
                 String town = BlueMapMethods.townPlayerIsStandingIn(player);
                 PacketDistributor.sendToPlayer(player, new DebugTownPacket(town));
             }

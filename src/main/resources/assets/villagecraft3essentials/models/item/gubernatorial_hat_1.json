@@ -379,7 +379,7 @@
 			"scale": [1.6, 1.6, 1.6]
 		},
 		"fixed": {
-			"rotation": [1, 180, 0],
+			"rotation": [-1, 180, 0],
 			"translation": [0, 8.4, 0.19],
 			"scale": [2, 2, 2]
 		}
