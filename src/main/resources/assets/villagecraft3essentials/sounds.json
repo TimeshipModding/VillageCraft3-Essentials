@@ -26,5 +26,12 @@
     "sounds": [
       "villagecraft3essentials:atm_use"
     ]
+  },
+
+  "verity": {
+    "subtitle": "subtitles.villagecraft3essentials.block.verity",
+    "sounds": [
+      "villagecraft3essentials:verity"
+    ]
   }
 }

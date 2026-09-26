@@ -25,6 +25,7 @@ public class DataBlockLootTables extends BlockLootSubProvider {
         // Drop Self
         dropSelf(RUBY_BLOCK.get());
         dropSelf(AMBER_BLOCK.get());
+        dropSelf(VERITY.get());
 
         // Ore Drops
         this.add(RUBY_ORE.get(), block -> createOreDrop(RUBY_ORE.get(), RUBY.get()));

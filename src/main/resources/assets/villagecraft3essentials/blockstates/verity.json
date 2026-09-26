@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "facing=east,clicked=false": {
+      "model": "villagecraft3essentials:block/verity/verity",
+      "y": 90
+    },
+    "facing=north,clicked=false": {
+      "model": "villagecraft3essentials:block/verity/verity"
+    },
+    "facing=south,clicked=false": {
+      "model": "villagecraft3essentials:block/verity/verity",
+      "y": 180
+    },
+    "facing=west,clicked=false": {
+      "model": "villagecraft3essentials:block/verity/verity",
+      "y": 270
+    },
+    "facing=east,clicked=true": {
+      "model": "villagecraft3essentials:block/verity/verity_clicked",
+      "y": 90
+    },
+    "facing=north,clicked=true": {
+      "model": "villagecraft3essentials:block/verity/verity_clicked"
+    },
+    "facing=south,clicked=true": {
+      "model": "villagecraft3essentials:block/verity/verity_clicked",
+      "y": 180
+    },
+    "facing=west,clicked=true": {
+      "model": "villagecraft3essentials:block/verity/verity_clicked",
+      "y": 270
+    }
+  }
+}

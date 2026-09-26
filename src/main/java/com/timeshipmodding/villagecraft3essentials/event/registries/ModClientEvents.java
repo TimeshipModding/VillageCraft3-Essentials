@@ -67,14 +67,14 @@ public class ModClientEvents {
         if (stack.is(ModItemTags.DIAMOND_CONVERTIBLE_TOOLS) || stack.is(ModItemTags.RUBY_CONVERTIBLE_TOOLS) || stack.is(ModItemTags.AMBER_CONVERTIBLE_TOOLS)) {
             if(Screen.hasShiftDown()) {
                 if (stack.getItem() instanceof ArmorItem) {
-                    event.getToolTip().add(Component.translatable("tooltip.villagecraft3essentials.armor_conversation_hint"));
+                    event.getToolTip().add(Component.translatable("tooltips.villagecraft3essentials.armor_conversation_hint"));
 
                 } else {
-                    event.getToolTip().add(Component.translatable("tooltip.villagecraft3essentials.tool_conversation_hint"));
+                    event.getToolTip().add(Component.translatable("tooltips.villagecraft3essentials.tool_conversation_hint"));
                 }
 
             } else {
-                event.getToolTip().add(Component.translatable("tooltip.villagecraft3essentials.press_shift"));
+                event.getToolTip().add(Component.translatable("tooltips.villagecraft3essentials.press_shift"));
             }
         }
     }

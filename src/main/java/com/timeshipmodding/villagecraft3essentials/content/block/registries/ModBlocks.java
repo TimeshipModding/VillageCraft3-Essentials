@@ -2,6 +2,8 @@ package com.timeshipmodding.villagecraft3essentials.content.block.registries;
 
 import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
 import com.timeshipmodding.villagecraft3essentials.content.block.AtmBlock;
+import com.timeshipmodding.villagecraft3essentials.content.block.roleplayblock.VerityBlock;
+import com.timeshipmodding.villagecraft3essentials.content.blockitem.roleplayblockitem.RoleplayBlockItem;
 import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems;
 import com.timeshipmodding.villagecraft3essentials.content.sound.registries.ModSounds;
 import net.minecraft.util.valueproviders.UniformInt;
@@ -47,6 +49,7 @@ public class ModBlocks {
     public static final DeferredBlock<Block> DIAMOND_CORE = registerBlock("diamond_core", () -> new Block(BlockBehaviour.Properties.of().strength(2.0F).lightLevel(p_152688_ -> 15).noOcclusion().noLootTable().sound(ModSounds.CORE_BLOCK_SOUNDS)));
     public static final DeferredBlock<Block> RUBY_CORE = registerBlock("ruby_core", () -> new Block(BlockBehaviour.Properties.of().strength(2.0F).lightLevel(p_152688_ -> 15).noOcclusion().noLootTable().sound(ModSounds.CORE_BLOCK_SOUNDS)));
     public static final DeferredBlock<Block> AMBER_CORE = registerBlock("amber_core", () -> new Block(BlockBehaviour.Properties.of().strength(2.0F).lightLevel(p_152688_ -> 15).noOcclusion().noLootTable().sound(ModSounds.CORE_BLOCK_SOUNDS)));
+    public static final DeferredBlock<VerityBlock> VERITY = registerRoleplayBlock("villagecraftcity", 1, "verity", () -> new VerityBlock(BlockBehaviour.Properties.of().noOcclusion().strength(0.5f)));
 
     // Register Methods
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
@@ -55,7 +58,17 @@ public class ModBlocks {
         return toReturn;
     }
 
+    private static <T extends Block> DeferredBlock<T> registerRoleplayBlock(String town, int stackAmount, String name, Supplier<T> block) {
+        DeferredBlock<T> toReturn = BLOCKS.register(name, block);
+        registerRoleplayBlockItem(town, stackAmount, name, toReturn);
+        return toReturn;
+    }
+
     private static <T extends Block> DeferredItem<Item> registerBlockItem(String name, DeferredBlock<T> block) {
         return ModItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
+    }
+
+    private static <T extends Block> DeferredItem<Item> registerRoleplayBlockItem(String town, int stackAmount, String name, DeferredBlock<T> block) {
+        return ModItems.ITEMS.register(name, () -> new RoleplayBlockItem(town, block.get(), new Item.Properties().stacksTo(stackAmount)));
     }
 }

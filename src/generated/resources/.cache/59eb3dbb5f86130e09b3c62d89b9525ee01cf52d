@@ -1,4 +1,4 @@
-// 1.21.1	2025-10-01T15:25:55.0620589	Loot Tables
+// 1.21.1	2026-09-20T23:29:47.9504492	Loot Tables
 837a403c4b5f8c45fdef9455fe0d83838d6cd065 data/villagecraft3essentials/loot_table/blocks/amber_block.json
 f154c35ce21d7e22480476b08fcdf952660265cf data/villagecraft3essentials/loot_table/blocks/amber_ore.json
 9da70965485791d0458f19a4ccbe4ba1f998e9c5 data/villagecraft3essentials/loot_table/blocks/black_atm.json
@@ -19,5 +19,6 @@ b40bd341a5fe4570ef086757aa8b73046b6a14cc data/villagecraft3essentials/loot_table
 0c25d2ef1c6a0cf1101c771f5d0eedc43baa8d63 data/villagecraft3essentials/loot_table/blocks/red_atm.json
 93736fa5caf20b2cbcd23e37ddb61f80c0a4a4ca data/villagecraft3essentials/loot_table/blocks/ruby_block.json
 ebdd8c05c3759113407f10ec8235a51aa296b34b data/villagecraft3essentials/loot_table/blocks/ruby_ore.json
+8f034b833f95de6c2d36f27fac437e299e44e063 data/villagecraft3essentials/loot_table/blocks/verity.json
 f6bf4ec374a2ec94aefe3d30c4c788b33aff2995 data/villagecraft3essentials/loot_table/blocks/white_atm.json
 d4ec65ae0bd02dd0e95ea935ed732a2f014cb7bc data/villagecraft3essentials/loot_table/blocks/yellow_atm.json

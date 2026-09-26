@@ -1,4 +1,4 @@
-// 1.21.1	2026-09-18T21:03:27.9008616	Tags for minecraft:item mod id villagecraft3essentials
+// 1.21.1	2026-09-20T23:32:19.0872576	Tags for minecraft:item mod id villagecraft3essentials
 448776708d8731b98108e81d9220ac80133a50d7 data/accessories/tags/item/hat.json
 e2340f6f4cde29cf07c5348aaf0af892d818b555 data/aquaculture/tags/item/tooltip.json
 13687e455bc6ccf1cc2f9e9f937898dc8ebd0305 data/archers/tags/item/spears.json
@@ -56,4 +56,5 @@ d03fa87e10535e7ddd298826de46878b10e461b2 data/minecraft/tags/item/trim_materials
 6ad1471f2395586766c340f4ff49b7b36b52be2d data/villagecraft3essentials/tags/item/diamond_convertible_tools.json
 bbbe68f23d94ae2a72f5380fb7195d7486f0955f data/villagecraft3essentials/tags/item/mole_food.json
 e84ba38dfedc9954e2c76a9b1d2d6fc3d72daf75 data/villagecraft3essentials/tags/item/ruby_convertible_tools.json
+9869614e474b5dbd9637c51eac4c6afc91fb755f data/villagecraft3essentials/tags/item/villagecraft_city_roleplay_items.json
 7c161b4b887f1fc7dd818a05dc4a22e9695f08bb data/villagecraft3essentials/tags/item/wallet_accepted_items.json

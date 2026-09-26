@@ -27,6 +27,7 @@
   "block.villagecraft3essentials.diamond_core": "Diamond Core",
   "block.villagecraft3essentials.ruby_core": "Ruby Core",
   "block.villagecraft3essentials.amber_core": "Amber Core",
+  "block.villagecraft3essentials.verity": "Verity",
 
   "blockentity.villagecraft3essentials.atm.toolconvert": "ATM - Convert Currency Tools",
   "blockentity.villagecraft3essentials.atm.randomconvert": "ATM - Currency Conversion",
@@ -87,12 +88,13 @@
   "subtitles.villagecraft3essentials.entity.mole.ambient": "Mole stridulates",
   "subtitles.villagecraft3essentials.entity.mole.hurt": "Mole hurts",
   "subtitles.villagecraft3essentials.entity.mole.death": "Mole dies",
-  "subtitles.villagecraft3essentials.block.atm.use": "Atm used",
+  "subtitles.villagecraft3essentials.block.atm.use": "Atm converts",
+  "subtitles.villagecraft3essentials.block.verity": "Verity speaks",
 
   "trim_material.villagecraft3essentials.ruby": "Ruby Material",
   "trim_material.villagecraft3essentials.amber": "Amber Material",
 
-  "tooltip.villagecraft3essentials.armor_conversation_hint": "If you cannot use this piece of armor. Convert it to your currency in an ATM",
+  "tooltips.villagecraft3essentials.armor_conversation_hint": "If you cannot use this piece of armor. Convert it to your currency in an ATM",
   "tooltips.villagecraft3essentials.atm.nextmenu": "To Tool Conversion",
   "tooltips.villagecraft3essentials.atm.previousmenu": "To Currency Conversion",
   "tooltips.villagecraft3essentials.atm.randomconvert1": "%1$s Diamonds to %2$s Rubies",
@@ -104,8 +106,8 @@
   "tooltips.villagecraft3essentials.atm.toolconvertbuttondiamond": "Convert to Diamond",
   "tooltips.villagecraft3essentials.atm.toolconvertbuttonruby": "Convert to Ruby",
   "tooltips.villagecraft3essentials.atm.toolconvertbuttonamber": "Convert to Amber",
-  "tooltip.villagecraft3essentials.press_shift": "Press §eShift§r for info.",
-  "tooltip.villagecraft3essentials.tool_conversation_hint": "If you cannot use this tool. Convert it to your currency in an ATM",
+  "tooltips.villagecraft3essentials.press_shift": "Press §eShift§r for info.",
+  "tooltips.villagecraft3essentials.tool_conversation_hint": "If you cannot use this tool. Convert it to your currency in an ATM",
 
   "aquaculture.ruby_hook.tooltip.title": "Super Durable",
   "aquaculture.ruby_hook.tooltip.desc": "50% chance to not use durability",

@@ -1,0 +1,13 @@
+{
+  "parent": "minecraft:block/block",
+  "loader": "neoforge:obj",
+  "model": "villagecraft3essentials:models/block/verity/verity.obj",
+  "flip_v": true,
+  "ambient_occlusion": false,
+  "shade_quads": false,
+  "textures": {
+    "texture0": "villagecraft3essentials:block/verity_texture_1",
+    "texture1": "villagecraft3essentials:block/verity_texture_0",
+    "particle": "villagecraft3essentials:block/verity_texture_1"
+  }
+}

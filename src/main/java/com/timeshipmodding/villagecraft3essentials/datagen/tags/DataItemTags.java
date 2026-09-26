@@ -247,6 +247,8 @@ public class DataItemTags extends ItemTagsProvider {
                 .add(AMBER_BLOCK.get().asItem())
                 .add(EMERALD)
                 .add(EMERALD_BLOCK);
+        tag(VILLAGECRAFT_CITY_ROLEPLAY_ITEMS)
+                .add(VERITY.get().asItem());
 
         // Accessories Tags
         tag(AccessoriesTags.HAT_TAG)
