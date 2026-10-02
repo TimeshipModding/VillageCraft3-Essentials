@@ -11,16 +11,18 @@ import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 
+import java.util.ArrayList;
+
 @EventBusSubscriber(modid = VillageCraft3Essentials.MODID)
 public class ModLuckpermsEvents {
     @SubscribeEvent
     public static void onTabListNameFormatEvent(PlayerEvent.TabListNameFormat event) {
         if (ModList.get().isLoaded("luckperms") && ServerConfig.CHAT_TAB_NAME_FORMATTING.get()) {
             if (event.getEntity() instanceof ServerPlayer serverPlayer) {
-                Component prefix1 = LuckpermsMethods.getPlayerFormattedPrefix(serverPlayer);
+                ArrayList<Component> prefixes = LuckpermsMethods.getPlayerFormattedPrefixes(serverPlayer);
                 Component name = LuckpermsMethods.getPlayerFormattedName(serverPlayer);
-                Component suffix = LuckpermsMethods.getPlayerFormattedSuffix(serverPlayer);
-                event.setDisplayName(StringFormatter.getFinalDisplayName(prefix1, name, suffix));
+                ArrayList<Component> suffixes = LuckpermsMethods.getPlayerFormattedSuffixes(serverPlayer);
+                event.setDisplayName(StringFormatter.getFinalDisplayName(prefixes, name, suffixes));
             }
         }
     }
@@ -29,10 +31,10 @@ public class ModLuckpermsEvents {
     public static void onNameFormatEvent(PlayerEvent.NameFormat event) {
         if (ModList.get().isLoaded("luckperms") && ServerConfig.CHAT_TAB_NAME_FORMATTING.get()) {
             if (event.getEntity() instanceof ServerPlayer serverPlayer) {
-                Component prefix = LuckpermsMethods.getPlayerFormattedPrefix(serverPlayer);
+                ArrayList<Component> prefixes = LuckpermsMethods.getPlayerFormattedPrefixes(serverPlayer);
                 Component name = LuckpermsMethods.getPlayerFormattedName(serverPlayer);
-                Component suffix = LuckpermsMethods.getPlayerFormattedSuffix(serverPlayer);
-                event.setDisplayname(StringFormatter.getFinalDisplayName(prefix, name, suffix));
+                ArrayList<Component> suffixes = LuckpermsMethods.getPlayerFormattedSuffixes(serverPlayer);
+                event.setDisplayname(StringFormatter.getFinalDisplayName(prefixes, name, suffixes));
             }
         }
     }

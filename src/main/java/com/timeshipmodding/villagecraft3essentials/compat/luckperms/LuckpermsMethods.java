@@ -17,7 +17,9 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.scores.PlayerTeam;
 
+import java.util.ArrayList;
 import java.util.Objects;
+import java.util.SortedMap;
 
 public class LuckpermsMethods {
     public static void addGroup(Player  player, String groupName) {
@@ -77,20 +79,20 @@ public class LuckpermsMethods {
         return Component.literal(player.getName().getString()).withStyle(ChatFormatting.WHITE);
     }
 
-    public static Component getPlayerFormattedPrefix(Player player) {
+    public static ArrayList<Component> getPlayerFormattedPrefixes(Player player) {
         LuckPerms luckPermsApi = LuckPermsProvider.get();
         User user = luckPermsApi.getUserManager().getUser(player.getUUID());
         assert user != null;
-        String prefix = user.getCachedData().getMetaData().getPrefix();
-        return StringFormatter.formatString(prefix);
+        SortedMap<Integer, String> prefixes = user.getCachedData().getMetaData().getPrefixes();
+        return StringFormatter.formatString(prefixes);
     }
 
-    public static Component getPlayerFormattedSuffix(Player player) {
+    public static ArrayList<Component> getPlayerFormattedSuffixes(Player player) {
         LuckPerms luckPermsApi = LuckPermsProvider.get();
         User user = luckPermsApi.getUserManager().getUser(player.getUUID());
         assert user != null;
-        String suffix = user.getCachedData().getMetaData().getSuffix();
-        return StringFormatter.formatString(suffix);
+        SortedMap<Integer, String> suffixes = user.getCachedData().getMetaData().getSuffixes();
+        return StringFormatter.formatString(suffixes);
     }
 
     public static ChatFormatting getGroupStyling(String groupName) {
