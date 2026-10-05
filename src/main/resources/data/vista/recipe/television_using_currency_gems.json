@@ -1,0 +1,32 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "vista"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "200",
+    "213",
+    "200"
+  ],
+  "key": {
+    "0": {
+      "tag": "minecraft:planks"
+    },
+    "1": {
+      "tag": "villagecraft3essentials:currency_gems"
+    },
+    "2": {
+      "item": "minecraft:tinted_glass"
+    },
+    "3": {
+      "item": "minecraft:redstone"
+    }
+  },
+  "result": {
+    "id": "vista:television",
+    "count": 1
+  }
+}

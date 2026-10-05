@@ -1,0 +1,33 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "malum"
+    }
+  ],
+  "type": "malum:spirit_infusion",
+  "extraInputs": [
+    {
+      "count": 8,
+      "tag": "villagecraft3essentials:currency_gems"
+    },
+    {
+      "count": 4,
+      "item": "malum:astral_weave"
+    }
+  ],
+  "input": {
+    "count": 1,
+    "item": "malum:runic_brooch"
+  },
+  "result": {
+    "count": 1,
+    "id": "malum:glass_brooch"
+  },
+  "spirits": [
+    {
+      "type": "malum:aqueous",
+      "count": 32
+    }
+  ]
+}
