@@ -27,6 +27,12 @@ public class AccessoryRoleplayItem extends AccessoryItem {
             case "swedishfurniturestore":
                 itemNameColour = ChatFormatting.BLUE;
                 break;
+            case "london":
+                itemNameColour = ChatFormatting.AQUA;
+                break;
+            case "blackwater":
+                itemNameColour = ChatFormatting.GOLD;
+                break;
         }
 
         return Component.translatable(this.getDescriptionId()).setStyle(Style.EMPTY.withColor(itemNameColour));

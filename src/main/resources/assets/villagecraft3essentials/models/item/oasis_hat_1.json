@@ -3,8 +3,8 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [32, 32],
 	"textures": {
-		"10": "villagecraft3essentials:item/gubernatorial_hat_1",
-		"particle": "villagecraft3essentials:item/gubernatorial_hat_1"
+		"10": "villagecraft3essentials:item/oasis_hat_1",
+		"particle": "villagecraft3essentials:item/oasis_hat_1"
 	},
 	"elements": [
 		{
