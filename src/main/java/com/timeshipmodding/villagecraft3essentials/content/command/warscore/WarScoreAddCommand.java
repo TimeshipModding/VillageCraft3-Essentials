@@ -23,13 +23,21 @@ public class WarScoreAddCommand {
                         .then(Commands.argument("score", IntegerArgumentType.integer(1, 1000000))
                         .executes(context -> executeVillageCraftCity(context, IntegerArgumentType.getInteger(context, "score")))))
                 .then(
-                        Commands.literal("grippercity")
-                        .then(Commands.argument("score", IntegerArgumentType.integer(1, 1000000))
-                        .executes(context -> executeGripperCity(context, IntegerArgumentType.getInteger(context, "score")))))
+                        Commands.literal("oasis")
+                                .then(Commands.argument("score", IntegerArgumentType.integer(1, 1000000))
+                                        .executes(context -> executeOasis(context, IntegerArgumentType.getInteger(context, "score")))))
                 .then(
-                        Commands.literal("ambercaves")
+                        Commands.literal("swedishfurniturestore")
                         .then(Commands.argument("score", IntegerArgumentType.integer(1, 1000000))
-                        .executes(context -> executeAmberCaves(context, IntegerArgumentType.getInteger(context, "score")))))));
+                        .executes(context -> executeSwedishFurnitureStore(context, IntegerArgumentType.getInteger(context, "score")))))
+                .then(
+                        Commands.literal("london")
+                                .then(Commands.argument("score", IntegerArgumentType.integer(1, 1000000))
+                                        .executes(context -> executeLondon(context, IntegerArgumentType.getInteger(context, "score")))))
+                .then(
+                        Commands.literal("blackwater")
+                        .then(Commands.argument("score", IntegerArgumentType.integer(1, 1000000))
+                        .executes(context -> executeBlackWater(context, IntegerArgumentType.getInteger(context, "score")))))));
     }
 
     private int executeVillageCraftCity(CommandContext<CommandSourceStack> context, int score) {
@@ -55,19 +63,19 @@ public class WarScoreAddCommand {
         return -1;
     }
 
-    private int executeGripperCity(CommandContext<CommandSourceStack> context, int score) {
+    private int executeOasis(CommandContext<CommandSourceStack> context, int score) {
         if (ServerConfig.ENABLE_WAR_SYSTEM_FEATURES.get()) {
             MinecraftServer server = context.getSource().getServer();
             WarPointsSavedData data = WarPointsSavedData.getData(server);
-            data.addGripperCityWarScore(server.getLevel(ServerLevel.OVERWORLD), score);
+            data.addOasisWarScore(server.getLevel(ServerLevel.OVERWORLD), score);
             ChatFormatting groupStyling = ChatFormatting.WHITE;
 
             if (ModList.get().isLoaded("luckperms")) {
-                groupStyling = LuckpermsMethods.getGroupStyling(ServerConfig.GRIPPERCITY_GROUP_NAME.get());
+                groupStyling = LuckpermsMethods.getGroupStyling(ServerConfig.OASIS_GROUP_NAME.get());
             }
 
             MutableComponent message = Component.literal("Added " + score + " to ");
-            message.append(Component.literal("Gripper City's").withStyle(groupStyling));
+            message.append(Component.literal("Oasis's").withStyle(groupStyling));
             message.append(Component.literal(" score."));
             context.getSource().sendSuccess(() -> message, false);
             return 1;
@@ -78,19 +86,65 @@ public class WarScoreAddCommand {
         return -1;
     }
 
-    private int executeAmberCaves(CommandContext<CommandSourceStack> context, int score) {
+    private int executeSwedishFurnitureStore(CommandContext<CommandSourceStack> context, int score) {
         if (ServerConfig.ENABLE_WAR_SYSTEM_FEATURES.get()) {
             MinecraftServer server = context.getSource().getServer();
             WarPointsSavedData data = WarPointsSavedData.getData(server);
-            data.addAmberCavesWarScore(server.getLevel(ServerLevel.OVERWORLD), score);
+            data.addSwedishFurnitureStoreWarScore(server.getLevel(ServerLevel.OVERWORLD), score);
             ChatFormatting groupStyling = ChatFormatting.WHITE;
 
             if (ModList.get().isLoaded("luckperms")) {
-                groupStyling = LuckpermsMethods.getGroupStyling(ServerConfig.AMBERCAVES_GROUP_NAME.get());
+                groupStyling = LuckpermsMethods.getGroupStyling(ServerConfig.SWEDISHFURNITURESTORE_GROUP_NAME.get());
             }
 
             MutableComponent message = Component.literal("Added " + score + " to ");
-            message.append(Component.literal("The Amber Caves's").withStyle(groupStyling));
+            message.append(Component.literal("Swedish Furniture Store's").withStyle(groupStyling));
+            message.append(Component.literal(" score."));
+            context.getSource().sendSuccess(() -> message, false);
+            return 1;
+        }
+
+        MutableComponent message = Component.literal("War features are not enabled. To use them, enable them in the VillageCraft 3 Essentials Server Config.").withStyle(ChatFormatting.RED);
+        context.getSource().sendFailure(message);
+        return -1;
+    }
+
+    private int executeLondon(CommandContext<CommandSourceStack> context, int score) {
+        if (ServerConfig.ENABLE_WAR_SYSTEM_FEATURES.get()) {
+            MinecraftServer server = context.getSource().getServer();
+            WarPointsSavedData data = WarPointsSavedData.getData(server);
+            data.addLondonWarScore(server.getLevel(ServerLevel.OVERWORLD), score);
+            ChatFormatting groupStyling = ChatFormatting.WHITE;
+
+            if (ModList.get().isLoaded("luckperms")) {
+                groupStyling = LuckpermsMethods.getGroupStyling(ServerConfig.LONDON_GROUP_NAME.get());
+            }
+
+            MutableComponent message = Component.literal("Added " + score + " to ");
+            message.append(Component.literal("London's").withStyle(groupStyling));
+            message.append(Component.literal(" score."));
+            context.getSource().sendSuccess(() -> message, false);
+            return 1;
+        }
+
+        MutableComponent message = Component.literal("War features are not enabled. To use them, enable them in the VillageCraft 3 Essentials Server Config.").withStyle(ChatFormatting.RED);
+        context.getSource().sendFailure(message);
+        return -1;
+    }
+
+    private int executeBlackWater(CommandContext<CommandSourceStack> context, int score) {
+        if (ServerConfig.ENABLE_WAR_SYSTEM_FEATURES.get()) {
+            MinecraftServer server = context.getSource().getServer();
+            WarPointsSavedData data = WarPointsSavedData.getData(server);
+            data.addBlackWaterWarScore(server.getLevel(ServerLevel.OVERWORLD), score);
+            ChatFormatting groupStyling = ChatFormatting.WHITE;
+
+            if (ModList.get().isLoaded("luckperms")) {
+                groupStyling = LuckpermsMethods.getGroupStyling(ServerConfig.BLACKWATER_GROUP_NAME.get());
+            }
+
+            MutableComponent message = Component.literal("Added " + score + " to ");
+            message.append(Component.literal("BlackWater's").withStyle(groupStyling));
             message.append(Component.literal(" score."));
             context.getSource().sendSuccess(() -> message, false);
             return 1;

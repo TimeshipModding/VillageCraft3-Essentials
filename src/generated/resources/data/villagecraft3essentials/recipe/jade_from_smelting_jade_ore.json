@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 1.0,
+  "group": "jade",
+  "ingredient": {
+    "item": "villagecraft3essentials:jade_ore"
+  },
+  "result": {
+    "count": 1,
+    "id": "villagecraft3essentials:jade"
+  }
+}

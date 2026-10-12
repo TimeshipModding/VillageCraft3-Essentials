@@ -27,21 +27,29 @@ public class WarScoreGetCommand {
             MinecraftServer server = context.getSource().getServer();
             WarPointsSavedData data = WarPointsSavedData.getData(server);
             ChatFormatting villageCraftCityStyling = ChatFormatting.WHITE;
-            ChatFormatting gripperCityStyling = ChatFormatting.WHITE;
-            ChatFormatting amberCavesStyling = ChatFormatting.WHITE;
+            ChatFormatting oasisStyling = ChatFormatting.WHITE;
+            ChatFormatting swedishFurnitureStoreStyling = ChatFormatting.WHITE;
+            ChatFormatting londonStyling = ChatFormatting.WHITE;
+            ChatFormatting blackWaterStyling = ChatFormatting.WHITE;
 
             if (ModList.get().isLoaded("luckperms")) {
                 villageCraftCityStyling = LuckpermsMethods.getGroupStyling(ServerConfig.VILLAGECRAFTCITY_GROUP_NAME.get());
-                gripperCityStyling = LuckpermsMethods.getGroupStyling(ServerConfig.GRIPPERCITY_GROUP_NAME.get());
-                amberCavesStyling = LuckpermsMethods.getGroupStyling(ServerConfig.AMBERCAVES_GROUP_NAME.get());
+                oasisStyling = LuckpermsMethods.getGroupStyling(ServerConfig.OASIS_GROUP_NAME.get());
+                swedishFurnitureStoreStyling = LuckpermsMethods.getGroupStyling(ServerConfig.SWEDISHFURNITURESTORE_GROUP_NAME.get());
+                londonStyling = LuckpermsMethods.getGroupStyling(ServerConfig.LONDON_GROUP_NAME.get());
+                blackWaterStyling = LuckpermsMethods.getGroupStyling(ServerConfig.BLACKWATER_GROUP_NAME.get());
             }
 
             MutableComponent message = Component.literal("VillageCraft City").withStyle(villageCraftCityStyling);
             message.append(Component.literal(" : " + data.getVillagecraftCityWarScore()));
-            message.append(Component.literal("\nGripper City").withStyle(gripperCityStyling));
-            message.append(Component.literal(" : " + data.getGripperCityWarScore()));
-            message.append(Component.literal("\nThe Amber Caves").withStyle(amberCavesStyling));
-            message.append(Component.literal(" : " + data.getAmberCavesWarScore()));
+            message.append(Component.literal("\nOasis").withStyle(oasisStyling));
+            message.append(Component.literal(" : " + data.getOasisWarScore()));
+            message.append(Component.literal("\nSwedish Furniture Store").withStyle(swedishFurnitureStoreStyling));
+            message.append(Component.literal(" : " + data.getSwedishFurnitureStoreWarScore()));
+            message.append(Component.literal("\nLondon").withStyle(londonStyling));
+            message.append(Component.literal(" : " + data.getLondonWarScore()));
+            message.append(Component.literal("\nBlackWater").withStyle(blackWaterStyling));
+            message.append(Component.literal(" : " + data.getBlackWaterWarScore()));
             context.getSource().sendSuccess(() -> message, false);
             return 1;
         }
@@ -56,21 +64,29 @@ public class WarScoreGetCommand {
             MinecraftServer server = context.getSource().getServer();
             WarPointsSavedData data = WarPointsSavedData.getData(server);
             ChatFormatting villageCraftCityStyling = ChatFormatting.WHITE;
-            ChatFormatting gripperCityStyling = ChatFormatting.WHITE;
-            ChatFormatting amberCavesStyling = ChatFormatting.WHITE;
+            ChatFormatting oasisStyling = ChatFormatting.WHITE;
+            ChatFormatting swedishFurnitureStoreStyling = ChatFormatting.WHITE;
+            ChatFormatting londonStyling = ChatFormatting.WHITE;
+            ChatFormatting blackWaterStyling = ChatFormatting.WHITE;
 
             if (ModList.get().isLoaded("luckperms")) {
                 villageCraftCityStyling = LuckpermsMethods.getGroupStyling(ServerConfig.VILLAGECRAFTCITY_GROUP_NAME.get());
-                gripperCityStyling = LuckpermsMethods.getGroupStyling(ServerConfig.GRIPPERCITY_GROUP_NAME.get());
-                amberCavesStyling = LuckpermsMethods.getGroupStyling(ServerConfig.AMBERCAVES_GROUP_NAME.get());
+                oasisStyling = LuckpermsMethods.getGroupStyling(ServerConfig.OASIS_GROUP_NAME.get());
+                swedishFurnitureStoreStyling = LuckpermsMethods.getGroupStyling(ServerConfig.SWEDISHFURNITURESTORE_GROUP_NAME.get());
+                londonStyling = LuckpermsMethods.getGroupStyling(ServerConfig.LONDON_GROUP_NAME.get());
+                blackWaterStyling = LuckpermsMethods.getGroupStyling(ServerConfig.BLACKWATER_GROUP_NAME.get());
             }
 
             MutableComponent message = Component.literal("VillageCraft City").withStyle(villageCraftCityStyling);
             message.append(Component.literal(" : " + data.getVillagecraftCityWarPoints()));
-            message.append(Component.literal("\nGripper City").withStyle(gripperCityStyling));
-            message.append(Component.literal(" : " + data.getGripperCityWarPoints()));
-            message.append(Component.literal("\nThe Amber Caves").withStyle(amberCavesStyling));
-            message.append(Component.literal(" : " + data.getAmberCavesWarPoints()));
+            message.append(Component.literal("\nOasis").withStyle(oasisStyling));
+            message.append(Component.literal(" : " + data.getOasisWarPoints()));
+            message.append(Component.literal("\nSwedish Furniture Store").withStyle(swedishFurnitureStoreStyling));
+            message.append(Component.literal(" : " + data.getSwedishFurnitureStoreWarPoints()));
+            message.append(Component.literal("\nLondon").withStyle(londonStyling));
+            message.append(Component.literal(" : " + data.getLondonWarPoints()));
+            message.append(Component.literal("\nBlackWater").withStyle(blackWaterStyling));
+            message.append(Component.literal(" : " + data.getBlackWaterWarPoints()));
             context.getSource().sendSuccess(() -> message, false);
             return 1;
         }

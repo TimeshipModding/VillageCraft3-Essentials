@@ -19,6 +19,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.neoforged.neoforge.network.PacketDistributor;
@@ -58,18 +59,34 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
     private float scrollOffs;
     private boolean scrolling;
     private int startIndex;
-    private final ImageButton[] randomConvertButtons = new ImageButton[6];
+    private final ImageButton[] randomConvertButtons = new ImageButton[20];
     private ImageButton toolConvertButtonDiamond;
-    private ImageButton toolConvertButtonRuby;
+    private ImageButton toolConvertButtonJade;
     private ImageButton toolConvertButtonAmber;
+    private ImageButton toolConvertButtonSilicon;
+    private ImageButton toolConvertButtonRuby;
     private ImageButton nextMenuButton;
     private ImageButton previousMenuButton;
-    private int[] diamondToRuby;
+    private int[] diamondToJade;
     private int[] diamondToAmber;
-    private int[] rubyToDiamond;
-    private int[] rubyToAmber;
+    private int[] diamondToSilicon;
+    private int[] diamondToRuby;
+    private int[] jadeToDiamond;
+    private int[] jadeToAmber;
+    private int[] jadeToSilicon;
+    private int[] jadeToRuby;
     private int[] amberToDiamond;
+    private int[] amberToJade;
+    private int[] amberToSilicon;
     private int[] amberToRuby;
+    private int[] siliconToDiamond;
+    private int[] siliconToJade;
+    private int[] siliconToAmber;
+    private int[] siliconToRuby;
+    private int[] rubyToDiamond;
+    private int[] rubyToJade;
+    private int[] rubyToAmber;
+    private int[] rubyToSilicon;
 
     public AtmScreen(AtmMenu menu, Inventory inv, Component title) {
         super(menu, inv, title);
@@ -83,12 +100,26 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
         this.inventoryLabelY = this.imageHeight - 92;
         this.titleLabelY = 5;
         this.titleLabelX = 8;
-        this.diamondToRuby = AtmClientData.getDiamondToRuby() != null ? AtmClientData.getDiamondToRuby() : new int[]{};
+        this.diamondToJade = AtmClientData.getDiamondToJade() != null ? AtmClientData.getDiamondToJade() : new int[]{};
         this.diamondToAmber = AtmClientData.getDiamondToAmber() != null ? AtmClientData.getDiamondToAmber() : new int[]{};
-        this.rubyToDiamond = AtmClientData.getRubyToDiamond() != null ? AtmClientData.getRubyToDiamond() : new int[]{};
-        this.rubyToAmber = AtmClientData.getRubyToAmber() != null ? AtmClientData.getRubyToAmber() : new int[]{};
+        this.diamondToSilicon = AtmClientData.getDiamondToSilicon() != null ? AtmClientData.getDiamondToSilicon() : new int[]{};
+        this.diamondToRuby = AtmClientData.getDiamondToRuby() != null ? AtmClientData.getDiamondToRuby() : new int[]{};
+        this.jadeToDiamond = AtmClientData.getJadeToDiamond() != null ? AtmClientData.getJadeToDiamond() : new int[]{};
+        this.jadeToAmber = AtmClientData.getJadeToAmber() != null ? AtmClientData.getJadeToAmber() : new int[]{};
+        this.jadeToSilicon = AtmClientData.getJadeToSilicon() != null ? AtmClientData.getJadeToSilicon() : new int[]{};
+        this.jadeToRuby = AtmClientData.getJadeToRuby() != null ? AtmClientData.getJadeToRuby() : new int[]{};
         this.amberToDiamond = AtmClientData.getAmberToDiamond() != null ? AtmClientData.getAmberToDiamond() : new int[]{};
+        this.amberToJade = AtmClientData.getAmberToJade() != null ? AtmClientData.getAmberToJade() : new int[]{};
+        this.amberToSilicon = AtmClientData.getAmberToSilicon() != null ? AtmClientData.getAmberToSilicon() : new int[]{};
         this.amberToRuby = AtmClientData.getAmberToRuby() != null ? AtmClientData.getAmberToRuby() : new int[]{};
+        this.siliconToDiamond = AtmClientData.getSiliconToDiamond() != null ? AtmClientData.getSiliconToDiamond() : new int[]{};
+        this.siliconToJade = AtmClientData.getSiliconToJade() != null ? AtmClientData.getSiliconToJade() : new int[]{};
+        this.siliconToAmber = AtmClientData.getSiliconToAmber() != null ? AtmClientData.getSiliconToAmber() : new int[]{};
+        this.siliconToRuby = AtmClientData.getSiliconToRuby() != null ? AtmClientData.getSiliconToRuby() : new int[]{};
+        this.rubyToDiamond = AtmClientData.getRubyToDiamond() != null ? AtmClientData.getRubyToDiamond() : new int[]{};
+        this.rubyToJade = AtmClientData.getRubyToJade() != null ? AtmClientData.getRubyToJade() : new int[]{};
+        this.rubyToAmber = AtmClientData.getRubyToAmber() != null ? AtmClientData.getRubyToAmber() : new int[]{};
+        this.rubyToSilicon = AtmClientData.getRubyToSilicon() != null ? AtmClientData.getRubyToSilicon() : new int[]{};
     }
 
     private void onDiamondCurrencyButtonPress(Button button) {
@@ -99,7 +130,7 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
         }
     }
 
-    private void onRubyCurrencyButtonPress(Button button) {
+    private void onJadeCurrencyButtonPress(Button button) {
         this.menu.playAtmSound();
 
         if (Minecraft.getInstance().getConnection() != null) {
@@ -112,6 +143,22 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
 
         if (Minecraft.getInstance().getConnection() != null) {
             PacketDistributor.sendToServer(new AtmToolConvertButtonPressedPacket(menu.blockEntity.getBlockPos(), 3));
+        }
+    }
+
+    private void onSiliconCurrencyButtonPress(Button button) {
+        this.menu.playAtmSound();
+
+        if (Minecraft.getInstance().getConnection() != null) {
+            PacketDistributor.sendToServer(new AtmToolConvertButtonPressedPacket(menu.blockEntity.getBlockPos(), 4));
+        }
+    }
+
+    private void onRubyCurrencyButtonPress(Button button) {
+        this.menu.playAtmSound();
+
+        if (Minecraft.getInstance().getConnection() != null) {
+            PacketDistributor.sendToServer(new AtmToolConvertButtonPressedPacket(menu.blockEntity.getBlockPos(), 5));
         }
     }
 
@@ -134,46 +181,15 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
     }
 
     private void onRandomConvertButtonPress(Button button) {
-        if (randomConvertButtons[0] == button) {
-            this.menu.playAtmSound();
+        for (int i = 0; i < randomConvertButtons.length; i++) {
+            if (randomConvertButtons[i] == button) {
+                this.menu.playAtmSound();
 
-            if (Minecraft.getInstance().getConnection() != null) {
-                PacketDistributor.sendToServer(new AtmRandomConvertButtonPressedPacket(menu.blockEntity.getBlockPos(), 1));
-            }
+                if (Minecraft.getInstance().getConnection() != null) {
+                    PacketDistributor.sendToServer(new AtmRandomConvertButtonPressedPacket(menu.blockEntity.getBlockPos(), i));
+                }
 
-        } else if (randomConvertButtons[1] == button) {
-            this.menu.playAtmSound();
-
-            if (Minecraft.getInstance().getConnection() != null) {
-                PacketDistributor.sendToServer(new AtmRandomConvertButtonPressedPacket(menu.blockEntity.getBlockPos(), 2));
-            }
-
-        } else if (randomConvertButtons[2] == button) {
-            this.menu.playAtmSound();
-
-            if (Minecraft.getInstance().getConnection() != null) {
-                PacketDistributor.sendToServer(new AtmRandomConvertButtonPressedPacket(menu.blockEntity.getBlockPos(), 3));
-            }
-
-        } else if (randomConvertButtons[3] == button) {
-            this.menu.playAtmSound();
-
-            if (Minecraft.getInstance().getConnection() != null) {
-                PacketDistributor.sendToServer(new AtmRandomConvertButtonPressedPacket(menu.blockEntity.getBlockPos(), 4));
-            }
-
-        } else if (randomConvertButtons[4] == button) {
-            this.menu.playAtmSound();
-
-            if (Minecraft.getInstance().getConnection() != null) {
-                PacketDistributor.sendToServer(new AtmRandomConvertButtonPressedPacket(menu.blockEntity.getBlockPos(), 5));
-            }
-
-        } else if (randomConvertButtons[5] == button) {
-            this.menu.playAtmSound();
-
-            if (Minecraft.getInstance().getConnection() != null) {
-                PacketDistributor.sendToServer(new AtmRandomConvertButtonPressedPacket(menu.blockEntity.getBlockPos(), 6));
+                break;
             }
         }
     }
@@ -194,27 +210,32 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
             int l = this.leftPos + RECIPES_X;
             int i1 = this.topPos + RECIPES_Y;
             int j1 = this.startIndex + 3;
-            this.renderRandomConvertButtons(guiGraphics, mouseX, mouseY, l, i1, j1);
+            this.renderRandomConvertButtons(l, i1, j1);
             this.renderRandomConvertButtonItems(guiGraphics, l, i1, j1);
 
         } else if (this.menu.blockEntity.getToolConvertScreen()) {
             this.clearWidgets();
-            ItemStack diamond = new ItemStack(Items.DIAMOND, 3);
 
-            toolConvertButtonDiamond = this.addRenderableWidget(new ImageButton(leftPos + 51, topPos + 65, 20, 18,
+            toolConvertButtonDiamond = this.addRenderableWidget(new ImageButton(leftPos + 24, topPos + 65, 20, 18,
                     CURRENCY_SELECT_SPRITES, this::onDiamondCurrencyButtonPress, Component.empty()));
-            toolConvertButtonRuby = this.addRenderableWidget(new ImageButton(leftPos + 78, topPos + 65, 20, 18,
-                    CURRENCY_SELECT_SPRITES, this::onRubyCurrencyButtonPress, Component.empty()));
-            toolConvertButtonAmber = this.addRenderableWidget(new ImageButton(leftPos + 105, topPos + 65, 20, 18,
+            toolConvertButtonJade = this.addRenderableWidget(new ImageButton(leftPos + 51, topPos + 65, 20, 18,
+                    CURRENCY_SELECT_SPRITES, this::onJadeCurrencyButtonPress, Component.empty()));
+            toolConvertButtonAmber = this.addRenderableWidget(new ImageButton(leftPos + 78, topPos + 65, 20, 18,
                     CURRENCY_SELECT_SPRITES, this::onAmberCurrencyButtonPress, Component.empty()));
+            toolConvertButtonSilicon = this.addRenderableWidget(new ImageButton(leftPos + 105, topPos + 65, 20, 18,
+                    CURRENCY_SELECT_SPRITES, this::onSiliconCurrencyButtonPress, Component.empty()));
+            toolConvertButtonRuby = this.addRenderableWidget(new ImageButton(leftPos + 132, topPos + 65, 20, 18,
+                    CURRENCY_SELECT_SPRITES, this::onRubyCurrencyButtonPress, Component.empty()));
             previousMenuButton = this.addRenderableWidget(new ImageButton(leftPos + 114, topPos + 92, 20, 18,
                     PREVIOUS_MENU_SPRITES, this::onPreviousButtonPress, Component.empty()));
 
             RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
             guiGraphics.blit(getToolConvertGuiTexture(guiTextureIndex), leftPos, topPos, 0, 0, imageWidth, imageHeight);
-            guiGraphics.renderFakeItem(diamond, leftPos + 53, topPos + 66);
-            guiGraphics.renderFakeItem(new ItemStack(ModItems.RUBY.get()), leftPos + 80, topPos + 66);
-            guiGraphics.renderFakeItem(new ItemStack(ModItems.AMBER.get()), leftPos + 107, topPos + 66);
+            guiGraphics.renderFakeItem(new ItemStack(Items.DIAMOND), leftPos + 26, topPos + 66);
+            guiGraphics.renderFakeItem(new ItemStack(ModItems.JADE.get()), leftPos + 53, topPos + 66);
+            guiGraphics.renderFakeItem(new ItemStack(ModItems.AMBER.get()), leftPos + 80, topPos + 66);
+            guiGraphics.renderFakeItem(new ItemStack(ModItems.SILICON.get()), leftPos + 107, topPos + 66);
+            guiGraphics.renderFakeItem(new ItemStack(ModItems.RUBY.get()), leftPos + 134, topPos + 66);
         }
     }
 
@@ -251,36 +272,35 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
                 guiGraphics.renderTooltip(this.font, Component.translatable("tooltips.villagecraft3essentials.atm.nextmenu"), mouseX, mouseY);
             }
 
-            for (int l = this.startIndex; l < k && l < 6; l++) {
+            for (int l = this.startIndex; l < k && l < 20; l++) {
                 int i1 = l - this.startIndex;
                 int k1 = j + i1 / RECIPES_COLUMNS * RECIPES_IMAGE_SIZE_HEIGHT + 2;
 
                 if (mouseX >= i && mouseX < i + RECIPES_IMAGE_SIZE_WIDTH && mouseY >= k1 && mouseY < k1 + RECIPES_IMAGE_SIZE_HEIGHT) {
                     if (randomConvertButtons[l].isHovered()) {
-                        Component tooltipText;
-
-                        switch (l) {
-                            case 0:
-                                tooltipText = Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert1", diamondToRuby[0], diamondToRuby[1]);
-                                break;
-                            case 1:
-                                tooltipText = Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert2", diamondToAmber[0], diamondToAmber[1]);
-                                break;
-                            case 2:
-                                tooltipText = Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert3", rubyToDiamond[0], rubyToDiamond[1]);
-                                break;
-                            case 3:
-                                tooltipText = Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert4", rubyToAmber[0], rubyToAmber[1]);
-                                break;
-                            case 4:
-                                tooltipText = Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert5", amberToDiamond[0], amberToDiamond[1]);
-                                break;
-                            case 5:
-                                tooltipText = Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert6", amberToRuby[0],amberToRuby[1]);
-                                break;
-                            default:
-                                continue;
-                        }
+                        Component tooltipText = switch (l) {
+                            case 0 -> Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert1", diamondToJade[0], diamondToJade[1]);
+                            case 1 -> Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert2", diamondToAmber[0], diamondToAmber[1]);
+                            case 2 -> Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert3", diamondToSilicon[0], diamondToSilicon[1]);
+                            case 3 -> Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert4", diamondToRuby[0], diamondToRuby[1]);
+                            case 4 -> Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert5", jadeToDiamond[0], jadeToDiamond[1]);
+                            case 5 -> Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert6", jadeToAmber[0], jadeToAmber[1]);
+                            case 6 -> Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert7", jadeToSilicon[0], jadeToSilicon[1]);
+                            case 7 -> Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert8", jadeToRuby[0], jadeToRuby[1]);
+                            case 8 -> Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert9", amberToDiamond[0], amberToDiamond[1]);
+                            case 9 -> Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert10", amberToJade[0], amberToJade[1]);
+                            case 10 -> Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert11", amberToSilicon[0], amberToSilicon[1]);
+                            case 11 -> Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert12", amberToRuby[0], amberToRuby[1]);
+                            case 12 -> Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert13", siliconToDiamond[0], siliconToDiamond[1]);
+                            case 13 -> Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert14", siliconToJade[0], siliconToJade[1]);
+                            case 14 -> Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert15", siliconToAmber[0], siliconToAmber[1]);
+                            case 15 -> Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert16", siliconToRuby[0], siliconToRuby[1]);
+                            case 16 -> Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert17", rubyToDiamond[0], rubyToDiamond[1]);
+                            case 17 -> Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert18", rubyToJade[0], rubyToJade[1]);
+                            case 18 -> Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert19", rubyToAmber[0], rubyToAmber[1]);
+                            case 19 -> Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert20", rubyToSilicon[0], rubyToSilicon[1]);
+                            default -> throw new IllegalStateException("Unexpected value: " + l);
+                        };
 
                         guiGraphics.renderTooltip(this.font, tooltipText, mouseX, mouseY);
                     }
@@ -291,11 +311,17 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
             if (toolConvertButtonDiamond.isHovered()) {
                 guiGraphics.renderTooltip(this.font, Component.translatable("tooltips.villagecraft3essentials.atm.toolconvertbuttondiamond"), mouseX, mouseY);
 
-            } else if (toolConvertButtonRuby.isHovered()) {
-                guiGraphics.renderTooltip(this.font, Component.translatable("tooltips.villagecraft3essentials.atm.toolconvertbuttonruby"), mouseX, mouseY);
+            } else if (toolConvertButtonJade.isHovered()) {
+                guiGraphics.renderTooltip(this.font, Component.translatable("tooltips.villagecraft3essentials.atm.toolconvertbuttonjade"), mouseX, mouseY);
 
             } else if (toolConvertButtonAmber.isHovered()) {
                 guiGraphics.renderTooltip(this.font, Component.translatable("tooltips.villagecraft3essentials.atm.toolconvertbuttonamber"), mouseX, mouseY);
+
+            } else if (toolConvertButtonSilicon.isHovered()) {
+                guiGraphics.renderTooltip(this.font, Component.translatable("tooltips.villagecraft3essentials.atm.toolconvertbuttonsilicon"), mouseX, mouseY);
+
+            } else if (toolConvertButtonRuby.isHovered()) {
+                guiGraphics.renderTooltip(this.font, Component.translatable("tooltips.villagecraft3essentials.atm.toolconvertbuttonruby"), mouseX, mouseY);
 
             } else if (previousMenuButton.isHovered()) {
                 guiGraphics.renderTooltip(this.font, Component.translatable("tooltips.villagecraft3essentials.atm.previousmenu"), mouseX, mouseY);
@@ -303,8 +329,8 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
         }
     }
 
-    private void renderRandomConvertButtons(GuiGraphics guiGraphics, int mouseX, int mouseY, int x, int y, int lastVisibleElementIndex) {
-        for (int i = this.startIndex; i < lastVisibleElementIndex && i < 6; i++) {
+    private void renderRandomConvertButtons(int x, int y, int lastVisibleElementIndex) {
+        for (int i = this.startIndex; i < lastVisibleElementIndex && i < 20; i++) {
             int j = i - this.startIndex;
             int l = j / RECIPES_COLUMNS;
             int i1 = y + l * RECIPES_IMAGE_SIZE_HEIGHT + 2;
@@ -315,61 +341,44 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
     }
 
     private void renderRandomConvertButtonItems(GuiGraphics guiGraphics, int x, int y, int startIndex) {
-        for (int i = this.startIndex; i < startIndex && i < 6; i++) {
+        for (int i = this.startIndex; i < startIndex && i < 20; i++) {
             int j = i - this.startIndex;
             int k = x + 2;
             int l = j / RECIPES_COLUMNS;
             int i1 = y + l * RECIPES_IMAGE_SIZE_HEIGHT + 2;
 
-            if (i == 0) {
-                ItemStack diamond = new ItemStack(Items.DIAMOND, diamondToRuby[0]);
-                ItemStack ruby = new ItemStack(ModItems.RUBY.get(), diamondToRuby[1]);
-                guiGraphics.renderFakeItem(diamond, k, i1);
-                guiGraphics.renderFakeItem(ruby, k + 42, i1);
-                guiGraphics.renderItemDecorations(this.font, diamond, k, i1);
-                guiGraphics.renderItemDecorations(this.font, ruby, k + 42, i1);
-
-            } else if (i == 1) {
-                ItemStack diamond = new ItemStack(Items.DIAMOND, diamondToAmber[0]);
-                ItemStack amber = new ItemStack(ModItems.AMBER.get(), diamondToAmber[1]);
-                guiGraphics.renderFakeItem(diamond, k, i1);
-                guiGraphics.renderFakeItem(amber, k + 42, i1);
-                guiGraphics.renderItemDecorations(this.font, diamond, k, i1);
-                guiGraphics.renderItemDecorations(this.font, amber, k + 42, i1);
-
-            } else if (i == 2) {
-                ItemStack ruby = new ItemStack(ModItems.RUBY.get(), rubyToDiamond[0]);
-                ItemStack diamond = new ItemStack(Items.DIAMOND, rubyToDiamond[1]);
-                guiGraphics.renderFakeItem(ruby, k, i1);
-                guiGraphics.renderFakeItem(diamond, k + 42, i1);
-                guiGraphics.renderItemDecorations(this.font, ruby, k, i1);
-                guiGraphics.renderItemDecorations(this.font, diamond, k + 42, i1);
-
-            } else if (i == 3) {
-                ItemStack ruby = new ItemStack(ModItems.RUBY.get(), rubyToAmber[0]);
-                ItemStack amber = new ItemStack(ModItems.AMBER.get(), rubyToAmber[1]);
-                guiGraphics.renderFakeItem(ruby, k, i1);
-                guiGraphics.renderFakeItem(amber, k + 42, i1);
-                guiGraphics.renderItemDecorations(this.font, ruby, k, i1);
-                guiGraphics.renderItemDecorations(this.font, amber, k + 42, i1);
-
-            } else if (i == 4) {
-                ItemStack amber = new ItemStack(ModItems.AMBER.get(), amberToDiamond[0]);
-                ItemStack diamond = new ItemStack(Items.DIAMOND, amberToDiamond[1]);
-                guiGraphics.renderFakeItem(amber, k, i1);
-                guiGraphics.renderFakeItem(diamond, k + 42, i1);
-                guiGraphics.renderItemDecorations(this.font, amber, k, i1);
-                guiGraphics.renderItemDecorations(this.font, diamond, k + 42, i1);
-
-            } else if (i == 5) {
-                ItemStack amber = new ItemStack(ModItems.AMBER.get(), amberToRuby[0]);
-                ItemStack ruby = new ItemStack(ModItems.RUBY.get(), amberToRuby[1]);
-                guiGraphics.renderFakeItem(amber, k, i1);
-                guiGraphics.renderFakeItem(ruby, k + 42, i1);
-                guiGraphics.renderItemDecorations(this.font, amber, k, i1);
-                guiGraphics.renderItemDecorations(this.font, ruby, k + 42, i1);
+            switch (i) {
+                case 0 -> renderRandomConvertButtonItemsHandler(guiGraphics, k, i1, Items.DIAMOND, ModItems.JADE.get(), diamondToJade[0], diamondToJade[1]);
+                case 1 -> renderRandomConvertButtonItemsHandler(guiGraphics, k, i1, Items.DIAMOND, ModItems.AMBER.get(), diamondToAmber[0], diamondToAmber[1]);
+                case 2 -> renderRandomConvertButtonItemsHandler(guiGraphics, k, i1, Items.DIAMOND, ModItems.SILICON.get(), diamondToSilicon[0], diamondToSilicon[1]);
+                case 3 -> renderRandomConvertButtonItemsHandler(guiGraphics, k, i1, Items.DIAMOND, ModItems.RUBY.get(), diamondToRuby[0], diamondToRuby[1]);
+                case 4 -> renderRandomConvertButtonItemsHandler(guiGraphics, k, i1, ModItems.JADE.get(), Items.DIAMOND, jadeToDiamond[0], jadeToDiamond[1]);
+                case 5 -> renderRandomConvertButtonItemsHandler(guiGraphics, k, i1, ModItems.JADE.get(), ModItems.AMBER.get(), jadeToAmber[0], jadeToAmber[1]);
+                case 6 -> renderRandomConvertButtonItemsHandler(guiGraphics, k, i1, ModItems.JADE.get(), ModItems.SILICON.get(), jadeToSilicon[0], jadeToSilicon[1]);
+                case 7 -> renderRandomConvertButtonItemsHandler(guiGraphics, k, i1, ModItems.JADE.get(), ModItems.RUBY.get(), jadeToRuby[0], jadeToRuby[1]);
+                case 8 -> renderRandomConvertButtonItemsHandler(guiGraphics, k, i1, ModItems.AMBER.get(), Items.DIAMOND, amberToDiamond[0], amberToDiamond[1]);
+                case 9 -> renderRandomConvertButtonItemsHandler(guiGraphics, k, i1, ModItems.AMBER.get(), ModItems.JADE.get(), amberToJade[0], amberToJade[1]);
+                case 10 -> renderRandomConvertButtonItemsHandler(guiGraphics, k, i1, ModItems.AMBER.get(), ModItems.SILICON.get(), amberToSilicon[0], amberToSilicon[1]);
+                case 11 -> renderRandomConvertButtonItemsHandler(guiGraphics, k, i1, ModItems.AMBER.get(), ModItems.RUBY.get(), amberToRuby[0], amberToRuby[1]);
+                case 12 -> renderRandomConvertButtonItemsHandler(guiGraphics, k, i1, ModItems.SILICON.get(), Items.DIAMOND, siliconToDiamond[0], siliconToDiamond[1]);
+                case 13 -> renderRandomConvertButtonItemsHandler(guiGraphics, k, i1, ModItems.SILICON.get(), ModItems.JADE.get(), siliconToJade[0], siliconToJade[1]);
+                case 14 -> renderRandomConvertButtonItemsHandler(guiGraphics, k, i1, ModItems.SILICON.get(), ModItems.AMBER.get(), siliconToAmber[0], siliconToAmber[1]);
+                case 15 -> renderRandomConvertButtonItemsHandler(guiGraphics, k, i1, ModItems.SILICON.get(), ModItems.RUBY.get(), siliconToRuby[0], siliconToRuby[1]);
+                case 16 -> renderRandomConvertButtonItemsHandler(guiGraphics, k, i1, ModItems.RUBY.get(), Items.DIAMOND, rubyToDiamond[0], rubyToDiamond[1]);
+                case 17 -> renderRandomConvertButtonItemsHandler(guiGraphics, k, i1, ModItems.RUBY.get(), ModItems.JADE.get(), rubyToJade[0], rubyToJade[1]);
+                case 18 -> renderRandomConvertButtonItemsHandler(guiGraphics, k, i1, ModItems.RUBY.get(), ModItems.AMBER.get(), rubyToAmber[0], rubyToAmber[1]);
+                case 19 -> renderRandomConvertButtonItemsHandler(guiGraphics, k, i1, ModItems.RUBY.get(), ModItems.SILICON.get(), rubyToSilicon[0], rubyToSilicon[1]);
             }
         }
+    }
+
+    private void renderRandomConvertButtonItemsHandler(GuiGraphics guiGraphics, int k, int i1, Item currency1, Item currency2, int currency1Count, int current2Count) {
+        ItemStack currency1Stack = new ItemStack(currency1, currency1Count);
+        ItemStack currency2Stack = new ItemStack(currency2, current2Count);
+        guiGraphics.renderFakeItem(currency1Stack, k, i1);
+        guiGraphics.renderFakeItem(currency2Stack, k + 42, i1);
+        guiGraphics.renderItemDecorations(this.font, currency1Stack, k, i1);
+        guiGraphics.renderItemDecorations(this.font, currency2Stack, k + 42, i1);
     }
 
     @Override
@@ -383,6 +392,7 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
             int i1 = l - this.startIndex;
             double d0 = mouseX - (double)(i);
             double d1 = mouseY - (double)(j + i1 / RECIPES_COLUMNS * RECIPES_IMAGE_SIZE_HEIGHT);
+
             if (d0 >= 0.0 && d1 >= 0.0 && d0 < RECIPES_IMAGE_SIZE_WIDTH && d1 < RECIPES_IMAGE_SIZE_HEIGHT && this.menu.clickMenuButton(this.minecraft.player, l)) {
                 Minecraft.getInstance().getSoundManager().play(SimpleSoundInstance.forUI(SoundEvents.UI_STONECUTTER_SELECT_RECIPE, 1.0F));
                 this.minecraft.gameMode.handleInventoryButtonClick(this.menu.containerId, l);
@@ -425,64 +435,71 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
     }
 
     protected int getOffscreenRows() {
-        return (6 + RECIPES_COLUMNS - 1) / RECIPES_COLUMNS - RECIPES_ROWS;
+        return (20 + RECIPES_COLUMNS - 1) / RECIPES_COLUMNS - RECIPES_ROWS;
     }
 
-    public void setConversionRates(int[] diamondToRuby, int[] diamondToAmber, int[] rubyToDiamond, int[] rubyToAmber, int[] amberToDiamond, int[] amberToRuby) {
-        this.diamondToRuby = diamondToRuby;
+    public void setConversionRates(int[] diamondToJade, int[] diamondToAmber, int[] diamondToSilicon, int[] diamondToRuby, int[] jadeToDiamond, int[] jadeToAmber, int[] jadeToSilicon, int[] jadeToRuby, int[] amberToDiamond, int[] amberToJade, int[] amberToSilicon, int[] amberToRuby, int[] siliconToDiamond, int[] siliconToJade, int[] siliconToAmber, int[] siliconToRuby, int[] rubyToDiamond, int[] rubyToJade, int[] rubyToAmber, int[] rubyToSilicon) {
+        this.diamondToJade = diamondToJade;
         this.diamondToAmber = diamondToAmber;
-        this.rubyToDiamond = rubyToDiamond;
-        this.rubyToAmber = rubyToAmber;
+        this.diamondToSilicon = diamondToSilicon;
+        this.diamondToRuby = diamondToRuby;
+        this.jadeToDiamond = jadeToDiamond;
+        this.jadeToAmber = jadeToAmber;
+        this.jadeToSilicon = jadeToSilicon;
+        this.jadeToRuby = jadeToRuby;
         this.amberToDiamond = amberToDiamond;
+        this.amberToJade = amberToJade;
+        this.amberToSilicon = amberToSilicon;
         this.amberToRuby = amberToRuby;
+        this.siliconToDiamond = siliconToDiamond;
+        this.siliconToJade = siliconToJade;
+        this.siliconToAmber = siliconToAmber;
+        this.siliconToRuby = siliconToRuby;
+        this.rubyToDiamond = rubyToDiamond;
+        this.rubyToJade = rubyToJade;
+        this.rubyToAmber = rubyToAmber;
+        this.rubyToSilicon = rubyToSilicon;
     }
 
     private static @NotNull ResourceLocation getRandomConvertGuiTexture(int guiTextureIndex) {
-        ResourceLocation GUI_TEXTURE;
-
-        switch (guiTextureIndex) {
-            default -> GUI_TEXTURE = ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/black_atm_randomconvert.png");
-            case 2 -> GUI_TEXTURE = ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/blue_atm_randomconvert.png");
-            case 3 -> GUI_TEXTURE = ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/brown_atm_randomconvert.png");
-            case 4 -> GUI_TEXTURE = ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/cyan_atm_randomconvert.png");
-            case 5 -> GUI_TEXTURE = ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/gray_atm_randomconvert.png");
-            case 6 -> GUI_TEXTURE = ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/green_atm_randomconvert.png");
-            case 7 -> GUI_TEXTURE = ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/light_blue_atm_randomconvert.png");
-            case 8 -> GUI_TEXTURE = ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/light_gray_atm_randomconvert.png");
-            case 9 -> GUI_TEXTURE = ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/lime_atm_randomconvert.png");
-            case 10 -> GUI_TEXTURE = ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/magenta_atm_randomconvert.png");
-            case 11 -> GUI_TEXTURE = ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/orange_atm_randomconvert.png");
-            case 12 -> GUI_TEXTURE = ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/pink_atm_randomconvert.png");
-            case 13 -> GUI_TEXTURE = ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/purple_atm_randomconvert.png");
-            case 14 -> GUI_TEXTURE = ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/red_atm_randomconvert.png");
-            case 15 -> GUI_TEXTURE = ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/white_atm_randomconvert.png");
-            case 16 -> GUI_TEXTURE = ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/yellow_atm_randomconvert.png");
-        }
-        return GUI_TEXTURE;
+        return switch (guiTextureIndex) {
+            case 2 -> ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/blue_atm_randomconvert.png");
+            case 3 -> ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/brown_atm_randomconvert.png");
+            case 4 -> ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/cyan_atm_randomconvert.png");
+            case 5 -> ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/gray_atm_randomconvert.png");
+            case 6 -> ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/green_atm_randomconvert.png");
+            case 7 -> ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/light_blue_atm_randomconvert.png");
+            case 8 -> ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/light_gray_atm_randomconvert.png");
+            case 9 -> ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/lime_atm_randomconvert.png");
+            case 10 -> ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/magenta_atm_randomconvert.png");
+            case 11 -> ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/orange_atm_randomconvert.png");
+            case 12 -> ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/pink_atm_randomconvert.png");
+            case 13 -> ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/purple_atm_randomconvert.png");
+            case 14 -> ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/red_atm_randomconvert.png");
+            case 15 -> ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/white_atm_randomconvert.png");
+            case 16 -> ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/yellow_atm_randomconvert.png");
+            default -> ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/black_atm_randomconvert.png");
+        };
     }
 
-
     private static @NotNull ResourceLocation getToolConvertGuiTexture(int guiTextureIndex) {
-        ResourceLocation GUI_TEXTURE;
-
-        switch (guiTextureIndex) {
-            default -> GUI_TEXTURE = ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/black_atm_toolconvert.png");
-            case 2 -> GUI_TEXTURE = ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/blue_atm_toolconvert.png");
-            case 3 -> GUI_TEXTURE = ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/brown_atm_toolconvert.png");
-            case 4 -> GUI_TEXTURE = ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/cyan_atm_toolconvert.png");
-            case 5 -> GUI_TEXTURE = ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/gray_atm_toolconvert.png");
-            case 6 -> GUI_TEXTURE = ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/green_atm_toolconvert.png");
-            case 7 -> GUI_TEXTURE = ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/light_blue_atm_toolconvert.png");
-            case 8 -> GUI_TEXTURE = ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/light_gray_atm_toolconvert.png");
-            case 9 -> GUI_TEXTURE = ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/lime_atm_toolconvert.png");
-            case 10 -> GUI_TEXTURE = ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/magenta_atm_toolconvert.png");
-            case 11 -> GUI_TEXTURE = ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/orange_atm_toolconvert.png");
-            case 12 -> GUI_TEXTURE = ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/pink_atm_toolconvert.png");
-            case 13 -> GUI_TEXTURE = ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/purple_atm_toolconvert.png");
-            case 14 -> GUI_TEXTURE = ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/red_atm_toolconvert.png");
-            case 15 -> GUI_TEXTURE = ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/white_atm_toolconvert.png");
-            case 16 -> GUI_TEXTURE = ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/yellow_atm_toolconvert.png");
-        }
-        return GUI_TEXTURE;
+        return switch (guiTextureIndex) {
+            case 2 -> ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/blue_atm_toolconvert.png");
+            case 3 -> ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/brown_atm_toolconvert.png");
+            case 4 -> ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/cyan_atm_toolconvert.png");
+            case 5 -> ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/gray_atm_toolconvert.png");
+            case 6 -> ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/green_atm_toolconvert.png");
+            case 7 -> ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/light_blue_atm_toolconvert.png");
+            case 8 -> ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/light_gray_atm_toolconvert.png");
+            case 9 -> ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/lime_atm_toolconvert.png");
+            case 10 -> ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/magenta_atm_toolconvert.png");
+            case 11 -> ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/orange_atm_toolconvert.png");
+            case 12 -> ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/pink_atm_toolconvert.png");
+            case 13 -> ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/purple_atm_toolconvert.png");
+            case 14 -> ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/red_atm_toolconvert.png");
+            case 15 -> ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/white_atm_toolconvert.png");
+            case 16 -> ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/yellow_atm_toolconvert.png");
+            default -> ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/gui/container/atm/black_atm_toolconvert.png");
+        };
     }
 }

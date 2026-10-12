@@ -7,8 +7,8 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 @Mixin(MouseHandler.class)
 public interface MouseHandlerMixinAccessor {
     @Accessor("xpos")
-    void setXpos(double x);
+    void setXPos(double x);
 
     @Accessor("ypos")
-    void setYpos(double y);
+    void setYPos(double y);
 }

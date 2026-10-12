@@ -23,8 +23,10 @@ public class ModArcherEvents {
     public static void registerItems(RegisterEvent event) {
         if (ModList.get().isLoaded("archers")) {
             ArrayList<Weapon.Entry> meleeEntries = new ArrayList<>();
-            meleeEntries.add(Weapons.spearWithSkill("villagecraft3essentials", "ruby_spear", Equipment.Tier.TIER_2, () -> Ingredient.of(ModItems.RUBY)));
+            meleeEntries.add(Weapons.spearWithSkill("villagecraft3essentials", "jade_spear", Equipment.Tier.TIER_2, () -> Ingredient.of(ModItems.JADE)));
             meleeEntries.add(Weapons.spearWithSkill("villagecraft3essentials", "amber_spear", Equipment.Tier.TIER_2, () -> Ingredient.of(ModItems.AMBER)));
+            meleeEntries.add(Weapons.spearWithSkill("villagecraft3essentials", "silicon_spear", Equipment.Tier.TIER_2, () -> Ingredient.of(ModItems.SILICON)));
+            meleeEntries.add(Weapons.spearWithSkill("villagecraft3essentials", "ruby_spear", Equipment.Tier.TIER_2, () -> Ingredient.of(ModItems.RUBY)));
             event.register(Registries.ITEM, (reg) -> Weapon.register((ArchersMod.itemConfig.value).melee_weapons, meleeEntries, Group.KEY));
         }
     }

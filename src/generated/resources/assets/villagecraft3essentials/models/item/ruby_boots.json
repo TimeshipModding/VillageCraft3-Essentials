@@ -62,15 +62,27 @@
       }
     },
     {
-      "model": "villagecraft3essentials:item/ruby_boots_ruby_trim",
+      "model": "villagecraft3essentials:item/ruby_boots_jade_trim",
       "predicate": {
-        "minecraft:trim_type": 0.4
+        "minecraft:trim_type": 0.7
       }
     },
     {
       "model": "villagecraft3essentials:item/ruby_boots_amber_trim",
       "predicate": {
         "minecraft:trim_type": 0.6
+      }
+    },
+    {
+      "model": "villagecraft3essentials:item/ruby_boots_ruby_trim",
+      "predicate": {
+        "minecraft:trim_type": 0.4
+      }
+    },
+    {
+      "model": "villagecraft3essentials:item/ruby_boots_silicon_trim",
+      "predicate": {
+        "minecraft:trim_type": 0.2
       }
     }
   ],

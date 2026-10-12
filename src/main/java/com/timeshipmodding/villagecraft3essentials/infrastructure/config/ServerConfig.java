@@ -5,14 +5,20 @@ import net.neoforged.neoforge.common.ModConfigSpec;
 public class ServerConfig {
     private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
     public static ModConfigSpec.ConfigValue<String> VILLAGECRAFTCITY_GROUP_NAME;
-    public static ModConfigSpec.ConfigValue<String> GRIPPERCITY_GROUP_NAME;
-    public static ModConfigSpec.ConfigValue<String> AMBERCAVES_GROUP_NAME;
+    public static ModConfigSpec.ConfigValue<String> OASIS_GROUP_NAME;
+    public static ModConfigSpec.ConfigValue<String> SWEDISHFURNITURESTORE_GROUP_NAME;
+    public static ModConfigSpec.ConfigValue<String> LONDON_GROUP_NAME;
+    public static ModConfigSpec.ConfigValue<String> BLACKWATER_GROUP_NAME;
     public static ModConfigSpec.ConfigValue<String> VILLAGECRAFTCITY_BLACKLISTED_GROUP_NAME;
-    public static ModConfigSpec.ConfigValue<String> GRIPPERCITY_BLACKLISTED_GROUP_NAME;
-    public static ModConfigSpec.ConfigValue<String> AMBERCAVES_BLACKLISTED_GROUP_NAME;
+    public static ModConfigSpec.ConfigValue<String> OASIS_BLACKLISTED_GROUP_NAME;
+    public static ModConfigSpec.ConfigValue<String> SWEDISHFURNITURESTORE_BLACKLISTED_GROUP_NAME;
+    public static ModConfigSpec.ConfigValue<String> LONDON_BLACKLISTED_GROUP_NAME;
+    public static ModConfigSpec.ConfigValue<String> BLACKWATER_BLACKLISTED_GROUP_NAME;
     public static ModConfigSpec.ConfigValue<String> VILLAGECRAFTCITY_GOVERNMENT_GROUP_NAME;
-    public static ModConfigSpec.ConfigValue<String> GRIPPERCITY_GOVERNMENT_GROUP_NAME;
-    public static ModConfigSpec.ConfigValue<String> AMBERCAVES_GOVERNMENT_GROUP_NAME;
+    public static ModConfigSpec.ConfigValue<String> OASIS_GOVERNMENT_GROUP_NAME;
+    public static ModConfigSpec.ConfigValue<String> SWEDISHFURNITURESTORE_GOVERNMENT_GROUP_NAME;
+    public static ModConfigSpec.ConfigValue<String> LONDON_GOVERNMENT_GROUP_NAME;
+    public static ModConfigSpec.ConfigValue<String> BLACKWATER_GOVERNMENT_GROUP_NAME;
     public static ModConfigSpec.ConfigValue<String> MAYOR_GROUP_NAME;
     public static ModConfigSpec.ConfigValue<String> SHERIFF_NAME;
     public static ModConfigSpec.ConfigValue<String> TREASURER_GROUP_NAME;
@@ -26,11 +32,15 @@ public class ServerConfig {
     public static ModConfigSpec.IntValue CORE_RESPAWN_TIME_MIN;
     public static ModConfigSpec.IntValue CORE_RESPAWN_TIME_MAX;
     public static ModConfigSpec.IntValue VILLAGECRAFTCITY_POINT_MULTIPLIER;
-    public static ModConfigSpec.IntValue GRIPPERCITY_POINT_MULTIPLIER;
-    public static ModConfigSpec.IntValue AMBERCAVES_POINT_MULTIPLIER;
+    public static ModConfigSpec.IntValue OASIS_POINT_MULTIPLIER;
+    public static ModConfigSpec.IntValue SWEDISHFURNITURESTORE_POINT_MULTIPLIER;
+    public static ModConfigSpec.IntValue LONDON_POINT_MULTIPLIER;
+    public static ModConfigSpec.IntValue BLACKWATER_POINT_MULTIPLIER;
     public static ModConfigSpec.IntValue VILLAGECRAFTCITY_COMPLETED_MISSIONS;
-    public static ModConfigSpec.IntValue GRIPPERCITY_COMPLETED_MISSIONS;
-    public static ModConfigSpec.IntValue AMBERCAVES_COMPLETED_MISSIONS;
+    public static ModConfigSpec.IntValue OASIS_COMPLETED_MISSIONS;
+    public static ModConfigSpec.IntValue SWEDISHFURNITURESTORE_COMPLETED_MISSIONS;
+    public static ModConfigSpec.IntValue LONDON_COMPLETED_MISSIONS;
+    public static ModConfigSpec.IntValue BLACKWATER_COMPLETED_MISSIONS;
     public static ModConfigSpec.ConfigValue<String> DISCORD_SERVER_ID;
     public static ModConfigSpec.ConfigValue<String> DISCORD_JAIL_ROLE_ID;
     public static final ModConfigSpec SPEC;
@@ -41,10 +51,14 @@ public class ServerConfig {
 
         VILLAGECRAFTCITY_GROUP_NAME = BUILDER
                 .define("villagecraftCityGroupName", "villagecraftcity");
-        GRIPPERCITY_GROUP_NAME = BUILDER
-                .define("gripperCityGroupName", "grippercity");
-        AMBERCAVES_GROUP_NAME = BUILDER
-                .define("amberCavesGroupName", "ambercaves");
+        OASIS_GROUP_NAME = BUILDER
+                .define("oasisGroupName", "oasis");
+        SWEDISHFURNITURESTORE_GROUP_NAME = BUILDER
+                .define("swedishFurnitureStoreGroupName", "swedishfurniturestore");
+        LONDON_GROUP_NAME = BUILDER
+                .define("londonGroupName", "london");
+        BLACKWATER_GROUP_NAME = BUILDER
+                .define("blackWaterGroupName", "blackwater");
 
         BUILDER.pop();
         BUILDER.push("Town Blacklisted Luckperms Group Names");
@@ -52,21 +66,29 @@ public class ServerConfig {
 
         VILLAGECRAFTCITY_BLACKLISTED_GROUP_NAME = BUILDER
                 .define("villagecraftCityBlacklistedGroupName", "villagecraftcityblacklisted");
-        GRIPPERCITY_BLACKLISTED_GROUP_NAME = BUILDER
-                .define("gripperCityBlacklistedGroupName", "grippercityblacklisted");
-        AMBERCAVES_BLACKLISTED_GROUP_NAME = BUILDER
-                .define("amberCavesBlacklistedGroupName", "ambercavesblacklisted");
+        OASIS_BLACKLISTED_GROUP_NAME = BUILDER
+                .define("oasisBlacklistedGroupName", "oasisblacklisted");
+        SWEDISHFURNITURESTORE_BLACKLISTED_GROUP_NAME = BUILDER
+                .define("swedishFurnitureStoreBlacklistedGroupName", "swedishfurniturestoreblacklisted");
+        LONDON_BLACKLISTED_GROUP_NAME = BUILDER
+                .define("londonBlacklistedGroupName", "londonblacklisted");
+        BLACKWATER_BLACKLISTED_GROUP_NAME = BUILDER
+                .define("blackWaterBlacklistedGroupName", "blackwaterblacklisted");
 
         BUILDER.pop();
         BUILDER.push("Town Government Luckperms Group Names");
         BUILDER.comment("Names of the town government luckperms group names that are set up on the server");
 
         VILLAGECRAFTCITY_GOVERNMENT_GROUP_NAME = BUILDER
-                .define("villagecraftCityGovernmentGroupName", "villagecraftcitygovernment");
-        GRIPPERCITY_GOVERNMENT_GROUP_NAME = BUILDER
-                .define("gripperCityGovernmentGroupName", "grippercitygovernment");
-        AMBERCAVES_GOVERNMENT_GROUP_NAME = BUILDER
-                .define("amberCavesGovernmentGroupName", "ambercavesgovernment");
+                .define("villagecraftCityGovernmentGroupName", "vccgov");
+        OASIS_GOVERNMENT_GROUP_NAME = BUILDER
+                .define("oasisGovernmentGroupName", "thegubernatorials");
+        SWEDISHFURNITURESTORE_GOVERNMENT_GROUP_NAME = BUILDER
+                .define("swedishFurnitureStoreGovernmentGroupName", "itsupportteam");
+        LONDON_GOVERNMENT_GROUP_NAME = BUILDER
+                .define("londonGovernmentGroupName", "chieftechnicians");
+        BLACKWATER_GOVERNMENT_GROUP_NAME = BUILDER
+                .define("blackWaterGovernmentGroupName", "wogenterprises");
 
         BUILDER.pop();
         BUILDER.push("Town Government Role Luckperms Group Names");
@@ -131,23 +153,35 @@ public class ServerConfig {
                 .comment("The maximum time in hours for a core to respawn")
                 .defineInRange("coreRespawnTimeMax", 4, 0, Integer.MAX_VALUE);
         VILLAGECRAFTCITY_POINT_MULTIPLIER = BUILDER
-                .comment("The amount VillageCraft City's score is multiplied by to get VillageCraft City's points")
+                .comment("The amount VillageCraft City's war score is multiplied by to get VillageCraft City's war points")
                 .defineInRange("villagecraftCityPointMultiplier", 1, 1, Integer.MAX_VALUE);
-        GRIPPERCITY_POINT_MULTIPLIER = BUILDER
-                .comment("The amount VillageCraft City's score is multiplied by to get Gripper City's points")
-                .defineInRange("gripperCityPointMultiplier", 1, 1, Integer.MAX_VALUE);
-        AMBERCAVES_POINT_MULTIPLIER = BUILDER
-                .comment("The amount VillageCraft City's score is multiplied by to get Amber Caves' points")
-                .defineInRange("amberCavesPointMultiplier", 1, 1, Integer.MAX_VALUE);
+        OASIS_POINT_MULTIPLIER = BUILDER
+                .comment("The amount Oasis's war score is multiplied by to get Oasis's war points")
+                .defineInRange("oasisPointMultiplier", 1, 1, Integer.MAX_VALUE);
+        SWEDISHFURNITURESTORE_POINT_MULTIPLIER = BUILDER
+                .comment("The amount Swedish Furniture Store's war score is multiplied by to get Swedish Furniture Store's war points")
+                .defineInRange("swedishFurnitureStorePointMultiplier", 1, 1, Integer.MAX_VALUE);
+        LONDON_POINT_MULTIPLIER = BUILDER
+                .comment("The amount London's war score is multiplied by to get London's war points")
+                .defineInRange("londonPointMultiplier", 1, 1, Integer.MAX_VALUE);
+        BLACKWATER_POINT_MULTIPLIER = BUILDER
+                .comment("The amount BlackWater's war score is multiplied by to get BlackWater's war points")
+                .defineInRange("blackWaterPointMultiplier", 1, 1, Integer.MAX_VALUE);
         VILLAGECRAFTCITY_COMPLETED_MISSIONS = BUILDER
-                .comment("Number of missions members of VillageCraft City has completed on the regular server. This value is added to VillageCraft City's points")
+                .comment("Number of missions members of VillageCraft City has completed on the main server. This value is added to VillageCraft City's war points")
                 .defineInRange("villagecraftCityCompletedMissions", 0, 1, Integer.MAX_VALUE);
-        GRIPPERCITY_COMPLETED_MISSIONS = BUILDER
-                .comment("Number of missions members of Gripper City has completed on the regular server. This value is added to Gripper City's points")
-                .defineInRange("gripperCityCompletedMissions", 0, 1, Integer.MAX_VALUE);
-        AMBERCAVES_COMPLETED_MISSIONS = BUILDER
-                .comment("Number of missions members of Amber Caves have completed on the regular server. This value is added to Amber Caves' points")
-                .defineInRange("amberCavesCompletedMissions", 0, 1, Integer.MAX_VALUE);
+        OASIS_COMPLETED_MISSIONS = BUILDER
+                .comment("Number of missions members of Oasis has completed on the main server. This value is added to Oasis's war points")
+                .defineInRange("oasisCompletedMissions", 0, 1, Integer.MAX_VALUE);
+        SWEDISHFURNITURESTORE_COMPLETED_MISSIONS = BUILDER
+                .comment("Number of missions members of Swedish Furniture Store has completed on the main server. This value is added to Swedish Furniture Store's war points")
+                .defineInRange("swedishFurnitureStoreCompletedMissions", 0, 1, Integer.MAX_VALUE);
+        LONDON_COMPLETED_MISSIONS = BUILDER
+                .comment("Number of missions members of London have completed on the main server. This value is added to London's war points")
+                .defineInRange("londonCompletedMissions", 0, 1, Integer.MAX_VALUE);
+        BLACKWATER_COMPLETED_MISSIONS = BUILDER
+                .comment("Number of missions members of BlackWater have completed on the main server. This value is added to BlackWater's war points")
+                .defineInRange("blackWaterCompletedMissions", 0, 1, Integer.MAX_VALUE);
 
         BUILDER.pop();
         BUILDER.push("Discord Integration Config");

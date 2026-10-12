@@ -49,8 +49,10 @@ public class ModClientEvents {
         EntityRenderers.register(ModEntities.MOLE.get(), MoleRenderer::new);
 
         if (ModList.get().isLoaded("aquaculture")) {
-            AquaMethods.registerAquaFishingRodModelProperties(ModCompatItems.RUBY_FISHING_ROD.get());
+            AquaMethods.registerAquaFishingRodModelProperties(ModCompatItems.JADE_FISHING_ROD.get());
             AquaMethods.registerAquaFishingRodModelProperties(ModCompatItems.AMBER_FISHING_ROD.get());
+            AquaMethods.registerAquaFishingRodModelProperties(ModCompatItems.SILICON_FISHING_ROD.get());
+            AquaMethods.registerAquaFishingRodModelProperties(ModCompatItems.RUBY_FISHING_ROD.get());
         }
     }
 
@@ -64,7 +66,7 @@ public class ModClientEvents {
     public static void addItemTooltip(ItemTooltipEvent event) {
         ItemStack stack = event.getItemStack();
 
-        if (stack.is(ModItemTags.DIAMOND_CONVERTIBLE_TOOLS) || stack.is(ModItemTags.RUBY_CONVERTIBLE_TOOLS) || stack.is(ModItemTags.AMBER_CONVERTIBLE_TOOLS)) {
+        if (stack.is(ModItemTags.DIAMOND_CONVERTIBLE_TOOLS) || stack.is(ModItemTags.JADE_CONVERTIBLE_TOOLS) || stack.is(ModItemTags.AMBER_CONVERTIBLE_TOOLS) || stack.is(ModItemTags.SILICON_CONVERTIBLE_TOOLS) || stack.is(ModItemTags.RUBY_CONVERTIBLE_TOOLS)) {
             if(Screen.hasShiftDown()) {
                 if (stack.getItem() instanceof ArmorItem) {
                     event.getToolTip().add(Component.translatable("tooltip.villagecraft3essentials.armor_conversation_hint"));
@@ -82,12 +84,12 @@ public class ModClientEvents {
     @SubscribeEvent
     public static void onScreenInit(ScreenEvent.Init.Post event) {
         if (event.getScreen() instanceof InventoryScreen inventoryScreen) {
-            WidgetSprites WALLET__BUTTON_SPRITES = new WidgetSprites(
+            WidgetSprites WALLET_BUTTON_SPRITES = new WidgetSprites(
                     ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "widget/wallet_button"),
                     ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "widget/wallet_button_highlighted")
             );
 
-            walletButton = new ImageButton(inventoryScreen.getGuiLeft() + 132, inventoryScreen.getGuiTop() + 61, 20, 18, WALLET__BUTTON_SPRITES, (button) -> {
+            walletButton = new ImageButton(inventoryScreen.getGuiLeft() + 132, inventoryScreen.getGuiTop() + 61, 20, 18, WALLET_BUTTON_SPRITES, (button) -> {
                 PacketDistributor.sendToServer(new OpenWalletMenuPacket());
             });
 
@@ -99,8 +101,8 @@ public class ModClientEvents {
             Minecraft minecraft = Minecraft.getInstance();
             org.lwjgl.glfw.GLFW.glfwSetCursorPos(minecraft.getWindow().getWindow(), savedX, savedY);
             MouseHandlerMixinAccessor accessor = (MouseHandlerMixinAccessor) minecraft.mouseHandler;
-            accessor.setXpos(savedX);
-            accessor.setYpos(savedY);
+            accessor.setXPos(savedX);
+            accessor.setYPos(savedY);
 
             shouldRestore = false;
         }

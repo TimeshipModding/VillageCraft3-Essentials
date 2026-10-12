@@ -1,7 +1,9 @@
 {
   "type": "villagecraft3essentials:swap_item_loot_modifier",
   "conditions": [],
-  "currency1": "villagecraft3essentials:ruby_axe",
-  "currency2": "villagecraft3essentials:amber_axe",
-  "target": "minecraft:diamond_axe"
+  "replacementCurrency1": "villagecraft3essentials:jade_axe",
+  "replacementCurrency2": "villagecraft3essentials:amber_axe",
+  "replacementCurrency3": "villagecraft3essentials:silicon_axe",
+  "replacementCurrency4": "villagecraft3essentials:ruby_axe",
+  "targetCurrency": "minecraft:diamond_axe"
 }

@@ -21,6 +21,7 @@ public class ToggleWarScoreGainingCommand {
         if (ServerConfig.ENABLE_WAR_SYSTEM_FEATURES.get()) {
             MutableComponent message = Component.empty();
 
+            // TODO: Test and investigate intellji warning
             if (!gainWarPoints) {
                 message.append(Component.literal("War points can now be earned via breaking cores."));
                 gainWarPoints = true;

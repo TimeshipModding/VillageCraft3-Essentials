@@ -1,0 +1,38 @@
+{
+  "values": [
+    "villagecraft3essentials:jade_sword",
+    "villagecraft3essentials:jade_shovel",
+    "villagecraft3essentials:jade_pickaxe",
+    "villagecraft3essentials:jade_axe",
+    "villagecraft3essentials:jade_hoe",
+    "villagecraft3essentials:jade_helmet",
+    "villagecraft3essentials:jade_chestplate",
+    "villagecraft3essentials:jade_leggings",
+    "villagecraft3essentials:jade_boots",
+    "villagecraft3essentials:jade_horse_armor",
+    {
+      "id": "villagecraft3essentials:jade_spear",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:jade_knife",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:jade_fillet_knife",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:jade_fishing_rod",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:jade_hook",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:jade_brush",
+      "required": false
+    }
+  ]
+}

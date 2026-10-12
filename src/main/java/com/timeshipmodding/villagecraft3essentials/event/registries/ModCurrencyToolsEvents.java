@@ -41,47 +41,36 @@ public class ModCurrencyToolsEvents {
     @SubscribeEvent
     public static void onPlayerLeftClickBlock(PlayerInteractEvent.LeftClickBlock event) {
         if (ModList.get().isLoaded("luckperms")) {
-            ItemStack stack = event.getItemStack();
-
             if (event.getSide() == LogicalSide.CLIENT) {
                 return;
             }
 
-            if (LuckpermsMethods.isInGroup(event.getEntity(), ServerConfig.VILLAGECRAFTCITY_GROUP_NAME.get()) && stack.is(ModItemTags.RUBY_CONVERTIBLE_TOOLS) || LuckpermsMethods.isInGroup(event.getEntity(), ServerConfig.VILLAGECRAFTCITY_GROUP_NAME.get()) && stack.is(ModItemTags.AMBER_CONVERTIBLE_TOOLS)) {
-                if (stack.getItem() instanceof ArmorItem) {
-                    event.getEntity().displayClientMessage(Component.translatable("actionbar.villagecraft3essentials.armor_conversation_hint"), true);
+            ItemStack stack = event.getItemStack();
 
-                } else {
-                    event.getEntity().displayClientMessage(Component.translatable("actionbar.villagecraft3essentials.tool_conversation_hint"), true);
-                }
+            if (!(stack.is(ModItemTags.DIAMOND_CONVERTIBLE_TOOLS) || stack.is(ModItemTags.JADE_CONVERTIBLE_TOOLS) || stack.is(ModItemTags.AMBER_CONVERTIBLE_TOOLS) || stack.is(ModItemTags.SILICON_CONVERTIBLE_TOOLS) || stack.is(ModItemTags.RUBY_CONVERTIBLE_TOOLS))) {
+                return;
+            }
 
-                event.getEntity().drop(stack.copy(), true);
-                stack.shrink(1);
-                event.setCanceled(true);
+            boolean inVillageCraftCity = LuckpermsMethods.isInGroup(event.getEntity(), ServerConfig.VILLAGECRAFTCITY_GROUP_NAME.get());
+            boolean inOasis = LuckpermsMethods.isInGroup(event.getEntity(), ServerConfig.OASIS_GROUP_NAME.get());
+            boolean inSwedishFurnitureStore = LuckpermsMethods.isInGroup(event.getEntity(), ServerConfig.SWEDISHFURNITURESTORE_GROUP_NAME.get());
+            boolean inLondon = LuckpermsMethods.isInGroup(event.getEntity(), ServerConfig.LONDON_GROUP_NAME.get());
+            boolean inBlackWater = LuckpermsMethods.isInGroup(event.getEntity(), ServerConfig.BLACKWATER_GROUP_NAME.get());
 
-            } else if (LuckpermsMethods.isInGroup(event.getEntity(), ServerConfig.GRIPPERCITY_GROUP_NAME.get()) && stack.is(ModItemTags.DIAMOND_CONVERTIBLE_TOOLS) || LuckpermsMethods.isInGroup(event.getEntity(), ServerConfig.GRIPPERCITY_GROUP_NAME.get()) && stack.is(ModItemTags.AMBER_CONVERTIBLE_TOOLS)) {
-                if (stack.getItem() instanceof ArmorItem) {
-                    event.getEntity().displayClientMessage(Component.translatable("actionbar.villagecraft3essentials.armor_conversation_hint"), true);
+            if (inVillageCraftCity && !stack.is(ModItemTags.DIAMOND_CONVERTIBLE_TOOLS)) {
+                handleOnPlayerLeftClickBlock(event, stack);
 
-                } else {
-                    event.getEntity().displayClientMessage(Component.translatable("actionbar.villagecraft3essentials.tool_conversation_hint"), true);
-                }
+            } else if (inOasis && !stack.is(ModItemTags.JADE_CONVERTIBLE_TOOLS)) {
+                handleOnPlayerLeftClickBlock(event, stack);
 
-                event.getEntity().drop(stack.copy(), true);
-                stack.shrink(1);
-                event.setCanceled(true);
+            } else if (inSwedishFurnitureStore && !stack.is(ModItemTags.AMBER_CONVERTIBLE_TOOLS)) {
+                handleOnPlayerLeftClickBlock(event, stack);
 
-            } else if (LuckpermsMethods.isInGroup(event.getEntity(), ServerConfig.AMBERCAVES_GROUP_NAME.get()) && stack.is(ModItemTags.DIAMOND_CONVERTIBLE_TOOLS) || LuckpermsMethods.isInGroup(event.getEntity(), ServerConfig.AMBERCAVES_GROUP_NAME.get()) && stack.is(ModItemTags.RUBY_CONVERTIBLE_TOOLS)) {
-                if (stack.getItem() instanceof ArmorItem) {
-                    event.getEntity().displayClientMessage(Component.translatable("actionbar.villagecraft3essentials.armor_conversation_hint"), true);
+            } else if (inLondon && !stack.is(ModItemTags.SILICON_CONVERTIBLE_TOOLS)) {
+                handleOnPlayerLeftClickBlock(event, stack);
 
-                } else {
-                    event.getEntity().displayClientMessage(Component.translatable("actionbar.villagecraft3essentials.tool_conversation_hint"), true);
-                }
-
-                event.getEntity().drop(stack.copy(), true);
-                stack.shrink(1);
-                event.setCanceled(true);
+            } else if (inBlackWater && !stack.is(ModItemTags.RUBY_CONVERTIBLE_TOOLS)) {
+                handleOnPlayerLeftClickBlock(event, stack);
             }
         }
     }
@@ -95,30 +84,30 @@ public class ModCurrencyToolsEvents {
                 return;
             }
 
-            if (stack.getItem() instanceof ArmorItem) {
+            if (stack.getItem() instanceof ArmorItem || !(stack.is(ModItemTags.DIAMOND_CONVERTIBLE_TOOLS) || stack.is(ModItemTags.JADE_CONVERTIBLE_TOOLS) || stack.is(ModItemTags.AMBER_CONVERTIBLE_TOOLS) || stack.is(ModItemTags.SILICON_CONVERTIBLE_TOOLS) || stack.is(ModItemTags.RUBY_CONVERTIBLE_TOOLS))) {
                 return;
             }
 
-            if (LuckpermsMethods.isInGroup(event.getEntity(), ServerConfig.VILLAGECRAFTCITY_GROUP_NAME.get()) && stack.is(ModItemTags.RUBY_CONVERTIBLE_TOOLS) || LuckpermsMethods.isInGroup(event.getEntity(), ServerConfig.VILLAGECRAFTCITY_GROUP_NAME.get()) && stack.is(ModItemTags.AMBER_CONVERTIBLE_TOOLS)) {
-                event.getEntity().displayClientMessage(Component.translatable("actionbar.villagecraft3essentials.tool_conversation_hint"), true);
-                event.getEntity().drop(stack.copy(), true);
-                stack.shrink(1);
-                event.setCancellationResult(InteractionResult.FAIL);
-                event.setCanceled(true);
+            boolean inVillageCraftCity = LuckpermsMethods.isInGroup(event.getEntity(), ServerConfig.VILLAGECRAFTCITY_GROUP_NAME.get());
+            boolean inOasis = LuckpermsMethods.isInGroup(event.getEntity(), ServerConfig.OASIS_GROUP_NAME.get());
+            boolean inSwedishFurnitureStore = LuckpermsMethods.isInGroup(event.getEntity(), ServerConfig.SWEDISHFURNITURESTORE_GROUP_NAME.get());
+            boolean inLondon = LuckpermsMethods.isInGroup(event.getEntity(), ServerConfig.LONDON_GROUP_NAME.get());
+            boolean inBlackWater = LuckpermsMethods.isInGroup(event.getEntity(), ServerConfig.BLACKWATER_GROUP_NAME.get());
 
-            } else if (LuckpermsMethods.isInGroup(event.getEntity(), ServerConfig.GRIPPERCITY_GROUP_NAME.get()) && stack.is(ModItemTags.DIAMOND_CONVERTIBLE_TOOLS) || LuckpermsMethods.isInGroup(event.getEntity(), ServerConfig.GRIPPERCITY_GROUP_NAME.get()) && stack.is(ModItemTags.AMBER_CONVERTIBLE_TOOLS)) {
-                event.getEntity().displayClientMessage(Component.translatable("actionbar.villagecraft3essentials.tool_conversation_hint"), true);
-                event.getEntity().drop(stack.copy(), true);
-                stack.shrink(1);
-                event.setCancellationResult(InteractionResult.FAIL);
-                event.setCanceled(true);
+            if (inVillageCraftCity && !stack.is(ModItemTags.DIAMOND_CONVERTIBLE_TOOLS)) {
+                handleOnPlayerRightClickBlock(event, stack);
 
-            } else if (LuckpermsMethods.isInGroup(event.getEntity(), ServerConfig.AMBERCAVES_GROUP_NAME.get()) && stack.is(ModItemTags.DIAMOND_CONVERTIBLE_TOOLS) || LuckpermsMethods.isInGroup(event.getEntity(), ServerConfig.AMBERCAVES_GROUP_NAME.get()) && stack.is(ModItemTags.RUBY_CONVERTIBLE_TOOLS)) {
-                event.getEntity().displayClientMessage(Component.translatable("actionbar.villagecraft3essentials.tool_conversation_hint"), true);
-                event.getEntity().drop(stack.copy(), true);
-                stack.shrink(1);
-                event.setCancellationResult(InteractionResult.FAIL);
-                event.setCanceled(true);
+            } else if (inOasis && !stack.is(ModItemTags.JADE_CONVERTIBLE_TOOLS)) {
+                handleOnPlayerRightClickBlock(event, stack);
+
+            } else if (inSwedishFurnitureStore && !stack.is(ModItemTags.AMBER_CONVERTIBLE_TOOLS)) {
+                handleOnPlayerRightClickBlock(event, stack);
+
+            } else if (inLondon && !stack.is(ModItemTags.SILICON_CONVERTIBLE_TOOLS)) {
+                handleOnPlayerRightClickBlock(event, stack);
+
+            } else if (inBlackWater && !stack.is(ModItemTags.RUBY_CONVERTIBLE_TOOLS)) {
+                handleOnPlayerRightClickBlock(event, stack);
             }
         }
     }
@@ -210,44 +199,30 @@ public class ModCurrencyToolsEvents {
                 return;
             }
 
-            if (LuckpermsMethods.isInGroup(event.getEntity(), ServerConfig.VILLAGECRAFTCITY_GROUP_NAME.get()) && stack.is(ModItemTags.RUBY_CONVERTIBLE_TOOLS) || LuckpermsMethods.isInGroup(event.getEntity(), ServerConfig.VILLAGECRAFTCITY_GROUP_NAME.get()) && stack.is(ModItemTags.AMBER_CONVERTIBLE_TOOLS)) {
-                if (stack.getItem() instanceof ArmorItem) {
-                    event.getEntity().displayClientMessage(Component.translatable("actionbar.villagecraft3essentials.armor_conversation_hint"), true);
+            if (!(stack.is(ModItemTags.DIAMOND_CONVERTIBLE_TOOLS) || stack.is(ModItemTags.JADE_CONVERTIBLE_TOOLS) || stack.is(ModItemTags.AMBER_CONVERTIBLE_TOOLS) || stack.is(ModItemTags.SILICON_CONVERTIBLE_TOOLS) || stack.is(ModItemTags.RUBY_CONVERTIBLE_TOOLS))) {
+                return;
+            }
 
-                } else {
-                    event.getEntity().displayClientMessage(Component.translatable("actionbar.villagecraft3essentials.tool_conversation_hint"), true);
-                }
+            boolean inVillageCraftCity = LuckpermsMethods.isInGroup(event.getEntity(), ServerConfig.VILLAGECRAFTCITY_GROUP_NAME.get());
+            boolean inOasis = LuckpermsMethods.isInGroup(event.getEntity(), ServerConfig.OASIS_GROUP_NAME.get());
+            boolean inSwedishFurnitureStore = LuckpermsMethods.isInGroup(event.getEntity(), ServerConfig.SWEDISHFURNITURESTORE_GROUP_NAME.get());
+            boolean inLondon = LuckpermsMethods.isInGroup(event.getEntity(), ServerConfig.LONDON_GROUP_NAME.get());
+            boolean inBlackWater = LuckpermsMethods.isInGroup(event.getEntity(), ServerConfig.BLACKWATER_GROUP_NAME.get());
 
-                cancelDamage = true;
-                event.getEntity().drop(stack.copy(), true);
-                stack.shrink(1);
-                event.setCanceled(true);
+            if (inVillageCraftCity && !stack.is(ModItemTags.DIAMOND_CONVERTIBLE_TOOLS)) {
+                handleOnPlayerAttack(event, stack);
 
-            } else if (LuckpermsMethods.isInGroup(event.getEntity(), ServerConfig.GRIPPERCITY_GROUP_NAME.get()) && stack.is(ModItemTags.DIAMOND_CONVERTIBLE_TOOLS) || LuckpermsMethods.isInGroup(event.getEntity(), ServerConfig.GRIPPERCITY_GROUP_NAME.get()) && stack.is(ModItemTags.AMBER_CONVERTIBLE_TOOLS)) {
-                if (stack.getItem() instanceof ArmorItem) {
-                    event.getEntity().displayClientMessage(Component.translatable("actionbar.villagecraft3essentials.armor_conversation_hint"), true);
+            } else if (inOasis && !stack.is(ModItemTags.JADE_CONVERTIBLE_TOOLS)) {
+                handleOnPlayerAttack(event, stack);
 
-                } else {
-                    event.getEntity().displayClientMessage(Component.translatable("actionbar.villagecraft3essentials.tool_conversation_hint"), true);
-                }
+            } else if (inSwedishFurnitureStore && !stack.is(ModItemTags.AMBER_CONVERTIBLE_TOOLS)) {
+                handleOnPlayerAttack(event, stack);
 
-                cancelDamage = true;
-                event.getEntity().drop(stack.copy(), true);
-                stack.shrink(1);
-                event.setCanceled(true);
+            } else if (inLondon && !stack.is(ModItemTags.SILICON_CONVERTIBLE_TOOLS)) {
+                handleOnPlayerAttack(event, stack);
 
-            } else if (LuckpermsMethods.isInGroup(event.getEntity(), ServerConfig.AMBERCAVES_GROUP_NAME.get()) && stack.is(ModItemTags.DIAMOND_CONVERTIBLE_TOOLS) || LuckpermsMethods.isInGroup(event.getEntity(), ServerConfig.AMBERCAVES_GROUP_NAME.get()) && stack.is(ModItemTags.RUBY_CONVERTIBLE_TOOLS)) {
-                if (stack.getItem() instanceof ArmorItem) {
-                    event.getEntity().displayClientMessage(Component.translatable("actionbar.villagecraft3essentials.armor_conversation_hint"), true);
-
-                } else {
-                    event.getEntity().displayClientMessage(Component.translatable("actionbar.villagecraft3essentials.tool_conversation_hint"), true);
-                }
-
-                cancelDamage = true;
-                event.getEntity().drop(stack.copy(), true);
-                stack.shrink(1);
-                event.setCanceled(true);
+            } else if (inBlackWater && !stack.is(ModItemTags.RUBY_CONVERTIBLE_TOOLS)) {
+                handleOnPlayerAttack(event, stack);
             }
         }
     }
@@ -260,5 +235,40 @@ public class ModCurrencyToolsEvents {
                 cancelDamage = false;
             }
         }
+    }
+
+    public static void handleOnPlayerLeftClickBlock(PlayerInteractEvent.LeftClickBlock event, ItemStack stack) {
+        if (stack.getItem() instanceof ArmorItem) {
+            event.getEntity().displayClientMessage(Component.translatable("actionbar.villagecraft3essentials.armor_conversation_hint"), true);
+
+        } else {
+            event.getEntity().displayClientMessage(Component.translatable("actionbar.villagecraft3essentials.tool_conversation_hint"), true);
+        }
+
+        event.getEntity().drop(stack.copy(), true);
+        stack.shrink(1);
+        event.setCanceled(true);
+    }
+
+    public static void handleOnPlayerRightClickBlock(PlayerInteractEvent.RightClickBlock event, ItemStack stack) {
+        event.getEntity().displayClientMessage(Component.translatable("actionbar.villagecraft3essentials.tool_conversation_hint"), true);
+        event.getEntity().drop(stack.copy(), true);
+        stack.shrink(1);
+        event.setCancellationResult(InteractionResult.FAIL);
+        event.setCanceled(true);
+    }
+
+    public static void handleOnPlayerAttack(AttackEntityEvent event, ItemStack stack) {
+        if (stack.getItem() instanceof ArmorItem) {
+            event.getEntity().displayClientMessage(Component.translatable("actionbar.villagecraft3essentials.armor_conversation_hint"), true);
+
+        } else {
+            event.getEntity().displayClientMessage(Component.translatable("actionbar.villagecraft3essentials.tool_conversation_hint"), true);
+        }
+
+        cancelDamage = true;
+        event.getEntity().drop(stack.copy(), true);
+        stack.shrink(1);
+        event.setCanceled(true);
     }
 }

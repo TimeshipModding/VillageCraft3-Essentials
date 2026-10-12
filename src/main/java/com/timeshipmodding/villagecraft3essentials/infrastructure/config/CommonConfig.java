@@ -4,10 +4,14 @@ import net.neoforged.neoforge.common.ModConfigSpec;
 
 public class CommonConfig {
     private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
-    public static ModConfigSpec.IntValue RUBY_CURRENCY_CONVERSION_RATE_MIN;
-    public static ModConfigSpec.IntValue RUBY_CURRENCY_CONVERSION_RATE_MAX;
+    public static ModConfigSpec.IntValue JADE_CURRENCY_CONVERSION_RATE_MIN;
+    public static ModConfigSpec.IntValue JADE_CURRENCY_CONVERSION_RATE_MAX;
     public static ModConfigSpec.IntValue AMBER_CURRENCY_CONVERSION_RATE_MIN;
     public static ModConfigSpec.IntValue AMBER_CURRENCY_CONVERSION_RATE_MAX;
+    public static ModConfigSpec.IntValue SILICON_CURRENCY_CONVERSION_RATE_MIN;
+    public static ModConfigSpec.IntValue SILICON_CURRENCY_CONVERSION_RATE_MAX;
+    public static ModConfigSpec.IntValue RUBY_CURRENCY_CONVERSION_RATE_MIN;
+    public static ModConfigSpec.IntValue RUBY_CURRENCY_CONVERSION_RATE_MAX;
     public static ModConfigSpec.IntValue JAIL_COMMAND_COOLDOWN;
     public static ModConfigSpec.IntValue JAIL_RELEASE_TIME;
     public static ModConfigSpec.LongValue KICK_COMMAND_COOLDOWN;
@@ -17,18 +21,30 @@ public class CommonConfig {
     static {
         BUILDER.push("Random Currency Conversion Bounds");
 
-        RUBY_CURRENCY_CONVERSION_RATE_MIN = BUILDER
-                .comment("The minimum number for ruby random currency conversion rates in the atm block")
-                .defineInRange("rubyCurrencyConversionRateMin", 1, 1, 64);
-        RUBY_CURRENCY_CONVERSION_RATE_MAX = BUILDER
-                .comment("The maximum number for ruby random currency conversion rates in the atm block")
-                .defineInRange("rubyCurrencyConversionRateMax", 10, 1, 64);
+        JADE_CURRENCY_CONVERSION_RATE_MIN = BUILDER
+                .comment("The minimum number for jade random currency conversion rates in the atm block")
+                .defineInRange("jadeCurrencyConversionRateMin", 1, 1, 64);
+        JADE_CURRENCY_CONVERSION_RATE_MAX = BUILDER
+                .comment("The maximum number for jade random currency conversion rates in the atm block")
+                .defineInRange("jadeCurrencyConversionRateMax", 10, 1, 64);
         AMBER_CURRENCY_CONVERSION_RATE_MIN = BUILDER
                 .comment("The minimum number for amber random currency conversion rates in the atm block")
                 .defineInRange("amberCurrencyConversionRateMin", 1, 1, 64);
         AMBER_CURRENCY_CONVERSION_RATE_MAX = BUILDER
                 .comment("The maximum number for amber random currency conversion rates in the atm block")
                 .defineInRange("amberCurrencyConversionRateMax", 10, 1, 64);
+        SILICON_CURRENCY_CONVERSION_RATE_MIN = BUILDER
+                .comment("The minimum number for silicon random currency conversion rates in the atm block")
+                .defineInRange("siliconCurrencyConversionRateMin", 1, 1, 64);
+        SILICON_CURRENCY_CONVERSION_RATE_MAX = BUILDER
+                .comment("The maximum number for silicon random currency conversion rates in the atm block")
+                .defineInRange("siliconCurrencyConversionRateMax", 10, 1, 64);
+        RUBY_CURRENCY_CONVERSION_RATE_MIN = BUILDER
+                .comment("The minimum number for ruby random currency conversion rates in the atm block")
+                .defineInRange("rubyCurrencyConversionRateMin", 1, 1, 64);
+        RUBY_CURRENCY_CONVERSION_RATE_MAX = BUILDER
+                .comment("The maximum number for ruby random currency conversion rates in the atm block")
+                .defineInRange("rubyCurrencyConversionRateMax", 10, 1, 64);
 
         BUILDER.pop();
         BUILDER.push("Jail Command Config");

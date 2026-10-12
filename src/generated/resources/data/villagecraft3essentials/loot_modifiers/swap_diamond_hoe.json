@@ -1,7 +1,9 @@
 {
   "type": "villagecraft3essentials:swap_item_loot_modifier",
   "conditions": [],
-  "currency1": "villagecraft3essentials:ruby_hoe",
-  "currency2": "villagecraft3essentials:amber_hoe",
-  "target": "minecraft:diamond_hoe"
+  "replacementCurrency1": "villagecraft3essentials:jade_hoe",
+  "replacementCurrency2": "villagecraft3essentials:amber_hoe",
+  "replacementCurrency3": "villagecraft3essentials:silicon_hoe",
+  "replacementCurrency4": "villagecraft3essentials:ruby_hoe",
+  "targetCurrency": "minecraft:diamond_hoe"
 }

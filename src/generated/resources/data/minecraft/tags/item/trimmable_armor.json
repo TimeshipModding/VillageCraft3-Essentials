@@ -1,12 +1,20 @@
 {
   "values": [
-    "villagecraft3essentials:ruby_helmet",
-    "villagecraft3essentials:ruby_chestplate",
-    "villagecraft3essentials:ruby_leggings",
-    "villagecraft3essentials:ruby_boots",
+    "villagecraft3essentials:jade_helmet",
+    "villagecraft3essentials:jade_chestplate",
+    "villagecraft3essentials:jade_leggings",
+    "villagecraft3essentials:jade_boots",
     "villagecraft3essentials:amber_helmet",
     "villagecraft3essentials:amber_chestplate",
     "villagecraft3essentials:amber_leggings",
-    "villagecraft3essentials:amber_boots"
+    "villagecraft3essentials:amber_boots",
+    "villagecraft3essentials:silicon_helmet",
+    "villagecraft3essentials:silicon_chestplate",
+    "villagecraft3essentials:silicon_leggings",
+    "villagecraft3essentials:silicon_boots",
+    "villagecraft3essentials:ruby_helmet",
+    "villagecraft3essentials:ruby_chestplate",
+    "villagecraft3essentials:ruby_leggings",
+    "villagecraft3essentials:ruby_boots"
   ]
 }

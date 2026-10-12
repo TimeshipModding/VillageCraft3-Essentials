@@ -1,11 +1,19 @@
 {
   "values": [
     {
-      "id": "villagecraft3essentials:ruby_hook",
+      "id": "villagecraft3essentials:jade_hook",
       "required": false
     },
     {
       "id": "villagecraft3essentials:amber_hook",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:silicon_hook",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:ruby_hook",
       "required": false
     }
   ]

@@ -7,19 +7,29 @@ import net.minecraft.world.level.saveddata.SavedData;
 
 public class JailSavedData extends SavedData { ;
     private int[] villagecraftCityJail = {0, 0, 0, 0, 0};
-    private int[] gripperCityJail = {0, 0, 0, 0, 0};
-    private int[] amberCavesJail = {0, 0, 0, 0, 0};
+    private int[] oasisJail = {0, 0, 0, 0, 0};
+    private int[] swedishFurnitureStoreJail = {0, 0, 0, 0, 0};
+    private int[] londonJail = {0, 0, 0, 0, 0};
+    private int[] blackWaterJail = {0, 0, 0, 0, 0};
 
     public int[] getVillagecraftCityJail() {
         return this.villagecraftCityJail;
     }
-    
-    public int[] getGripperCityJail() {
-        return this.gripperCityJail;
+
+    public int[] getOasisJail() {
+        return this.oasisJail;
     }
     
-    public int[] getAmberCavesJail() {
-        return this.amberCavesJail;
+    public int[] getSwedishFurnitureStoreJail() {
+        return this.swedishFurnitureStoreJail;
+    }
+    
+    public int[] getLondonJail() {
+        return this.londonJail;
+    }
+
+    public int[] getBlackWaterJail() {
+        return this.blackWaterJail;
     }
 
     public void setVillagecraftCityJail(int[] jail) {
@@ -27,13 +37,23 @@ public class JailSavedData extends SavedData { ;
         this.setDirty();
     }
 
-    public void setGripperCityJail(int[] jail) {
-        this.gripperCityJail = jail;
+    public void setOasisJail(int[] jail) {
+        this.oasisJail = jail;
         this.setDirty();
     }
 
-    public void setAmberCavesJail(int[] jail) {
-        this.amberCavesJail = jail;
+    public void setSwedishFurnitureStoreJail(int[] jail) {
+        this.swedishFurnitureStoreJail = jail;
+        this.setDirty();
+    }
+
+    public void setLondonJail(int[] jail) {
+        this.londonJail = jail;
+        this.setDirty();
+    }
+
+    public void setBlackWaterJail(int[] jail) {
+        this.blackWaterJail = jail;
         this.setDirty();
     }
 
@@ -44,16 +64,20 @@ public class JailSavedData extends SavedData { ;
     public static JailSavedData load(CompoundTag tag, HolderLookup.Provider lookupProvider) {
         JailSavedData data = create();
         data.villagecraftCityJail = tag.getIntArray("villagecraftCityJail");
-        data.gripperCityJail = tag.getIntArray("gripperCityJail");
-        data.amberCavesJail = tag.getIntArray("amberCavesJail");
+        data.oasisJail = tag.getIntArray("oasisJail");
+        data.swedishFurnitureStoreJail = tag.getIntArray("swedishFurnitureStoreJail");
+        data.londonJail = tag.getIntArray("londonJail");
+        data.blackWaterJail = tag.getIntArray("blackWaterJail");
         return data;
     }
 
     @Override
     public CompoundTag save(CompoundTag tag, HolderLookup.Provider registries) {
         tag.putIntArray("villagecraftCityJail", villagecraftCityJail);
-        tag.putIntArray("gripperCityJail", gripperCityJail);
-        tag.putIntArray("amberCavesJail", amberCavesJail);
+        tag.putIntArray("oasisJail", oasisJail);
+        tag.putIntArray("swedishFurnitureStoreJail", swedishFurnitureStoreJail);
+        tag.putIntArray("londonJail", londonJail);
+        tag.putIntArray("blackWaterJail", blackWaterJail);
         return tag;
     }
 

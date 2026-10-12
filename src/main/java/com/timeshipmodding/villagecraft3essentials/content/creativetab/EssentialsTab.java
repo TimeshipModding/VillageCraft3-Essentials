@@ -29,14 +29,20 @@ public class EssentialsTab {
             .icon(() -> new ItemStack(DIAMOND_CORE))
             .displayItems((parameters, pOutput) -> {
                 pOutput.accept(Blocks.DIAMOND_BLOCK);
-                pOutput.accept(RUBY_BLOCK);
+                pOutput.accept(JADE_BLOCK);
                 pOutput.accept(AMBER_BLOCK);
+                pOutput.accept(SILICON_BLOCK);
+                pOutput.accept(RUBY_BLOCK);
                 pOutput.accept(Blocks.DIAMOND_ORE);
                 pOutput.accept(Blocks.DEEPSLATE_DIAMOND_ORE);
-                pOutput.accept(RUBY_ORE);
-                pOutput.accept(DEEPSLATE_RUBY_ORE);
+                pOutput.accept(JADE_ORE);
+                pOutput.accept(DEEPSLATE_JADE_ORE);
                 pOutput.accept(AMBER_ORE);
                 pOutput.accept(DEEPSLATE_AMBER_ORE);
+                pOutput.accept(SILICON_ORE);
+                pOutput.accept(DEEPSLATE_SILICON_ORE);
+                pOutput.accept(RUBY_ORE);
+                pOutput.accept(DEEPSLATE_RUBY_ORE);
                 pOutput.accept(WHITE_ATM);
                 pOutput.accept(LIGHT_GRAY_ATM);
                 pOutput.accept(GRAY_ATM);
@@ -54,8 +60,10 @@ public class EssentialsTab {
                 pOutput.accept(MAGENTA_ATM);
                 pOutput.accept(PINK_ATM);
                 pOutput.accept(DIAMOND_CORE);
-                pOutput.accept(RUBY_CORE);
+                pOutput.accept(JADE_CORE);
                 pOutput.accept(AMBER_CORE);
+                pOutput.accept(SILICON_CORE);
+                pOutput.accept(RUBY_CORE);
                 pOutput.accept(DIAMOND_SHOVEL);
                 pOutput.accept(DIAMOND_PICKAXE);
                 pOutput.accept(DIAMOND_AXE);
@@ -80,28 +88,28 @@ public class EssentialsTab {
                     pOutput.accept(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("betterarcheology", "diamond_brush")));
                 }
 
-                pOutput.accept(RUBY_SHOVEL);
-                pOutput.accept(RUBY_PICKAXE);
-                pOutput.accept(RUBY_AXE);
-                pOutput.accept(RUBY_HOE);
-                pOutput.accept(RUBY_SWORD);
+                pOutput.accept(JADE_SHOVEL);
+                pOutput.accept(JADE_PICKAXE);
+                pOutput.accept(JADE_AXE);
+                pOutput.accept(JADE_HOE);
+                pOutput.accept(JADE_SWORD);
 
                 if (ModList.get().isLoaded("archers")) {
-                    pOutput.accept(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "ruby_spear")));
+                    pOutput.accept(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "jade_spear")));
                 }
 
                 if (ModList.get().isLoaded("farmersdelight")) {
-                    pOutput.accept(RUBY_KNIFE.get());
+                    pOutput.accept(JADE_KNIFE.get());
                 }
 
                 if (ModList.get().isLoaded("aquaculture")) {
-                    pOutput.accept(RUBY_FISHING_ROD.get());
-                    pOutput.accept(RUBY_FILLET_KNIFE.get());
-                    pOutput.accept(RUBY_HOOK.get());
+                    pOutput.accept(JADE_FISHING_ROD.get());
+                    pOutput.accept(JADE_FILLET_KNIFE.get());
+                    pOutput.accept(JADE_HOOK.get());
                 }
 
                 if (ModList.get().isLoaded("betterarcheology")) {
-                    pOutput.accept(RUBY_BRUSH.get());
+                    pOutput.accept(JADE_BRUSH.get());
                 }
 
                 pOutput.accept(AMBER_SHOVEL);
@@ -128,31 +136,93 @@ public class EssentialsTab {
                     pOutput.accept(AMBER_BRUSH.get());
                 }
 
+                pOutput.accept(SILICON_SHOVEL);
+                pOutput.accept(SILICON_PICKAXE);
+                pOutput.accept(SILICON_AXE);
+                pOutput.accept(SILICON_HOE);
+                pOutput.accept(SILICON_SWORD);
+
+                if (ModList.get().isLoaded("archers")) {
+                    pOutput.accept(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "silicon_spear")));
+                }
+
+                if (ModList.get().isLoaded("farmersdelight")) {
+                    pOutput.accept(SILICON_KNIFE.get());
+                }
+
+                if (ModList.get().isLoaded("aquaculture")) {
+                    pOutput.accept(SILICON_FISHING_ROD.get());
+                    pOutput.accept(SILICON_FILLET_KNIFE.get());
+                    pOutput.accept(SILICON_HOOK.get());
+                }
+
+                if (ModList.get().isLoaded("betterarcheology")) {
+                    pOutput.accept(SILICON_BRUSH.get());
+                }
+
+                pOutput.accept(RUBY_SHOVEL);
+                pOutput.accept(RUBY_PICKAXE);
+                pOutput.accept(RUBY_AXE);
+                pOutput.accept(RUBY_HOE);
+                pOutput.accept(RUBY_SWORD);
+
+                if (ModList.get().isLoaded("archers")) {
+                    pOutput.accept(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "ruby_spear")));
+                }
+
+                if (ModList.get().isLoaded("farmersdelight")) {
+                    pOutput.accept(RUBY_KNIFE.get());
+                }
+
+                if (ModList.get().isLoaded("aquaculture")) {
+                    pOutput.accept(RUBY_FISHING_ROD.get());
+                    pOutput.accept(RUBY_FILLET_KNIFE.get());
+                    pOutput.accept(RUBY_HOOK.get());
+                }
+
+                if (ModList.get().isLoaded("betterarcheology")) {
+                    pOutput.accept(RUBY_BRUSH.get());
+                }
+
                 pOutput.accept(DIAMOND_HELMET);
                 pOutput.accept(DIAMOND_CHESTPLATE);
                 pOutput.accept(DIAMOND_LEGGINGS);
                 pOutput.accept(DIAMOND_BOOTS);
                 pOutput.accept(DIAMOND_HORSE_ARMOR);
-                pOutput.accept(RUBY_HELMET);
-                pOutput.accept(RUBY_CHESTPLATE);
-                pOutput.accept(RUBY_LEGGINGS);
-                pOutput.accept(RUBY_BOOTS);
-                pOutput.accept(RUBY_HORSE_ARMOR);
+                pOutput.accept(JADE_HELMET);
+                pOutput.accept(JADE_CHESTPLATE);
+                pOutput.accept(JADE_LEGGINGS);
+                pOutput.accept(JADE_BOOTS);
+                pOutput.accept(JADE_HORSE_ARMOR);
                 pOutput.accept(AMBER_HELMET);
                 pOutput.accept(AMBER_CHESTPLATE);
                 pOutput.accept(AMBER_LEGGINGS);
                 pOutput.accept(AMBER_BOOTS);
                 pOutput.accept(AMBER_HORSE_ARMOR);
+                pOutput.accept(SILICON_HELMET);
+                pOutput.accept(SILICON_CHESTPLATE);
+                pOutput.accept(SILICON_LEGGINGS);
+                pOutput.accept(SILICON_BOOTS);
+                pOutput.accept(SILICON_HORSE_ARMOR);
+                pOutput.accept(RUBY_HELMET);
+                pOutput.accept(RUBY_CHESTPLATE);
+                pOutput.accept(RUBY_LEGGINGS);
+                pOutput.accept(RUBY_BOOTS);
+                pOutput.accept(RUBY_HORSE_ARMOR);
                 pOutput.accept(POLICE_BATON);
                 pOutput.accept(WORM_ON_A_STICK);
                 pOutput.accept(WORM);
                 pOutput.accept(COOKED_WORM);
                 pOutput.accept(DIAMOND);
-                pOutput.accept(RUBY);
+                pOutput.accept(JADE);
                 pOutput.accept(AMBER);
+                pOutput.accept(SILICON);
+                pOutput.accept(RUBY);
                 pOutput.accept(CRACKED_DIAMOND);
-                pOutput.accept(CRACKED_RUBY);
+                pOutput.accept(CRACKED_JADE);
                 pOutput.accept(CRACKED_AMBER);
+                pOutput.accept(CRACKED_SILICON);
+                pOutput.accept(CRACKED_RUBY);
                 pOutput.accept(MOLE_SPAWN_EGG);
                 pOutput.accept(GUBERNATORIAL_HAT_1);
             }).build());

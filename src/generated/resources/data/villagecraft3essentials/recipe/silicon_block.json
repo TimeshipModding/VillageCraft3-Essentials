@@ -1,0 +1,38 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "villagecraft3essentials",
+  "ingredients": [
+    {
+      "item": "villagecraft3essentials:silicon"
+    },
+    {
+      "item": "villagecraft3essentials:silicon"
+    },
+    {
+      "item": "villagecraft3essentials:silicon"
+    },
+    {
+      "item": "villagecraft3essentials:silicon"
+    },
+    {
+      "item": "villagecraft3essentials:silicon"
+    },
+    {
+      "item": "villagecraft3essentials:silicon"
+    },
+    {
+      "item": "villagecraft3essentials:silicon"
+    },
+    {
+      "item": "villagecraft3essentials:silicon"
+    },
+    {
+      "item": "villagecraft3essentials:silicon"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "villagecraft3essentials:silicon_block"
+  }
+}

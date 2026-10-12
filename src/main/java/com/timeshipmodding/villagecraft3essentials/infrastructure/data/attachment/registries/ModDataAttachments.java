@@ -74,7 +74,7 @@ public class ModDataAttachments {
 
     public static final Supplier<AttachmentType<KickCommandData>> KICK_COMMAND_DATA =
             ATTACHMENT_TYPES.register("kick_command_data", () ->
-                    AttachmentType.builder(() -> new KickCommandData(-1, -1, -1))
+                    AttachmentType.builder(() -> new KickCommandData(-1, -1, -1, -1, -1))
                             .serialize(KickCommandData.CODEC)
                             .copyOnDeath()
                             .build());

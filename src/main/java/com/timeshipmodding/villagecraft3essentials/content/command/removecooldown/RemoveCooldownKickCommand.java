@@ -33,17 +33,29 @@ public class RemoveCooldownKickCommand {
                                         .then(Commands.argument("hideMessage", BoolArgumentType.bool())
                                                 .executes(context -> executeVillageCraftCity(context, EntityArgument.getPlayers(context, "targets"), !BoolArgumentType.getBool(context, "hideMessage"))))))
                 .then(
-                        Commands.literal("grippercity")
+                        Commands.literal("oasis")
                                 .then(Commands.argument("targets", EntityArgument.players())
-                                        .executes(context -> executeGripperCity(context, EntityArgument.getPlayers(context, "targets"), false))
+                                        .executes(context -> executeOasis(context, EntityArgument.getPlayers(context, "targets"), false))
                                         .then(Commands.argument("hideMessage", BoolArgumentType.bool())
-                                                .executes(context -> executeGripperCity(context, EntityArgument.getPlayers(context, "targets"), !BoolArgumentType.getBool(context, "hideMessage"))))))
+                                                .executes(context -> executeOasis(context, EntityArgument.getPlayers(context, "targets"), !BoolArgumentType.getBool(context, "hideMessage"))))))
                 .then(
-                        Commands.literal("ambercaves")
+                        Commands.literal("swedishfurniturestore")
                                 .then(Commands.argument("targets", EntityArgument.players())
-                                        .executes(context -> executeAmberCaves(context, EntityArgument.getPlayers(context, "targets"), false))
+                                        .executes(context -> executeSwedishFurnitureStore(context, EntityArgument.getPlayers(context, "targets"), false))
                                         .then(Commands.argument("hideMessage", BoolArgumentType.bool())
-                                                .executes(context -> executeAmberCaves(context, EntityArgument.getPlayers(context, "targets"), !BoolArgumentType.getBool(context, "hideMessage"))))))));
+                                                .executes(context -> executeSwedishFurnitureStore(context, EntityArgument.getPlayers(context, "targets"), !BoolArgumentType.getBool(context, "hideMessage"))))))
+                .then(
+                        Commands.literal("london")
+                                .then(Commands.argument("targets", EntityArgument.players())
+                                        .executes(context -> executeLondon(context, EntityArgument.getPlayers(context, "targets"), false))
+                                        .then(Commands.argument("hideMessage", BoolArgumentType.bool())
+                                                .executes(context -> executeLondon(context, EntityArgument.getPlayers(context, "targets"), !BoolArgumentType.getBool(context, "hideMessage"))))))
+                .then(
+                        Commands.literal("blackwater")
+                                .then(Commands.argument("targets", EntityArgument.players())
+                                        .executes(context -> executeBlackWater(context, EntityArgument.getPlayers(context, "targets"), false))
+                                        .then(Commands.argument("hideMessage", BoolArgumentType.bool())
+                                                .executes(context -> executeBlackWater(context, EntityArgument.getPlayers(context, "targets"), !BoolArgumentType.getBool(context, "hideMessage"))))))));
     }
 
     private Component targetPlayerUsername;
@@ -51,12 +63,16 @@ public class RemoveCooldownKickCommand {
     private int executeVillageCraftCity(CommandContext<CommandSourceStack> context, Collection<? extends ServerPlayer> targets, boolean hideMessage) {
         ChatFormatting groupStyling = ChatFormatting.WHITE;
 
+        if (ModList.get().isLoaded("luckperms")) {
+            groupStyling = LuckpermsMethods.getGroupStyling(ServerConfig.VILLAGECRAFTCITY_GROUP_NAME.get());
+        }
+
         for (ServerPlayer player : targets) {
             targetPlayerUsername = Objects.requireNonNull(player.getDisplayName());
 
             if (player.hasData(ModDataAttachments.KICK_COMMAND_DATA)) {
                 KickCommandData kickCommandData = player.getData(ModDataAttachments.KICK_COMMAND_DATA);
-                player.setData(ModDataAttachments.KICK_COMMAND_DATA, kickCommandData.villagecraftCityReset());
+                player.setData(ModDataAttachments.KICK_COMMAND_DATA, kickCommandData.resetVillageCraftCityKickCooldown());
 
                 if (hideMessage) {
                     MutableComponent message = Component.literal("Your ");
@@ -76,10 +92,6 @@ public class RemoveCooldownKickCommand {
             }
         }
 
-        if (ModList.get().isLoaded("luckperms")) {
-            groupStyling = LuckpermsMethods.getGroupStyling(ServerConfig.VILLAGECRAFTCITY_GROUP_NAME.get());
-        }
-
         MutableComponent message = Component.literal("You have reset ");
         message.append(targetPlayerUsername);
         message.append("'s ");
@@ -89,22 +101,23 @@ public class RemoveCooldownKickCommand {
         return 1;
     }
 
-    private int executeGripperCity(CommandContext<CommandSourceStack> context, Collection<? extends ServerPlayer> targets, boolean hideMessage) {
+    private int executeOasis(CommandContext<CommandSourceStack> context, Collection<? extends ServerPlayer> targets, boolean hideMessage) {
         ChatFormatting groupStyling = ChatFormatting.WHITE;
 
         if (ModList.get().isLoaded("luckperms")) {
-            groupStyling = LuckpermsMethods.getGroupStyling(ServerConfig.GRIPPERCITY_GROUP_NAME.get());
+            groupStyling = LuckpermsMethods.getGroupStyling(ServerConfig.OASIS_GROUP_NAME.get());
         }
 
         for (ServerPlayer player : targets) {
+            targetPlayerUsername = Objects.requireNonNull(player.getDisplayName());
+
             if (player.hasData(ModDataAttachments.KICK_COMMAND_DATA)) {
                 KickCommandData kickCommandData = player.getData(ModDataAttachments.KICK_COMMAND_DATA);
-                player.setData(ModDataAttachments.KICK_COMMAND_DATA, kickCommandData.gripperCityReset());
-                targetPlayerUsername = Objects.requireNonNull(player.getDisplayName());
+                player.setData(ModDataAttachments.KICK_COMMAND_DATA, kickCommandData.resetOasisKickCooldown());
 
                 if (hideMessage) {
                     MutableComponent message = Component.literal("Your ");
-                    message.append(Component.literal("Gripper City").withStyle(groupStyling));
+                    message.append(Component.literal("Oasis").withStyle(groupStyling));
                     message.append(" kick command cooldown has been reset!");
                     player.sendSystemMessage(message, false);
                     return 1;
@@ -113,7 +126,7 @@ public class RemoveCooldownKickCommand {
             } else {
                 MutableComponent message = targetPlayerUsername.copy();
                 message.append(" has no ");
-                message.append(Component.literal("Gripper City").withStyle(groupStyling));
+                message.append(Component.literal("Oasis").withStyle(groupStyling));
                 message.append(" kick command cooldown.");
                 context.getSource().sendFailure(message);
                 return -1;
@@ -123,24 +136,28 @@ public class RemoveCooldownKickCommand {
         MutableComponent message = Component.literal("You have reset ");
         message.append(targetPlayerUsername);
         message.append("'s ");
-        message.append(Component.literal("Gripper City").withStyle(groupStyling));
+        message.append(Component.literal("Oasis").withStyle(groupStyling));
         message.append("kick command cooldown!");
         context.getSource().sendSuccess(() -> message, false);
         return 1;
     }
 
-    private int executeAmberCaves(CommandContext<CommandSourceStack> context, Collection<? extends ServerPlayer> targets, boolean hideMessage) {
+    private int executeSwedishFurnitureStore(CommandContext<CommandSourceStack> context, Collection<? extends ServerPlayer> targets, boolean hideMessage) {
         ChatFormatting groupStyling = ChatFormatting.WHITE;
+
+        if (ModList.get().isLoaded("luckperms")) {
+            groupStyling = LuckpermsMethods.getGroupStyling(ServerConfig.SWEDISHFURNITURESTORE_GROUP_NAME.get());
+        }
 
         for (ServerPlayer player : targets) {
             if (player.hasData(ModDataAttachments.KICK_COMMAND_DATA)) {
                 KickCommandData kickCommandData = player.getData(ModDataAttachments.KICK_COMMAND_DATA);
-                player.setData(ModDataAttachments.KICK_COMMAND_DATA, kickCommandData.amberCavesReset());
+                player.setData(ModDataAttachments.KICK_COMMAND_DATA, kickCommandData.resetSwedishFurnitureStoreCooldown());
                 targetPlayerUsername = Objects.requireNonNull(player.getDisplayName());
 
                 if (hideMessage) {
                     MutableComponent message = Component.literal("Your ");
-                    message.append(Component.literal("Amber Caves").withStyle(groupStyling));
+                    message.append(Component.literal("Swedish Furniture Store").withStyle(groupStyling));
                     message.append(" kick command cooldown has been reset!");
                     player.sendSystemMessage(message, false);
                     return 1;
@@ -149,21 +166,97 @@ public class RemoveCooldownKickCommand {
             } else {
                 MutableComponent message = targetPlayerUsername.copy();
                 message.append(" has no ");
-                message.append(Component.literal("Amber Caves").withStyle(groupStyling));
+                message.append(Component.literal("Swedish Furniture Store").withStyle(groupStyling));
                 message.append(" kick command cooldown.");
                 context.getSource().sendFailure(message);
                 return -1;
             }
         }
 
+        MutableComponent message = Component.literal("You have reset ");
+        message.append(targetPlayerUsername);
+        message.append("'s ");
+        message.append(Component.literal("Swedish Furniture Store").withStyle(groupStyling));
+        message.append("kick command cooldown!");
+        context.getSource().sendSuccess(() -> message, false);
+        return 1;
+    }
+
+    private int executeLondon(CommandContext<CommandSourceStack> context, Collection<? extends ServerPlayer> targets, boolean hideMessage) {
+        ChatFormatting groupStyling = ChatFormatting.WHITE;
+
         if (ModList.get().isLoaded("luckperms")) {
-            groupStyling = LuckpermsMethods.getGroupStyling(ServerConfig.AMBERCAVES_GROUP_NAME.get());
+            groupStyling = LuckpermsMethods.getGroupStyling(ServerConfig.LONDON_GROUP_NAME.get());
+        }
+
+        for (ServerPlayer player : targets) {
+            if (player.hasData(ModDataAttachments.KICK_COMMAND_DATA)) {
+                KickCommandData kickCommandData = player.getData(ModDataAttachments.KICK_COMMAND_DATA);
+                player.setData(ModDataAttachments.KICK_COMMAND_DATA, kickCommandData.resetLondonKickCooldown());
+                targetPlayerUsername = Objects.requireNonNull(player.getDisplayName());
+
+                if (hideMessage) {
+                    MutableComponent message = Component.literal("Your ");
+                    message.append(Component.literal("London").withStyle(groupStyling));
+                    message.append(" kick command cooldown has been reset!");
+                    player.sendSystemMessage(message, false);
+                    return 1;
+                }
+
+            } else {
+                MutableComponent message = targetPlayerUsername.copy();
+                message.append(" has no ");
+                message.append(Component.literal("London").withStyle(groupStyling));
+                message.append(" kick command cooldown.");
+                context.getSource().sendFailure(message);
+                return -1;
+            }
         }
 
         MutableComponent message = Component.literal("You have reset ");
         message.append(targetPlayerUsername);
         message.append("'s ");
-        message.append(Component.literal("Amber Caves").withStyle(groupStyling));
+        message.append(Component.literal("London").withStyle(groupStyling));
+        message.append("kick command cooldown!");
+        context.getSource().sendSuccess(() -> message, false);
+        return 1;
+    }
+
+    private int executeBlackWater(CommandContext<CommandSourceStack> context, Collection<? extends ServerPlayer> targets, boolean hideMessage) {
+        ChatFormatting groupStyling = ChatFormatting.WHITE;
+
+        if (ModList.get().isLoaded("luckperms")) {
+            groupStyling = LuckpermsMethods.getGroupStyling(ServerConfig.BLACKWATER_GROUP_NAME.get());
+        }
+
+        for (ServerPlayer player : targets) {
+            if (player.hasData(ModDataAttachments.KICK_COMMAND_DATA)) {
+                KickCommandData kickCommandData = player.getData(ModDataAttachments.KICK_COMMAND_DATA);
+                player.setData(ModDataAttachments.KICK_COMMAND_DATA, kickCommandData.resetBlackWaterKickCooldown());
+                targetPlayerUsername = Objects.requireNonNull(player.getDisplayName());
+
+                if (hideMessage) {
+                    MutableComponent message = Component.literal("Your ");
+                    message.append(Component.literal("BlackWater").withStyle(groupStyling));
+                    message.append(" kick command cooldown has been reset!");
+                    player.sendSystemMessage(message, false);
+                    return 1;
+                }
+
+            } else {
+                MutableComponent message = targetPlayerUsername.copy();
+                message.append(" has no ");
+                message.append(Component.literal("BlackWater").withStyle(groupStyling));
+                message.append(" kick command cooldown.");
+                context.getSource().sendFailure(message);
+                return -1;
+            }
+        }
+
+        MutableComponent message = Component.literal("You have reset ");
+        message.append(targetPlayerUsername);
+        message.append("'s ");
+        message.append(Component.literal("BlackWater").withStyle(groupStyling));
         message.append("kick command cooldown!");
         context.getSource().sendSuccess(() -> message, false);
         return 1;

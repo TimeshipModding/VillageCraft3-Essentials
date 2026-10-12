@@ -50,7 +50,6 @@ public class VillageCraftCityPardonCommand {
         }
 
         for (ServerPlayer player : targets) {
-            player.setGameMode(GameType.SURVIVAL);
             player.setRespawnPosition(ServerLevel.OVERWORLD, blockpos, player.getYRot(), true, false);
             targetPlayerUsername = Objects.requireNonNull(player.getDisplayName());
 
@@ -113,6 +112,7 @@ public class VillageCraftCityPardonCommand {
             message.append(Component.literal(" unset spawn position."));
             context.getSource().sendSuccess(() -> message, false);
         }
+
         return 1;
     }
 }

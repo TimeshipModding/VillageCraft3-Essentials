@@ -42,32 +42,40 @@ public class DataItemModels extends ItemModelProvider {
         trimMaterials.put(TrimMaterials.DIAMOND, 0.8F);
         trimMaterials.put(TrimMaterials.LAPIS, 0.9F);
         trimMaterials.put(TrimMaterials.AMETHYST, 1.0F);
-        trimMaterials.put(ModTrimMaterials.RUBY, 0.4F);
+        trimMaterials.put(ModTrimMaterials.JADE, 0.7F);
         trimMaterials.put(ModTrimMaterials.AMBER, 0.6F);
+        trimMaterials.put(ModTrimMaterials.RUBY, 0.4F);
+        trimMaterials.put(ModTrimMaterials.SILICON, 0.2F);
     }
 
     @Override
     protected void registerModels() {
         // Items
         basicItem(CRACKED_DIAMOND.get());
-        basicItem(CRACKED_RUBY.get());
-        basicItem(RUBY.get());
-        basicItem(RUBY_HOOK.get());
+        basicItem(CRACKED_JADE.get());
+        basicItem(JADE.get());
+        basicItem(JADE_HOOK.get());
         basicItem(CRACKED_AMBER.get());
         basicItem(AMBER.get());
         basicItem(AMBER_HOOK.get());
+        basicItem(CRACKED_SILICON.get());
+        basicItem(SILICON.get());
+        basicItem(SILICON_HOOK.get());
+        basicItem(CRACKED_RUBY.get());
+        basicItem(RUBY.get());
+        basicItem(RUBY_HOOK.get());
         basicItem(COOKED_WORM.get());
         basicItem(WORM.get());
         basicItem(MISSION_REWARD_PLACEHOLDER.get());
 
         // Tool Items
-        handheldItem(RUBY_SWORD.get());
-        handheldItem(RUBY_SHOVEL.get());
-        handheldItem(RUBY_PICKAXE.get());
-        handheldItem(RUBY_AXE.get());
-        handheldItem(RUBY_HOE.get());
-        handheldItem(RUBY_KNIFE.get());
-        handheldItem(RUBY_FILLET_KNIFE.get());
+        handheldItem(JADE_SWORD.get());
+        handheldItem(JADE_SHOVEL.get());
+        handheldItem(JADE_PICKAXE.get());
+        handheldItem(JADE_AXE.get());
+        handheldItem(JADE_HOE.get());
+        handheldItem(JADE_KNIFE.get());
+        handheldItem(JADE_FILLET_KNIFE.get());
         handheldItem(AMBER_SWORD.get());
         handheldItem(AMBER_SHOVEL.get());
         handheldItem(AMBER_PICKAXE.get());
@@ -75,21 +83,44 @@ public class DataItemModels extends ItemModelProvider {
         handheldItem(AMBER_HOE.get());
         handheldItem(AMBER_KNIFE.get());
         handheldItem(AMBER_FILLET_KNIFE.get());
+        handheldItem(SILICON_SWORD.get());
+        handheldItem(SILICON_SHOVEL.get());
+        handheldItem(SILICON_PICKAXE.get());
+        handheldItem(SILICON_AXE.get());
+        handheldItem(SILICON_HOE.get());
+        handheldItem(SILICON_KNIFE.get());
+        handheldItem(SILICON_FILLET_KNIFE.get());
+        handheldItem(RUBY_SWORD.get());
+        handheldItem(RUBY_SHOVEL.get());
+        handheldItem(RUBY_PICKAXE.get());
+        handheldItem(RUBY_AXE.get());
+        handheldItem(RUBY_HOE.get());
+        handheldItem(RUBY_KNIFE.get());
+        handheldItem(RUBY_FILLET_KNIFE.get());
         handheldItem(POLICE_BATON.get());
-        handheldRodItem(WORM_ON_A_STICK.get());
         handheldRodItem(WORM_ON_A_STICK.get());
 
         // Armor Items
-        trimmedArmorItem(RUBY_HELMET);
-        trimmedArmorItem(RUBY_CHESTPLATE);
-        trimmedArmorItem(RUBY_LEGGINGS);
-        trimmedArmorItem(RUBY_BOOTS);
-        basicItem(RUBY_HORSE_ARMOR.get());
+        trimmedArmorItem(JADE_HELMET);
+        trimmedArmorItem(JADE_CHESTPLATE);
+        trimmedArmorItem(JADE_LEGGINGS);
+        trimmedArmorItem(JADE_BOOTS);
+        basicItem(JADE_HORSE_ARMOR.get());
         trimmedArmorItem(AMBER_HELMET);
         trimmedArmorItem(AMBER_CHESTPLATE);
         trimmedArmorItem(AMBER_LEGGINGS);
         trimmedArmorItem(AMBER_BOOTS);
         basicItem(AMBER_HORSE_ARMOR.get());
+        trimmedArmorItem(SILICON_HELMET);
+        trimmedArmorItem(SILICON_CHESTPLATE);
+        trimmedArmorItem(SILICON_LEGGINGS);
+        trimmedArmorItem(SILICON_BOOTS);
+        basicItem(SILICON_HORSE_ARMOR.get());
+        trimmedArmorItem(RUBY_HELMET);
+        trimmedArmorItem(RUBY_CHESTPLATE);
+        trimmedArmorItem(RUBY_LEGGINGS);
+        trimmedArmorItem(RUBY_BOOTS);
+        basicItem(RUBY_HORSE_ARMOR.get());
 
         // Simple Block Item
         simpleBlockItem(BLACK_ATM.get());
@@ -109,8 +140,10 @@ public class DataItemModels extends ItemModelProvider {
         simpleBlockItem(WHITE_ATM.get());
         simpleBlockItem(YELLOW_ATM.get());
         simpleBlockItem(DIAMOND_CORE.get());
-        simpleBlockItem(RUBY_CORE.get());
+        simpleBlockItem(JADE_CORE.get());
         simpleBlockItem(AMBER_CORE.get());
+        simpleBlockItem(SILICON_CORE.get());
+        simpleBlockItem(RUBY_CORE.get());
 
         // withExistingParent
         withExistingParent(MOLE_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
@@ -156,7 +189,7 @@ public class DataItemModels extends ItemModelProvider {
                 String trimPath = "trims/items/" + armorType + "_trim_" + trimMaterial.location().getPath();
                 String currentTrimName = armorItemPath + "_" + trimMaterial.location().getPath() + "_trim";
                 ResourceLocation armorItemResLoc = ResourceLocation.parse(armorItemPath);
-                ResourceLocation trimResLoc = ResourceLocation.parse(trimPath); // minecraft namespace
+                ResourceLocation trimResLoc = ResourceLocation.parse(trimPath);
                 ResourceLocation trimNameResLoc = ResourceLocation.parse(currentTrimName);
                 existingFileHelper.trackGenerated(trimResLoc, PackType.CLIENT_RESOURCES, ".png", "textures");
 

@@ -34,7 +34,6 @@ public class VillageCraftCitySetJailCommand {
         int playerPitch = (int) player.getXRot();
         int[] jail = {playerPos.getX(), playerPos.getY(), playerPos.getZ(), playerYaw, playerPitch};
         JailSavedData savedData = JailSavedData.getData(server);
-        savedData.setVillagecraftCityJail(jail);
         ChatFormatting groupStyling = ChatFormatting.WHITE;
 
         if (ModList.get().isLoaded("luckperms")) {
@@ -49,6 +48,7 @@ public class VillageCraftCitySetJailCommand {
             return 0;
 
         } else {
+            savedData.setVillagecraftCityJail(jail);
             MutableComponent message = Component.literal("Set ");
             message.append(Component.literal("VillageCraft City's").withStyle(groupStyling));
             message.append(Component.literal(" jail to " + positionString + "!"));

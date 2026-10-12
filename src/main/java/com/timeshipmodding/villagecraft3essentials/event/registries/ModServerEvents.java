@@ -34,30 +34,86 @@ public class ModServerEvents {
     @SubscribeEvent
     public static void onServerStarting(ServerStartingEvent event) {
         AtmRandomConversionRatesSavedData data = AtmRandomConversionRatesSavedData.getData(event.getServer());
-        int diamond_ruby = randomRubyCurrencyConversion();
-        int diamond_amber = randomAmberCurrencyConversion();
-        int ruby = randomRubyCurrencyConversion();
+        int diamondJade = randomJadeCurrencyConversion();
+        int diamondAmber = randomAmberCurrencyConversion();
+        int diamondSilicon = randomSiliconCurrencyConversion();
+        int diamondRuby = randomRubyCurrencyConversion();
+        int jade = randomJadeCurrencyConversion();
         int amber = randomAmberCurrencyConversion();
-        int[] scaledArray1 = new int[]{(diamond_ruby * diamond_amber), (ruby * diamond_amber)};
-        int[] scaledArray2 = new int[]{(diamond_amber * diamond_ruby), (amber * diamond_ruby)};
-        int[] diamondToRuby = new int[]{diamond_ruby / findHighestCommonFactor(diamond_ruby, ruby), ruby / findHighestCommonFactor(diamond_ruby, ruby)};
-        int[] diamondToAmber = new int[]{diamond_amber / findHighestCommonFactor(diamond_amber, amber), amber / findHighestCommonFactor(diamond_amber, amber)};
-        int[] rubyToDiamond = new int[]{ruby / findHighestCommonFactor(ruby, diamond_ruby), diamond_ruby / findHighestCommonFactor(diamond_ruby, ruby)};
-        int[] rubyToAmber = new int[]{scaledArray1[1] / findHighestCommonFactor(scaledArray1[1], scaledArray2[1]), scaledArray2[1] / findHighestCommonFactor(scaledArray2[1], scaledArray1[1])};
-        int[] amberToDiamond = new int[]{amber / findHighestCommonFactor(diamond_amber, amber), diamond_amber / findHighestCommonFactor(diamond_amber, amber)};
-        int[] amberToRuby = new int[]{scaledArray2[1] / findHighestCommonFactor(scaledArray2[1], scaledArray1[1]), scaledArray1[1] / findHighestCommonFactor(scaledArray2[1], scaledArray1[1])};
-        data.setDiamondToRuby(diamondToRuby);
+        int silicon = randomSiliconCurrencyConversion();
+        int ruby = randomRubyCurrencyConversion();
+        int scaledJadeAmber = jade * diamondAmber;
+        int scaledJadeSilicon = jade * diamondSilicon;
+        int scaledJadeRuby = jade * diamondRuby;
+        int scaledAmberJade = amber * diamondJade;
+        int scaledAmberSilicon = amber * diamondSilicon;
+        int scaledAmberRuby = amber * diamondRuby;
+        int scaledSiliconJade = silicon * diamondJade;
+        int scaledSiliconAmber = silicon * diamondAmber;
+        int scaledSiliconRuby = silicon * diamondRuby;
+        int scaledRubyJade = ruby * diamondJade;
+        int scaledRubyAmber = ruby * diamondAmber;
+        int scaledRubySilicon = ruby * diamondSilicon;
+        int[] diamondToJade = new int[]{diamondJade / findHighestCommonFactor(diamondJade, jade), jade / findHighestCommonFactor(diamondJade, jade)};
+        int[] diamondToAmber = new int[]{diamondAmber / findHighestCommonFactor(diamondAmber, amber), amber / findHighestCommonFactor(diamondAmber, amber)};
+        int[] diamondToSilicon = new int[]{diamondSilicon / findHighestCommonFactor(diamondSilicon, silicon), silicon / findHighestCommonFactor(diamondSilicon, silicon)};
+        int[] diamondToRuby = new int[]{diamondRuby / findHighestCommonFactor(diamondRuby, ruby), ruby / findHighestCommonFactor(diamondRuby, ruby)};
+        int[] jadeToDiamond = new int[]{jade / findHighestCommonFactor(jade, diamondJade), diamondJade / findHighestCommonFactor(diamondAmber, jade)};
+        int[] jadeToAmber = new int[]{scaledJadeAmber / findHighestCommonFactor(scaledJadeAmber, scaledAmberJade), scaledAmberJade / findHighestCommonFactor(scaledJadeAmber, scaledAmberJade)};
+        int[] jadeToSilicon = new int[]{scaledJadeSilicon / findHighestCommonFactor(scaledJadeSilicon, scaledSiliconJade), scaledSiliconJade / findHighestCommonFactor(scaledJadeSilicon, scaledSiliconJade)};
+        int[] jadeToRuby = new int[]{scaledJadeRuby / findHighestCommonFactor(scaledJadeRuby, scaledRubyJade), scaledRubyJade / findHighestCommonFactor(scaledJadeRuby, scaledRubyJade)};
+        int[] amberToDiamond = new int[]{amber / findHighestCommonFactor(diamondAmber, amber), diamondAmber / findHighestCommonFactor(diamondAmber, amber)};
+        int[] amberToJade = new int[]{scaledAmberJade / findHighestCommonFactor(scaledAmberJade, scaledJadeAmber), scaledJadeAmber / findHighestCommonFactor(scaledAmberJade, scaledJadeAmber)};
+        int[] amberToSilicon = new int[]{scaledAmberSilicon / findHighestCommonFactor(scaledAmberSilicon, scaledSiliconAmber), scaledSiliconAmber / findHighestCommonFactor(scaledAmberSilicon, scaledSiliconAmber)};
+        int[] amberToRuby = new int[]{scaledAmberRuby / findHighestCommonFactor(scaledAmberRuby, scaledRubyAmber), scaledRubyAmber / findHighestCommonFactor(scaledAmberRuby, scaledRubyAmber)};
+        int[] siliconToDiamond = new int[]{silicon / findHighestCommonFactor(diamondSilicon, silicon), diamondSilicon / findHighestCommonFactor(diamondSilicon, silicon)};
+        int[] siliconToJade = new int[]{scaledSiliconJade / findHighestCommonFactor(scaledSiliconJade, scaledJadeSilicon), scaledJadeSilicon / findHighestCommonFactor(scaledSiliconJade, scaledJadeSilicon)};
+        int[] siliconToAmber = new int[]{scaledSiliconAmber / findHighestCommonFactor(scaledSiliconAmber, scaledAmberSilicon), scaledAmberSilicon / findHighestCommonFactor(scaledSiliconAmber, scaledAmberSilicon)};
+        int[] siliconToRuby = new int[]{scaledSiliconRuby / findHighestCommonFactor(scaledSiliconRuby, scaledRubySilicon), scaledRubySilicon / findHighestCommonFactor(scaledSiliconRuby, scaledRubySilicon)};
+        int[] rubyToDiamond = new int[]{ruby / findHighestCommonFactor(ruby, diamondRuby), diamondRuby / findHighestCommonFactor(ruby, diamondRuby)};
+        int[] rubyToJade = new int[]{scaledRubyJade / findHighestCommonFactor(scaledRubyJade, scaledJadeRuby), scaledJadeRuby / findHighestCommonFactor(scaledRubyJade, scaledJadeRuby)};
+        int[] rubyToAmber = new int[]{scaledRubyAmber / findHighestCommonFactor(scaledRubyAmber, scaledAmberRuby), scaledAmberRuby / findHighestCommonFactor(scaledRubyAmber, scaledAmberRuby)};
+        int[] rubyToSilicon = new int[]{scaledRubySilicon / findHighestCommonFactor(scaledRubySilicon, scaledSiliconRuby), scaledSiliconRuby / findHighestCommonFactor(scaledRubySilicon, scaledSiliconRuby)};
+        data.setDiamondToJade(diamondToJade);
         data.setDiamondToAmber(diamondToAmber);
-        data.setRubyToDiamond(rubyToDiamond);
-        data.setRubyToAmber(rubyToAmber);
+        data.setDiamondToSilicon(diamondToSilicon);
+        data.setDiamondToRuby(diamondToRuby);
+        data.setJadeToDiamond(jadeToDiamond);
+        data.setJadeToAmber(jadeToAmber);
+        data.setJadeToSilicon(jadeToSilicon);
+        data.setJadeToRuby(jadeToRuby);
         data.setAmberToDiamond(amberToDiamond);
+        data.setAmberToJade(amberToJade);
+        data.setAmberToSilicon(amberToSilicon);
         data.setAmberToRuby(amberToRuby);
-        VillageCraft3Essentials.LOGGER.info("Currency Conversions Randomized - DiamondToRuby{}", Arrays.toString(diamondToRuby));
+        data.setSiliconToDiamond(siliconToDiamond);
+        data.setSiliconToJade(siliconToJade);
+        data.setSiliconToAmber(siliconToAmber);
+        data.setSiliconToRuby(siliconToRuby);
+        data.setRubyToDiamond(rubyToDiamond);
+        data.setRubyToJade(rubyToJade);
+        data.setRubyToAmber(rubyToAmber);
+        data.setRubyToSilicon(rubyToSilicon);
+        VillageCraft3Essentials.LOGGER.info("Currency Conversions Randomized - DiamondToJade{}", Arrays.toString(diamondToJade));
         VillageCraft3Essentials.LOGGER.info("Currency Conversions Randomized - DiamondToAmber{}", Arrays.toString(diamondToAmber));
-        VillageCraft3Essentials.LOGGER.info("Currency Conversions Randomized - RubyToDiamond{}", Arrays.toString(rubyToDiamond));
-        VillageCraft3Essentials.LOGGER.info("Currency Conversions Randomized - RubyToAmber{}", Arrays.toString(rubyToAmber));
+        VillageCraft3Essentials.LOGGER.info("Currency Conversions Randomized - DiamondToSilicon{}", Arrays.toString(diamondToSilicon));
+        VillageCraft3Essentials.LOGGER.info("Currency Conversions Randomized - DiamondToRuby{}", Arrays.toString(diamondToRuby));
+        VillageCraft3Essentials.LOGGER.info("Currency Conversions Randomized - JadeToDiamond{}", Arrays.toString(jadeToDiamond));
+        VillageCraft3Essentials.LOGGER.info("Currency Conversions Randomized - JadeToAmber{}", Arrays.toString(jadeToAmber));
+        VillageCraft3Essentials.LOGGER.info("Currency Conversions Randomized - JadeToSilicon{}", Arrays.toString(jadeToSilicon));
+        VillageCraft3Essentials.LOGGER.info("Currency Conversions Randomized - JadeToRuby{}", Arrays.toString(jadeToRuby));
         VillageCraft3Essentials.LOGGER.info("Currency Conversions Randomized - AmberToDiamond{}", Arrays.toString(amberToDiamond));
+        VillageCraft3Essentials.LOGGER.info("Currency Conversions Randomized - AmberToJade{}", Arrays.toString(amberToJade));
+        VillageCraft3Essentials.LOGGER.info("Currency Conversions Randomized - AmberToSilicon{}", Arrays.toString(amberToSilicon));
         VillageCraft3Essentials.LOGGER.info("Currency Conversions Randomized - AmberToRuby{}", Arrays.toString(amberToRuby));
+        VillageCraft3Essentials.LOGGER.info("Currency Conversions Randomized - SiliconToDiamond{}", Arrays.toString(siliconToDiamond));
+        VillageCraft3Essentials.LOGGER.info("Currency Conversions Randomized - SiliconToJade{}", Arrays.toString(siliconToJade));
+        VillageCraft3Essentials.LOGGER.info("Currency Conversions Randomized - SiliconToAmber{}", Arrays.toString(siliconToAmber));
+        VillageCraft3Essentials.LOGGER.info("Currency Conversions Randomized - SiliconToRuby{}", Arrays.toString(siliconToRuby));
+        VillageCraft3Essentials.LOGGER.info("Currency Conversions Randomized - RubyToDiamond{}", Arrays.toString(rubyToDiamond));
+        VillageCraft3Essentials.LOGGER.info("Currency Conversions Randomized - RubyToJade{}", Arrays.toString(rubyToJade));
+        VillageCraft3Essentials.LOGGER.info("Currency Conversions Randomized - RubyToAmber{}", Arrays.toString(rubyToAmber));
+        VillageCraft3Essentials.LOGGER.info("Currency Conversions Randomized - RubyToSilicon{}", Arrays.toString(rubyToSilicon));
         Scoreboard scoreboard = event.getServer().getScoreboard();
 
         if (ServerConfig.ENABLE_WAR_SYSTEM_FEATURES.get() && scoreboard.getObjective("war_points_leaderboard") == null) {
@@ -159,13 +215,23 @@ public class ModServerEvents {
         return a;
     }
 
-    public static int randomRubyCurrencyConversion() {
+    public static int randomJadeCurrencyConversion() {
         Random random = new Random();
-        return random.nextInt(CommonConfig.RUBY_CURRENCY_CONVERSION_RATE_MIN.getAsInt(), CommonConfig.RUBY_CURRENCY_CONVERSION_RATE_MAX.getAsInt());
+        return random.nextInt(CommonConfig.JADE_CURRENCY_CONVERSION_RATE_MIN.getAsInt(), CommonConfig.JADE_CURRENCY_CONVERSION_RATE_MAX.getAsInt());
     }
 
     public static int randomAmberCurrencyConversion() {
         Random random = new Random();
         return random.nextInt(CommonConfig.AMBER_CURRENCY_CONVERSION_RATE_MIN.getAsInt(), CommonConfig.AMBER_CURRENCY_CONVERSION_RATE_MAX.getAsInt());
+    }
+
+    public static int randomSiliconCurrencyConversion() {
+        Random random = new Random();
+        return random.nextInt(CommonConfig.SILICON_CURRENCY_CONVERSION_RATE_MIN.getAsInt(), CommonConfig.SILICON_CURRENCY_CONVERSION_RATE_MAX.getAsInt());
+    }
+
+    public static int randomRubyCurrencyConversion() {
+        Random random = new Random();
+        return random.nextInt(CommonConfig.RUBY_CURRENCY_CONVERSION_RATE_MIN.getAsInt(), CommonConfig.RUBY_CURRENCY_CONVERSION_RATE_MAX.getAsInt());
     }
 }

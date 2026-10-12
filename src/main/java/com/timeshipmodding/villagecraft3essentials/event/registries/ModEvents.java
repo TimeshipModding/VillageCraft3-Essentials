@@ -7,10 +7,11 @@ import com.timeshipmodding.villagecraft3essentials.compat.luckperms.LuckpermsMet
 import com.timeshipmodding.villagecraft3essentials.content.command.DiscordLinkPlayerCommand;
 import com.timeshipmodding.villagecraft3essentials.content.block.registries.ModBlocks;
 import com.timeshipmodding.villagecraft3essentials.content.command.SpawnCommand;
-import com.timeshipmodding.villagecraft3essentials.content.command.ambercaves.*;
-import com.timeshipmodding.villagecraft3essentials.content.command.grippercity.*;
-import com.timeshipmodding.villagecraft3essentials.content.command.removecooldown.RemoveCooldownJailCommand;
-import com.timeshipmodding.villagecraft3essentials.content.command.removecooldown.RemoveCooldownKickCommand;
+import com.timeshipmodding.villagecraft3essentials.content.command.blackwater.*;
+import com.timeshipmodding.villagecraft3essentials.content.command.swedishfurniturestore.*;
+import com.timeshipmodding.villagecraft3essentials.content.command.london.*;
+import com.timeshipmodding.villagecraft3essentials.content.command.oasis.*;
+import com.timeshipmodding.villagecraft3essentials.content.command.removecooldown.*;
 import com.timeshipmodding.villagecraft3essentials.content.command.tpa.*;
 import com.timeshipmodding.villagecraft3essentials.content.command.villagecraftcity.*;
 import com.timeshipmodding.villagecraft3essentials.content.command.warscore.*;
@@ -67,32 +68,6 @@ public class ModEvents {
 
     @SubscribeEvent
     public static void onCommandsRegister(RegisterCommandsEvent event) {
-        new AmberCavesBlacklistCommand(event.getDispatcher());
-        new AmberCavesGetRoleplayItemCommand(event.getDispatcher(), event.getBuildContext());
-        new AmberCavesJailCommand(event.getDispatcher());
-        new AmberCavesKickCommand(event.getDispatcher());
-        new AmberCavesPardonCommand(event.getDispatcher());
-        new AmberCavesRemoveSpawnCommand(event.getDispatcher());
-        new AmberCavesSetJailCommand(event.getDispatcher());
-        new AmberCavesSetSpawnCommand(event.getDispatcher());
-        new AmberCavesSpawnCommand(event.getDispatcher());
-        new AmberCavesWhitelistCommand(event.getDispatcher());
-        new GripperCityBlacklistCommand(event.getDispatcher());
-        new GripperCityGetRoleplayItemCommand(event.getDispatcher(), event.getBuildContext());
-        new GripperCityJailCommand(event.getDispatcher());
-        new GripperCityKickCommand(event.getDispatcher());
-        new GripperCityPardonCommand(event.getDispatcher());
-        new GripperCityRemoveSpawnCommand(event.getDispatcher());
-        new GripperCitySetJailCommand(event.getDispatcher());
-        new GripperCitySetSpawnCommand(event.getDispatcher());
-        new GripperCitySpawnCommand(event.getDispatcher());
-        new GripperCityWhitelistCommand(event.getDispatcher());
-        new RemoveCooldownJailCommand(event.getDispatcher());
-        new RemoveCooldownKickCommand(event.getDispatcher());
-        new TpacceptCommand(event.getDispatcher());
-        new TpaCommand(event.getDispatcher());
-        new TpadenyCommand(event.getDispatcher());
-        new TpahereCommand(event.getDispatcher());
         new VillageCraftCityBlacklistCommand(event.getDispatcher());
         new VillageCraftCityGetRoleplayItemCommand(event.getDispatcher(), event.getBuildContext());
         new VillageCraftCityJailCommand(event.getDispatcher());
@@ -103,6 +78,51 @@ public class ModEvents {
         new VillageCraftCitySetSpawnCommand(event.getDispatcher());
         new VillageCraftCitySpawnCommand(event.getDispatcher());
         new VillageCraftCityWhitelistCommand(event.getDispatcher());
+        new OasisBlacklistCommand(event.getDispatcher());
+        new OasisGetRoleplayItemCommand(event.getDispatcher(), event.getBuildContext());
+        new OasisJailCommand(event.getDispatcher());
+        new OasisKickCommand(event.getDispatcher());
+        new OasisPardonCommand(event.getDispatcher());
+        new OasisRemoveSpawnCommand(event.getDispatcher());
+        new OasisSetJailCommand(event.getDispatcher());
+        new OasisSetSpawnCommand(event.getDispatcher());
+        new OasisSpawnCommand(event.getDispatcher());
+        new OasisWhitelistCommand(event.getDispatcher());
+        new SwedishFurnitureStoreBlacklistCommand(event.getDispatcher());
+        new SwedishFurnitureStoreGetRoleplayItemCommand(event.getDispatcher(), event.getBuildContext());
+        new SwedishFurnitureStoreJailCommand(event.getDispatcher());
+        new SwedishFurnitureStoreKickCommand(event.getDispatcher());
+        new SwedishFurnitureStorePardonCommand(event.getDispatcher());
+        new SwedishFurnitureStoreRemoveSpawnCommand(event.getDispatcher());
+        new SwedishFurnitureStoreSetJailCommand(event.getDispatcher());
+        new SwedishFurnitureStoreSetSpawnCommand(event.getDispatcher());
+        new SwedishFurnitureStoreSpawnCommand(event.getDispatcher());
+        new SwedishFurnitureStoreWhitelistCommand(event.getDispatcher());
+        new LondonBlacklistCommand(event.getDispatcher());
+        new LondonGetRoleplayItemCommand(event.getDispatcher(), event.getBuildContext());
+        new LondonJailCommand(event.getDispatcher());
+        new LondonKickCommand(event.getDispatcher());
+        new LondonPardonCommand(event.getDispatcher());
+        new LondonRemoveSpawnCommand(event.getDispatcher());
+        new LondonSetJailCommand(event.getDispatcher());
+        new LondonSetSpawnCommand(event.getDispatcher());
+        new LondonSpawnCommand(event.getDispatcher());
+        new LondonWhitelistCommand(event.getDispatcher());
+        new BlackWaterBlacklistCommand(event.getDispatcher());
+        new BlackWaterGetRoleplayItemCommand(event.getDispatcher(), event.getBuildContext());
+        new BlackWaterJailCommand(event.getDispatcher());
+        new BlackWaterKickCommand(event.getDispatcher());
+        new BlackWaterPardonCommand(event.getDispatcher());
+        new BlackWaterRemoveSpawnCommand(event.getDispatcher());
+        new BlackWaterSetJailCommand(event.getDispatcher());
+        new BlackWaterSetSpawnCommand(event.getDispatcher());
+        new BlackWaterSpawnCommand(event.getDispatcher());
+        new BlackWaterWhitelistCommand(event.getDispatcher());
+        new SpawnCommand(event.getDispatcher());
+        new TpacceptCommand(event.getDispatcher());
+        new TpaCommand(event.getDispatcher());
+        new TpadenyCommand(event.getDispatcher());
+        new TpahereCommand(event.getDispatcher());
         new CompletedMissionsGetCommand(event.getDispatcher());
         new CompletedMissionsResetCommand(event.getDispatcher());
         new ToggleWarScoreGainingCommand(event.getDispatcher());
@@ -110,7 +130,8 @@ public class ModEvents {
         new WarScoreGetCommand(event.getDispatcher());
         new WarScoreRemoveCommand(event.getDispatcher());
         new WarScoreResetCommand(event.getDispatcher());
-        new SpawnCommand(event.getDispatcher());
+        new RemoveCooldownJailCommand(event.getDispatcher());
+        new RemoveCooldownKickCommand(event.getDispatcher());
 
         if (ModList.get().isLoaded("dcintegration")) {
             new DiscordLinkPlayerCommand(event.getDispatcher());
@@ -125,15 +146,29 @@ public class ModEvents {
             MinecraftServer server = player.getServer();
 
             if (server != null) {
-                int[] diamondToRuby = AtmRandomConversionRatesSavedData.getData(server).getDiamondToRuby();
+                int[] diamondToJade = AtmRandomConversionRatesSavedData.getData(server).getDiamondToJade();
                 int[] diamondToAmber = AtmRandomConversionRatesSavedData.getData(server).getDiamondToAmber();
-                int[] rubyToDiamond = AtmRandomConversionRatesSavedData.getData(server).getRubyToDiamond();
-                int[] rubyToAmber = AtmRandomConversionRatesSavedData.getData(server).getRubyToAmber();
+                int[] diamondToSilicon = AtmRandomConversionRatesSavedData.getData(server).getDiamondToSilicon();
+                int[] diamondToRuby = AtmRandomConversionRatesSavedData.getData(server).getDiamondToRuby();
+                int[] jadeToDiamond = AtmRandomConversionRatesSavedData.getData(server).getJadeToDiamond();
+                int[] jadeToAmber = AtmRandomConversionRatesSavedData.getData(server).getJadeToAmber();
+                int[] jadeToSilicon = AtmRandomConversionRatesSavedData.getData(server).getJadeToSilicon();
+                int[] jadeToRuby = AtmRandomConversionRatesSavedData.getData(server).getJadeToRuby();
                 int[] amberToDiamond = AtmRandomConversionRatesSavedData.getData(server).getAmberToDiamond();
+                int[] amberToJade = AtmRandomConversionRatesSavedData.getData(server).getAmberToJade();
+                int[] amberToSilicon = AtmRandomConversionRatesSavedData.getData(server).getAmberToSilicon();
                 int[] amberToRuby = AtmRandomConversionRatesSavedData.getData(server).getAmberToRuby();
+                int[] siliconToDiamond = AtmRandomConversionRatesSavedData.getData(server).getSiliconToDiamond();
+                int[] siliconToJade = AtmRandomConversionRatesSavedData.getData(server).getSiliconToJade();
+                int[] siliconToAmber = AtmRandomConversionRatesSavedData.getData(server).getSiliconToAmber();
+                int[] siliconToRuby = AtmRandomConversionRatesSavedData.getData(server).getSiliconToRuby();
+                int[] rubyToDiamond = AtmRandomConversionRatesSavedData.getData(server).getRubyToDiamond();
+                int[] rubyToJade = AtmRandomConversionRatesSavedData.getData(server).getRubyToJade();
+                int[] rubyToAmber = AtmRandomConversionRatesSavedData.getData(server).getRubyToAmber();
+                int[] rubyToSilicon = AtmRandomConversionRatesSavedData.getData(server).getRubyToSilicon();
 
-                if (diamondToRuby != null && diamondToRuby.length > 0) {
-                    PacketDistributor.sendToPlayer(player, new AtmRandomConversionRatesPacket(diamondToRuby, diamondToAmber, rubyToDiamond, rubyToAmber, amberToDiamond, amberToRuby));
+                if (diamondToJade != null && diamondToJade.length > 0) {
+                    PacketDistributor.sendToPlayer(player, new AtmRandomConversionRatesPacket(diamondToJade, diamondToAmber, diamondToSilicon, diamondToRuby, jadeToDiamond, jadeToAmber, jadeToSilicon, jadeToRuby, amberToDiamond, amberToJade, amberToSilicon, amberToRuby, siliconToDiamond, siliconToJade, siliconToAmber, siliconToRuby, rubyToDiamond, rubyToJade, rubyToAmber, rubyToSilicon));
                 }
             }
         }
@@ -146,6 +181,7 @@ public class ModEvents {
         ServerPlayer player = (ServerPlayer) event.getEntity();
         UUID uuid = player.getUUID();
 
+        // Manage spawn command teleports
         if (pendingTeleports.containsKey(uuid)) {
             TeleportCommandsData teleportCommandsData = pendingTeleports.get(uuid);
 
@@ -170,6 +206,7 @@ public class ModEvents {
             }
         }
 
+        // Manage tpa and tpa command teleports
         if (pendingTPAs.containsKey(uuid)) {
             TpaCommandData teleportCommandsData = pendingTPAs.get(uuid);
 
@@ -245,6 +282,7 @@ public class ModEvents {
             }
         }
 
+        // Automatically release player from jail once maximum time has elapsed
         if (player.hasData(ModDataAttachments.JAIL_COMMAND_DATA)) {
             JailAndPardonCommandData jailCommandData = player.getData(ModDataAttachments.JAIL_COMMAND_DATA);
             player.setData(ModDataAttachments.JAIL_COMMAND_DATA, jailCommandData.tick());
@@ -265,11 +303,17 @@ public class ModEvents {
                     if (jailCommandData.townComponent().contains(Component.literal("VillageCraft City's"))) {
                         spawn = savedData.getVillagecraftCitySpawn();
 
-                    } else if (jailCommandData.townComponent().contains(Component.literal("Gripper City's"))) {
-                        spawn = savedData.getGripperCitySpawn();
+                    } else if (jailCommandData.townComponent().contains(Component.literal("Oasis's"))) {
+                        spawn = savedData.getOasisSpawn();
 
-                    } else if (jailCommandData.townComponent().contains(Component.literal("Amber Caves'"))) {
-                        spawn = savedData.getAmberCavesSpawn();
+                    } else if (jailCommandData.townComponent().contains(Component.literal("Swedish Furniture Store's"))) {
+                        spawn = savedData.getSwedishFurnitureStoreSpawn();
+
+                    } else if (jailCommandData.townComponent().contains(Component.literal("London's"))) {
+                        spawn = savedData.getLondonSpawn();
+
+                    } else if (jailCommandData.townComponent().contains(Component.literal("BlackWater's"))) {
+                        spawn = savedData.getBlackWaterSpawn();
                     }
 
                     if (ModList.get().isLoaded("luckperms")) {
@@ -329,44 +373,84 @@ public class ModEvents {
     @SubscribeEvent
     public static void onBlockBreak(BlockEvent.BreakEvent event) {
         if (ServerConfig.ENABLE_WAR_SYSTEM_FEATURES.get() && !event.getLevel().isClientSide() && ModList.get().isLoaded("luckperms") && ToggleWarScoreGainingCommand.gainWarPoints) {
+            if (!(event.getState().getBlock() == ModBlocks.DIAMOND_CORE.get() || event.getState().getBlock() == ModBlocks.JADE_CORE.get() || event.getState().getBlock() == ModBlocks.AMBER_CORE.get() || event.getState().getBlock() == ModBlocks.SILICON_CORE.get() || event.getState().getBlock() == ModBlocks.RUBY_CORE.get())) {
+                return;
+            }
+
             WarPointsSavedData savedData = WarPointsSavedData.getData(event.getLevel().getServer());
 
             if (event.getState().getBlock() == ModBlocks.DIAMOND_CORE.get()) {
-                if (LuckpermsMethods.isInGroup(event.getPlayer(), ServerConfig.GRIPPERCITY_GROUP_NAME.get())) {
-                    savedData.addGripperCityWarScore((ServerLevel) event.getLevel(), 1);
+                if (LuckpermsMethods.isInGroup(event.getPlayer(), ServerConfig.OASIS_GROUP_NAME.get())) {
+                    savedData.addOasisWarScore((ServerLevel) event.getLevel(), 1);
 
                     for (ServerPlayer player : ((ServerLevel) event.getLevel()).getServer().getPlayerList().getPlayers()) {
                         if (LuckpermsMethods.isInGroup(player, ServerConfig.VILLAGECRAFTCITY_GROUP_NAME.get())) {
-                            player.sendSystemMessage(Component.literal("Core at [" + event.getPos().toShortString() + "] is destroyed by VillageCraft City.").withStyle(ChatFormatting.RED));
+                            player.sendSystemMessage(Component.literal("Core at [" + event.getPos().toShortString() + "] is destroyed by Oasis.").withStyle(ChatFormatting.RED));
                         }
                     }
 
-                } else if (LuckpermsMethods.isInGroup(event.getPlayer(), ServerConfig.AMBERCAVES_GROUP_NAME.get())) {
-                    savedData.addAmberCavesWarScore((ServerLevel) event.getLevel(), 1);
+                } else if (LuckpermsMethods.isInGroup(event.getPlayer(), ServerConfig.SWEDISHFURNITURESTORE_GROUP_NAME.get())) {
+                    savedData.addSwedishFurnitureStoreWarScore((ServerLevel) event.getLevel(), 1);
 
                     for (ServerPlayer player : ((ServerLevel) event.getLevel()).getServer().getPlayerList().getPlayers()) {
                         if (LuckpermsMethods.isInGroup(player, ServerConfig.VILLAGECRAFTCITY_GROUP_NAME.get())) {
-                            player.sendSystemMessage(Component.literal("Core at [" + event.getPos().toShortString() + "] is destroyed by The Amber Caves.").withStyle(ChatFormatting.RED));
+                            player.sendSystemMessage(Component.literal("Core at [" + event.getPos().toShortString() + "] is destroyed by Swedish Furniture Store.").withStyle(ChatFormatting.RED));
+                        }
+                    }
+
+                } else if (LuckpermsMethods.isInGroup(event.getPlayer(), ServerConfig.LONDON_GROUP_NAME.get())) {
+                    savedData.addLondonWarScore((ServerLevel) event.getLevel(), 1);
+
+                    for (ServerPlayer player : ((ServerLevel) event.getLevel()).getServer().getPlayerList().getPlayers()) {
+                        if (LuckpermsMethods.isInGroup(player, ServerConfig.VILLAGECRAFTCITY_GROUP_NAME.get())) {
+                            player.sendSystemMessage(Component.literal("Core at [" + event.getPos().toShortString() + "] is destroyed by London.").withStyle(ChatFormatting.RED));
+                        }
+                    }
+
+                } else if (LuckpermsMethods.isInGroup(event.getPlayer(), ServerConfig.BLACKWATER_GROUP_NAME.get())) {
+                    savedData.addBlackWaterWarScore((ServerLevel) event.getLevel(), 1);
+
+                    for (ServerPlayer player : ((ServerLevel) event.getLevel()).getServer().getPlayerList().getPlayers()) {
+                        if (LuckpermsMethods.isInGroup(player, ServerConfig.VILLAGECRAFTCITY_GROUP_NAME.get())) {
+                            player.sendSystemMessage(Component.literal("Core at [" + event.getPos().toShortString() + "] is destroyed by BlackWater.").withStyle(ChatFormatting.RED));
                         }
                     }
                 }
 
-            } else if (event.getState().getBlock() == ModBlocks.RUBY_CORE.get()) {
+            } else if (event.getState().getBlock() == ModBlocks.JADE_CORE.get()) {
                 if (LuckpermsMethods.isInGroup(event.getPlayer(), ServerConfig.VILLAGECRAFTCITY_GROUP_NAME.get())) {
                     savedData.addVillagecraftCityWarScore((ServerLevel) event.getLevel(), 1);
 
                     for (ServerPlayer player : ((ServerLevel) event.getLevel()).getServer().getPlayerList().getPlayers()) {
-                        if (LuckpermsMethods.isInGroup(player, ServerConfig.GRIPPERCITY_BLACKLISTED_GROUP_NAME.get())) {
-                            player.sendSystemMessage(Component.literal("Core at [" + event.getPos().toShortString() + "] is destroyed by Gripper City .").withStyle(ChatFormatting.RED));
+                        if (LuckpermsMethods.isInGroup(player, ServerConfig.OASIS_GROUP_NAME.get())) {
+                            player.sendSystemMessage(Component.literal("Core at [" + event.getPos().toShortString() + "] is destroyed by VillageCraft City.").withStyle(ChatFormatting.RED));
                         }
                     }
 
-                } else if (LuckpermsMethods.isInGroup(event.getPlayer(), ServerConfig.AMBERCAVES_GROUP_NAME.get())) {
-                    savedData.addAmberCavesWarScore((ServerLevel) event.getLevel(), 1);
+                } else if (LuckpermsMethods.isInGroup(event.getPlayer(), ServerConfig.SWEDISHFURNITURESTORE_GROUP_NAME.get())) {
+                    savedData.addSwedishFurnitureStoreWarScore((ServerLevel) event.getLevel(), 1);
 
                     for (ServerPlayer player : ((ServerLevel) event.getLevel()).getServer().getPlayerList().getPlayers()) {
-                        if (LuckpermsMethods.isInGroup(player, ServerConfig.GRIPPERCITY_GROUP_NAME.get())) {
-                            player.sendSystemMessage(Component.literal("Core at [" + event.getPos().toShortString() + "] is destroyed by The Amber Caves.").withStyle(ChatFormatting.RED));
+                        if (LuckpermsMethods.isInGroup(player, ServerConfig.OASIS_GROUP_NAME.get())) {
+                            player.sendSystemMessage(Component.literal("Core at [" + event.getPos().toShortString() + "] is destroyed by Swedish Furniture Store.").withStyle(ChatFormatting.RED));
+                        }
+                    }
+
+                } else if (LuckpermsMethods.isInGroup(event.getPlayer(), ServerConfig.LONDON_GROUP_NAME.get())) {
+                    savedData.addLondonWarScore((ServerLevel) event.getLevel(), 1);
+
+                    for (ServerPlayer player : ((ServerLevel) event.getLevel()).getServer().getPlayerList().getPlayers()) {
+                        if (LuckpermsMethods.isInGroup(player, ServerConfig.OASIS_GROUP_NAME.get())) {
+                            player.sendSystemMessage(Component.literal("Core at [" + event.getPos().toShortString() + "] is destroyed by London.").withStyle(ChatFormatting.RED));
+                        }
+                    }
+
+                } else if (LuckpermsMethods.isInGroup(event.getPlayer(), ServerConfig.BLACKWATER_GROUP_NAME.get())) {
+                    savedData.addBlackWaterWarScore((ServerLevel) event.getLevel(), 1);
+
+                    for (ServerPlayer player : ((ServerLevel) event.getLevel()).getServer().getPlayerList().getPlayers()) {
+                        if (LuckpermsMethods.isInGroup(player, ServerConfig.OASIS_GROUP_NAME.get())) {
+                            player.sendSystemMessage(Component.literal("Core at [" + event.getPos().toShortString() + "] is destroyed by BlackWater.").withStyle(ChatFormatting.RED));
                         }
                     }
                 }
@@ -376,17 +460,73 @@ public class ModEvents {
                     savedData.addVillagecraftCityWarScore((ServerLevel) event.getLevel(), 1);
 
                     for (ServerPlayer player : ((ServerLevel) event.getLevel()).getServer().getPlayerList().getPlayers()) {
-                        if (LuckpermsMethods.isInGroup(player, ServerConfig.AMBERCAVES_GROUP_NAME.get())) {
+                        if (LuckpermsMethods.isInGroup(player, ServerConfig.SWEDISHFURNITURESTORE_GROUP_NAME.get())) {
                             player.sendSystemMessage(Component.literal("Core at [" + event.getPos().toShortString() + "] is destroyed by VillageCraft City.").withStyle(ChatFormatting.RED));
                         }
                     }
 
-                } else if (LuckpermsMethods.isInGroup(event.getPlayer(), ServerConfig.GRIPPERCITY_GROUP_NAME.get())) {
-                    savedData.addGripperCityWarScore((ServerLevel) event.getLevel(), 1);
+                } else if (LuckpermsMethods.isInGroup(event.getPlayer(), ServerConfig.OASIS_GROUP_NAME.get())) {
+                    savedData.addOasisWarScore((ServerLevel) event.getLevel(), 1);
 
                     for (ServerPlayer player : ((ServerLevel) event.getLevel()).getServer().getPlayerList().getPlayers()) {
-                        if (LuckpermsMethods.isInGroup(player, ServerConfig.AMBERCAVES_GROUP_NAME.get())) {
-                            player.sendSystemMessage(Component.literal("Core at [" + event.getPos().toShortString() + "] is destroyed by Gripper City.").withStyle(ChatFormatting.RED));
+                        if (LuckpermsMethods.isInGroup(player, ServerConfig.SWEDISHFURNITURESTORE_GROUP_NAME.get())) {
+                            player.sendSystemMessage(Component.literal("Core at [" + event.getPos().toShortString() + "] is destroyed by Oasis.").withStyle(ChatFormatting.RED));
+                        }
+                    }
+
+                } else if (LuckpermsMethods.isInGroup(event.getPlayer(), ServerConfig.LONDON_GROUP_NAME.get())) {
+                    savedData.addLondonWarScore((ServerLevel) event.getLevel(), 1);
+
+                    for (ServerPlayer player : ((ServerLevel) event.getLevel()).getServer().getPlayerList().getPlayers()) {
+                        if (LuckpermsMethods.isInGroup(player, ServerConfig.SWEDISHFURNITURESTORE_GROUP_NAME.get())) {
+                            player.sendSystemMessage(Component.literal("Core at [" + event.getPos().toShortString() + "] is destroyed by London.").withStyle(ChatFormatting.RED));
+                        }
+                    }
+
+                } else if (LuckpermsMethods.isInGroup(event.getPlayer(), ServerConfig.BLACKWATER_GROUP_NAME.get())) {
+                    savedData.addBlackWaterWarScore((ServerLevel) event.getLevel(), 1);
+
+                    for (ServerPlayer player : ((ServerLevel) event.getLevel()).getServer().getPlayerList().getPlayers()) {
+                        if (LuckpermsMethods.isInGroup(player, ServerConfig.SWEDISHFURNITURESTORE_GROUP_NAME.get())) {
+                            player.sendSystemMessage(Component.literal("Core at [" + event.getPos().toShortString() + "] is destroyed by BlackWater.").withStyle(ChatFormatting.RED));
+                        }
+                    }
+                }
+
+            } else if (event.getState().getBlock() == ModBlocks.RUBY_CORE.get()) {
+                if (LuckpermsMethods.isInGroup(event.getPlayer(), ServerConfig.VILLAGECRAFTCITY_GROUP_NAME.get())) {
+                    savedData.addVillagecraftCityWarScore((ServerLevel) event.getLevel(), 1);
+
+                    for (ServerPlayer player : ((ServerLevel) event.getLevel()).getServer().getPlayerList().getPlayers()) {
+                        if (LuckpermsMethods.isInGroup(player, ServerConfig.BLACKWATER_GROUP_NAME.get())) {
+                            player.sendSystemMessage(Component.literal("Core at [" + event.getPos().toShortString() + "] is destroyed by VillageCraft City.").withStyle(ChatFormatting.RED));
+                        }
+                    }
+
+                } else if (LuckpermsMethods.isInGroup(event.getPlayer(), ServerConfig.OASIS_GROUP_NAME.get())) {
+                    savedData.addOasisWarScore((ServerLevel) event.getLevel(), 1);
+
+                    for (ServerPlayer player : ((ServerLevel) event.getLevel()).getServer().getPlayerList().getPlayers()) {
+                        if (LuckpermsMethods.isInGroup(player, ServerConfig.BLACKWATER_GROUP_NAME.get())) {
+                            player.sendSystemMessage(Component.literal("Core at [" + event.getPos().toShortString() + "] is destroyed by Oasis.").withStyle(ChatFormatting.RED));
+                        }
+                    }
+
+                } else if (LuckpermsMethods.isInGroup(event.getPlayer(), ServerConfig.SWEDISHFURNITURESTORE_GROUP_NAME.get())) {
+                    savedData.addSwedishFurnitureStoreWarScore((ServerLevel) event.getLevel(), 1);
+
+                    for (ServerPlayer player : ((ServerLevel) event.getLevel()).getServer().getPlayerList().getPlayers()) {
+                        if (LuckpermsMethods.isInGroup(player, ServerConfig.BLACKWATER_GROUP_NAME.get())) {
+                            player.sendSystemMessage(Component.literal("Core at [" + event.getPos().toShortString() + "] is destroyed by Swedish Furniture Store.").withStyle(ChatFormatting.RED));
+                        }
+                    }
+
+                } else if (LuckpermsMethods.isInGroup(event.getPlayer(), ServerConfig.LONDON_GROUP_NAME.get())) {
+                    savedData.addLondonWarScore((ServerLevel) event.getLevel(), 1);
+
+                    for (ServerPlayer player : ((ServerLevel) event.getLevel()).getServer().getPlayerList().getPlayers()) {
+                        if (LuckpermsMethods.isInGroup(player, ServerConfig.BLACKWATER_GROUP_NAME.get())) {
+                            player.sendSystemMessage(Component.literal("Core at [" + event.getPos().toShortString() + "] is destroyed by London.").withStyle(ChatFormatting.RED));
                         }
                     }
                 }
@@ -406,26 +546,44 @@ public class ModEvents {
             while (iterator.hasNext()) {
                 CoreRespawnData task = iterator.next();
                 if (currentTime >= task.respawnTime()) {
+                    if (!(task.state().getBlock() == ModBlocks.DIAMOND_CORE.get() || task.state().getBlock() == ModBlocks.JADE_CORE.get() || task.state().getBlock() == ModBlocks.AMBER_CORE.get() || task.state().getBlock() == ModBlocks.SILICON_CORE.get() || task.state().getBlock() == ModBlocks.RUBY_CORE.get())) {
+                        return;
+                    }
+
                     serverLevel.setBlockAndUpdate(task.pos(), task.state());
 
                     if (task.state().getBlock() == ModBlocks.DIAMOND_CORE.get()) {
                         for (ServerPlayer player : ((ServerLevel) event.getLevel()).getServer().getPlayerList().getPlayers()) {
                             if (LuckpermsMethods.isInGroup(player, ServerConfig.VILLAGECRAFTCITY_BLACKLISTED_GROUP_NAME.get())) {
-                                player.sendSystemMessage(Component.literal("Core at " + task.pos() + " has respawned!").withStyle(ChatFormatting.GREEN));
+                                player.sendSystemMessage(Component.literal("Core at [" + task.pos() + "] has respawned!").withStyle(ChatFormatting.GREEN));
                             }
                         }
 
-                    } else if (task.state().getBlock() == ModBlocks.RUBY_CORE.get()) {
+                    } else if (task.state().getBlock() == ModBlocks.JADE_CORE.get()) {
                         for (ServerPlayer player : ((ServerLevel) event.getLevel()).getServer().getPlayerList().getPlayers()) {
-                            if (LuckpermsMethods.isInGroup(player, ServerConfig.GRIPPERCITY_GROUP_NAME.get())) {
-                                player.sendSystemMessage(Component.literal("Core at " + task.pos() + " has respawned!").withStyle(ChatFormatting.GREEN));
+                            if (LuckpermsMethods.isInGroup(player, ServerConfig.OASIS_GROUP_NAME.get())) {
+                                player.sendSystemMessage(Component.literal("Core at [" + task.pos() + "] has respawned!").withStyle(ChatFormatting.GREEN));
                             }
                         }
 
                     } else if (task.state().getBlock() == ModBlocks.AMBER_CORE.get()) {
                         for (ServerPlayer player : ((ServerLevel) event.getLevel()).getServer().getPlayerList().getPlayers()) {
-                            if (LuckpermsMethods.isInGroup(player, ServerConfig.AMBERCAVES_GROUP_NAME.get())) {
-                                player.sendSystemMessage(Component.literal("Core at " + task.pos() + " has respawned!").withStyle(ChatFormatting.GREEN));
+                            if (LuckpermsMethods.isInGroup(player, ServerConfig.SWEDISHFURNITURESTORE_GROUP_NAME.get())) {
+                                player.sendSystemMessage(Component.literal("Core at [" + task.pos() + "] has respawned!").withStyle(ChatFormatting.GREEN));
+                            }
+                        }
+
+                    } else if (task.state().getBlock() == ModBlocks.SILICON_CORE.get()) {
+                        for (ServerPlayer player : ((ServerLevel) event.getLevel()).getServer().getPlayerList().getPlayers()) {
+                            if (LuckpermsMethods.isInGroup(player, ServerConfig.LONDON_GROUP_NAME.get())) {
+                                player.sendSystemMessage(Component.literal("Core at [" + task.pos() + "] has respawned!").withStyle(ChatFormatting.GREEN));
+                            }
+                        }
+
+                    } else if (task.state().getBlock() == ModBlocks.RUBY_CORE.get()) {
+                        for (ServerPlayer player : ((ServerLevel) event.getLevel()).getServer().getPlayerList().getPlayers()) {
+                            if (LuckpermsMethods.isInGroup(player, ServerConfig.BLACKWATER_GROUP_NAME.get())) {
+                                player.sendSystemMessage(Component.literal("Core at [" + task.pos() + "] has respawned!").withStyle(ChatFormatting.GREEN));
                             }
                         }
                     }
@@ -445,8 +603,10 @@ public class ModEvents {
         );
 
         if (ModList.get().isLoaded("aquaculture")) {
-            AquaMethods.registerAquaFishingRodCapability(event, ModCompatItems.RUBY_FISHING_ROD.get());
+            AquaMethods.registerAquaFishingRodCapability(event, ModCompatItems.JADE_FISHING_ROD.get());
             AquaMethods.registerAquaFishingRodCapability(event, ModCompatItems.AMBER_FISHING_ROD.get());
+            AquaMethods.registerAquaFishingRodCapability(event, ModCompatItems.SILICON_FISHING_ROD.get());
+            AquaMethods.registerAquaFishingRodCapability(event, ModCompatItems.RUBY_FISHING_ROD.get());
         }
     }
 

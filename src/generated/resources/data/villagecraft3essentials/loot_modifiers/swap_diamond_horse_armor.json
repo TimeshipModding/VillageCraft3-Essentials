@@ -1,7 +1,9 @@
 {
   "type": "villagecraft3essentials:swap_item_loot_modifier",
   "conditions": [],
-  "currency1": "villagecraft3essentials:ruby_horse_armor",
-  "currency2": "villagecraft3essentials:amber_horse_armor",
-  "target": "minecraft:diamond_horse_armor"
+  "replacementCurrency1": "villagecraft3essentials:jade_horse_armor",
+  "replacementCurrency2": "villagecraft3essentials:amber_horse_armor",
+  "replacementCurrency3": "villagecraft3essentials:silicon_horse_armor",
+  "replacementCurrency4": "villagecraft3essentials:ruby_horse_armor",
+  "targetCurrency": "minecraft:diamond_horse_armor"
 }

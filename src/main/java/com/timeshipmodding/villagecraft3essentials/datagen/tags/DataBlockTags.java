@@ -12,6 +12,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.concurrent.CompletableFuture;
 
 import static com.timeshipmodding.villagecraft3essentials.content.block.registries.ModBlocks.*;
+import static com.timeshipmodding.villagecraft3essentials.content.block.registries.ModBlocks.DEEPSLATE_RUBY_ORE;
 import static com.timeshipmodding.villagecraft3essentials.infrastructure.tags.registries.ModBlockTags.*;
 import static com.timeshipmodding.villagecraft3essentials.infrastructure.tags.registries.CommonBlockTags.*;
 
@@ -24,12 +25,18 @@ public class DataBlockTags extends BlockTagsProvider {
     protected void addTags(HolderLookup.Provider provider) {
         // Minecraft Tags
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
-                .add(RUBY_ORE.get())
-                .add(DEEPSLATE_RUBY_ORE.get())
-                .add(RUBY_BLOCK.get())
+                .add(JADE_BLOCK.get())
+                .add(JADE_ORE.get())
+                .add(DEEPSLATE_JADE_ORE.get())
+                .add(AMBER_BLOCK.get())
                 .add(AMBER_ORE.get())
                 .add(DEEPSLATE_AMBER_ORE.get())
-                .add(AMBER_BLOCK.get())
+                .add(SILICON_BLOCK.get())
+                .add(SILICON_ORE.get())
+                .add(DEEPSLATE_SILICON_ORE.get())
+                .add(RUBY_BLOCK.get())
+                .add(RUBY_ORE.get())
+                .add(DEEPSLATE_RUBY_ORE.get())
                 .add(BLACK_ATM.get())
                 .add(BLUE_ATM.get())
                 .add(BROWN_ATM.get())
@@ -47,12 +54,18 @@ public class DataBlockTags extends BlockTagsProvider {
                 .add(WHITE_ATM.get())
                 .add(YELLOW_ATM.get());
         tag(BlockTags.NEEDS_IRON_TOOL)
-                .add(RUBY_ORE.get())
-                .add(DEEPSLATE_RUBY_ORE.get())
-                .add(RUBY_BLOCK.get())
+                .add(JADE_BLOCK.get())
+                .add(JADE_ORE.get())
+                .add(DEEPSLATE_JADE_ORE.get())
+                .add(AMBER_BLOCK.get())
                 .add(AMBER_ORE.get())
                 .add(DEEPSLATE_AMBER_ORE.get())
-                .add(AMBER_BLOCK.get());
+                .add(SILICON_BLOCK.get())
+                .add(SILICON_ORE.get())
+                .add(DEEPSLATE_SILICON_ORE.get())
+                .add(RUBY_BLOCK.get())
+                .add(RUBY_ORE.get())
+                .add(DEEPSLATE_RUBY_ORE.get());
         tag(BlockTags.NEEDS_STONE_TOOL)
                 .add(BLACK_ATM.get())
                 .add(BLUE_ATM.get())
@@ -71,39 +84,65 @@ public class DataBlockTags extends BlockTagsProvider {
                 .add(WHITE_ATM.get())
                 .add(YELLOW_ATM.get());
         tag(BlockTags.BEACON_BASE_BLOCKS)
-                .add(RUBY_BLOCK.get())
-                .add(AMBER_BLOCK.get());
+                .add(JADE_BLOCK.get())
+                .add(AMBER_BLOCK.get())
+                .add(SILICON_BLOCK.get())
+                .add(RUBY_BLOCK.get());
 
         // Common Tags
         tag(STORAGE_BLOCKS)
-                .add(RUBY_BLOCK.get())
-                .add(AMBER_BLOCK.get());
-        tag(RUBY_STORAGE_BLOCKS)
+                .add(JADE_BLOCK.get())
+                .add(AMBER_BLOCK.get())
+                .add(SILICON_BLOCK.get())
                 .add(RUBY_BLOCK.get());
+        tag(JADE_STORAGE_BLOCKS)
+                .add(JADE_BLOCK.get());
         tag(AMBER_STORAGE_BLOCKS)
                 .add(AMBER_BLOCK.get());
-        tag(ORES_RUBY)
-                .add(RUBY_ORE.get())
-                .add(DEEPSLATE_RUBY_ORE.get());
+        tag(SILICON_STORAGE_BLOCKS)
+                .add(SILICON_BLOCK.get());
+        tag(RUBY_STORAGE_BLOCKS)
+                .add(RUBY_BLOCK.get());
+        tag(ORES_JADE)
+                .add(JADE_ORE.get())
+                .add(DEEPSLATE_JADE_ORE.get());
         tag(ORES_AMBER)
                 .add(AMBER_ORE.get())
                 .add(DEEPSLATE_AMBER_ORE.get());
+        tag(ORES_SILICON)
+                .add(SILICON_ORE.get())
+                .add(DEEPSLATE_SILICON_ORE.get());
+        tag(ORES_RUBY)
+                .add(RUBY_ORE.get())
+                .add(DEEPSLATE_RUBY_ORE.get());
         tag(ORES_IN_GROUND_STONE)
-                .add(RUBY_ORE.get())
-                .add(AMBER_ORE.get());
+                .add(JADE_ORE.get())
+                .add(AMBER_ORE.get())
+                .add(SILICON_ORE.get())
+                .add(RUBY_ORE.get());
         tag(ORES_IN_GROUND_DEEPSLATE)
-                .add(DEEPSLATE_RUBY_ORE.get())
-                .add(DEEPSLATE_AMBER_ORE.get());
+                .add(DEEPSLATE_JADE_ORE.get())
+                .add(DEEPSLATE_AMBER_ORE.get())
+                .add(DEEPSLATE_SILICON_ORE.get())
+                .add(DEEPSLATE_RUBY_ORE.get());
         tag(ORE_RATES_SINGULAR)
-                .add(RUBY_ORE.get())
-                .add(DEEPSLATE_RUBY_ORE.get())
+                .add(JADE_ORE.get())
+                .add(DEEPSLATE_JADE_ORE.get())
                 .add(AMBER_ORE.get())
-                .add(DEEPSLATE_AMBER_ORE.get());
+                .add(DEEPSLATE_AMBER_ORE.get())
+                .add(SILICON_ORE.get())
+                .add(DEEPSLATE_SILICON_ORE.get())
+                .add(RUBY_ORE.get())
+                .add(DEEPSLATE_RUBY_ORE.get());
         tag(ORES)
-                .add(RUBY_ORE.get())
-                .add(DEEPSLATE_RUBY_ORE.get())
+                .add(JADE_ORE.get())
+                .add(DEEPSLATE_JADE_ORE.get())
                 .add(AMBER_ORE.get())
-                .add(DEEPSLATE_AMBER_ORE.get());
+                .add(DEEPSLATE_AMBER_ORE.get())
+                .add(SILICON_ORE.get())
+                .add(DEEPSLATE_SILICON_ORE.get())
+                .add(RUBY_ORE.get())
+                .add(DEEPSLATE_RUBY_ORE.get());
 
         // VillageCraft 3 Essentials Tags
         tag(MOLES_SPAWNABLE_ON)

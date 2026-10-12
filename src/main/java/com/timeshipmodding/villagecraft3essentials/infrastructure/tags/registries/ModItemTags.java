@@ -9,13 +9,17 @@ import net.minecraft.world.item.Item;
 public class ModItemTags {
     public static TagKey<Item> MOLE_FOOD = createTag("mole_food");
     public static TagKey<Item> DIAMOND_CONVERTIBLE_TOOLS = createTag("diamond_convertible_tools");
-    public static TagKey<Item> RUBY_CONVERTIBLE_TOOLS = createTag("ruby_convertible_tools");
+    public static TagKey<Item> JADE_CONVERTIBLE_TOOLS = createTag("jade_convertible_tools");
     public static TagKey<Item> AMBER_CONVERTIBLE_TOOLS = createTag("amber_convertible_tools");
+    public static TagKey<Item> SILICON_CONVERTIBLE_TOOLS = createTag("silicon_convertible_tools");
+    public static TagKey<Item> RUBY_CONVERTIBLE_TOOLS = createTag("ruby_convertible_tools");
     public static TagKey<Item> CURRENCY_GEMS = createTag("currency_gems");
     public static TagKey<Item> WALLET_ACCEPTED_ITEMS = createTag("wallet_accepted_items");
     public static TagKey<Item> VILLAGECRAFT_CITY_ROLEPLAY_ITEMS = createTag("villagecraft_city_roleplay_items");
-    public static TagKey<Item> GRIPPER_CITY_ROLEPLAY_ITEMS = createTag("gripper_city_roleplay_items");
-    public static TagKey<Item> AMBER_CAVES_ROLEPLAY_ITEMS = createTag("amber_caves_roleplay_items");
+    public static TagKey<Item> OASIS_ROLEPLAY_ITEMS = createTag("oasis_roleplay_items");
+    public static TagKey<Item> SWEDISH_FURNITURE_STORE_ROLEPLAY_ITEMS = createTag("swedish_furniture_stores_roleplay_items");
+    public static TagKey<Item> LONDON_ROLEPLAY_ITEMS = createTag("london_roleplay_items");
+    public static TagKey<Item> BLACKWATER_ROLEPLAY_ITEMS = createTag("blackwater_roleplay_items");
 
     private static TagKey<Item> createTag(String name) {
         return ItemTags.create(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, name));

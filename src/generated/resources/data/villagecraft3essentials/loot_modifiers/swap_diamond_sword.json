@@ -1,7 +1,9 @@
 {
   "type": "villagecraft3essentials:swap_item_loot_modifier",
   "conditions": [],
-  "currency1": "villagecraft3essentials:ruby_sword",
-  "currency2": "villagecraft3essentials:amber_sword",
-  "target": "minecraft:diamond_sword"
+  "replacementCurrency1": "villagecraft3essentials:jade_sword",
+  "replacementCurrency2": "villagecraft3essentials:amber_sword",
+  "replacementCurrency3": "villagecraft3essentials:silicon_sword",
+  "replacementCurrency4": "villagecraft3essentials:ruby_sword",
+  "targetCurrency": "minecraft:diamond_sword"
 }

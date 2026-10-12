@@ -3,7 +3,7 @@
     "villagecraft3essentials:police_baton",
     "villagecraft3essentials:worm_on_a_stick",
     {
-      "id": "villagecraft3essentials:ruby_spear",
+      "id": "villagecraft3essentials:jade_spear",
       "required": false
     },
     {
@@ -11,7 +11,15 @@
       "required": false
     },
     {
-      "id": "villagecraft3essentials:ruby_fishing_rod",
+      "id": "villagecraft3essentials:silicon_spear",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:ruby_spear",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:jade_fishing_rod",
       "required": false
     },
     {
@@ -19,11 +27,27 @@
       "required": false
     },
     {
-      "id": "villagecraft3essentials:ruby_brush",
+      "id": "villagecraft3essentials:silicon_fishing_rod",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:ruby_fishing_rod",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:jade_brush",
       "required": false
     },
     {
       "id": "villagecraft3essentials:amber_brush",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:silicon_brush",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:ruby_brush",
       "required": false
     }
   ]

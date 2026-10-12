@@ -7,19 +7,29 @@ import net.minecraft.world.level.saveddata.SavedData;
 
 public class SpawnSavedData extends SavedData { ;
     private int[] villagecraftCitySpawn = {0, 0, 0, 0, 0};
-    private int[] gripperCitySpawn = {0, 0, 0, 0, 0};
-    private int[] amberCavesSpawn = {0, 0, 0, 0, 0};
+    private int[] oasisSpawn = {0, 0, 0, 0, 0};
+    private int[] swedishFurnitureStoreSpawn = {0, 0, 0, 0, 0};
+    private int[] londonSpawn = {0, 0, 0, 0, 0};
+    private int[] blackWaterSpawn = {0, 0, 0, 0, 0};
 
     public int[] getVillagecraftCitySpawn() {
         return this.villagecraftCitySpawn;
     }
 
-    public int[] getGripperCitySpawn() {
-        return this.gripperCitySpawn;
+    public int[] getOasisSpawn() {
+        return this.oasisSpawn;
     }
 
-    public int[] getAmberCavesSpawn() {
-        return this.amberCavesSpawn;
+    public int[] getSwedishFurnitureStoreSpawn() {
+        return this.swedishFurnitureStoreSpawn;
+    }
+
+    public int[] getLondonSpawn() {
+        return this.londonSpawn;
+    }
+
+    public int[] getBlackWaterSpawn() {
+        return this.blackWaterSpawn;
     }
 
     public void setVillagecraftCitySpawn(int[] spawn) {
@@ -27,13 +37,23 @@ public class SpawnSavedData extends SavedData { ;
         this.setDirty();
     }
 
-    public void setGripperCitySpawn(int[] spawn) {
-        this.gripperCitySpawn = spawn;
+    public void setOasisSpawn(int[] spawn) {
+        this.oasisSpawn = spawn;
         this.setDirty();
     }
 
-    public void setAmberCavesSpawn(int[] spawn) {
-        this.amberCavesSpawn = spawn;
+    public void setSwedishFurnitureStoreSpawn(int[] spawn) {
+        this.swedishFurnitureStoreSpawn = spawn;
+        this.setDirty();
+    }
+
+    public void setLondonSpawn(int[] spawn) {
+        this.londonSpawn = spawn;
+        this.setDirty();
+    }
+
+    public void setBlackWaterSpawn(int[] spawn) {
+        this.blackWaterSpawn = spawn;
         this.setDirty();
     }
 
@@ -44,16 +64,20 @@ public class SpawnSavedData extends SavedData { ;
     public static SpawnSavedData load(CompoundTag tag, HolderLookup.Provider lookupProvider) {
         SpawnSavedData data = create();
         data.villagecraftCitySpawn = tag.getIntArray("villagecraftCitySpawn");
-        data.gripperCitySpawn = tag.getIntArray("gripperCitySpawn");
-        data.amberCavesSpawn = tag.getIntArray("amberCavesSpawn");
+        data.oasisSpawn = tag.getIntArray("oasisSpawn");
+        data.swedishFurnitureStoreSpawn = tag.getIntArray("swedishFurnitureStoreSpawn");
+        data.londonSpawn = tag.getIntArray("londonSpawn");
+        data.blackWaterSpawn = tag.getIntArray("blackWaterSpawn");
         return data;
     }
 
     @Override
     public CompoundTag save(CompoundTag tag, HolderLookup.Provider registries) {
         tag.putIntArray("villagecraftCitySpawn", villagecraftCitySpawn);
-        tag.putIntArray("gripperCitySpawn", gripperCitySpawn);
-        tag.putIntArray("amberCavesSpawn", amberCavesSpawn);
+        tag.putIntArray("oasisSpawn", oasisSpawn);
+        tag.putIntArray("swedishFurnitureStoreSpawn", swedishFurnitureStoreSpawn);
+        tag.putIntArray("londanSpawn", londonSpawn);
+        tag.putIntArray("blackWaterSpawn", blackWaterSpawn);
         return tag;
     }
 

@@ -26,17 +26,29 @@ public class AquaMethods {
     }
 
     public static DeferredItem<Item> registerHook(String hook) {
-        Hook RUBY = (new Hook.HookBuilder("ruby")).setColor(ChatFormatting.RED).setDurabilityChance(0.5).build();
+        Hook JADE = (new Hook.HookBuilder("jade")).setColor(ChatFormatting.DARK_GREEN).setDurabilityChance(0.5).build();
         Hook AMBER = (new Hook.HookBuilder("amber")).setColor(ChatFormatting.GOLD).setDurabilityChance(0.5).build();
+        Hook SILICON = (new Hook.HookBuilder("silicon")).setColor(ChatFormatting.GRAY).setDurabilityChance(0.5).build();
+        Hook RUBY = (new Hook.HookBuilder("ruby")).setColor(ChatFormatting.RED).setDurabilityChance(0.5).build();
 
-        if (Objects.equals(hook, "ruby")) {
-            DeferredItem<Item> hookItem = ModItems.ITEMS.register(RUBY.getName() + "_hook", () -> new HookItem(RUBY));
-            Hook.HOOKS.put(RUBY.getName(), hookItem);
+        if (Objects.equals(hook, "jade")) {
+            DeferredItem<Item> hookItem = ModItems.ITEMS.register(JADE.getName() + "_hook", () -> new HookItem(JADE));
+            Hook.HOOKS.put(JADE.getName(), hookItem);
             return hookItem;
 
         } else if (Objects.equals(hook, "amber")) {
             DeferredItem<Item> hookItem = ModItems.ITEMS.register(AMBER.getName() + "_hook", () -> new HookItem(AMBER));
             Hook.HOOKS.put(AMBER.getName(), hookItem);
+            return hookItem;
+
+        } else if (Objects.equals(hook, "silicon")) {
+            DeferredItem<Item> hookItem = ModItems.ITEMS.register(SILICON.getName() + "_hook", () -> new HookItem(SILICON));
+            Hook.HOOKS.put(SILICON.getName(), hookItem);
+            return hookItem;
+
+        } else if (Objects.equals(hook, "ruby")) {
+            DeferredItem<Item> hookItem = ModItems.ITEMS.register(RUBY.getName() + "_hook", () -> new HookItem(RUBY));
+            Hook.HOOKS.put(SILICON.getName(), hookItem);
             return hookItem;
         }
 

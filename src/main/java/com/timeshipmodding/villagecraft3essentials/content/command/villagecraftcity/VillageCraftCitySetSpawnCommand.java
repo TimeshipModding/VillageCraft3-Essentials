@@ -35,7 +35,6 @@ public class VillageCraftCitySetSpawnCommand {
         int playerPitch = (int) player.getXRot();
         int[] spawn = {playerPos.getX(), playerPos.getY(), playerPos.getZ(), playerYaw, playerPitch};
         SpawnSavedData savedData = SpawnSavedData.getData(server);
-        savedData.setVillagecraftCitySpawn(spawn);
         ChatFormatting groupStyling = ChatFormatting.WHITE;
 
         if (ModList.get().isLoaded("luckperms")) {
@@ -54,6 +53,7 @@ public class VillageCraftCitySetSpawnCommand {
                 BlueMapMethods.manageSpawnMarker(playerPos.getX(), playerPos.getY(), playerPos.getZ(), "VillageCraft City", "villagecraft-city", player);
             }
 
+            savedData.setVillagecraftCitySpawn(spawn);
             MutableComponent message = Component.literal("Set ");
             message.append(Component.literal("VillageCraft City's").withStyle(groupStyling));
             message.append(Component.literal(" spawn to " + positionString + "!"));

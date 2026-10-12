@@ -1,15 +1,19 @@
-// 1.21.1	2026-04-10T20:25:48.6928748	Tags for minecraft:block mod id villagecraft3essentials
-7f8c67ff51373570232c2b505c401b7591e025a2 data/c/tags/block/ores.json
+// 1.21.1	2026-10-06T21:08:30.7939668	Tags for minecraft:block mod id villagecraft3essentials
+2911d88700b5064c5f68d2973270e946937bd74d data/c/tags/block/ores.json
 a48b7a71beef6a16fff4f22aa425b7a2f8d29619 data/c/tags/block/ores/amber.json
+e1b1c7f5d752af3f097501147e4b42b89bfafae2 data/c/tags/block/ores/jade.json
 a88ef028b01a4c1e101099c2ca841aef3c1a1072 data/c/tags/block/ores/ruby.json
-310944de3673a48bb1c06d50a27e6067fbb9094f data/c/tags/block/ores_in_ground/deepslate.json
-31cf04e87f1e17854ba4fd23e059bf7ea9e0a3f9 data/c/tags/block/ores_in_ground/stone.json
-7f8c67ff51373570232c2b505c401b7591e025a2 data/c/tags/block/ore_rates/singular.json
-a4fe894fc448e7b5f125cb64494a227f313dd7d5 data/c/tags/block/storage_blocks.json
+c58cde61d83634f4a0572109cd36a1da516644a5 data/c/tags/block/ores/silicon.json
+b555ea15742b7200eef750e72ae5ffa134066ee0 data/c/tags/block/ores_in_ground/deepslate.json
+27aa598b337d2eb55f7cc7c13af462cd2b85a3ba data/c/tags/block/ores_in_ground/stone.json
+2911d88700b5064c5f68d2973270e946937bd74d data/c/tags/block/ore_rates/singular.json
+485ef6c5884337d6504cb53b96654a79616d7259 data/c/tags/block/storage_blocks.json
 9d4b72448088a020e03636ef42e79ad48928967b data/c/tags/block/storage_blocks/amber.json
+0dacca93d4c65b14ff9f251c6da74af5dc677b2b data/c/tags/block/storage_blocks/jade.json
 a797c5813801e8ef3a238a3b0f667e2a11d0e10e data/c/tags/block/storage_blocks/ruby.json
-a4fe894fc448e7b5f125cb64494a227f313dd7d5 data/minecraft/tags/block/beacon_base_blocks.json
-8f5a3c8803fb81fef2cec63b7b680a7a151a5e29 data/minecraft/tags/block/mineable/pickaxe.json
-768879bbe291047e79af33354875048d5bc52784 data/minecraft/tags/block/needs_iron_tool.json
+5002b6cf4d997faa6137d3f9c2b3429a047ee755 data/c/tags/block/storage_blocks/silicon.json
+485ef6c5884337d6504cb53b96654a79616d7259 data/minecraft/tags/block/beacon_base_blocks.json
+6ee1d76f45c165848e8facd6e3b879f0a8e882c4 data/minecraft/tags/block/mineable/pickaxe.json
+7cb55f9db179a7808f3690dec081ef36501f02f6 data/minecraft/tags/block/needs_iron_tool.json
 0ae7ac5e1a93d6a06bc1c308d81955f4c242064d data/minecraft/tags/block/needs_stone_tool.json
 9254e42a160afbd9df5b0fdf806eef9c4bad8ece data/villagecraft3essentials/tags/block/moles_spawnable_on.json

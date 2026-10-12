@@ -1,7 +1,9 @@
 {
   "type": "villagecraft3essentials:swap_item_loot_modifier",
   "conditions": [],
-  "currency1": "villagecraft3essentials:ruby_leggings",
-  "currency2": "villagecraft3essentials:amber_leggings",
-  "target": "minecraft:diamond_leggings"
+  "replacementCurrency1": "villagecraft3essentials:jade_leggings",
+  "replacementCurrency2": "villagecraft3essentials:amber_leggings",
+  "replacementCurrency3": "villagecraft3essentials:silicon_leggings",
+  "replacementCurrency4": "villagecraft3essentials:ruby_chestplate",
+  "targetCurrency": "minecraft:diamond_leggings"
 }

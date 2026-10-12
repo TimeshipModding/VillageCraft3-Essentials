@@ -1,0 +1,38 @@
+{
+  "values": [
+    "villagecraft3essentials:silicon_sword",
+    "villagecraft3essentials:silicon_shovel",
+    "villagecraft3essentials:silicon_pickaxe",
+    "villagecraft3essentials:silicon_axe",
+    "villagecraft3essentials:silicon_hoe",
+    "villagecraft3essentials:silicon_helmet",
+    "villagecraft3essentials:silicon_chestplate",
+    "villagecraft3essentials:silicon_leggings",
+    "villagecraft3essentials:silicon_boots",
+    "villagecraft3essentials:silicon_horse_armor",
+    {
+      "id": "villagecraft3essentials:silicon_spear",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:silicon_knife",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:silicon_fillet_knife",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:silicon_fishing_rod",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:silicon_hook",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:silicon_brush",
+      "required": false
+    }
+  ]
+}

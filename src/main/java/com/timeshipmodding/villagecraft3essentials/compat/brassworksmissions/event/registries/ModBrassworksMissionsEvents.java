@@ -24,13 +24,19 @@ public class ModBrassworksMissionsEvents {
             MissionSavedData data = MissionSavedData.getData(event.getPlayer().server);
 
             if (LuckpermsMethods.isInGroup(event.getPlayer(), ServerConfig.VILLAGECRAFTCITY_GROUP_NAME.get())) {
-                data.addVillagecraftCompletedMissions(1);
+                data.addVillagecraftCityCompletedMissions(1);
 
-            } else if (LuckpermsMethods.isInGroup(event.getPlayer(), ServerConfig.GRIPPERCITY_GROUP_NAME.get())) {
-                data.addGripperCityCompletedMissions(1);
+            } else if (LuckpermsMethods.isInGroup(event.getPlayer(), ServerConfig.OASIS_GROUP_NAME.get())) {
+                data.addOasisCompletedMissions(1);
 
-            } else if (LuckpermsMethods.isInGroup(event.getPlayer(), ServerConfig.AMBERCAVES_GROUP_NAME.get())) {
-                data.addAmberCavesCompletedMissions(1);
+            } else if (LuckpermsMethods.isInGroup(event.getPlayer(), ServerConfig.SWEDISHFURNITURESTORE_GROUP_NAME.get())) {
+                data.addSwedishFurnitureStoreCompletedMissions(1);
+
+            } else if (LuckpermsMethods.isInGroup(event.getPlayer(), ServerConfig.LONDON_GROUP_NAME.get())) {
+                data.addLondonCompletedMissions(1);
+
+            } else if (LuckpermsMethods.isInGroup(event.getPlayer(), ServerConfig.BLACKWATER_GROUP_NAME.get())) {
+                data.addBlackWaterCompletedMissions(1);
             }
         }
     }
@@ -52,11 +58,17 @@ public class ModBrassworksMissionsEvents {
         if (LuckpermsMethods.isInGroup(player, ServerConfig.VILLAGECRAFTCITY_GROUP_NAME.get())) {
             return Items.DIAMOND;
 
-        } else if (LuckpermsMethods.isInGroup(player, ServerConfig.GRIPPERCITY_GROUP_NAME.get())) {
-            return ModItems.RUBY.get();
+        } else if (LuckpermsMethods.isInGroup(player, ServerConfig.OASIS_GROUP_NAME.get())) {
+            return ModItems.JADE.get();
 
-        } else if (LuckpermsMethods.isInGroup(player, ServerConfig.AMBERCAVES_GROUP_NAME.get())) {
+        } else if (LuckpermsMethods.isInGroup(player, ServerConfig.SWEDISHFURNITURESTORE_GROUP_NAME.get())) {
             return ModItems.AMBER.get();
+
+        } else if (LuckpermsMethods.isInGroup(player, ServerConfig.LONDON_GROUP_NAME.get())) {
+            return ModItems.SILICON.get();
+
+        } else if (LuckpermsMethods.isInGroup(player, ServerConfig.BLACKWATER_GROUP_NAME.get())) {
+            return ModItems.RUBY.get();
         }
 
         return Items.EMERALD;

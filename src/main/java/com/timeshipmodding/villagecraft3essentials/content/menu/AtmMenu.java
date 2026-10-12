@@ -128,14 +128,14 @@ public class AtmMenu extends AbstractContainerMenu {
                 }
 
             } else if (this.blockEntity.getRandomConvertScreen()) {
-                if (rawStack.getItem() == Items.DIAMOND || rawStack.getItem() == ModItems.RUBY.get() || rawStack.getItem() == ModItems.AMBER.get()) {
+                if (rawStack.getItem() == Items.DIAMOND || rawStack.getItem() == ModItems.JADE.get() || rawStack.getItem() == ModItems.AMBER.get() || rawStack.getItem() == ModItems.SILICON.get() || rawStack.getItem() == ModItems.RUBY.get()) {
                     if (!this.moveItemStackTo(rawStack, 0, 1, false)) {
                         return ItemStack.EMPTY;
                     }
                 }
 
             } else if (this.blockEntity.getToolConvertScreen()) {
-                if (rawStack.is(ModItemTags.DIAMOND_CONVERTIBLE_TOOLS) || rawStack.is(ModItemTags.RUBY_CONVERTIBLE_TOOLS) || rawStack.is(ModItemTags.AMBER_CONVERTIBLE_TOOLS)) {
+                if (rawStack.is(ModItemTags.DIAMOND_CONVERTIBLE_TOOLS) || rawStack.is(ModItemTags.JADE_CONVERTIBLE_TOOLS) || rawStack.is(ModItemTags.AMBER_CONVERTIBLE_TOOLS) || rawStack.is(ModItemTags.SILICON_CONVERTIBLE_TOOLS) || rawStack.is(ModItemTags.RUBY_CONVERTIBLE_TOOLS)) {
                     if (!this.moveItemStackTo(rawStack, 0, 1, false)) {
                         return ItemStack.EMPTY;
                     }
@@ -212,7 +212,6 @@ public class AtmMenu extends AbstractContainerMenu {
         Block ATM;
 
         switch (guiTextureIndex) {
-            default -> ATM = ModBlocks.BLACK_ATM.get();
             case 2 -> ATM = ModBlocks.BLUE_ATM.get();
             case 3 -> ATM = ModBlocks.BROWN_ATM.get();
             case 4 -> ATM = ModBlocks.CYAN_ATM.get();
@@ -228,6 +227,7 @@ public class AtmMenu extends AbstractContainerMenu {
             case 14 -> ATM = ModBlocks.RED_ATM.get();
             case 15 -> ATM = ModBlocks.WHITE_ATM.get();
             case 16 -> ATM = ModBlocks.YELLOW_ATM.get();
+            default -> ATM = ModBlocks.BLACK_ATM.get();
         }
 
         return stillValid(ContainerLevelAccess.create(level, blockEntity.getBlockPos()), player, ATM);

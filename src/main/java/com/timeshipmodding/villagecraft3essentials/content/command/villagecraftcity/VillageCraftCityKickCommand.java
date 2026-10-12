@@ -51,7 +51,7 @@ public class VillageCraftCityKickCommand {
 
         for (ServerPlayer player : targets) {
             targetPlayerUsername = Objects.requireNonNull(player.getDisplayName());
-            long lastKicked = player.getData(ModDataAttachments.KICK_COMMAND_DATA).villagecraftCityKickCommandCooldown();
+            long lastKicked = player.getData(ModDataAttachments.KICK_COMMAND_DATA).villagecraftCityKickCooldown();
             long cooldownMs = CommonConfig.KICK_COMMAND_COOLDOWN.get() * 1000L;
             long timeLeft = (lastKicked + cooldownMs) - currentTime;
 
@@ -84,7 +84,7 @@ public class VillageCraftCityKickCommand {
             }
 
             VillageCraft3Essentials.LOGGER.info("[{}: Kicked {} from VillageCraft City and teleported them to World Spawn]", context.getSource().getTextName(), targetPlayerUsername.getString());
-            player.setData(ModDataAttachments.KICK_COMMAND_DATA, player.getData(ModDataAttachments.KICK_COMMAND_DATA).villagecraftCitySetData(currentTime));
+            player.setData(ModDataAttachments.KICK_COMMAND_DATA, player.getData(ModDataAttachments.KICK_COMMAND_DATA).setVillageCraftCityKickCooldown(currentTime));
         }
 
         MutableComponent message = Component.literal("You have kicked ");

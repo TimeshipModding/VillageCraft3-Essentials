@@ -1,11 +1,19 @@
 {
   "values": [
     {
-      "id": "villagecraft3essentials:ruby_spear",
+      "id": "villagecraft3essentials:jade_spear",
       "required": false
     },
     {
       "id": "villagecraft3essentials:amber_spear",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:silicon_spear",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:ruby_spear",
       "required": false
     }
   ]

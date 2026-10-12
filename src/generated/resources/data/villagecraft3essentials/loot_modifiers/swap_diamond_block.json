@@ -9,7 +9,9 @@
       }
     }
   ],
-  "currency1": "villagecraft3essentials:ruby_block",
-  "currency2": "villagecraft3essentials:amber_block",
-  "target": "minecraft:diamond_block"
+  "replacementCurrency1": "villagecraft3essentials:jade_block",
+  "replacementCurrency2": "villagecraft3essentials:amber_block",
+  "replacementCurrency3": "villagecraft3essentials:silicon_block",
+  "replacementCurrency4": "villagecraft3essentials:ruby_block",
+  "targetCurrency": "minecraft:diamond_block"
 }

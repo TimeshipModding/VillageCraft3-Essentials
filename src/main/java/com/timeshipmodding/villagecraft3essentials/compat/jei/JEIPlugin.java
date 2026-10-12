@@ -29,8 +29,10 @@ public class JEIPlugin implements IModPlugin {
     @Override
     public void registerRecipes (IRecipeRegistration registration) {
         if (ModList.get().isLoaded("farmersdelight")) {
-            registration.addIngredientInfo(new ItemStack(ModCompatItems.RUBY_KNIFE.get()), VanillaTypes.ITEM_STACK, KNIFE_INFO);
+            registration.addIngredientInfo(new ItemStack(ModCompatItems.JADE_KNIFE.get()), VanillaTypes.ITEM_STACK, KNIFE_INFO);
             registration.addIngredientInfo(new ItemStack(ModCompatItems.AMBER_KNIFE.get()), VanillaTypes.ITEM_STACK, KNIFE_INFO);
+            registration.addIngredientInfo(new ItemStack(ModCompatItems.SILICON_KNIFE.get()), VanillaTypes.ITEM_STACK, KNIFE_INFO);
+            registration.addIngredientInfo(new ItemStack(ModCompatItems.RUBY_KNIFE.get()), VanillaTypes.ITEM_STACK, KNIFE_INFO);
         }
     }
 

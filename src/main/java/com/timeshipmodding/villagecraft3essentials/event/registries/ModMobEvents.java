@@ -33,28 +33,52 @@ public class ModMobEvents {
 
             trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
                     new ItemCost(Items.EMERALD, 14),
-                    new ItemStack(ModItems.RUBY_LEGGINGS.get(), 1), 3, 15, 0.2F));
+                    new ItemStack(ModItems.JADE_LEGGINGS.get(), 1), 3, 15, 0.2F));
             trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
                     new ItemCost(Items.EMERALD, 14),
                     new ItemStack(ModItems.AMBER_LEGGINGS.get(), 1), 3, 15, 0.2F));
             trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
+                    new ItemCost(Items.EMERALD, 14),
+                    new ItemStack(ModItems.SILICON_LEGGINGS.get(), 1), 3, 15, 0.2F));
+            trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
+                    new ItemCost(Items.EMERALD, 14),
+                    new ItemStack(ModItems.RUBY_LEGGINGS.get(), 1), 3, 15, 0.2F));
+            trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
                     new ItemCost(Items.EMERALD, 8),
-                    new ItemStack(ModItems.RUBY_BOOTS.get(), 1), 3, 15, 0.2F));
+                    new ItemStack(ModItems.JADE_BOOTS.get(), 1), 3, 15, 0.2F));
             trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
                     new ItemCost(Items.EMERALD, 8),
                     new ItemStack(ModItems.AMBER_BOOTS.get(), 1), 3, 15, 0.2F));
+            trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
+                    new ItemCost(Items.EMERALD, 8),
+                    new ItemStack(ModItems.SILICON_BOOTS.get(), 1), 3, 15, 0.2F));
+            trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
+                    new ItemCost(Items.EMERALD, 8),
+                    new ItemStack(ModItems.RUBY_BOOTS.get(), 1), 3, 15, 0.2F));
             trades.get(5).add((pTrader, pRandom) -> new MerchantOffer(
                     new ItemCost(Items.EMERALD, 8),
-                    new ItemStack(ModItems.RUBY_HELMET.get(), 1), 3, 30, 0.2F));
+                    new ItemStack(ModItems.JADE_HELMET.get(), 1), 3, 30, 0.2F));
             trades.get(5).add((pTrader, pRandom) -> new MerchantOffer(
                     new ItemCost(Items.EMERALD, 8),
                     new ItemStack(ModItems.AMBER_HELMET.get(), 1), 3, 30, 0.2F));
             trades.get(5).add((pTrader, pRandom) -> new MerchantOffer(
+                    new ItemCost(Items.EMERALD, 8),
+                    new ItemStack(ModItems.SILICON_HELMET.get(), 1), 3, 30, 0.2F));
+            trades.get(5).add((pTrader, pRandom) -> new MerchantOffer(
+                    new ItemCost(Items.EMERALD, 8),
+                    new ItemStack(ModItems.RUBY_HELMET.get(), 1), 3, 30, 0.2F));
+            trades.get(5).add((pTrader, pRandom) -> new MerchantOffer(
                     new ItemCost(Items.EMERALD, 16),
-                    new ItemStack(ModItems.RUBY_CHESTPLATE.get(), 1), 3, 30, 0.2F));
+                    new ItemStack(ModItems.JADE_CHESTPLATE.get(), 1), 3, 30, 0.2F));
             trades.get(5).add((pTrader, pRandom) -> new MerchantOffer(
                     new ItemCost(Items.EMERALD, 16),
                     new ItemStack(ModItems.AMBER_CHESTPLATE.get(), 1), 3, 30, 0.2F));
+            trades.get(5).add((pTrader, pRandom) -> new MerchantOffer(
+                    new ItemCost(Items.EMERALD, 16),
+                    new ItemStack(ModItems.SILICON_CHESTPLATE.get(), 1), 3, 30, 0.2F));
+            trades.get(5).add((pTrader, pRandom) -> new MerchantOffer(
+                    new ItemCost(Items.EMERALD, 16),
+                    new ItemStack(ModItems.RUBY_CHESTPLATE.get(), 1), 3, 30, 0.2F));
         }
 
         if(event.getType() == VillagerProfession.TOOLSMITH) {
@@ -62,57 +86,105 @@ public class ModMobEvents {
 
             trades.get(3).add((pTrader, pRandom) -> new MerchantOffer(
                     new ItemCost(Items.EMERALD, 4),
-                    new ItemStack(ModItems.RUBY_HOE.get(), 1), 3, 10, 0.2F));
+                    new ItemStack(ModItems.JADE_HOE.get(), 1), 3, 10, 0.2F));
             trades.get(3).add((pTrader, pRandom) -> new MerchantOffer(
                     new ItemCost(Items.EMERALD, 4),
                     new ItemStack(ModItems.AMBER_HOE.get(), 1), 3, 10, 0.2F));
+            trades.get(3).add((pTrader, pRandom) -> new MerchantOffer(
+                    new ItemCost(Items.EMERALD, 4),
+                    new ItemStack(ModItems.SILICON_HOE.get(), 1), 3, 10, 0.2F));
+            trades.get(3).add((pTrader, pRandom) -> new MerchantOffer(
+                    new ItemCost(Items.EMERALD, 4),
+                    new ItemStack(ModItems.RUBY_HOE.get(), 1), 3, 10, 0.2F));
             trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
-                    new ItemCost(ModItems.RUBY.get(), 1),
+                    new ItemCost(ModItems.JADE.get(), 1),
                     new ItemStack(Items.EMERALD, 1), 12, 30, 0F));
             trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
                     new ItemCost(ModItems.AMBER.get(), 1),
                     new ItemStack(Items.EMERALD, 1), 12, 30, 0F));
             trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
+                    new ItemCost(ModItems.SILICON.get(), 1),
+                    new ItemStack(Items.EMERALD, 1), 12, 30, 0F));
+            trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
+                    new ItemCost(ModItems.RUBY.get(), 1),
+                    new ItemStack(Items.EMERALD, 1), 12, 30, 0F));
+            trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
                     new ItemCost(Items.EMERALD, 12),
-                    new ItemStack(ModItems.RUBY_AXE.get(), 1), 3, 15, 0.2F));
+                    new ItemStack(ModItems.JADE_AXE.get(), 1), 3, 15, 0.2F));
             trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
                     new ItemCost(Items.EMERALD, 12),
                     new ItemStack(ModItems.AMBER_AXE.get(), 1), 3, 15, 0.2F));
             trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
+                    new ItemCost(Items.EMERALD, 12),
+                    new ItemStack(ModItems.SILICON_AXE.get(), 1), 3, 15, 0.2F));
+            trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
+                    new ItemCost(Items.EMERALD, 12),
+                    new ItemStack(ModItems.RUBY_AXE.get(), 1), 3, 15, 0.2F));
+            trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
                     new ItemCost(Items.EMERALD, 5),
-                    new ItemStack(ModItems.RUBY_SHOVEL.get(), 1), 3, 15, 0.2F));
+                    new ItemStack(ModItems.JADE_SHOVEL.get(), 1), 3, 15, 0.2F));
             trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
                     new ItemCost(Items.EMERALD, 5),
                     new ItemStack(ModItems.AMBER_SHOVEL.get(), 1), 3, 15, 0.2F));
+            trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
+                    new ItemCost(Items.EMERALD, 5),
+                    new ItemStack(ModItems.SILICON_SHOVEL.get(), 1), 3, 15, 0.2F));
+            trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
+                    new ItemCost(Items.EMERALD, 5),
+                    new ItemStack(ModItems.RUBY_SHOVEL.get(), 1), 3, 15, 0.2F));
             trades.get(5).add((pTrader, pRandom) -> new MerchantOffer(
                     new ItemCost(Items.EMERALD, 13),
-                    new ItemStack(ModItems.RUBY_PICKAXE.get(), 1), 3, 30, 0.2F));
+                    new ItemStack(ModItems.JADE_PICKAXE.get(), 1), 3, 30, 0.2F));
             trades.get(5).add((pTrader, pRandom) -> new MerchantOffer(
                     new ItemCost(Items.EMERALD, 13),
                     new ItemStack(ModItems.AMBER_PICKAXE.get(), 1), 3, 30, 0.2F));
+            trades.get(5).add((pTrader, pRandom) -> new MerchantOffer(
+                    new ItemCost(Items.EMERALD, 13),
+                    new ItemStack(ModItems.SILICON_PICKAXE.get(), 1), 3, 30, 0.2F));
+            trades.get(5).add((pTrader, pRandom) -> new MerchantOffer(
+                    new ItemCost(Items.EMERALD, 13),
+                    new ItemStack(ModItems.RUBY_PICKAXE.get(), 1), 3, 30, 0.2F));
         }
 
         if(event.getType() == VillagerProfession.WEAPONSMITH) {
             Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
 
             trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
-                    new ItemCost(ModItems.RUBY.get(), 1),
+                    new ItemCost(ModItems.JADE.get(), 1),
                     new ItemStack(Items.EMERALD, 1), 12, 30, 0F));
             trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
                     new ItemCost(ModItems.AMBER, 1),
                     new ItemStack(Items.EMERALD, 1), 12, 30, 0F));
             trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
+                    new ItemCost(ModItems.SILICON, 1),
+                    new ItemStack(Items.EMERALD, 1), 12, 30, 0F));
+            trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
+                    new ItemCost(ModItems.RUBY, 1),
+                    new ItemStack(Items.EMERALD, 1), 12, 30, 0F));
+            trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
                     new ItemCost(Items.EMERALD, 12),
-                    new ItemStack(ModItems.RUBY_AXE.get(), 1), 3, 15, 0.2F));
+                    new ItemStack(ModItems.JADE_AXE.get(), 1), 3, 15, 0.2F));
             trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
                     new ItemCost(Items.EMERALD, 12),
                     new ItemStack(ModItems.AMBER_AXE.get(), 1), 3, 15, 0.2F));
+            trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
+                    new ItemCost(Items.EMERALD, 12),
+                    new ItemStack(ModItems.SILICON_AXE.get(), 1), 3, 15, 0.2F));
+            trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
+                    new ItemCost(Items.EMERALD, 12),
+                    new ItemStack(ModItems.RUBY_AXE.get(), 1), 3, 15, 0.2F));
             trades.get(5).add((pTrader, pRandom) -> new MerchantOffer(
                     new ItemCost(Items.EMERALD, 8),
-                    new ItemStack(ModItems.RUBY_SWORD.get(), 1), 3, 30, 0.2F));
+                    new ItemStack(ModItems.JADE_SWORD.get(), 1), 3, 30, 0.2F));
             trades.get(5).add((pTrader, pRandom) -> new MerchantOffer(
                     new ItemCost(Items.EMERALD, 8),
                     new ItemStack(ModItems.AMBER_SWORD.get(), 1), 3, 30, 0.2F));
+            trades.get(5).add((pTrader, pRandom) -> new MerchantOffer(
+                    new ItemCost(Items.EMERALD, 8),
+                    new ItemStack(ModItems.SILICON_SWORD.get(), 1), 3, 30, 0.2F));
+            trades.get(5).add((pTrader, pRandom) -> new MerchantOffer(
+                    new ItemCost(Items.EMERALD, 8),
+                    new ItemStack(ModItems.RUBY_SWORD.get(), 1), 3, 30, 0.2F));
         }
     }
 

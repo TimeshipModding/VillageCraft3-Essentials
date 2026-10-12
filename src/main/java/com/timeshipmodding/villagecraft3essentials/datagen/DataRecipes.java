@@ -36,64 +36,59 @@ public class DataRecipes extends RecipeProvider implements IConditionBuilder {
         super(packOutput, pRegistries);
     }
 
-    private static final List<ItemLike> RUBY_SMELTABLES = List.of(RUBY_ORE, DEEPSLATE_RUBY_ORE);
+    private static final List<ItemLike> JADE_SMELTABLES = List.of(JADE_ORE, DEEPSLATE_JADE_ORE);
     private static final List<ItemLike> AMBER_SMELTABLES = List.of(AMBER_ORE, DEEPSLATE_AMBER_ORE);
+    private static final List<ItemLike> SILICON_SMELTABLES = List.of(SILICON_ORE, DEEPSLATE_SILICON_ORE);
+    private static final List<ItemLike> RUBY_SMELTABLES = List.of(RUBY_ORE, DEEPSLATE_RUBY_ORE);
     private static final List<Item> DYES = List.of(Items.BLACK_DYE, Items.BLUE_DYE, Items.BROWN_DYE, Items.CYAN_DYE, Items.GRAY_DYE, Items.GREEN_DYE, Items.LIGHT_BLUE_DYE, Items.LIGHT_GRAY_DYE, Items.LIME_DYE, Items.MAGENTA_DYE, Items.ORANGE_DYE, Items.PINK_DYE, Items.PURPLE_DYE, Items.RED_DYE, Items.YELLOW_DYE, Items.WHITE_DYE);
     private static final List<Item> ATMS = List.of(BLACK_ATM.asItem(), BLUE_ATM.asItem(), BROWN_ATM.asItem(), CYAN_ATM.asItem(), GRAY_ATM.asItem(), GREEN_ATM.asItem(), LIGHT_BLUE_ATM.asItem(), LIGHT_GRAY_ATM.asItem(), LIME_ATM.asItem(), MAGENTA_ATM.asItem(), ORANGE_ATM.asItem(), PINK_ATM.asItem(), PURPLE_ATM.asItem(), RED_ATM.asItem(), YELLOW_ATM.asItem(), WHITE_ATM.asItem());
-
-    Ingredient rubyHookIngredient = ModList.get().isLoaded("aquaculture")
-            ? Ingredient.of(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("aquaculture", "iron_hook")))
-            : Ingredient.of(Items.IRON_INGOT);
-    Ingredient amberHookIngredient = ModList.get().isLoaded("aquaculture")
-            ? Ingredient.of(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("aquaculture", "iron_hook")))
-            : Ingredient.of(Items.IRON_INGOT);
 
     @Override
     protected void buildRecipes(RecipeOutput recipeOutput) {
         // Shaped Crafting
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, RUBY_SWORD)
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, JADE_SWORD)
                 .pattern("#")
                 .pattern("#")
                 .pattern("!")
-                .define('#', RUBY).define('!', Items.STICK).group("villagecraft3essentials").unlockedBy("has_ruby", has(RUBY)).save(recipeOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, RUBY_SHOVEL)
+                .define('#', JADE).define('!', Items.STICK).group("villagecraft3essentials").unlockedBy("has_jade", has(JADE)).save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, JADE_SHOVEL)
                 .pattern("#")
                 .pattern("!")
                 .pattern("!")
-                .define('#', RUBY).define('!', Items.STICK).group("villagecraft3essentials").unlockedBy("has_ruby", has(RUBY)).save(recipeOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, RUBY_PICKAXE)
+                .define('#', JADE).define('!', Items.STICK).group("villagecraft3essentials").unlockedBy("has_jade", has(JADE)).save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, JADE_PICKAXE)
                 .pattern("###")
                 .pattern(" ! ")
                 .pattern(" ! ")
-                .define('#', RUBY).define('!', Items.STICK).group("villagecraft3essentials").unlockedBy("has_ruby", has(RUBY)).save(recipeOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, RUBY_AXE)
+                .define('#', JADE).define('!', Items.STICK).group("villagecraft3essentials").unlockedBy("has_jade", has(JADE)).save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, JADE_AXE)
                 .pattern("##")
                 .pattern("#!")
                 .pattern(" !")
-                .define('#', RUBY).define('!', Items.STICK).group("villagecraft3essentials").unlockedBy("has_ruby", has(RUBY)).save(recipeOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, RUBY_HOE)
+                .define('#', JADE).define('!', Items.STICK).group("villagecraft3essentials").unlockedBy("has_jade", has(JADE)).save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, JADE_HOE)
                 .pattern("##")
                 .pattern(" !")
                 .pattern(" !")
-                .define('#', RUBY).define('!', Items.STICK).group("villagecraft3essentials").unlockedBy("has_ruby", has(RUBY)).save(recipeOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, RUBY_HELMET)
+                .define('#', JADE).define('!', Items.STICK).group("villagecraft3essentials").unlockedBy("has_jade", has(JADE)).save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, JADE_HELMET)
                 .pattern("###")
                 .pattern("# #")
-                .define('#', RUBY).group("villagecraft3essentials").unlockedBy("has_ruby", has(RUBY)).save(recipeOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, RUBY_CHESTPLATE)
+                .define('#', JADE).group("villagecraft3essentials").unlockedBy("has_jade", has(JADE)).save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, JADE_CHESTPLATE)
                 .pattern("# #")
                 .pattern("###")
                 .pattern("###")
-                .define('#', RUBY).group("villagecraft3essentials").unlockedBy("has_ruby", has(RUBY)).save(recipeOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, RUBY_LEGGINGS)
+                .define('#', JADE).group("villagecraft3essentials").unlockedBy("has_jade", has(JADE)).save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, JADE_LEGGINGS)
                 .pattern("###")
                 .pattern("# #")
                 .pattern("# #")
-                .define('#', RUBY).group("villagecraft3essentials").unlockedBy("has_ruby", has(RUBY)).save(recipeOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, RUBY_BOOTS)
+                .define('#', JADE).group("villagecraft3essentials").unlockedBy("has_jade", has(JADE)).save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, JADE_BOOTS)
                 .pattern("# #")
                 .pattern("# #")
-                .define('#', RUBY).group("villagecraft3essentials").unlockedBy("has_ruby", has(RUBY)).save(recipeOutput);
+                .define('#', JADE).group("villagecraft3essentials").unlockedBy("has_jade", has(JADE)).save(recipeOutput);
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, AMBER_SWORD)
                 .pattern("#")
                 .pattern("#")
@@ -137,6 +132,92 @@ public class DataRecipes extends RecipeProvider implements IConditionBuilder {
                 .pattern("# #")
                 .pattern("# #")
                 .define('#', AMBER).group("villagecraft3essentials").unlockedBy("has_amber", has(AMBER)).save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, SILICON_SWORD)
+                .pattern("#")
+                .pattern("#")
+                .pattern("!")
+                .define('#', SILICON).define('!', Items.STICK).group("villagecraft3essentials").unlockedBy("has_silicon", has(SILICON)).save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, SILICON_SHOVEL)
+                .pattern("#")
+                .pattern("!")
+                .pattern("!")
+                .define('#', SILICON).define('!', Items.STICK).group("villagecraft3essentials").unlockedBy("has_silicon", has(SILICON)).save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, SILICON_PICKAXE)
+                .pattern("###")
+                .pattern(" ! ")
+                .pattern(" ! ")
+                .define('#', SILICON).define('!', Items.STICK).group("villagecraft3essentials").unlockedBy("has_silicon", has(SILICON)).save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, SILICON_AXE)
+                .pattern("##")
+                .pattern("#!")
+                .pattern(" !")
+                .define('#', SILICON).define('!', Items.STICK).group("villagecraft3essentials").unlockedBy("has_silicon", has(SILICON)).save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, SILICON_HOE)
+                .pattern("##")
+                .pattern(" !")
+                .pattern(" !")
+                .define('#', SILICON).define('!', Items.STICK).group("villagecraft3essentials").unlockedBy("has_silicon", has(SILICON)).save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, SILICON_HELMET)
+                .pattern("###")
+                .pattern("# #")
+                .define('#', SILICON).group("villagecraft3essentials").unlockedBy("has_silicon", has(SILICON)).save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, SILICON_CHESTPLATE)
+                .pattern("# #")
+                .pattern("###")
+                .pattern("###")
+                .define('#', SILICON).group("villagecraft3essentials").unlockedBy("has_silicon", has(SILICON)).save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, SILICON_LEGGINGS)
+                .pattern("###")
+                .pattern("# #")
+                .pattern("# #")
+                .define('#', SILICON).group("villagecraft3essentials").unlockedBy("has_silicon", has(SILICON)).save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, SILICON_BOOTS)
+                .pattern("# #")
+                .pattern("# #")
+                .define('#', SILICON).group("villagecraft3essentials").unlockedBy("has_silicon", has(SILICON)).save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, RUBY_SWORD)
+                .pattern("#")
+                .pattern("#")
+                .pattern("!")
+                .define('#', RUBY).define('!', Items.STICK).group("villagecraft3essentials").unlockedBy("has_ruby", has(RUBY)).save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, RUBY_SHOVEL)
+                .pattern("#")
+                .pattern("!")
+                .pattern("!")
+                .define('#', RUBY).define('!', Items.STICK).group("villagecraft3essentials").unlockedBy("has_ruby", has(RUBY)).save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, RUBY_PICKAXE)
+                .pattern("###")
+                .pattern(" ! ")
+                .pattern(" ! ")
+                .define('#', RUBY).define('!', Items.STICK).group("villagecraft3essentials").unlockedBy("has_ruby", has(RUBY)).save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, RUBY_AXE)
+                .pattern("##")
+                .pattern("#!")
+                .pattern(" !")
+                .define('#', RUBY).define('!', Items.STICK).group("villagecraft3essentials").unlockedBy("has_ruby", has(RUBY)).save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, RUBY_HOE)
+                .pattern("##")
+                .pattern(" !")
+                .pattern(" !")
+                .define('#', RUBY).define('!', Items.STICK).group("villagecraft3essentials").unlockedBy("has_ruby", has(RUBY)).save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, RUBY_HELMET)
+                .pattern("###")
+                .pattern("# #")
+                .define('#', RUBY).group("villagecraft3essentials").unlockedBy("has_ruby", has(RUBY)).save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, RUBY_CHESTPLATE)
+                .pattern("# #")
+                .pattern("###")
+                .pattern("###")
+                .define('#', RUBY).group("villagecraft3essentials").unlockedBy("has_ruby", has(RUBY)).save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, RUBY_LEGGINGS)
+                .pattern("###")
+                .pattern("# #")
+                .pattern("# #")
+                .define('#', RUBY).group("villagecraft3essentials").unlockedBy("has_ruby", has(RUBY)).save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, RUBY_BOOTS)
+                .pattern("# #")
+                .pattern("# #")
+                .define('#', RUBY).group("villagecraft3essentials").unlockedBy("has_ruby", has(RUBY)).save(recipeOutput);
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, BLACK_ATM)
                 .pattern("#!#")
                 .pattern("#y#")
@@ -328,10 +409,14 @@ public class DataRecipes extends RecipeProvider implements IConditionBuilder {
                 .define('#', ItemTags.PLANKS).define('X', ModItemTags.CURRENCY_GEMS).unlockedBy("has_currency_gems", has(ModItemTags.CURRENCY_GEMS)).save(recipeOutput, JUKEBOX + "_using_currency_gems");
 
         // Shapeless Crafting
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RUBY, 9).requires(RUBY_BLOCK).group("villagecraft3essentials").unlockedBy("has_ruby_block", has(RUBY_BLOCK)).save(recipeOutput);
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RUBY_BLOCK).requires(RUBY, 9).group("villagecraft3essentials").unlockedBy("has_ruby", has(RUBY)).save(recipeOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, JADE, 9).requires(JADE_BLOCK).group("villagecraft3essentials").unlockedBy("has_jade_block", has(JADE_BLOCK)).save(recipeOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, JADE_BLOCK).requires(JADE, 9).group("villagecraft3essentials").unlockedBy("has_jade", has(JADE)).save(recipeOutput);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AMBER, 9).requires(AMBER_BLOCK).group("villagecraft3essentials").unlockedBy("has_amber_block", has(AMBER_BLOCK)).save(recipeOutput);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AMBER_BLOCK).requires(AMBER, 9).group("villagecraft3essentials").unlockedBy("has_amber", has(AMBER)).save(recipeOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, SILICON, 9).requires(SILICON_BLOCK).group("villagecraft3essentials").unlockedBy("has_silicon_block", has(SILICON_BLOCK)).save(recipeOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, SILICON_BLOCK).requires(SILICON, 9).group("villagecraft3essentials").unlockedBy("has_silicon", has(SILICON)).save(recipeOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RUBY, 9).requires(RUBY_BLOCK).group("villagecraft3essentials").unlockedBy("has_ruby_block", has(RUBY_BLOCK)).save(recipeOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RUBY_BLOCK).requires(RUBY, 9).group("villagecraft3essentials").unlockedBy("has_ruby", has(RUBY)).save(recipeOutput);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, POLICE_BATON).requires(MACE).requires(BLACK_DYE).group("villagecraft3essentials").unlockedBy("has_black_dye", has(BLACK_DYE)).save(recipeOutput);
 
         // Color Block with Dye
@@ -346,32 +431,54 @@ public class DataRecipes extends RecipeProvider implements IConditionBuilder {
                 .unlockedBy("has_worm", has(WORM)).save(recipeOutput, VillageCraft3Essentials.MODID + ":" + getItemName(WORM) + "_from_campfire_cooking");
 
         // Ore Smelting
-        oreSmelting(recipeOutput, RUBY_SMELTABLES, RecipeCategory.MISC, RUBY, 1.0F, 200, "ruby");
+        oreSmelting(recipeOutput, JADE_SMELTABLES, RecipeCategory.MISC, JADE, 1.0F, 200, "jade");
         oreSmelting(recipeOutput, AMBER_SMELTABLES, RecipeCategory.MISC, AMBER, 1.0F, 200, "amber");
+        oreSmelting(recipeOutput, SILICON_SMELTABLES, RecipeCategory.MISC, SILICON, 1.0F, 200, "silicon");
+        oreSmelting(recipeOutput, RUBY_SMELTABLES, RecipeCategory.MISC, RUBY, 1.0F, 200, "ruby");
 
         // Ore Blasting
-        oreBlasting(recipeOutput, RUBY_SMELTABLES, RecipeCategory.MISC, RUBY, 1.0F, 100, "ruby");
+        oreBlasting(recipeOutput, JADE_SMELTABLES, RecipeCategory.MISC, RUBY, 1.0F, 100, "jade");
         oreBlasting(recipeOutput, AMBER_SMELTABLES, RecipeCategory.MISC, AMBER, 1.0F, 100, "amber");
+        oreBlasting(recipeOutput, SILICON_SMELTABLES, RecipeCategory.MISC, SILICON, 1.0F, 100, "silicon");
+        oreBlasting(recipeOutput, RUBY_SMELTABLES, RecipeCategory.MISC, RUBY, 1.0F, 100, "ruby");
 
         // Ruby and Amber Netherite Smithing
-        rubyNetheriteSmithing(recipeOutput, RUBY_AXE.get(), RecipeCategory.TOOLS, NETHERITE_AXE);
-        rubyNetheriteSmithing(recipeOutput, RUBY_HOE.get(), RecipeCategory.TOOLS, NETHERITE_HOE);
-        rubyNetheriteSmithing(recipeOutput, RUBY_PICKAXE.get(), RecipeCategory.TOOLS, NETHERITE_PICKAXE);
-        rubyNetheriteSmithing(recipeOutput, RUBY_SHOVEL.get(), RecipeCategory.TOOLS, NETHERITE_SHOVEL);
-        rubyNetheriteSmithing(recipeOutput, RUBY_SWORD.get(), RecipeCategory.COMBAT, NETHERITE_SWORD);
-        rubyNetheriteSmithing(recipeOutput, RUBY_HELMET.get(), RecipeCategory.COMBAT, NETHERITE_HELMET);
-        rubyNetheriteSmithing(recipeOutput, RUBY_CHESTPLATE.get(), RecipeCategory.COMBAT, NETHERITE_CHESTPLATE);
-        rubyNetheriteSmithing(recipeOutput, RUBY_LEGGINGS.get(), RecipeCategory.COMBAT, NETHERITE_LEGGINGS);
-        rubyNetheriteSmithing(recipeOutput, RUBY_BOOTS.get(), RecipeCategory.COMBAT, NETHERITE_BOOTS);
-        amberNetheriteSmithing(recipeOutput, AMBER_AXE.get(), RecipeCategory.TOOLS, NETHERITE_AXE);
-        amberNetheriteSmithing(recipeOutput, AMBER_HOE.get(), RecipeCategory.TOOLS, NETHERITE_HOE);
-        amberNetheriteSmithing(recipeOutput, AMBER_PICKAXE.get(), RecipeCategory.TOOLS, NETHERITE_PICKAXE);
-        amberNetheriteSmithing(recipeOutput, AMBER_SHOVEL.get(), RecipeCategory.TOOLS, NETHERITE_SHOVEL);
-        amberNetheriteSmithing(recipeOutput, AMBER_SWORD.get(), RecipeCategory.COMBAT, NETHERITE_SWORD);
-        amberNetheriteSmithing(recipeOutput, AMBER_HELMET.get(), RecipeCategory.COMBAT, NETHERITE_HELMET);
-        amberNetheriteSmithing(recipeOutput, AMBER_CHESTPLATE.get(), RecipeCategory.COMBAT, NETHERITE_CHESTPLATE);
-        amberNetheriteSmithing(recipeOutput, AMBER_LEGGINGS.get(), RecipeCategory.COMBAT, NETHERITE_LEGGINGS);
-        amberNetheriteSmithing(recipeOutput, AMBER_BOOTS.get(), RecipeCategory.COMBAT, NETHERITE_BOOTS);
+        currencyNetheriteSmithing(recipeOutput, JADE_AXE.get(), RecipeCategory.TOOLS, NETHERITE_AXE, "jade");
+        currencyNetheriteSmithing(recipeOutput, JADE_HOE.get(), RecipeCategory.TOOLS, NETHERITE_HOE, "jade");
+        currencyNetheriteSmithing(recipeOutput, JADE_PICKAXE.get(), RecipeCategory.TOOLS, NETHERITE_PICKAXE, "jade");
+        currencyNetheriteSmithing(recipeOutput, JADE_SHOVEL.get(), RecipeCategory.TOOLS, NETHERITE_SHOVEL, "jade");
+        currencyNetheriteSmithing(recipeOutput, JADE_SWORD.get(), RecipeCategory.COMBAT, NETHERITE_SWORD, "jade");
+        currencyNetheriteSmithing(recipeOutput, JADE_HELMET.get(), RecipeCategory.COMBAT, NETHERITE_HELMET, "jade");
+        currencyNetheriteSmithing(recipeOutput, JADE_CHESTPLATE.get(), RecipeCategory.COMBAT, NETHERITE_CHESTPLATE, "jade");
+        currencyNetheriteSmithing(recipeOutput, JADE_LEGGINGS.get(), RecipeCategory.COMBAT, NETHERITE_LEGGINGS, "jade");
+        currencyNetheriteSmithing(recipeOutput, JADE_BOOTS.get(), RecipeCategory.COMBAT, NETHERITE_BOOTS, "jade");
+        currencyNetheriteSmithing(recipeOutput, AMBER_AXE.get(), RecipeCategory.TOOLS, NETHERITE_AXE, "amber");
+        currencyNetheriteSmithing(recipeOutput, AMBER_HOE.get(), RecipeCategory.TOOLS, NETHERITE_HOE, "amber");
+        currencyNetheriteSmithing(recipeOutput, AMBER_PICKAXE.get(), RecipeCategory.TOOLS, NETHERITE_PICKAXE, "amber");
+        currencyNetheriteSmithing(recipeOutput, AMBER_SHOVEL.get(), RecipeCategory.TOOLS, NETHERITE_SHOVEL, "amber");
+        currencyNetheriteSmithing(recipeOutput, AMBER_SWORD.get(), RecipeCategory.COMBAT, NETHERITE_SWORD, "amber");
+        currencyNetheriteSmithing(recipeOutput, AMBER_HELMET.get(), RecipeCategory.COMBAT, NETHERITE_HELMET, "amber");
+        currencyNetheriteSmithing(recipeOutput, AMBER_CHESTPLATE.get(), RecipeCategory.COMBAT, NETHERITE_CHESTPLATE, "amber");
+        currencyNetheriteSmithing(recipeOutput, AMBER_LEGGINGS.get(), RecipeCategory.COMBAT, NETHERITE_LEGGINGS, "amber");
+        currencyNetheriteSmithing(recipeOutput, AMBER_BOOTS.get(), RecipeCategory.COMBAT, NETHERITE_BOOTS, "amber");
+        currencyNetheriteSmithing(recipeOutput, SILICON_AXE.get(), RecipeCategory.TOOLS, NETHERITE_AXE, "silicon");
+        currencyNetheriteSmithing(recipeOutput, SILICON_HOE.get(), RecipeCategory.TOOLS, NETHERITE_HOE, "silicon");
+        currencyNetheriteSmithing(recipeOutput, SILICON_PICKAXE.get(), RecipeCategory.TOOLS, NETHERITE_PICKAXE, "silicon");
+        currencyNetheriteSmithing(recipeOutput, SILICON_SHOVEL.get(), RecipeCategory.TOOLS, NETHERITE_SHOVEL, "silicon");
+        currencyNetheriteSmithing(recipeOutput, SILICON_SWORD.get(), RecipeCategory.COMBAT, NETHERITE_SWORD, "silicon");
+        currencyNetheriteSmithing(recipeOutput, SILICON_HELMET.get(), RecipeCategory.COMBAT, NETHERITE_HELMET, "silicon");
+        currencyNetheriteSmithing(recipeOutput, SILICON_CHESTPLATE.get(), RecipeCategory.COMBAT, NETHERITE_CHESTPLATE, "silicon");
+        currencyNetheriteSmithing(recipeOutput, SILICON_LEGGINGS.get(), RecipeCategory.COMBAT, NETHERITE_LEGGINGS, "silicon");
+        currencyNetheriteSmithing(recipeOutput, SILICON_BOOTS.get(), RecipeCategory.COMBAT, NETHERITE_BOOTS, "silicon");
+        currencyNetheriteSmithing(recipeOutput, RUBY_AXE.get(), RecipeCategory.TOOLS, NETHERITE_AXE, "ruby");
+        currencyNetheriteSmithing(recipeOutput, RUBY_HOE.get(), RecipeCategory.TOOLS, NETHERITE_HOE, "ruby");
+        currencyNetheriteSmithing(recipeOutput, RUBY_PICKAXE.get(), RecipeCategory.TOOLS, NETHERITE_PICKAXE, "ruby");
+        currencyNetheriteSmithing(recipeOutput, RUBY_SHOVEL.get(), RecipeCategory.TOOLS, NETHERITE_SHOVEL, "ruby");
+        currencyNetheriteSmithing(recipeOutput, RUBY_SWORD.get(), RecipeCategory.COMBAT, NETHERITE_SWORD, "ruby");
+        currencyNetheriteSmithing(recipeOutput, RUBY_HELMET.get(), RecipeCategory.COMBAT, NETHERITE_HELMET, "ruby");
+        currencyNetheriteSmithing(recipeOutput, RUBY_CHESTPLATE.get(), RecipeCategory.COMBAT, NETHERITE_CHESTPLATE, "ruby");
+        currencyNetheriteSmithing(recipeOutput, RUBY_LEGGINGS.get(), RecipeCategory.COMBAT, NETHERITE_LEGGINGS, "ruby");
+        currencyNetheriteSmithing(recipeOutput, RUBY_BOOTS.get(), RecipeCategory.COMBAT, NETHERITE_BOOTS, "ruby");
     }
 
     // Generate Methods
@@ -400,15 +507,9 @@ public class DataRecipes extends RecipeProvider implements IConditionBuilder {
         }
     }
 
-    protected static void rubyNetheriteSmithing(RecipeOutput recipeOutput, Item ingredient, RecipeCategory category, Item result) {
+    protected static void currencyNetheriteSmithing(RecipeOutput recipeOutput, Item ingredient, RecipeCategory category, Item result, String currency) {
         SmithingTransformRecipeBuilder.smithing(Ingredient.of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE), Ingredient.of(ingredient), Ingredient.of(Items.NETHERITE_INGOT), category, result)
                 .unlocks("has_netherite_ingot", has(Items.NETHERITE_INGOT))
-                .save(recipeOutput, VillageCraft3Essentials.MODID + ":" + getItemName(result) + "_ruby_smithing");
-    }
-
-    protected static void amberNetheriteSmithing(RecipeOutput recipeOutput, Item ingredient, RecipeCategory category, Item result) {
-        SmithingTransformRecipeBuilder.smithing(Ingredient.of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE), Ingredient.of(ingredient), Ingredient.of(Items.NETHERITE_INGOT), category, result)
-                .unlocks("has_netherite_ingot", has(Items.NETHERITE_INGOT))
-                .save(recipeOutput, VillageCraft3Essentials.MODID + ":" + getItemName(result) + "_amber_smithing");
+                .save(recipeOutput, VillageCraft3Essentials.MODID + ":" + getItemName(result) + "_" + currency + "_smithing");
     }
 }

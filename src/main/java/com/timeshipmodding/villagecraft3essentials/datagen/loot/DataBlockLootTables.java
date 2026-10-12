@@ -23,14 +23,20 @@ public class DataBlockLootTables extends BlockLootSubProvider {
     @Override
     protected void generate() {
         // Drop Self
-        dropSelf(RUBY_BLOCK.get());
+        dropSelf(JADE_BLOCK.get());
         dropSelf(AMBER_BLOCK.get());
+        dropSelf(SILICON_BLOCK.get());
+        dropSelf(RUBY_BLOCK.get());
 
         // Ore Drops
-        this.add(RUBY_ORE.get(), block -> createOreDrop(RUBY_ORE.get(), RUBY.get()));
-        this.add(DEEPSLATE_RUBY_ORE.get(), block -> createOreDrop(DEEPSLATE_RUBY_ORE.get(), RUBY.get()));
+        this.add(JADE_ORE.get(), block -> createOreDrop(JADE_ORE.get(), JADE.get()));
+        this.add(DEEPSLATE_JADE_ORE.get(), block -> createOreDrop(DEEPSLATE_JADE_ORE.get(), JADE.get()));
         this.add(AMBER_ORE.get(), block -> createOreDrop(AMBER_ORE.get(), AMBER.get()));
         this.add(DEEPSLATE_AMBER_ORE.get(), block -> createOreDrop(DEEPSLATE_AMBER_ORE.get(), AMBER.get()));
+        this.add(SILICON_ORE.get(), block -> createOreDrop(SILICON_ORE.get(), SILICON.get()));
+        this.add(DEEPSLATE_SILICON_ORE.get(), block -> createOreDrop(DEEPSLATE_SILICON_ORE.get(), SILICON.get()));
+        this.add(RUBY_ORE.get(), block -> createOreDrop(RUBY_ORE.get(), RUBY.get()));
+        this.add(DEEPSLATE_RUBY_ORE.get(), block -> createOreDrop(DEEPSLATE_RUBY_ORE.get(), RUBY.get()));
 
         // ATM drops
         add(BLACK_ATM.get(), block -> createATMTable(BLACK_ATM.get()));

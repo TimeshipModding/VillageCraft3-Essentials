@@ -1,10 +1,16 @@
 {
   "values": [
-    "villagecraft3essentials:ruby_ore",
-    "villagecraft3essentials:deepslate_ruby_ore",
-    "villagecraft3essentials:ruby_block",
+    "villagecraft3essentials:jade_block",
+    "villagecraft3essentials:jade_ore",
+    "villagecraft3essentials:deepslate_jade_ore",
+    "villagecraft3essentials:amber_block",
     "villagecraft3essentials:amber_ore",
     "villagecraft3essentials:deepslate_amber_ore",
-    "villagecraft3essentials:amber_block"
+    "villagecraft3essentials:silicon_block",
+    "villagecraft3essentials:silicon_ore",
+    "villagecraft3essentials:deepslate_silicon_ore",
+    "villagecraft3essentials:ruby_block",
+    "villagecraft3essentials:ruby_ore",
+    "villagecraft3essentials:deepslate_ruby_ore"
   ]
 }

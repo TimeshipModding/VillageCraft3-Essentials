@@ -1,0 +1,64 @@
+package com.timeshipmodding.villagecraft3essentials.content.command.blackwater;
+
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.context.CommandContext;
+import com.timeshipmodding.villagecraft3essentials.compat.bluemap.BlueMapMethods;
+import com.timeshipmodding.villagecraft3essentials.compat.luckperms.LuckpermsMethods;
+import com.timeshipmodding.villagecraft3essentials.infrastructure.config.ServerConfig;
+import com.timeshipmodding.villagecraft3essentials.infrastructure.data.saveddata.SpawnSavedData;
+import net.minecraft.ChatFormatting;
+import net.minecraft.commands.CommandSourceStack;
+import net.minecraft.commands.Commands;
+import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.level.Level;
+import net.neoforged.fml.ModList;
+
+public class BlackWaterSetSpawnCommand {
+    public BlackWaterSetSpawnCommand(CommandDispatcher<CommandSourceStack> dispatcher) {
+        dispatcher.register(Commands.literal("blackwater").then(Commands.literal("setspawn")
+                .executes(this::execute)));
+    }
+
+    private int execute(CommandContext<CommandSourceStack> context) {
+        ServerPlayer player = context.getSource().getPlayer();
+        ServerLevel serverLevel = context.getSource().getLevel();
+        MinecraftServer server = context.getSource().getServer();
+        assert player != null;
+        BlockPos playerPos = player.blockPosition();
+        String positionString = playerPos.getX() + ", " + playerPos.getY() + ", " + playerPos.getZ();
+        int playerYaw = (int) player.getYRot();
+        int playerPitch = (int) player.getXRot();
+        int[] spawn = {playerPos.getX(), playerPos.getY(), playerPos.getZ(), playerYaw, playerPitch};
+        SpawnSavedData savedData = SpawnSavedData.getData(server);
+        ChatFormatting groupStyling = ChatFormatting.WHITE;
+
+        if (ModList.get().isLoaded("luckperms")) {
+            groupStyling = LuckpermsMethods.getGroupStyling(ServerConfig.BLACKWATER_GROUP_NAME.get());
+        }
+
+        if (serverLevel.dimension() != Level.OVERWORLD) {
+            MutableComponent message = Component.literal("Can only set ").withStyle(ChatFormatting.RED);
+            message.append(Component.literal("BlackWater's").withStyle(groupStyling));
+            message.append(Component.literal(" spawn in the overworld.").withStyle(ChatFormatting.RED));
+            context.getSource().sendFailure(message);
+            return 0;
+
+        } else {
+            if (ModList.get().isLoaded("bluemap") && ServerConfig.ENABLE_SETSPAWN_BLUEMAP_MARKER_CREATION.get()) {
+                BlueMapMethods.manageSpawnMarker(playerPos.getX(), playerPos.getY(), playerPos.getZ(), "BlackWater", "blackwater", player);
+            }
+
+            savedData.setBlackWaterSpawn(spawn);
+            MutableComponent message = Component.literal("Set ");
+            message.append(Component.literal("BlackWater's").withStyle(groupStyling));
+            message.append(Component.literal(" spawn to " + positionString + "!"));
+            context.getSource().sendSuccess(() -> message, true);
+            return 1;
+        }
+    }
+}

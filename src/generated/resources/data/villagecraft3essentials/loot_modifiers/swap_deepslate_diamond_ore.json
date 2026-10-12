@@ -9,7 +9,9 @@
       }
     }
   ],
-  "currency1": "villagecraft3essentials:deepslate_ruby_ore",
-  "currency2": "villagecraft3essentials:deepslate_amber_ore",
-  "target": "minecraft:deepslate_diamond_ore"
+  "replacementCurrency1": "villagecraft3essentials:deepslate_jade_ore",
+  "replacementCurrency2": "villagecraft3essentials:deepslate_amber_ore",
+  "replacementCurrency3": "villagecraft3essentials:deepslate_silicon_ore",
+  "replacementCurrency4": "villagecraft3essentials:deepslate_ruby_ore",
+  "targetCurrency": "minecraft:deepslate_diamond_ore"
 }

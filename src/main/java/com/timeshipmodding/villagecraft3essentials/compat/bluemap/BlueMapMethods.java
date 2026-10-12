@@ -68,10 +68,14 @@ public class BlueMapMethods {
             return "The Wild";
         } else if (isPlayerInAreaMarker(player, "villagecraft-city")) {
             return "VillageCraft City";
-        } else if (isPlayerInAreaMarker(player, "gripper-city")) {
-            return "Gripper City";
-        } else if (isPlayerInAreaMarker(player, "amber-caves")) {
-            return "The Amber Caves";
+        } else if (isPlayerInAreaMarker(player, "oasis")) {
+            return "Oasis";
+        } else if (isPlayerInAreaMarker(player, "swedish-furniture-store")) {
+            return "Swedish Furniture Store";
+        } else if (isPlayerInAreaMarker(player, "london")) {
+            return "London";
+        } else if (isPlayerInAreaMarker(player, "blackwater")) {
+            return "BlackWater";
         } else {
             return "The Wild";
         }

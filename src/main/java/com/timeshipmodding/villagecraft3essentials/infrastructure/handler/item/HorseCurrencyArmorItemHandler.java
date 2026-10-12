@@ -3,6 +3,7 @@ package com.timeshipmodding.villagecraft3essentials.infrastructure.handler.item;
 import com.timeshipmodding.villagecraft3essentials.compat.luckperms.LuckpermsMethods;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.config.ServerConfig;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.tags.registries.ModItemTags;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.AnimalArmorItem;
 import net.minecraft.world.item.ItemStack;
@@ -33,13 +34,29 @@ public class HorseCurrencyArmorItemHandler extends ItemStackHandler {
     }
 
     public boolean canPlayerEquip(Player player, ItemStack stack) {
-        if (LuckpermsMethods.isInGroup(player, ServerConfig.VILLAGECRAFTCITY_GROUP_NAME.get()) && stack.is(ModItemTags.RUBY_CONVERTIBLE_TOOLS) || LuckpermsMethods.isInGroup(player, ServerConfig.VILLAGECRAFTCITY_GROUP_NAME.get()) && stack.is(ModItemTags.AMBER_CONVERTIBLE_TOOLS)) {
+        if (!(stack.is(ModItemTags.DIAMOND_CONVERTIBLE_TOOLS) || stack.is(ModItemTags.JADE_CONVERTIBLE_TOOLS) || stack.is(ModItemTags.AMBER_CONVERTIBLE_TOOLS) || stack.is(ModItemTags.SILICON_CONVERTIBLE_TOOLS) || stack.is(ModItemTags.RUBY_CONVERTIBLE_TOOLS))) {
+            return false;
+        }
+
+        boolean inVillageCraftCity = LuckpermsMethods.isInGroup(player, ServerConfig.VILLAGECRAFTCITY_GROUP_NAME.get());
+        boolean inOasis = LuckpermsMethods.isInGroup(player, ServerConfig.OASIS_GROUP_NAME.get());
+        boolean inSwedishFurnitureStore = LuckpermsMethods.isInGroup(player, ServerConfig.SWEDISHFURNITURESTORE_GROUP_NAME.get());
+        boolean inLondon = LuckpermsMethods.isInGroup(player, ServerConfig.LONDON_GROUP_NAME.get());
+        boolean inBlackWater = LuckpermsMethods.isInGroup(player, ServerConfig.BLACKWATER_GROUP_NAME.get());
+
+        if (inVillageCraftCity && !stack.is(ModItemTags.DIAMOND_CONVERTIBLE_TOOLS)) {
             return false;
 
-        } else if (LuckpermsMethods.isInGroup(player, ServerConfig.GRIPPERCITY_GROUP_NAME.get()) && stack.is(ModItemTags.DIAMOND_CONVERTIBLE_TOOLS) || LuckpermsMethods.isInGroup(player, ServerConfig.GRIPPERCITY_GROUP_NAME.get()) && stack.is(ModItemTags.AMBER_CONVERTIBLE_TOOLS)) {
+        } else if (inOasis && !stack.is(ModItemTags.JADE_CONVERTIBLE_TOOLS)) {
             return false;
 
-        } else if (LuckpermsMethods.isInGroup(player, ServerConfig.AMBERCAVES_GROUP_NAME.get()) && stack.is(ModItemTags.DIAMOND_CONVERTIBLE_TOOLS) || LuckpermsMethods.isInGroup(player, ServerConfig.AMBERCAVES_GROUP_NAME.get()) && stack.is(ModItemTags.RUBY_CONVERTIBLE_TOOLS)) {
+        } else if (inSwedishFurnitureStore && !stack.is(ModItemTags.AMBER_CONVERTIBLE_TOOLS)) {
+            return false;
+
+        } else if (inLondon && !stack.is(ModItemTags.SILICON_CONVERTIBLE_TOOLS)) {
+            return false;
+
+        } else if (inBlackWater && !stack.is(ModItemTags.RUBY_CONVERTIBLE_TOOLS)) {
             return false;
         }
 

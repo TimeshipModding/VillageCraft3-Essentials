@@ -6,49 +6,79 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.level.saveddata.SavedData;
 
 public class MissionSavedData extends SavedData {
-    private int villagecraftCompletedMissions = 0;
-    private int gripperCityCompletedMissions = 0;
-    private int amberCavesCompletedMissions = 0;
+    private int villagecraftCityCompletedMissions = 0;
+    private int oasisCompletedMissions = 0;
+    private int swedishFurnitureStoreCompletedMissions = 0;
+    private int londonCompletedMissions = 0;
+    private int blackWaterCompletedMissions = 0;
 
-    public int getVillagecraftCompletedMissions() {
-        return this.villagecraftCompletedMissions;
+    public int getVillagecraftCityCompletedMissions() {
+        return this.villagecraftCityCompletedMissions;
     }
 
-    public int getGripperCityCompletedMissions() {
-        return this.gripperCityCompletedMissions;
+    public int getOasisCompletedMissions() {
+        return this.oasisCompletedMissions;
     }
 
-    public int getAmberCavesCompletedMissions() {
-        return this.amberCavesCompletedMissions;
+    public int getSwedishFurnitureStoreCompletedMissions() {
+        return this.swedishFurnitureStoreCompletedMissions;
     }
 
-    public void addVillagecraftCompletedMissions(int amount) {
-        this.villagecraftCompletedMissions += amount;
+    public int getLondonCompletedMissions() {
+        return this.londonCompletedMissions;
+    }
+
+    public int getBlackWaterCompletedMissions() {
+        return this.blackWaterCompletedMissions;
+    }
+
+    public void addVillagecraftCityCompletedMissions(int amount) {
+        this.villagecraftCityCompletedMissions += amount;
         this.setDirty();
     }
 
-    public void addGripperCityCompletedMissions(int amount) {
-        this.gripperCityCompletedMissions += amount;
+    public void addOasisCompletedMissions(int amount) {
+        this.oasisCompletedMissions += amount;
         this.setDirty();
     }
 
-    public void addAmberCavesCompletedMissions(int amount) {
-        this.amberCavesCompletedMissions += amount;
+    public void addSwedishFurnitureStoreCompletedMissions(int amount) {
+        this.swedishFurnitureStoreCompletedMissions += amount;
         this.setDirty();
     }
 
-    public void resetVillagecraftCompletedMissions() {
-        this.villagecraftCompletedMissions = 0;
+    public void addLondonCompletedMissions(int amount) {
+        this.londonCompletedMissions += amount;
         this.setDirty();
     }
 
-    public void resetGripperCityCompletedMissions() {
-        this.gripperCityCompletedMissions = 0;
+    public void addBlackWaterCompletedMissions(int amount) {
+        this.blackWaterCompletedMissions += amount;
         this.setDirty();
     }
 
-    public void resetAmberCavesCompletedMissions() {
-        this.amberCavesCompletedMissions = 0;
+    public void resetVillagecraftCityCompletedMissions() {
+        this.villagecraftCityCompletedMissions = 0;
+        this.setDirty();
+    }
+
+    public void resetOasisCompletedMissions() {
+        this.oasisCompletedMissions = 0;
+        this.setDirty();
+    }
+
+    public void resetSwedishFurnitureStoreCompletedMissions() {
+        this.swedishFurnitureStoreCompletedMissions = 0;
+        this.setDirty();
+    }
+
+    public void resetLondonCompletedMissions() {
+        this.londonCompletedMissions = 0;
+        this.setDirty();
+    }
+
+    public void resetBlackWaterCompletedMissions() {
+        this.blackWaterCompletedMissions = 0;
         this.setDirty();
     }
 
@@ -58,17 +88,21 @@ public class MissionSavedData extends SavedData {
 
     public static MissionSavedData load(CompoundTag tag, HolderLookup.Provider lookupProvider) {
         MissionSavedData data = create();
-        data.villagecraftCompletedMissions = tag.getInt("villagecraftCompletedMissions");
-        data.gripperCityCompletedMissions = tag.getInt("gripperCityCompletedMissions");
-        data.amberCavesCompletedMissions = tag.getInt("amberCavesCompletedMissions");
+        data.villagecraftCityCompletedMissions = tag.getInt("villagecraftCityCompletedMissions");
+        data.oasisCompletedMissions = tag.getInt("oasisCompletedMissions");
+        data.swedishFurnitureStoreCompletedMissions = tag.getInt("swedishFurnitureStoreCompletedMissions");
+        data.londonCompletedMissions = tag.getInt("londonCompletedMissions");
+        data.blackWaterCompletedMissions = tag.getInt("blackWaterCompletedMissions");
         return data;
     }
 
     @Override
     public CompoundTag save(CompoundTag tag, HolderLookup.Provider registries) {
-        tag.putInt("villagecraftCompletedMissions", villagecraftCompletedMissions);
-        tag.putInt("gripperCityCompletedMissions", gripperCityCompletedMissions);
-        tag.putInt("amberCavesCompletedMissions", amberCavesCompletedMissions);
+        tag.putInt("villagecraftCityCompletedMissions", villagecraftCityCompletedMissions);
+        tag.putInt("oasisCompletedMissions", oasisCompletedMissions);
+        tag.putInt("swedishFurnitureStoreCompletedMissions", swedishFurnitureStoreCompletedMissions);
+        tag.putInt("londonCompletedMissions", londonCompletedMissions);
+        tag.putInt("blackWaterCompletedMissions", blackWaterCompletedMissions);
         return tag;
     }
 

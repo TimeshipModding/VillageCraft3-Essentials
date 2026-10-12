@@ -18,14 +18,20 @@ public class DataBlockStates extends BlockStateProvider {
     @Override
     protected void registerStatesAndModels() {
         // Block with Item
-        blockWithItem(RUBY_BLOCK);
+        blockWithItem(JADE_BLOCK);
         blockWithItem(AMBER_BLOCK);
+        blockWithItem(SILICON_BLOCK);
+        blockWithItem(RUBY_BLOCK);
 
         // Drop Experience Block With Item
-        dropExperienceBlockWithItem(RUBY_ORE);
-        dropExperienceBlockWithItem(DEEPSLATE_RUBY_ORE);
+        dropExperienceBlockWithItem(JADE_ORE);
+        dropExperienceBlockWithItem(DEEPSLATE_JADE_ORE);
         dropExperienceBlockWithItem(AMBER_ORE);
         dropExperienceBlockWithItem(DEEPSLATE_AMBER_ORE);
+        dropExperienceBlockWithItem(SILICON_ORE);
+        dropExperienceBlockWithItem(DEEPSLATE_SILICON_ORE);
+        dropExperienceBlockWithItem(RUBY_ORE);
+        dropExperienceBlockWithItem(DEEPSLATE_RUBY_ORE);
     }
 
     private void blockWithItem(DeferredBlock<Block> deferredBlock) {

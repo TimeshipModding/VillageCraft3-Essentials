@@ -1,11 +1,19 @@
 {
   "values": [
     {
-      "id": "villagecraft3essentials:ruby_fishing_rod",
+      "id": "villagecraft3essentials:jade_fishing_rod",
       "required": false
     },
     {
       "id": "villagecraft3essentials:amber_fishing_rod",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:silicon_fishing_rod",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:ruby_fishing_rod",
       "required": false
     }
   ]

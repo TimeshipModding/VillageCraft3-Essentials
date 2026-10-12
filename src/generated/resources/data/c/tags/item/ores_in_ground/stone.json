@@ -1,6 +1,8 @@
 {
   "values": [
-    "villagecraft3essentials:ruby_ore",
-    "villagecraft3essentials:amber_ore"
+    "villagecraft3essentials:jade_ore",
+    "villagecraft3essentials:amber_ore",
+    "villagecraft3essentials:silicon_ore",
+    "villagecraft3essentials:ruby_ore"
   ]
 }

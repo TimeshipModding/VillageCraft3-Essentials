@@ -13,22 +13,28 @@ import net.neoforged.neoforge.common.loot.LootModifier;
 import org.jetbrains.annotations.NotNull;
 
 public class SwapItemLootModifier extends LootModifier {
-    private final Item target;
-    private final Item currency1;
-    private final Item currency2;
+    private final Item targetCurrency;
+    private final Item replacementCurrency1;
+    private final Item replacementCurrency2;
+    private final Item replacementCurrency3;
+    private final Item replacementCurrency4;
 
     public static final MapCodec<SwapItemLootModifier> CODEC = RecordCodecBuilder.mapCodec(inst ->
             LootModifier.codecStart(inst).and(inst.group(
-                            BuiltInRegistries.ITEM.byNameCodec().fieldOf("target").forGetter(m -> m.target),
-                            BuiltInRegistries.ITEM.byNameCodec().fieldOf("currency1").forGetter(m -> m.currency1),
-                            BuiltInRegistries.ITEM.byNameCodec().fieldOf("currency2").forGetter(m -> m.currency2)))
+                            BuiltInRegistries.ITEM.byNameCodec().fieldOf("targetCurrency").forGetter(m -> m.targetCurrency),
+                            BuiltInRegistries.ITEM.byNameCodec().fieldOf("replacementCurrency1").forGetter(m -> m.replacementCurrency1),
+                            BuiltInRegistries.ITEM.byNameCodec().fieldOf("replacementCurrency2").forGetter(m -> m.replacementCurrency2),
+                            BuiltInRegistries.ITEM.byNameCodec().fieldOf("replacementCurrency3").forGetter(m -> m.replacementCurrency3),
+                            BuiltInRegistries.ITEM.byNameCodec().fieldOf("replacementCurrency4").forGetter(m -> m.replacementCurrency4)))
                             .apply(inst, SwapItemLootModifier::new));
 
-    public SwapItemLootModifier(LootItemCondition[] conditionsIn, Item target, Item currency1, Item currency2) {
+    public SwapItemLootModifier(LootItemCondition[] conditionsIn, Item targetCurrency, Item replacementCurrency1, Item replacementCurrency2, Item replacementCurrency3, Item replacementCurrency4) {
         super(conditionsIn);
-        this.target = target;
-        this.currency1 = currency1;
-        this.currency2 = currency2;
+        this.targetCurrency = targetCurrency;
+        this.replacementCurrency1 = replacementCurrency1;
+        this.replacementCurrency2 = replacementCurrency2;
+        this.replacementCurrency3 = replacementCurrency3;
+        this.replacementCurrency4 = replacementCurrency4;
     }
 
     @Override
@@ -41,25 +47,36 @@ public class SwapItemLootModifier extends LootModifier {
         for (int i = 0; i < generatedLoot.size(); i++) {
             ItemStack stack = generatedLoot.get(i);
 
-            if (stack.is(target)) {
+            if (stack.is(targetCurrency)) {
                 float chance = context.getRandom().nextFloat();
-                ItemStack replacement;
-
-                if (chance <= 0.3f) {
-                    replacement = new ItemStack(currency1, stack.getCount());
-
-                } else if (chance > 0.3f && chance <= 0.6) {
-                    replacement = new ItemStack(currency2, stack.getCount());
-
-                } else {
-                    replacement = new ItemStack(target, stack.getCount());
-                }
-
+                ItemStack replacement = getCurrencyItemStack(chance, stack);
                 replacement.applyComponents(stack.getComponents());
                 generatedLoot.set(i, replacement);
             }
         }
 
         return generatedLoot;
+    }
+
+    private @NotNull ItemStack getCurrencyItemStack(float chance, ItemStack stack) {
+        ItemStack replacement;
+
+        if (chance <= 0.2f) {
+            replacement = new ItemStack(replacementCurrency1, stack.getCount());
+
+        } else if (chance > 0.2f && chance <= 0.4f) {
+            replacement = new ItemStack(replacementCurrency2, stack.getCount());
+
+        } else if (chance > 0.4f && chance <= 0.6f) {
+            replacement = new ItemStack(replacementCurrency3, stack.getCount());
+
+        } else if (chance > 0.6f && chance <= 0.8f) {
+            replacement = new ItemStack(replacementCurrency4, stack.getCount());
+
+        } else {
+            replacement = new ItemStack(targetCurrency, stack.getCount());
+        }
+
+        return replacement;
     }
 }

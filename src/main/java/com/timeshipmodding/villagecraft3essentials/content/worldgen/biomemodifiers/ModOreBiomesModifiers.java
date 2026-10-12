@@ -24,12 +24,18 @@ public class ModOreBiomesModifiers {
     public static final ResourceKey<BiomeModifier> ORE_MODIFIED_DIAMOND_MEDIUM = registerKey("ore_modified_diamond_medium");
     public static final ResourceKey<BiomeModifier> ORE_MODIFIED_DIAMOND_LARGE = registerKey("ore_modified_diamond_large");
     public static final ResourceKey<BiomeModifier> ORE_MODIFIED_DIAMOND_BURIED = registerKey("ore_modified_diamond_buried");
-    public static final ResourceKey<BiomeModifier> ORE_RUBY_MEDIUM = registerKey("ore_ruby_medium");
-    public static final ResourceKey<BiomeModifier> ORE_RUBY_LARGE = registerKey("ore_ruby_large");
-    public static final ResourceKey<BiomeModifier> ORE_RUBY_BURIED = registerKey("ore_ruby_buried");
+    public static final ResourceKey<BiomeModifier> ORE_JADE_MEDIUM = registerKey("ore_jade_medium");
+    public static final ResourceKey<BiomeModifier> ORE_JADE_LARGE = registerKey("ore_jade_large");
+    public static final ResourceKey<BiomeModifier> ORE_JADE_BURIED = registerKey("ore_jade_buried");
     public static final ResourceKey<BiomeModifier> ORE_AMBER_MEDIUM = registerKey("ore_amber_medium");
     public static final ResourceKey<BiomeModifier> ORE_AMBER_LARGE = registerKey("ore_amber_large");
     public static final ResourceKey<BiomeModifier> ORE_AMBER_BURIED = registerKey("ore_amber_buried");
+    public static final ResourceKey<BiomeModifier> ORE_SILICON_MEDIUM = registerKey("ore_silicon_medium");
+    public static final ResourceKey<BiomeModifier> ORE_SILICON_LARGE = registerKey("ore_silicon_large");
+    public static final ResourceKey<BiomeModifier> ORE_SILICON_BURIED = registerKey("ore_silicon_buried");
+    public static final ResourceKey<BiomeModifier> ORE_RUBY_MEDIUM = registerKey("ore_ruby_medium");
+    public static final ResourceKey<BiomeModifier> ORE_RUBY_LARGE = registerKey("ore_ruby_large");
+    public static final ResourceKey<BiomeModifier> ORE_RUBY_BURIED = registerKey("ore_ruby_buried");
 
     public static void bootstrap(BootstrapContext<BiomeModifier> context) {
         var placedFeatures = context.lookup(Registries.PLACED_FEATURE);
@@ -50,18 +56,30 @@ public class ModOreBiomesModifiers {
                 HolderSet.direct(placedFeatures.getOrThrow(ModOrePlacements.ORE_MODIFIED_DIAMOND_LARGE)), GenerationStep.Decoration.UNDERGROUND_ORES));
         context.register(ORE_MODIFIED_DIAMOND_BURIED, new BiomeModifiers.AddFeaturesBiomeModifier(biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
                 HolderSet.direct(placedFeatures.getOrThrow(ModOrePlacements.ORE_MODIFIED_DIAMOND_BURIED)), GenerationStep.Decoration.UNDERGROUND_ORES));
-        context.register(ORE_RUBY_MEDIUM, new BiomeModifiers.AddFeaturesBiomeModifier(biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
-                HolderSet.direct(placedFeatures.getOrThrow(ModOrePlacements.ORE_RUBY_MEDIUM)), GenerationStep.Decoration.UNDERGROUND_ORES));
-        context.register(ORE_RUBY_LARGE, new BiomeModifiers.AddFeaturesBiomeModifier(biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
-                HolderSet.direct(placedFeatures.getOrThrow(ModOrePlacements.ORE_RUBY_LARGE)), GenerationStep.Decoration.UNDERGROUND_ORES));
-        context.register(ORE_RUBY_BURIED, new BiomeModifiers.AddFeaturesBiomeModifier(biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
-                HolderSet.direct(placedFeatures.getOrThrow(ModOrePlacements.ORE_RUBY_BURIED)), GenerationStep.Decoration.UNDERGROUND_ORES));
+        context.register(ORE_JADE_MEDIUM, new BiomeModifiers.AddFeaturesBiomeModifier(biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
+                HolderSet.direct(placedFeatures.getOrThrow(ModOrePlacements.ORE_JADE_MEDIUM)), GenerationStep.Decoration.UNDERGROUND_ORES));
+        context.register(ORE_JADE_LARGE, new BiomeModifiers.AddFeaturesBiomeModifier(biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
+                HolderSet.direct(placedFeatures.getOrThrow(ModOrePlacements.ORE_JADE_LARGE)), GenerationStep.Decoration.UNDERGROUND_ORES));
+        context.register(ORE_JADE_BURIED, new BiomeModifiers.AddFeaturesBiomeModifier(biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
+                HolderSet.direct(placedFeatures.getOrThrow(ModOrePlacements.ORE_JADE_BURIED)), GenerationStep.Decoration.UNDERGROUND_ORES));
         context.register(ORE_AMBER_MEDIUM, new BiomeModifiers.AddFeaturesBiomeModifier(biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
                 HolderSet.direct(placedFeatures.getOrThrow(ModOrePlacements.ORE_AMBER_MEDIUM)), GenerationStep.Decoration.UNDERGROUND_ORES));
         context.register(ORE_AMBER_LARGE, new BiomeModifiers.AddFeaturesBiomeModifier(biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
                 HolderSet.direct(placedFeatures.getOrThrow(ModOrePlacements.ORE_AMBER_LARGE)), GenerationStep.Decoration.UNDERGROUND_ORES));
         context.register(ORE_AMBER_BURIED, new BiomeModifiers.AddFeaturesBiomeModifier(biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
                 HolderSet.direct(placedFeatures.getOrThrow(ModOrePlacements.ORE_AMBER_BURIED)), GenerationStep.Decoration.UNDERGROUND_ORES));
+        context.register(ORE_SILICON_MEDIUM, new BiomeModifiers.AddFeaturesBiomeModifier(biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
+                HolderSet.direct(placedFeatures.getOrThrow(ModOrePlacements.ORE_SILICON_MEDIUM)), GenerationStep.Decoration.UNDERGROUND_ORES));
+        context.register(ORE_SILICON_LARGE, new BiomeModifiers.AddFeaturesBiomeModifier(biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
+                HolderSet.direct(placedFeatures.getOrThrow(ModOrePlacements.ORE_SILICON_LARGE)), GenerationStep.Decoration.UNDERGROUND_ORES));
+        context.register(ORE_SILICON_BURIED, new BiomeModifiers.AddFeaturesBiomeModifier(biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
+                HolderSet.direct(placedFeatures.getOrThrow(ModOrePlacements.ORE_SILICON_BURIED)), GenerationStep.Decoration.UNDERGROUND_ORES));
+        context.register(ORE_RUBY_MEDIUM, new BiomeModifiers.AddFeaturesBiomeModifier(biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
+                HolderSet.direct(placedFeatures.getOrThrow(ModOrePlacements.ORE_RUBY_MEDIUM)), GenerationStep.Decoration.UNDERGROUND_ORES));
+        context.register(ORE_RUBY_LARGE, new BiomeModifiers.AddFeaturesBiomeModifier(biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
+                HolderSet.direct(placedFeatures.getOrThrow(ModOrePlacements.ORE_RUBY_LARGE)), GenerationStep.Decoration.UNDERGROUND_ORES));
+        context.register(ORE_RUBY_BURIED, new BiomeModifiers.AddFeaturesBiomeModifier(biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
+                HolderSet.direct(placedFeatures.getOrThrow(ModOrePlacements.ORE_RUBY_BURIED)), GenerationStep.Decoration.UNDERGROUND_ORES));
     }
 
     private static ResourceKey<BiomeModifier> registerKey(String name) {

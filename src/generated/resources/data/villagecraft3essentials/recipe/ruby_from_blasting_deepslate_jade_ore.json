@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 1.0,
+  "group": "jade",
+  "ingredient": {
+    "item": "villagecraft3essentials:deepslate_jade_ore"
+  },
+  "result": {
+    "count": 1,
+    "id": "villagecraft3essentials:ruby"
+  }
+}

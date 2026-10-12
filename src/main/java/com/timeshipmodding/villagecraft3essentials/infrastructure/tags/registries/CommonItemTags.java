@@ -9,10 +9,14 @@ public class CommonItemTags {
     public static TagKey<Item> TOOLS_FISHING_ROD = createTag("tools/fishing_rod");
     public static TagKey<Item> TOOLS_BRUSH = createTag("tools/brush");
     public static TagKey<Item> STORAGE_BLOCKS = createTag("storage_blocks");
-    public static TagKey<Item> RUBY_STORAGE_BLOCKS = createTag("storage_blocks/ruby");
+    public static TagKey<Item> JADE_STORAGE_BLOCKS = createTag("storage_blocks/jade");
     public static TagKey<Item> AMBER_STORAGE_BLOCKS = createTag("storage_blocks/amber");
-    public static TagKey<Item> ORES_RUBY = createTag("ores/ruby");
+    public static TagKey<Item> SILICON_STORAGE_BLOCKS = createTag("storage_blocks/silicon");
+    public static TagKey<Item> RUBY_STORAGE_BLOCKS = createTag("storage_blocks/ruby");
+    public static TagKey<Item> ORES_JADE = createTag("ores/jade");
     public static TagKey<Item> ORES_AMBER = createTag("ores/amber");
+    public static TagKey<Item> ORES_SILICON = createTag("ores/silicon");
+    public static TagKey<Item> ORES_RUBY = createTag("ores/ruby");
     public static TagKey<Item> ORES_IN_GROUND_STONE = createTag("ores_in_ground/stone");
     public static TagKey<Item> ORES_IN_GROUND_DEEPSLATE = createTag("ores_in_ground/deepslate");
     public static TagKey<Item> ORE_RATES_SINGULAR = createTag("ore_rates/singular");
@@ -25,8 +29,10 @@ public class CommonItemTags {
     public static TagKey<Item> FOODS_COOKED_MEAT = createTag("foods/cooked_meat");
     public static TagKey<Item> ANIMAL_FOODS = createTag("animal_foods");
     public static TagKey<Item> GEMS = createTag("gems");
-    public static TagKey<Item> RUBY_GEMS = createTag("gems/ruby");
+    public static TagKey<Item> JADE_GEMS = createTag("gems/jade");
     public static TagKey<Item> AMBER_GEMS = createTag("gems/amber");
+    public static TagKey<Item> SILICON_GEMS = createTag("gems/silicon");
+    public static TagKey<Item> RUBY_GEMS = createTag("gems/ruby");
     public static TagKey<Item> KNIFE = createTag("tools/knife");
 
     private static TagKey<Item> createTag(String name) {

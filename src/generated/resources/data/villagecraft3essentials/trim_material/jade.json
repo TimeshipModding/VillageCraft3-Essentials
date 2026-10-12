@@ -1,0 +1,9 @@
+{
+  "asset_name": "jade",
+  "description": {
+    "color": "#CF7483",
+    "translate": "trim_material.villagecraft3essentials.jade"
+  },
+  "ingredient": "villagecraft3essentials:jade",
+  "item_model_index": 0.7
+}

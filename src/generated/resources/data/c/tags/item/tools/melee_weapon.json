@@ -1,9 +1,13 @@
 {
   "values": [
-    "villagecraft3essentials:ruby_axe",
-    "villagecraft3essentials:ruby_sword",
+    "villagecraft3essentials:jade_axe",
+    "villagecraft3essentials:jade_sword",
     "villagecraft3essentials:amber_axe",
     "villagecraft3essentials:amber_sword",
+    "villagecraft3essentials:silicon_axe",
+    "villagecraft3essentials:silicon_sword",
+    "villagecraft3essentials:ruby_axe",
+    "villagecraft3essentials:ruby_sword",
     "villagecraft3essentials:police_baton"
   ]
 }

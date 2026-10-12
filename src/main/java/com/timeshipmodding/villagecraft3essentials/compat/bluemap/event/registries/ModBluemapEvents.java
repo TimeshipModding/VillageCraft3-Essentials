@@ -25,8 +25,10 @@ public class ModBluemapEvents {
             BlueMapAPI.onEnable(api -> {
                 File markersFolder = new File("bluemap/web/maps/world/markers");
                 MarkerSet villagecraftCity = null;
-                MarkerSet gripperCity = null;
-                MarkerSet amberCaves = null;
+                MarkerSet oasis = null;
+                MarkerSet swedishFurnitureStore = null;
+                MarkerSet london = null;
+                MarkerSet blackWater = null;
 
                 try (FileReader reader = new FileReader(new File(markersFolder, "villagecraft-city.json"))) {
                     villagecraftCity = MarkerGson.INSTANCE.fromJson(reader, MarkerSet.class);
@@ -34,27 +36,43 @@ public class ModBluemapEvents {
                     ex.printStackTrace();
                 }
 
-                try (FileReader reader = new FileReader(new File(markersFolder,"gripper-city.json"))) {
-                    gripperCity = MarkerGson.INSTANCE.fromJson(reader, MarkerSet.class);
+                try (FileReader reader = new FileReader(new File(markersFolder, "oasis.json"))) {
+                    oasis = MarkerGson.INSTANCE.fromJson(reader, MarkerSet.class);
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
 
-                try (FileReader reader = new FileReader(new File(markersFolder,"amber-caves.json"))) {
-                    amberCaves = MarkerGson.INSTANCE.fromJson(reader, MarkerSet.class);
+                try (FileReader reader = new FileReader(new File(markersFolder,"swedish-furniture-store.json"))) {
+                    swedishFurnitureStore = MarkerGson.INSTANCE.fromJson(reader, MarkerSet.class);
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+
+                try (FileReader reader = new FileReader(new File(markersFolder,"london.json"))) {
+                    london = MarkerGson.INSTANCE.fromJson(reader, MarkerSet.class);
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+
+                try (FileReader reader = new FileReader(new File(markersFolder,"blackwater.json"))) {
+                    blackWater = MarkerGson.INSTANCE.fromJson(reader, MarkerSet.class);
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
 
                 MarkerSet finalVillagecraftCity = villagecraftCity;
-                MarkerSet finalGripperCity = gripperCity;
-                MarkerSet finalAmberCaves = amberCaves;
+                MarkerSet finalOasis = oasis;
+                MarkerSet finalSwedishFurnitureStore = swedishFurnitureStore;
+                MarkerSet finalLondon = london;
+                MarkerSet finalBlackWater = blackWater;
 
                 api.getWorld(event.getServer().overworld()).ifPresent(world -> {
                     for (BlueMapMap map : world.getMaps()) {
                         map.getMarkerSets().put("villagecraft-city", finalVillagecraftCity);
-                        map.getMarkerSets().put("gripper-city", finalGripperCity);
-                        map.getMarkerSets().put("amber-caves", finalAmberCaves);
+                        map.getMarkerSets().put("oasis", finalOasis);
+                        map.getMarkerSets().put("swedishFurnitureStore", finalSwedishFurnitureStore);
+                        map.getMarkerSets().put("london", finalLondon);
+                        map.getMarkerSets().put("blackwater", finalBlackWater);
                     }
                 });
             });

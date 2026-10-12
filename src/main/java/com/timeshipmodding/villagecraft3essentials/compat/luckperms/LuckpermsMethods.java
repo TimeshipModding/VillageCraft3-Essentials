@@ -115,52 +115,84 @@ public class LuckpermsMethods {
         ServerScoreboard scoreboard = Objects.requireNonNull(player.getServer()).getScoreboard();
         String teamName = "";
 
-        if (isInGroup(player, ServerConfig.AMBERCAVES_GROUP_NAME.get())) {
-            if (isInGroup(player, ServerConfig.AMBERCAVES_GOVERNMENT_GROUP_NAME.get())) {
-                if (isInGroup(player, ServerConfig.MAYOR_GROUP_NAME.get())) {
-                    teamName = "011 _" + ServerConfig.MAYOR_GROUP_NAME.get();
-
-                } else if (isInGroup(player, ServerConfig.SHERIFF_NAME.get())) {
-                    teamName = "012 _" + ServerConfig.SHERIFF_NAME.get();
-
-                } else if (isInGroup(player, ServerConfig.TREASURER_GROUP_NAME.get())) {
-                    teamName = "013 _" + ServerConfig.TREASURER_GROUP_NAME.get();
-                }
-
-            } else {
-                teamName = "014 _" + ServerConfig.AMBERCAVES_GROUP_NAME.get();
-            }
-
-        } else if (isInGroup(player, ServerConfig.GRIPPERCITY_GROUP_NAME.get())) {
-            if (isInGroup(player, ServerConfig.GRIPPERCITY_GOVERNMENT_GROUP_NAME.get())) {
-                if (isInGroup(player, ServerConfig.MAYOR_GROUP_NAME.get())) {
-                    teamName = "011 _" + ServerConfig.MAYOR_GROUP_NAME.get();
-
-                } else if (isInGroup(player, ServerConfig.SHERIFF_NAME.get())) {
-                    teamName = "022 _" + ServerConfig.SHERIFF_NAME.get();
-
-                } else if (isInGroup(player, ServerConfig.TREASURER_GROUP_NAME.get())) {
-                    teamName = "023 _" + ServerConfig.TREASURER_GROUP_NAME.get();
-                }
-
-            } else {
-                teamName = "024 _" + ServerConfig.GRIPPERCITY_GROUP_NAME.get();
-            }
-
-        } else if (isInGroup(player, ServerConfig.VILLAGECRAFTCITY_GROUP_NAME.get())) {
+        if (isInGroup(player, ServerConfig.VILLAGECRAFTCITY_GROUP_NAME.get())) {
             if (isInGroup(player, ServerConfig.VILLAGECRAFTCITY_GOVERNMENT_GROUP_NAME.get())) {
                 if (isInGroup(player, ServerConfig.MAYOR_GROUP_NAME.get())) {
-                    teamName = "031 _" + ServerConfig.MAYOR_GROUP_NAME.get();
+                    teamName = "011_" + ServerConfig.MAYOR_GROUP_NAME.get();
 
                 } else if (isInGroup(player, ServerConfig.SHERIFF_NAME.get())) {
-                    teamName = "032 _" + ServerConfig.SHERIFF_NAME.get();
+                    teamName = "012_" + ServerConfig.SHERIFF_NAME.get();
 
                 } else if (isInGroup(player, ServerConfig.TREASURER_GROUP_NAME.get())) {
-                    teamName = "033 _" + ServerConfig.TREASURER_GROUP_NAME.get();
+                    teamName = "013_" + ServerConfig.TREASURER_GROUP_NAME.get();
                 }
 
             } else {
-                teamName = "034 _" + ServerConfig.VILLAGECRAFTCITY_GROUP_NAME.get();
+                teamName = "061_" + ServerConfig.VILLAGECRAFTCITY_GROUP_NAME.get();
+            }
+
+        } else if (isInGroup(player, ServerConfig.OASIS_GROUP_NAME.get())) {
+            if (isInGroup(player, ServerConfig.OASIS_GOVERNMENT_GROUP_NAME.get())) {
+                if (isInGroup(player, ServerConfig.MAYOR_GROUP_NAME.get())) {
+                    teamName = "021_" + ServerConfig.MAYOR_GROUP_NAME.get();
+
+                } else if (isInGroup(player, ServerConfig.SHERIFF_NAME.get())) {
+                    teamName = "022_" + ServerConfig.SHERIFF_NAME.get();
+
+                } else if (isInGroup(player, ServerConfig.TREASURER_GROUP_NAME.get())) {
+                    teamName = "023_" + ServerConfig.TREASURER_GROUP_NAME.get();
+                }
+
+            } else {
+                teamName = "062_" + ServerConfig.OASIS_GROUP_NAME.get();
+            }
+
+        } else if (isInGroup(player, ServerConfig.SWEDISHFURNITURESTORE_GROUP_NAME.get())) {
+            if (isInGroup(player, ServerConfig.SWEDISHFURNITURESTORE_GOVERNMENT_GROUP_NAME.get())) {
+                if (isInGroup(player, ServerConfig.MAYOR_GROUP_NAME.get())) {
+                    teamName = "031_" + ServerConfig.MAYOR_GROUP_NAME.get();
+
+                } else if (isInGroup(player, ServerConfig.SHERIFF_NAME.get())) {
+                    teamName = "032_" + ServerConfig.SHERIFF_NAME.get();
+
+                } else if (isInGroup(player, ServerConfig.TREASURER_GROUP_NAME.get())) {
+                    teamName = "034_ _" + ServerConfig.TREASURER_GROUP_NAME.get();
+                }
+
+            } else {
+                teamName = "063_" + ServerConfig.SWEDISHFURNITURESTORE_GROUP_NAME.get();
+            }
+
+        } else if (isInGroup(player, ServerConfig.LONDON_GROUP_NAME.get())) {
+            if (isInGroup(player, ServerConfig.LONDON_GOVERNMENT_GROUP_NAME.get())) {
+                if (isInGroup(player, ServerConfig.MAYOR_GROUP_NAME.get())) {
+                    teamName = "041_" + ServerConfig.MAYOR_GROUP_NAME.get();
+
+                } else if (isInGroup(player, ServerConfig.SHERIFF_NAME.get())) {
+                    teamName = "042_" + ServerConfig.SHERIFF_NAME.get();
+
+                } else if (isInGroup(player, ServerConfig.TREASURER_GROUP_NAME.get())) {
+                    teamName = "043_" + ServerConfig.TREASURER_GROUP_NAME.get();
+                }
+
+            } else {
+                teamName = "064_" + ServerConfig.SWEDISHFURNITURESTORE_GROUP_NAME.get();
+            }
+
+        } else if (isInGroup(player, ServerConfig.BLACKWATER_GROUP_NAME.get())) {
+            if (isInGroup(player, ServerConfig.BLACKWATER_GOVERNMENT_GROUP_NAME.get())) {
+                if (isInGroup(player, ServerConfig.MAYOR_GROUP_NAME.get())) {
+                    teamName = "051_" + ServerConfig.MAYOR_GROUP_NAME.get();
+
+                } else if (isInGroup(player, ServerConfig.SHERIFF_NAME.get())) {
+                    teamName = "052_" + ServerConfig.SHERIFF_NAME.get();
+
+                } else if (isInGroup(player, ServerConfig.TREASURER_GROUP_NAME.get())) {
+                    teamName = "053_" + ServerConfig.TREASURER_GROUP_NAME.get();
+                }
+
+            } else {
+                teamName = "065_" + ServerConfig.BLACKWATER_GROUP_NAME.get();
             }
         }
 

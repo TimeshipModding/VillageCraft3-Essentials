@@ -17,7 +17,7 @@ public class DiscordIntegrationMethods {
         var link = LinkManager.getLink(null, player.getUUID());
 
         if (link == null) {
-            System.out.println("Skipping Discord role addition: Player " + player.getName().getString() + " is not linked.");
+            System.out.println("Skipping Discord role addition: " + player.getName().getString() + " is not linked.");
             return;
         }
 
@@ -48,7 +48,7 @@ public class DiscordIntegrationMethods {
         var link = LinkManager.getLink(null, player.getUUID());
 
         if (link == null) {
-            System.out.println("Skipping Discord role removal: Player " + player.getName().getString() + " is not linked.");
+            System.out.println("Skipping Discord role removal: " + player.getName().getString() + " is not linked.");
             return;
         }
 
