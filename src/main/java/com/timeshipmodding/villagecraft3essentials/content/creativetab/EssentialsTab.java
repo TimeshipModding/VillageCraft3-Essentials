@@ -224,6 +224,9 @@ public class EssentialsTab {
                 pOutput.accept(CRACKED_SILICON);
                 pOutput.accept(CRACKED_RUBY);
                 pOutput.accept(MOLE_SPAWN_EGG);
-                pOutput.accept(GUBERNATORIAL_HAT_1);
+                pOutput.accept(PROPELLER_HAT);
+                pOutput.accept(VERITY);
+                pOutput.accept(OASIS_HAT_1);
+                pOutput.accept(LONDON_HAT_1);
             }).build());
 }

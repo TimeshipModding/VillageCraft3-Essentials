@@ -27,6 +27,7 @@ public class DataBlockLootTables extends BlockLootSubProvider {
         dropSelf(AMBER_BLOCK.get());
         dropSelf(SILICON_BLOCK.get());
         dropSelf(RUBY_BLOCK.get());
+        dropSelf(VERITY.get());
 
         // Ore Drops
         this.add(JADE_ORE.get(), block -> createOreDrop(JADE_ORE.get(), JADE.get()));

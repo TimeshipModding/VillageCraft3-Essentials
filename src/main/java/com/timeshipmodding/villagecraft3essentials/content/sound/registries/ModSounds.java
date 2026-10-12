@@ -18,6 +18,7 @@ public class ModSounds {
     public static final Supplier<SoundEvent> MOLE_HURT = registerSoundEvent("mole_hurt");
     public static final Supplier<SoundEvent> MOLE_AMBIENT = registerSoundEvent("mole_ambient");
     public static final Supplier<SoundEvent> ATM_USE = registerSoundEvent("atm_use");
+    public static final Supplier<SoundEvent> VERITY = registerSoundEvent("verity");
 
     public static final SoundType CORE_BLOCK_SOUNDS = new SoundType(1f, 1f,
             SoundEvents.BEACON_DEACTIVATE, SoundEvents.STONE_STEP, SoundEvents.STONE_PLACE,

@@ -1,0 +1,31 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "aeronautics"
+    },
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "simplehats"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "villagecraft3essentials",
+  "key": {
+    "!": {
+      "item": "aeronautics:wooden_propeller"
+    },
+    "#": {
+      "item": "simplehats:propelhat"
+    }
+  },
+  "pattern": [
+    "!",
+    "#"
+  ],
+  "result": {
+    "count": 1,
+    "id": "villagecraft3essentials:propeller_hat"
+  }
+}

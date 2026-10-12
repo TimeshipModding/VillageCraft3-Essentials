@@ -14,7 +14,6 @@ import java.util.concurrent.CompletableFuture;
 
 import static com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems.*;
 import static com.timeshipmodding.villagecraft3essentials.content.block.registries.ModBlocks.*;
-import static com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems.RUBY_PICKAXE;
 import static com.timeshipmodding.villagecraft3essentials.infrastructure.tags.registries.ModItemTags.*;
 import static com.timeshipmodding.villagecraft3essentials.infrastructure.tags.registries.CommonItemTags.*;
 import static com.timeshipmodding.villagecraft3essentials.infrastructure.tags.registries.CompatItemTags.*;
@@ -382,12 +381,16 @@ public class DataItemTags extends ItemTagsProvider {
                 .add(RUBY_BLOCK.get().asItem())
                 .add(EMERALD)
                 .add(EMERALD_BLOCK);
+        tag(VILLAGECRAFT_CITY_ROLEPLAY_ITEMS)
+                .add(VERITY.get().asItem());
         tag(OASIS_ROLEPLAY_ITEMS)
                 .add(GUBERNATORIAL_HAT_1.get());
 
         // Accessories Tags
         tag(AccessoriesTags.HAT_TAG)
-                .add(GUBERNATORIAL_HAT_1.get());
+                .add(PROPELLER_HAT.get())
+                .add(OASIS_HAT_1.get())
+                .add(LONDON_HAT_1.get());
 
         // Farmer's Delight Tags
         tag(FARMERSDELIGHT_KNIVES)

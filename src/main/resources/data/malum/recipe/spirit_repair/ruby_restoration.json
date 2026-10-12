@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "malum"
+    }
+  ],
+  "type": "malum:spirit_repair",
+  "regex": {
+    "itemIdRegex": "ruby_.+"
+  },
+  "repairMaterial": {
+    "count": 2,
+    "tag": "c:gems/ruby"
+  },
+  "spirits": [
+    {
+      "type": "malum:arcane",
+      "count": 16
+    },
+    {
+      "type": "malum:earthen",
+      "count": 16
+    }
+  ],
+  "validItems": [
+    "villagecraft3essentials:ruby_sword",
+    "villagecraft3essentials:ruby_shovel",
+    "villagecraft3essentials:ruby_pickaxe",
+    "villagecraft3essentials:ruby_axe",
+    "villagecraft3essentials:ruby_hoe",
+    "villagecraft3essentials:ruby_helmet",
+    "villagecraft3essentials:ruby_chestplate",
+    "villagecraft3essentials:ruby_leggings",
+    "villagecraft3essentials:ruby_boots",
+    "villagecraft3essentials:ruby_knife"
+  ]
+}

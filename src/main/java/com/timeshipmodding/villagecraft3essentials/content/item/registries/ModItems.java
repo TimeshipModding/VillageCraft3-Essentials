@@ -4,6 +4,7 @@ import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
 import com.timeshipmodding.villagecraft3essentials.content.entity.client.registries.ModEntities;
 import com.timeshipmodding.villagecraft3essentials.content.item.roleplayitem.AccessoryRoleplayItem;
 import com.timeshipmodding.villagecraft3essentials.content.item.MissionRewardPlaceholderItem;
+import com.timeshipmodding.villagecraft3essentials.content.item.PropellerHatItem;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.*;
 import net.neoforged.neoforge.common.DeferredSpawnEggItem;
@@ -69,4 +70,7 @@ public class ModItems {
     public static final DeferredItem<Item> WORM_ON_A_STICK = ITEMS.register("worm_on_a_stick", () -> new FoodOnAStickItem<>(new Item.Properties().durability(25), ModEntities.MOLE.get(), 7));
     public static final DeferredItem<Item> POLICE_BATON = ITEMS.register("police_baton", () -> new MaceItem(new Item.Properties().rarity(Rarity.EPIC).durability(500).component(DataComponents.TOOL, MaceItem.createToolProperties()).attributes(MaceItem.createAttributes())));
     public static final DeferredItem<Item> GUBERNATORIAL_HAT_1 = ITEMS.register("gubernatorial_hat_1", () -> new AccessoryRoleplayItem("oasis", new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> OASIS_HAT_1 = ITEMS.register("oasis_hat_1", () -> new AccessoryRoleplayItem("oasis", new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> LONDON_HAT_1 = ITEMS.register("london_hat_1", () -> new AccessoryRoleplayItem("london", new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> PROPELLER_HAT = ITEMS.register("propeller_hat", () -> new PropellerHatItem(new Item.Properties()));
 }

@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "malum"
+    }
+  ],
+  "type": "malum:spirit_repair",
+  "regex": {
+    "itemIdRegex": "amber_.+"
+  },
+  "repairMaterial": {
+    "count": 2,
+    "tag": "c:gems/amber"
+  },
+  "spirits": [
+    {
+      "type": "malum:arcane",
+      "count": 16
+    },
+    {
+      "type": "malum:earthen",
+      "count": 16
+    }
+  ],
+  "validItems": [
+    "villagecraft3essentials:amber_sword",
+    "villagecraft3essentials:amber_shovel",
+    "villagecraft3essentials:amber_pickaxe",
+    "villagecraft3essentials:amber_axe",
+    "villagecraft3essentials:amber_hoe",
+    "villagecraft3essentials:amber_helmet",
+    "villagecraft3essentials:amber_chestplate",
+    "villagecraft3essentials:amber_leggings",
+    "villagecraft3essentials:amber_boots",
+    "villagecraft3essentials:amber_knife"
+  ]
+}

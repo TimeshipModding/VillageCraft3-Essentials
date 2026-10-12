@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "malum"
+    }
+  ],
+  "type": "malum:spirit_repair",
+  "regex": {
+    "itemIdRegex": "jade_.+"
+  },
+  "repairMaterial": {
+    "count": 2,
+    "tag": "c:gems/jade"
+  },
+  "spirits": [
+    {
+      "type": "malum:arcane",
+      "count": 16
+    },
+    {
+      "type": "malum:earthen",
+      "count": 16
+    }
+  ],
+  "validItems": [
+    "villagecraft3essentials:jade_sword",
+    "villagecraft3essentials:jade_shovel",
+    "villagecraft3essentials:jade_pickaxe",
+    "villagecraft3essentials:jade_axe",
+    "villagecraft3essentials:jade_hoe",
+    "villagecraft3essentials:jade_helmet",
+    "villagecraft3essentials:jade_chestplate",
+    "villagecraft3essentials:jade_leggings",
+    "villagecraft3essentials:jade_boots",
+    "villagecraft3essentials:jade_knife"
+  ]
+}
