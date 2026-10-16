@@ -1811,7 +1811,7 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
                 case 18 -> AtmRandomConversionRatesSavedData.getData(server).getRubyToJade()[0];
                 case 19 -> AtmRandomConversionRatesSavedData.getData(server).getRubyToAmber()[0];
                 case 20 -> AtmRandomConversionRatesSavedData.getData(server).getRubyToSilicon()[0];
-                default -> 0;
+                default -> 1;
             };
         }
 

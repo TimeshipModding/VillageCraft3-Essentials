@@ -50,12 +50,12 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
     private static final int SCROLLER_WIDTH = 12;
     private static final int SCROLLER_HEIGHT = 15;
     private static final int RECIPES_COLUMNS = 1;
-    private static final int RECIPES_ROWS = 3;
+    private static final int RECIPES_ROWS = 4;
     private static final int RECIPES_IMAGE_SIZE_WIDTH = 63;
     private static final int RECIPES_IMAGE_SIZE_HEIGHT = 18;
     private static final int SCROLLER_FULL_HEIGHT = 54;
     private static final int RECIPES_X = 66;
-    private static final int RECIPES_Y = 27;
+    private static final int RECIPES_Y = 21;
     private float scrollOffs;
     private boolean scrolling;
     private int startIndex;
@@ -186,7 +186,7 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
                 this.menu.playAtmSound();
 
                 if (Minecraft.getInstance().getConnection() != null) {
-                    PacketDistributor.sendToServer(new AtmRandomConvertButtonPressedPacket(menu.blockEntity.getBlockPos(), i));
+                    PacketDistributor.sendToServer(new AtmRandomConvertButtonPressedPacket(menu.blockEntity.getBlockPos(), i + 1));
                 }
 
                 break;
@@ -202,14 +202,14 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
             this.clearWidgets();
             guiGraphics.blit(getRandomConvertGuiTexture(guiTextureIndex), leftPos, topPos, 0, 0, imageWidth, imageHeight);
 
-            nextMenuButton = this.addRenderableWidget(new ImageButton(leftPos + 141, topPos + 92, 20, 18,
+            nextMenuButton = this.addRenderableWidget(new ImageButton(leftPos + 150, topPos + 92, 20, 18,
                     NEXT_MENU_SPRITES, this::onNextButtonPress, Component.empty()));
 
-            int k = (int)(41.0F * this.scrollOffs);
-            guiGraphics.blitSprite(SCROLLER_SPRITE, leftPos + 133, topPos + 28 + k, SCROLLER_WIDTH, SCROLLER_HEIGHT);
+            int k = (int)(59.0F * this.scrollOffs);
+            guiGraphics.blitSprite(SCROLLER_SPRITE, leftPos + 133, topPos + 22 + k, SCROLLER_WIDTH, SCROLLER_HEIGHT);
             int l = this.leftPos + RECIPES_X;
             int i1 = this.topPos + RECIPES_Y;
-            int j1 = this.startIndex + 3;
+            int j1 = this.startIndex + 4;
             this.renderRandomConvertButtons(l, i1, j1);
             this.renderRandomConvertButtonItems(guiGraphics, l, i1, j1);
 
@@ -226,7 +226,7 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
                     CURRENCY_SELECT_SPRITES, this::onSiliconCurrencyButtonPress, Component.empty()));
             toolConvertButtonRuby = this.addRenderableWidget(new ImageButton(leftPos + 132, topPos + 65, 20, 18,
                     CURRENCY_SELECT_SPRITES, this::onRubyCurrencyButtonPress, Component.empty()));
-            previousMenuButton = this.addRenderableWidget(new ImageButton(leftPos + 114, topPos + 92, 20, 18,
+            previousMenuButton = this.addRenderableWidget(new ImageButton(leftPos + 150, topPos + 92, 20, 18,
                     PREVIOUS_MENU_SPRITES, this::onPreviousButtonPress, Component.empty()));
 
             RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
@@ -266,7 +266,7 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
         if (this.menu.blockEntity.getRandomConvertScreen()) {
             int i = this.leftPos + RECIPES_X;
             int j = this.topPos + RECIPES_Y;
-            int k = this.startIndex + 3;
+            int k = this.startIndex + 4;
 
             if (nextMenuButton.isHovered()) {
                 guiGraphics.renderTooltip(this.font, Component.translatable("tooltips.villagecraft3essentials.atm.nextmenu"), mouseX, mouseY);
@@ -386,7 +386,7 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
         this.scrolling = false;
         int i = this.leftPos + RECIPES_X;
         int j = this.topPos + RECIPES_Y;
-        int k = this.startIndex + 3;
+        int k = this.startIndex + 4;
 
         for (int l = this.startIndex; l < k; l++) {
             int i1 = l - this.startIndex;
