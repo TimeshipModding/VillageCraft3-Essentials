@@ -19,7 +19,7 @@ import java.util.List;
 
 public class ModOreFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_MODIFIED_DIAMOND_MEDIUM = registerKey("ore_modified_diamond_medium");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_MODIFIED_DIAMOND_LARGE = registerKey("ore_modified_diamond_arge");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_MODIFIED_DIAMOND_LARGE = registerKey("ore_modified_diamond_large");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_MODIFIED_DIAMOND_BURIED = registerKey("ore_modified_diamond_buried");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_JADE_MEDIUM = registerKey("ore_jade_medium");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_JADE_LARGE = registerKey("ore_jade_large");
@@ -44,7 +44,7 @@ public class ModOreFeatures {
                 OreConfiguration.target(deepslateReplaceables, Blocks.DEEPSLATE_DIAMOND_ORE.defaultBlockState()));
         List<OreConfiguration.TargetBlockState> jadeOres = List.of(
                 OreConfiguration.target(stoneReplaceables, ModBlocks.JADE_ORE.get().defaultBlockState()),
-                OreConfiguration.target(deepslateReplaceables, ModBlocks.DEEPSLATE_SILICON_ORE.get().defaultBlockState()));
+                OreConfiguration.target(deepslateReplaceables, ModBlocks.DEEPSLATE_JADE_ORE.get().defaultBlockState()));
         List<OreConfiguration.TargetBlockState> amberOres = List.of(
                 OreConfiguration.target(stoneReplaceables, ModBlocks.AMBER_ORE.get().defaultBlockState()),
                 OreConfiguration.target(deepslateReplaceables, ModBlocks.DEEPSLATE_AMBER_ORE.get().defaultBlockState()));
@@ -55,21 +55,21 @@ public class ModOreFeatures {
                 OreConfiguration.target(stoneReplaceables, ModBlocks.RUBY_ORE.get().defaultBlockState()),
                 OreConfiguration.target(deepslateReplaceables, ModBlocks.DEEPSLATE_RUBY_ORE.get().defaultBlockState()));
 
-        register(context, ORE_MODIFIED_DIAMOND_MEDIUM, Feature.ORE, new OreConfiguration(diamondOres, 12, 0.7f));
-        register(context, ORE_MODIFIED_DIAMOND_LARGE, Feature.ORE, new OreConfiguration(diamondOres, 6, 1.0F));
-        register(context, ORE_MODIFIED_DIAMOND_BURIED, Feature.ORE, new OreConfiguration(diamondOres, 8,0.5f));
-        register(context, ORE_JADE_MEDIUM, Feature.ORE, new OreConfiguration(jadeOres, 12, 0.7f));
-        register(context, ORE_JADE_LARGE, Feature.ORE, new OreConfiguration(jadeOres, 6, 1.0F));
-        register(context, ORE_JADE_BURIED, Feature.ORE, new OreConfiguration(jadeOres, 8,0.5f));
-        register(context, ORE_AMBER_MEDIUM, Feature.ORE, new OreConfiguration(amberOres, 12, 0.7f));
-        register(context, ORE_AMBER_LARGE, Feature.ORE, new OreConfiguration(amberOres, 6, 1.0F));
-        register(context, ORE_AMBER_BURIED, Feature.ORE, new OreConfiguration(amberOres, 8,0.5f));
-        register(context, ORE_SILICON_MEDIUM, Feature.ORE, new OreConfiguration(siliconOres, 12, 0.7f));
-        register(context, ORE_SILICON_LARGE, Feature.ORE, new OreConfiguration(siliconOres, 6, 1.0F));
-        register(context, ORE_SILICON_BURIED, Feature.ORE, new OreConfiguration(siliconOres, 8,0.5f));
-        register(context, ORE_RUBY_MEDIUM, Feature.ORE, new OreConfiguration(rubyOres, 12, 0.7f));
-        register(context, ORE_RUBY_LARGE, Feature.ORE, new OreConfiguration(rubyOres, 6, 1.0F));
-        register(context, ORE_RUBY_BURIED, Feature.ORE, new OreConfiguration(rubyOres, 8,0.5f));
+        register(context, ORE_MODIFIED_DIAMOND_MEDIUM, Feature.ORE, new OreConfiguration(diamondOres, 7, 0.7f));
+        register(context, ORE_MODIFIED_DIAMOND_LARGE, Feature.ORE, new OreConfiguration(diamondOres, 12, 1.0F));
+        register(context, ORE_MODIFIED_DIAMOND_BURIED, Feature.ORE, new OreConfiguration(diamondOres, 7,0.5f));
+        register(context, ORE_JADE_MEDIUM, Feature.ORE, new OreConfiguration(jadeOres, 7, 0.7f));
+        register(context, ORE_JADE_LARGE, Feature.ORE, new OreConfiguration(jadeOres, 12, 1.0F));
+        register(context, ORE_JADE_BURIED, Feature.ORE, new OreConfiguration(jadeOres, 7,0.5f));
+        register(context, ORE_AMBER_MEDIUM, Feature.ORE, new OreConfiguration(amberOres, 7, 0.7f));
+        register(context, ORE_AMBER_LARGE, Feature.ORE, new OreConfiguration(amberOres, 12, 1.0F));
+        register(context, ORE_AMBER_BURIED, Feature.ORE, new OreConfiguration(amberOres, 7,0.5f));
+        register(context, ORE_SILICON_MEDIUM, Feature.ORE, new OreConfiguration(siliconOres, 7, 0.7f));
+        register(context, ORE_SILICON_LARGE, Feature.ORE, new OreConfiguration(siliconOres, 12, 1.0F));
+        register(context, ORE_SILICON_BURIED, Feature.ORE, new OreConfiguration(siliconOres, 7,0.5f));
+        register(context, ORE_RUBY_MEDIUM, Feature.ORE, new OreConfiguration(rubyOres, 7, 0.7f));
+        register(context, ORE_RUBY_LARGE, Feature.ORE, new OreConfiguration(rubyOres, 12, 1.0F));
+        register(context, ORE_RUBY_BURIED, Feature.ORE, new OreConfiguration(rubyOres, 7,0.5f));
     }
 
     public static ResourceKey<ConfiguredFeature<?, ?>> registerKey(String name) {
