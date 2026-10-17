@@ -2,6 +2,7 @@ package com.timeshipmodding.villagecraft3essentials.infrastructure.networking.pa
 
 import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
 import com.timeshipmodding.villagecraft3essentials.content.block.entity.AtmBlockEntity;
+import com.timeshipmodding.villagecraft3essentials.content.menu.AtmMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
@@ -10,7 +11,6 @@ import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 
 public record AtmRandomConvertButtonPressedPacket(BlockPos pos, int data) implements CustomPacketPayload {
@@ -31,10 +31,13 @@ public record AtmRandomConvertButtonPressedPacket(BlockPos pos, int data) implem
         ServerPlayer sender = (ServerPlayer) context.player();
         Level level = sender.level();
         BlockPos pos = payload.pos();
-        BlockEntity be = level.getBlockEntity(pos);
 
-        if (be instanceof AtmBlockEntity myBlockEntity) {
-            myBlockEntity.setRandomConvertButtonPressed(payload.data());
+        if (level.getBlockEntity(pos) instanceof AtmBlockEntity atmBlockEntity) {
+            atmBlockEntity.setRandomConvertButtonPressed(payload.data());
+
+            if (sender.containerMenu instanceof AtmMenu atmMenu) {
+                atmMenu.tryMoveItems(payload.data());
+            }
         }
     }
 }

@@ -154,12 +154,12 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
     }
 
     private void randomConvertCurrency(ItemStack outputStack, int randomConvertButtonPressed) {
-        convertAmount = getRandomConvertInputAmount(randomConvertButtonPressed);
+        convertAmount = getRandomConvertInputStack(randomConvertButtonPressed).getCount();
         itemStackHandler.setStackInSlot(OUTPUT_SLOT, outputStack);
     }
 
     public int quickRandomConvertCurrency(ItemStack initialOutputStack, int randomConvertButtonPressed) {
-        convertAmount = getRandomConvertInputAmount(randomConvertButtonPressed);
+        convertAmount = getRandomConvertInputStack(randomConvertButtonPressed).getCount();
         ItemStack initialInputStack = itemStackHandler.getStackInSlot(INPUT_SLOT);
         int currentInputItemCount = initialInputStack.getCount();
         int maxConversions;
@@ -1786,36 +1786,37 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
         return this.convertAmount;
     }
 
-    private int getRandomConvertInputAmount(int conversionButtonPressed) {
+    public ItemStack getRandomConvertInputStack(int conversionButtonPressed) {
         MinecraftServer server = this.level.getServer();
 
         if (server != null) {
+            AtmRandomConversionRatesSavedData data = AtmRandomConversionRatesSavedData.getData(server);
             return switch (conversionButtonPressed) {
-                case 1 -> AtmRandomConversionRatesSavedData.getData(server).getDiamondToJade()[0];
-                case 2 -> AtmRandomConversionRatesSavedData.getData(server).getDiamondToAmber()[0];
-                case 3 -> AtmRandomConversionRatesSavedData.getData(server).getDiamondToSilicon()[0];
-                case 4 -> AtmRandomConversionRatesSavedData.getData(server).getDiamondToRuby()[0];
-                case 5 -> AtmRandomConversionRatesSavedData.getData(server).getJadeToDiamond()[0];
-                case 6 -> AtmRandomConversionRatesSavedData.getData(server).getJadeToAmber()[0];
-                case 7 -> AtmRandomConversionRatesSavedData.getData(server).getJadeToSilicon()[0];
-                case 8 -> AtmRandomConversionRatesSavedData.getData(server).getJadeToRuby()[0];
-                case 9 -> AtmRandomConversionRatesSavedData.getData(server).getAmberToDiamond()[0];
-                case 10 -> AtmRandomConversionRatesSavedData.getData(server).getAmberToJade()[0];
-                case 11 -> AtmRandomConversionRatesSavedData.getData(server).getAmberToSilicon()[0];
-                case 12 -> AtmRandomConversionRatesSavedData.getData(server).getAmberToRuby()[0];
-                case 13 -> AtmRandomConversionRatesSavedData.getData(server).getSiliconToDiamond()[0];
-                case 14 -> AtmRandomConversionRatesSavedData.getData(server).getSiliconToJade()[0];
-                case 15 -> AtmRandomConversionRatesSavedData.getData(server).getSiliconToAmber()[0];
-                case 16 -> AtmRandomConversionRatesSavedData.getData(server).getSiliconToRuby()[0];
-                case 17 -> AtmRandomConversionRatesSavedData.getData(server).getRubyToDiamond()[0];
-                case 18 -> AtmRandomConversionRatesSavedData.getData(server).getRubyToJade()[0];
-                case 19 -> AtmRandomConversionRatesSavedData.getData(server).getRubyToAmber()[0];
-                case 20 -> AtmRandomConversionRatesSavedData.getData(server).getRubyToSilicon()[0];
-                default -> 1;
+                case 1 -> new ItemStack(Items.DIAMOND, data.getDiamondToJade()[0]);
+                case 2 -> new ItemStack(Items.DIAMOND, data.getDiamondToAmber()[0]);
+                case 3 -> new ItemStack(Items.DIAMOND, data.getDiamondToSilicon()[0]);
+                case 4 -> new ItemStack(Items.DIAMOND, data.getDiamondToRuby()[0]);
+                case 5 -> new ItemStack(ModItems.JADE.get(), data.getJadeToDiamond()[0]);
+                case 6 -> new ItemStack(ModItems.JADE.get(), data.getJadeToAmber()[0]);
+                case 7 -> new ItemStack(ModItems.JADE.get(), data.getJadeToSilicon()[0]);
+                case 8 -> new ItemStack(ModItems.JADE.get(), data.getJadeToRuby()[0]);
+                case 9 -> new ItemStack(ModItems.AMBER.get(), data.getAmberToDiamond()[0]);
+                case 10 -> new ItemStack(ModItems.AMBER.get(), data.getAmberToJade()[0]);
+                case 11 -> new ItemStack(ModItems.AMBER.get(), data.getAmberToSilicon()[0]);
+                case 12 -> new ItemStack(ModItems.AMBER.get(), data.getAmberToRuby()[0]);
+                case 13 -> new ItemStack(ModItems.SILICON.get(), data.getSiliconToDiamond()[0]);
+                case 14 -> new ItemStack(ModItems.SILICON.get(), data.getSiliconToJade()[0]);
+                case 15 -> new ItemStack(ModItems.SILICON.get(), data.getSiliconToAmber()[0]);
+                case 16 -> new ItemStack(ModItems.SILICON.get(), data.getSiliconToRuby()[0]);
+                case 17 -> new ItemStack(ModItems.RUBY.get(), data.getRubyToDiamond()[0]);
+                case 18 -> new ItemStack(ModItems.RUBY.get(), data.getRubyToJade()[0]);
+                case 19 -> new ItemStack(ModItems.RUBY.get(), data.getRubyToSilicon()[0]);
+                case 20 -> new ItemStack(ModItems.RUBY.get(), data.getRubyToAmber()[0]);
+                default -> new ItemStack(Items.DIAMOND);
             };
         }
 
-        return 1;
+        return new ItemStack(Items.DIAMOND);
     }
 
     @Nullable

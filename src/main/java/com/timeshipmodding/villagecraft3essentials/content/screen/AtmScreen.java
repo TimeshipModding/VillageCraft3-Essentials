@@ -120,6 +120,7 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
         this.rubyToJade = AtmClientData.getRubyToJade() != null ? AtmClientData.getRubyToJade() : new int[]{};
         this.rubyToAmber = AtmClientData.getRubyToAmber() != null ? AtmClientData.getRubyToAmber() : new int[]{};
         this.rubyToSilicon = AtmClientData.getRubyToSilicon() != null ? AtmClientData.getRubyToSilicon() : new int[]{};
+        rebuildButtons();
     }
 
     private void onDiamondCurrencyButtonPress(Button button) {
@@ -168,6 +169,9 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
             PacketDistributor.sendToServer(new AtmRandomConvertScreenPacket(menu.blockEntity.getBlockPos(), true));
             PacketDistributor.sendToServer(new AtmToolConvertScreenPacket(menu.blockEntity.getBlockPos(), false));
             PacketDistributor.sendToServer(new AtmRefreshSlotsPacket(menu.blockEntity.getBlockPos()));
+            menu.blockEntity.setRandomConvertScreen(true);
+            menu.blockEntity.setToolConvertScreen(false);
+            rebuildWidgets();
         }
     }
 
@@ -177,6 +181,9 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
             PacketDistributor.sendToServer(new AtmRandomConvertScreenPacket(menu.blockEntity.getBlockPos(), false));
             PacketDistributor.sendToServer(new AtmToolConvertScreenPacket(menu.blockEntity.getBlockPos(), true));
             PacketDistributor.sendToServer(new AtmRefreshSlotsPacket(menu.blockEntity.getBlockPos()));
+            menu.blockEntity.setRandomConvertScreen(false);
+            menu.blockEntity.setToolConvertScreen(true);
+            rebuildWidgets();
         }
     }
 
@@ -199,7 +206,6 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
         int guiTextureIndex = this.menu.blockEntity.getGuiTextureIndex();
 
         if (this.menu.blockEntity.getRandomConvertScreen()) {
-            this.clearWidgets();
             guiGraphics.blit(getRandomConvertGuiTexture(guiTextureIndex), leftPos, topPos, 0, 0, imageWidth, imageHeight);
 
             nextMenuButton = this.addRenderableWidget(new ImageButton(leftPos + 150, topPos + 92, 20, 18,
@@ -210,25 +216,9 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
             int l = this.leftPos + RECIPES_X;
             int i1 = this.topPos + RECIPES_Y;
             int j1 = this.startIndex + 4;
-            this.renderRandomConvertButtons(l, i1, j1);
             this.renderRandomConvertButtonItems(guiGraphics, l, i1, j1);
 
         } else if (this.menu.blockEntity.getToolConvertScreen()) {
-            this.clearWidgets();
-
-            toolConvertButtonDiamond = this.addRenderableWidget(new ImageButton(leftPos + 24, topPos + 65, 20, 18,
-                    CURRENCY_SELECT_SPRITES, this::onDiamondCurrencyButtonPress, Component.empty()));
-            toolConvertButtonJade = this.addRenderableWidget(new ImageButton(leftPos + 51, topPos + 65, 20, 18,
-                    CURRENCY_SELECT_SPRITES, this::onJadeCurrencyButtonPress, Component.empty()));
-            toolConvertButtonAmber = this.addRenderableWidget(new ImageButton(leftPos + 78, topPos + 65, 20, 18,
-                    CURRENCY_SELECT_SPRITES, this::onAmberCurrencyButtonPress, Component.empty()));
-            toolConvertButtonSilicon = this.addRenderableWidget(new ImageButton(leftPos + 105, topPos + 65, 20, 18,
-                    CURRENCY_SELECT_SPRITES, this::onSiliconCurrencyButtonPress, Component.empty()));
-            toolConvertButtonRuby = this.addRenderableWidget(new ImageButton(leftPos + 132, topPos + 65, 20, 18,
-                    CURRENCY_SELECT_SPRITES, this::onRubyCurrencyButtonPress, Component.empty()));
-            previousMenuButton = this.addRenderableWidget(new ImageButton(leftPos + 150, topPos + 92, 20, 18,
-                    PREVIOUS_MENU_SPRITES, this::onPreviousButtonPress, Component.empty()));
-
             RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
             guiGraphics.blit(getToolConvertGuiTexture(guiTextureIndex), leftPos, topPos, 0, 0, imageWidth, imageHeight);
             guiGraphics.renderFakeItem(new ItemStack(Items.DIAMOND), leftPos + 26, topPos + 66);
@@ -277,32 +267,34 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
                 int k1 = j + i1 / RECIPES_COLUMNS * RECIPES_IMAGE_SIZE_HEIGHT + 2;
 
                 if (mouseX >= i && mouseX < i + RECIPES_IMAGE_SIZE_WIDTH && mouseY >= k1 && mouseY < k1 + RECIPES_IMAGE_SIZE_HEIGHT) {
-                    if (randomConvertButtons[l].isHovered()) {
-                        Component tooltipText = switch (l) {
-                            case 0 -> Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert1", diamondToJade[0], diamondToJade[1]);
-                            case 1 -> Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert2", diamondToAmber[0], diamondToAmber[1]);
-                            case 2 -> Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert3", diamondToSilicon[0], diamondToSilicon[1]);
-                            case 3 -> Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert4", diamondToRuby[0], diamondToRuby[1]);
-                            case 4 -> Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert5", jadeToDiamond[0], jadeToDiamond[1]);
-                            case 5 -> Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert6", jadeToAmber[0], jadeToAmber[1]);
-                            case 6 -> Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert7", jadeToSilicon[0], jadeToSilicon[1]);
-                            case 7 -> Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert8", jadeToRuby[0], jadeToRuby[1]);
-                            case 8 -> Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert9", amberToDiamond[0], amberToDiamond[1]);
-                            case 9 -> Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert10", amberToJade[0], amberToJade[1]);
-                            case 10 -> Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert11", amberToSilicon[0], amberToSilicon[1]);
-                            case 11 -> Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert12", amberToRuby[0], amberToRuby[1]);
-                            case 12 -> Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert13", siliconToDiamond[0], siliconToDiamond[1]);
-                            case 13 -> Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert14", siliconToJade[0], siliconToJade[1]);
-                            case 14 -> Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert15", siliconToAmber[0], siliconToAmber[1]);
-                            case 15 -> Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert16", siliconToRuby[0], siliconToRuby[1]);
-                            case 16 -> Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert17", rubyToDiamond[0], rubyToDiamond[1]);
-                            case 17 -> Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert18", rubyToJade[0], rubyToJade[1]);
-                            case 18 -> Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert19", rubyToAmber[0], rubyToAmber[1]);
-                            case 19 -> Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert20", rubyToSilicon[0], rubyToSilicon[1]);
-                            default -> throw new IllegalStateException("Unexpected value: " + l);
-                        };
+                    if (l >= 0 && l < randomConvertButtons.length && randomConvertButtons[l] != null) {
+                        if (randomConvertButtons[l].isHovered()) {
+                            Component tooltipText = switch (l) {
+                                case 0 -> Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert1", diamondToJade[0], diamondToJade[1]);
+                                case 1 -> Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert2", diamondToAmber[0], diamondToAmber[1]);
+                                case 2 -> Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert3", diamondToSilicon[0], diamondToSilicon[1]);
+                                case 3 -> Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert4", diamondToRuby[0], diamondToRuby[1]);
+                                case 4 -> Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert5", jadeToDiamond[0], jadeToDiamond[1]);
+                                case 5 -> Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert6", jadeToAmber[0], jadeToAmber[1]);
+                                case 6 -> Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert7", jadeToSilicon[0], jadeToSilicon[1]);
+                                case 7 -> Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert8", jadeToRuby[0], jadeToRuby[1]);
+                                case 8 -> Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert9", amberToDiamond[0], amberToDiamond[1]);
+                                case 9 -> Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert10", amberToJade[0], amberToJade[1]);
+                                case 10 -> Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert11", amberToSilicon[0], amberToSilicon[1]);
+                                case 11 -> Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert12", amberToRuby[0], amberToRuby[1]);
+                                case 12 -> Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert13", siliconToDiamond[0], siliconToDiamond[1]);
+                                case 13 -> Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert14", siliconToJade[0], siliconToJade[1]);
+                                case 14 -> Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert15", siliconToAmber[0], siliconToAmber[1]);
+                                case 15 -> Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert16", siliconToRuby[0], siliconToRuby[1]);
+                                case 16 -> Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert17", rubyToDiamond[0], rubyToDiamond[1]);
+                                case 17 -> Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert18", rubyToJade[0], rubyToJade[1]);
+                                case 18 -> Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert19", rubyToAmber[0], rubyToAmber[1]);
+                                case 19 -> Component.translatable("tooltips.villagecraft3essentials.atm.randomconvert20", rubyToSilicon[0], rubyToSilicon[1]);
+                                default -> throw new IllegalStateException("Unexpected value: " + l);
+                            };
 
-                        guiGraphics.renderTooltip(this.font, tooltipText, mouseX, mouseY);
+                            guiGraphics.renderTooltip(this.font, tooltipText, mouseX, mouseY);
+                        }
                     }
                 }
             }
@@ -329,14 +321,53 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
         }
     }
 
-    private void renderRandomConvertButtons(int x, int y, int lastVisibleElementIndex) {
+    private void rebuildButtons() {
+        this.clearWidgets();
+
+        if (this.menu.blockEntity.getRandomConvertScreen()) {
+            nextMenuButton = this.addRenderableWidget(new ImageButton(leftPos + 150, topPos + 92, 20, 18,
+                    NEXT_MENU_SPRITES, this::onNextButtonPress, Component.empty()));
+
+            updateScrollableWidgets();
+
+        } else if (this.menu.blockEntity.getToolConvertScreen()) {
+            toolConvertButtonDiamond = this.addRenderableWidget(new ImageButton(leftPos + 24, topPos + 65, 20, 18,
+                    CURRENCY_SELECT_SPRITES, this::onDiamondCurrencyButtonPress, Component.empty()));
+            toolConvertButtonJade = this.addRenderableWidget(new ImageButton(leftPos + 51, topPos + 65, 20, 18,
+                    CURRENCY_SELECT_SPRITES, this::onJadeCurrencyButtonPress, Component.empty()));
+            toolConvertButtonAmber = this.addRenderableWidget(new ImageButton(leftPos + 78, topPos + 65, 20, 18,
+                    CURRENCY_SELECT_SPRITES, this::onAmberCurrencyButtonPress, Component.empty()));
+            toolConvertButtonSilicon = this.addRenderableWidget(new ImageButton(leftPos + 105, topPos + 65, 20, 18,
+                    CURRENCY_SELECT_SPRITES, this::onSiliconCurrencyButtonPress, Component.empty()));
+            toolConvertButtonRuby = this.addRenderableWidget(new ImageButton(leftPos + 132, topPos + 65, 20, 18,
+                    CURRENCY_SELECT_SPRITES, this::onRubyCurrencyButtonPress, Component.empty()));
+            previousMenuButton = this.addRenderableWidget(new ImageButton(leftPos + 150, topPos + 92, 20, 18,
+                    PREVIOUS_MENU_SPRITES, this::onPreviousButtonPress, Component.empty()));
+        }
+    }
+
+    private void updateScrollableWidgets() {
+        if (!this.menu.blockEntity.getRandomConvertScreen()) return;
+
+        for (int i = 0; i < randomConvertButtons.length; i++) {
+            if (randomConvertButtons[i] != null) {
+                this.removeWidget(randomConvertButtons[i]);
+                randomConvertButtons[i] = null;
+            }
+        }
+
+        int x = this.leftPos + RECIPES_X;
+        int y = this.topPos + RECIPES_Y;
+        int lastVisibleElementIndex = this.startIndex + 4;
+
         for (int i = this.startIndex; i < lastVisibleElementIndex && i < 20; i++) {
             int j = i - this.startIndex;
             int l = j / RECIPES_COLUMNS;
             int i1 = y + l * RECIPES_IMAGE_SIZE_HEIGHT + 2;
 
             this.randomConvertButtons[i] = this.addRenderableWidget(new ImageButton(x, i1 - 1, RECIPES_IMAGE_SIZE_WIDTH, RECIPES_IMAGE_SIZE_HEIGHT,
-                    CURRENCY_CONVERT_SPRITES, this::onRandomConvertButtonPress, Component.empty()));
+                    CURRENCY_CONVERT_SPRITES, this::onRandomConvertButtonPress, Component.empty()
+            ));
         }
     }
 
@@ -418,11 +449,12 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
             this.scrollOffs = ((float)mouseY - (float)i - 7.5F) / ((float)(j - i) - 15.0F);
             this.scrollOffs = Mth.clamp(this.scrollOffs, 0.0F, 1.0F);
             this.startIndex = (int)((double)(this.scrollOffs * (float)this.getOffscreenRows()) + 0.5) * RECIPES_COLUMNS;
+            updateScrollableWidgets();
             return true;
 
-        } else {
-            return super.mouseDragged(mouseX, mouseY, button, dragX, dragY);
         }
+
+        return super.mouseDragged(mouseX, mouseY, button, dragX, dragY);
     }
 
     @Override
@@ -431,6 +463,7 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
         float f = (float)scrollY / (float)i;
         this.scrollOffs = Mth.clamp(this.scrollOffs - f, 0.0F, 1.0F);
         this.startIndex = (int)((double)(this.scrollOffs * (float)i) + 0.5) * RECIPES_COLUMNS;
+        updateScrollableWidgets();
         return true;
     }
 
