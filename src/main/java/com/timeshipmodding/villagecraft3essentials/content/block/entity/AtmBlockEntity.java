@@ -2,6 +2,7 @@ package com.timeshipmodding.villagecraft3essentials.content.block.entity;
 
 import com.teammetallurgy.aquaculture.init.AquaItems;
 import com.timeshipmodding.villagecraft3essentials.content.block.entity.registries.ModBlockEntities;
+import com.timeshipmodding.villagecraft3essentials.content.block.registries.ModBlocks;
 import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModCompatItems;
 import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems;
 import com.timeshipmodding.villagecraft3essentials.content.menu.AtmMenu;
@@ -26,6 +27,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.fml.ModList;
@@ -48,13 +50,14 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
     private static final int OUTPUT_SLOT = 1;
     private int guiTextureIndex = 0;
     private int convertAmount = 0;
-    public boolean randomConvertScreen = false;
+    public boolean randomConvertScreen = true;
     public boolean toolConvertScreen = false;
     public int randomConvertButtonPressed = 0;
     public int toolConvertButtonPressed = 0;
 
     public AtmBlockEntity(BlockPos pos, BlockState blockState) {
         super(ModBlockEntities.ATM_BLOCKENTITY.get(), pos, blockState);
+        this.guiTextureIndex = getIndexFromBlockState(blockState);
     }
 
     @Override
@@ -1612,7 +1615,6 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
             } else if (ModList.get().isLoaded("archers") && inputItem == BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "silicon_spear"))) {
                 inputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "silicon_spear")));
                 outputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "ruby_spear")));
-                System.out.println("why");
             }
         }
 
@@ -1817,6 +1819,26 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
         }
 
         return new ItemStack(Items.DIAMOND);
+    }
+
+    private int getIndexFromBlockState(BlockState state) {
+        Block block = state.getBlock();
+        if (block == ModBlocks.BLUE_ATM.get()) return 2;
+        if (block == ModBlocks.BROWN_ATM.get()) return 3;
+        if (block == ModBlocks.CYAN_ATM.get()) return 4;
+        if (block == ModBlocks.GRAY_ATM.get()) return 5;
+        if (block == ModBlocks.GREEN_ATM.get()) return 6;
+        if (block == ModBlocks.LIGHT_BLUE_ATM.get()) return 7;
+        if (block == ModBlocks.LIGHT_GRAY_ATM.get()) return 8;
+        if (block == ModBlocks.LIME_ATM.get()) return 9;
+        if (block == ModBlocks.MAGENTA_ATM.get()) return 10;
+        if (block == ModBlocks.ORANGE_ATM.get()) return 11;
+        if (block == ModBlocks.PINK_ATM.get()) return 12;
+        if (block == ModBlocks.PURPLE_ATM.get()) return 13;
+        if (block == ModBlocks.RED_ATM.get()) return 14;
+        if (block == ModBlocks.WHITE_ATM.get()) return 15;
+        if (block == ModBlocks.YELLOW_ATM.get()) return 16;
+        return 0;
     }
 
     @Nullable

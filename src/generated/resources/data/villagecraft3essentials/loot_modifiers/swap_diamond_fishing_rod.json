@@ -1,0 +1,15 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "aquaculture"
+    }
+  ],
+  "type": "villagecraft3essentials:swap_compat_item_loot_modifier",
+  "conditions": [],
+  "replacementCurrency1": "villagecraft3essentials:jade_fishing_rod",
+  "replacementCurrency2": "villagecraft3essentials:amber_fishing_rod",
+  "replacementCurrency3": "villagecraft3essentials:silicon_fishing_rod",
+  "replacementCurrency4": "villagecraft3essentials:ruby_fishing_rod",
+  "targetCurrency": "aquaculture:diamond_fishing_rod"
+}

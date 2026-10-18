@@ -1,0 +1,15 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "archers"
+    }
+  ],
+  "type": "villagecraft3essentials:swap_compat_item_loot_modifier",
+  "conditions": [],
+  "replacementCurrency1": "minecraft:air",
+  "replacementCurrency2": "minecraft:air",
+  "replacementCurrency3": "minecraft:air",
+  "replacementCurrency4": "minecraft:air",
+  "targetCurrency": "archers:diamond_spear"
+}

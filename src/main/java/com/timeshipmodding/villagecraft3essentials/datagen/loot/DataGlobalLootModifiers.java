@@ -1,21 +1,26 @@
 package com.timeshipmodding.villagecraft3essentials.datagen.loot;
 
+import com.teammetallurgy.aquaculture.api.AquacultureAPI;
+import com.teammetallurgy.aquaculture.init.AquaItems;
 import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
 import com.timeshipmodding.villagecraft3essentials.content.loot.modifier.*;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.loot.predicates.*;
+import net.neoforged.neoforge.common.conditions.ModLoadedCondition;
 import net.neoforged.neoforge.common.data.GlobalLootModifierProvider;
-import net.neoforged.neoforge.common.loot.LootTableIdCondition;
+import vectorwing.farmersdelight.common.registry.ModItems;
 
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
-import java.util.regex.Pattern;
 
 import static com.timeshipmodding.villagecraft3essentials.content.block.registries.ModBlocks.*;
 import static com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems.*;
+import static com.timeshipmodding.villagecraft3essentials.content.item.registries.ModCompatItems.*;
 
 public class DataGlobalLootModifiers extends GlobalLootModifierProvider {
     public DataGlobalLootModifiers(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
@@ -45,7 +50,6 @@ public class DataGlobalLootModifiers extends GlobalLootModifierProvider {
                 LootItemRandomChanceCondition.randomChance(0.0225f).build()}, WORM.get()));
 
         // Swap Item Loot Modifiers
-        // TODO: add compat items through json files
         add("swap_diamond_block", new SwapItemLootModifier(new LootItemCondition[]{
                 InvertedLootItemCondition.invert(LootItemBlockStatePropertyCondition.hasBlockStateProperties(Blocks.DIAMOND_BLOCK)).build()},
                 Blocks.DIAMOND_BLOCK.asItem(), JADE_BLOCK.asItem(), AMBER_BLOCK.asItem(), SILICON_BLOCK.asItem(), RUBY_BLOCK.asItem()));
@@ -79,6 +83,26 @@ public class DataGlobalLootModifiers extends GlobalLootModifierProvider {
                 InvertedLootItemCondition.invert(LootItemBlockStatePropertyCondition.hasBlockStateProperties(Blocks.DIAMOND_ORE)).build(),
                 InvertedLootItemCondition.invert(LootItemBlockStatePropertyCondition.hasBlockStateProperties(Blocks.DEEPSLATE_DIAMOND_ORE)).build()},
                 Items.DIAMOND, JADE.get(), AMBER.get(), SILICON.get(), RUBY.get()));
+
+        // Swap Compat Item Loot Modifiers
+        add("swap_diamond_spear", new SwapCompatItemLootModifier(new LootItemCondition[]{},
+                        ResourceLocation.fromNamespaceAndPath("archers", "diamond_spear"), BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "jade_spear")), BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "amber_spear")), BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "silicon_spear")), BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "ruby_spear"))),
+                List.of(new ModLoadedCondition("archers")));
+        add("swap_diamond_knife", new SwapCompatItemLootModifier(new LootItemCondition[]{},
+                        ResourceLocation.fromNamespaceAndPath("farmersdelight", "diamond_knife"), JADE_KNIFE.get(), AMBER_KNIFE.get(), SILICON_KNIFE.get(), RUBY_KNIFE.get()),
+                List.of(new ModLoadedCondition("farmersdelight")));
+        add("swap_diamond_fishing_rod", new SwapCompatItemLootModifier(new LootItemCondition[]{},
+                        ResourceLocation.fromNamespaceAndPath("aquaculture", "diamond_fishing_rod"), JADE_FISHING_ROD.get(), AMBER_FISHING_ROD.get(), SILICON_FISHING_ROD.get(), RUBY_FISHING_ROD.get()),
+                List.of(new ModLoadedCondition("aquaculture")));
+        add("swap_diamond_fillet_knife", new SwapCompatItemLootModifier(new LootItemCondition[]{},
+                        ResourceLocation.fromNamespaceAndPath("aquaculture", "diamond_fillet_knife"), JADE_FILLET_KNIFE.get(), AMBER_FILLET_KNIFE.get(), SILICON_FILLET_KNIFE.get(), RUBY_FILLET_KNIFE.get()),
+                List.of(new ModLoadedCondition("aquaculture")));
+        add("swap_diamond_hook", new SwapCompatItemLootModifier(new LootItemCondition[]{},
+                        ResourceLocation.fromNamespaceAndPath("aquaculture", "diamond_hook"), JADE_HOOK.get(), AMBER_HOOK.get(), SILICON_HOOK.get(), RUBY_HOOK.get()),
+                List.of(new ModLoadedCondition("aquaculture")));
+        add("swap_diamond_brush", new SwapCompatItemLootModifier(new LootItemCondition[]{},
+                        ResourceLocation.fromNamespaceAndPath("betterarcheology", "diamond_brush"), JADE_BRUSH.get(), AMBER_BRUSH.get(), SILICON_BRUSH.get(), RUBY_BRUSH.get()),
+                List.of(new ModLoadedCondition("betterarcheology")));
 
         // Replace Non Player Drop Item Loot Modifiers
         add("replace_diamond_ore_item_drop", new ReplaceNonPlayerItemLootModifier(new LootItemCondition[]{
