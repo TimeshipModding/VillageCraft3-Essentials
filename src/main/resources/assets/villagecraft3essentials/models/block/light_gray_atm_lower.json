@@ -4,7 +4,7 @@
 	"texture_size": [48, 48],
 	"textures": {
 		"11": "villagecraft3essentials:block/atm/light_gray_atm",
-		"particle": "block/light_gray_concrete"
+		"particle": "villagecraft3essentials:block/atm/light_blue_atm"
 	},
 	"elements": [
 		{

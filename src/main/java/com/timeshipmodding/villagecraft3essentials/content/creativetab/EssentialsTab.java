@@ -226,7 +226,10 @@ public class EssentialsTab {
                 pOutput.accept(MOLE_SPAWN_EGG);
                 pOutput.accept(PROPELLER_HAT);
                 pOutput.accept(VERITY);
+                pOutput.accept(VILLAGECRAFTCITY_HAT_1);
+                pOutput.accept(VILLAGECRAFTCITY_NECKLACE_1);
                 pOutput.accept(OASIS_HAT_1);
                 pOutput.accept(LONDON_HAT_1);
+                pOutput.accept(LONDON_HAT_2);
             }).build());
 }

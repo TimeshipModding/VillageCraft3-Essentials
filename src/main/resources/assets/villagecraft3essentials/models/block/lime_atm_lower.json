@@ -4,7 +4,7 @@
 	"texture_size": [48, 48],
 	"textures": {
 		"11": "villagecraft3essentials:block/atm/lime_atm",
-		"particle": "block/lime_concrete"
+		"particle": "villagecraft3essentials:block/atm/lime_atm"
 	},
 	"elements": [
 		{

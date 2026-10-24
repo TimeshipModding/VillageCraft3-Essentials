@@ -50,45 +50,45 @@ public class ServerConfig {
         BUILDER.comment("Names of the town luckperms group names that are set up on the server");
 
         VILLAGECRAFTCITY_GROUP_NAME = BUILDER
-                .define("villagecraftCityGroupName", "villagecraftcity");
+                .define("villagecraftCityGroupName", "vcc.civ");
         OASIS_GROUP_NAME = BUILDER
-                .define("oasisGroupName", "oasis");
+                .define("oasisGroupName", "slubberdegullions");
         SWEDISHFURNITURESTORE_GROUP_NAME = BUILDER
-                .define("swedishFurnitureStoreGroupName", "swedishfurniturestore");
+                .define("swedishFurnitureStoreGroupName", "minimum-wage-employees");
         LONDON_GROUP_NAME = BUILDER
-                .define("londonGroupName", "london");
+                .define("londonGroupName", "engineers");
         BLACKWATER_GROUP_NAME = BUILDER
-                .define("blackWaterGroupName", "blackwater");
+                .define("blackWaterGroupName", "wog");
 
         BUILDER.pop();
         BUILDER.push("Town Blacklisted Luckperms Group Names");
         BUILDER.comment("Names of the town blacklisted luckperms group names that are set up on the server");
 
         VILLAGECRAFTCITY_BLACKLISTED_GROUP_NAME = BUILDER
-                .define("villagecraftCityBlacklistedGroupName", "villagecraftcityblacklisted");
+                .define("villagecraftCityBlacklistedGroupName", "villagecraftcity-blacklisted");
         OASIS_BLACKLISTED_GROUP_NAME = BUILDER
-                .define("oasisBlacklistedGroupName", "oasisblacklisted");
+                .define("oasisBlacklistedGroupName", "oasis-blacklisted");
         SWEDISHFURNITURESTORE_BLACKLISTED_GROUP_NAME = BUILDER
-                .define("swedishFurnitureStoreBlacklistedGroupName", "swedishfurniturestoreblacklisted");
+                .define("swedishFurnitureStoreBlacklistedGroupName", "swedishfurniturestore-blacklisted");
         LONDON_BLACKLISTED_GROUP_NAME = BUILDER
-                .define("londonBlacklistedGroupName", "londonblacklisted");
+                .define("londonBlacklistedGroupName", "london-blacklisted");
         BLACKWATER_BLACKLISTED_GROUP_NAME = BUILDER
-                .define("blackWaterBlacklistedGroupName", "blackwaterblacklisted");
+                .define("blackWaterBlacklistedGroupName", "blackwater-blacklisted");
 
         BUILDER.pop();
         BUILDER.push("Town Government Luckperms Group Names");
         BUILDER.comment("Names of the town government luckperms group names that are set up on the server");
 
         VILLAGECRAFTCITY_GOVERNMENT_GROUP_NAME = BUILDER
-                .define("villagecraftCityGovernmentGroupName", "vccgov");
+                .define("villagecraftCityGovernmentGroupName", "vcc.gov");
         OASIS_GOVERNMENT_GROUP_NAME = BUILDER
-                .define("oasisGovernmentGroupName", "thegubernatorials");
+                .define("oasisGovernmentGroupName", "the-gubernatorials");
         SWEDISHFURNITURESTORE_GOVERNMENT_GROUP_NAME = BUILDER
-                .define("swedishFurnitureStoreGovernmentGroupName", "itsupportteam");
+                .define("swedishFurnitureStoreGovernmentGroupName", "it-support-team");
         LONDON_GOVERNMENT_GROUP_NAME = BUILDER
-                .define("londonGovernmentGroupName", "chieftechnicians");
+                .define("londonGovernmentGroupName", "chief-technicians");
         BLACKWATER_GOVERNMENT_GROUP_NAME = BUILDER
-                .define("blackWaterGovernmentGroupName", "wogenterprises");
+                .define("blackWaterGovernmentGroupName", "wog-enterprises");
 
         BUILDER.pop();
         BUILDER.push("Town Government Role Luckperms Group Names");
