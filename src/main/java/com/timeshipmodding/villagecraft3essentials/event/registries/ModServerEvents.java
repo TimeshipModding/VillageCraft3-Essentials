@@ -16,6 +16,8 @@ import net.minecraft.network.protocol.game.ClientboundTabListPacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.scores.DisplaySlot;
+import net.minecraft.world.scores.Objective;
 import net.minecraft.world.scores.Scoreboard;
 import net.minecraft.world.scores.criteria.ObjectiveCriteria;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -58,7 +60,7 @@ public class ModServerEvents {
         int[] diamondToAmber = new int[]{diamondAmber / findHighestCommonFactor(diamondAmber, amber), amber / findHighestCommonFactor(diamondAmber, amber)};
         int[] diamondToSilicon = new int[]{diamondSilicon / findHighestCommonFactor(diamondSilicon, silicon), silicon / findHighestCommonFactor(diamondSilicon, silicon)};
         int[] diamondToRuby = new int[]{diamondRuby / findHighestCommonFactor(diamondRuby, ruby), ruby / findHighestCommonFactor(diamondRuby, ruby)};
-        int[] jadeToDiamond = new int[]{jade / findHighestCommonFactor(jade, diamondJade), diamondJade / findHighestCommonFactor(diamondAmber, jade)};
+        int[] jadeToDiamond = new int[]{jade / findHighestCommonFactor(diamondJade, jade), diamondJade / findHighestCommonFactor(diamondJade, jade)};
         int[] jadeToAmber = new int[]{scaledJadeAmber / findHighestCommonFactor(scaledJadeAmber, scaledAmberJade), scaledAmberJade / findHighestCommonFactor(scaledJadeAmber, scaledAmberJade)};
         int[] jadeToSilicon = new int[]{scaledJadeSilicon / findHighestCommonFactor(scaledJadeSilicon, scaledSiliconJade), scaledSiliconJade / findHighestCommonFactor(scaledJadeSilicon, scaledSiliconJade)};
         int[] jadeToRuby = new int[]{scaledJadeRuby / findHighestCommonFactor(scaledJadeRuby, scaledRubyJade), scaledRubyJade / findHighestCommonFactor(scaledJadeRuby, scaledRubyJade)};

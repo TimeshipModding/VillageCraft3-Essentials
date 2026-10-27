@@ -76,6 +76,7 @@ public class DataItemModels extends ItemModelProvider {
         handheldItem(JADE_HOE.get());
         handheldItem(JADE_KNIFE.get());
         handheldItem(JADE_FILLET_KNIFE.get());
+        handheldItem(JADE_BACKPORT_SPEAR.get());
         handheldItem(AMBER_SWORD.get());
         handheldItem(AMBER_SHOVEL.get());
         handheldItem(AMBER_PICKAXE.get());
@@ -83,6 +84,7 @@ public class DataItemModels extends ItemModelProvider {
         handheldItem(AMBER_HOE.get());
         handheldItem(AMBER_KNIFE.get());
         handheldItem(AMBER_FILLET_KNIFE.get());
+        handheldItem(AMBER_BACKPORT_SPEAR.get());
         handheldItem(SILICON_SWORD.get());
         handheldItem(SILICON_SHOVEL.get());
         handheldItem(SILICON_PICKAXE.get());
@@ -90,6 +92,7 @@ public class DataItemModels extends ItemModelProvider {
         handheldItem(SILICON_HOE.get());
         handheldItem(SILICON_KNIFE.get());
         handheldItem(SILICON_FILLET_KNIFE.get());
+        handheldItem(SILICON_BACKPORT_SPEAR.get());
         handheldItem(RUBY_SWORD.get());
         handheldItem(RUBY_SHOVEL.get());
         handheldItem(RUBY_PICKAXE.get());
@@ -97,6 +100,7 @@ public class DataItemModels extends ItemModelProvider {
         handheldItem(RUBY_HOE.get());
         handheldItem(RUBY_KNIFE.get());
         handheldItem(RUBY_FILLET_KNIFE.get());
+        handheldItem(RUBY_BACKPORT_SPEAR.get());
         handheldItem(POLICE_BATON.get());
         handheldRodItem(WORM_ON_A_STICK.get());
 
@@ -106,21 +110,25 @@ public class DataItemModels extends ItemModelProvider {
         trimmedArmorItem(JADE_LEGGINGS);
         trimmedArmorItem(JADE_BOOTS);
         basicItem(JADE_HORSE_ARMOR.get());
+        basicItem(AMBER_NAUTILUS_ARMOR.get());
         trimmedArmorItem(AMBER_HELMET);
         trimmedArmorItem(AMBER_CHESTPLATE);
         trimmedArmorItem(AMBER_LEGGINGS);
         trimmedArmorItem(AMBER_BOOTS);
         basicItem(AMBER_HORSE_ARMOR.get());
+        basicItem(JADE_NAUTILUS_ARMOR.get());
         trimmedArmorItem(SILICON_HELMET);
         trimmedArmorItem(SILICON_CHESTPLATE);
         trimmedArmorItem(SILICON_LEGGINGS);
         trimmedArmorItem(SILICON_BOOTS);
         basicItem(SILICON_HORSE_ARMOR.get());
+        basicItem(SILICON_NAUTILUS_ARMOR.get());
         trimmedArmorItem(RUBY_HELMET);
         trimmedArmorItem(RUBY_CHESTPLATE);
         trimmedArmorItem(RUBY_LEGGINGS);
         trimmedArmorItem(RUBY_BOOTS);
         basicItem(RUBY_HORSE_ARMOR.get());
+        basicItem(RUBY_NAUTILUS_ARMOR.get());
 
         // Simple Block Item
         simpleBlockItem(BLACK_ATM.get());

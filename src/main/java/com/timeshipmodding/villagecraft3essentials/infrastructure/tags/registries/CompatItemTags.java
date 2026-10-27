@@ -13,4 +13,6 @@ public class CompatItemTags {
     public static TagKey<Item> RPG_SERIES_ARCHETYPE_MELEE_DAMAGE_WEAPON = ItemTags.create(ResourceLocation.fromNamespaceAndPath("rpg_series", "archetype/melee_damage_weapon"));
     public static TagKey<Item> SPELL_ENGINE_HANDHELD = ItemTags.create(ResourceLocation.fromNamespaceAndPath("spell_engine", "handheld"));
     public static TagKey<Item> ARCHERS_SPEARS = ItemTags.create(ResourceLocation.fromNamespaceAndPath("archers", "spears"));
+    public static TagKey<Item> VANILLA_BACKPORT_SPEARS = ItemTags.create(ResourceLocation.fromNamespaceAndPath("minecraft", "spears"));
+    public static TagKey<Item> VANILLA_BACKPORT_LUNGE_ENCHANTABLE = ItemTags.create(ResourceLocation.fromNamespaceAndPath("minecraft", "lunge_enchantable"));
 }

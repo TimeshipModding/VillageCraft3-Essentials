@@ -151,8 +151,14 @@ dependencies {
     compileOnly("maven.modrinth:tiny-config:${project.tiny_config_version}-neoforge")
 
     // BlueMap Dependency
-    compileOnly ("de.bluecolored:bluemap-api:${project.bluemap_api_version}")
+    compileOnly("de.bluecolored:bluemap-api:${project.bluemap_api_version}")
     dataAdditionalRuntimeClasspath("de.bluecolored:bluemap-api:${project.bluemap_api_version}")
+
+    // Vanilla Backport/Platform Dependency
+    compileOnly("curse.maven:vanillabackport-417430:9318571")
+    compileOnly("curse.maven:platform-997634:9318519")
+    dataAdditionalRuntimeClasspath("curse.maven:vanillabackport-417430:9318571")
+    dataAdditionalRuntimeClasspath("curse.maven:platform-997634:9318519")
 }
 
 // gradle.properties entries

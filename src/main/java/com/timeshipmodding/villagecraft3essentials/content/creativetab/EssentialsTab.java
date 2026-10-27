@@ -70,6 +70,10 @@ public class EssentialsTab {
                 pOutput.accept(DIAMOND_HOE);
                 pOutput.accept(DIAMOND_SWORD);
 
+                if (ModList.get().isLoaded("vanillabackport")) {
+                    pOutput.accept(com.blackgear.vanillabackport.common.registries.items.ModItems.DIAMOND_SPEAR.get());
+                }
+
                 if (ModList.get().isLoaded("archers")) {
                     pOutput.accept(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("archers", "diamond_spear")));
                 }
@@ -93,6 +97,10 @@ public class EssentialsTab {
                 pOutput.accept(JADE_AXE);
                 pOutput.accept(JADE_HOE);
                 pOutput.accept(JADE_SWORD);
+
+                if (ModList.get().isLoaded("vanillabackport")) {
+                    pOutput.accept(JADE_BACKPORT_SPEAR.get());
+                }
 
                 if (ModList.get().isLoaded("archers")) {
                     pOutput.accept(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "jade_spear")));
@@ -118,6 +126,10 @@ public class EssentialsTab {
                 pOutput.accept(AMBER_HOE);
                 pOutput.accept(AMBER_SWORD);
 
+                if (ModList.get().isLoaded("vanillabackport")) {
+                    pOutput.accept(AMBER_BACKPORT_SPEAR.get());
+                }
+
                 if (ModList.get().isLoaded("archers")) {
                     pOutput.accept(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "amber_spear")));
                 }
@@ -141,6 +153,10 @@ public class EssentialsTab {
                 pOutput.accept(SILICON_AXE);
                 pOutput.accept(SILICON_HOE);
                 pOutput.accept(SILICON_SWORD);
+
+                if (ModList.get().isLoaded("vanillabackport")) {
+                    pOutput.accept(SILICON_NAUTILUS_ARMOR.get());
+                }
 
                 if (ModList.get().isLoaded("archers")) {
                     pOutput.accept(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "silicon_spear")));
@@ -166,6 +182,10 @@ public class EssentialsTab {
                 pOutput.accept(RUBY_HOE);
                 pOutput.accept(RUBY_SWORD);
 
+                if (ModList.get().isLoaded("vanillabackport")) {
+                    pOutput.accept(RUBY_BACKPORT_SPEAR.get());
+                }
+
                 if (ModList.get().isLoaded("archers")) {
                     pOutput.accept(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "ruby_spear")));
                 }
@@ -189,26 +209,51 @@ public class EssentialsTab {
                 pOutput.accept(DIAMOND_LEGGINGS);
                 pOutput.accept(DIAMOND_BOOTS);
                 pOutput.accept(DIAMOND_HORSE_ARMOR);
+
+                if (ModList.get().isLoaded("vanillabackport")) {
+                    pOutput.accept(com.blackgear.vanillabackport.common.registries.items.ModItems.DIAMOND_NAUTILUS_ARMOR.get());
+                }
+
                 pOutput.accept(JADE_HELMET);
                 pOutput.accept(JADE_CHESTPLATE);
                 pOutput.accept(JADE_LEGGINGS);
                 pOutput.accept(JADE_BOOTS);
                 pOutput.accept(JADE_HORSE_ARMOR);
+
+                if (ModList.get().isLoaded("vanillabackport")) {
+                    pOutput.accept(JADE_NAUTILUS_ARMOR.get());
+                }
+
                 pOutput.accept(AMBER_HELMET);
                 pOutput.accept(AMBER_CHESTPLATE);
                 pOutput.accept(AMBER_LEGGINGS);
                 pOutput.accept(AMBER_BOOTS);
                 pOutput.accept(AMBER_HORSE_ARMOR);
+
+                if (ModList.get().isLoaded("vanillabackport")) {
+                    pOutput.accept(AMBER_NAUTILUS_ARMOR.get());
+                }
+
                 pOutput.accept(SILICON_HELMET);
                 pOutput.accept(SILICON_CHESTPLATE);
                 pOutput.accept(SILICON_LEGGINGS);
                 pOutput.accept(SILICON_BOOTS);
                 pOutput.accept(SILICON_HORSE_ARMOR);
+
+                if (ModList.get().isLoaded("vanillabackport")) {
+                    pOutput.accept(SILICON_BACKPORT_SPEAR.get());
+                }
+
                 pOutput.accept(RUBY_HELMET);
                 pOutput.accept(RUBY_CHESTPLATE);
                 pOutput.accept(RUBY_LEGGINGS);
                 pOutput.accept(RUBY_BOOTS);
                 pOutput.accept(RUBY_HORSE_ARMOR);
+
+                if (ModList.get().isLoaded("vanillabackport")) {
+                    pOutput.accept(RUBY_NAUTILUS_ARMOR.get());
+                }
+
                 pOutput.accept(POLICE_BATON);
                 pOutput.accept(WORM_ON_A_STICK);
                 pOutput.accept(WORM);

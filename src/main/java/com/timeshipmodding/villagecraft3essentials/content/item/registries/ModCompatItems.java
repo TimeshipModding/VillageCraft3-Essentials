@@ -1,13 +1,18 @@
 package com.timeshipmodding.villagecraft3essentials.content.item.registries;
 
+import com.blackgear.vanillabackport.common.level.items.spear.SpearItem;
+import com.blackgear.vanillabackport.core.VanillaBackport;
 import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
 import com.timeshipmodding.villagecraft3essentials.compat.aquaculture.AquaMethods;
 import com.timeshipmodding.villagecraft3essentials.compat.betterarcheology.BAMethods;
 import com.timeshipmodding.villagecraft3essentials.compat.farmersdelight.FDMethods;
+import com.timeshipmodding.villagecraft3essentials.compat.vanillabackport.VanillaBackportMethods;
 import net.minecraft.world.item.Item;
 import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
+
+import java.util.function.Supplier;
 
 public class ModCompatItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(VillageCraft3Essentials.MODID);
@@ -73,5 +78,31 @@ public class ModCompatItems {
             : new Item(new Item.Properties()));
     public static final DeferredItem<Item> RUBY_BRUSH = ITEMS.register("ruby_brush", () -> ModList.get().isLoaded("betterarcheology")
             ? BAMethods.getBetterBrushItemSupplier().get()
+            : new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> JADE_BACKPORT_SPEAR = ITEMS.register("jade_backport_spear", () -> ModList.get().isLoaded("vanillabackport")
+            ? VanillaBackportMethods.getSpearItemSupplier(ModToolTiers.JADE, new Item.Properties()).get()
+            : new Item(new Item.Properties()));
+    public static final DeferredItem<Item> AMBER_BACKPORT_SPEAR = ITEMS.register("amber_backport_spear", () -> ModList.get().isLoaded("vanillabackport")
+            ? VanillaBackportMethods.getSpearItemSupplier(ModToolTiers.AMBER, new Item.Properties()).get()
+            : new Item(new Item.Properties()));
+    public static final DeferredItem<Item> SILICON_BACKPORT_SPEAR = ITEMS.register("silicon_backport_spear", () -> ModList.get().isLoaded("vanillabackport")
+            ? VanillaBackportMethods.getSpearItemSupplier(ModToolTiers.SILICON, new Item.Properties()).get()
+            : new Item(new Item.Properties()));
+    public static final DeferredItem<Item> RUBY_BACKPORT_SPEAR = ITEMS.register("ruby_backport_spear", () -> ModList.get().isLoaded("vanillabackport")
+            ? VanillaBackportMethods.getSpearItemSupplier(ModToolTiers.RUBY, new Item.Properties()).get()
+            : new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> JADE_NAUTILUS_ARMOR = ITEMS.register("jade_nautilus_armor", () -> ModList.get().isLoaded("vanillabackport")
+            ? VanillaBackportMethods.getNautilusArmorItemSupplier(ModArmorMaterials.JADE, new Item.Properties()).get()
+            : new Item(new Item.Properties()));
+    public static final DeferredItem<Item> AMBER_NAUTILUS_ARMOR = ITEMS.register("amber_nautilus_armor", () -> ModList.get().isLoaded("vanillabackport")
+            ? VanillaBackportMethods.getNautilusArmorItemSupplier(ModArmorMaterials.AMBER, new Item.Properties()).get()
+            : new Item(new Item.Properties()));
+    public static final DeferredItem<Item> SILICON_NAUTILUS_ARMOR = ITEMS.register("silicon_nautilus_armor", () -> ModList.get().isLoaded("vanillabackport")
+            ? VanillaBackportMethods.getNautilusArmorItemSupplier(ModArmorMaterials.SILICON, new Item.Properties()).get()
+            : new Item(new Item.Properties()));
+    public static final DeferredItem<Item> RUBY_NAUTILUS_ARMOR = ITEMS.register("ruby_nautilus_armor", () -> ModList.get().isLoaded("vanillabackport")
+            ? VanillaBackportMethods.getNautilusArmorItemSupplier(ModArmorMaterials.RUBY, new Item.Properties()).get()
             : new Item(new Item.Properties()));
 }

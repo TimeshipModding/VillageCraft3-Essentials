@@ -583,6 +583,38 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
             } else if (ModList.get().isLoaded("archers") && inputItem == BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "ruby_spear"))) {
                 inputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "ruby_spear")));
                 outputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("archers", "diamond_spear")));
+
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.JADE_BACKPORT_SPEAR.get()) {
+                inputStack = new ItemStack(ModCompatItems.JADE_BACKPORT_SPEAR.get());
+                outputStack = new ItemStack(com.blackgear.vanillabackport.common.registries.items.ModItems.DIAMOND_SPEAR.get());
+
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.AMBER_BACKPORT_SPEAR.get()) {
+                inputStack = new ItemStack(ModCompatItems.AMBER_BACKPORT_SPEAR.get());
+                outputStack = new ItemStack(com.blackgear.vanillabackport.common.registries.items.ModItems.DIAMOND_SPEAR.get());
+
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.SILICON_BACKPORT_SPEAR.get()) {
+                inputStack = new ItemStack(ModCompatItems.SILICON_BACKPORT_SPEAR.get());
+                outputStack = new ItemStack(com.blackgear.vanillabackport.common.registries.items.ModItems.DIAMOND_SPEAR.get());
+
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.RUBY_BACKPORT_SPEAR.get()) {
+                inputStack = new ItemStack(ModCompatItems.RUBY_BACKPORT_SPEAR.get());
+                outputStack = new ItemStack(com.blackgear.vanillabackport.common.registries.items.ModItems.DIAMOND_SPEAR.get());
+
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.JADE_NAUTILUS_ARMOR.get()) {
+                inputStack = new ItemStack(ModCompatItems.JADE_NAUTILUS_ARMOR.get());
+                outputStack = new ItemStack(com.blackgear.vanillabackport.common.registries.items.ModItems.DIAMOND_NAUTILUS_ARMOR.get());
+
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.AMBER_NAUTILUS_ARMOR.get()) {
+                inputStack = new ItemStack(ModCompatItems.AMBER_NAUTILUS_ARMOR.get());
+                outputStack = new ItemStack(com.blackgear.vanillabackport.common.registries.items.ModItems.DIAMOND_NAUTILUS_ARMOR.get());
+
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.SILICON_NAUTILUS_ARMOR.get()) {
+                inputStack = new ItemStack(ModCompatItems.SILICON_NAUTILUS_ARMOR.get());
+                outputStack = new ItemStack(com.blackgear.vanillabackport.common.registries.items.ModItems.DIAMOND_NAUTILUS_ARMOR.get());
+
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.RUBY_NAUTILUS_ARMOR.get()) {
+                inputStack = new ItemStack(ModCompatItems.RUBY_NAUTILUS_ARMOR.get());
+                outputStack = new ItemStack(com.blackgear.vanillabackport.common.registries.items.ModItems.DIAMOND_NAUTILUS_ARMOR.get());
             }
 
         } else if (toolConvertButtonPressed == 2) {
@@ -841,6 +873,38 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
             } else if (ModList.get().isLoaded("archers") && inputItem == BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "ruby_spear"))) {
                 inputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "ruby_spear")));
                 outputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "jade_spear")));
+
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == com.blackgear.vanillabackport.common.registries.items.ModItems.DIAMOND_SPEAR.get()) {
+                inputStack = new ItemStack(com.blackgear.vanillabackport.common.registries.items.ModItems.DIAMOND_SPEAR.get());
+                outputStack = new ItemStack(ModCompatItems.JADE_BACKPORT_SPEAR.get());
+
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.AMBER_BACKPORT_SPEAR.get()) {
+                inputStack = new ItemStack(ModCompatItems.AMBER_BACKPORT_SPEAR.get());
+                outputStack = new ItemStack(ModCompatItems.JADE_BACKPORT_SPEAR.get());
+
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.SILICON_BACKPORT_SPEAR.get()) {
+                inputStack = new ItemStack(ModCompatItems.SILICON_BACKPORT_SPEAR.get());
+                outputStack = new ItemStack(ModCompatItems.JADE_BACKPORT_SPEAR.get());
+
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.RUBY_BACKPORT_SPEAR.get()) {
+                inputStack = new ItemStack(ModCompatItems.RUBY_BACKPORT_SPEAR.get());
+                outputStack = new ItemStack(ModCompatItems.JADE_BACKPORT_SPEAR.get());
+
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == com.blackgear.vanillabackport.common.registries.items.ModItems.DIAMOND_NAUTILUS_ARMOR.get()) {
+                inputStack = new ItemStack(com.blackgear.vanillabackport.common.registries.items.ModItems.DIAMOND_NAUTILUS_ARMOR.get());
+                outputStack = new ItemStack(ModCompatItems.JADE_NAUTILUS_ARMOR.get());
+
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.AMBER_NAUTILUS_ARMOR.get()) {
+                inputStack = new ItemStack(ModCompatItems.AMBER_NAUTILUS_ARMOR.get());
+                outputStack = new ItemStack(ModCompatItems.JADE_NAUTILUS_ARMOR.get());
+
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.SILICON_NAUTILUS_ARMOR.get()) {
+                inputStack = new ItemStack(ModCompatItems.SILICON_NAUTILUS_ARMOR.get());
+                outputStack = new ItemStack(ModCompatItems.JADE_NAUTILUS_ARMOR.get());
+
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.RUBY_NAUTILUS_ARMOR.get()) {
+                inputStack = new ItemStack(ModCompatItems.RUBY_NAUTILUS_ARMOR.get());
+                outputStack = new ItemStack(ModCompatItems.JADE_NAUTILUS_ARMOR.get());
             }
 
         } else if (toolConvertButtonPressed == 3) {
@@ -1099,6 +1163,38 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
             } else if (ModList.get().isLoaded("archers") && inputItem == BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "ruby_spear"))) {
                 inputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "ruby_spear")));
                 outputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "amber_spear")));
+
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == com.blackgear.vanillabackport.common.registries.items.ModItems.DIAMOND_SPEAR.get()) {
+                inputStack = new ItemStack(com.blackgear.vanillabackport.common.registries.items.ModItems.DIAMOND_SPEAR.get());
+                outputStack = new ItemStack(ModCompatItems.AMBER_BACKPORT_SPEAR.get());
+
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.JADE_BACKPORT_SPEAR.get()) {
+                inputStack = new ItemStack(ModCompatItems.JADE_BACKPORT_SPEAR.get());
+                outputStack = new ItemStack(ModCompatItems.AMBER_BACKPORT_SPEAR.get());
+
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.SILICON_BACKPORT_SPEAR.get()) {
+                inputStack = new ItemStack(ModCompatItems.SILICON_BACKPORT_SPEAR.get());
+                outputStack = new ItemStack(ModCompatItems.AMBER_BACKPORT_SPEAR.get());
+
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.RUBY_BACKPORT_SPEAR.get()) {
+                inputStack = new ItemStack(ModCompatItems.RUBY_BACKPORT_SPEAR.get());
+                outputStack = new ItemStack(ModCompatItems.AMBER_BACKPORT_SPEAR.get());
+
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == com.blackgear.vanillabackport.common.registries.items.ModItems.DIAMOND_NAUTILUS_ARMOR.get()) {
+                inputStack = new ItemStack(com.blackgear.vanillabackport.common.registries.items.ModItems.DIAMOND_NAUTILUS_ARMOR.get());
+                outputStack = new ItemStack(ModCompatItems.AMBER_NAUTILUS_ARMOR.get());
+
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.JADE_NAUTILUS_ARMOR.get()) {
+                inputStack = new ItemStack(ModCompatItems.JADE_NAUTILUS_ARMOR.get());
+                outputStack = new ItemStack(ModCompatItems.AMBER_NAUTILUS_ARMOR.get());
+
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.SILICON_NAUTILUS_ARMOR.get()) {
+                inputStack = new ItemStack(ModCompatItems.SILICON_NAUTILUS_ARMOR.get());
+                outputStack = new ItemStack(ModCompatItems.AMBER_NAUTILUS_ARMOR.get());
+
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.RUBY_NAUTILUS_ARMOR.get()) {
+                inputStack = new ItemStack(ModCompatItems.RUBY_NAUTILUS_ARMOR.get());
+                outputStack = new ItemStack(ModCompatItems.AMBER_NAUTILUS_ARMOR.get());
             }
 
         } else if (toolConvertButtonPressed == 4) {
@@ -1357,6 +1453,38 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
             } else if (ModList.get().isLoaded("archers") && inputItem == BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "ruby_spear"))) {
                 inputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "ruby_spear")));
                 outputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "silicon_spear")));
+
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == com.blackgear.vanillabackport.common.registries.items.ModItems.DIAMOND_SPEAR.get()) {
+                inputStack = new ItemStack(com.blackgear.vanillabackport.common.registries.items.ModItems.DIAMOND_SPEAR.get());
+                outputStack = new ItemStack(ModCompatItems.SILICON_BACKPORT_SPEAR.get());
+
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.JADE_BACKPORT_SPEAR.get()) {
+                inputStack = new ItemStack(ModCompatItems.JADE_BACKPORT_SPEAR.get());
+                outputStack = new ItemStack(ModCompatItems.SILICON_BACKPORT_SPEAR.get());
+
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.AMBER_BACKPORT_SPEAR.get()) {
+                inputStack = new ItemStack(ModCompatItems.AMBER_BACKPORT_SPEAR.get());
+                outputStack = new ItemStack(ModCompatItems.SILICON_BACKPORT_SPEAR.get());
+
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.RUBY_BACKPORT_SPEAR.get()) {
+                inputStack = new ItemStack(ModCompatItems.RUBY_BACKPORT_SPEAR.get());
+                outputStack = new ItemStack(ModCompatItems.SILICON_BACKPORT_SPEAR.get());
+
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == com.blackgear.vanillabackport.common.registries.items.ModItems.DIAMOND_NAUTILUS_ARMOR.get()) {
+                inputStack = new ItemStack(com.blackgear.vanillabackport.common.registries.items.ModItems.DIAMOND_NAUTILUS_ARMOR.get());
+                outputStack = new ItemStack(ModCompatItems.SILICON_NAUTILUS_ARMOR.get());
+
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.JADE_NAUTILUS_ARMOR.get()) {
+                inputStack = new ItemStack(ModCompatItems.JADE_NAUTILUS_ARMOR.get());
+                outputStack = new ItemStack(ModCompatItems.SILICON_NAUTILUS_ARMOR.get());
+
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.AMBER_NAUTILUS_ARMOR.get()) {
+                inputStack = new ItemStack(ModCompatItems.AMBER_NAUTILUS_ARMOR.get());
+                outputStack = new ItemStack(ModCompatItems.SILICON_NAUTILUS_ARMOR.get());
+
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.RUBY_NAUTILUS_ARMOR.get()) {
+                inputStack = new ItemStack(ModCompatItems.RUBY_NAUTILUS_ARMOR.get());
+                outputStack = new ItemStack(ModCompatItems.SILICON_NAUTILUS_ARMOR.get());
             }
 
         } else if (toolConvertButtonPressed == 5) {
@@ -1615,6 +1743,38 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
             } else if (ModList.get().isLoaded("archers") && inputItem == BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "silicon_spear"))) {
                 inputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "silicon_spear")));
                 outputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "ruby_spear")));
+
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == com.blackgear.vanillabackport.common.registries.items.ModItems.DIAMOND_SPEAR.get()) {
+                inputStack = new ItemStack(com.blackgear.vanillabackport.common.registries.items.ModItems.DIAMOND_SPEAR.get());
+                outputStack = new ItemStack(ModCompatItems.RUBY_BACKPORT_SPEAR.get());
+
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.JADE_BACKPORT_SPEAR.get()) {
+                inputStack = new ItemStack(ModCompatItems.JADE_BACKPORT_SPEAR.get());
+                outputStack = new ItemStack(ModCompatItems.RUBY_BACKPORT_SPEAR.get());
+
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.AMBER_BACKPORT_SPEAR.get()) {
+                inputStack = new ItemStack(ModCompatItems.AMBER_BACKPORT_SPEAR.get());
+                outputStack = new ItemStack(ModCompatItems.RUBY_BACKPORT_SPEAR.get());
+
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.SILICON_BACKPORT_SPEAR.get()) {
+                inputStack = new ItemStack(ModCompatItems.SILICON_BACKPORT_SPEAR.get());
+                outputStack = new ItemStack(ModCompatItems.RUBY_BACKPORT_SPEAR.get());
+
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == com.blackgear.vanillabackport.common.registries.items.ModItems.DIAMOND_NAUTILUS_ARMOR.get()) {
+                inputStack = new ItemStack(com.blackgear.vanillabackport.common.registries.items.ModItems.DIAMOND_NAUTILUS_ARMOR.get());
+                outputStack = new ItemStack(ModCompatItems.RUBY_NAUTILUS_ARMOR.get());
+
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.JADE_NAUTILUS_ARMOR.get()) {
+                inputStack = new ItemStack(ModCompatItems.JADE_NAUTILUS_ARMOR.get());
+                outputStack = new ItemStack(ModCompatItems.RUBY_NAUTILUS_ARMOR.get());
+
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.AMBER_NAUTILUS_ARMOR.get()) {
+                inputStack = new ItemStack(ModCompatItems.AMBER_NAUTILUS_ARMOR.get());
+                outputStack = new ItemStack(ModCompatItems.RUBY_NAUTILUS_ARMOR.get());
+
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.SILICON_NAUTILUS_ARMOR.get()) {
+                inputStack = new ItemStack(ModCompatItems.SILICON_NAUTILUS_ARMOR.get());
+                outputStack = new ItemStack(ModCompatItems.RUBY_NAUTILUS_ARMOR.get());
             }
         }
 

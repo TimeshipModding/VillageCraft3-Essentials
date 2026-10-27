@@ -1,7 +1,9 @@
 package com.timeshipmodding.villagecraft3essentials.event.registries;
 
+import com.blackgear.platform.client.GameRendering;
 import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
 import com.timeshipmodding.villagecraft3essentials.compat.aquaculture.AquaMethods;
+import com.timeshipmodding.villagecraft3essentials.compat.vanillabackport.VanillaBackportMethods;
 import com.timeshipmodding.villagecraft3essentials.content.entity.client.registries.ModEntities;
 import com.timeshipmodding.villagecraft3essentials.content.entity.client.renderers.MoleRenderer;
 import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModCompatItems;
@@ -53,6 +55,10 @@ public class ModClientEvents {
             AquaMethods.registerAquaFishingRodModelProperties(ModCompatItems.AMBER_FISHING_ROD.get());
             AquaMethods.registerAquaFishingRodModelProperties(ModCompatItems.SILICON_FISHING_ROD.get());
             AquaMethods.registerAquaFishingRodModelProperties(ModCompatItems.RUBY_FISHING_ROD.get());
+        }
+
+        if (ModList.get().isLoaded("vanillabackport") && ModList.get().isLoaded("platform")) {
+            GameRendering.registerItemLikeRenderers(VanillaBackportMethods::itemLikeRendering);
         }
     }
 

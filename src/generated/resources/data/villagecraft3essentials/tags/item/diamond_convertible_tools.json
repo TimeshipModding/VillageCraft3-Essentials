@@ -11,6 +11,10 @@
     "minecraft:diamond_boots",
     "minecraft:diamond_horse_armor",
     {
+      "id": "minecraft:diamond_spear",
+      "required": false
+    },
+    {
       "id": "archers:diamond_spear",
       "required": false
     },
@@ -32,6 +36,10 @@
     },
     {
       "id": "betterarcheology:diamond_brush",
+      "required": false
+    },
+    {
+      "id": "minecraft:diamond_nautilus_armor",
       "required": false
     }
   ]

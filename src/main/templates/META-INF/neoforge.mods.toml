@@ -186,3 +186,19 @@ license="${mod_license}"
     versionRange="[5.7,)"
     ordering="AFTER"
     side="BOTH"
+
+# Dependency for Vanilla Backport
+[[dependencies.${mod_id}]]
+    modId="vanillabackport"
+    type="optional"
+    versionRange="[1.2.1,)"
+    ordering="AFTER"
+    side="BOTH"
+
+# Dependency for Platform
+[[dependencies.${mod_id}]]
+    modId="platform"
+    type="optional"
+    versionRange="[1.4.1,)"
+    ordering="AFTER"
+    side="BOTH"

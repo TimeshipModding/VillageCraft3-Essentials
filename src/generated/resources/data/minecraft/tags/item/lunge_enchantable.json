@@ -1,0 +1,20 @@
+{
+  "values": [
+    {
+      "id": "villagecraft3essentials:jade_backport_spear",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:amber_backport_spear",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:silicon_backport_spear",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:ruby_backport_spear",
+      "required": false
+    }
+  ]
+}

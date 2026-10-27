@@ -321,18 +321,14 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
 
     private void rebuildButtons() {
         this.clearWidgets();
-        System.out.println("rebuild");
 
         if (this.menu.blockEntity.getRandomConvertScreen()) {
-            System.out.println("random");
-
             nextMenuButton = this.addRenderableWidget(new ImageButton(leftPos + 150, topPos + 92, 20, 18,
                     NEXT_MENU_SPRITES, this::onNextButtonPress, Component.empty()));
 
             updateScrollableWidgets();
 
         } else if (this.menu.blockEntity.getToolConvertScreen()) {
-            System.out.println("tool");
             toolConvertButtonDiamond = this.addRenderableWidget(new ImageButton(leftPos + 24, topPos + 65, 20, 18,
                     CURRENCY_SELECT_SPRITES, this::onDiamondCurrencyButtonPress, Component.empty()));
             toolConvertButtonJade = this.addRenderableWidget(new ImageButton(leftPos + 51, topPos + 65, 20, 18,

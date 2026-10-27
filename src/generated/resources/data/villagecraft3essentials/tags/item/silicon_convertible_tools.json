@@ -11,6 +11,10 @@
     "villagecraft3essentials:silicon_boots",
     "villagecraft3essentials:silicon_horse_armor",
     {
+      "id": "villagecraft3essentials:silicon_backport_spear",
+      "required": false
+    },
+    {
       "id": "villagecraft3essentials:silicon_spear",
       "required": false
     },
@@ -32,6 +36,10 @@
     },
     {
       "id": "villagecraft3essentials:silicon_brush",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:silicon_nautilus_armor",
       "required": false
     }
   ]

@@ -169,19 +169,19 @@ public class ServerConfig {
                 .defineInRange("blackWaterPointMultiplier", 1, 1, Integer.MAX_VALUE);
         VILLAGECRAFTCITY_COMPLETED_MISSIONS = BUILDER
                 .comment("Number of missions members of VillageCraft City has completed on the main server. This value is added to VillageCraft City's war points")
-                .defineInRange("villagecraftCityCompletedMissions", 0, 1, Integer.MAX_VALUE);
+                .defineInRange("villagecraftCityCompletedMissions", 0, 0, Integer.MAX_VALUE);
         OASIS_COMPLETED_MISSIONS = BUILDER
                 .comment("Number of missions members of Oasis has completed on the main server. This value is added to Oasis's war points")
-                .defineInRange("oasisCompletedMissions", 0, 1, Integer.MAX_VALUE);
+                .defineInRange("oasisCompletedMissions", 0, 0, Integer.MAX_VALUE);
         SWEDISHFURNITURESTORE_COMPLETED_MISSIONS = BUILDER
                 .comment("Number of missions members of Swedish Furniture Store has completed on the main server. This value is added to Swedish Furniture Store's war points")
-                .defineInRange("swedishFurnitureStoreCompletedMissions", 0, 1, Integer.MAX_VALUE);
+                .defineInRange("swedishFurnitureStoreCompletedMissions", 0, 0, Integer.MAX_VALUE);
         LONDON_COMPLETED_MISSIONS = BUILDER
                 .comment("Number of missions members of London have completed on the main server. This value is added to London's war points")
-                .defineInRange("londonCompletedMissions", 0, 1, Integer.MAX_VALUE);
+                .defineInRange("londonCompletedMissions", 0, 0, Integer.MAX_VALUE);
         BLACKWATER_COMPLETED_MISSIONS = BUILDER
                 .comment("Number of missions members of BlackWater have completed on the main server. This value is added to BlackWater's war points")
-                .defineInRange("blackWaterCompletedMissions", 0, 1, Integer.MAX_VALUE);
+                .defineInRange("blackWaterCompletedMissions", 0, 0, Integer.MAX_VALUE);
 
         BUILDER.pop();
         BUILDER.push("Discord Integration Config");
