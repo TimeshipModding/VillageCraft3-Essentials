@@ -69,8 +69,10 @@ public class ModItems {
     public static final DeferredItem<Item> COOKED_WORM = ITEMS.register("cooked_worm", () -> new Item(new Item.Properties().food(ModFoodProperties.COOKED_WORM)));
     public static final DeferredItem<Item> WORM_ON_A_STICK = ITEMS.register("worm_on_a_stick", () -> new FoodOnAStickItem<>(new Item.Properties().durability(25), ModEntities.MOLE.get(), 7));
     public static final DeferredItem<Item> POLICE_BATON = ITEMS.register("police_baton", () -> new MaceItem(new Item.Properties().rarity(Rarity.EPIC).durability(500).component(DataComponents.TOOL, MaceItem.createToolProperties()).attributes(MaceItem.createAttributes())));
-    public static final DeferredItem<Item> GUBERNATORIAL_HAT_1 = ITEMS.register("gubernatorial_hat_1", () -> new AccessoryRoleplayItem("oasis", new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> VILLAGECRAFTCITY_HAT_1 = ITEMS.register("villagecraftcity_hat_1", () -> new AccessoryRoleplayItem("villagecraftcity", new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> VILLAGECRAFTCITY_NECKLACE_1 = ITEMS.register("villagecraftcity_necklace_1", () -> new AccessoryRoleplayItem("villagecraftcity", new Item.Properties().stacksTo(1)));
     public static final DeferredItem<Item> OASIS_HAT_1 = ITEMS.register("oasis_hat_1", () -> new AccessoryRoleplayItem("oasis", new Item.Properties().stacksTo(1)));
     public static final DeferredItem<Item> LONDON_HAT_1 = ITEMS.register("london_hat_1", () -> new AccessoryRoleplayItem("london", new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> LONDON_HAT_2 = ITEMS.register("london_hat_2", () -> new AccessoryRoleplayItem("london", new Item.Properties().stacksTo(1)));
     public static final DeferredItem<Item> PROPELLER_HAT = ITEMS.register("propeller_hat", () -> new PropellerHatItem(new Item.Properties()));
 }

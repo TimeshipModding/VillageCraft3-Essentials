@@ -2,6 +2,7 @@ package com.timeshipmodding.villagecraft3essentials.content.block.entity;
 
 import com.teammetallurgy.aquaculture.init.AquaItems;
 import com.timeshipmodding.villagecraft3essentials.content.block.entity.registries.ModBlockEntities;
+import com.timeshipmodding.villagecraft3essentials.content.block.registries.ModBlocks;
 import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModCompatItems;
 import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems;
 import com.timeshipmodding.villagecraft3essentials.content.menu.AtmMenu;
@@ -26,6 +27,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.fml.ModList;
@@ -44,19 +46,18 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
         }
     };
 
-    //TODO Add missing compat items to conversion
-
     private static final int INPUT_SLOT = 0;
     private static final int OUTPUT_SLOT = 1;
     private int guiTextureIndex = 0;
     private int convertAmount = 0;
-    public boolean randomConvertScreen = false;
+    public boolean randomConvertScreen = true;
     public boolean toolConvertScreen = false;
     public int randomConvertButtonPressed = 0;
     public int toolConvertButtonPressed = 0;
 
     public AtmBlockEntity(BlockPos pos, BlockState blockState) {
         super(ModBlockEntities.ATM_BLOCKENTITY.get(), pos, blockState);
+        this.guiTextureIndex = getIndexFromBlockState(blockState);
     }
 
     @Override
@@ -156,12 +157,12 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
     }
 
     private void randomConvertCurrency(ItemStack outputStack, int randomConvertButtonPressed) {
-        convertAmount = getRandomConvertInputAmount(randomConvertButtonPressed);
+        convertAmount = getRandomConvertInputStack(randomConvertButtonPressed).getCount();
         itemStackHandler.setStackInSlot(OUTPUT_SLOT, outputStack);
     }
 
     public int quickRandomConvertCurrency(ItemStack initialOutputStack, int randomConvertButtonPressed) {
-        convertAmount = getRandomConvertInputAmount(randomConvertButtonPressed);
+        convertAmount = getRandomConvertInputStack(randomConvertButtonPressed).getCount();
         ItemStack initialInputStack = itemStackHandler.getStackInSlot(INPUT_SLOT);
         int currentInputItemCount = initialInputStack.getCount();
         int maxConversions;
@@ -347,36 +348,6 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
                 inputStack = new ItemStack(ModItems.JADE_HOE.get());
                 outputStack = new ItemStack(Items.DIAMOND_HOE);
 
-            } else if (ModList.get().isLoaded("farmersdelight")) {
-                if (inputItem == ModCompatItems.JADE_KNIFE.get()) {
-                    inputStack = new ItemStack(ModCompatItems.JADE_KNIFE.get());
-                    outputStack = new ItemStack(vectorwing.farmersdelight.common.registry.ModItems.DIAMOND_KNIFE.get());
-                }
-
-            } else if (ModList.get().isLoaded("aquaculture")) {
-                if (inputItem == ModCompatItems.JADE_FILLET_KNIFE.get()) {
-                    inputStack = new ItemStack(ModCompatItems.JADE_FILLET_KNIFE.get());
-                    outputStack = new ItemStack(AquaItems.DIAMOND_FILLET_KNIFE.get());
-                }
-
-            } else if (ModList.get().isLoaded("aquaculture")) {
-                if (inputItem == ModCompatItems.JADE_FISHING_ROD.get()) {
-                    inputStack = new ItemStack(ModCompatItems.JADE_FISHING_ROD.get());
-                    outputStack = new ItemStack(AquaItems.DIAMOND_FISHING_ROD.get());
-                }
-
-            } else if (ModList.get().isLoaded("aquaculture")) {
-                if (inputItem == ModCompatItems.JADE_HOOK.get()) {
-                    inputStack = new ItemStack(ModCompatItems.JADE_HOOK.get());
-                    outputStack = new ItemStack(AquaItems.DIAMOND_HOOK.get());
-                }
-
-            } else if (ModList.get().isLoaded("betterarcheology")) {
-                if (inputItem == ModCompatItems.JADE_BRUSH.get()) {
-                    inputStack = new ItemStack(ModCompatItems.JADE_BRUSH.get());
-                    outputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("betterarcheology", "diamond_brush")));
-                }
-
             } else if (inputItem == ModItems.JADE_HELMET.get()) {
                 inputStack = new ItemStack(ModItems.JADE_HELMET.get());
                 outputStack = new ItemStack(Items.DIAMOND_HELMET);
@@ -416,36 +387,6 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
             } else if (inputItem == ModItems.AMBER_HOE.get()) {
                 inputStack = new ItemStack(ModItems.AMBER_HOE.get());
                 outputStack = new ItemStack(Items.DIAMOND_HOE);
-
-            } else if (ModList.get().isLoaded("farmersdelight")) {
-                if (inputItem == ModCompatItems.AMBER_KNIFE.get()) {
-                    inputStack = new ItemStack(ModCompatItems.AMBER_KNIFE.get());
-                    outputStack = new ItemStack(vectorwing.farmersdelight.common.registry.ModItems.DIAMOND_KNIFE.get());
-                }
-
-            } else if (ModList.get().isLoaded("aquaculture")) {
-                if (inputItem == ModCompatItems.AMBER_FILLET_KNIFE.get()) {
-                    inputStack = new ItemStack(ModCompatItems.AMBER_FILLET_KNIFE.get());
-                    outputStack = new ItemStack(AquaItems.DIAMOND_FILLET_KNIFE.get());
-                }
-
-            } else if (ModList.get().isLoaded("aquaculture")) {
-                if (inputItem == ModCompatItems.AMBER_FISHING_ROD.get()) {
-                    inputStack = new ItemStack(ModCompatItems.AMBER_FISHING_ROD.get());
-                    outputStack = new ItemStack(AquaItems.DIAMOND_FISHING_ROD.get());
-                }
-
-            } else if (ModList.get().isLoaded("aquaculture")) {
-                if (inputItem == ModCompatItems.AMBER_HOOK.get()) {
-                    inputStack = new ItemStack(ModCompatItems.AMBER_HOOK.get());
-                    outputStack = new ItemStack(AquaItems.DIAMOND_HOOK.get());
-                }
-
-            } else if (ModList.get().isLoaded("betterarcheology")) {
-                if (inputItem == ModCompatItems.AMBER_BRUSH.get()) {
-                    inputStack = new ItemStack(ModCompatItems.AMBER_BRUSH.get());
-                    outputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("betterarcheology", "diamond_brush")));
-                }
 
             } else if (inputItem == ModItems.AMBER_HELMET.get()) {
                 inputStack = new ItemStack(ModItems.AMBER_HELMET.get());
@@ -487,36 +428,6 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
                 inputStack = new ItemStack(ModItems.SILICON_HOE.get());
                 outputStack = new ItemStack(Items.DIAMOND_HOE);
 
-            } else if (ModList.get().isLoaded("farmersdelight")) {
-                if (inputItem == ModCompatItems.SILICON_KNIFE.get()) {
-                    inputStack = new ItemStack(ModCompatItems.SILICON_KNIFE.get());
-                    outputStack = new ItemStack(vectorwing.farmersdelight.common.registry.ModItems.DIAMOND_KNIFE.get());
-                }
-
-            } else if (ModList.get().isLoaded("aquaculture")) {
-                if (inputItem == ModCompatItems.SILICON_FILLET_KNIFE.get()) {
-                    inputStack = new ItemStack(ModCompatItems.SILICON_FILLET_KNIFE.get());
-                    outputStack = new ItemStack(AquaItems.DIAMOND_FILLET_KNIFE.get());
-                }
-
-            } else if (ModList.get().isLoaded("aquaculture")) {
-                if (inputItem == ModCompatItems.SILICON_FISHING_ROD.get()) {
-                    inputStack = new ItemStack(ModCompatItems.SILICON_FISHING_ROD.get());
-                    outputStack = new ItemStack(AquaItems.DIAMOND_FISHING_ROD.get());
-                }
-
-            } else if (ModList.get().isLoaded("aquaculture")) {
-                if (inputItem == ModCompatItems.SILICON_HOOK.get()) {
-                    inputStack = new ItemStack(ModCompatItems.SILICON_HOOK.get());
-                    outputStack = new ItemStack(AquaItems.DIAMOND_HOOK.get());
-                }
-
-            } else if (ModList.get().isLoaded("betterarcheology")) {
-                if (inputItem == ModCompatItems.SILICON_BRUSH.get()) {
-                    inputStack = new ItemStack(ModCompatItems.SILICON_BRUSH.get());
-                    outputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("betterarcheology", "diamond_brush")));
-                }
-
             } else if (inputItem == ModItems.SILICON_HELMET.get()) {
                 inputStack = new ItemStack(ModItems.SILICON_HELMET.get());
                 outputStack = new ItemStack(Items.DIAMOND_HELMET);
@@ -557,38 +468,6 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
                 inputStack = new ItemStack(ModItems.RUBY_HOE.get());
                 outputStack = new ItemStack(Items.DIAMOND_HOE);
 
-            } else if (ModList.get().isLoaded("farmersdelight")) {
-                if (inputItem == ModCompatItems.RUBY_KNIFE.get()) {
-                    inputStack = new ItemStack(ModCompatItems.RUBY_KNIFE.get());
-                    outputStack = new ItemStack(vectorwing.farmersdelight.common.registry.ModItems.DIAMOND_KNIFE.get());
-                }
-
-            } else if (ModList.get().isLoaded("aquaculture")) {
-                if (inputItem == ModCompatItems.RUBY_FILLET_KNIFE.get()) {
-                    inputStack = new ItemStack(ModCompatItems.RUBY_FILLET_KNIFE.get());
-                    outputStack = new ItemStack(AquaItems.DIAMOND_FILLET_KNIFE.get());
-                }
-
-            } else if (ModList.get().isLoaded("aquaculture")) {
-                if (inputItem == ModCompatItems.RUBY_FISHING_ROD.get()) {
-                    inputStack = new ItemStack(ModCompatItems.RUBY_FISHING_ROD.get());
-                    outputStack = new ItemStack(AquaItems.DIAMOND_FISHING_ROD.get());
-                }
-
-
-
-            } else if (ModList.get().isLoaded("aquaculture")) {
-                if (inputItem == ModCompatItems.RUBY_HOOK.get()) {
-                    inputStack = new ItemStack(ModCompatItems.RUBY_HOOK.get());
-                    outputStack = new ItemStack(AquaItems.DIAMOND_HOOK.get());
-                }
-
-            } else if (ModList.get().isLoaded("betterarcheology")) {
-                if (inputItem == ModCompatItems.RUBY_BRUSH.get()) {
-                    inputStack = new ItemStack(ModCompatItems.RUBY_BRUSH.get());
-                    outputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("betterarcheology", "diamond_brush")));
-                }
-
             } else if (inputItem == ModItems.RUBY_HELMET.get()) {
                 inputStack = new ItemStack(ModItems.RUBY_HELMET.get());
                 outputStack = new ItemStack(Items.DIAMOND_HELMET);
@@ -608,6 +487,102 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
             } else if (inputItem == ModItems.RUBY_HORSE_ARMOR.get()) {
                 inputStack = new ItemStack(ModItems.RUBY_HORSE_ARMOR.get());
                 outputStack = new ItemStack(Items.DIAMOND_HORSE_ARMOR);
+
+            } else if (ModList.get().isLoaded("farmersdelight") && inputItem == ModCompatItems.JADE_KNIFE.get()) {
+                inputStack = new ItemStack(ModCompatItems.JADE_KNIFE.get());
+                outputStack = new ItemStack(vectorwing.farmersdelight.common.registry.ModItems.DIAMOND_KNIFE.get());
+
+            } else if (ModList.get().isLoaded("farmersdelight") && inputItem == ModCompatItems.AMBER_KNIFE.get()) {
+                inputStack = new ItemStack(ModCompatItems.AMBER_KNIFE.get());
+                outputStack = new ItemStack(vectorwing.farmersdelight.common.registry.ModItems.DIAMOND_KNIFE.get());
+
+            } else if (ModList.get().isLoaded("farmersdelight") && inputItem == ModCompatItems.SILICON_KNIFE.get()) {
+                inputStack = new ItemStack(ModCompatItems.SILICON_KNIFE.get());
+                outputStack = new ItemStack(vectorwing.farmersdelight.common.registry.ModItems.DIAMOND_KNIFE.get());
+
+            } else if (ModList.get().isLoaded("farmersdelight") && inputItem == ModCompatItems.RUBY_KNIFE.get()) {
+                inputStack = new ItemStack(ModCompatItems.RUBY_KNIFE.get());
+                outputStack = new ItemStack(vectorwing.farmersdelight.common.registry.ModItems.DIAMOND_KNIFE.get());
+
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.JADE_FILLET_KNIFE.get()) {
+                inputStack = new ItemStack(ModCompatItems.JADE_FILLET_KNIFE.get());
+                outputStack = new ItemStack(AquaItems.DIAMOND_FILLET_KNIFE.get());
+
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.JADE_FISHING_ROD.get()) {
+                inputStack = new ItemStack(ModCompatItems.JADE_FISHING_ROD.get());
+                outputStack = new ItemStack(AquaItems.DIAMOND_FISHING_ROD.get());
+
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.JADE_HOOK.get()) {
+                inputStack = new ItemStack(ModCompatItems.JADE_HOOK.get());
+                outputStack = new ItemStack(AquaItems.DIAMOND_HOOK.get());
+
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.AMBER_FILLET_KNIFE.get()) {
+                inputStack = new ItemStack(ModCompatItems.AMBER_FILLET_KNIFE.get());
+                outputStack = new ItemStack(AquaItems.DIAMOND_FILLET_KNIFE.get());
+
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.AMBER_FISHING_ROD.get()) {
+                inputStack = new ItemStack(ModCompatItems.AMBER_FISHING_ROD.get());
+                outputStack = new ItemStack(AquaItems.DIAMOND_FISHING_ROD.get());
+
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.AMBER_HOOK.get()) {
+                inputStack = new ItemStack(ModCompatItems.AMBER_HOOK.get());
+                outputStack = new ItemStack(AquaItems.DIAMOND_HOOK.get());
+
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.SILICON_FILLET_KNIFE.get()) {
+                inputStack = new ItemStack(ModCompatItems.SILICON_FILLET_KNIFE.get());
+                outputStack = new ItemStack(AquaItems.DIAMOND_FILLET_KNIFE.get());
+
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.SILICON_FISHING_ROD.get()) {
+                inputStack = new ItemStack(ModCompatItems.SILICON_FISHING_ROD.get());
+                outputStack = new ItemStack(AquaItems.DIAMOND_FISHING_ROD.get());
+
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.SILICON_HOOK.get()) {
+                inputStack = new ItemStack(ModCompatItems.SILICON_HOOK.get());
+                outputStack = new ItemStack(AquaItems.DIAMOND_HOOK.get());
+
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.RUBY_FILLET_KNIFE.get()) {
+                inputStack = new ItemStack(ModCompatItems.RUBY_FILLET_KNIFE.get());
+                outputStack = new ItemStack(AquaItems.DIAMOND_FILLET_KNIFE.get());
+
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.RUBY_FISHING_ROD.get()) {
+                inputStack = new ItemStack(ModCompatItems.RUBY_FISHING_ROD.get());
+                outputStack = new ItemStack(AquaItems.DIAMOND_FISHING_ROD.get());
+
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.RUBY_HOOK.get()) {
+                inputStack = new ItemStack(ModCompatItems.RUBY_HOOK.get());
+                outputStack = new ItemStack(AquaItems.DIAMOND_HOOK.get());
+
+            } else if (ModList.get().isLoaded("betterarcheology") && inputItem == ModCompatItems.JADE_BRUSH.get()) {
+                inputStack = new ItemStack(ModCompatItems.JADE_BRUSH.get());
+                outputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("betterarcheology", "diamond_brush")));
+
+            } else if (ModList.get().isLoaded("betterarcheology") && inputItem == ModCompatItems.AMBER_BRUSH.get()) {
+                inputStack = new ItemStack(ModCompatItems.AMBER_BRUSH.get());
+                outputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("betterarcheology", "diamond_brush")));
+
+            } else if (ModList.get().isLoaded("betterarcheology") && inputItem == ModCompatItems.SILICON_BRUSH.get()) {
+                inputStack = new ItemStack(ModCompatItems.SILICON_BRUSH.get());
+                outputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("betterarcheology", "diamond_brush")));
+
+            } else if (ModList.get().isLoaded("betterarcheology") && inputItem == ModCompatItems.RUBY_BRUSH.get()) {
+                inputStack = new ItemStack(ModCompatItems.RUBY_BRUSH.get());
+                outputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("betterarcheology", "diamond_brush")));
+
+            } else if (ModList.get().isLoaded("archers") && inputItem == BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "jade_spear"))) {
+                inputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "jade_spear")));
+                outputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("archers", "diamond_spear")));
+
+            } else if (ModList.get().isLoaded("archers") && inputItem == BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "amber_spear"))) {
+                inputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "amber_spear")));
+                outputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("archers", "diamond_spear")));
+
+            } else if (ModList.get().isLoaded("archers") && inputItem == BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "silicon_spear"))) {
+                inputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "silicon_spear")));
+                outputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("archers", "diamond_spear")));
+
+            } else if (ModList.get().isLoaded("archers") && inputItem == BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "ruby_spear"))) {
+                inputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "ruby_spear")));
+                outputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("archers", "diamond_spear")));
             }
 
         } else if (toolConvertButtonPressed == 2) {
@@ -630,36 +605,6 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
             } else if (inputItem == Items.DIAMOND_HOE) {
                 inputStack = new ItemStack(Items.DIAMOND_HOE);
                 outputStack = new ItemStack(ModItems.JADE_HOE.get());
-
-            } else if (ModList.get().isLoaded("farmersdelight")) {
-                if (inputItem == vectorwing.farmersdelight.common.registry.ModItems.DIAMOND_KNIFE.get()) {
-                    inputStack = new ItemStack(vectorwing.farmersdelight.common.registry.ModItems.DIAMOND_KNIFE.get());
-                    outputStack = new ItemStack(ModCompatItems.JADE_KNIFE.get());
-                }
-
-            } else if (ModList.get().isLoaded("aquaculture")) {
-                if (inputItem == AquaItems.DIAMOND_FILLET_KNIFE.get()) {
-                    inputStack = new ItemStack(AquaItems.DIAMOND_FILLET_KNIFE.get());
-                    outputStack = new ItemStack(ModCompatItems.JADE_FILLET_KNIFE.get());
-                }
-
-            } else if (ModList.get().isLoaded("aquaculture")) {
-                if (inputItem == AquaItems.DIAMOND_FISHING_ROD.get()) {
-                    inputStack = new ItemStack(AquaItems.DIAMOND_FISHING_ROD.get());
-                    outputStack = new ItemStack(ModCompatItems.JADE_FISHING_ROD.get());
-                }
-
-            } else if (ModList.get().isLoaded("aquaculture")) {
-                if (inputItem == AquaItems.DIAMOND_HOOK.get()) {
-                    inputStack = new ItemStack(AquaItems.DIAMOND_HOOK.get());
-                    outputStack = new ItemStack(ModCompatItems.JADE_HOOK.get());
-                }
-
-            } else if (ModList.get().isLoaded("betterarcheology")) {
-                if (inputItem == BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("betterarcheology", "diamond_brush"))) {
-                    inputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("betterarcheology", "diamond_brush")));
-                    outputStack = new ItemStack(ModCompatItems.JADE_BRUSH.get());
-                }
 
             } else if (inputItem == Items.DIAMOND_HELMET) {
                 inputStack = new ItemStack(Items.DIAMOND_HELMET);
@@ -701,36 +646,6 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
                 inputStack = new ItemStack(ModItems.AMBER_HOE.get());
                 outputStack = new ItemStack(ModItems.JADE_HOE.get());
 
-            } else if (ModList.get().isLoaded("farmersdelight")) {
-                if (inputItem == ModCompatItems.AMBER_KNIFE.get()) {
-                    inputStack = new ItemStack(ModCompatItems.AMBER_KNIFE.get());
-                    outputStack = new ItemStack(ModCompatItems.JADE_KNIFE.get());
-                }
-
-            } else if (ModList.get().isLoaded("aquaculture")) {
-                if (inputItem == ModCompatItems.AMBER_FILLET_KNIFE.get()) {
-                    inputStack = new ItemStack(ModCompatItems.AMBER_FILLET_KNIFE.get());
-                    outputStack = new ItemStack(ModCompatItems.JADE_FILLET_KNIFE.get());
-                }
-
-            } else if (ModList.get().isLoaded("aquaculture")) {
-                if (inputItem == ModCompatItems.AMBER_FISHING_ROD.get()) {
-                    inputStack = new ItemStack(ModCompatItems.AMBER_FISHING_ROD.get());
-                    outputStack = new ItemStack(ModCompatItems.JADE_FISHING_ROD.get());
-                }
-
-            } else if (ModList.get().isLoaded("aquaculture")) {
-                if (inputItem == ModCompatItems.AMBER_HOOK.get()) {
-                    inputStack = new ItemStack(ModCompatItems.AMBER_HOOK.get());
-                    outputStack = new ItemStack(ModCompatItems.JADE_HOOK.get());
-                }
-
-            } else if (ModList.get().isLoaded("betterarcheology")) {
-                if (inputItem == ModCompatItems.AMBER_BRUSH.get()) {
-                    inputStack = new ItemStack(ModCompatItems.AMBER_BRUSH.get());
-                    outputStack = new ItemStack(ModCompatItems.JADE_BRUSH.get());
-                }
-
             } else if (inputItem == ModItems.AMBER_HELMET.get()) {
                 inputStack = new ItemStack(ModItems.AMBER_HELMET.get());
                 outputStack = new ItemStack(ModItems.JADE_HELMET.get());
@@ -770,36 +685,6 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
             } else if (inputItem == ModItems.SILICON_HOE.get()) {
                 inputStack = new ItemStack(ModItems.SILICON_HOE.get());
                 outputStack = new ItemStack(ModItems.JADE_HOE.get());
-
-            } else if (ModList.get().isLoaded("farmersdelight")) {
-                if (inputItem == ModCompatItems.SILICON_KNIFE.get()) {
-                    inputStack = new ItemStack(ModCompatItems.SILICON_KNIFE.get());
-                    outputStack = new ItemStack(ModCompatItems.JADE_KNIFE.get());
-                }
-
-            } else if (ModList.get().isLoaded("aquaculture")) {
-                if (inputItem == ModCompatItems.SILICON_FILLET_KNIFE.get()) {
-                    inputStack = new ItemStack(ModCompatItems.SILICON_FILLET_KNIFE.get());
-                    outputStack = new ItemStack(ModCompatItems.JADE_FILLET_KNIFE.get());
-                }
-
-            } else if (ModList.get().isLoaded("aquaculture")) {
-                if (inputItem == ModCompatItems.SILICON_FISHING_ROD.get()) {
-                    inputStack = new ItemStack(ModCompatItems.SILICON_FISHING_ROD.get());
-                    outputStack = new ItemStack(ModCompatItems.JADE_FISHING_ROD.get());
-                }
-
-            } else if (ModList.get().isLoaded("aquaculture")) {
-                if (inputItem == ModCompatItems.SILICON_HOOK.get()) {
-                    inputStack = new ItemStack(ModCompatItems.SILICON_HOOK.get());
-                    outputStack = new ItemStack(ModCompatItems.JADE_HOOK.get());
-                }
-
-            } else if (ModList.get().isLoaded("betterarcheology")) {
-                if (inputItem == ModCompatItems.SILICON_BRUSH.get()) {
-                    inputStack = new ItemStack(ModCompatItems.SILICON_BRUSH.get());
-                    outputStack = new ItemStack(ModCompatItems.JADE_BRUSH.get());
-                }
 
             } else if (inputItem == ModItems.SILICON_HELMET.get()) {
                 inputStack = new ItemStack(ModItems.SILICON_HELMET.get());
@@ -841,36 +726,6 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
                 inputStack = new ItemStack(ModItems.RUBY_HOE.get());
                 outputStack = new ItemStack(ModItems.JADE_HOE.get());
 
-            } else if (ModList.get().isLoaded("farmersdelight")) {
-                if (inputItem == ModCompatItems.RUBY_KNIFE.get()) {
-                    inputStack = new ItemStack(ModCompatItems.RUBY_KNIFE.get());
-                    outputStack = new ItemStack(ModCompatItems.JADE_KNIFE.get());
-                }
-
-            } else if (ModList.get().isLoaded("aquaculture")) {
-                if (inputItem == ModCompatItems.RUBY_FILLET_KNIFE.get()) {
-                    inputStack = new ItemStack(ModCompatItems.RUBY_FILLET_KNIFE.get());
-                    outputStack = new ItemStack(ModCompatItems.JADE_FILLET_KNIFE.get());
-                }
-
-            } else if (ModList.get().isLoaded("aquaculture")) {
-                if (inputItem == ModCompatItems.RUBY_FISHING_ROD.get()) {
-                    inputStack = new ItemStack(ModCompatItems.RUBY_FISHING_ROD.get());
-                    outputStack = new ItemStack(ModCompatItems.JADE_FISHING_ROD.get());
-                }
-
-            } else if (ModList.get().isLoaded("aquaculture")) {
-                if (inputItem == ModCompatItems.RUBY_HOOK.get()) {
-                    inputStack = new ItemStack(ModCompatItems.RUBY_HOOK.get());
-                    outputStack = new ItemStack(ModCompatItems.JADE_HOOK.get());
-                }
-
-            } else if (ModList.get().isLoaded("betterarcheology")) {
-                if (inputItem == ModCompatItems.RUBY_BRUSH.get()) {
-                    inputStack = new ItemStack(ModCompatItems.RUBY_BRUSH.get());
-                    outputStack = new ItemStack(ModCompatItems.JADE_BRUSH.get());
-                }
-
             } else if (inputItem == ModItems.RUBY_HELMET.get()) {
                 inputStack = new ItemStack(ModItems.RUBY_HELMET.get());
                 outputStack = new ItemStack(ModItems.JADE_HELMET.get());
@@ -890,6 +745,102 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
             } else if (inputItem == ModItems.RUBY_HORSE_ARMOR.get()) {
                 inputStack = new ItemStack(ModItems.RUBY_HORSE_ARMOR.get());
                 outputStack = new ItemStack(ModItems.JADE_HORSE_ARMOR.get());
+
+            } else if (ModList.get().isLoaded("farmersdelight") && inputItem == vectorwing.farmersdelight.common.registry.ModItems.DIAMOND_KNIFE.get()) {
+                inputStack = new ItemStack(vectorwing.farmersdelight.common.registry.ModItems.DIAMOND_KNIFE.get());
+                outputStack = new ItemStack(ModCompatItems.JADE_KNIFE.get());
+
+            } else if (ModList.get().isLoaded("farmersdelight") && inputItem == ModCompatItems.AMBER_KNIFE.get()) {
+                inputStack = new ItemStack(ModCompatItems.AMBER_KNIFE.get());
+                outputStack = new ItemStack(ModCompatItems.JADE_KNIFE.get());
+
+            } else if (ModList.get().isLoaded("farmersdelight") && inputItem == ModCompatItems.SILICON_KNIFE.get()) {
+                inputStack = new ItemStack(ModCompatItems.SILICON_KNIFE.get());
+                outputStack = new ItemStack(ModCompatItems.JADE_KNIFE.get());
+
+            } else if (ModList.get().isLoaded("farmersdelight") && inputItem == ModCompatItems.RUBY_KNIFE.get()) {
+                inputStack = new ItemStack(ModCompatItems.RUBY_KNIFE.get());
+                outputStack = new ItemStack(ModCompatItems.JADE_KNIFE.get());
+
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == AquaItems.DIAMOND_FILLET_KNIFE.get()) {
+                inputStack = new ItemStack(AquaItems.DIAMOND_FILLET_KNIFE.get());
+                outputStack = new ItemStack(ModCompatItems.JADE_FILLET_KNIFE.get());
+
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == AquaItems.DIAMOND_FISHING_ROD.get()) {
+                inputStack = new ItemStack(AquaItems.DIAMOND_FISHING_ROD.get());
+                outputStack = new ItemStack(ModCompatItems.JADE_FISHING_ROD.get());
+
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == AquaItems.DIAMOND_HOOK.get()) {
+                inputStack = new ItemStack(AquaItems.DIAMOND_HOOK.get());
+                outputStack = new ItemStack(ModCompatItems.JADE_HOOK.get());
+
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.AMBER_FILLET_KNIFE.get()) {
+                inputStack = new ItemStack(ModCompatItems.AMBER_FILLET_KNIFE.get());
+                outputStack = new ItemStack(ModCompatItems.JADE_FILLET_KNIFE.get());
+
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.AMBER_FISHING_ROD.get()) {
+                inputStack = new ItemStack(ModCompatItems.AMBER_FISHING_ROD.get());
+                outputStack = new ItemStack(ModCompatItems.JADE_FISHING_ROD.get());
+
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.AMBER_HOOK.get()) {
+                inputStack = new ItemStack(ModCompatItems.AMBER_HOOK.get());
+                outputStack = new ItemStack(ModCompatItems.JADE_HOOK.get());
+
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.SILICON_FILLET_KNIFE.get()) {
+                inputStack = new ItemStack(ModCompatItems.SILICON_FILLET_KNIFE.get());
+                outputStack = new ItemStack(ModCompatItems.JADE_FILLET_KNIFE.get());
+
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.SILICON_FISHING_ROD.get()) {
+                inputStack = new ItemStack(ModCompatItems.SILICON_FISHING_ROD.get());
+                outputStack = new ItemStack(ModCompatItems.JADE_FISHING_ROD.get());
+
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.SILICON_HOOK.get()) {
+                inputStack = new ItemStack(ModCompatItems.SILICON_HOOK.get());
+                outputStack = new ItemStack(ModCompatItems.JADE_HOOK.get());
+
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.RUBY_FILLET_KNIFE.get()) {
+                inputStack = new ItemStack(ModCompatItems.RUBY_FILLET_KNIFE.get());
+                outputStack = new ItemStack(ModCompatItems.JADE_FILLET_KNIFE.get());
+
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.RUBY_FISHING_ROD.get()) {
+                inputStack = new ItemStack(ModCompatItems.RUBY_FISHING_ROD.get());
+                outputStack = new ItemStack(ModCompatItems.JADE_FISHING_ROD.get());
+
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.RUBY_HOOK.get()) {
+                inputStack = new ItemStack(ModCompatItems.RUBY_HOOK.get());
+                outputStack = new ItemStack(ModCompatItems.JADE_HOOK.get());
+
+            } else if (ModList.get().isLoaded("betterarcheology") && inputItem == BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("betterarcheology", "diamond_brush"))) {
+                inputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("betterarcheology", "diamond_brush")));
+                outputStack = new ItemStack(ModCompatItems.JADE_BRUSH.get());
+
+            } else if (ModList.get().isLoaded("betterarcheology") && inputItem == ModCompatItems.AMBER_BRUSH.get()) {
+                inputStack = new ItemStack(ModCompatItems.AMBER_BRUSH.get());
+                outputStack = new ItemStack(ModCompatItems.JADE_BRUSH.get());
+
+            } else if (ModList.get().isLoaded("betterarcheology") && inputItem == ModCompatItems.SILICON_BRUSH.get()) {
+                inputStack = new ItemStack(ModCompatItems.SILICON_BRUSH.get());
+                outputStack = new ItemStack(ModCompatItems.JADE_BRUSH.get());
+
+            } else if (ModList.get().isLoaded("betterarcheology") && inputItem == ModCompatItems.RUBY_BRUSH.get()) {
+                inputStack = new ItemStack(ModCompatItems.RUBY_BRUSH.get());
+                outputStack = new ItemStack(ModCompatItems.JADE_BRUSH.get());
+
+            } else if (ModList.get().isLoaded("archers") && inputItem == BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("archers", "diamond_spear"))) {
+                inputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("archers", "diamond_spear")));
+                outputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "jade_spear")));
+
+            } else if (ModList.get().isLoaded("archers") && inputItem == BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "amber_spear"))) {
+                inputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "amber_spear")));
+                outputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "jade_spear")));
+
+            } else if (ModList.get().isLoaded("archers") && inputItem == BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "silicon_spear"))) {
+                inputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "silicon_spear")));
+                outputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "jade_spear")));
+
+            } else if (ModList.get().isLoaded("archers") && inputItem == BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "ruby_spear"))) {
+                inputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "ruby_spear")));
+                outputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "jade_spear")));
             }
 
         } else if (toolConvertButtonPressed == 3) {
@@ -913,36 +864,6 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
                 inputStack = new ItemStack(Items.DIAMOND_HOE);
                 outputStack = new ItemStack(ModItems.AMBER_HOE.get());
 
-            } else if (ModList.get().isLoaded("farmersdelight")) {
-                if (inputItem == vectorwing.farmersdelight.common.registry.ModItems.DIAMOND_KNIFE.get()) {
-                    inputStack = new ItemStack(vectorwing.farmersdelight.common.registry.ModItems.DIAMOND_KNIFE.get());
-                    outputStack = new ItemStack(ModCompatItems.AMBER_KNIFE.get());
-                }
-
-            } else if (ModList.get().isLoaded("aquaculture")) {
-                if (inputItem == AquaItems.DIAMOND_FILLET_KNIFE.get()) {
-                    inputStack = new ItemStack(AquaItems.DIAMOND_FILLET_KNIFE.get());
-                    outputStack = new ItemStack(ModCompatItems.AMBER_FILLET_KNIFE.get());
-                }
-
-            } else if (ModList.get().isLoaded("aquaculture")) {
-                if (inputItem == AquaItems.DIAMOND_FISHING_ROD.get()) {
-                    inputStack = new ItemStack(AquaItems.DIAMOND_FISHING_ROD.get());
-                    outputStack = new ItemStack(ModCompatItems.AMBER_FISHING_ROD.get());
-                }
-
-            } else if (ModList.get().isLoaded("aquaculture")) {
-                if (inputItem == AquaItems.DIAMOND_HOOK.get()) {
-                    inputStack = new ItemStack(AquaItems.DIAMOND_HOOK.get());
-                    outputStack = new ItemStack(ModCompatItems.AMBER_HOOK.get());
-                }
-
-            } else if (ModList.get().isLoaded("betterarcheology")) {
-                if (inputItem == BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("betterarcheology", "diamond_brush"))) {
-                    inputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("betterarcheology", "diamond_brush")));
-                    outputStack = new ItemStack(ModCompatItems.AMBER_BRUSH.get());
-                }
-
             } else if (inputItem == Items.DIAMOND_HELMET) {
                 inputStack = new ItemStack(Items.DIAMOND_HELMET);
                 outputStack = new ItemStack(ModItems.AMBER_HELMET.get());
@@ -982,36 +903,6 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
             } else if (inputItem == ModItems.JADE_HOE.get()) {
                 inputStack = new ItemStack(ModItems.JADE_HOE.get());
                 outputStack = new ItemStack(ModItems.AMBER_HOE.get());
-
-            } else if (ModList.get().isLoaded("farmersdelight")) {
-                if (inputItem == ModCompatItems.JADE_KNIFE.get()) {
-                    inputStack = new ItemStack(ModCompatItems.JADE_KNIFE.get());
-                    outputStack = new ItemStack(ModCompatItems.AMBER_KNIFE.get());
-                }
-
-            } else if (ModList.get().isLoaded("aquaculture")) {
-                if (inputItem ==  ModCompatItems.JADE_FILLET_KNIFE.get()) {
-                    inputStack = new ItemStack(ModCompatItems.JADE_FILLET_KNIFE.get());
-                    outputStack = new ItemStack(ModCompatItems.AMBER_FILLET_KNIFE.get());
-                }
-
-            } else if (ModList.get().isLoaded("aquaculture")) {
-                if (inputItem == ModCompatItems.JADE_FISHING_ROD.get()) {
-                    inputStack = new ItemStack(ModCompatItems.JADE_FISHING_ROD.get());
-                    outputStack = new ItemStack(ModCompatItems.AMBER_FISHING_ROD.get());
-                }
-
-            } else if (ModList.get().isLoaded("aquaculture")) {
-                if (inputItem == ModCompatItems.JADE_HOOK.get()) {
-                    inputStack = new ItemStack(ModCompatItems.JADE_HOOK.get());
-                    outputStack = new ItemStack(ModCompatItems.AMBER_HOOK.get());
-                }
-
-            } else if (ModList.get().isLoaded("betterarcheology")) {
-                if (inputItem == ModCompatItems.JADE_BRUSH.get()) {
-                    inputStack = new ItemStack(ModCompatItems.JADE_BRUSH.get());
-                    outputStack = new ItemStack(ModCompatItems.AMBER_BRUSH.get());
-                }
 
             } else if (inputItem == ModItems.JADE_HELMET.get()) {
                 inputStack = new ItemStack(ModItems.JADE_HELMET.get());
@@ -1053,36 +944,6 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
                 inputStack = new ItemStack(ModItems.SILICON_HOE.get());
                 outputStack = new ItemStack(ModItems.AMBER_HOE.get());
 
-            } else if (ModList.get().isLoaded("farmersdelight")) {
-                if (inputItem == ModCompatItems.SILICON_KNIFE.get()) {
-                    inputStack = new ItemStack(ModCompatItems.SILICON_KNIFE.get());
-                    outputStack = new ItemStack(ModCompatItems.AMBER_KNIFE.get());
-                }
-
-            } else if (ModList.get().isLoaded("aquaculture")) {
-                if (inputItem ==  ModCompatItems.SILICON_FILLET_KNIFE.get()) {
-                    inputStack = new ItemStack(ModCompatItems.SILICON_FILLET_KNIFE.get());
-                    outputStack = new ItemStack(ModCompatItems.AMBER_FILLET_KNIFE.get());
-                }
-
-            } else if (ModList.get().isLoaded("aquaculture")) {
-                if (inputItem == ModCompatItems.SILICON_FISHING_ROD.get()) {
-                    inputStack = new ItemStack(ModCompatItems.SILICON_FISHING_ROD.get());
-                    outputStack = new ItemStack(ModCompatItems.AMBER_FISHING_ROD.get());
-                }
-
-            } else if (ModList.get().isLoaded("aquaculture")) {
-                if (inputItem == ModCompatItems.SILICON_HOOK.get()) {
-                    inputStack = new ItemStack(ModCompatItems.SILICON_HOOK.get());
-                    outputStack = new ItemStack(ModCompatItems.AMBER_HOOK.get());
-                }
-
-            } else if (ModList.get().isLoaded("betterarcheology")) {
-                if (inputItem == ModCompatItems.SILICON_BRUSH.get()) {
-                    inputStack = new ItemStack(ModCompatItems.SILICON_BRUSH.get());
-                    outputStack = new ItemStack(ModCompatItems.AMBER_BRUSH.get());
-                }
-
             } else if (inputItem == ModItems.SILICON_HELMET.get()) {
                 inputStack = new ItemStack(ModItems.SILICON_HELMET.get());
                 outputStack = new ItemStack(ModItems.AMBER_HELMET.get());
@@ -1123,36 +984,6 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
                 inputStack = new ItemStack(ModItems.RUBY_HOE.get());
                 outputStack = new ItemStack(ModItems.AMBER_HOE.get());
 
-            } else if (ModList.get().isLoaded("farmersdelight")) {
-                if (inputItem == ModCompatItems.RUBY_KNIFE.get()) {
-                    inputStack = new ItemStack(ModCompatItems.RUBY_KNIFE.get());
-                    outputStack = new ItemStack(ModCompatItems.AMBER_KNIFE.get());
-                }
-
-            } else if (ModList.get().isLoaded("aquaculture")) {
-                if (inputItem ==  ModCompatItems.RUBY_FILLET_KNIFE.get()) {
-                    inputStack = new ItemStack(ModCompatItems.RUBY_FILLET_KNIFE.get());
-                    outputStack = new ItemStack(ModCompatItems.AMBER_FILLET_KNIFE.get());
-                }
-
-            } else if (ModList.get().isLoaded("aquaculture")) {
-                if (inputItem == ModCompatItems.RUBY_FISHING_ROD.get()) {
-                    inputStack = new ItemStack(ModCompatItems.RUBY_FISHING_ROD.get());
-                    outputStack = new ItemStack(ModCompatItems.AMBER_FISHING_ROD.get());
-                }
-
-            } else if (ModList.get().isLoaded("aquaculture")) {
-                if (inputItem == ModCompatItems.RUBY_HOOK.get()) {
-                    inputStack = new ItemStack(ModCompatItems.RUBY_HOOK.get());
-                    outputStack = new ItemStack(ModCompatItems.AMBER_HOOK.get());
-                }
-
-            } else if (ModList.get().isLoaded("betterarcheology")) {
-                if (inputItem == ModCompatItems.RUBY_BRUSH.get()) {
-                    inputStack = new ItemStack(ModCompatItems.RUBY_BRUSH.get());
-                    outputStack = new ItemStack(ModCompatItems.AMBER_BRUSH.get());
-                }
-
             } else if (inputItem == ModItems.RUBY_HELMET.get()) {
                 inputStack = new ItemStack(ModItems.RUBY_HELMET.get());
                 outputStack = new ItemStack(ModItems.AMBER_HELMET.get());
@@ -1172,6 +1003,102 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
             } else if (inputItem == ModItems.RUBY_HORSE_ARMOR.get()) {
                 inputStack = new ItemStack(ModItems.RUBY_HORSE_ARMOR.get());
                 outputStack = new ItemStack(ModItems.AMBER_HORSE_ARMOR.get());
+
+            } else if (ModList.get().isLoaded("farmersdelight") && inputItem == vectorwing.farmersdelight.common.registry.ModItems.DIAMOND_KNIFE.get()) {
+                inputStack = new ItemStack(vectorwing.farmersdelight.common.registry.ModItems.DIAMOND_KNIFE.get());
+                outputStack = new ItemStack(ModCompatItems.AMBER_KNIFE.get());
+
+            } else if (ModList.get().isLoaded("farmersdelight") && inputItem == ModCompatItems.JADE_KNIFE.get()) {
+                inputStack = new ItemStack(ModCompatItems.JADE_KNIFE.get());
+                outputStack = new ItemStack(ModCompatItems.AMBER_KNIFE.get());
+
+            } else if (ModList.get().isLoaded("farmersdelight") && inputItem == ModCompatItems.SILICON_KNIFE.get()) {
+                inputStack = new ItemStack(ModCompatItems.SILICON_KNIFE.get());
+                outputStack = new ItemStack(ModCompatItems.AMBER_KNIFE.get());
+
+            } else if (ModList.get().isLoaded("farmersdelight") && inputItem == ModCompatItems.RUBY_KNIFE.get()) {
+                inputStack = new ItemStack(ModCompatItems.RUBY_KNIFE.get());
+                outputStack = new ItemStack(ModCompatItems.AMBER_KNIFE.get());
+
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == AquaItems.DIAMOND_FILLET_KNIFE.get()) {
+                inputStack = new ItemStack(AquaItems.DIAMOND_FILLET_KNIFE.get());
+                outputStack = new ItemStack(ModCompatItems.AMBER_FILLET_KNIFE.get());
+
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == AquaItems.DIAMOND_FISHING_ROD.get()) {
+                inputStack = new ItemStack(AquaItems.DIAMOND_FISHING_ROD.get());
+                outputStack = new ItemStack(ModCompatItems.AMBER_FISHING_ROD.get());
+
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == AquaItems.DIAMOND_HOOK.get()) {
+                inputStack = new ItemStack(AquaItems.DIAMOND_HOOK.get());
+                outputStack = new ItemStack(ModCompatItems.AMBER_HOOK.get());
+
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.JADE_FILLET_KNIFE.get()) {
+                inputStack = new ItemStack(ModCompatItems.JADE_FILLET_KNIFE.get());
+                outputStack = new ItemStack(ModCompatItems.AMBER_FILLET_KNIFE.get());
+
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.JADE_FISHING_ROD.get()) {
+                inputStack = new ItemStack(ModCompatItems.JADE_FISHING_ROD.get());
+                outputStack = new ItemStack(ModCompatItems.AMBER_FISHING_ROD.get());
+
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.JADE_HOOK.get()) {
+                inputStack = new ItemStack(ModCompatItems.JADE_HOOK.get());
+                outputStack = new ItemStack(ModCompatItems.AMBER_HOOK.get());
+
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.SILICON_FILLET_KNIFE.get()) {
+                inputStack = new ItemStack(ModCompatItems.SILICON_FILLET_KNIFE.get());
+                outputStack = new ItemStack(ModCompatItems.AMBER_FILLET_KNIFE.get());
+
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.SILICON_FISHING_ROD.get()) {
+                inputStack = new ItemStack(ModCompatItems.SILICON_FISHING_ROD.get());
+                outputStack = new ItemStack(ModCompatItems.AMBER_FISHING_ROD.get());
+
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.SILICON_HOOK.get()) {
+                inputStack = new ItemStack(ModCompatItems.SILICON_HOOK.get());
+                outputStack = new ItemStack(ModCompatItems.AMBER_HOOK.get());
+
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.RUBY_FILLET_KNIFE.get()) {
+                inputStack = new ItemStack(ModCompatItems.RUBY_FILLET_KNIFE.get());
+                outputStack = new ItemStack(ModCompatItems.AMBER_FILLET_KNIFE.get());
+
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.RUBY_FISHING_ROD.get()) {
+                inputStack = new ItemStack(ModCompatItems.RUBY_FISHING_ROD.get());
+                outputStack = new ItemStack(ModCompatItems.AMBER_FISHING_ROD.get());
+
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.RUBY_HOOK.get()) {
+                inputStack = new ItemStack(ModCompatItems.RUBY_HOOK.get());
+                outputStack = new ItemStack(ModCompatItems.AMBER_HOOK.get());
+
+            } else if (ModList.get().isLoaded("betterarcheology") && inputItem == BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("betterarcheology", "diamond_brush"))) {
+                inputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("betterarcheology", "diamond_brush")));
+                outputStack = new ItemStack(ModCompatItems.AMBER_BRUSH.get());
+
+            } else if (ModList.get().isLoaded("betterarcheology") && inputItem == ModCompatItems.JADE_BRUSH.get()) {
+                inputStack = new ItemStack(ModCompatItems.JADE_BRUSH.get());
+                outputStack = new ItemStack(ModCompatItems.AMBER_BRUSH.get());
+
+            } else if (ModList.get().isLoaded("betterarcheology") && inputItem == ModCompatItems.SILICON_BRUSH.get()) {
+                inputStack = new ItemStack(ModCompatItems.SILICON_BRUSH.get());
+                outputStack = new ItemStack(ModCompatItems.AMBER_BRUSH.get());
+
+            } else if (ModList.get().isLoaded("betterarcheology") && inputItem == ModCompatItems.RUBY_BRUSH.get()) {
+                inputStack = new ItemStack(ModCompatItems.RUBY_BRUSH.get());
+                outputStack = new ItemStack(ModCompatItems.AMBER_BRUSH.get());
+
+            } else if (ModList.get().isLoaded("archers") && inputItem == BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("archers", "diamond_spear"))) {
+                inputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("archers", "diamond_spear")));
+                outputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "amber_spear")));
+
+            } else if (ModList.get().isLoaded("archers") && inputItem == BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "jade_spear"))) {
+                inputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "jade_spear")));
+                outputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "amber_spear")));
+
+            } else if (ModList.get().isLoaded("archers") && inputItem == BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "silicon_spear"))) {
+                inputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "silicon_spear")));
+                outputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "amber_spear")));
+
+            } else if (ModList.get().isLoaded("archers") && inputItem == BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "ruby_spear"))) {
+                inputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "ruby_spear")));
+                outputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "amber_spear")));
             }
 
         } else if (toolConvertButtonPressed == 4) {
@@ -1195,36 +1122,6 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
                 inputStack = new ItemStack(Items.DIAMOND_HOE);
                 outputStack = new ItemStack(ModItems.SILICON_HOE.get());
 
-            } else if (ModList.get().isLoaded("farmersdelight")) {
-                if (inputItem == vectorwing.farmersdelight.common.registry.ModItems.DIAMOND_KNIFE.get()) {
-                    inputStack = new ItemStack(vectorwing.farmersdelight.common.registry.ModItems.DIAMOND_KNIFE.get());
-                    outputStack = new ItemStack(ModCompatItems.SILICON_KNIFE.get());
-                }
-
-            } else if (ModList.get().isLoaded("aquaculture")) {
-                if (inputItem == AquaItems.DIAMOND_FILLET_KNIFE.get()) {
-                    inputStack = new ItemStack(AquaItems.DIAMOND_FILLET_KNIFE.get());
-                    outputStack = new ItemStack(ModCompatItems.SILICON_FILLET_KNIFE.get());
-                }
-
-            } else if (ModList.get().isLoaded("aquaculture")) {
-                if (inputItem == AquaItems.DIAMOND_FISHING_ROD.get()) {
-                    inputStack = new ItemStack(AquaItems.DIAMOND_FISHING_ROD.get());
-                    outputStack = new ItemStack(ModCompatItems.SILICON_FISHING_ROD.get());
-                }
-
-            } else if (ModList.get().isLoaded("aquaculture")) {
-                if (inputItem == AquaItems.DIAMOND_HOOK.get()) {
-                    inputStack = new ItemStack(AquaItems.DIAMOND_HOOK.get());
-                    outputStack = new ItemStack(ModCompatItems.SILICON_HOOK.get());
-                }
-
-            } else if (ModList.get().isLoaded("betterarcheology")) {
-                if (inputItem == BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("betterarcheology", "diamond_brush"))) {
-                    inputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("betterarcheology", "diamond_brush")));
-                    outputStack = new ItemStack(ModCompatItems.SILICON_BRUSH.get());
-                }
-
             } else if (inputItem == Items.DIAMOND_HELMET) {
                 inputStack = new ItemStack(Items.DIAMOND_HELMET);
                 outputStack = new ItemStack(ModItems.SILICON_HELMET.get());
@@ -1265,36 +1162,6 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
                 inputStack = new ItemStack(ModItems.JADE_HOE.get());
                 outputStack = new ItemStack(ModItems.SILICON_HOE.get());
 
-            } else if (ModList.get().isLoaded("farmersdelight")) {
-                if (inputItem == ModCompatItems.JADE_KNIFE.get()) {
-                    inputStack = new ItemStack(ModCompatItems.JADE_KNIFE.get());
-                    outputStack = new ItemStack(ModCompatItems.SILICON_KNIFE.get());
-                }
-
-            } else if (ModList.get().isLoaded("aquaculture")) {
-                if (inputItem ==  ModCompatItems.JADE_FILLET_KNIFE.get()) {
-                    inputStack = new ItemStack(ModCompatItems.JADE_FILLET_KNIFE.get());
-                    outputStack = new ItemStack(ModCompatItems.SILICON_FILLET_KNIFE.get());
-                }
-
-            } else if (ModList.get().isLoaded("aquaculture")) {
-                if (inputItem == ModCompatItems.JADE_FISHING_ROD.get()) {
-                    inputStack = new ItemStack(ModCompatItems.JADE_FISHING_ROD.get());
-                    outputStack = new ItemStack(ModCompatItems.SILICON_FISHING_ROD.get());
-                }
-
-            } else if (ModList.get().isLoaded("aquaculture")) {
-                if (inputItem == ModCompatItems.JADE_HOOK.get()) {
-                    inputStack = new ItemStack(ModCompatItems.JADE_HOOK.get());
-                    outputStack = new ItemStack(ModCompatItems.SILICON_HOOK.get());
-                }
-
-            } else if (ModList.get().isLoaded("betterarcheology")) {
-                if (inputItem == ModCompatItems.JADE_BRUSH.get()) {
-                    inputStack = new ItemStack(ModCompatItems.JADE_BRUSH.get());
-                    outputStack = new ItemStack(ModCompatItems.SILICON_BRUSH.get());
-                }
-
             } else if (inputItem == ModItems.JADE_HELMET.get()) {
                 inputStack = new ItemStack(ModItems.JADE_HELMET.get());
                 outputStack = new ItemStack(ModItems.SILICON_HELMET.get());
@@ -1334,36 +1201,6 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
             } else if (inputItem == ModItems.AMBER_HOE.get()) {
                 inputStack = new ItemStack(ModItems.AMBER_HOE.get());
                 outputStack = new ItemStack(ModItems.SILICON_HOE.get());
-
-            } else if (ModList.get().isLoaded("farmersdelight")) {
-                if (inputItem == ModCompatItems.AMBER_KNIFE.get()) {
-                    inputStack = new ItemStack(ModCompatItems.AMBER_KNIFE.get());
-                    outputStack = new ItemStack(ModCompatItems.SILICON_KNIFE.get());
-                }
-
-            } else if (ModList.get().isLoaded("aquaculture")) {
-                if (inputItem ==  ModCompatItems.AMBER_FILLET_KNIFE.get()) {
-                    inputStack = new ItemStack(ModCompatItems.AMBER_FILLET_KNIFE.get());
-                    outputStack = new ItemStack(ModCompatItems.SILICON_FILLET_KNIFE.get());
-                }
-
-            } else if (ModList.get().isLoaded("aquaculture")) {
-                if (inputItem == ModCompatItems.AMBER_FISHING_ROD.get()) {
-                    inputStack = new ItemStack(ModCompatItems.AMBER_FISHING_ROD.get());
-                    outputStack = new ItemStack(ModCompatItems.SILICON_FISHING_ROD.get());
-                }
-
-            } else if (ModList.get().isLoaded("aquaculture")) {
-                if (inputItem == ModCompatItems.AMBER_HOOK.get()) {
-                    inputStack = new ItemStack(ModCompatItems.AMBER_HOOK.get());
-                    outputStack = new ItemStack(ModCompatItems.SILICON_HOOK.get());
-                }
-
-            } else if (ModList.get().isLoaded("betterarcheology")) {
-                if (inputItem == ModCompatItems.AMBER_BRUSH.get()) {
-                    inputStack = new ItemStack(ModCompatItems.AMBER_BRUSH.get());
-                    outputStack = new ItemStack(ModCompatItems.SILICON_BRUSH.get());
-                }
 
             } else if (inputItem == ModItems.AMBER_HELMET.get()) {
                 inputStack = new ItemStack(ModItems.AMBER_HELMET.get());
@@ -1405,36 +1242,6 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
                 inputStack = new ItemStack(ModItems.RUBY_HOE.get());
                 outputStack = new ItemStack(ModItems.SILICON_HOE.get());
 
-            } else if (ModList.get().isLoaded("farmersdelight")) {
-                if (inputItem == ModCompatItems.RUBY_KNIFE.get()) {
-                    inputStack = new ItemStack(ModCompatItems.RUBY_KNIFE.get());
-                    outputStack = new ItemStack(ModCompatItems.SILICON_KNIFE.get());
-                }
-
-            } else if (ModList.get().isLoaded("aquaculture")) {
-                if (inputItem ==  ModCompatItems.RUBY_FILLET_KNIFE.get()) {
-                    inputStack = new ItemStack(ModCompatItems.RUBY_FILLET_KNIFE.get());
-                    outputStack = new ItemStack(ModCompatItems.SILICON_FILLET_KNIFE.get());
-                }
-
-            } else if (ModList.get().isLoaded("aquaculture")) {
-                if (inputItem == ModCompatItems.RUBY_FISHING_ROD.get()) {
-                    inputStack = new ItemStack(ModCompatItems.RUBY_FISHING_ROD.get());
-                    outputStack = new ItemStack(ModCompatItems.SILICON_FISHING_ROD.get());
-                }
-
-            } else if (ModList.get().isLoaded("aquaculture")) {
-                if (inputItem == ModCompatItems.RUBY_HOOK.get()) {
-                    inputStack = new ItemStack(ModCompatItems.RUBY_HOOK.get());
-                    outputStack = new ItemStack(ModCompatItems.SILICON_HOOK.get());
-                }
-
-            } else if (ModList.get().isLoaded("betterarcheology")) {
-                if (inputItem == ModCompatItems.RUBY_BRUSH.get()) {
-                    inputStack = new ItemStack(ModCompatItems.RUBY_BRUSH.get());
-                    outputStack = new ItemStack(ModCompatItems.SILICON_BRUSH.get());
-                }
-
             } else if (inputItem == ModItems.RUBY_HELMET.get()) {
                 inputStack = new ItemStack(ModItems.RUBY_HELMET.get());
                 outputStack = new ItemStack(ModItems.SILICON_HELMET.get());
@@ -1454,10 +1261,106 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
             } else if (inputItem == ModItems.RUBY_HORSE_ARMOR.get()) {
                 inputStack = new ItemStack(ModItems.RUBY_HORSE_ARMOR.get());
                 outputStack = new ItemStack(ModItems.SILICON_HORSE_ARMOR.get());
+
+            } else if (ModList.get().isLoaded("farmersdelight") && inputItem == vectorwing.farmersdelight.common.registry.ModItems.DIAMOND_KNIFE.get()) {
+                inputStack = new ItemStack(vectorwing.farmersdelight.common.registry.ModItems.DIAMOND_KNIFE.get());
+                outputStack = new ItemStack(ModCompatItems.SILICON_KNIFE.get());
+
+            } else if (ModList.get().isLoaded("farmersdelight") && inputItem == ModCompatItems.JADE_KNIFE.get()) {
+                inputStack = new ItemStack(ModCompatItems.JADE_KNIFE.get());
+                outputStack = new ItemStack(ModCompatItems.SILICON_KNIFE.get());
+
+            } else if (ModList.get().isLoaded("farmersdelight") && inputItem == ModCompatItems.AMBER_KNIFE.get()) {
+                inputStack = new ItemStack(ModCompatItems.AMBER_KNIFE.get());
+                outputStack = new ItemStack(ModCompatItems.SILICON_KNIFE.get());
+
+            } else if (ModList.get().isLoaded("farmersdelight") && inputItem == ModCompatItems.RUBY_KNIFE.get()) {
+                inputStack = new ItemStack(ModCompatItems.RUBY_KNIFE.get());
+                outputStack = new ItemStack(ModCompatItems.SILICON_KNIFE.get());
+
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == AquaItems.DIAMOND_FILLET_KNIFE.get()) {
+                inputStack = new ItemStack(AquaItems.DIAMOND_FILLET_KNIFE.get());
+                outputStack = new ItemStack(ModCompatItems.SILICON_FILLET_KNIFE.get());
+
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == AquaItems.DIAMOND_FISHING_ROD.get()) {
+                inputStack = new ItemStack(AquaItems.DIAMOND_FISHING_ROD.get());
+                outputStack = new ItemStack(ModCompatItems.SILICON_FISHING_ROD.get());
+
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == AquaItems.DIAMOND_HOOK.get()) {
+                inputStack = new ItemStack(AquaItems.DIAMOND_HOOK.get());
+                outputStack = new ItemStack(ModCompatItems.SILICON_HOOK.get());
+
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.JADE_FILLET_KNIFE.get()) {
+                inputStack = new ItemStack(ModCompatItems.JADE_FILLET_KNIFE.get());
+                outputStack = new ItemStack(ModCompatItems.SILICON_FILLET_KNIFE.get());
+
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.JADE_FISHING_ROD.get()) {
+                inputStack = new ItemStack(ModCompatItems.JADE_FISHING_ROD.get());
+                outputStack = new ItemStack(ModCompatItems.SILICON_FISHING_ROD.get());
+
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.JADE_HOOK.get()) {
+                inputStack = new ItemStack(ModCompatItems.JADE_HOOK.get());
+                outputStack = new ItemStack(ModCompatItems.SILICON_HOOK.get());
+
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.AMBER_FILLET_KNIFE.get()) {
+                inputStack = new ItemStack(ModCompatItems.AMBER_FILLET_KNIFE.get());
+                outputStack = new ItemStack(ModCompatItems.SILICON_FILLET_KNIFE.get());
+
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.AMBER_FISHING_ROD.get()) {
+                inputStack = new ItemStack(ModCompatItems.AMBER_FISHING_ROD.get());
+                outputStack = new ItemStack(ModCompatItems.SILICON_FISHING_ROD.get());
+
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.AMBER_HOOK.get()) {
+                inputStack = new ItemStack(ModCompatItems.AMBER_HOOK.get());
+                outputStack = new ItemStack(ModCompatItems.SILICON_HOOK.get());
+
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.RUBY_FILLET_KNIFE.get()) {
+                inputStack = new ItemStack(ModCompatItems.RUBY_FILLET_KNIFE.get());
+                outputStack = new ItemStack(ModCompatItems.SILICON_FILLET_KNIFE.get());
+
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.RUBY_FISHING_ROD.get()) {
+                inputStack = new ItemStack(ModCompatItems.RUBY_FISHING_ROD.get());
+                outputStack = new ItemStack(ModCompatItems.SILICON_FISHING_ROD.get());
+
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.RUBY_HOOK.get()) {
+                inputStack = new ItemStack(ModCompatItems.RUBY_HOOK.get());
+                outputStack = new ItemStack(ModCompatItems.SILICON_HOOK.get());
+
+            } else if (ModList.get().isLoaded("betterarcheology") && inputItem == BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("betterarcheology", "diamond_brush"))) {
+                inputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("betterarcheology", "diamond_brush")));
+                outputStack = new ItemStack(ModCompatItems.SILICON_BRUSH.get());
+
+            } else if (ModList.get().isLoaded("betterarcheology") && inputItem == ModCompatItems.JADE_BRUSH.get()) {
+                inputStack = new ItemStack(ModCompatItems.JADE_BRUSH.get());
+                outputStack = new ItemStack(ModCompatItems.SILICON_BRUSH.get());
+
+            } else if (ModList.get().isLoaded("betterarcheology") && inputItem == ModCompatItems.AMBER_BRUSH.get()) {
+                inputStack = new ItemStack(ModCompatItems.AMBER_BRUSH.get());
+                outputStack = new ItemStack(ModCompatItems.SILICON_BRUSH.get());
+
+            } else if (ModList.get().isLoaded("betterarcheology") && inputItem == ModCompatItems.RUBY_BRUSH.get()) {
+                inputStack = new ItemStack(ModCompatItems.RUBY_BRUSH.get());
+                outputStack = new ItemStack(ModCompatItems.SILICON_BRUSH.get());
+
+            } else if (ModList.get().isLoaded("archers") && inputItem == BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("archers", "diamond_spear"))) {
+                inputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("archers", "diamond_spear")));
+                outputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "silicon_spear")));
+
+            } else if (ModList.get().isLoaded("archers") && inputItem == BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "jade_spear"))) {
+                inputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "jade_spear")));
+                outputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "silicon_spear")));
+
+            } else if (ModList.get().isLoaded("archers") && inputItem == BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "amber_spear"))) {
+                inputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "amber_spear")));
+                outputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "silicon_spear")));
+
+            } else if (ModList.get().isLoaded("archers") && inputItem == BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "ruby_spear"))) {
+                inputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "ruby_spear")));
+                outputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "silicon_spear")));
             }
 
         } else if (toolConvertButtonPressed == 5) {
-            if(inputItem == Items.DIAMOND_SWORD) {
+            if (inputItem == Items.DIAMOND_SWORD) {
                 inputStack = new ItemStack(Items.DIAMOND_SWORD);
                 outputStack = new ItemStack(ModItems.RUBY_SWORD.get());
 
@@ -1476,36 +1379,6 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
             } else if (inputItem == Items.DIAMOND_HOE) {
                 inputStack = new ItemStack(Items.DIAMOND_HOE);
                 outputStack = new ItemStack(ModItems.RUBY_HOE.get());
-
-            } else if (ModList.get().isLoaded("farmersdelight")) {
-                if (inputItem == vectorwing.farmersdelight.common.registry.ModItems.DIAMOND_KNIFE.get()) {
-                    inputStack = new ItemStack(vectorwing.farmersdelight.common.registry.ModItems.DIAMOND_KNIFE.get());
-                    outputStack = new ItemStack(ModCompatItems.RUBY_KNIFE.get());
-                }
-
-            } else if (ModList.get().isLoaded("aquaculture")) {
-                if (inputItem == AquaItems.DIAMOND_FILLET_KNIFE.get()) {
-                    inputStack = new ItemStack(AquaItems.DIAMOND_FILLET_KNIFE.get());
-                    outputStack = new ItemStack(ModCompatItems.RUBY_FILLET_KNIFE.get());
-                }
-
-            } else if (ModList.get().isLoaded("aquaculture")) {
-                if (inputItem == AquaItems.DIAMOND_FISHING_ROD.get()) {
-                    inputStack = new ItemStack(AquaItems.DIAMOND_FISHING_ROD.get());
-                    outputStack = new ItemStack(ModCompatItems.RUBY_FISHING_ROD.get());
-                }
-
-            } else if (ModList.get().isLoaded("aquaculture")) {
-                if (inputItem == AquaItems.DIAMOND_HOOK.get()) {
-                    inputStack = new ItemStack(AquaItems.DIAMOND_HOOK.get());
-                    outputStack = new ItemStack(ModCompatItems.RUBY_HOOK.get());
-                }
-
-            } else if (ModList.get().isLoaded("betterarcheology")) {
-                if (inputItem == BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("betterarcheology", "diamond_brush"))) {
-                    inputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("betterarcheology", "diamond_brush")));
-                    outputStack = new ItemStack(ModCompatItems.RUBY_BRUSH.get());
-                }
 
             } else if (inputItem == Items.DIAMOND_HELMET) {
                 inputStack = new ItemStack(Items.DIAMOND_HELMET);
@@ -1547,36 +1420,6 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
                 inputStack = new ItemStack(ModItems.JADE_HOE.get());
                 outputStack = new ItemStack(ModItems.RUBY_HOE.get());
 
-            } else if (ModList.get().isLoaded("farmersdelight")) {
-                if (inputItem == ModCompatItems.JADE_KNIFE.get()) {
-                    inputStack = new ItemStack(ModCompatItems.JADE_KNIFE.get());
-                    outputStack = new ItemStack(ModCompatItems.RUBY_KNIFE.get());
-                }
-
-            } else if (ModList.get().isLoaded("aquaculture")) {
-                if (inputItem ==  ModCompatItems.JADE_FILLET_KNIFE.get()) {
-                    inputStack = new ItemStack(ModCompatItems.JADE_FILLET_KNIFE.get());
-                    outputStack = new ItemStack(ModCompatItems.RUBY_FILLET_KNIFE.get());
-                }
-
-            } else if (ModList.get().isLoaded("aquaculture")) {
-                if (inputItem == ModCompatItems.JADE_FISHING_ROD.get()) {
-                    inputStack = new ItemStack(ModCompatItems.JADE_FISHING_ROD.get());
-                    outputStack = new ItemStack(ModCompatItems.RUBY_FISHING_ROD.get());
-                }
-
-            } else if (ModList.get().isLoaded("aquaculture")) {
-                if (inputItem == ModCompatItems.JADE_HOOK.get()) {
-                    inputStack = new ItemStack(ModCompatItems.JADE_HOOK.get());
-                    outputStack = new ItemStack(ModCompatItems.RUBY_HOOK.get());
-                }
-
-            } else if (ModList.get().isLoaded("betterarcheology")) {
-                if (inputItem == ModCompatItems.JADE_BRUSH.get()) {
-                    inputStack = new ItemStack(ModCompatItems.JADE_BRUSH.get());
-                    outputStack = new ItemStack(ModCompatItems.RUBY_BRUSH.get());
-                }
-
             } else if (inputItem == ModItems.JADE_HELMET.get()) {
                 inputStack = new ItemStack(ModItems.JADE_HELMET.get());
                 outputStack = new ItemStack(ModItems.RUBY_HELMET.get());
@@ -1616,36 +1459,6 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
             } else if (inputItem == ModItems.AMBER_HOE.get()) {
                 inputStack = new ItemStack(ModItems.AMBER_HOE.get());
                 outputStack = new ItemStack(ModItems.RUBY_HOE.get());
-
-            } else if (ModList.get().isLoaded("farmersdelight")) {
-                if (inputItem == ModCompatItems.AMBER_KNIFE.get()) {
-                    inputStack = new ItemStack(ModCompatItems.AMBER_KNIFE.get());
-                    outputStack = new ItemStack(ModCompatItems.RUBY_KNIFE.get());
-                }
-
-            } else if (ModList.get().isLoaded("aquaculture")) {
-                if (inputItem ==  ModCompatItems.AMBER_FILLET_KNIFE.get()) {
-                    inputStack = new ItemStack(ModCompatItems.AMBER_FILLET_KNIFE.get());
-                    outputStack = new ItemStack(ModCompatItems.RUBY_FILLET_KNIFE.get());
-                }
-
-            } else if (ModList.get().isLoaded("aquaculture")) {
-                if (inputItem == ModCompatItems.AMBER_FISHING_ROD.get()) {
-                    inputStack = new ItemStack(ModCompatItems.AMBER_FISHING_ROD.get());
-                    outputStack = new ItemStack(ModCompatItems.RUBY_FISHING_ROD.get());
-                }
-
-            } else if (ModList.get().isLoaded("aquaculture")) {
-                if (inputItem == ModCompatItems.AMBER_HOOK.get()) {
-                    inputStack = new ItemStack(ModCompatItems.AMBER_HOOK.get());
-                    outputStack = new ItemStack(ModCompatItems.RUBY_HOOK.get());
-                }
-
-            } else if (ModList.get().isLoaded("betterarcheology")) {
-                if (inputItem == ModCompatItems.AMBER_BRUSH.get()) {
-                    inputStack = new ItemStack(ModCompatItems.AMBER_BRUSH.get());
-                    outputStack = new ItemStack(ModCompatItems.RUBY_BRUSH.get());
-                }
 
             } else if (inputItem == ModItems.AMBER_HELMET.get()) {
                 inputStack = new ItemStack(ModItems.AMBER_HELMET.get());
@@ -1687,36 +1500,6 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
                 inputStack = new ItemStack(ModItems.SILICON_HOE.get());
                 outputStack = new ItemStack(ModItems.RUBY_HOE.get());
 
-            } else if (ModList.get().isLoaded("farmersdelight")) {
-                if (inputItem == ModCompatItems.SILICON_KNIFE.get()) {
-                    inputStack = new ItemStack(ModCompatItems.SILICON_KNIFE.get());
-                    outputStack = new ItemStack(ModCompatItems.RUBY_KNIFE.get());
-                }
-
-            } else if (ModList.get().isLoaded("aquaculture")) {
-                if (inputItem ==  ModCompatItems.SILICON_FILLET_KNIFE.get()) {
-                    inputStack = new ItemStack(ModCompatItems.SILICON_FILLET_KNIFE.get());
-                    outputStack = new ItemStack(ModCompatItems.RUBY_FILLET_KNIFE.get());
-                }
-
-            } else if (ModList.get().isLoaded("aquaculture")) {
-                if (inputItem == ModCompatItems.SILICON_FISHING_ROD.get()) {
-                    inputStack = new ItemStack(ModCompatItems.SILICON_FISHING_ROD.get());
-                    outputStack = new ItemStack(ModCompatItems.RUBY_FISHING_ROD.get());
-                }
-
-            } else if (ModList.get().isLoaded("aquaculture")) {
-                if (inputItem == ModCompatItems.SILICON_HOOK.get()) {
-                    inputStack = new ItemStack(ModCompatItems.SILICON_HOOK.get());
-                    outputStack = new ItemStack(ModCompatItems.RUBY_HOOK.get());
-                }
-
-            } else if (ModList.get().isLoaded("betterarcheology")) {
-                if (inputItem == ModCompatItems.SILICON_BRUSH.get()) {
-                    inputStack = new ItemStack(ModCompatItems.SILICON_BRUSH.get());
-                    outputStack = new ItemStack(ModCompatItems.RUBY_BRUSH.get());
-                }
-
             } else if (inputItem == ModItems.SILICON_HELMET.get()) {
                 inputStack = new ItemStack(ModItems.SILICON_HELMET.get());
                 outputStack = new ItemStack(ModItems.RUBY_HELMET.get());
@@ -1736,6 +1519,102 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
             } else if (inputItem == ModItems.SILICON_HORSE_ARMOR.get()) {
                 inputStack = new ItemStack(ModItems.SILICON_HORSE_ARMOR.get());
                 outputStack = new ItemStack(ModItems.RUBY_HORSE_ARMOR.get());
+
+            } else if (ModList.get().isLoaded("farmersdelight") && inputItem == vectorwing.farmersdelight.common.registry.ModItems.DIAMOND_KNIFE.get()) {
+                inputStack = new ItemStack(vectorwing.farmersdelight.common.registry.ModItems.DIAMOND_KNIFE.get());
+                outputStack = new ItemStack(ModCompatItems.RUBY_KNIFE.get());
+
+            } else if (ModList.get().isLoaded("farmersdelight") && inputItem == ModCompatItems.JADE_KNIFE.get()) {
+                inputStack = new ItemStack(ModCompatItems.JADE_KNIFE.get());
+                outputStack = new ItemStack(ModCompatItems.RUBY_KNIFE.get());
+
+            } else if (ModList.get().isLoaded("farmersdelight") && inputItem == ModCompatItems.AMBER_KNIFE.get()) {
+                inputStack = new ItemStack(ModCompatItems.AMBER_KNIFE.get());
+                outputStack = new ItemStack(ModCompatItems.RUBY_KNIFE.get());
+
+            } else if (ModList.get().isLoaded("farmersdelight") && inputItem == ModCompatItems.SILICON_KNIFE.get()) {
+                inputStack = new ItemStack(ModCompatItems.SILICON_KNIFE.get());
+                outputStack = new ItemStack(ModCompatItems.RUBY_KNIFE.get());
+
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == AquaItems.DIAMOND_FILLET_KNIFE.get()) {
+                inputStack = new ItemStack(AquaItems.DIAMOND_FILLET_KNIFE.get());
+                outputStack = new ItemStack(ModCompatItems.RUBY_FILLET_KNIFE.get());
+
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == AquaItems.DIAMOND_FISHING_ROD.get()) {
+                inputStack = new ItemStack(AquaItems.DIAMOND_FISHING_ROD.get());
+                outputStack = new ItemStack(ModCompatItems.RUBY_FISHING_ROD.get());
+
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == AquaItems.DIAMOND_HOOK.get()) {
+                inputStack = new ItemStack(AquaItems.DIAMOND_HOOK.get());
+                outputStack = new ItemStack(ModCompatItems.RUBY_HOOK.get());
+
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.JADE_FILLET_KNIFE.get()) {
+                inputStack = new ItemStack(ModCompatItems.JADE_FILLET_KNIFE.get());
+                outputStack = new ItemStack(ModCompatItems.RUBY_FILLET_KNIFE.get());
+
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.JADE_FISHING_ROD.get()) {
+                inputStack = new ItemStack(ModCompatItems.JADE_FISHING_ROD.get());
+                outputStack = new ItemStack(ModCompatItems.RUBY_FISHING_ROD.get());
+
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.JADE_HOOK.get()) {
+                inputStack = new ItemStack(ModCompatItems.JADE_HOOK.get());
+                outputStack = new ItemStack(ModCompatItems.RUBY_HOOK.get());
+
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.AMBER_FILLET_KNIFE.get()) {
+                inputStack = new ItemStack(ModCompatItems.AMBER_FILLET_KNIFE.get());
+                outputStack = new ItemStack(ModCompatItems.RUBY_FILLET_KNIFE.get());
+
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.AMBER_FISHING_ROD.get()) {
+                inputStack = new ItemStack(ModCompatItems.AMBER_FISHING_ROD.get());
+                outputStack = new ItemStack(ModCompatItems.RUBY_FISHING_ROD.get());
+
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.AMBER_HOOK.get()) {
+                inputStack = new ItemStack(ModCompatItems.AMBER_HOOK.get());
+                outputStack = new ItemStack(ModCompatItems.RUBY_HOOK.get());
+
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.SILICON_FILLET_KNIFE.get()) {
+                inputStack = new ItemStack(ModCompatItems.SILICON_FILLET_KNIFE.get());
+                outputStack = new ItemStack(ModCompatItems.RUBY_FILLET_KNIFE.get());
+
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.SILICON_FISHING_ROD.get()) {
+                inputStack = new ItemStack(ModCompatItems.SILICON_FISHING_ROD.get());
+                outputStack = new ItemStack(ModCompatItems.RUBY_FISHING_ROD.get());
+
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.SILICON_HOOK.get()) {
+                inputStack = new ItemStack(ModCompatItems.SILICON_HOOK.get());
+                outputStack = new ItemStack(ModCompatItems.RUBY_HOOK.get());
+
+            } else if (ModList.get().isLoaded("betterarcheology") && inputItem == BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("betterarcheology", "diamond_brush"))) {
+                inputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("betterarcheology", "diamond_brush")));
+                outputStack = new ItemStack(ModCompatItems.RUBY_BRUSH.get());
+
+            } else if (ModList.get().isLoaded("betterarcheology") && inputItem == ModCompatItems.JADE_BRUSH.get()) {
+                inputStack = new ItemStack(ModCompatItems.JADE_BRUSH.get());
+                outputStack = new ItemStack(ModCompatItems.RUBY_BRUSH.get());
+
+            } else if (ModList.get().isLoaded("betterarcheology") && inputItem == ModCompatItems.AMBER_BRUSH.get()) {
+                inputStack = new ItemStack(ModCompatItems.AMBER_BRUSH.get());
+                outputStack = new ItemStack(ModCompatItems.RUBY_BRUSH.get());
+
+            } else if (ModList.get().isLoaded("betterarcheology") && inputItem == ModCompatItems.SILICON_BRUSH.get()) {
+                inputStack = new ItemStack(ModCompatItems.SILICON_BRUSH.get());
+                outputStack = new ItemStack(ModCompatItems.RUBY_BRUSH.get());
+
+            } else if (ModList.get().isLoaded("archers") && inputItem == BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("archers", "diamond_spear"))) {
+                inputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("archers", "diamond_spear")));
+                outputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "ruby_spear")));
+
+            } else if (ModList.get().isLoaded("archers") && inputItem == BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "jade_spear"))) {
+                inputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "jade_spear")));
+                outputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "ruby_spear")));
+
+            } else if (ModList.get().isLoaded("archers") && inputItem == BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "amber_spear"))) {
+                inputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "amber_spear")));
+                outputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "ruby_spear")));
+
+            } else if (ModList.get().isLoaded("archers") && inputItem == BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "silicon_spear"))) {
+                inputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "silicon_spear")));
+                outputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "ruby_spear")));
             }
         }
 
@@ -1909,36 +1788,57 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
         return this.convertAmount;
     }
 
-    private int getRandomConvertInputAmount(int conversionButtonPressed) {
+    public ItemStack getRandomConvertInputStack(int conversionButtonPressed) {
         MinecraftServer server = this.level.getServer();
 
         if (server != null) {
+            AtmRandomConversionRatesSavedData data = AtmRandomConversionRatesSavedData.getData(server);
             return switch (conversionButtonPressed) {
-                case 1 -> AtmRandomConversionRatesSavedData.getData(server).getDiamondToJade()[0];
-                case 2 -> AtmRandomConversionRatesSavedData.getData(server).getDiamondToAmber()[0];
-                case 3 -> AtmRandomConversionRatesSavedData.getData(server).getDiamondToSilicon()[0];
-                case 4 -> AtmRandomConversionRatesSavedData.getData(server).getDiamondToRuby()[0];
-                case 5 -> AtmRandomConversionRatesSavedData.getData(server).getJadeToDiamond()[0];
-                case 6 -> AtmRandomConversionRatesSavedData.getData(server).getJadeToAmber()[0];
-                case 7 -> AtmRandomConversionRatesSavedData.getData(server).getJadeToSilicon()[0];
-                case 8 -> AtmRandomConversionRatesSavedData.getData(server).getJadeToRuby()[0];
-                case 9 -> AtmRandomConversionRatesSavedData.getData(server).getAmberToDiamond()[0];
-                case 10 -> AtmRandomConversionRatesSavedData.getData(server).getAmberToJade()[0];
-                case 11 -> AtmRandomConversionRatesSavedData.getData(server).getAmberToSilicon()[0];
-                case 12 -> AtmRandomConversionRatesSavedData.getData(server).getAmberToRuby()[0];
-                case 13 -> AtmRandomConversionRatesSavedData.getData(server).getSiliconToDiamond()[0];
-                case 14 -> AtmRandomConversionRatesSavedData.getData(server).getSiliconToJade()[0];
-                case 15 -> AtmRandomConversionRatesSavedData.getData(server).getSiliconToAmber()[0];
-                case 16 -> AtmRandomConversionRatesSavedData.getData(server).getSiliconToRuby()[0];
-                case 17 -> AtmRandomConversionRatesSavedData.getData(server).getRubyToDiamond()[0];
-                case 18 -> AtmRandomConversionRatesSavedData.getData(server).getRubyToJade()[0];
-                case 19 -> AtmRandomConversionRatesSavedData.getData(server).getRubyToAmber()[0];
-                case 20 -> AtmRandomConversionRatesSavedData.getData(server).getRubyToSilicon()[0];
-                default -> 0;
+                case 1 -> new ItemStack(Items.DIAMOND, data.getDiamondToJade()[0]);
+                case 2 -> new ItemStack(Items.DIAMOND, data.getDiamondToAmber()[0]);
+                case 3 -> new ItemStack(Items.DIAMOND, data.getDiamondToSilicon()[0]);
+                case 4 -> new ItemStack(Items.DIAMOND, data.getDiamondToRuby()[0]);
+                case 5 -> new ItemStack(ModItems.JADE.get(), data.getJadeToDiamond()[0]);
+                case 6 -> new ItemStack(ModItems.JADE.get(), data.getJadeToAmber()[0]);
+                case 7 -> new ItemStack(ModItems.JADE.get(), data.getJadeToSilicon()[0]);
+                case 8 -> new ItemStack(ModItems.JADE.get(), data.getJadeToRuby()[0]);
+                case 9 -> new ItemStack(ModItems.AMBER.get(), data.getAmberToDiamond()[0]);
+                case 10 -> new ItemStack(ModItems.AMBER.get(), data.getAmberToJade()[0]);
+                case 11 -> new ItemStack(ModItems.AMBER.get(), data.getAmberToSilicon()[0]);
+                case 12 -> new ItemStack(ModItems.AMBER.get(), data.getAmberToRuby()[0]);
+                case 13 -> new ItemStack(ModItems.SILICON.get(), data.getSiliconToDiamond()[0]);
+                case 14 -> new ItemStack(ModItems.SILICON.get(), data.getSiliconToJade()[0]);
+                case 15 -> new ItemStack(ModItems.SILICON.get(), data.getSiliconToAmber()[0]);
+                case 16 -> new ItemStack(ModItems.SILICON.get(), data.getSiliconToRuby()[0]);
+                case 17 -> new ItemStack(ModItems.RUBY.get(), data.getRubyToDiamond()[0]);
+                case 18 -> new ItemStack(ModItems.RUBY.get(), data.getRubyToJade()[0]);
+                case 19 -> new ItemStack(ModItems.RUBY.get(), data.getRubyToSilicon()[0]);
+                case 20 -> new ItemStack(ModItems.RUBY.get(), data.getRubyToAmber()[0]);
+                default -> new ItemStack(Items.DIAMOND);
             };
         }
 
-        return 1;
+        return new ItemStack(Items.DIAMOND);
+    }
+
+    private int getIndexFromBlockState(BlockState state) {
+        Block block = state.getBlock();
+        if (block == ModBlocks.BLUE_ATM.get()) return 2;
+        if (block == ModBlocks.BROWN_ATM.get()) return 3;
+        if (block == ModBlocks.CYAN_ATM.get()) return 4;
+        if (block == ModBlocks.GRAY_ATM.get()) return 5;
+        if (block == ModBlocks.GREEN_ATM.get()) return 6;
+        if (block == ModBlocks.LIGHT_BLUE_ATM.get()) return 7;
+        if (block == ModBlocks.LIGHT_GRAY_ATM.get()) return 8;
+        if (block == ModBlocks.LIME_ATM.get()) return 9;
+        if (block == ModBlocks.MAGENTA_ATM.get()) return 10;
+        if (block == ModBlocks.ORANGE_ATM.get()) return 11;
+        if (block == ModBlocks.PINK_ATM.get()) return 12;
+        if (block == ModBlocks.PURPLE_ATM.get()) return 13;
+        if (block == ModBlocks.RED_ATM.get()) return 14;
+        if (block == ModBlocks.WHITE_ATM.get()) return 15;
+        if (block == ModBlocks.YELLOW_ATM.get()) return 16;
+        return 0;
     }
 
     @Nullable

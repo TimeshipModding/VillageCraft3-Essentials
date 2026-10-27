@@ -206,6 +206,67 @@ public class AtmMenu extends AbstractContainerMenu {
         return stack.isEmpty();
     }
 
+    public void tryMoveItems(int conversionButtonPressed) {
+        this.blockEntity.setRandomConvertButtonPressed(conversionButtonPressed);
+        ItemStack requiredInputStack = this.blockEntity.getRandomConvertInputStack(conversionButtonPressed);
+        Slot inputSlot = this.getSlot(0);
+        ItemStack currentInput = inputSlot.getItem();
+
+        if (requiredInputStack.isEmpty()) {
+            return;
+        }
+
+        if (!currentInput.isEmpty() && !ItemStack.isSameItemSameComponents(currentInput, requiredInputStack)) {
+            ItemStack leftover = currentInput.copy();
+            inputSlot.set(ItemStack.EMPTY);
+
+            if (!this.moveItemStackTo(leftover, 2, 38, true)) {
+                inv.player.drop(leftover, false);
+            }
+
+            currentInput = ItemStack.EMPTY;
+        }
+
+        int currentCount = currentInput.isEmpty() ? 0 : currentInput.getCount();
+        int maxSize = requiredInputStack.getMaxStackSize();
+        int missingTotal = maxSize - currentCount;
+
+        if (missingTotal <= 0) {
+            return;
+        }
+
+        int missingCount = missingTotal;
+
+        for (int i = 2; i < 38; i++) {
+            Slot playerSlot = this.getSlot(i);
+            ItemStack playerStack = playerSlot.getItem();
+
+            if (!playerStack.isEmpty() && ItemStack.isSameItemSameComponents(playerStack, requiredInputStack)) {
+                int takeAmount = Math.min(missingCount, playerStack.getCount());
+
+                if (inputSlot.getItem().isEmpty()) {
+                    inputSlot.set(playerStack.copyWithCount(takeAmount));
+
+                } else {
+                    ItemStack updatedStack = inputSlot.getItem().copy();
+                    updatedStack.grow(takeAmount);
+                    inputSlot.set(updatedStack);
+                }
+
+                ItemStack newPlayerStack = playerStack.copy();
+                newPlayerStack.shrink(takeAmount);
+                playerSlot.set(newPlayerStack);
+                missingCount -= takeAmount;
+
+                if (missingCount <= 0) {
+                    break;
+                }
+            }
+        }
+
+        this.blockEntity.setChanged();
+    }
+
     @Override
     public boolean stillValid(Player player) {
         int guiTextureIndex = blockEntity.getGuiTextureIndex();

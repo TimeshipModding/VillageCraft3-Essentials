@@ -4,7 +4,7 @@
 	"texture_size": [48, 48],
 	"textures": {
 		"11": "villagecraft3essentials:block/atm/orange_atm",
-		"particle": "block/orange_concrete"
+		"particle": "villagecraft3essentials:block/atm/orange_atm"
 	},
 	"elements": [
 		{

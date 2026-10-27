@@ -1,0 +1,15 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "betterarcheology"
+    }
+  ],
+  "type": "villagecraft3essentials:swap_compat_item_loot_modifier",
+  "conditions": [],
+  "replacementCurrency1": "villagecraft3essentials:jade_brush",
+  "replacementCurrency2": "villagecraft3essentials:amber_brush",
+  "replacementCurrency3": "villagecraft3essentials:silicon_brush",
+  "replacementCurrency4": "villagecraft3essentials:ruby_brush",
+  "targetCurrency": "betterarcheology:diamond_brush"
+}

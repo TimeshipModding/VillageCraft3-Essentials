@@ -382,15 +382,24 @@ public class DataItemTags extends ItemTagsProvider {
                 .add(EMERALD)
                 .add(EMERALD_BLOCK);
         tag(VILLAGECRAFT_CITY_ROLEPLAY_ITEMS)
-                .add(VERITY.get().asItem());
+                .add(VERITY.get().asItem())
+                .add(VILLAGECRAFTCITY_HAT_1.get())
+                .add(VILLAGECRAFTCITY_NECKLACE_1.get());
         tag(OASIS_ROLEPLAY_ITEMS)
-                .add(GUBERNATORIAL_HAT_1.get());
+                .add(OASIS_HAT_1.get());
+        tag(LONDON_ROLEPLAY_ITEMS)
+                .add(LONDON_HAT_1.get())
+                .add(LONDON_HAT_2.get());
 
         // Accessories Tags
         tag(AccessoriesTags.HAT_TAG)
                 .add(PROPELLER_HAT.get())
+                .add(VILLAGECRAFTCITY_HAT_1.get())
                 .add(OASIS_HAT_1.get())
-                .add(LONDON_HAT_1.get());
+                .add(LONDON_HAT_1.get())
+                .add(LONDON_HAT_2.get());
+        tag(AccessoriesTags.NECKLACE_TAG)
+                .add(VILLAGECRAFTCITY_NECKLACE_1.get());
 
         // Farmer's Delight Tags
         tag(FARMERSDELIGHT_KNIVES)
