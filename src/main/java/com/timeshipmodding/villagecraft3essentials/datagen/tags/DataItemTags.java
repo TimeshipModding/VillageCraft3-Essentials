@@ -392,7 +392,6 @@ public class DataItemTags extends ItemTagsProvider {
                 .add(EMERALD)
                 .add(EMERALD_BLOCK);
         tag(VILLAGECRAFT_CITY_ROLEPLAY_ITEMS)
-                .add(VERITY.get().asItem())
                 .add(VILLAGECRAFTCITY_HAT_1.get())
                 .add(VILLAGECRAFTCITY_NECKLACE_1.get());
         tag(OASIS_ROLEPLAY_ITEMS)

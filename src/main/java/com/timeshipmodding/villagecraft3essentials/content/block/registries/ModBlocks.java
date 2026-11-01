@@ -2,7 +2,6 @@ package com.timeshipmodding.villagecraft3essentials.content.block.registries;
 
 import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
 import com.timeshipmodding.villagecraft3essentials.content.block.AtmBlock;
-import com.timeshipmodding.villagecraft3essentials.content.block.roleplayblock.VerityBlock;
 import com.timeshipmodding.villagecraft3essentials.content.blockitem.roleplayblockitem.RoleplayBlockItem;
 import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems;
 import com.timeshipmodding.villagecraft3essentials.content.sound.registries.ModSounds;
@@ -57,7 +56,6 @@ public class ModBlocks {
     public static final DeferredBlock<AtmBlock> RED_ATM = registerBlock("red_atm", () -> new AtmBlock(14, BlockBehaviour.Properties.of().noOcclusion().mapColor(DyeColor.RED).requiresCorrectToolForDrops().strength(1.8F)));
     public static final DeferredBlock<AtmBlock> WHITE_ATM = registerBlock("white_atm", () -> new AtmBlock(15, BlockBehaviour.Properties.of().noOcclusion().mapColor(DyeColor.WHITE).requiresCorrectToolForDrops().strength(1.8F)));
     public static final DeferredBlock<AtmBlock> YELLOW_ATM = registerBlock("yellow_atm", () -> new AtmBlock(16, BlockBehaviour.Properties.of().noOcclusion().mapColor(DyeColor.YELLOW).requiresCorrectToolForDrops().strength(1.8F)));
-    public static final DeferredBlock<VerityBlock> VERITY = registerRoleplayBlock("villagecraftcity", 1, "verity", () -> new VerityBlock(BlockBehaviour.Properties.of().noOcclusion().strength(0.5f)));
 
     // Register Methods
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
