@@ -40,6 +40,7 @@ import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.client.event.ScreenEvent;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
+import org.spongepowered.asm.mixin.gen.Accessor;
 
 import java.util.List;
 
@@ -67,6 +68,8 @@ public class ModClientEvents {
 
         event.enqueueWork(() -> {
             AccessoriesRendererRegistry.registerRenderer(ModItems.VILLAGECRAFTCITY_HAT_1.get(), DefaultAccessoryRenderer::new);
+            AccessoriesRendererRegistry.registerRenderer(ModItems.VILLAGECRAFTCITY_HAT_2.get(), DefaultAccessoryRenderer::new);
+            AccessoriesRendererRegistry.registerRenderer(ModItems.VILLAGECRAFTCITY_HAT_3.get(), DefaultAccessoryRenderer::new);
             AccessoriesRendererRegistry.registerRenderer(ModItems.VILLAGECRAFTCITY_NECKLACE_1.get(), DefaultAccessoryRenderer::new);
             AccessoriesRendererRegistry.registerRenderer(ModItems.OASIS_HAT_1.get(), DefaultAccessoryRenderer::new);
             AccessoriesRendererRegistry.registerRenderer(ModItems.LONDON_HAT_1.get(), DefaultAccessoryRenderer::new);

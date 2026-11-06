@@ -400,6 +400,8 @@ public class DataItemTags extends ItemTagsProvider {
                 .add(EMERALD_BLOCK);
         tag(VILLAGECRAFT_CITY_ROLEPLAY_ITEMS)
                 .add(VILLAGECRAFTCITY_HAT_1.get())
+                .add(VILLAGECRAFTCITY_HAT_2.get())
+                .add(VILLAGECRAFTCITY_HAT_3.get())
                 .add(VILLAGECRAFTCITY_NECKLACE_1.get());
         tag(OASIS_ROLEPLAY_ITEMS)
                 .add(OASIS_HAT_1.get());
@@ -411,6 +413,8 @@ public class DataItemTags extends ItemTagsProvider {
         tag(AccessoriesTags.HAT_TAG)
                 .add(PROPELLER_HAT.get())
                 .add(VILLAGECRAFTCITY_HAT_1.get())
+                .add(VILLAGECRAFTCITY_HAT_2.get())
+                .add(VILLAGECRAFTCITY_HAT_3.get())
                 .add(OASIS_HAT_1.get())
                 .add(LONDON_HAT_1.get())
                 .add(LONDON_HAT_2.get());
