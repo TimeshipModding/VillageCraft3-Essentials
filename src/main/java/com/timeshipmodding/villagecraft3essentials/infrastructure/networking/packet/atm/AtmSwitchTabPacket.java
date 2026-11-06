@@ -30,7 +30,6 @@ public record AtmSwitchTabPacket(BlockPos pos, boolean isRandomConvert) implemen
 
         if (player.containerMenu instanceof AtmMenu atmMenu) {
             atmMenu.returnItemsToPlayer(player);
-            System.out.println(payload.isRandomConvert());
             atmMenu.blockEntity.setRandomConvertScreen(payload.isRandomConvert());
             atmMenu.blockEntity.setToolConvertScreen(!payload.isRandomConvert());
 

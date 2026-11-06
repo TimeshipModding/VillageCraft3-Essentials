@@ -14,6 +14,7 @@ public class ModItemTags {
     public static TagKey<Item> SILICON_CONVERTIBLE_TOOLS = createTag("silicon_convertible_tools");
     public static TagKey<Item> RUBY_CONVERTIBLE_TOOLS = createTag("ruby_convertible_tools");
     public static TagKey<Item> CURRENCY_GEMS = createTag("currency_gems");
+    public static TagKey<Item> ATM_ACCEPTED_ITEMS = createTag("atm_accepted_items");
     public static TagKey<Item> WALLET_ACCEPTED_ITEMS = createTag("wallet_accepted_items");
     public static TagKey<Item> VILLAGECRAFT_CITY_ROLEPLAY_ITEMS = createTag("villagecraft_city_roleplay_items");
     public static TagKey<Item> OASIS_ROLEPLAY_ITEMS = createTag("oasis_roleplay_items");

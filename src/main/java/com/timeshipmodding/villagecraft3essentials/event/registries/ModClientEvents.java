@@ -7,6 +7,7 @@ import com.timeshipmodding.villagecraft3essentials.compat.vanillabackport.Vanill
 import com.timeshipmodding.villagecraft3essentials.content.entity.client.registries.ModEntities;
 import com.timeshipmodding.villagecraft3essentials.content.entity.client.renderers.MoleRenderer;
 import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModCompatItems;
+import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems;
 import com.timeshipmodding.villagecraft3essentials.content.menu.registries.ModMenus;
 import com.timeshipmodding.villagecraft3essentials.content.screen.AtmScreen;
 import com.timeshipmodding.villagecraft3essentials.content.screen.WalletScreen;
@@ -14,6 +15,9 @@ import com.timeshipmodding.villagecraft3essentials.infrastructure.data.cache.Deb
 import com.timeshipmodding.villagecraft3essentials.infrastructure.mixin.MouseHandlerMixinAccessor;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.networking.packet.wallet.OpenWalletMenuPacket;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.tags.registries.ModItemTags;
+import io.wispforest.accessories.api.client.AccessoriesRendererRegistry;
+import io.wispforest.accessories.api.client.DefaultAccessoryRenderer;
+import io.wispforest.accessories.client.AccessoriesClient;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.ImageButton;
@@ -60,6 +64,16 @@ public class ModClientEvents {
         if (ModList.get().isLoaded("vanillabackport") && ModList.get().isLoaded("platform")) {
             GameRendering.registerItemLikeRenderers(VanillaBackportMethods::itemLikeRendering);
         }
+
+        event.enqueueWork(() -> {
+            AccessoriesRendererRegistry.registerRenderer(ModItems.VILLAGECRAFTCITY_HAT_1.get(), DefaultAccessoryRenderer::new);
+            AccessoriesRendererRegistry.registerRenderer(ModItems.VILLAGECRAFTCITY_NECKLACE_1.get(), DefaultAccessoryRenderer::new);
+            AccessoriesRendererRegistry.registerRenderer(ModItems.OASIS_HAT_1.get(), DefaultAccessoryRenderer::new);
+            AccessoriesRendererRegistry.registerRenderer(ModItems.LONDON_HAT_1.get(), DefaultAccessoryRenderer::new);
+            AccessoriesRendererRegistry.registerRenderer(ModItems.LONDON_HAT_2.get(), DefaultAccessoryRenderer::new);
+            AccessoriesRendererRegistry.registerRenderer(ModItems.PROPELLER_HAT.get(), DefaultAccessoryRenderer::new);
+        });
+
     }
 
     @SubscribeEvent

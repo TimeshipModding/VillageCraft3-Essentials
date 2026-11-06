@@ -378,6 +378,13 @@ public class DataItemTags extends ItemTagsProvider {
                 .add(AMBER.get())
                 .add(SILICON.get())
                 .add(RUBY.get());
+        tag(ATM_ACCEPTED_ITEMS)
+                .addTag(DIAMOND_CONVERTIBLE_TOOLS)
+                .addTag(JADE_CONVERTIBLE_TOOLS)
+                .addTag(AMBER_CONVERTIBLE_TOOLS)
+                .addTag(SILICON_CONVERTIBLE_TOOLS)
+                .addTag(RUBY_CONVERTIBLE_TOOLS)
+                .addTag(CURRENCY_GEMS);
         tag(WALLET_ACCEPTED_ITEMS)
                 .add(DIAMOND)
                 .add(DIAMOND_BLOCK)

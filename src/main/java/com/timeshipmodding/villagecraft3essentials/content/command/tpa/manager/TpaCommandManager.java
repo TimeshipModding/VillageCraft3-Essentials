@@ -117,7 +117,6 @@ public class TpaCommandManager {
                 MutableComponent targetPlayerMessage = Component.literal("You accepted a TPA request from ");
                 targetPlayerMessage.append(data.requestingPlayerName().copy());
                 targetPlayerMessage.append(Component.literal("!"));
-                System.out.println(targetPlayerMessage);
 
                 ModEvents.pendingTPAs.put(requestingPlayer.getUUID(), new ModEvents.TpaCommandData(
                         serverlevel,

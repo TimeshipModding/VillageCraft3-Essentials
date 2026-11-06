@@ -5,6 +5,7 @@ import com.timeshipmodding.villagecraft3essentials.content.block.registries.ModB
 import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems;
 import com.timeshipmodding.villagecraft3essentials.content.menu.registries.ModMenus;
 import com.timeshipmodding.villagecraft3essentials.content.sound.registries.ModSounds;
+import com.timeshipmodding.villagecraft3essentials.infrastructure.handler.item.slot.AtmInputSlotItemHandler;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.networking.packet.atm.button.AtmSyncSlotPositionsPacket;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.handler.item.slot.AtmOutputSlotItemHandler;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.tags.registries.ModItemTags;
@@ -39,7 +40,7 @@ public class AtmMenu extends AbstractContainerMenu {
         blockEntity = ((AtmBlockEntity) entity);
         this.level = inv.player.level();
         this.inv = inv;
-        this.inputSlot = this.addSlot(new SlotItemHandler(this.blockEntity.itemStackHandler, 0, 26, 24));
+        this.inputSlot = this.addSlot(new AtmInputSlotItemHandler(this.blockEntity.itemStackHandler, 0, 26, 24));
         this.outputSlot = this.addSlot(new AtmOutputSlotItemHandler(this.blockEntity.itemStackHandler, 1, 26, 75, this.blockEntity));
         addPlayerInventory(inv);
         addPlayerHotbar(inv);

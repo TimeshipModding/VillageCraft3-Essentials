@@ -21,8 +21,12 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.network.PacketDistributor;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
     private static final WidgetSprites CURRENCY_SELECT_SPRITES = new WidgetSprites(
@@ -46,13 +50,15 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
     );
 
     private static final ResourceLocation SCROLLER_SPRITE = ResourceLocation.withDefaultNamespace("container/stonecutter/scroller");
+    private final List<ResourceLocation> animatedToolConvertSlotFrames = new ArrayList<>();
+    private int animatedToolConvertSlotTickCounter = 0;
     private static final int SCROLLER_WIDTH = 12;
     private static final int SCROLLER_HEIGHT = 15;
     private static final int RECIPES_COLUMNS = 1;
     private static final int RECIPES_ROWS = 4;
     private static final int RECIPES_IMAGE_SIZE_WIDTH = 63;
     private static final int RECIPES_IMAGE_SIZE_HEIGHT = 18;
-    private static final int SCROLLER_FULL_HEIGHT = 54;
+    private static final int SCROLLER_FULL_HEIGHT = 72;
     private static final int RECIPES_X = 66;
     private static final int RECIPES_Y = 21;
     private float scrollOffs;
@@ -90,6 +96,7 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
 
     public AtmScreen(AtmMenu menu, Inventory inv, Component title) {
         super(menu, inv, title);
+        this.determineAnimatedToolConvertSlotFrames();
     }
 
     @Override
@@ -121,7 +128,7 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
         this.rubyToAmber = AtmClientData.getRubyToAmber() != null ? AtmClientData.getRubyToAmber() : new int[]{};
         this.rubyToSilicon = AtmClientData.getRubyToSilicon() != null ? AtmClientData.getRubyToSilicon() : new int[]{};
         this.localRandomConvertScreen = this.menu.blockEntity.getRandomConvertScreen();
-        rebuildButtons();
+        this.rebuildButtons();
     }
 
     private void onDiamondCurrencyButtonPress(Button button) {
@@ -196,7 +203,7 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
 
         if (localRandomConvertScreen) {
             guiGraphics.blit(getRandomConvertGuiTexture(guiTextureIndex), leftPos, topPos, 0, 0, imageWidth, imageHeight);
-            int k = (int)(59.0F * this.scrollOffs);
+            int k = (int)(57.0F * this.scrollOffs);
             guiGraphics.blitSprite(SCROLLER_SPRITE, leftPos + 133, topPos + 22 + k, SCROLLER_WIDTH, SCROLLER_HEIGHT);
             int l = this.leftPos + RECIPES_X;
             int i1 = this.topPos + RECIPES_Y;
@@ -211,6 +218,10 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
             guiGraphics.renderFakeItem(new ItemStack(ModItems.AMBER.get()), leftPos + 80, topPos + 66);
             guiGraphics.renderFakeItem(new ItemStack(ModItems.SILICON.get()), leftPos + 107, topPos + 66);
             guiGraphics.renderFakeItem(new ItemStack(ModItems.RUBY.get()), leftPos + 134, topPos + 66);
+
+            if (this.menu.blockEntity.itemStackHandler.getStackInSlot(0).isEmpty()) {
+                this.renderAnimatedToolConvertSlot(guiGraphics, partialTick);
+            }
         }
     }
 
@@ -311,11 +322,12 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
     @Override
     public void containerTick() {
         super.containerTick();
+        this.animatedToolConvertSlotTickCounter++;
 
         boolean serverRandomConvertScreen = this.menu.blockEntity.getRandomConvertScreen();
         if (this.localRandomConvertScreen != serverRandomConvertScreen) {
             this.localRandomConvertScreen = serverRandomConvertScreen;
-            rebuildButtons();
+            this.rebuildButtons();
         }
     }
 
@@ -410,6 +422,13 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
         guiGraphics.renderItemDecorations(this.font, currency2Stack, k + 42, i1);
     }
 
+    private void renderAnimatedToolConvertSlot(GuiGraphics guiGraphics, float partialTick) {
+        float totalTicksElapsed = this.animatedToolConvertSlotTickCounter + partialTick;
+        int currentFrameIndex = ((int) (totalTicksElapsed / 40)) % this.animatedToolConvertSlotFrames.size();
+        ResourceLocation activeSprite = this.animatedToolConvertSlotFrames.get(currentFrameIndex);
+        guiGraphics.blit(activeSprite, leftPos + 53, topPos + 32, 0, 0, 16, 16, 16, 16);
+    }
+
     @Override
     public boolean mouseClicked(double mouseX, double mouseY, int button) {
         this.scrolling = false;
@@ -463,6 +482,41 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
         this.startIndex = (int)((double)(this.scrollOffs * (float)i) + 0.5) * RECIPES_COLUMNS;
         updateScrollableWidgets();
         return true;
+    }
+
+    private void determineAnimatedToolConvertSlotFrames() {
+        String modFramePath = "textures/gui/sprites/container/slot/";
+        String minecraftFramePath = "textures/item/";
+        this.animatedToolConvertSlotFrames.clear();
+        this.animatedToolConvertSlotFrames.add(ResourceLocation.fromNamespaceAndPath("minecraft", minecraftFramePath + "empty_slot_sword.png"));
+        this.animatedToolConvertSlotFrames.add(ResourceLocation.fromNamespaceAndPath("minecraft", minecraftFramePath + "empty_slot_shovel.png"));
+        this.animatedToolConvertSlotFrames.add(ResourceLocation.fromNamespaceAndPath("minecraft", minecraftFramePath + "empty_slot_pickaxe.png"));
+        this.animatedToolConvertSlotFrames.add(ResourceLocation.fromNamespaceAndPath("minecraft", minecraftFramePath + "empty_slot_axe.png"));
+        this.animatedToolConvertSlotFrames.add(ResourceLocation.fromNamespaceAndPath("minecraft", minecraftFramePath + "empty_slot_hoe.png"));
+        this.animatedToolConvertSlotFrames.add(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", modFramePath + "helmet.png"));
+        this.animatedToolConvertSlotFrames.add(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", modFramePath + "chestplate.png"));
+        this.animatedToolConvertSlotFrames.add(ResourceLocation.fromNamespaceAndPath("minecraft", minecraftFramePath + "empty_armor_slot_leggings.png"));
+        this.animatedToolConvertSlotFrames.add(ResourceLocation.fromNamespaceAndPath("minecraft", minecraftFramePath + "empty_armor_slot_boots.png"));
+        this.animatedToolConvertSlotFrames.add(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", modFramePath + "horse_armor.png"));
+
+        if (ModList.get().isLoaded("farmersdelight")) {
+            this.animatedToolConvertSlotFrames.add(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", modFramePath + "knife.png"));
+        }
+
+        if (ModList.get().isLoaded("aquaculture")) {
+            this.animatedToolConvertSlotFrames.add(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", modFramePath + "fillet_knife.png"));
+            this.animatedToolConvertSlotFrames.add(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", modFramePath + "fishing_rod.png"));
+            this.animatedToolConvertSlotFrames.add(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", modFramePath + "hook.png"));
+        }
+
+        if (ModList.get().isLoaded("archers")) {
+            this.animatedToolConvertSlotFrames.add(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", modFramePath + "spear.png"));
+        }
+
+        if (ModList.get().isLoaded("vanillabackport")) {
+            this.animatedToolConvertSlotFrames.add(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", modFramePath + "backport_spear.png"));
+            this.animatedToolConvertSlotFrames.add(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", modFramePath + "nautilus_armor.png"));
+        }
     }
 
     protected int getOffscreenRows() {

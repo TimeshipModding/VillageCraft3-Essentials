@@ -1,4 +1,4 @@
-// 1.21.1	2026-11-01T19:30:02.345772	Tags for minecraft:item mod id villagecraft3essentials
+// 1.21.1	2026-11-05T21:10:27.2040238	Tags for minecraft:item mod id villagecraft3essentials
 03e85532ebeace94c413718df283e00e0e9eef37 data/accessories/tags/item/hat.json
 f6170b8b1bb00d8fc6096fbdd721c88c0cd7cd02 data/accessories/tags/item/necklace.json
 9f372a52e8ea587fc32e67c84cfb1df1f00910d7 data/aquaculture/tags/item/tooltip.json
@@ -61,6 +61,7 @@ a5634e20df1a1538cb7062b67656412141cc2247 data/rpg_series/tags/item/loot_tier/tie
 a5634e20df1a1538cb7062b67656412141cc2247 data/rpg_series/tags/item/weapon_type/spear.json
 a5634e20df1a1538cb7062b67656412141cc2247 data/spell_engine/tags/item/handheld.json
 90e5836396f99f4877cc816654c2ecf8880e2a18 data/villagecraft3essentials/tags/item/amber_convertible_tools.json
+8d36ff7ce7676c341fdbfc950163b6ca76d2f904 data/villagecraft3essentials/tags/item/atm_accepted_items.json
 60fc7536dc9daa3598184357d5b0d7ed39d9143c data/villagecraft3essentials/tags/item/currency_gems.json
 dff6f0a31acfee8050748064dc9b5b829a5744c2 data/villagecraft3essentials/tags/item/diamond_convertible_tools.json
 ea8ba2d2a66a747c4468ab15bcd489342310b246 data/villagecraft3essentials/tags/item/jade_convertible_tools.json

@@ -1972,8 +1972,8 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
                 case 16 -> new ItemStack(ModItems.SILICON.get(), data.getSiliconToRuby()[0]);
                 case 17 -> new ItemStack(ModItems.RUBY.get(), data.getRubyToDiamond()[0]);
                 case 18 -> new ItemStack(ModItems.RUBY.get(), data.getRubyToJade()[0]);
-                case 19 -> new ItemStack(ModItems.RUBY.get(), data.getRubyToSilicon()[0]);
-                case 20 -> new ItemStack(ModItems.RUBY.get(), data.getRubyToAmber()[0]);
+                case 19 -> new ItemStack(ModItems.RUBY.get(), data.getRubyToAmber()[0]);
+                case 20 -> new ItemStack(ModItems.RUBY.get(), data.getRubyToSilicon()[0]);
                 default -> new ItemStack(Items.DIAMOND);
             };
         }
