@@ -1,5 +1,5 @@
-// 1.21.1	2026-11-05T21:10:27.2040238	Tags for minecraft:item mod id villagecraft3essentials
-03e85532ebeace94c413718df283e00e0e9eef37 data/accessories/tags/item/hat.json
+// 1.21.1	2026-11-07T16:47:57.7573854	Tags for minecraft:item mod id villagecraft3essentials
+10f2fb53536b04a376ab0b8dd363f9586b3be9f2 data/accessories/tags/item/hat.json
 f6170b8b1bb00d8fc6096fbdd721c88c0cd7cd02 data/accessories/tags/item/necklace.json
 9f372a52e8ea587fc32e67c84cfb1df1f00910d7 data/aquaculture/tags/item/tooltip.json
 a5634e20df1a1538cb7062b67656412141cc2247 data/archers/tags/item/spears.json
@@ -67,8 +67,8 @@ dff6f0a31acfee8050748064dc9b5b829a5744c2 data/villagecraft3essentials/tags/item/
 ea8ba2d2a66a747c4468ab15bcd489342310b246 data/villagecraft3essentials/tags/item/jade_convertible_tools.json
 08dc88649e13dc61f0e66654eb4acff996e80869 data/villagecraft3essentials/tags/item/london_roleplay_items.json
 bbbe68f23d94ae2a72f5380fb7195d7486f0955f data/villagecraft3essentials/tags/item/mole_food.json
-dbdc122c6088032aa679b64902403820e2d6f5e8 data/villagecraft3essentials/tags/item/oasis_roleplay_items.json
+df569562e7294d55c93b475f47546bee7928a732 data/villagecraft3essentials/tags/item/oasis_roleplay_items.json
 aa6899cde01de153b43911bde21506433b55126f data/villagecraft3essentials/tags/item/ruby_convertible_tools.json
 26d743ed773cf9fe6c456cce38ec2b30db323be8 data/villagecraft3essentials/tags/item/silicon_convertible_tools.json
-7c2dde7532c3f60a73adac8f5b9ef7b5ea902098 data/villagecraft3essentials/tags/item/villagecraft_city_roleplay_items.json
+5b17bf18bc41884d2782a68c65304261d307e534 data/villagecraft3essentials/tags/item/villagecraft_city_roleplay_items.json
 949460f5d437e9b81eb38a793add2e22cd08fe80 data/villagecraft3essentials/tags/item/wallet_accepted_items.json

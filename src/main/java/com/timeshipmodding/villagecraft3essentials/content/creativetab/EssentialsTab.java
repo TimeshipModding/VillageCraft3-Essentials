@@ -275,6 +275,10 @@ public class EssentialsTab {
                 pOutput.accept(VILLAGECRAFTCITY_HAT_3);
                 pOutput.accept(VILLAGECRAFTCITY_NECKLACE_1);
                 pOutput.accept(OASIS_HAT_1);
+                pOutput.accept(OASIS_DEED_1);
+                pOutput.accept(OASIS_DEED_2);
+                pOutput.accept(OASIS_DEED_3);
+                pOutput.accept(OASIS_DEED_4);
                 pOutput.accept(LONDON_HAT_1);
                 pOutput.accept(LONDON_HAT_2);
             }).build());

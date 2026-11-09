@@ -404,7 +404,11 @@ public class DataItemTags extends ItemTagsProvider {
                 .add(VILLAGECRAFTCITY_HAT_3.get())
                 .add(VILLAGECRAFTCITY_NECKLACE_1.get());
         tag(OASIS_ROLEPLAY_ITEMS)
-                .add(OASIS_HAT_1.get());
+                .add(OASIS_HAT_1.get())
+                .add(OASIS_DEED_1.get())
+                .add(OASIS_DEED_2.get())
+                .add(OASIS_DEED_3.get())
+                .add(OASIS_DEED_4.get());
         tag(LONDON_ROLEPLAY_ITEMS)
                 .add(LONDON_HAT_1.get())
                 .add(LONDON_HAT_2.get());
