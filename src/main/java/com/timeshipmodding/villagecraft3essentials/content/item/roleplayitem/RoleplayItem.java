@@ -1,0 +1,40 @@
+package com.timeshipmodding.villagecraft3essentials.content.item.roleplayitem;
+
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.Style;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+
+public class RoleplayItem extends Item {
+    private final String town;
+    private ChatFormatting itemNameColour;
+
+    public RoleplayItem(String town, Properties properties) {
+        super(properties);
+        this.town = town;
+    }
+
+    @Override
+    public Component getName(ItemStack stack) {
+        switch (town) {
+            case "villagecraftcity":
+                itemNameColour = ChatFormatting.RED;
+                break;
+            case "oasis":
+                itemNameColour = ChatFormatting.DARK_GREEN;
+                break;
+            case "swedishfurniturestore":
+                itemNameColour = ChatFormatting.BLUE;
+                break;
+            case "london":
+                itemNameColour = ChatFormatting.AQUA;
+                break;
+            case "blackwater":
+                itemNameColour = ChatFormatting.GOLD;
+                break;
+        }
+
+        return Component.translatable(this.getDescriptionId()).setStyle(Style.EMPTY.withColor(itemNameColour));
+    }
+}

@@ -5,6 +5,7 @@ import com.timeshipmodding.villagecraft3essentials.content.entity.client.registr
 import com.timeshipmodding.villagecraft3essentials.content.item.roleplayitem.AccessoryRoleplayItem;
 import com.timeshipmodding.villagecraft3essentials.content.item.MissionRewardPlaceholderItem;
 import com.timeshipmodding.villagecraft3essentials.content.item.PropellerHatItem;
+import com.timeshipmodding.villagecraft3essentials.content.item.roleplayitem.RoleplayItem;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.*;
 import net.neoforged.neoforge.common.DeferredSpawnEggItem;
@@ -74,6 +75,10 @@ public class ModItems {
     public static final DeferredItem<Item> VILLAGECRAFTCITY_HAT_3 = ITEMS.register("villagecraftcity_hat_3", () -> new AccessoryRoleplayItem("villagecraftcity", new Item.Properties().stacksTo(1)));
     public static final DeferredItem<Item> VILLAGECRAFTCITY_NECKLACE_1 = ITEMS.register("villagecraftcity_necklace_1", () -> new AccessoryRoleplayItem("villagecraftcity", new Item.Properties().stacksTo(1)));
     public static final DeferredItem<Item> OASIS_HAT_1 = ITEMS.register("oasis_hat_1", () -> new AccessoryRoleplayItem("oasis", new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> OASIS_DEED_1 = ITEMS.register("oasis_deed_1", () -> new RoleplayItem("oasis", new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> OASIS_DEED_2 = ITEMS.register("oasis_deed_2", () -> new RoleplayItem("oasis", new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> OASIS_DEED_3 = ITEMS.register("oasis_deed_3", () -> new RoleplayItem("oasis", new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> OASIS_DEED_4 = ITEMS.register("oasis_deed_4", () -> new RoleplayItem("oasis", new Item.Properties().stacksTo(1)));
     public static final DeferredItem<Item> LONDON_HAT_1 = ITEMS.register("london_hat_1", () -> new AccessoryRoleplayItem("london", new Item.Properties().stacksTo(1)));
     public static final DeferredItem<Item> LONDON_HAT_2 = ITEMS.register("london_hat_2", () -> new AccessoryRoleplayItem("london", new Item.Properties().stacksTo(1)));
     public static final DeferredItem<Item> PROPELLER_HAT = ITEMS.register("propeller_hat", () -> new PropellerHatItem(new Item.Properties()));
