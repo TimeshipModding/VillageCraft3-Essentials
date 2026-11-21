@@ -73,6 +73,7 @@ public class ModEvents {
         new VillageCraftCityJailCommand(event.getDispatcher());
         new VillageCraftCityKickCommand(event.getDispatcher());
         new VillageCraftCityPardonCommand(event.getDispatcher());
+        new VillageCraftCityRemoveJailCommand(event.getDispatcher());
         new VillageCraftCityRemoveSpawnCommand(event.getDispatcher());
         new VillageCraftCitySetJailCommand(event.getDispatcher());
         new VillageCraftCitySetSpawnCommand(event.getDispatcher());
@@ -83,6 +84,7 @@ public class ModEvents {
         new OasisJailCommand(event.getDispatcher());
         new OasisKickCommand(event.getDispatcher());
         new OasisPardonCommand(event.getDispatcher());
+        new OasisRemoveJailCommand(event.getDispatcher());
         new OasisRemoveSpawnCommand(event.getDispatcher());
         new OasisSetJailCommand(event.getDispatcher());
         new OasisSetSpawnCommand(event.getDispatcher());
@@ -93,6 +95,7 @@ public class ModEvents {
         new SwedishFurnitureStoreJailCommand(event.getDispatcher());
         new SwedishFurnitureStoreKickCommand(event.getDispatcher());
         new SwedishFurnitureStorePardonCommand(event.getDispatcher());
+        new SwedishFurnitureStoreRemoveJailCommand(event.getDispatcher());
         new SwedishFurnitureStoreRemoveSpawnCommand(event.getDispatcher());
         new SwedishFurnitureStoreSetJailCommand(event.getDispatcher());
         new SwedishFurnitureStoreSetSpawnCommand(event.getDispatcher());
@@ -103,6 +106,7 @@ public class ModEvents {
         new LondonJailCommand(event.getDispatcher());
         new LondonKickCommand(event.getDispatcher());
         new LondonPardonCommand(event.getDispatcher());
+        new LondonRemoveJailCommand(event.getDispatcher());
         new LondonRemoveSpawnCommand(event.getDispatcher());
         new LondonSetJailCommand(event.getDispatcher());
         new LondonSetSpawnCommand(event.getDispatcher());
@@ -113,6 +117,7 @@ public class ModEvents {
         new BlackWaterJailCommand(event.getDispatcher());
         new BlackWaterKickCommand(event.getDispatcher());
         new BlackWaterPardonCommand(event.getDispatcher());
+        new BlackWaterRemoveJailCommand(event.getDispatcher());
         new BlackWaterRemoveSpawnCommand(event.getDispatcher());
         new BlackWaterSetJailCommand(event.getDispatcher());
         new BlackWaterSetSpawnCommand(event.getDispatcher());
