@@ -21,8 +21,7 @@ import java.util.List;
 import java.util.function.Supplier;
 
 public class ModDataAttachments {
-    public static final DeferredRegister<AttachmentType<?>> ATTACHMENT_TYPES =
-            DeferredRegister.create(NeoForgeRegistries.ATTACHMENT_TYPES, VillageCraft3Essentials.MODID);
+    public static final DeferredRegister<AttachmentType<?>> ATTACHMENT_TYPES = DeferredRegister.create(NeoForgeRegistries.ATTACHMENT_TYPES, VillageCraft3Essentials.MODID);
 
     public static final StreamCodec<RegistryFriendlyByteBuf, ItemStackHandler> WALLET_STREAM_CODEC =
             ItemStack.OPTIONAL_STREAM_CODEC.apply(ByteBufCodecs.list())
@@ -30,6 +29,7 @@ public class ModDataAttachments {
                         ItemStackHandler handler = new ItemStackHandler(list.size());
                         for (int i = 0; i < list.size(); i++) handler.setStackInSlot(i, list.get(i));
                         return handler;
+
                     }, handler -> {
                         List<ItemStack> list = new ArrayList<>();
                         for (int i = 0; i < handler.getSlots(); i++) list.add(handler.getStackInSlot(i));
@@ -40,7 +40,7 @@ public class ModDataAttachments {
             ATTACHMENT_TYPES.register("wallet", () ->
                     AttachmentType.serializable(() -> new ItemStackHandler(16))
                             .copyOnDeath()
-                            .sync(new AttachmentSyncHandler<ItemStackHandler>() {
+                            .sync(new AttachmentSyncHandler<>() {
 
                                 @Override
                                 public void write(RegistryFriendlyByteBuf buffer, ItemStackHandler data, boolean isFullUpdate) {

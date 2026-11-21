@@ -91,11 +91,11 @@ neoForge {
             programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
 
             // Add required mods for data generation
-            programArguments.addAll '--existing-mod', 'farmersdelight'
             programArguments.addAll '--existing-mod', 'aquaculture'
-            programArguments.addAll '--existing-mod', 'vanillabackport'
-            programArguments.addAll '--existing-mod', 'platform'
             programArguments.addAll '--existing-mod', 'creategoggles'
+            programArguments.addAll '--existing-mod', 'farmersdelight'
+            programArguments.addAll '--existing-mod', 'platform'
+            programArguments.addAll '--existing-mod', 'vanillabackport'
         }
 
         configureEach {
@@ -120,29 +120,60 @@ dependencies {
         exclude group: "com.flowpowered"
     }
 
-    // JEI Dependency
-    compileOnly("mezz.jei:jei-${mc_version}-neoforge-api:${jei_version}")
-    datagenMods("mezz.jei:jei-${mc_version}-neoforge:${jei_version}")
+    // Archers (RPG Series) Dependency
+    compileOnly("curse.maven:archers-932359:8549422")
 
-    // LuckPerms Dependency
-    compileOnly("net.luckperms:api:5.5")
+    // Architectury API
+    datagenMods("curse.maven:architectury-api-419699:9608861")
+
+    // Aquaculture 2 Dependency
+    compileOnly("com.teammetallurgy.aquaculture:aquaculture2_${minecraft_version}:${minecraft_version}-${aquaculture_version}")
+    datagenMods("com.teammetallurgy.aquaculture:aquaculture2_${minecraft_version}:${minecraft_version}-${aquaculture_version}")
+
+    // BlueMap Dependency
+    compileOnly("de.bluecolored:bluemap-api:${project.bluemap_api_version}")
+    datagenMods("de.bluecolored:bluemap-api:${project.bluemap_api_version}")
+
+    // Create: Brassworks Missions Dependency
+    compileOnly("curse.maven:create-brassworks-missions-1348982:8561618")
+
+    // Create Dependencies
+    compileOnly("com.simibubi.create:create-${minecraft_version}:${create_version}:slim") { transitive = false }
+    datagenMods("com.simibubi.create:create-${minecraft_version}:${create_version}:slim") { transitive = false }
+
+    // Create Goggles Dependency
+    compileOnly("curse.maven:create-goggles-377835:6776826")
+    datagenMods("curse.maven:create-goggles-377835:6776826")
+
+    // Discord Integration Dependency
+    compileOnly("de.erdbeerbaerlp:dcintegration.common:3.0.7")
 
     // Farmer's Delight Dependency
     compileOnly("curse.maven:farmers-delight-398521:8083481")
     datagenMods("curse.maven:farmers-delight-398521:8083481")
 
-    // Aquaculture 2 Dependency
-    compileOnly("com.teammetallurgy.aquaculture:aquaculture2_${mc_version}:${mc_version}-${aquaculture_version}")
-    datagenMods("com.teammetallurgy.aquaculture:aquaculture2_${mc_version}:${mc_version}-${aquaculture_version}")
+    // Flywheel Dependency
+    compileOnly("dev.engine-room.flywheel:flywheel-neoforge-api-${minecraft_version}:${flywheel_version}")
+    runtimeOnly("dev.engine-room.flywheel:flywheel-neoforge-${minecraft_version}:${flywheel_version}")
 
-    // Discord Integration Dependency
-    compileOnly("de.erdbeerbaerlp:dcintegration.common:3.0.7")
+    // JEI Dependency
+    compileOnly("mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}")
+    datagenMods("mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}")
 
-    // Create: Brassworks Missions Dependency
-    compileOnly("curse.maven:create-brassworks-missions-1348982:8561618")
+    // LuckPerms Dependency
+    compileOnly("net.luckperms:api:5.5")
 
-    // Archers (RPG Series) Dependency
-    compileOnly("curse.maven:archers-932359:8549422")
+    // Platform Dependency
+    compileOnly("curse.maven:platform-997634:9318519")
+    datagenMods("curse.maven:platform-997634:9318519")
+
+    // Ponder Dependency
+    compileOnly("net.createmod.ponder:ponder-neoforge:${ponder_version}+mc${minecraft_version}")
+    datagenMods("net.createmod.ponder:ponder-neoforge:${ponder_version}+mc${minecraft_version}")
+
+    // Registrate Dependency
+    compileOnly("com.tterrag.registrate:Registrate:${registrate_version}")
+    datagenMods("com.tterrag.registrate:Registrate:${registrate_version}")
 
     // Spell Engine Dependency
     compileOnly("curse.maven:spell-engine-807653:8600773")
@@ -150,62 +181,38 @@ dependencies {
     // Tiny Config Dependency
     compileOnly("maven.modrinth:tiny-config:${project.tiny_config_version}-neoforge")
 
-    // BlueMap Dependency
-    compileOnly("de.bluecolored:bluemap-api:${project.bluemap_api_version}")
-    datagenMods("de.bluecolored:bluemap-api:${project.bluemap_api_version}")
-
     // Vanilla Backport
     compileOnly("curse.maven:vanillabackport-417430:9318571")
     datagenMods("curse.maven:vanillabackport-417430:9318571")
-
-    // Platform Dependency
-    compileOnly("curse.maven:platform-997634:9318519")
-    datagenMods("curse.maven:platform-997634:9318519")
-
-    // Create Goggles Dependency
-    compileOnly("curse.maven:create-goggles-377835:6776826")
-    datagenMods("curse.maven:create-goggles-377835:6776826")
-
-    // Create Dependencies
-    compileOnly("com.simibubi.create:create-${minecraft_version}:${create_version}:slim") { transitive = false }
-    datagenMods("com.simibubi.create:create-${minecraft_version}:${create_version}:slim") { transitive = false }
-
-    // Ponder Dependency
-    compileOnly("net.createmod.ponder:ponder-neoforge:${ponder_version}+mc${minecraft_version}")
-    datagenMods("net.createmod.ponder:ponder-neoforge:${ponder_version}+mc${minecraft_version}")
-
-    // Flywheel Dependency
-    compileOnly("dev.engine-room.flywheel:flywheel-neoforge-api-${minecraft_version}:${flywheel_version}")
-    runtimeOnly("dev.engine-room.flywheel:flywheel-neoforge-${minecraft_version}:${flywheel_version}")
-
-    // Registrate Dependency
-    compileOnly("com.tterrag.registrate:Registrate:${registrate_version}")
-    datagenMods("com.tterrag.registrate:Registrate:${registrate_version}")
-
-    // Architectury API
-    datagenMods("curse.maven:architectury-api-419699:9608861")
 }
 
 // gradle.properties entries
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {
     var replaceProperties = [
-            minecraft_version      : minecraft_version,
-            minecraft_version_range: minecraft_version_range,
-            neo_version            : neo_version,
-            loader_version_range   : loader_version_range,
-            accessories_version    : accessories_version,
-            jei_version            : jei_version,
-            aquaculture_version    : aquaculture_version,
-            tiny_config_version    : tiny_config_version,
-            bluemap_api_version    : bluemap_api_version,
-            mc_version             : mc_version,
-            mod_id                 : mod_id,
-            mod_name               : mod_name,
-            mod_license            : mod_license,
-            mod_version            : mod_version,
-            mod_credits            : mod_credits,
-            mod_authors            : mod_authors,
-            mod_description        : mod_description
+            mod_id                      : mod_id,
+            mod_name                    : mod_name,
+            mod_license                 : mod_license,
+            mod_version                 : mod_version,
+            mod_group_id                : mod_group_id,
+            mod_credits                 : mod_credits,
+            mod_authors                 : mod_authors,
+            mod_description             : mod_description,
+            minecraft_version           : minecraft_version,
+            minecraft_version_range     : minecraft_version_range,
+            neo_version                 : neo_version,
+            neo_version_range           : neo_version_range,
+            loader_version_range        : loader_version_range,
+            parchment_minecraft_version : parchment_minecraft_version,
+            parchment_mappings_version  : parchment_mappings_version,
+            accessories_version         : accessories_version,
+            aquaculture_version         : aquaculture_version,
+            bluemap_api_version         : bluemap_api_version,
+            create_version              : create_version,
+            flywheel_version            : flywheel_version,
+            jei_version                 : jei_version,
+            ponder_version              : ponder_version,
+            registrate_version          : registrate_version,
+            tiny_config_version         : tiny_config_version
     ]
     inputs.properties replaceProperties
     expand replaceProperties

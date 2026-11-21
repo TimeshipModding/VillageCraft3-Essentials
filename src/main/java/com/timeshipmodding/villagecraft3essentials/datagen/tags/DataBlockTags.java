@@ -13,9 +13,9 @@ import org.jetbrains.annotations.Nullable;
 import java.util.concurrent.CompletableFuture;
 
 import static com.timeshipmodding.villagecraft3essentials.content.block.registries.ModBlocks.*;
-import static com.timeshipmodding.villagecraft3essentials.content.block.registries.ModBlocks.DEEPSLATE_RUBY_ORE;
-import static com.timeshipmodding.villagecraft3essentials.infrastructure.tags.registries.ModBlockTags.*;
+
 import static com.timeshipmodding.villagecraft3essentials.infrastructure.tags.registries.CommonBlockTags.*;
+import static com.timeshipmodding.villagecraft3essentials.infrastructure.tags.registries.ModBlockTags.*;
 
 public class DataBlockTags extends BlockTagsProvider {
     public DataBlockTags(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, @Nullable ExistingFileHelper existingFileHelper) {

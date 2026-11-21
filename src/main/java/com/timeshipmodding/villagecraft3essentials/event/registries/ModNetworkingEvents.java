@@ -20,6 +20,7 @@ public class ModNetworkingEvents {
     private static void registerPackets(final RegisterPayloadHandlersEvent event) {
         final PayloadRegistrar registrar = event.registrar(VillageCraft3Essentials.MODID).versioned("1.0.0");
 
+        // playToClient
         registrar.playToClient(
                 AtmRandomConversionRatesPacket.TYPE,
                 AtmRandomConversionRatesPacket.STREAM_CODEC,
@@ -29,6 +30,7 @@ public class ModNetworkingEvents {
                 DebugTownPacket.STREAM_CODEC,
                 DebugTownPacket::handle);
 
+        // playToServer
         registrar.playToServer(
                 AtmSwitchTabPacket.TYPE,
                 AtmSwitchTabPacket.STREAM_CODEC,
@@ -54,6 +56,7 @@ public class ModNetworkingEvents {
                 CloseWalletMenuPacket.STREAM_CODEC,
                 CloseWalletMenuPacket::handle);
 
+        // playBidirectional
         registrar.playBidirectional(
                 HorseSyncCurrencyArmorEquipPacket.TYPE,
                 HorseSyncCurrencyArmorEquipPacket.STREAM_CODEC,

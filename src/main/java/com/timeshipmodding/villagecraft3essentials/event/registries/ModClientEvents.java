@@ -124,7 +124,6 @@ public class ModClientEvents {
             MouseHandlerMixinAccessor accessor = (MouseHandlerMixinAccessor) minecraft.mouseHandler;
             accessor.setXPos(savedX);
             accessor.setYPos(savedY);
-
             shouldRestore = false;
         }
     }

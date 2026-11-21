@@ -1,6 +1,5 @@
 package com.timeshipmodding.villagecraft3essentials.compat.archers.event.registries;
 
-import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
 import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems;
 import net.archers.ArchersMod;
 import net.archers.item.Group;
@@ -8,7 +7,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModList;
-import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.registries.RegisterEvent;
 import net.spell_engine.rpg_series.item.Equipment;
 import net.spell_engine.rpg_series.item.Weapon;
@@ -16,8 +15,10 @@ import net.spell_engine.rpg_series.item.Weapons;
 
 import java.util.ArrayList;
 
-@EventBusSubscriber(modid = VillageCraft3Essentials.MODID)
-public class ModArcherEvents {
+public class ModArchersEvents {
+    public static void registerEvents() {
+        NeoForge.EVENT_BUS.register(ModArchersEvents.class);
+    }
 
     @SubscribeEvent
     public static void registerItems(RegisterEvent event) {

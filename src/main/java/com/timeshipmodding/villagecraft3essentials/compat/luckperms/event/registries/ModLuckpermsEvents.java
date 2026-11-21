@@ -1,6 +1,5 @@
 package com.timeshipmodding.villagecraft3essentials.compat.luckperms.event.registries;
 
-import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
 import com.timeshipmodding.villagecraft3essentials.compat.luckperms.LuckpermsMethods;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.util.StringFormatter;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.config.ServerConfig;
@@ -8,13 +7,16 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModList;
-import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 
 import java.util.ArrayList;
 
-@EventBusSubscriber(modid = VillageCraft3Essentials.MODID)
 public class ModLuckpermsEvents {
+    public static void registerEvents() {
+        NeoForge.EVENT_BUS.register(ModLuckpermsEvents.class);
+    }
+
     @SubscribeEvent
     public static void onTabListNameFormatEvent(PlayerEvent.TabListNameFormat event) {
         if (ModList.get().isLoaded("luckperms") && ServerConfig.CHAT_TAB_NAME_FORMATTING.get()) {

@@ -323,8 +323,8 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
     public void containerTick() {
         super.containerTick();
         this.animatedToolConvertSlotTickCounter++;
-
         boolean serverRandomConvertScreen = this.menu.blockEntity.getRandomConvertScreen();
+
         if (this.localRandomConvertScreen != serverRandomConvertScreen) {
             this.localRandomConvertScreen = serverRandomConvertScreen;
             this.rebuildButtons();
@@ -357,7 +357,9 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
     }
 
     private void updateScrollableWidgets() {
-        if (!this.menu.blockEntity.getRandomConvertScreen()) return;
+        if (!this.menu.blockEntity.getRandomConvertScreen()) {
+            return;
+        }
 
         for (int i = 0; i < randomConvertButtons.length; i++) {
             if (randomConvertButtons[i] != null) {
@@ -468,7 +470,6 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
             this.startIndex = (int)((double)(this.scrollOffs * (float)this.getOffscreenRows()) + 0.5) * RECIPES_COLUMNS;
             updateScrollableWidgets();
             return true;
-
         }
 
         return super.mouseDragged(mouseX, mouseY, button, dragX, dragY);

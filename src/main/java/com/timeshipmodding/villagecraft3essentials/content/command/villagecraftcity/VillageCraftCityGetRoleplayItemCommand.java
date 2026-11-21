@@ -48,7 +48,7 @@ public class VillageCraftCityGetRoleplayItemCommand {
         int j = i * 100;
 
         if (count > j) {
-            context.getSource().sendFailure(Component.translatable("commands.give.failed.toomanyitems", new Object[]{j, itemstack.getDisplayName()}));
+            context.getSource().sendFailure(Component.translatable("commands.give.failed.toomanyitems", j, itemstack.getDisplayName()));
             return 0;
 
         } else {

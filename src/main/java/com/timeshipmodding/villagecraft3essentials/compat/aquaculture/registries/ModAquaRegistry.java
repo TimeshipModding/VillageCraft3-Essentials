@@ -13,6 +13,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public class ModAquaRegistry {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(VillageCraft3Essentials.MODID);
 
+    // Items
     public static final DeferredItem<Item> JADE_FISHING_ROD = ITEMS.register("jade_fishing_rod", () -> new AquaFishingRodItem(ModToolTiers.JADE, new Item.Properties().durability(450)));
     public static final DeferredItem<Item> AMBER_FISHING_ROD = ITEMS.register("amber_fishing_rod", () -> new AquaFishingRodItem(ModToolTiers.AMBER, new Item.Properties().durability(450)));
     public static final DeferredItem<Item> SILICON_FISHING_ROD = ITEMS.register("silicon_fishing_rod", () -> new AquaFishingRodItem(ModToolTiers.SILICON, new Item.Properties().durability(450)));
@@ -26,7 +27,7 @@ public class ModAquaRegistry {
     public static final DeferredItem<Item> SILICON_HOOK = AquaMethods.registerHook("silicon");
     public static final DeferredItem<Item> RUBY_HOOK = AquaMethods.registerHook("ruby");
 
-    // Helper methods
+    // Register Methods
     public static void register(IEventBus modEventBus) {
         ITEMS.register(modEventBus);
     }

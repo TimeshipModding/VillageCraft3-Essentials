@@ -26,11 +26,10 @@ public class ModTrimMaterials {
             ResourceKey.create(Registries.TRIM_MATERIAL, ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "ruby"));
 
     public static void bootstrap(BootstrapContext<TrimMaterial> context) {
-        // TODO: change jade and silicon text colours based on gem textures
-        register(context, JADE, ModItems.JADE.get(), Style.EMPTY.withColor(TextColor.parseColor("#cf7483").getOrThrow()), 0.7F);
+        register(context, JADE, ModItems.JADE.get(), Style.EMPTY.withColor(TextColor.parseColor("#227c4f").getOrThrow()), 0.7F);
         register(context, AMBER, ModItems.AMBER.get(), Style.EMPTY.withColor(TextColor.parseColor("#ca8513").getOrThrow()), 0.6F);
         register(context, SILICON, ModItems.SILICON.get(), Style.EMPTY.withColor(TextColor.parseColor("#c71836").getOrThrow()), 0.2F);
-        register(context, RUBY, ModItems.RUBY.get(), Style.EMPTY.withColor(TextColor.parseColor("#c71836").getOrThrow()), 0.4F);
+        register(context, RUBY, ModItems.RUBY.get(), Style.EMPTY.withColor(TextColor.parseColor("#d5ceed").getOrThrow()), 0.4F);
     }
 
     private static void register(BootstrapContext<TrimMaterial> context, ResourceKey<TrimMaterial> trimKey, Item item, Style style, float itemModelIndex) {

@@ -19,7 +19,6 @@ import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.level.GameType;
 import net.neoforged.fml.ModList;
 
 import java.util.Collection;
@@ -50,8 +49,8 @@ public class SwedishFurnitureStorePardonCommand {
         }
 
         for (ServerPlayer player : targets) {
-            player.setGameMode(GameType.SURVIVAL);
             player.setRespawnPosition(ServerLevel.OVERWORLD, blockpos, player.getYRot(), true, false);
+            player.removeAllEffects();
             targetPlayerUsername = Objects.requireNonNull(player.getDisplayName());
 
             if (player.hasData(ModDataAttachments.JAIL_COMMAND_DATA)) {
@@ -65,6 +64,10 @@ public class SwedishFurnitureStorePardonCommand {
             if (ModList.get().isLoaded("luckperms")) {
                 LuckpermsMethods.removeGroup(player, ServerConfig.JAILED_GROUP_NAME.get());
             }
+
+            if (ModList.get().isLoaded("dcintegration")) {
+                DiscordIntegrationMethods.removeDiscordRole(player, ServerConfig.DISCORD_JAIL_ROLE_ID.get());
+            }
         }
 
         if (spawn[3] != 0 && spawn[4] != 0) {
@@ -75,10 +78,6 @@ public class SwedishFurnitureStorePardonCommand {
                 message.append(Component.literal(" spawn!"));
                 player.sendSystemMessage(message, false);
                 VillageCraft3Essentials.LOGGER.info("[{}: Pardoned {} and teleported them to Swedish Furniture Store's spawn at {}, {}, {}]", context.getSource().getTextName(), targetPlayerUsername.getString(), spawn[0], spawn[1], spawn[2]);
-
-                if (ModList.get().isLoaded("dcintegration")) {
-                    DiscordIntegrationMethods.removeDiscordRole(player, ServerConfig.DISCORD_JAIL_ROLE_ID.get());
-                }
             }
 
             MutableComponent message = Component.literal("You have pardoned ");
@@ -98,10 +97,6 @@ public class SwedishFurnitureStorePardonCommand {
                 targetPlayerMessage.append(Component.literal("!"));
                 player.sendSystemMessage(targetPlayerMessage, false);
                 VillageCraft3Essentials.LOGGER.info("[{}: Pardoned {} and teleported them to World Spawn]", context.getSource().getTextName(), targetPlayerUsername.getString());
-
-                if (ModList.get().isLoaded("dcintegration")) {
-                    DiscordIntegrationMethods.removeDiscordRole(player, ServerConfig.DISCORD_JAIL_ROLE_ID.get());
-                }
             }
 
             MutableComponent message = Component.literal("You have pardoned ");

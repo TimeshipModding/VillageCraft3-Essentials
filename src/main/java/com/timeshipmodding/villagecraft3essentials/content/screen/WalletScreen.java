@@ -101,6 +101,7 @@ public class WalletScreen extends EffectRenderingInventoryScreen<WalletMenu> imp
         if (this.recipeBookComponent.mouseClicked(mouseX, mouseY, button)) {
             return true;
         }
+
         return super.mouseClicked(mouseX, mouseY, button);
     }
 

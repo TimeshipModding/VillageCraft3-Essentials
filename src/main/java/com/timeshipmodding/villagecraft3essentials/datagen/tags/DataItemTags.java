@@ -14,9 +14,10 @@ import java.util.concurrent.CompletableFuture;
 
 import static com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems.*;
 import static com.timeshipmodding.villagecraft3essentials.content.block.registries.ModBlocks.*;
-import static com.timeshipmodding.villagecraft3essentials.infrastructure.tags.registries.ModItemTags.*;
+
 import static com.timeshipmodding.villagecraft3essentials.infrastructure.tags.registries.CommonItemTags.*;
 import static com.timeshipmodding.villagecraft3essentials.infrastructure.tags.registries.CompatItemTags.*;
+import static com.timeshipmodding.villagecraft3essentials.infrastructure.tags.registries.ModItemTags.*;
 
 import static net.minecraft.tags.ItemTags.*;
 import static net.minecraft.world.item.Items.*;
@@ -275,6 +276,15 @@ public class DataItemTags extends ItemTagsProvider {
                 .add(SILICON.get());
         tag(RUBY_GEMS)
                 .add(RUBY.get());
+        tag(TOOLS_KNIFE)
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "jade_fillet_knife"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "amber_fillet_knife"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "silicon_fillet_knife"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "ruby_fillet_knife"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "jade_knife"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "amber_knife"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "silicon_knife"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "ruby_knife"));
 
         // VillageCraft 3 Essentials Tags
         tag(MOLE_FOOD)
@@ -433,17 +443,12 @@ public class DataItemTags extends ItemTagsProvider {
         tag(AccessoriesTags.NECKLACE_TAG)
                 .add(VILLAGECRAFTCITY_NECKLACE_1.get());
 
-        // Farmer's Delight Tags
-        tag(FARMERSDELIGHT_KNIVES)
-                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "jade_knife"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "amber_knife"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "silicon_knife"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "ruby_knife"));
-        tag(KNIFE)
-                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "jade_knife"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "amber_knife"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "silicon_knife"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "ruby_knife"));
+        // Archers Tags
+        tag(ARCHERS_SPEARS)
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "jade_spear"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "amber_spear"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "silicon_spear"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "ruby_spear"));
 
         // Aquaculture 2 Tags
         tag(AQUACULTURE_HOOK_TOOLTIP)
@@ -451,11 +456,20 @@ public class DataItemTags extends ItemTagsProvider {
                 .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "amber_hook"))
                 .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "silicon_hook"))
                 .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "ruby_hook"));
-        tag(KNIFE)
-                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "jade_fillet_knife"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "amber_fillet_knife"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "silicon_fillet_knife"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "ruby_fillet_knife"));
+
+        // Create Tags
+        tag(CREATE_PRESSURIZED_AIR_SOURCES)
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "jade_backtank"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "amber_backtank"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "silicon_backtank"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "ruby_backtank"));
+
+        // Create Goggles Tags
+        tag(CREATE_GOGGLES_GOGGLE)
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "goggle_jade_helmet"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "goggle_amber_helmet"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "goggle_silicon_helmet"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "goggle_ruby_helmet"));
 
         // RPG Series Tags
         tag(RPG_SERIES_LOOT_TIER_TIER_2_WEAPONS)
@@ -481,12 +495,12 @@ public class DataItemTags extends ItemTagsProvider {
                 .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "silicon_spear"))
                 .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "ruby_spear"));
 
-        // Archers Tags
-        tag(ARCHERS_SPEARS)
-                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "jade_spear"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "amber_spear"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "silicon_spear"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "ruby_spear"));
+        // Farmer's Delight Tags
+        tag(FARMERSDELIGHT_KNIVES)
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "jade_knife"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "amber_knife"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "silicon_knife"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "ruby_knife"));
 
         // Vanilla Backport Tags
         tag(VANILLA_BACKPORT_SPEARS)
@@ -499,19 +513,5 @@ public class DataItemTags extends ItemTagsProvider {
                 .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "amber_backport_spear"))
                 .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "silicon_backport_spear"))
                 .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "ruby_backport_spear"));
-
-        // Create Goggles Tags
-        tag(GOGGLE)
-                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "goggle_jade_helmet"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "goggle_amber_helmet"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "goggle_silicon_helmet"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "goggle_ruby_helmet"));
-
-        // Create Tags
-        tag(PRESSURIZED_AIR_SOURCES)
-                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "jade_backtank"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "amber_backtank"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "silicon_backtank"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "ruby_backtank"));
     }
 }

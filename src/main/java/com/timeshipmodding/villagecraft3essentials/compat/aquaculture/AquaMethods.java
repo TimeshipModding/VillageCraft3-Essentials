@@ -4,17 +4,14 @@ import com.teammetallurgy.aquaculture.api.fishing.Hook;
 import com.teammetallurgy.aquaculture.client.ClientHandler;
 import com.teammetallurgy.aquaculture.item.AquaFishingRodItem;
 import com.teammetallurgy.aquaculture.item.HookItem;
-import com.teammetallurgy.aquaculture.item.ItemFilletKnife;
 import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems;
 import net.minecraft.ChatFormatting;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Tier;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.registries.DeferredItem;
 
 import java.util.Objects;
-import java.util.function.Supplier;
 
 public class AquaMethods {
     public static DeferredItem<Item> registerHook(String hook) {
@@ -40,7 +37,7 @@ public class AquaMethods {
 
         } else if (Objects.equals(hook, "ruby")) {
             DeferredItem<Item> hookItem = ModItems.ITEMS.register(RUBY.getName() + "_hook", () -> new HookItem(RUBY));
-            Hook.HOOKS.put(SILICON.getName(), hookItem);
+            Hook.HOOKS.put(RUBY.getName(), hookItem);
             return hookItem;
         }
 
@@ -48,11 +45,7 @@ public class AquaMethods {
     }
 
     public static void registerAquaFishingRodCapability(RegisterCapabilitiesEvent event, Item item) {
-        event.registerItem(
-                Capabilities.ItemHandler.ITEM,
-                (stack, context) -> new AquaFishingRodItem.FishingRodEquipmentHandler(stack),
-                item
-        );
+        event.registerItem(Capabilities.ItemHandler.ITEM, (stack, context) -> new AquaFishingRodItem.FishingRodEquipmentHandler(stack), item);
     }
 
     public static void registerAquaFishingRodModelProperties(Item item) {

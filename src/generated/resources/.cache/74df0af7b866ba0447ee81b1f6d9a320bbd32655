@@ -1,4 +1,4 @@
-// 1.21.1	2026-11-14T20:28:53.119544	Tags for minecraft:item mod id villagecraft3essentials
+// 1.21.1	2026-11-21T23:09:59.3713178	Tags for minecraft:item mod id villagecraft3essentials
 10f2fb53536b04a376ab0b8dd363f9586b3be9f2 data/accessories/tags/item/hat.json
 f6170b8b1bb00d8fc6096fbdd721c88c0cd7cd02 data/accessories/tags/item/necklace.json
 9f372a52e8ea587fc32e67c84cfb1df1f00910d7 data/aquaculture/tags/item/tooltip.json
@@ -28,7 +28,7 @@ b555ea15742b7200eef750e72ae5ffa134066ee0 data/c/tags/item/ores_in_ground/deepsla
 a797c5813801e8ef3a238a3b0f667e2a11d0e10e data/c/tags/item/storage_blocks/ruby.json
 5002b6cf4d997faa6137d3f9c2b3429a047ee755 data/c/tags/item/storage_blocks/silicon.json
 2e09137d0f6b666aac3bc8558508791fcbeffe2c data/c/tags/item/tools/fishing_rod.json
-28e73533769f1bd5f46ae73b24e058a5e5dfd5f4 data/c/tags/item/tools/knife.json
+15a723ed8aa19ae64ceef4ef70f68dc0d7541169 data/c/tags/item/tools/knife.json
 649b29e6b6d8a5a0e4b103006266698f0d2c937e data/c/tags/item/tools/mace.json
 b83e2ae05c796a0ad461d06e51bacf11564c3f2e data/c/tags/item/tools/melee_weapon.json
 a2dab3edad01eb27fc50e0794f6ff698801b7d8a data/c/tags/item/tools/mining_tool.json
@@ -68,7 +68,7 @@ a5634e20df1a1538cb7062b67656412141cc2247 data/spell_engine/tags/item/handheld.js
 08c85901a01af131cc4889a111c687aaeeb26043 data/villagecraft3essentials/tags/item/jade_convertible_tools.json
 08dc88649e13dc61f0e66654eb4acff996e80869 data/villagecraft3essentials/tags/item/london_roleplay_items.json
 bbbe68f23d94ae2a72f5380fb7195d7486f0955f data/villagecraft3essentials/tags/item/mole_food.json
-dbdc122c6088032aa679b64902403820e2d6f5e8 data/villagecraft3essentials/tags/item/oasis_roleplay_items.json
+df569562e7294d55c93b475f47546bee7928a732 data/villagecraft3essentials/tags/item/oasis_roleplay_items.json
 95e4c5d10e7a62a5b8a0e803c28c148a3a871d38 data/villagecraft3essentials/tags/item/ruby_convertible_tools.json
 d8fe78885a188575a58b0e99544d5101f6b8aced data/villagecraft3essentials/tags/item/silicon_convertible_tools.json
 5b17bf18bc41884d2782a68c65304261d307e534 data/villagecraft3essentials/tags/item/villagecraft_city_roleplay_items.json

@@ -1,11 +1,13 @@
 package com.timeshipmodding.villagecraft3essentials;
 
 import com.timeshipmodding.villagecraft3essentials.compat.aquaculture.registries.ModAquaRegistry;
+import com.timeshipmodding.villagecraft3essentials.compat.archers.event.registries.ModArchersEvents;
 import com.timeshipmodding.villagecraft3essentials.compat.bluemap.event.registries.ModBluemapEvents;
 import com.timeshipmodding.villagecraft3essentials.compat.brassworksmissions.event.registries.ModBrassworksMissionsEvents;
 import com.timeshipmodding.villagecraft3essentials.compat.creategoggles.event.registries.ModCGEvents;
 import com.timeshipmodding.villagecraft3essentials.compat.creategoggles.registries.ModCGRegistry;
 import com.timeshipmodding.villagecraft3essentials.compat.farmersdelight.registries.ModFDRegistry;
+import com.timeshipmodding.villagecraft3essentials.compat.luckperms.event.registries.ModLuckpermsEvents;
 import com.timeshipmodding.villagecraft3essentials.compat.vanillabackport.registries.ModVanillaBackportRegistry;
 import com.timeshipmodding.villagecraft3essentials.content.block.registries.ModBlocks;
 import com.timeshipmodding.villagecraft3essentials.content.block.entity.registries.ModBlockEntities;
@@ -22,7 +24,6 @@ import com.timeshipmodding.villagecraft3essentials.infrastructure.data.attachmen
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.config.ModConfig;
-import net.neoforged.neoforge.data.loading.DatagenModLoader;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -36,8 +37,6 @@ public class VillageCraft3Essentials {
     public static final String MODID = "villagecraft3essentials";
 
     public VillageCraft3Essentials(IEventBus modEventBus, ModContainer modContainer) {
-        boolean isDataGenerating = DatagenModLoader.isRunningDataGen();
-
         // Register registry classes
         ModBlocks.BLOCKS.register(modEventBus);
         ModBlockEntities.BLOCK_ENTITIES.register(modEventBus);
@@ -57,12 +56,16 @@ public class VillageCraft3Essentials {
         modContainer.registerConfig(ModConfig.Type.SERVER, ServerConfig.SPEC);
 
         // Register compat registries and events
-        if (ModList.get().isLoaded("farmersdelight")) {
-            ModFDRegistry.register(modEventBus);
+        if (ModList.get().isLoaded("archers")) {
+            ModArchersEvents.registerEvents();
         }
 
         if (ModList.get().isLoaded("aquaculture")) {
             ModAquaRegistry.register(modEventBus);
+        }
+
+        if (ModList.get().isLoaded("bluemap")) {
+            ModBluemapEvents.registerEvents();
         }
 
         if (ModList.get().isLoaded("brassworksmissions")) {
@@ -74,8 +77,12 @@ public class VillageCraft3Essentials {
             ModCGEvents.registerEvents(modEventBus);
         }
 
-        if (ModList.get().isLoaded("bluemap")) {
-            ModBluemapEvents.registerEvents();
+        if (ModList.get().isLoaded("farmersdelight")) {
+            ModFDRegistry.register(modEventBus);
+        }
+
+        if (ModList.get().isLoaded("luckperms")) {
+            ModLuckpermsEvents.registerEvents();
         }
 
         if (ModList.get().isLoaded("vanillabackport")) {

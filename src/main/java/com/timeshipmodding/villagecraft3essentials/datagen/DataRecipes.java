@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 import static net.minecraft.world.item.Items.*;
+
 import static com.timeshipmodding.villagecraft3essentials.content.block.registries.ModBlocks.*;
 import static com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems.*;
 

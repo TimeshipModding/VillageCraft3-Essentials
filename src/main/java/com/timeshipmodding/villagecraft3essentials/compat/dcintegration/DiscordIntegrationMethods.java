@@ -32,6 +32,7 @@ public class DiscordIntegrationMethods {
             }
 
             Guild guild = jda.getGuildById(serverID);
+
             if (guild != null) {
                 guild.retrieveMemberById(discordID).queue(member -> {
                     Role roleToGive = guild.getRoleById(roleId);
@@ -63,6 +64,7 @@ public class DiscordIntegrationMethods {
             }
 
             Guild guild = jda.getGuildById(serverID);
+
             if (guild != null) {
                 guild.retrieveMemberById(discordID).queue(member -> {
                     Role roleToRemove = guild.getRoleById(roleId);

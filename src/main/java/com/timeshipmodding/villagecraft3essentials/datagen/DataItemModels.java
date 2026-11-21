@@ -19,11 +19,12 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import java.util.LinkedHashMap;
 import java.util.Objects;
 
-import static com.timeshipmodding.villagecraft3essentials.content.block.registries.ModBlocks.*;
 import static com.timeshipmodding.villagecraft3essentials.compat.aquaculture.registries.ModAquaRegistry.*;
 import static com.timeshipmodding.villagecraft3essentials.compat.farmersdelight.registries.ModFDRegistry.*;
 import static com.timeshipmodding.villagecraft3essentials.compat.creategoggles.registries.ModCGRegistry.*;
 import static com.timeshipmodding.villagecraft3essentials.compat.vanillabackport.registries.ModVanillaBackportRegistry.*;
+
+import static com.timeshipmodding.villagecraft3essentials.content.block.registries.ModBlocks.*;
 import static com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems.*;
 
 public class DataItemModels extends ItemModelProvider {
@@ -184,8 +185,6 @@ public class DataItemModels extends ItemModelProvider {
     }
 
     private void trimmedArmorItem(DeferredItem<Item> itemDeferredItem) {
-        final String MOD_ID = VillageCraft3Essentials.MODID;
-
         if (itemDeferredItem.get() instanceof ArmorItem armorItem) {
             trimMaterials.forEach((trimMaterial, value) -> {
                 float trimValue = value;
@@ -216,7 +215,7 @@ public class DataItemModels extends ItemModelProvider {
                         .model(new ModelFile.UncheckedModelFile(trimNameResLoc.getNamespace() + ":item/" + trimNameResLoc.getPath()))
                         .predicate(mcLoc("trim_type"), trimValue).end()
                         .texture("layer0",
-                                ResourceLocation.fromNamespaceAndPath(MOD_ID,
+                                ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID,
                                         "item/" + itemDeferredItem.getId().getPath()));
             });
         }
