@@ -17,14 +17,6 @@ import java.util.Objects;
 import java.util.function.Supplier;
 
 public class AquaMethods {
-    public static Supplier<Item> getAquaFishingRodItemSupplier(Tier tier) {
-        return () -> new AquaFishingRodItem(tier, new Item.Properties().durability(450));
-    }
-
-    public static Supplier<Item> getFilletKnifeItemSupplier(Tier tier) {
-        return () -> new ItemFilletKnife(tier, new Item.Properties());
-    }
-
     public static DeferredItem<Item> registerHook(String hook) {
         Hook JADE = (new Hook.HookBuilder("jade")).setColor(ChatFormatting.DARK_GREEN).setDurabilityChance(0.5).build();
         Hook AMBER = (new Hook.HookBuilder("amber")).setColor(ChatFormatting.GOLD).setDurabilityChance(0.5).build();

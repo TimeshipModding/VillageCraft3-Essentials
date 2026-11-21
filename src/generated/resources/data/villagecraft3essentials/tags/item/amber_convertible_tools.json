@@ -35,11 +35,15 @@
       "required": false
     },
     {
-      "id": "villagecraft3essentials:amber_brush",
+      "id": "villagecraft3essentials:amber_nautilus_armor",
       "required": false
     },
     {
-      "id": "villagecraft3essentials:amber_nautilus_armor",
+      "id": "villagecraft3essentials:goggle_amber_helmet",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:amber_backtank",
       "required": false
     }
   ]

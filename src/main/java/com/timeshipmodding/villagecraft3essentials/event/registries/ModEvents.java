@@ -2,6 +2,7 @@ package com.timeshipmodding.villagecraft3essentials.event.registries;
 
 import  com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
 import com.timeshipmodding.villagecraft3essentials.compat.aquaculture.AquaMethods;
+import com.timeshipmodding.villagecraft3essentials.compat.aquaculture.registries.ModAquaRegistry;
 import com.timeshipmodding.villagecraft3essentials.compat.bluemap.BlueMapMethods;
 import com.timeshipmodding.villagecraft3essentials.compat.luckperms.LuckpermsMethods;
 import com.timeshipmodding.villagecraft3essentials.content.command.DiscordLinkPlayerCommand;
@@ -15,7 +16,6 @@ import com.timeshipmodding.villagecraft3essentials.content.command.removecooldow
 import com.timeshipmodding.villagecraft3essentials.content.command.tpa.*;
 import com.timeshipmodding.villagecraft3essentials.content.command.villagecraftcity.*;
 import com.timeshipmodding.villagecraft3essentials.content.command.warscore.*;
-import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModCompatItems;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.config.CommonConfig;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.config.ServerConfig;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.data.CoreRespawnData;
@@ -603,10 +603,10 @@ public class ModEvents {
         );
 
         if (ModList.get().isLoaded("aquaculture")) {
-            AquaMethods.registerAquaFishingRodCapability(event, ModCompatItems.JADE_FISHING_ROD.get());
-            AquaMethods.registerAquaFishingRodCapability(event, ModCompatItems.AMBER_FISHING_ROD.get());
-            AquaMethods.registerAquaFishingRodCapability(event, ModCompatItems.SILICON_FISHING_ROD.get());
-            AquaMethods.registerAquaFishingRodCapability(event, ModCompatItems.RUBY_FISHING_ROD.get());
+            AquaMethods.registerAquaFishingRodCapability(event, ModAquaRegistry.JADE_FISHING_ROD.get());
+            AquaMethods.registerAquaFishingRodCapability(event, ModAquaRegistry.AMBER_FISHING_ROD.get());
+            AquaMethods.registerAquaFishingRodCapability(event, ModAquaRegistry.SILICON_FISHING_ROD.get());
+            AquaMethods.registerAquaFishingRodCapability(event, ModAquaRegistry.RUBY_FISHING_ROD.get());
         }
     }
 

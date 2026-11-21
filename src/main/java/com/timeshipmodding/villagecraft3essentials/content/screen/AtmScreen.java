@@ -493,29 +493,39 @@ public class AtmScreen extends AbstractContainerScreen<AtmMenu> {
         this.animatedToolConvertSlotFrames.add(ResourceLocation.fromNamespaceAndPath("minecraft", minecraftFramePath + "empty_slot_pickaxe.png"));
         this.animatedToolConvertSlotFrames.add(ResourceLocation.fromNamespaceAndPath("minecraft", minecraftFramePath + "empty_slot_axe.png"));
         this.animatedToolConvertSlotFrames.add(ResourceLocation.fromNamespaceAndPath("minecraft", minecraftFramePath + "empty_slot_hoe.png"));
-        this.animatedToolConvertSlotFrames.add(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", modFramePath + "helmet.png"));
-        this.animatedToolConvertSlotFrames.add(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", modFramePath + "chestplate.png"));
+        this.animatedToolConvertSlotFrames.add(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, modFramePath + "helmet.png"));
+
+        if (ModList.get().isLoaded("creategoggles")) {
+            this.animatedToolConvertSlotFrames.add(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, modFramePath + "goggle_helmet.png"));
+        }
+        
+        this.animatedToolConvertSlotFrames.add(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, modFramePath + "chestplate.png"));
+
+        if (ModList.get().isLoaded("creategoggles")) {
+            this.animatedToolConvertSlotFrames.add(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, modFramePath + "backtank.png"));
+        }
+
         this.animatedToolConvertSlotFrames.add(ResourceLocation.fromNamespaceAndPath("minecraft", minecraftFramePath + "empty_armor_slot_leggings.png"));
         this.animatedToolConvertSlotFrames.add(ResourceLocation.fromNamespaceAndPath("minecraft", minecraftFramePath + "empty_armor_slot_boots.png"));
-        this.animatedToolConvertSlotFrames.add(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", modFramePath + "horse_armor.png"));
+        this.animatedToolConvertSlotFrames.add(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, modFramePath + "horse_armor.png"));
 
         if (ModList.get().isLoaded("farmersdelight")) {
-            this.animatedToolConvertSlotFrames.add(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", modFramePath + "knife.png"));
+            this.animatedToolConvertSlotFrames.add(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, modFramePath + "knife.png"));
         }
 
         if (ModList.get().isLoaded("aquaculture")) {
-            this.animatedToolConvertSlotFrames.add(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", modFramePath + "fillet_knife.png"));
-            this.animatedToolConvertSlotFrames.add(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", modFramePath + "fishing_rod.png"));
-            this.animatedToolConvertSlotFrames.add(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", modFramePath + "hook.png"));
+            this.animatedToolConvertSlotFrames.add(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, modFramePath + "fillet_knife.png"));
+            this.animatedToolConvertSlotFrames.add(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, modFramePath + "fishing_rod.png"));
+            this.animatedToolConvertSlotFrames.add(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, modFramePath + "hook.png"));
         }
 
         if (ModList.get().isLoaded("archers")) {
-            this.animatedToolConvertSlotFrames.add(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", modFramePath + "spear.png"));
+            this.animatedToolConvertSlotFrames.add(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, modFramePath + "spear.png"));
         }
 
         if (ModList.get().isLoaded("vanillabackport")) {
-            this.animatedToolConvertSlotFrames.add(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", modFramePath + "backport_spear.png"));
-            this.animatedToolConvertSlotFrames.add(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", modFramePath + "nautilus_armor.png"));
+            this.animatedToolConvertSlotFrames.add(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, modFramePath + "backport_spear.png"));
+            this.animatedToolConvertSlotFrames.add(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, modFramePath + "nautilus_armor.png"));
         }
     }
 

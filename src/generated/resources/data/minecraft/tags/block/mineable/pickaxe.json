@@ -27,6 +27,22 @@
     "villagecraft3essentials:purple_atm",
     "villagecraft3essentials:red_atm",
     "villagecraft3essentials:white_atm",
-    "villagecraft3essentials:yellow_atm"
+    "villagecraft3essentials:yellow_atm",
+    {
+      "id": "villagecraft3essentials:jade_backtank",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:amber_backtank",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:silicon_backtank",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:ruby_backtank",
+      "required": false
+    }
   ]
 }

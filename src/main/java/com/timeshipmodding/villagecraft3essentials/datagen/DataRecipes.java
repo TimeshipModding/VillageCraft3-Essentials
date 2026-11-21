@@ -1,35 +1,25 @@
 package com.timeshipmodding.villagecraft3essentials.datagen;
 
-import com.teammetallurgy.aquaculture.init.AquaItems;
 import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.tags.registries.ModItemTags;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
-import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.common.conditions.IConditionBuilder;
-import vectorwing.farmersdelight.common.registry.ModItems;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-import static com.timeshipmodding.villagecraft3essentials.content.block.registries.ModBlocks.*;
-import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModCompatItems.*;
-
-import static com.timeshipmodding.villagecraft3essentials.content.item.registries.ModCompatItems.*;
-import static com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems.*;
 import static net.minecraft.world.item.Items.*;
+import static com.timeshipmodding.villagecraft3essentials.content.block.registries.ModBlocks.*;
+import static com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems.*;
 
 public class DataRecipes extends RecipeProvider implements IConditionBuilder {
     public DataRecipes(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> pRegistries) {

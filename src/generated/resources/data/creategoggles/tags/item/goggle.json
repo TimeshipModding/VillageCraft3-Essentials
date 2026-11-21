@@ -1,0 +1,20 @@
+{
+  "values": [
+    {
+      "id": "villagecraft3essentials:goggle_jade_helmet",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:goggle_amber_helmet",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:goggle_silicon_helmet",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:goggle_ruby_helmet",
+      "required": false
+    }
+  ]
+}

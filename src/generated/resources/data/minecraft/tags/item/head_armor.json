@@ -3,6 +3,22 @@
     "villagecraft3essentials:jade_helmet",
     "villagecraft3essentials:amber_helmet",
     "villagecraft3essentials:silicon_helmet",
-    "villagecraft3essentials:ruby_helmet"
+    "villagecraft3essentials:ruby_helmet",
+    {
+      "id": "villagecraft3essentials:goggle_jade_helmet",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:goggle_amber_helmet",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:goggle_silicon_helmet",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:goggle_ruby_helmet",
+      "required": false
+    }
   ]
 }

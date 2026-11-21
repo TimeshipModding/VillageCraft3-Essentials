@@ -7,7 +7,6 @@ import net.minecraft.world.item.Item;
 
 public class CommonItemTags {
     public static TagKey<Item> TOOLS_FISHING_ROD = createTag("tools/fishing_rod");
-    public static TagKey<Item> TOOLS_BRUSH = createTag("tools/brush");
     public static TagKey<Item> STORAGE_BLOCKS = createTag("storage_blocks");
     public static TagKey<Item> JADE_STORAGE_BLOCKS = createTag("storage_blocks/jade");
     public static TagKey<Item> AMBER_STORAGE_BLOCKS = createTag("storage_blocks/amber");

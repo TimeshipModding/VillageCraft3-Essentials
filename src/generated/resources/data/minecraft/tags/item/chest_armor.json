@@ -3,6 +3,22 @@
     "villagecraft3essentials:jade_chestplate",
     "villagecraft3essentials:amber_chestplate",
     "villagecraft3essentials:silicon_chestplate",
-    "villagecraft3essentials:ruby_chestplate"
+    "villagecraft3essentials:ruby_chestplate",
+    {
+      "id": "villagecraft3essentials:jade_backtank",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:amber_backtank",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:silicon_backtank",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:ruby_backtank",
+      "required": false
+    }
   ]
 }

@@ -1,0 +1,36 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "creategoggles"
+    }
+  ],
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "function": "minecraft:copy_components",
+              "include": [
+                "create:banktank_air"
+              ],
+              "source": "block_entity"
+            }
+          ],
+          "name": "villagecraft3essentials:jade_backtank"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "villagecraft3essentials:blocks/jade_backtank"
+}

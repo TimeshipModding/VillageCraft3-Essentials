@@ -35,11 +35,15 @@
       "required": false
     },
     {
-      "id": "villagecraft3essentials:ruby_brush",
+      "id": "villagecraft3essentials:ruby_nautilus_armor",
       "required": false
     },
     {
-      "id": "villagecraft3essentials:ruby_nautilus_armor",
+      "id": "villagecraft3essentials:goggle_ruby_helmet",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:ruby_backtank",
       "required": false
     }
   ]

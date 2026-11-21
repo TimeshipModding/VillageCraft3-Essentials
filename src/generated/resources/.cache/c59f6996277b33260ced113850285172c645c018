@@ -1,4 +1,4 @@
-// 1.21.1	2026-10-24T23:46:34.1039895	Item Models: villagecraft3essentials
+// 1.21.1	2026-11-07T21:23:39.1438822	Item Models: villagecraft3essentials
 b561339f3135d8189e8c687143e3c255ad9365ee assets/villagecraft3essentials/models/item/amber.json
 e5eaf01e189a5f62cb633c07077789fa2db9de9d assets/villagecraft3essentials/models/item/amber_axe.json
 5e2574878ef367c0f669a02cd38b1656f72826d2 assets/villagecraft3essentials/models/item/amber_backport_spear.json
@@ -83,6 +83,10 @@ cbcd18cff09683dc4dbb12d656212a300ec8986c assets/villagecraft3essentials/models/i
 db1ea40d0419c27492d0ad5a0e2ffc9f098c316e assets/villagecraft3essentials/models/item/cracked_silicon.json
 aaef040911a430411a5d02b54ec1cdd598ffcf5d assets/villagecraft3essentials/models/item/cyan_atm.json
 9c3cbcd1a3e8553218ebcc4d16f1f343ce14d87b assets/villagecraft3essentials/models/item/diamond_core.json
+3c9833e483ae6d1d7f21800191f081a16559987e assets/villagecraft3essentials/models/item/goggle_amber_helmet.json
+03afef776db062fbed8ce835b7928ba2bc0f3de1 assets/villagecraft3essentials/models/item/goggle_jade_helmet.json
+919511ff05d67c8cbab0bf8a0e95935b3473650a assets/villagecraft3essentials/models/item/goggle_ruby_helmet.json
+d81b36cd30cda03e1ae428faac764b3583601884 assets/villagecraft3essentials/models/item/goggle_silicon_helmet.json
 322734061de60067ced7262799ab80384e7e87fb assets/villagecraft3essentials/models/item/gray_atm.json
 a61612cad2a030acbd1e4a537c56ce6a3fac4ed9 assets/villagecraft3essentials/models/item/green_atm.json
 1d9c9d748da707d7d507d0c7b1b507030064a357 assets/villagecraft3essentials/models/item/jade.json

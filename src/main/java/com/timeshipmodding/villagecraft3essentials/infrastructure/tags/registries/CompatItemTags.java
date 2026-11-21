@@ -15,4 +15,6 @@ public class CompatItemTags {
     public static TagKey<Item> ARCHERS_SPEARS = ItemTags.create(ResourceLocation.fromNamespaceAndPath("archers", "spears"));
     public static TagKey<Item> VANILLA_BACKPORT_SPEARS = ItemTags.create(ResourceLocation.fromNamespaceAndPath("minecraft", "spears"));
     public static TagKey<Item> VANILLA_BACKPORT_LUNGE_ENCHANTABLE = ItemTags.create(ResourceLocation.fromNamespaceAndPath("minecraft", "lunge_enchantable"));
+    public static TagKey<Item> GOGGLE = ItemTags.create(ResourceLocation.fromNamespaceAndPath("creategoggles", "goggle"));
+    public static TagKey<Item> PRESSURIZED_AIR_SOURCES = ItemTags.create(ResourceLocation.fromNamespaceAndPath("create", "presurized_air_sources"));
 }
