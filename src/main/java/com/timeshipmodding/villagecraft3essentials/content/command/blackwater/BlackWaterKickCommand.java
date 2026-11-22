@@ -5,7 +5,6 @@ import com.mojang.brigadier.arguments.BoolArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
 import com.timeshipmodding.villagecraft3essentials.compat.luckperms.LuckpermsMethods;
-import com.timeshipmodding.villagecraft3essentials.infrastructure.config.CommonConfig;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.config.ServerConfig;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.data.attachment.registries.ModDataAttachments;
 import net.minecraft.ChatFormatting;
@@ -52,7 +51,7 @@ public class BlackWaterKickCommand {
         for (ServerPlayer player : targets) {
             targetPlayerUsername = Objects.requireNonNull(player.getDisplayName());
             long lastKicked = player.getData(ModDataAttachments.KICK_COMMAND_DATA).blackWaterKickCooldown();
-            long cooldownMs = CommonConfig.KICK_COMMAND_COOLDOWN.get() * 1000L;
+            long cooldownMs = ServerConfig.KICK_COMMAND_COOLDOWN.get() * 1000L;
             long timeLeft = (lastKicked + cooldownMs) - currentTime;
 
             if (lastKicked != 0 && timeLeft > 0) {

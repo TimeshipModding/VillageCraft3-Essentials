@@ -5,7 +5,6 @@ import com.timeshipmodding.villagecraft3essentials.compat.dcintegration.DiscordI
 import com.timeshipmodding.villagecraft3essentials.compat.luckperms.LuckpermsMethods;
 import com.timeshipmodding.villagecraft3essentials.content.command.tpa.manager.TpaCommandManager;
 import com.timeshipmodding.villagecraft3essentials.event.ServerMessageEvent;
-import com.timeshipmodding.villagecraft3essentials.infrastructure.config.CommonConfig;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.config.ServerConfig;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.data.saveddata.AtmRandomConversionRatesSavedData;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.util.TabListVariables;
@@ -217,21 +216,21 @@ public class ModServerEvents {
 
     public static int randomJadeCurrencyConversion() {
         Random random = new Random();
-        return random.nextInt(CommonConfig.JADE_CURRENCY_CONVERSION_RATE_MIN.getAsInt(), CommonConfig.JADE_CURRENCY_CONVERSION_RATE_MAX.getAsInt());
+        return random.nextInt(ServerConfig.JADE_CURRENCY_CONVERSION_RATE_MIN.getAsInt(), ServerConfig.JADE_CURRENCY_CONVERSION_RATE_MAX.getAsInt());
     }
 
     public static int randomAmberCurrencyConversion() {
         Random random = new Random();
-        return random.nextInt(CommonConfig.AMBER_CURRENCY_CONVERSION_RATE_MIN.getAsInt(), CommonConfig.AMBER_CURRENCY_CONVERSION_RATE_MAX.getAsInt());
+        return random.nextInt(ServerConfig.AMBER_CURRENCY_CONVERSION_RATE_MIN.getAsInt(), ServerConfig.AMBER_CURRENCY_CONVERSION_RATE_MAX.getAsInt());
     }
 
     public static int randomSiliconCurrencyConversion() {
         Random random = new Random();
-        return random.nextInt(CommonConfig.SILICON_CURRENCY_CONVERSION_RATE_MIN.getAsInt(), CommonConfig.SILICON_CURRENCY_CONVERSION_RATE_MAX.getAsInt());
+        return random.nextInt(ServerConfig.SILICON_CURRENCY_CONVERSION_RATE_MIN.getAsInt(), ServerConfig.SILICON_CURRENCY_CONVERSION_RATE_MAX.getAsInt());
     }
 
     public static int randomRubyCurrencyConversion() {
         Random random = new Random();
-        return random.nextInt(CommonConfig.RUBY_CURRENCY_CONVERSION_RATE_MIN.getAsInt(), CommonConfig.RUBY_CURRENCY_CONVERSION_RATE_MAX.getAsInt());
+        return random.nextInt(ServerConfig.RUBY_CURRENCY_CONVERSION_RATE_MIN.getAsInt(), ServerConfig.RUBY_CURRENCY_CONVERSION_RATE_MAX.getAsInt());
     }
 }
