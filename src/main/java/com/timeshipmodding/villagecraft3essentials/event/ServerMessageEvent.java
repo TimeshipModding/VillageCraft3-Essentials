@@ -12,8 +12,8 @@ public class ServerMessageEvent {
         sendMessage(player, message, false);
     }
 
-    public static void sendMessage(Player player, MutableComponent message, boolean emptyline) {
-        if (emptyline) {
+    public static void sendMessage(Player player, MutableComponent message, boolean emptyLine) {
+        if (emptyLine) {
             player.sendSystemMessage(Component.literal(""));
         }
 

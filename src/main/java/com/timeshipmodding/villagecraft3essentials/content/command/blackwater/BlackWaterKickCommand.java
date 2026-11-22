@@ -71,7 +71,6 @@ public class BlackWaterKickCommand {
                 return -1;
             }
 
-
             int playerYaw = (int) player.getYRot();
             int playerPitch = (int) player.getXRot();
             player.teleportTo(serverlevel, blockpos.getX() + 0.5, blockpos.getY(), blockpos.getZ() + 0.5, playerYaw, playerPitch);

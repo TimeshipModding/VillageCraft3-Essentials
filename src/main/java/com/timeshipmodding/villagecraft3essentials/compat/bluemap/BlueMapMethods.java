@@ -64,18 +64,25 @@ public class BlueMapMethods {
     public static String townPlayerIsStandingIn(Player player) {
         if (ServerConfig.ENABLE_WAR_SYSTEM_FEATURES.get()) {
             return "The War Server";
+
         } else if (player.level().dimension() != Level.OVERWORLD) {
             return "The Wild";
+
         } else if (isPlayerInAreaMarker(player, "villagecraft-city")) {
             return "VillageCraft City";
+
         } else if (isPlayerInAreaMarker(player, "oasis")) {
             return "Oasis";
+
         } else if (isPlayerInAreaMarker(player, "swedish-furniture-store")) {
             return "Swedish Furniture Store";
+
         } else if (isPlayerInAreaMarker(player, "london")) {
             return "London";
+
         } else if (isPlayerInAreaMarker(player, "blackwater")) {
             return "BlackWater";
+
         } else {
             return "The Wild";
         }
@@ -83,7 +90,6 @@ public class BlueMapMethods {
 
     private static void createSpawnMarker(double xPos, int yPos, double zPos, String label, String markerSetId, ServerPlayer player) {
         BlueMapAPI.getInstance().ifPresent(api -> {
-
             POIMarker spawnPointMarker = POIMarker.builder()
                     .label(label + " Spawn Point")
                     .position(new Vector3d(xPos, yPos, zPos))
@@ -105,9 +111,8 @@ public class BlueMapMethods {
                         } catch (IOException ex) {
                             ex.printStackTrace();
                         }
-                    }
 
-                    else {
+                    } else {
                         map.getMarkerSets().get(markerSetId).put(markerSetId + "-spawn", spawnPointMarker);
                     }
                 }

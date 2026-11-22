@@ -35,11 +35,15 @@
       "required": false
     },
     {
-      "id": "betterarcheology:diamond_brush",
+      "id": "minecraft:diamond_nautilus_armor",
       "required": false
     },
     {
-      "id": "minecraft:diamond_nautilus_armor",
+      "id": "creategoggles:goggle_diamond_helmet",
+      "required": false
+    },
+    {
+      "id": "creategoggles:diamond_backtank",
       "required": false
     }
   ]

@@ -5,7 +5,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.level.saveddata.SavedData;
 
-public class SpawnSavedData extends SavedData { ;
+public class SpawnSavedData extends SavedData {
     private int[] villagecraftCitySpawn = {0, 0, 0, 0, 0};
     private int[] oasisSpawn = {0, 0, 0, 0, 0};
     private int[] swedishFurnitureStoreSpawn = {0, 0, 0, 0, 0};

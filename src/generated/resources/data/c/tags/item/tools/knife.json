@@ -1,22 +1,6 @@
 {
   "values": [
     {
-      "id": "villagecraft3essentials:jade_knife",
-      "required": false
-    },
-    {
-      "id": "villagecraft3essentials:amber_knife",
-      "required": false
-    },
-    {
-      "id": "villagecraft3essentials:silicon_knife",
-      "required": false
-    },
-    {
-      "id": "villagecraft3essentials:ruby_knife",
-      "required": false
-    },
-    {
       "id": "villagecraft3essentials:jade_fillet_knife",
       "required": false
     },
@@ -30,6 +14,22 @@
     },
     {
       "id": "villagecraft3essentials:ruby_fillet_knife",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:jade_knife",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:amber_knife",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:silicon_knife",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:ruby_knife",
       "required": false
     }
   ]

@@ -15,6 +15,38 @@
     "villagecraft3essentials:ruby_helmet",
     "villagecraft3essentials:ruby_chestplate",
     "villagecraft3essentials:ruby_leggings",
-    "villagecraft3essentials:ruby_boots"
+    "villagecraft3essentials:ruby_boots",
+    {
+      "id": "villagecraft3essentials:goggle_jade_helmet",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:goggle_amber_helmet",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:goggle_silicon_helmet",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:goggle_ruby_helmet",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:jade_backtank",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:amber_backtank",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:silicon_backtank",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:ruby_backtank",
+      "required": false
+    }
   ]
 }

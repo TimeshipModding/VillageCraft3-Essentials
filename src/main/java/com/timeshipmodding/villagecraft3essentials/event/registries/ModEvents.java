@@ -2,7 +2,9 @@ package com.timeshipmodding.villagecraft3essentials.event.registries;
 
 import  com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
 import com.timeshipmodding.villagecraft3essentials.compat.aquaculture.AquaMethods;
+import com.timeshipmodding.villagecraft3essentials.compat.aquaculture.registries.ModAquaRegistry;
 import com.timeshipmodding.villagecraft3essentials.compat.bluemap.BlueMapMethods;
+import com.timeshipmodding.villagecraft3essentials.compat.dcintegration.DiscordIntegrationMethods;
 import com.timeshipmodding.villagecraft3essentials.compat.luckperms.LuckpermsMethods;
 import com.timeshipmodding.villagecraft3essentials.content.command.DiscordLinkPlayerCommand;
 import com.timeshipmodding.villagecraft3essentials.content.block.registries.ModBlocks;
@@ -16,7 +18,6 @@ import com.timeshipmodding.villagecraft3essentials.content.command.removecooldow
 import com.timeshipmodding.villagecraft3essentials.content.command.tpa.*;
 import com.timeshipmodding.villagecraft3essentials.content.command.villagecraftcity.*;
 import com.timeshipmodding.villagecraft3essentials.content.command.warscore.*;
-import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModCompatItems;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.config.CommonConfig;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.config.ServerConfig;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.data.CoreRespawnData;
@@ -40,7 +41,6 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.GameType;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModList;
@@ -76,6 +76,7 @@ public class ModEvents {
         new VillageCraftCityJailCommand(event.getDispatcher());
         new VillageCraftCityKickCommand(event.getDispatcher());
         new VillageCraftCityPardonCommand(event.getDispatcher());
+        new VillageCraftCityRemoveJailCommand(event.getDispatcher());
         new VillageCraftCityRemoveSpawnCommand(event.getDispatcher());
         new VillageCraftCitySetJailCommand(event.getDispatcher());
         new VillageCraftCitySetSpawnCommand(event.getDispatcher());
@@ -86,6 +87,7 @@ public class ModEvents {
         new OasisJailCommand(event.getDispatcher());
         new OasisKickCommand(event.getDispatcher());
         new OasisPardonCommand(event.getDispatcher());
+        new OasisRemoveJailCommand(event.getDispatcher());
         new OasisRemoveSpawnCommand(event.getDispatcher());
         new OasisSetJailCommand(event.getDispatcher());
         new OasisSetSpawnCommand(event.getDispatcher());
@@ -96,6 +98,7 @@ public class ModEvents {
         new SwedishFurnitureStoreJailCommand(event.getDispatcher());
         new SwedishFurnitureStoreKickCommand(event.getDispatcher());
         new SwedishFurnitureStorePardonCommand(event.getDispatcher());
+        new SwedishFurnitureStoreRemoveJailCommand(event.getDispatcher());
         new SwedishFurnitureStoreRemoveSpawnCommand(event.getDispatcher());
         new SwedishFurnitureStoreSetJailCommand(event.getDispatcher());
         new SwedishFurnitureStoreSetSpawnCommand(event.getDispatcher());
@@ -106,6 +109,7 @@ public class ModEvents {
         new LondonJailCommand(event.getDispatcher());
         new LondonKickCommand(event.getDispatcher());
         new LondonPardonCommand(event.getDispatcher());
+        new LondonRemoveJailCommand(event.getDispatcher());
         new LondonRemoveSpawnCommand(event.getDispatcher());
         new LondonSetJailCommand(event.getDispatcher());
         new LondonSetSpawnCommand(event.getDispatcher());
@@ -116,6 +120,7 @@ public class ModEvents {
         new BlackWaterJailCommand(event.getDispatcher());
         new BlackWaterKickCommand(event.getDispatcher());
         new BlackWaterPardonCommand(event.getDispatcher());
+        new BlackWaterRemoveJailCommand(event.getDispatcher());
         new BlackWaterRemoveSpawnCommand(event.getDispatcher());
         new BlackWaterSetJailCommand(event.getDispatcher());
         new BlackWaterSetSpawnCommand(event.getDispatcher());
@@ -180,7 +185,9 @@ public class ModEvents {
 
     @SubscribeEvent
     public static void onPlayerTick(PlayerTickEvent.Post event) {
-        if (event.getEntity().level().isClientSide()) return;
+        if (event.getEntity().level().isClientSide()) {
+            return;
+        }
 
         ServerPlayer player = (ServerPlayer) event.getEntity();
         UUID uuid = player.getUUID();
@@ -301,8 +308,8 @@ public class ModEvents {
                     int[] spawn = null;
                     MutableComponent targetPlayerMessage;
                     BlockPos blockpos = serverlevel.getSharedSpawnPos();
-                    player.setGameMode(GameType.SURVIVAL);
                     player.setRespawnPosition(ServerLevel.OVERWORLD, blockpos, player.getYRot(), true, false);
+                    player.removeAllEffects();
 
                     if (jailCommandData.townComponent().contains(Component.literal("VillageCraft City's"))) {
                         spawn = savedData.getVillagecraftCitySpawn();
@@ -324,13 +331,16 @@ public class ModEvents {
                         LuckpermsMethods.removeGroup(player, ServerConfig.JAILED_GROUP_NAME.get());
                     }
 
+                    if (ModList.get().isLoaded("dcintegration")) {
+                        DiscordIntegrationMethods.removeDiscordRole(player, ServerConfig.DISCORD_JAIL_ROLE_ID.get());
+                    }
+
                     if (spawn[3] != 0 && spawn[4] != 0) {
                         player.teleportTo(serverlevel, spawn[0] + 0.5, spawn[1], spawn[2] + 0.5, spawn[3], spawn[4]);
                         targetPlayerMessage = Component.literal("You have been pardoned from jail and teleported to ");
                         targetPlayerMessage.append(jailCommandData.townComponent());
                         targetPlayerMessage.append(Component.literal(" spawn!"));
                         player.sendSystemMessage(targetPlayerMessage, false);
-
                         ServerPlayer jailerPlayer = event.getEntity().getServer().getPlayerList().getPlayerByName(jailCommandData.jailerUsername());
                         MutableComponent jailerPlayerMessage = Component.literal(player.getDisplayName().getString() + " has reached the maximum jail time. They have been automatically pardoned and teleported to ");
                         jailerPlayerMessage.append(jailCommandData.townComponent());
@@ -348,7 +358,6 @@ public class ModEvents {
                         targetPlayerMessage.append(Component.literal("World Spawn").withStyle(ChatFormatting.GREEN));
                         targetPlayerMessage.append(Component.literal("!"));
                         player.sendSystemMessage(targetPlayerMessage, false);
-
                         ServerPlayer jailerPlayer = event.getEntity().getServer().getPlayerList().getPlayerByName(jailCommandData.jailerUsername());
                         MutableComponent jailerPlayerMessage = Component.literal(player.getDisplayName().getString() + " has reached the maximum jail time. They have been automatically pardoned and teleported to ");
                         jailerPlayerMessage.append(Component.literal("World spawn").withStyle(ChatFormatting.GREEN));
@@ -549,6 +558,7 @@ public class ModEvents {
 
             while (iterator.hasNext()) {
                 CoreRespawnData task = iterator.next();
+
                 if (currentTime >= task.respawnTime()) {
                     if (!(task.state().getBlock() == ModBlocks.DIAMOND_CORE.get() || task.state().getBlock() == ModBlocks.JADE_CORE.get() || task.state().getBlock() == ModBlocks.AMBER_CORE.get() || task.state().getBlock() == ModBlocks.SILICON_CORE.get() || task.state().getBlock() == ModBlocks.RUBY_CORE.get())) {
                         return;
@@ -607,10 +617,10 @@ public class ModEvents {
         );
 
         if (ModList.get().isLoaded("aquaculture")) {
-            AquaMethods.registerAquaFishingRodCapability(event, ModCompatItems.JADE_FISHING_ROD.get());
-            AquaMethods.registerAquaFishingRodCapability(event, ModCompatItems.AMBER_FISHING_ROD.get());
-            AquaMethods.registerAquaFishingRodCapability(event, ModCompatItems.SILICON_FISHING_ROD.get());
-            AquaMethods.registerAquaFishingRodCapability(event, ModCompatItems.RUBY_FISHING_ROD.get());
+            AquaMethods.registerAquaFishingRodCapability(event, ModAquaRegistry.JADE_FISHING_ROD.get());
+            AquaMethods.registerAquaFishingRodCapability(event, ModAquaRegistry.AMBER_FISHING_ROD.get());
+            AquaMethods.registerAquaFishingRodCapability(event, ModAquaRegistry.SILICON_FISHING_ROD.get());
+            AquaMethods.registerAquaFishingRodCapability(event, ModAquaRegistry.RUBY_FISHING_ROD.get());
         }
     }
 

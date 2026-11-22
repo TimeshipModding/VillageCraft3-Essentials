@@ -7,7 +7,6 @@ import net.minecraft.world.item.Item;
 
 public class CommonItemTags {
     public static TagKey<Item> TOOLS_FISHING_ROD = createTag("tools/fishing_rod");
-    public static TagKey<Item> TOOLS_BRUSH = createTag("tools/brush");
     public static TagKey<Item> STORAGE_BLOCKS = createTag("storage_blocks");
     public static TagKey<Item> JADE_STORAGE_BLOCKS = createTag("storage_blocks/jade");
     public static TagKey<Item> AMBER_STORAGE_BLOCKS = createTag("storage_blocks/amber");
@@ -33,7 +32,7 @@ public class CommonItemTags {
     public static TagKey<Item> AMBER_GEMS = createTag("gems/amber");
     public static TagKey<Item> SILICON_GEMS = createTag("gems/silicon");
     public static TagKey<Item> RUBY_GEMS = createTag("gems/ruby");
-    public static TagKey<Item> KNIFE = createTag("tools/knife");
+    public static TagKey<Item> TOOLS_KNIFE = createTag("tools/knife");
 
     private static TagKey<Item> createTag(String name) {
         return ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", name));

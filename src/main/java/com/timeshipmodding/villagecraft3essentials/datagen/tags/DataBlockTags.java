@@ -3,6 +3,7 @@ package com.timeshipmodding.villagecraft3essentials.datagen.tags;
 import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
@@ -12,9 +13,9 @@ import org.jetbrains.annotations.Nullable;
 import java.util.concurrent.CompletableFuture;
 
 import static com.timeshipmodding.villagecraft3essentials.content.block.registries.ModBlocks.*;
-import static com.timeshipmodding.villagecraft3essentials.content.block.registries.ModBlocks.DEEPSLATE_RUBY_ORE;
-import static com.timeshipmodding.villagecraft3essentials.infrastructure.tags.registries.ModBlockTags.*;
+
 import static com.timeshipmodding.villagecraft3essentials.infrastructure.tags.registries.CommonBlockTags.*;
+import static com.timeshipmodding.villagecraft3essentials.infrastructure.tags.registries.ModBlockTags.*;
 
 public class DataBlockTags extends BlockTagsProvider {
     public DataBlockTags(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, @Nullable ExistingFileHelper existingFileHelper) {
@@ -52,7 +53,11 @@ public class DataBlockTags extends BlockTagsProvider {
                 .add(PURPLE_ATM.get())
                 .add(RED_ATM.get())
                 .add(WHITE_ATM.get())
-                .add(YELLOW_ATM.get());
+                .add(YELLOW_ATM.get())
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "jade_backtank"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "amber_backtank"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "silicon_backtank"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "ruby_backtank"));
         tag(BlockTags.NEEDS_IRON_TOOL)
                 .add(JADE_BLOCK.get())
                 .add(JADE_ORE.get())

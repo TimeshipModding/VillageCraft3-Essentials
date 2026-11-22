@@ -1,9 +1,12 @@
 package com.timeshipmodding.villagecraft3essentials.content.block.entity;
 
 import com.teammetallurgy.aquaculture.init.AquaItems;
+import com.timeshipmodding.villagecraft3essentials.compat.aquaculture.registries.ModAquaRegistry;
+import com.timeshipmodding.villagecraft3essentials.compat.creategoggles.registries.ModCGRegistry;
+import com.timeshipmodding.villagecraft3essentials.compat.farmersdelight.registries.ModFDRegistry;
+import com.timeshipmodding.villagecraft3essentials.compat.vanillabackport.registries.ModVanillaBackportRegistry;
 import com.timeshipmodding.villagecraft3essentials.content.block.entity.registries.ModBlockEntities;
 import com.timeshipmodding.villagecraft3essentials.content.block.registries.ModBlocks;
-import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModCompatItems;
 import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems;
 import com.timeshipmodding.villagecraft3essentials.content.menu.AtmMenu;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.data.saveddata.AtmRandomConversionRatesSavedData;
@@ -488,85 +491,69 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
                 inputStack = new ItemStack(ModItems.RUBY_HORSE_ARMOR.get());
                 outputStack = new ItemStack(Items.DIAMOND_HORSE_ARMOR);
 
-            } else if (ModList.get().isLoaded("farmersdelight") && inputItem == ModCompatItems.JADE_KNIFE.get()) {
-                inputStack = new ItemStack(ModCompatItems.JADE_KNIFE.get());
+            } else if (ModList.get().isLoaded("farmersdelight") && inputItem == ModFDRegistry.JADE_KNIFE.get()) {
+                inputStack = new ItemStack(ModFDRegistry.JADE_KNIFE.get());
                 outputStack = new ItemStack(vectorwing.farmersdelight.common.registry.ModItems.DIAMOND_KNIFE.get());
 
-            } else if (ModList.get().isLoaded("farmersdelight") && inputItem == ModCompatItems.AMBER_KNIFE.get()) {
-                inputStack = new ItemStack(ModCompatItems.AMBER_KNIFE.get());
+            } else if (ModList.get().isLoaded("farmersdelight") && inputItem == ModFDRegistry.AMBER_KNIFE.get()) {
+                inputStack = new ItemStack(ModFDRegistry.AMBER_KNIFE.get());
                 outputStack = new ItemStack(vectorwing.farmersdelight.common.registry.ModItems.DIAMOND_KNIFE.get());
 
-            } else if (ModList.get().isLoaded("farmersdelight") && inputItem == ModCompatItems.SILICON_KNIFE.get()) {
-                inputStack = new ItemStack(ModCompatItems.SILICON_KNIFE.get());
+            } else if (ModList.get().isLoaded("farmersdelight") && inputItem == ModFDRegistry.SILICON_KNIFE.get()) {
+                inputStack = new ItemStack(ModFDRegistry.SILICON_KNIFE.get());
                 outputStack = new ItemStack(vectorwing.farmersdelight.common.registry.ModItems.DIAMOND_KNIFE.get());
 
-            } else if (ModList.get().isLoaded("farmersdelight") && inputItem == ModCompatItems.RUBY_KNIFE.get()) {
-                inputStack = new ItemStack(ModCompatItems.RUBY_KNIFE.get());
+            } else if (ModList.get().isLoaded("farmersdelight") && inputItem == ModFDRegistry.RUBY_KNIFE.get()) {
+                inputStack = new ItemStack(ModFDRegistry.RUBY_KNIFE.get());
                 outputStack = new ItemStack(vectorwing.farmersdelight.common.registry.ModItems.DIAMOND_KNIFE.get());
 
-            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.JADE_FILLET_KNIFE.get()) {
-                inputStack = new ItemStack(ModCompatItems.JADE_FILLET_KNIFE.get());
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModAquaRegistry.JADE_FILLET_KNIFE.get()) {
+                inputStack = new ItemStack(ModAquaRegistry.JADE_FILLET_KNIFE.get());
                 outputStack = new ItemStack(AquaItems.DIAMOND_FILLET_KNIFE.get());
 
-            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.JADE_FISHING_ROD.get()) {
-                inputStack = new ItemStack(ModCompatItems.JADE_FISHING_ROD.get());
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModAquaRegistry.JADE_FISHING_ROD.get()) {
+                inputStack = new ItemStack(ModAquaRegistry.JADE_FISHING_ROD.get());
                 outputStack = new ItemStack(AquaItems.DIAMOND_FISHING_ROD.get());
 
-            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.JADE_HOOK.get()) {
-                inputStack = new ItemStack(ModCompatItems.JADE_HOOK.get());
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModAquaRegistry.JADE_HOOK.get()) {
+                inputStack = new ItemStack(ModAquaRegistry.JADE_HOOK.get());
                 outputStack = new ItemStack(AquaItems.DIAMOND_HOOK.get());
 
-            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.AMBER_FILLET_KNIFE.get()) {
-                inputStack = new ItemStack(ModCompatItems.AMBER_FILLET_KNIFE.get());
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModAquaRegistry.AMBER_FILLET_KNIFE.get()) {
+                inputStack = new ItemStack(ModAquaRegistry.AMBER_FILLET_KNIFE.get());
                 outputStack = new ItemStack(AquaItems.DIAMOND_FILLET_KNIFE.get());
 
-            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.AMBER_FISHING_ROD.get()) {
-                inputStack = new ItemStack(ModCompatItems.AMBER_FISHING_ROD.get());
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModAquaRegistry.AMBER_FISHING_ROD.get()) {
+                inputStack = new ItemStack(ModAquaRegistry.AMBER_FISHING_ROD.get());
                 outputStack = new ItemStack(AquaItems.DIAMOND_FISHING_ROD.get());
 
-            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.AMBER_HOOK.get()) {
-                inputStack = new ItemStack(ModCompatItems.AMBER_HOOK.get());
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModAquaRegistry.AMBER_HOOK.get()) {
+                inputStack = new ItemStack(ModAquaRegistry.AMBER_HOOK.get());
                 outputStack = new ItemStack(AquaItems.DIAMOND_HOOK.get());
 
-            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.SILICON_FILLET_KNIFE.get()) {
-                inputStack = new ItemStack(ModCompatItems.SILICON_FILLET_KNIFE.get());
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModAquaRegistry.SILICON_FILLET_KNIFE.get()) {
+                inputStack = new ItemStack(ModAquaRegistry.SILICON_FILLET_KNIFE.get());
                 outputStack = new ItemStack(AquaItems.DIAMOND_FILLET_KNIFE.get());
 
-            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.SILICON_FISHING_ROD.get()) {
-                inputStack = new ItemStack(ModCompatItems.SILICON_FISHING_ROD.get());
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModAquaRegistry.SILICON_FISHING_ROD.get()) {
+                inputStack = new ItemStack(ModAquaRegistry.SILICON_FISHING_ROD.get());
                 outputStack = new ItemStack(AquaItems.DIAMOND_FISHING_ROD.get());
 
-            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.SILICON_HOOK.get()) {
-                inputStack = new ItemStack(ModCompatItems.SILICON_HOOK.get());
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModAquaRegistry.SILICON_HOOK.get()) {
+                inputStack = new ItemStack(ModAquaRegistry.SILICON_HOOK.get());
                 outputStack = new ItemStack(AquaItems.DIAMOND_HOOK.get());
 
-            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.RUBY_FILLET_KNIFE.get()) {
-                inputStack = new ItemStack(ModCompatItems.RUBY_FILLET_KNIFE.get());
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModAquaRegistry.RUBY_FILLET_KNIFE.get()) {
+                inputStack = new ItemStack(ModAquaRegistry.RUBY_FILLET_KNIFE.get());
                 outputStack = new ItemStack(AquaItems.DIAMOND_FILLET_KNIFE.get());
 
-            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.RUBY_FISHING_ROD.get()) {
-                inputStack = new ItemStack(ModCompatItems.RUBY_FISHING_ROD.get());
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModAquaRegistry.RUBY_FISHING_ROD.get()) {
+                inputStack = new ItemStack(ModAquaRegistry.RUBY_FISHING_ROD.get());
                 outputStack = new ItemStack(AquaItems.DIAMOND_FISHING_ROD.get());
 
-            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.RUBY_HOOK.get()) {
-                inputStack = new ItemStack(ModCompatItems.RUBY_HOOK.get());
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModAquaRegistry.RUBY_HOOK.get()) {
+                inputStack = new ItemStack(ModAquaRegistry.RUBY_HOOK.get());
                 outputStack = new ItemStack(AquaItems.DIAMOND_HOOK.get());
-
-            } else if (ModList.get().isLoaded("betterarcheology") && inputItem == ModCompatItems.JADE_BRUSH.get()) {
-                inputStack = new ItemStack(ModCompatItems.JADE_BRUSH.get());
-                outputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("betterarcheology", "diamond_brush")));
-
-            } else if (ModList.get().isLoaded("betterarcheology") && inputItem == ModCompatItems.AMBER_BRUSH.get()) {
-                inputStack = new ItemStack(ModCompatItems.AMBER_BRUSH.get());
-                outputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("betterarcheology", "diamond_brush")));
-
-            } else if (ModList.get().isLoaded("betterarcheology") && inputItem == ModCompatItems.SILICON_BRUSH.get()) {
-                inputStack = new ItemStack(ModCompatItems.SILICON_BRUSH.get());
-                outputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("betterarcheology", "diamond_brush")));
-
-            } else if (ModList.get().isLoaded("betterarcheology") && inputItem == ModCompatItems.RUBY_BRUSH.get()) {
-                inputStack = new ItemStack(ModCompatItems.RUBY_BRUSH.get());
-                outputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("betterarcheology", "diamond_brush")));
 
             } else if (ModList.get().isLoaded("archers") && inputItem == BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "jade_spear"))) {
                 inputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "jade_spear")));
@@ -584,37 +571,69 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
                 inputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("villagecraft3essentials", "ruby_spear")));
                 outputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("archers", "diamond_spear")));
 
-            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.JADE_BACKPORT_SPEAR.get()) {
-                inputStack = new ItemStack(ModCompatItems.JADE_BACKPORT_SPEAR.get());
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModVanillaBackportRegistry.JADE_BACKPORT_SPEAR.get()) {
+                inputStack = new ItemStack(ModVanillaBackportRegistry.JADE_BACKPORT_SPEAR.get());
                 outputStack = new ItemStack(com.blackgear.vanillabackport.common.registries.items.ModItems.DIAMOND_SPEAR.get());
 
-            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.AMBER_BACKPORT_SPEAR.get()) {
-                inputStack = new ItemStack(ModCompatItems.AMBER_BACKPORT_SPEAR.get());
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModVanillaBackportRegistry.AMBER_BACKPORT_SPEAR.get()) {
+                inputStack = new ItemStack(ModVanillaBackportRegistry.AMBER_BACKPORT_SPEAR.get());
                 outputStack = new ItemStack(com.blackgear.vanillabackport.common.registries.items.ModItems.DIAMOND_SPEAR.get());
 
-            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.SILICON_BACKPORT_SPEAR.get()) {
-                inputStack = new ItemStack(ModCompatItems.SILICON_BACKPORT_SPEAR.get());
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModVanillaBackportRegistry.SILICON_BACKPORT_SPEAR.get()) {
+                inputStack = new ItemStack(ModVanillaBackportRegistry.SILICON_BACKPORT_SPEAR.get());
                 outputStack = new ItemStack(com.blackgear.vanillabackport.common.registries.items.ModItems.DIAMOND_SPEAR.get());
 
-            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.RUBY_BACKPORT_SPEAR.get()) {
-                inputStack = new ItemStack(ModCompatItems.RUBY_BACKPORT_SPEAR.get());
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModVanillaBackportRegistry.RUBY_BACKPORT_SPEAR.get()) {
+                inputStack = new ItemStack(ModVanillaBackportRegistry.RUBY_BACKPORT_SPEAR.get());
                 outputStack = new ItemStack(com.blackgear.vanillabackport.common.registries.items.ModItems.DIAMOND_SPEAR.get());
 
-            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.JADE_NAUTILUS_ARMOR.get()) {
-                inputStack = new ItemStack(ModCompatItems.JADE_NAUTILUS_ARMOR.get());
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModVanillaBackportRegistry.JADE_NAUTILUS_ARMOR.get()) {
+                inputStack = new ItemStack(ModVanillaBackportRegistry.JADE_NAUTILUS_ARMOR.get());
                 outputStack = new ItemStack(com.blackgear.vanillabackport.common.registries.items.ModItems.DIAMOND_NAUTILUS_ARMOR.get());
 
-            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.AMBER_NAUTILUS_ARMOR.get()) {
-                inputStack = new ItemStack(ModCompatItems.AMBER_NAUTILUS_ARMOR.get());
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModVanillaBackportRegistry.AMBER_NAUTILUS_ARMOR.get()) {
+                inputStack = new ItemStack(ModVanillaBackportRegistry.AMBER_NAUTILUS_ARMOR.get());
                 outputStack = new ItemStack(com.blackgear.vanillabackport.common.registries.items.ModItems.DIAMOND_NAUTILUS_ARMOR.get());
 
-            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.SILICON_NAUTILUS_ARMOR.get()) {
-                inputStack = new ItemStack(ModCompatItems.SILICON_NAUTILUS_ARMOR.get());
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModVanillaBackportRegistry.SILICON_NAUTILUS_ARMOR.get()) {
+                inputStack = new ItemStack(ModVanillaBackportRegistry.SILICON_NAUTILUS_ARMOR.get());
                 outputStack = new ItemStack(com.blackgear.vanillabackport.common.registries.items.ModItems.DIAMOND_NAUTILUS_ARMOR.get());
 
-            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.RUBY_NAUTILUS_ARMOR.get()) {
-                inputStack = new ItemStack(ModCompatItems.RUBY_NAUTILUS_ARMOR.get());
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModVanillaBackportRegistry.RUBY_NAUTILUS_ARMOR.get()) {
+                inputStack = new ItemStack(ModVanillaBackportRegistry.RUBY_NAUTILUS_ARMOR.get());
                 outputStack = new ItemStack(com.blackgear.vanillabackport.common.registries.items.ModItems.DIAMOND_NAUTILUS_ARMOR.get());
+                
+            } else if (ModList.get().isLoaded("creategoggles") && inputItem == ModCGRegistry.GOGGLE_JADE_HELMET.get()) {
+                inputStack = new ItemStack(ModCGRegistry.GOGGLE_JADE_HELMET.get());
+                outputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("creategoggles", "goggle_diamond_helmet")));
+
+            } else if (ModList.get().isLoaded("creategoggles") && inputItem == ModCGRegistry.GOGGLE_AMBER_HELMET.get()) {
+                inputStack = new ItemStack(ModCGRegistry.GOGGLE_AMBER_HELMET.get());
+                outputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("creategoggles", "goggle_diamond_helmet")));
+
+            } else if (ModList.get().isLoaded("creategoggles") && inputItem == ModCGRegistry.GOGGLE_SILICON_HELMET.get()) {
+                inputStack = new ItemStack(ModCGRegistry.GOGGLE_SILICON_HELMET.get());
+                outputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("creategoggles", "goggle_diamond_helmet")));
+
+            } else if (ModList.get().isLoaded("creategoggles") && inputItem == ModCGRegistry.GOGGLE_RUBY_HELMET.get()) {
+                inputStack = new ItemStack(ModCGRegistry.GOGGLE_RUBY_HELMET.get());
+                outputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("creategoggles", "goggle_diamond_helmet")));
+
+            } else if (ModList.get().isLoaded("creategoggles") && inputItem == ModCGRegistry.JADE_BACKTANK.get()) {
+                inputStack = new ItemStack(ModCGRegistry.JADE_BACKTANK.get());
+                outputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("creategoggles", "diamond_backtank")));
+
+            } else if (ModList.get().isLoaded("creategoggles") && inputItem == ModCGRegistry.AMBER_BACKTANK.get()) {
+                inputStack = new ItemStack(ModCGRegistry.AMBER_BACKTANK.get());
+                outputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("creategoggles", "diamond_backtank")));
+
+            } else if (ModList.get().isLoaded("creategoggles") && inputItem == ModCGRegistry.SILICON_BACKTANK.get()) {
+                inputStack = new ItemStack(ModCGRegistry.SILICON_BACKTANK.get());
+                outputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("creategoggles", "diamond_backtank")));
+
+            } else if (ModList.get().isLoaded("creategoggles") && inputItem == ModCGRegistry.RUBY_BACKTANK.get()) {
+                inputStack = new ItemStack(ModCGRegistry.RUBY_BACKTANK.get());
+                outputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("creategoggles", "diamond_backtank")));
             }
 
         } else if (toolConvertButtonPressed == 2) {
@@ -780,83 +799,67 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
 
             } else if (ModList.get().isLoaded("farmersdelight") && inputItem == vectorwing.farmersdelight.common.registry.ModItems.DIAMOND_KNIFE.get()) {
                 inputStack = new ItemStack(vectorwing.farmersdelight.common.registry.ModItems.DIAMOND_KNIFE.get());
-                outputStack = new ItemStack(ModCompatItems.JADE_KNIFE.get());
+                outputStack = new ItemStack(ModFDRegistry.JADE_KNIFE.get());
 
-            } else if (ModList.get().isLoaded("farmersdelight") && inputItem == ModCompatItems.AMBER_KNIFE.get()) {
-                inputStack = new ItemStack(ModCompatItems.AMBER_KNIFE.get());
-                outputStack = new ItemStack(ModCompatItems.JADE_KNIFE.get());
+            } else if (ModList.get().isLoaded("farmersdelight") && inputItem == ModFDRegistry.AMBER_KNIFE.get()) {
+                inputStack = new ItemStack(ModFDRegistry.AMBER_KNIFE.get());
+                outputStack = new ItemStack(ModFDRegistry.JADE_KNIFE.get());
 
-            } else if (ModList.get().isLoaded("farmersdelight") && inputItem == ModCompatItems.SILICON_KNIFE.get()) {
-                inputStack = new ItemStack(ModCompatItems.SILICON_KNIFE.get());
-                outputStack = new ItemStack(ModCompatItems.JADE_KNIFE.get());
+            } else if (ModList.get().isLoaded("farmersdelight") && inputItem == ModFDRegistry.SILICON_KNIFE.get()) {
+                inputStack = new ItemStack(ModFDRegistry.SILICON_KNIFE.get());
+                outputStack = new ItemStack(ModFDRegistry.JADE_KNIFE.get());
 
-            } else if (ModList.get().isLoaded("farmersdelight") && inputItem == ModCompatItems.RUBY_KNIFE.get()) {
-                inputStack = new ItemStack(ModCompatItems.RUBY_KNIFE.get());
-                outputStack = new ItemStack(ModCompatItems.JADE_KNIFE.get());
+            } else if (ModList.get().isLoaded("farmersdelight") && inputItem == ModFDRegistry.RUBY_KNIFE.get()) {
+                inputStack = new ItemStack(ModFDRegistry.RUBY_KNIFE.get());
+                outputStack = new ItemStack(ModFDRegistry.JADE_KNIFE.get());
 
             } else if (ModList.get().isLoaded("aquaculture") && inputItem == AquaItems.DIAMOND_FILLET_KNIFE.get()) {
                 inputStack = new ItemStack(AquaItems.DIAMOND_FILLET_KNIFE.get());
-                outputStack = new ItemStack(ModCompatItems.JADE_FILLET_KNIFE.get());
+                outputStack = new ItemStack(ModAquaRegistry.JADE_FILLET_KNIFE.get());
 
             } else if (ModList.get().isLoaded("aquaculture") && inputItem == AquaItems.DIAMOND_FISHING_ROD.get()) {
                 inputStack = new ItemStack(AquaItems.DIAMOND_FISHING_ROD.get());
-                outputStack = new ItemStack(ModCompatItems.JADE_FISHING_ROD.get());
+                outputStack = new ItemStack(ModAquaRegistry.JADE_FISHING_ROD.get());
 
             } else if (ModList.get().isLoaded("aquaculture") && inputItem == AquaItems.DIAMOND_HOOK.get()) {
                 inputStack = new ItemStack(AquaItems.DIAMOND_HOOK.get());
-                outputStack = new ItemStack(ModCompatItems.JADE_HOOK.get());
+                outputStack = new ItemStack(ModAquaRegistry.JADE_HOOK.get());
 
-            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.AMBER_FILLET_KNIFE.get()) {
-                inputStack = new ItemStack(ModCompatItems.AMBER_FILLET_KNIFE.get());
-                outputStack = new ItemStack(ModCompatItems.JADE_FILLET_KNIFE.get());
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModAquaRegistry.AMBER_FILLET_KNIFE.get()) {
+                inputStack = new ItemStack(ModAquaRegistry.AMBER_FILLET_KNIFE.get());
+                outputStack = new ItemStack(ModAquaRegistry.JADE_FILLET_KNIFE.get());
 
-            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.AMBER_FISHING_ROD.get()) {
-                inputStack = new ItemStack(ModCompatItems.AMBER_FISHING_ROD.get());
-                outputStack = new ItemStack(ModCompatItems.JADE_FISHING_ROD.get());
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModAquaRegistry.AMBER_FISHING_ROD.get()) {
+                inputStack = new ItemStack(ModAquaRegistry.AMBER_FISHING_ROD.get());
+                outputStack = new ItemStack(ModAquaRegistry.JADE_FISHING_ROD.get());
 
-            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.AMBER_HOOK.get()) {
-                inputStack = new ItemStack(ModCompatItems.AMBER_HOOK.get());
-                outputStack = new ItemStack(ModCompatItems.JADE_HOOK.get());
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModAquaRegistry.AMBER_HOOK.get()) {
+                inputStack = new ItemStack(ModAquaRegistry.AMBER_HOOK.get());
+                outputStack = new ItemStack(ModAquaRegistry.JADE_HOOK.get());
 
-            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.SILICON_FILLET_KNIFE.get()) {
-                inputStack = new ItemStack(ModCompatItems.SILICON_FILLET_KNIFE.get());
-                outputStack = new ItemStack(ModCompatItems.JADE_FILLET_KNIFE.get());
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModAquaRegistry.SILICON_FILLET_KNIFE.get()) {
+                inputStack = new ItemStack(ModAquaRegistry.SILICON_FILLET_KNIFE.get());
+                outputStack = new ItemStack(ModAquaRegistry.JADE_FILLET_KNIFE.get());
 
-            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.SILICON_FISHING_ROD.get()) {
-                inputStack = new ItemStack(ModCompatItems.SILICON_FISHING_ROD.get());
-                outputStack = new ItemStack(ModCompatItems.JADE_FISHING_ROD.get());
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModAquaRegistry.SILICON_FISHING_ROD.get()) {
+                inputStack = new ItemStack(ModAquaRegistry.SILICON_FISHING_ROD.get());
+                outputStack = new ItemStack(ModAquaRegistry.JADE_FISHING_ROD.get());
 
-            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.SILICON_HOOK.get()) {
-                inputStack = new ItemStack(ModCompatItems.SILICON_HOOK.get());
-                outputStack = new ItemStack(ModCompatItems.JADE_HOOK.get());
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModAquaRegistry.SILICON_HOOK.get()) {
+                inputStack = new ItemStack(ModAquaRegistry.SILICON_HOOK.get());
+                outputStack = new ItemStack(ModAquaRegistry.JADE_HOOK.get());
 
-            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.RUBY_FILLET_KNIFE.get()) {
-                inputStack = new ItemStack(ModCompatItems.RUBY_FILLET_KNIFE.get());
-                outputStack = new ItemStack(ModCompatItems.JADE_FILLET_KNIFE.get());
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModAquaRegistry.RUBY_FILLET_KNIFE.get()) {
+                inputStack = new ItemStack(ModAquaRegistry.RUBY_FILLET_KNIFE.get());
+                outputStack = new ItemStack(ModAquaRegistry.JADE_FILLET_KNIFE.get());
 
-            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.RUBY_FISHING_ROD.get()) {
-                inputStack = new ItemStack(ModCompatItems.RUBY_FISHING_ROD.get());
-                outputStack = new ItemStack(ModCompatItems.JADE_FISHING_ROD.get());
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModAquaRegistry.RUBY_FISHING_ROD.get()) {
+                inputStack = new ItemStack(ModAquaRegistry.RUBY_FISHING_ROD.get());
+                outputStack = new ItemStack(ModAquaRegistry.JADE_FISHING_ROD.get());
 
-            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.RUBY_HOOK.get()) {
-                inputStack = new ItemStack(ModCompatItems.RUBY_HOOK.get());
-                outputStack = new ItemStack(ModCompatItems.JADE_HOOK.get());
-
-            } else if (ModList.get().isLoaded("betterarcheology") && inputItem == BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("betterarcheology", "diamond_brush"))) {
-                inputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("betterarcheology", "diamond_brush")));
-                outputStack = new ItemStack(ModCompatItems.JADE_BRUSH.get());
-
-            } else if (ModList.get().isLoaded("betterarcheology") && inputItem == ModCompatItems.AMBER_BRUSH.get()) {
-                inputStack = new ItemStack(ModCompatItems.AMBER_BRUSH.get());
-                outputStack = new ItemStack(ModCompatItems.JADE_BRUSH.get());
-
-            } else if (ModList.get().isLoaded("betterarcheology") && inputItem == ModCompatItems.SILICON_BRUSH.get()) {
-                inputStack = new ItemStack(ModCompatItems.SILICON_BRUSH.get());
-                outputStack = new ItemStack(ModCompatItems.JADE_BRUSH.get());
-
-            } else if (ModList.get().isLoaded("betterarcheology") && inputItem == ModCompatItems.RUBY_BRUSH.get()) {
-                inputStack = new ItemStack(ModCompatItems.RUBY_BRUSH.get());
-                outputStack = new ItemStack(ModCompatItems.JADE_BRUSH.get());
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModAquaRegistry.RUBY_HOOK.get()) {
+                inputStack = new ItemStack(ModAquaRegistry.RUBY_HOOK.get());
+                outputStack = new ItemStack(ModAquaRegistry.JADE_HOOK.get());
 
             } else if (ModList.get().isLoaded("archers") && inputItem == BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("archers", "diamond_spear"))) {
                 inputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("archers", "diamond_spear")));
@@ -876,35 +879,67 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
 
             } else if (ModList.get().isLoaded("vanillabackport") && inputItem == com.blackgear.vanillabackport.common.registries.items.ModItems.DIAMOND_SPEAR.get()) {
                 inputStack = new ItemStack(com.blackgear.vanillabackport.common.registries.items.ModItems.DIAMOND_SPEAR.get());
-                outputStack = new ItemStack(ModCompatItems.JADE_BACKPORT_SPEAR.get());
+                outputStack = new ItemStack(ModVanillaBackportRegistry.JADE_BACKPORT_SPEAR.get());
 
-            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.AMBER_BACKPORT_SPEAR.get()) {
-                inputStack = new ItemStack(ModCompatItems.AMBER_BACKPORT_SPEAR.get());
-                outputStack = new ItemStack(ModCompatItems.JADE_BACKPORT_SPEAR.get());
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModVanillaBackportRegistry.AMBER_BACKPORT_SPEAR.get()) {
+                inputStack = new ItemStack(ModVanillaBackportRegistry.AMBER_BACKPORT_SPEAR.get());
+                outputStack = new ItemStack(ModVanillaBackportRegistry.JADE_BACKPORT_SPEAR.get());
 
-            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.SILICON_BACKPORT_SPEAR.get()) {
-                inputStack = new ItemStack(ModCompatItems.SILICON_BACKPORT_SPEAR.get());
-                outputStack = new ItemStack(ModCompatItems.JADE_BACKPORT_SPEAR.get());
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModVanillaBackportRegistry.SILICON_BACKPORT_SPEAR.get()) {
+                inputStack = new ItemStack(ModVanillaBackportRegistry.SILICON_BACKPORT_SPEAR.get());
+                outputStack = new ItemStack(ModVanillaBackportRegistry.JADE_BACKPORT_SPEAR.get());
 
-            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.RUBY_BACKPORT_SPEAR.get()) {
-                inputStack = new ItemStack(ModCompatItems.RUBY_BACKPORT_SPEAR.get());
-                outputStack = new ItemStack(ModCompatItems.JADE_BACKPORT_SPEAR.get());
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModVanillaBackportRegistry.RUBY_BACKPORT_SPEAR.get()) {
+                inputStack = new ItemStack(ModVanillaBackportRegistry.RUBY_BACKPORT_SPEAR.get());
+                outputStack = new ItemStack(ModVanillaBackportRegistry.JADE_BACKPORT_SPEAR.get());
 
             } else if (ModList.get().isLoaded("vanillabackport") && inputItem == com.blackgear.vanillabackport.common.registries.items.ModItems.DIAMOND_NAUTILUS_ARMOR.get()) {
                 inputStack = new ItemStack(com.blackgear.vanillabackport.common.registries.items.ModItems.DIAMOND_NAUTILUS_ARMOR.get());
-                outputStack = new ItemStack(ModCompatItems.JADE_NAUTILUS_ARMOR.get());
+                outputStack = new ItemStack(ModVanillaBackportRegistry.JADE_NAUTILUS_ARMOR.get());
 
-            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.AMBER_NAUTILUS_ARMOR.get()) {
-                inputStack = new ItemStack(ModCompatItems.AMBER_NAUTILUS_ARMOR.get());
-                outputStack = new ItemStack(ModCompatItems.JADE_NAUTILUS_ARMOR.get());
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModVanillaBackportRegistry.AMBER_NAUTILUS_ARMOR.get()) {
+                inputStack = new ItemStack(ModVanillaBackportRegistry.AMBER_NAUTILUS_ARMOR.get());
+                outputStack = new ItemStack(ModVanillaBackportRegistry.JADE_NAUTILUS_ARMOR.get());
 
-            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.SILICON_NAUTILUS_ARMOR.get()) {
-                inputStack = new ItemStack(ModCompatItems.SILICON_NAUTILUS_ARMOR.get());
-                outputStack = new ItemStack(ModCompatItems.JADE_NAUTILUS_ARMOR.get());
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModVanillaBackportRegistry.SILICON_NAUTILUS_ARMOR.get()) {
+                inputStack = new ItemStack(ModVanillaBackportRegistry.SILICON_NAUTILUS_ARMOR.get());
+                outputStack = new ItemStack(ModVanillaBackportRegistry.JADE_NAUTILUS_ARMOR.get());
 
-            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.RUBY_NAUTILUS_ARMOR.get()) {
-                inputStack = new ItemStack(ModCompatItems.RUBY_NAUTILUS_ARMOR.get());
-                outputStack = new ItemStack(ModCompatItems.JADE_NAUTILUS_ARMOR.get());
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModVanillaBackportRegistry.RUBY_NAUTILUS_ARMOR.get()) {
+                inputStack = new ItemStack(ModVanillaBackportRegistry.RUBY_NAUTILUS_ARMOR.get());
+                outputStack = new ItemStack(ModVanillaBackportRegistry.JADE_NAUTILUS_ARMOR.get());
+
+            } else if (ModList.get().isLoaded("creategoggles") && inputItem == BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("creategoggles", "goggle_diamond_helmet"))) {
+                inputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("creategoggles", "goggle_diamond_helmet")));
+                outputStack = new ItemStack(ModCGRegistry.GOGGLE_JADE_HELMET.get());
+
+            } else if (ModList.get().isLoaded("creategoggles") && inputItem == ModCGRegistry.GOGGLE_AMBER_HELMET.get()) {
+                inputStack = new ItemStack(ModCGRegistry.GOGGLE_AMBER_HELMET.get());
+                outputStack = new ItemStack(ModCGRegistry.GOGGLE_JADE_HELMET.get());
+
+            } else if (ModList.get().isLoaded("creategoggles") && inputItem == ModCGRegistry.GOGGLE_SILICON_HELMET.get()) {
+                inputStack = new ItemStack(ModCGRegistry.GOGGLE_SILICON_HELMET.get());
+                outputStack = new ItemStack(ModCGRegistry.GOGGLE_JADE_HELMET.get());
+
+            } else if (ModList.get().isLoaded("creategoggles") && inputItem == ModCGRegistry.GOGGLE_RUBY_HELMET.get()) {
+                inputStack = new ItemStack(ModCGRegistry.GOGGLE_RUBY_HELMET.get());
+                outputStack = new ItemStack(ModCGRegistry.GOGGLE_JADE_HELMET.get());
+
+            } else if (ModList.get().isLoaded("creategoggles") && inputItem == BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("creategoggles", "diamond_backtank"))) {
+                inputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("creategoggles", "diamond_backtank")));
+                outputStack = new ItemStack(ModCGRegistry.JADE_BACKTANK.get());
+
+            } else if (ModList.get().isLoaded("creategoggles") && inputItem == ModCGRegistry.AMBER_BACKTANK.get()) {
+                inputStack = new ItemStack(ModCGRegistry.AMBER_BACKTANK.get());
+                outputStack = new ItemStack(ModCGRegistry.JADE_BACKTANK.get());
+
+            } else if (ModList.get().isLoaded("creategoggles") && inputItem == ModCGRegistry.SILICON_BACKTANK.get()) {
+                inputStack = new ItemStack(ModCGRegistry.SILICON_BACKTANK.get());
+                outputStack = new ItemStack(ModCGRegistry.JADE_BACKTANK.get());
+
+            } else if (ModList.get().isLoaded("creategoggles") && inputItem == ModCGRegistry.RUBY_BACKTANK.get()) {
+                inputStack = new ItemStack(ModCGRegistry.RUBY_BACKTANK.get());
+                outputStack = new ItemStack(ModCGRegistry.JADE_BACKTANK.get());
             }
 
         } else if (toolConvertButtonPressed == 3) {
@@ -1070,83 +1105,67 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
 
             } else if (ModList.get().isLoaded("farmersdelight") && inputItem == vectorwing.farmersdelight.common.registry.ModItems.DIAMOND_KNIFE.get()) {
                 inputStack = new ItemStack(vectorwing.farmersdelight.common.registry.ModItems.DIAMOND_KNIFE.get());
-                outputStack = new ItemStack(ModCompatItems.AMBER_KNIFE.get());
+                outputStack = new ItemStack(ModFDRegistry.AMBER_KNIFE.get());
 
-            } else if (ModList.get().isLoaded("farmersdelight") && inputItem == ModCompatItems.JADE_KNIFE.get()) {
-                inputStack = new ItemStack(ModCompatItems.JADE_KNIFE.get());
-                outputStack = new ItemStack(ModCompatItems.AMBER_KNIFE.get());
+            } else if (ModList.get().isLoaded("farmersdelight") && inputItem == ModFDRegistry.JADE_KNIFE.get()) {
+                inputStack = new ItemStack(ModFDRegistry.JADE_KNIFE.get());
+                outputStack = new ItemStack(ModFDRegistry.AMBER_KNIFE.get());
 
-            } else if (ModList.get().isLoaded("farmersdelight") && inputItem == ModCompatItems.SILICON_KNIFE.get()) {
-                inputStack = new ItemStack(ModCompatItems.SILICON_KNIFE.get());
-                outputStack = new ItemStack(ModCompatItems.AMBER_KNIFE.get());
+            } else if (ModList.get().isLoaded("farmersdelight") && inputItem == ModFDRegistry.SILICON_KNIFE.get()) {
+                inputStack = new ItemStack(ModFDRegistry.SILICON_KNIFE.get());
+                outputStack = new ItemStack(ModFDRegistry.AMBER_KNIFE.get());
 
-            } else if (ModList.get().isLoaded("farmersdelight") && inputItem == ModCompatItems.RUBY_KNIFE.get()) {
-                inputStack = new ItemStack(ModCompatItems.RUBY_KNIFE.get());
-                outputStack = new ItemStack(ModCompatItems.AMBER_KNIFE.get());
+            } else if (ModList.get().isLoaded("farmersdelight") && inputItem == ModFDRegistry.RUBY_KNIFE.get()) {
+                inputStack = new ItemStack(ModFDRegistry.RUBY_KNIFE.get());
+                outputStack = new ItemStack(ModFDRegistry.AMBER_KNIFE.get());
 
             } else if (ModList.get().isLoaded("aquaculture") && inputItem == AquaItems.DIAMOND_FILLET_KNIFE.get()) {
                 inputStack = new ItemStack(AquaItems.DIAMOND_FILLET_KNIFE.get());
-                outputStack = new ItemStack(ModCompatItems.AMBER_FILLET_KNIFE.get());
+                outputStack = new ItemStack(ModAquaRegistry.AMBER_FILLET_KNIFE.get());
 
             } else if (ModList.get().isLoaded("aquaculture") && inputItem == AquaItems.DIAMOND_FISHING_ROD.get()) {
                 inputStack = new ItemStack(AquaItems.DIAMOND_FISHING_ROD.get());
-                outputStack = new ItemStack(ModCompatItems.AMBER_FISHING_ROD.get());
+                outputStack = new ItemStack(ModAquaRegistry.AMBER_FISHING_ROD.get());
 
             } else if (ModList.get().isLoaded("aquaculture") && inputItem == AquaItems.DIAMOND_HOOK.get()) {
                 inputStack = new ItemStack(AquaItems.DIAMOND_HOOK.get());
-                outputStack = new ItemStack(ModCompatItems.AMBER_HOOK.get());
+                outputStack = new ItemStack(ModAquaRegistry.AMBER_HOOK.get());
 
-            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.JADE_FILLET_KNIFE.get()) {
-                inputStack = new ItemStack(ModCompatItems.JADE_FILLET_KNIFE.get());
-                outputStack = new ItemStack(ModCompatItems.AMBER_FILLET_KNIFE.get());
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModAquaRegistry.JADE_FILLET_KNIFE.get()) {
+                inputStack = new ItemStack(ModAquaRegistry.JADE_FILLET_KNIFE.get());
+                outputStack = new ItemStack(ModAquaRegistry.AMBER_FILLET_KNIFE.get());
 
-            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.JADE_FISHING_ROD.get()) {
-                inputStack = new ItemStack(ModCompatItems.JADE_FISHING_ROD.get());
-                outputStack = new ItemStack(ModCompatItems.AMBER_FISHING_ROD.get());
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModAquaRegistry.JADE_FISHING_ROD.get()) {
+                inputStack = new ItemStack(ModAquaRegistry.JADE_FISHING_ROD.get());
+                outputStack = new ItemStack(ModAquaRegistry.AMBER_FISHING_ROD.get());
 
-            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.JADE_HOOK.get()) {
-                inputStack = new ItemStack(ModCompatItems.JADE_HOOK.get());
-                outputStack = new ItemStack(ModCompatItems.AMBER_HOOK.get());
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModAquaRegistry.JADE_HOOK.get()) {
+                inputStack = new ItemStack(ModAquaRegistry.JADE_HOOK.get());
+                outputStack = new ItemStack(ModAquaRegistry.AMBER_HOOK.get());
 
-            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.SILICON_FILLET_KNIFE.get()) {
-                inputStack = new ItemStack(ModCompatItems.SILICON_FILLET_KNIFE.get());
-                outputStack = new ItemStack(ModCompatItems.AMBER_FILLET_KNIFE.get());
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModAquaRegistry.SILICON_FILLET_KNIFE.get()) {
+                inputStack = new ItemStack(ModAquaRegistry.SILICON_FILLET_KNIFE.get());
+                outputStack = new ItemStack(ModAquaRegistry.AMBER_FILLET_KNIFE.get());
 
-            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.SILICON_FISHING_ROD.get()) {
-                inputStack = new ItemStack(ModCompatItems.SILICON_FISHING_ROD.get());
-                outputStack = new ItemStack(ModCompatItems.AMBER_FISHING_ROD.get());
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModAquaRegistry.SILICON_FISHING_ROD.get()) {
+                inputStack = new ItemStack(ModAquaRegistry.SILICON_FISHING_ROD.get());
+                outputStack = new ItemStack(ModAquaRegistry.AMBER_FISHING_ROD.get());
 
-            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.SILICON_HOOK.get()) {
-                inputStack = new ItemStack(ModCompatItems.SILICON_HOOK.get());
-                outputStack = new ItemStack(ModCompatItems.AMBER_HOOK.get());
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModAquaRegistry.SILICON_HOOK.get()) {
+                inputStack = new ItemStack(ModAquaRegistry.SILICON_HOOK.get());
+                outputStack = new ItemStack(ModAquaRegistry.AMBER_HOOK.get());
 
-            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.RUBY_FILLET_KNIFE.get()) {
-                inputStack = new ItemStack(ModCompatItems.RUBY_FILLET_KNIFE.get());
-                outputStack = new ItemStack(ModCompatItems.AMBER_FILLET_KNIFE.get());
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModAquaRegistry.RUBY_FILLET_KNIFE.get()) {
+                inputStack = new ItemStack(ModAquaRegistry.RUBY_FILLET_KNIFE.get());
+                outputStack = new ItemStack(ModAquaRegistry.AMBER_FILLET_KNIFE.get());
 
-            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.RUBY_FISHING_ROD.get()) {
-                inputStack = new ItemStack(ModCompatItems.RUBY_FISHING_ROD.get());
-                outputStack = new ItemStack(ModCompatItems.AMBER_FISHING_ROD.get());
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModAquaRegistry.RUBY_FISHING_ROD.get()) {
+                inputStack = new ItemStack(ModAquaRegistry.RUBY_FISHING_ROD.get());
+                outputStack = new ItemStack(ModAquaRegistry.AMBER_FISHING_ROD.get());
 
-            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.RUBY_HOOK.get()) {
-                inputStack = new ItemStack(ModCompatItems.RUBY_HOOK.get());
-                outputStack = new ItemStack(ModCompatItems.AMBER_HOOK.get());
-
-            } else if (ModList.get().isLoaded("betterarcheology") && inputItem == BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("betterarcheology", "diamond_brush"))) {
-                inputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("betterarcheology", "diamond_brush")));
-                outputStack = new ItemStack(ModCompatItems.AMBER_BRUSH.get());
-
-            } else if (ModList.get().isLoaded("betterarcheology") && inputItem == ModCompatItems.JADE_BRUSH.get()) {
-                inputStack = new ItemStack(ModCompatItems.JADE_BRUSH.get());
-                outputStack = new ItemStack(ModCompatItems.AMBER_BRUSH.get());
-
-            } else if (ModList.get().isLoaded("betterarcheology") && inputItem == ModCompatItems.SILICON_BRUSH.get()) {
-                inputStack = new ItemStack(ModCompatItems.SILICON_BRUSH.get());
-                outputStack = new ItemStack(ModCompatItems.AMBER_BRUSH.get());
-
-            } else if (ModList.get().isLoaded("betterarcheology") && inputItem == ModCompatItems.RUBY_BRUSH.get()) {
-                inputStack = new ItemStack(ModCompatItems.RUBY_BRUSH.get());
-                outputStack = new ItemStack(ModCompatItems.AMBER_BRUSH.get());
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModAquaRegistry.RUBY_HOOK.get()) {
+                inputStack = new ItemStack(ModAquaRegistry.RUBY_HOOK.get());
+                outputStack = new ItemStack(ModAquaRegistry.AMBER_HOOK.get());
 
             } else if (ModList.get().isLoaded("archers") && inputItem == BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("archers", "diamond_spear"))) {
                 inputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("archers", "diamond_spear")));
@@ -1166,35 +1185,67 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
 
             } else if (ModList.get().isLoaded("vanillabackport") && inputItem == com.blackgear.vanillabackport.common.registries.items.ModItems.DIAMOND_SPEAR.get()) {
                 inputStack = new ItemStack(com.blackgear.vanillabackport.common.registries.items.ModItems.DIAMOND_SPEAR.get());
-                outputStack = new ItemStack(ModCompatItems.AMBER_BACKPORT_SPEAR.get());
+                outputStack = new ItemStack(ModVanillaBackportRegistry.AMBER_BACKPORT_SPEAR.get());
 
-            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.JADE_BACKPORT_SPEAR.get()) {
-                inputStack = new ItemStack(ModCompatItems.JADE_BACKPORT_SPEAR.get());
-                outputStack = new ItemStack(ModCompatItems.AMBER_BACKPORT_SPEAR.get());
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModVanillaBackportRegistry.JADE_BACKPORT_SPEAR.get()) {
+                inputStack = new ItemStack(ModVanillaBackportRegistry.JADE_BACKPORT_SPEAR.get());
+                outputStack = new ItemStack(ModVanillaBackportRegistry.AMBER_BACKPORT_SPEAR.get());
 
-            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.SILICON_BACKPORT_SPEAR.get()) {
-                inputStack = new ItemStack(ModCompatItems.SILICON_BACKPORT_SPEAR.get());
-                outputStack = new ItemStack(ModCompatItems.AMBER_BACKPORT_SPEAR.get());
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModVanillaBackportRegistry.SILICON_BACKPORT_SPEAR.get()) {
+                inputStack = new ItemStack(ModVanillaBackportRegistry.SILICON_BACKPORT_SPEAR.get());
+                outputStack = new ItemStack(ModVanillaBackportRegistry.AMBER_BACKPORT_SPEAR.get());
 
-            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.RUBY_BACKPORT_SPEAR.get()) {
-                inputStack = new ItemStack(ModCompatItems.RUBY_BACKPORT_SPEAR.get());
-                outputStack = new ItemStack(ModCompatItems.AMBER_BACKPORT_SPEAR.get());
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModVanillaBackportRegistry.RUBY_BACKPORT_SPEAR.get()) {
+                inputStack = new ItemStack(ModVanillaBackportRegistry.RUBY_BACKPORT_SPEAR.get());
+                outputStack = new ItemStack(ModVanillaBackportRegistry.AMBER_BACKPORT_SPEAR.get());
 
             } else if (ModList.get().isLoaded("vanillabackport") && inputItem == com.blackgear.vanillabackport.common.registries.items.ModItems.DIAMOND_NAUTILUS_ARMOR.get()) {
                 inputStack = new ItemStack(com.blackgear.vanillabackport.common.registries.items.ModItems.DIAMOND_NAUTILUS_ARMOR.get());
-                outputStack = new ItemStack(ModCompatItems.AMBER_NAUTILUS_ARMOR.get());
+                outputStack = new ItemStack(ModVanillaBackportRegistry.AMBER_NAUTILUS_ARMOR.get());
 
-            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.JADE_NAUTILUS_ARMOR.get()) {
-                inputStack = new ItemStack(ModCompatItems.JADE_NAUTILUS_ARMOR.get());
-                outputStack = new ItemStack(ModCompatItems.AMBER_NAUTILUS_ARMOR.get());
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModVanillaBackportRegistry.JADE_NAUTILUS_ARMOR.get()) {
+                inputStack = new ItemStack(ModVanillaBackportRegistry.JADE_NAUTILUS_ARMOR.get());
+                outputStack = new ItemStack(ModVanillaBackportRegistry.AMBER_NAUTILUS_ARMOR.get());
 
-            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.SILICON_NAUTILUS_ARMOR.get()) {
-                inputStack = new ItemStack(ModCompatItems.SILICON_NAUTILUS_ARMOR.get());
-                outputStack = new ItemStack(ModCompatItems.AMBER_NAUTILUS_ARMOR.get());
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModVanillaBackportRegistry.SILICON_NAUTILUS_ARMOR.get()) {
+                inputStack = new ItemStack(ModVanillaBackportRegistry.SILICON_NAUTILUS_ARMOR.get());
+                outputStack = new ItemStack(ModVanillaBackportRegistry.AMBER_NAUTILUS_ARMOR.get());
 
-            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.RUBY_NAUTILUS_ARMOR.get()) {
-                inputStack = new ItemStack(ModCompatItems.RUBY_NAUTILUS_ARMOR.get());
-                outputStack = new ItemStack(ModCompatItems.AMBER_NAUTILUS_ARMOR.get());
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModVanillaBackportRegistry.RUBY_NAUTILUS_ARMOR.get()) {
+                inputStack = new ItemStack(ModVanillaBackportRegistry.RUBY_NAUTILUS_ARMOR.get());
+                outputStack = new ItemStack(ModVanillaBackportRegistry.AMBER_NAUTILUS_ARMOR.get());
+
+            } else if (ModList.get().isLoaded("creategoggles") && inputItem == BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("creategoggles", "goggle_diamond_helmet"))) {
+                inputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("creategoggles", "goggle_diamond_helmet")));
+                outputStack = new ItemStack(ModCGRegistry.GOGGLE_AMBER_HELMET.get());
+
+            } else if (ModList.get().isLoaded("creategoggles") && inputItem == ModCGRegistry.GOGGLE_JADE_HELMET.get()) {
+                inputStack = new ItemStack(ModCGRegistry.GOGGLE_JADE_HELMET.get());
+                outputStack = new ItemStack(ModCGRegistry.GOGGLE_AMBER_HELMET.get());
+
+            } else if (ModList.get().isLoaded("creategoggles") && inputItem == ModCGRegistry.GOGGLE_SILICON_HELMET.get()) {
+                inputStack = new ItemStack(ModCGRegistry.GOGGLE_SILICON_HELMET.get());
+                outputStack = new ItemStack(ModCGRegistry.GOGGLE_AMBER_HELMET.get());
+
+            } else if (ModList.get().isLoaded("creategoggles") && inputItem == ModCGRegistry.GOGGLE_RUBY_HELMET.get()) {
+                inputStack = new ItemStack(ModCGRegistry.GOGGLE_RUBY_HELMET.get());
+                outputStack = new ItemStack(ModCGRegistry.GOGGLE_AMBER_HELMET.get());
+
+            } else if (ModList.get().isLoaded("creategoggles") && inputItem == BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("creategoggles", "diamond_backtank"))) {
+                inputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("creategoggles", "diamond_backtank")));
+                outputStack = new ItemStack(ModCGRegistry.AMBER_BACKTANK.get());
+
+            } else if (ModList.get().isLoaded("creategoggles") && inputItem == ModCGRegistry.JADE_BACKTANK.get()) {
+                inputStack = new ItemStack(ModCGRegistry.JADE_BACKTANK.get());
+                outputStack = new ItemStack(ModCGRegistry.AMBER_BACKTANK.get());
+
+            } else if (ModList.get().isLoaded("creategoggles") && inputItem == ModCGRegistry.SILICON_BACKTANK.get()) {
+                inputStack = new ItemStack(ModCGRegistry.SILICON_BACKTANK.get());
+                outputStack = new ItemStack(ModCGRegistry.AMBER_BACKTANK.get());
+
+            } else if (ModList.get().isLoaded("creategoggles") && inputItem == ModCGRegistry.RUBY_BACKTANK.get()) {
+                inputStack = new ItemStack(ModCGRegistry.RUBY_BACKTANK.get());
+                outputStack = new ItemStack(ModCGRegistry.AMBER_BACKTANK.get());
             }
 
         } else if (toolConvertButtonPressed == 4) {
@@ -1360,83 +1411,67 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
 
             } else if (ModList.get().isLoaded("farmersdelight") && inputItem == vectorwing.farmersdelight.common.registry.ModItems.DIAMOND_KNIFE.get()) {
                 inputStack = new ItemStack(vectorwing.farmersdelight.common.registry.ModItems.DIAMOND_KNIFE.get());
-                outputStack = new ItemStack(ModCompatItems.SILICON_KNIFE.get());
+                outputStack = new ItemStack(ModFDRegistry.SILICON_KNIFE.get());
 
-            } else if (ModList.get().isLoaded("farmersdelight") && inputItem == ModCompatItems.JADE_KNIFE.get()) {
-                inputStack = new ItemStack(ModCompatItems.JADE_KNIFE.get());
-                outputStack = new ItemStack(ModCompatItems.SILICON_KNIFE.get());
+            } else if (ModList.get().isLoaded("farmersdelight") && inputItem == ModFDRegistry.JADE_KNIFE.get()) {
+                inputStack = new ItemStack(ModFDRegistry.JADE_KNIFE.get());
+                outputStack = new ItemStack(ModFDRegistry.SILICON_KNIFE.get());
 
-            } else if (ModList.get().isLoaded("farmersdelight") && inputItem == ModCompatItems.AMBER_KNIFE.get()) {
-                inputStack = new ItemStack(ModCompatItems.AMBER_KNIFE.get());
-                outputStack = new ItemStack(ModCompatItems.SILICON_KNIFE.get());
+            } else if (ModList.get().isLoaded("farmersdelight") && inputItem == ModFDRegistry.AMBER_KNIFE.get()) {
+                inputStack = new ItemStack(ModFDRegistry.AMBER_KNIFE.get());
+                outputStack = new ItemStack(ModFDRegistry.SILICON_KNIFE.get());
 
-            } else if (ModList.get().isLoaded("farmersdelight") && inputItem == ModCompatItems.RUBY_KNIFE.get()) {
-                inputStack = new ItemStack(ModCompatItems.RUBY_KNIFE.get());
-                outputStack = new ItemStack(ModCompatItems.SILICON_KNIFE.get());
+            } else if (ModList.get().isLoaded("farmersdelight") && inputItem == ModFDRegistry.RUBY_KNIFE.get()) {
+                inputStack = new ItemStack(ModFDRegistry.RUBY_KNIFE.get());
+                outputStack = new ItemStack(ModFDRegistry.SILICON_KNIFE.get());
 
             } else if (ModList.get().isLoaded("aquaculture") && inputItem == AquaItems.DIAMOND_FILLET_KNIFE.get()) {
                 inputStack = new ItemStack(AquaItems.DIAMOND_FILLET_KNIFE.get());
-                outputStack = new ItemStack(ModCompatItems.SILICON_FILLET_KNIFE.get());
+                outputStack = new ItemStack(ModAquaRegistry.SILICON_FILLET_KNIFE.get());
 
             } else if (ModList.get().isLoaded("aquaculture") && inputItem == AquaItems.DIAMOND_FISHING_ROD.get()) {
                 inputStack = new ItemStack(AquaItems.DIAMOND_FISHING_ROD.get());
-                outputStack = new ItemStack(ModCompatItems.SILICON_FISHING_ROD.get());
+                outputStack = new ItemStack(ModAquaRegistry.SILICON_FISHING_ROD.get());
 
             } else if (ModList.get().isLoaded("aquaculture") && inputItem == AquaItems.DIAMOND_HOOK.get()) {
                 inputStack = new ItemStack(AquaItems.DIAMOND_HOOK.get());
-                outputStack = new ItemStack(ModCompatItems.SILICON_HOOK.get());
+                outputStack = new ItemStack(ModAquaRegistry.SILICON_HOOK.get());
 
-            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.JADE_FILLET_KNIFE.get()) {
-                inputStack = new ItemStack(ModCompatItems.JADE_FILLET_KNIFE.get());
-                outputStack = new ItemStack(ModCompatItems.SILICON_FILLET_KNIFE.get());
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModAquaRegistry.JADE_FILLET_KNIFE.get()) {
+                inputStack = new ItemStack(ModAquaRegistry.JADE_FILLET_KNIFE.get());
+                outputStack = new ItemStack(ModAquaRegistry.SILICON_FILLET_KNIFE.get());
 
-            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.JADE_FISHING_ROD.get()) {
-                inputStack = new ItemStack(ModCompatItems.JADE_FISHING_ROD.get());
-                outputStack = new ItemStack(ModCompatItems.SILICON_FISHING_ROD.get());
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModAquaRegistry.JADE_FISHING_ROD.get()) {
+                inputStack = new ItemStack(ModAquaRegistry.JADE_FISHING_ROD.get());
+                outputStack = new ItemStack(ModAquaRegistry.SILICON_FISHING_ROD.get());
 
-            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.JADE_HOOK.get()) {
-                inputStack = new ItemStack(ModCompatItems.JADE_HOOK.get());
-                outputStack = new ItemStack(ModCompatItems.SILICON_HOOK.get());
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModAquaRegistry.JADE_HOOK.get()) {
+                inputStack = new ItemStack(ModAquaRegistry.JADE_HOOK.get());
+                outputStack = new ItemStack(ModAquaRegistry.SILICON_HOOK.get());
 
-            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.AMBER_FILLET_KNIFE.get()) {
-                inputStack = new ItemStack(ModCompatItems.AMBER_FILLET_KNIFE.get());
-                outputStack = new ItemStack(ModCompatItems.SILICON_FILLET_KNIFE.get());
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModAquaRegistry.AMBER_FILLET_KNIFE.get()) {
+                inputStack = new ItemStack(ModAquaRegistry.AMBER_FILLET_KNIFE.get());
+                outputStack = new ItemStack(ModAquaRegistry.SILICON_FILLET_KNIFE.get());
 
-            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.AMBER_FISHING_ROD.get()) {
-                inputStack = new ItemStack(ModCompatItems.AMBER_FISHING_ROD.get());
-                outputStack = new ItemStack(ModCompatItems.SILICON_FISHING_ROD.get());
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModAquaRegistry.AMBER_FISHING_ROD.get()) {
+                inputStack = new ItemStack(ModAquaRegistry.AMBER_FISHING_ROD.get());
+                outputStack = new ItemStack(ModAquaRegistry.SILICON_FISHING_ROD.get());
 
-            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.AMBER_HOOK.get()) {
-                inputStack = new ItemStack(ModCompatItems.AMBER_HOOK.get());
-                outputStack = new ItemStack(ModCompatItems.SILICON_HOOK.get());
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModAquaRegistry.AMBER_HOOK.get()) {
+                inputStack = new ItemStack(ModAquaRegistry.AMBER_HOOK.get());
+                outputStack = new ItemStack(ModAquaRegistry.SILICON_HOOK.get());
 
-            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.RUBY_FILLET_KNIFE.get()) {
-                inputStack = new ItemStack(ModCompatItems.RUBY_FILLET_KNIFE.get());
-                outputStack = new ItemStack(ModCompatItems.SILICON_FILLET_KNIFE.get());
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModAquaRegistry.RUBY_FILLET_KNIFE.get()) {
+                inputStack = new ItemStack(ModAquaRegistry.RUBY_FILLET_KNIFE.get());
+                outputStack = new ItemStack(ModAquaRegistry.SILICON_FILLET_KNIFE.get());
 
-            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.RUBY_FISHING_ROD.get()) {
-                inputStack = new ItemStack(ModCompatItems.RUBY_FISHING_ROD.get());
-                outputStack = new ItemStack(ModCompatItems.SILICON_FISHING_ROD.get());
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModAquaRegistry.RUBY_FISHING_ROD.get()) {
+                inputStack = new ItemStack(ModAquaRegistry.RUBY_FISHING_ROD.get());
+                outputStack = new ItemStack(ModAquaRegistry.SILICON_FISHING_ROD.get());
 
-            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.RUBY_HOOK.get()) {
-                inputStack = new ItemStack(ModCompatItems.RUBY_HOOK.get());
-                outputStack = new ItemStack(ModCompatItems.SILICON_HOOK.get());
-
-            } else if (ModList.get().isLoaded("betterarcheology") && inputItem == BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("betterarcheology", "diamond_brush"))) {
-                inputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("betterarcheology", "diamond_brush")));
-                outputStack = new ItemStack(ModCompatItems.SILICON_BRUSH.get());
-
-            } else if (ModList.get().isLoaded("betterarcheology") && inputItem == ModCompatItems.JADE_BRUSH.get()) {
-                inputStack = new ItemStack(ModCompatItems.JADE_BRUSH.get());
-                outputStack = new ItemStack(ModCompatItems.SILICON_BRUSH.get());
-
-            } else if (ModList.get().isLoaded("betterarcheology") && inputItem == ModCompatItems.AMBER_BRUSH.get()) {
-                inputStack = new ItemStack(ModCompatItems.AMBER_BRUSH.get());
-                outputStack = new ItemStack(ModCompatItems.SILICON_BRUSH.get());
-
-            } else if (ModList.get().isLoaded("betterarcheology") && inputItem == ModCompatItems.RUBY_BRUSH.get()) {
-                inputStack = new ItemStack(ModCompatItems.RUBY_BRUSH.get());
-                outputStack = new ItemStack(ModCompatItems.SILICON_BRUSH.get());
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModAquaRegistry.RUBY_HOOK.get()) {
+                inputStack = new ItemStack(ModAquaRegistry.RUBY_HOOK.get());
+                outputStack = new ItemStack(ModAquaRegistry.SILICON_HOOK.get());
 
             } else if (ModList.get().isLoaded("archers") && inputItem == BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("archers", "diamond_spear"))) {
                 inputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("archers", "diamond_spear")));
@@ -1456,35 +1491,67 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
 
             } else if (ModList.get().isLoaded("vanillabackport") && inputItem == com.blackgear.vanillabackport.common.registries.items.ModItems.DIAMOND_SPEAR.get()) {
                 inputStack = new ItemStack(com.blackgear.vanillabackport.common.registries.items.ModItems.DIAMOND_SPEAR.get());
-                outputStack = new ItemStack(ModCompatItems.SILICON_BACKPORT_SPEAR.get());
+                outputStack = new ItemStack(ModVanillaBackportRegistry.SILICON_BACKPORT_SPEAR.get());
 
-            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.JADE_BACKPORT_SPEAR.get()) {
-                inputStack = new ItemStack(ModCompatItems.JADE_BACKPORT_SPEAR.get());
-                outputStack = new ItemStack(ModCompatItems.SILICON_BACKPORT_SPEAR.get());
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModVanillaBackportRegistry.JADE_BACKPORT_SPEAR.get()) {
+                inputStack = new ItemStack(ModVanillaBackportRegistry.JADE_BACKPORT_SPEAR.get());
+                outputStack = new ItemStack(ModVanillaBackportRegistry.SILICON_BACKPORT_SPEAR.get());
 
-            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.AMBER_BACKPORT_SPEAR.get()) {
-                inputStack = new ItemStack(ModCompatItems.AMBER_BACKPORT_SPEAR.get());
-                outputStack = new ItemStack(ModCompatItems.SILICON_BACKPORT_SPEAR.get());
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModVanillaBackportRegistry.AMBER_BACKPORT_SPEAR.get()) {
+                inputStack = new ItemStack(ModVanillaBackportRegistry.AMBER_BACKPORT_SPEAR.get());
+                outputStack = new ItemStack(ModVanillaBackportRegistry.SILICON_BACKPORT_SPEAR.get());
 
-            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.RUBY_BACKPORT_SPEAR.get()) {
-                inputStack = new ItemStack(ModCompatItems.RUBY_BACKPORT_SPEAR.get());
-                outputStack = new ItemStack(ModCompatItems.SILICON_BACKPORT_SPEAR.get());
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModVanillaBackportRegistry.RUBY_BACKPORT_SPEAR.get()) {
+                inputStack = new ItemStack(ModVanillaBackportRegistry.RUBY_BACKPORT_SPEAR.get());
+                outputStack = new ItemStack(ModVanillaBackportRegistry.SILICON_BACKPORT_SPEAR.get());
 
             } else if (ModList.get().isLoaded("vanillabackport") && inputItem == com.blackgear.vanillabackport.common.registries.items.ModItems.DIAMOND_NAUTILUS_ARMOR.get()) {
                 inputStack = new ItemStack(com.blackgear.vanillabackport.common.registries.items.ModItems.DIAMOND_NAUTILUS_ARMOR.get());
-                outputStack = new ItemStack(ModCompatItems.SILICON_NAUTILUS_ARMOR.get());
+                outputStack = new ItemStack(ModVanillaBackportRegistry.SILICON_NAUTILUS_ARMOR.get());
 
-            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.JADE_NAUTILUS_ARMOR.get()) {
-                inputStack = new ItemStack(ModCompatItems.JADE_NAUTILUS_ARMOR.get());
-                outputStack = new ItemStack(ModCompatItems.SILICON_NAUTILUS_ARMOR.get());
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModVanillaBackportRegistry.JADE_NAUTILUS_ARMOR.get()) {
+                inputStack = new ItemStack(ModVanillaBackportRegistry.JADE_NAUTILUS_ARMOR.get());
+                outputStack = new ItemStack(ModVanillaBackportRegistry.SILICON_NAUTILUS_ARMOR.get());
 
-            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.AMBER_NAUTILUS_ARMOR.get()) {
-                inputStack = new ItemStack(ModCompatItems.AMBER_NAUTILUS_ARMOR.get());
-                outputStack = new ItemStack(ModCompatItems.SILICON_NAUTILUS_ARMOR.get());
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModVanillaBackportRegistry.AMBER_NAUTILUS_ARMOR.get()) {
+                inputStack = new ItemStack(ModVanillaBackportRegistry.AMBER_NAUTILUS_ARMOR.get());
+                outputStack = new ItemStack(ModVanillaBackportRegistry.SILICON_NAUTILUS_ARMOR.get());
 
-            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.RUBY_NAUTILUS_ARMOR.get()) {
-                inputStack = new ItemStack(ModCompatItems.RUBY_NAUTILUS_ARMOR.get());
-                outputStack = new ItemStack(ModCompatItems.SILICON_NAUTILUS_ARMOR.get());
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModVanillaBackportRegistry.RUBY_NAUTILUS_ARMOR.get()) {
+                inputStack = new ItemStack(ModVanillaBackportRegistry.RUBY_NAUTILUS_ARMOR.get());
+                outputStack = new ItemStack(ModVanillaBackportRegistry.SILICON_NAUTILUS_ARMOR.get());
+
+            } else if (ModList.get().isLoaded("creategoggles") && inputItem == BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("creategoggles", "goggle_diamond_helmet"))) {
+                inputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("creategoggles", "goggle_diamond_helmet")));
+                outputStack = new ItemStack(ModCGRegistry.GOGGLE_SILICON_HELMET.get());
+
+            } else if (ModList.get().isLoaded("creategoggles") && inputItem == ModCGRegistry.GOGGLE_JADE_HELMET.get()) {
+                inputStack = new ItemStack(ModCGRegistry.GOGGLE_JADE_HELMET.get());
+                outputStack = new ItemStack(ModCGRegistry.GOGGLE_SILICON_HELMET.get());
+
+            } else if (ModList.get().isLoaded("creategoggles") && inputItem == ModCGRegistry.GOGGLE_AMBER_HELMET.get()) {
+                inputStack = new ItemStack(ModCGRegistry.GOGGLE_AMBER_HELMET.get());
+                outputStack = new ItemStack(ModCGRegistry.GOGGLE_SILICON_HELMET.get());
+
+            } else if (ModList.get().isLoaded("creategoggles") && inputItem == ModCGRegistry.GOGGLE_RUBY_HELMET.get()) {
+                inputStack = new ItemStack(ModCGRegistry.GOGGLE_RUBY_HELMET.get());
+                outputStack = new ItemStack(ModCGRegistry.GOGGLE_SILICON_HELMET.get());
+
+            } else if (ModList.get().isLoaded("creategoggles") && inputItem == BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("creategoggles", "diamond_backtank"))) {
+                inputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("creategoggles", "diamond_backtank")));
+                outputStack = new ItemStack(ModCGRegistry.SILICON_BACKTANK.get());
+
+            } else if (ModList.get().isLoaded("creategoggles") && inputItem == ModCGRegistry.JADE_BACKTANK.get()) {
+                inputStack = new ItemStack(ModCGRegistry.JADE_BACKTANK.get());
+                outputStack = new ItemStack(ModCGRegistry.SILICON_BACKTANK.get());
+
+            } else if (ModList.get().isLoaded("creategoggles") && inputItem == ModCGRegistry.AMBER_BACKTANK.get()) {
+                inputStack = new ItemStack(ModCGRegistry.AMBER_BACKTANK.get());
+                outputStack = new ItemStack(ModCGRegistry.SILICON_BACKTANK.get());
+
+            } else if (ModList.get().isLoaded("creategoggles") && inputItem == ModCGRegistry.RUBY_BACKTANK.get()) {
+                inputStack = new ItemStack(ModCGRegistry.RUBY_BACKTANK.get());
+                outputStack = new ItemStack(ModCGRegistry.SILICON_BACKTANK.get());
             }
 
         } else if (toolConvertButtonPressed == 5) {
@@ -1650,83 +1717,67 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
 
             } else if (ModList.get().isLoaded("farmersdelight") && inputItem == vectorwing.farmersdelight.common.registry.ModItems.DIAMOND_KNIFE.get()) {
                 inputStack = new ItemStack(vectorwing.farmersdelight.common.registry.ModItems.DIAMOND_KNIFE.get());
-                outputStack = new ItemStack(ModCompatItems.RUBY_KNIFE.get());
+                outputStack = new ItemStack(ModFDRegistry.RUBY_KNIFE.get());
 
-            } else if (ModList.get().isLoaded("farmersdelight") && inputItem == ModCompatItems.JADE_KNIFE.get()) {
-                inputStack = new ItemStack(ModCompatItems.JADE_KNIFE.get());
-                outputStack = new ItemStack(ModCompatItems.RUBY_KNIFE.get());
+            } else if (ModList.get().isLoaded("farmersdelight") && inputItem == ModFDRegistry.JADE_KNIFE.get()) {
+                inputStack = new ItemStack(ModFDRegistry.JADE_KNIFE.get());
+                outputStack = new ItemStack(ModFDRegistry.RUBY_KNIFE.get());
 
-            } else if (ModList.get().isLoaded("farmersdelight") && inputItem == ModCompatItems.AMBER_KNIFE.get()) {
-                inputStack = new ItemStack(ModCompatItems.AMBER_KNIFE.get());
-                outputStack = new ItemStack(ModCompatItems.RUBY_KNIFE.get());
+            } else if (ModList.get().isLoaded("farmersdelight") && inputItem == ModFDRegistry.AMBER_KNIFE.get()) {
+                inputStack = new ItemStack(ModFDRegistry.AMBER_KNIFE.get());
+                outputStack = new ItemStack(ModFDRegistry.RUBY_KNIFE.get());
 
-            } else if (ModList.get().isLoaded("farmersdelight") && inputItem == ModCompatItems.SILICON_KNIFE.get()) {
-                inputStack = new ItemStack(ModCompatItems.SILICON_KNIFE.get());
-                outputStack = new ItemStack(ModCompatItems.RUBY_KNIFE.get());
+            } else if (ModList.get().isLoaded("farmersdelight") && inputItem == ModFDRegistry.SILICON_KNIFE.get()) {
+                inputStack = new ItemStack(ModFDRegistry.SILICON_KNIFE.get());
+                outputStack = new ItemStack(ModFDRegistry.RUBY_KNIFE.get());
 
             } else if (ModList.get().isLoaded("aquaculture") && inputItem == AquaItems.DIAMOND_FILLET_KNIFE.get()) {
                 inputStack = new ItemStack(AquaItems.DIAMOND_FILLET_KNIFE.get());
-                outputStack = new ItemStack(ModCompatItems.RUBY_FILLET_KNIFE.get());
+                outputStack = new ItemStack(ModAquaRegistry.RUBY_FILLET_KNIFE.get());
 
             } else if (ModList.get().isLoaded("aquaculture") && inputItem == AquaItems.DIAMOND_FISHING_ROD.get()) {
                 inputStack = new ItemStack(AquaItems.DIAMOND_FISHING_ROD.get());
-                outputStack = new ItemStack(ModCompatItems.RUBY_FISHING_ROD.get());
+                outputStack = new ItemStack(ModAquaRegistry.RUBY_FISHING_ROD.get());
 
             } else if (ModList.get().isLoaded("aquaculture") && inputItem == AquaItems.DIAMOND_HOOK.get()) {
                 inputStack = new ItemStack(AquaItems.DIAMOND_HOOK.get());
-                outputStack = new ItemStack(ModCompatItems.RUBY_HOOK.get());
+                outputStack = new ItemStack(ModAquaRegistry.RUBY_HOOK.get());
 
-            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.JADE_FILLET_KNIFE.get()) {
-                inputStack = new ItemStack(ModCompatItems.JADE_FILLET_KNIFE.get());
-                outputStack = new ItemStack(ModCompatItems.RUBY_FILLET_KNIFE.get());
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModAquaRegistry.JADE_FILLET_KNIFE.get()) {
+                inputStack = new ItemStack(ModAquaRegistry.JADE_FILLET_KNIFE.get());
+                outputStack = new ItemStack(ModAquaRegistry.RUBY_FILLET_KNIFE.get());
 
-            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.JADE_FISHING_ROD.get()) {
-                inputStack = new ItemStack(ModCompatItems.JADE_FISHING_ROD.get());
-                outputStack = new ItemStack(ModCompatItems.RUBY_FISHING_ROD.get());
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModAquaRegistry.JADE_FISHING_ROD.get()) {
+                inputStack = new ItemStack(ModAquaRegistry.JADE_FISHING_ROD.get());
+                outputStack = new ItemStack(ModAquaRegistry.RUBY_FISHING_ROD.get());
 
-            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.JADE_HOOK.get()) {
-                inputStack = new ItemStack(ModCompatItems.JADE_HOOK.get());
-                outputStack = new ItemStack(ModCompatItems.RUBY_HOOK.get());
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModAquaRegistry.JADE_HOOK.get()) {
+                inputStack = new ItemStack(ModAquaRegistry.JADE_HOOK.get());
+                outputStack = new ItemStack(ModAquaRegistry.RUBY_HOOK.get());
 
-            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.AMBER_FILLET_KNIFE.get()) {
-                inputStack = new ItemStack(ModCompatItems.AMBER_FILLET_KNIFE.get());
-                outputStack = new ItemStack(ModCompatItems.RUBY_FILLET_KNIFE.get());
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModAquaRegistry.AMBER_FILLET_KNIFE.get()) {
+                inputStack = new ItemStack(ModAquaRegistry.AMBER_FILLET_KNIFE.get());
+                outputStack = new ItemStack(ModAquaRegistry.RUBY_FILLET_KNIFE.get());
 
-            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.AMBER_FISHING_ROD.get()) {
-                inputStack = new ItemStack(ModCompatItems.AMBER_FISHING_ROD.get());
-                outputStack = new ItemStack(ModCompatItems.RUBY_FISHING_ROD.get());
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModAquaRegistry.AMBER_FISHING_ROD.get()) {
+                inputStack = new ItemStack(ModAquaRegistry.AMBER_FISHING_ROD.get());
+                outputStack = new ItemStack(ModAquaRegistry.RUBY_FISHING_ROD.get());
 
-            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.AMBER_HOOK.get()) {
-                inputStack = new ItemStack(ModCompatItems.AMBER_HOOK.get());
-                outputStack = new ItemStack(ModCompatItems.RUBY_HOOK.get());
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModAquaRegistry.AMBER_HOOK.get()) {
+                inputStack = new ItemStack(ModAquaRegistry.AMBER_HOOK.get());
+                outputStack = new ItemStack(ModAquaRegistry.RUBY_HOOK.get());
 
-            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.SILICON_FILLET_KNIFE.get()) {
-                inputStack = new ItemStack(ModCompatItems.SILICON_FILLET_KNIFE.get());
-                outputStack = new ItemStack(ModCompatItems.RUBY_FILLET_KNIFE.get());
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModAquaRegistry.SILICON_FILLET_KNIFE.get()) {
+                inputStack = new ItemStack(ModAquaRegistry.SILICON_FILLET_KNIFE.get());
+                outputStack = new ItemStack(ModAquaRegistry.RUBY_FILLET_KNIFE.get());
 
-            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.SILICON_FISHING_ROD.get()) {
-                inputStack = new ItemStack(ModCompatItems.SILICON_FISHING_ROD.get());
-                outputStack = new ItemStack(ModCompatItems.RUBY_FISHING_ROD.get());
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModAquaRegistry.SILICON_FISHING_ROD.get()) {
+                inputStack = new ItemStack(ModAquaRegistry.SILICON_FISHING_ROD.get());
+                outputStack = new ItemStack(ModAquaRegistry.RUBY_FISHING_ROD.get());
 
-            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModCompatItems.SILICON_HOOK.get()) {
-                inputStack = new ItemStack(ModCompatItems.SILICON_HOOK.get());
-                outputStack = new ItemStack(ModCompatItems.RUBY_HOOK.get());
-
-            } else if (ModList.get().isLoaded("betterarcheology") && inputItem == BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("betterarcheology", "diamond_brush"))) {
-                inputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("betterarcheology", "diamond_brush")));
-                outputStack = new ItemStack(ModCompatItems.RUBY_BRUSH.get());
-
-            } else if (ModList.get().isLoaded("betterarcheology") && inputItem == ModCompatItems.JADE_BRUSH.get()) {
-                inputStack = new ItemStack(ModCompatItems.JADE_BRUSH.get());
-                outputStack = new ItemStack(ModCompatItems.RUBY_BRUSH.get());
-
-            } else if (ModList.get().isLoaded("betterarcheology") && inputItem == ModCompatItems.AMBER_BRUSH.get()) {
-                inputStack = new ItemStack(ModCompatItems.AMBER_BRUSH.get());
-                outputStack = new ItemStack(ModCompatItems.RUBY_BRUSH.get());
-
-            } else if (ModList.get().isLoaded("betterarcheology") && inputItem == ModCompatItems.SILICON_BRUSH.get()) {
-                inputStack = new ItemStack(ModCompatItems.SILICON_BRUSH.get());
-                outputStack = new ItemStack(ModCompatItems.RUBY_BRUSH.get());
+            } else if (ModList.get().isLoaded("aquaculture") && inputItem == ModAquaRegistry.SILICON_HOOK.get()) {
+                inputStack = new ItemStack(ModAquaRegistry.SILICON_HOOK.get());
+                outputStack = new ItemStack(ModAquaRegistry.RUBY_HOOK.get());
 
             } else if (ModList.get().isLoaded("archers") && inputItem == BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("archers", "diamond_spear"))) {
                 inputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("archers", "diamond_spear")));
@@ -1746,35 +1797,67 @@ public class AtmBlockEntity extends BlockEntity implements MenuProvider {
 
             } else if (ModList.get().isLoaded("vanillabackport") && inputItem == com.blackgear.vanillabackport.common.registries.items.ModItems.DIAMOND_SPEAR.get()) {
                 inputStack = new ItemStack(com.blackgear.vanillabackport.common.registries.items.ModItems.DIAMOND_SPEAR.get());
-                outputStack = new ItemStack(ModCompatItems.RUBY_BACKPORT_SPEAR.get());
+                outputStack = new ItemStack(ModVanillaBackportRegistry.RUBY_BACKPORT_SPEAR.get());
 
-            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.JADE_BACKPORT_SPEAR.get()) {
-                inputStack = new ItemStack(ModCompatItems.JADE_BACKPORT_SPEAR.get());
-                outputStack = new ItemStack(ModCompatItems.RUBY_BACKPORT_SPEAR.get());
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModVanillaBackportRegistry.JADE_BACKPORT_SPEAR.get()) {
+                inputStack = new ItemStack(ModVanillaBackportRegistry.JADE_BACKPORT_SPEAR.get());
+                outputStack = new ItemStack(ModVanillaBackportRegistry.RUBY_BACKPORT_SPEAR.get());
 
-            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.AMBER_BACKPORT_SPEAR.get()) {
-                inputStack = new ItemStack(ModCompatItems.AMBER_BACKPORT_SPEAR.get());
-                outputStack = new ItemStack(ModCompatItems.RUBY_BACKPORT_SPEAR.get());
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModVanillaBackportRegistry.AMBER_BACKPORT_SPEAR.get()) {
+                inputStack = new ItemStack(ModVanillaBackportRegistry.AMBER_BACKPORT_SPEAR.get());
+                outputStack = new ItemStack(ModVanillaBackportRegistry.RUBY_BACKPORT_SPEAR.get());
 
-            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.SILICON_BACKPORT_SPEAR.get()) {
-                inputStack = new ItemStack(ModCompatItems.SILICON_BACKPORT_SPEAR.get());
-                outputStack = new ItemStack(ModCompatItems.RUBY_BACKPORT_SPEAR.get());
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModVanillaBackportRegistry.SILICON_BACKPORT_SPEAR.get()) {
+                inputStack = new ItemStack(ModVanillaBackportRegistry.SILICON_BACKPORT_SPEAR.get());
+                outputStack = new ItemStack(ModVanillaBackportRegistry.RUBY_BACKPORT_SPEAR.get());
 
             } else if (ModList.get().isLoaded("vanillabackport") && inputItem == com.blackgear.vanillabackport.common.registries.items.ModItems.DIAMOND_NAUTILUS_ARMOR.get()) {
                 inputStack = new ItemStack(com.blackgear.vanillabackport.common.registries.items.ModItems.DIAMOND_NAUTILUS_ARMOR.get());
-                outputStack = new ItemStack(ModCompatItems.RUBY_NAUTILUS_ARMOR.get());
+                outputStack = new ItemStack(ModVanillaBackportRegistry.RUBY_NAUTILUS_ARMOR.get());
 
-            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.JADE_NAUTILUS_ARMOR.get()) {
-                inputStack = new ItemStack(ModCompatItems.JADE_NAUTILUS_ARMOR.get());
-                outputStack = new ItemStack(ModCompatItems.RUBY_NAUTILUS_ARMOR.get());
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModVanillaBackportRegistry.JADE_NAUTILUS_ARMOR.get()) {
+                inputStack = new ItemStack(ModVanillaBackportRegistry.JADE_NAUTILUS_ARMOR.get());
+                outputStack = new ItemStack(ModVanillaBackportRegistry.RUBY_NAUTILUS_ARMOR.get());
 
-            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.AMBER_NAUTILUS_ARMOR.get()) {
-                inputStack = new ItemStack(ModCompatItems.AMBER_NAUTILUS_ARMOR.get());
-                outputStack = new ItemStack(ModCompatItems.RUBY_NAUTILUS_ARMOR.get());
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModVanillaBackportRegistry.AMBER_NAUTILUS_ARMOR.get()) {
+                inputStack = new ItemStack(ModVanillaBackportRegistry.AMBER_NAUTILUS_ARMOR.get());
+                outputStack = new ItemStack(ModVanillaBackportRegistry.RUBY_NAUTILUS_ARMOR.get());
 
-            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModCompatItems.SILICON_NAUTILUS_ARMOR.get()) {
-                inputStack = new ItemStack(ModCompatItems.SILICON_NAUTILUS_ARMOR.get());
-                outputStack = new ItemStack(ModCompatItems.RUBY_NAUTILUS_ARMOR.get());
+            } else if (ModList.get().isLoaded("vanillabackport") && inputItem == ModVanillaBackportRegistry.SILICON_NAUTILUS_ARMOR.get()) {
+                inputStack = new ItemStack(ModVanillaBackportRegistry.SILICON_NAUTILUS_ARMOR.get());
+                outputStack = new ItemStack(ModVanillaBackportRegistry.RUBY_NAUTILUS_ARMOR.get());
+
+            } else if (ModList.get().isLoaded("creategoggles") && inputItem == BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("creategoggles", "goggle_diamond_helmet"))) {
+                inputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("creategoggles", "goggle_diamond_helmet")));
+                outputStack = new ItemStack(ModCGRegistry.GOGGLE_RUBY_HELMET.get());
+
+            } else if (ModList.get().isLoaded("creategoggles") && inputItem == ModCGRegistry.GOGGLE_JADE_HELMET.get()) {
+                inputStack = new ItemStack(ModCGRegistry.GOGGLE_JADE_HELMET.get());
+                outputStack = new ItemStack(ModCGRegistry.GOGGLE_RUBY_HELMET.get());
+
+            } else if (ModList.get().isLoaded("creategoggles") && inputItem == ModCGRegistry.GOGGLE_AMBER_HELMET.get()) {
+                inputStack = new ItemStack(ModCGRegistry.GOGGLE_AMBER_HELMET.get());
+                outputStack = new ItemStack(ModCGRegistry.GOGGLE_RUBY_HELMET.get());
+
+            } else if (ModList.get().isLoaded("creategoggles") && inputItem == ModCGRegistry.GOGGLE_SILICON_HELMET.get()) {
+                inputStack = new ItemStack(ModCGRegistry.GOGGLE_SILICON_HELMET.get());
+                outputStack = new ItemStack(ModCGRegistry.GOGGLE_RUBY_HELMET.get());
+
+            } else if (ModList.get().isLoaded("creategoggles") && inputItem == BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("creategoggles", "diamond_backtank"))) {
+                inputStack = new ItemStack(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("creategoggles", "diamond_backtank")));
+                outputStack = new ItemStack(ModCGRegistry.RUBY_BACKTANK.get());
+
+            } else if (ModList.get().isLoaded("creategoggles") && inputItem == ModCGRegistry.JADE_BACKTANK.get()) {
+                inputStack = new ItemStack(ModCGRegistry.JADE_BACKTANK.get());
+                outputStack = new ItemStack(ModCGRegistry.RUBY_BACKTANK.get());
+
+            } else if (ModList.get().isLoaded("creategoggles") && inputItem == ModCGRegistry.AMBER_BACKTANK.get()) {
+                inputStack = new ItemStack(ModCGRegistry.AMBER_BACKTANK.get());
+                outputStack = new ItemStack(ModCGRegistry.RUBY_BACKTANK.get());
+
+            } else if (ModList.get().isLoaded("creategoggles") && inputItem == ModCGRegistry.SILICON_BACKTANK.get()) {
+                inputStack = new ItemStack(ModCGRegistry.SILICON_BACKTANK.get());
+                outputStack = new ItemStack(ModCGRegistry.RUBY_BACKTANK.get());
             }
         }
 

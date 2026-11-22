@@ -14,9 +14,7 @@ import net.minecraft.resources.ResourceLocation;
 public class MoleRenderer extends MobRenderer<MoleEntity, MoleModel> {
     public MoleRenderer(EntityRendererProvider.Context context) {
         super(context, new MoleModel(context.bakeLayer(ModModelLayers.MOLE)), 0.25f);
-        this.addLayer(new SaddleLayer(
-                        this, new MoleModel(context.bakeLayer(ModModelLayers.MOLE_SADDLE)), ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/entity/mole/mole_saddle.png"))
-        );
+        this.addLayer(new SaddleLayer(this, new MoleModel(context.bakeLayer(ModModelLayers.MOLE_SADDLE)), ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "textures/entity/mole/mole_saddle.png")));
     }
 
     @Override

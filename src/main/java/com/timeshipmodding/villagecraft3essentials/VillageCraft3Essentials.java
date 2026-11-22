@@ -1,13 +1,19 @@
 package com.timeshipmodding.villagecraft3essentials;
 
+import com.timeshipmodding.villagecraft3essentials.compat.aquaculture.registries.ModAquaRegistry;
+import com.timeshipmodding.villagecraft3essentials.compat.archers.event.registries.ModArchersEvents;
 import com.timeshipmodding.villagecraft3essentials.compat.bluemap.event.registries.ModBluemapEvents;
 import com.timeshipmodding.villagecraft3essentials.compat.brassworksmissions.event.registries.ModBrassworksMissionsEvents;
+import com.timeshipmodding.villagecraft3essentials.compat.creategoggles.event.registries.ModCGEvents;
+import com.timeshipmodding.villagecraft3essentials.compat.creategoggles.registries.ModCGRegistry;
+import com.timeshipmodding.villagecraft3essentials.compat.farmersdelight.registries.ModFDRegistry;
+import com.timeshipmodding.villagecraft3essentials.compat.luckperms.event.registries.ModLuckpermsEvents;
+import com.timeshipmodding.villagecraft3essentials.compat.vanillabackport.registries.ModVanillaBackportRegistry;
 import com.timeshipmodding.villagecraft3essentials.content.block.registries.ModBlocks;
 import com.timeshipmodding.villagecraft3essentials.content.block.entity.registries.ModBlockEntities;
 import com.timeshipmodding.villagecraft3essentials.content.creativetab.EssentialsTab;
 import com.timeshipmodding.villagecraft3essentials.content.entity.client.registries.ModEntities;
 import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModArmorMaterials;
-import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModCompatItems;
 import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems;
 import com.timeshipmodding.villagecraft3essentials.content.loot.modifier.registries.ModLootModifiers;
 import com.timeshipmodding.villagecraft3essentials.content.menu.registries.ModMenus;
@@ -36,7 +42,6 @@ public class VillageCraft3Essentials {
         ModBlockEntities.BLOCK_ENTITIES.register(modEventBus);
         ModEntities.ENTITY_TYPES.register(modEventBus);
         ModArmorMaterials.ARMOR_MATERIALS.register(modEventBus);
-        ModCompatItems.ITEMS.register(modEventBus);
         ModItems.ITEMS.register(modEventBus);
         ModLootModifiers.GLOBAL_LOOT_MODIFIERS.register(modEventBus);
         ModMenus.MENUS.register(modEventBus);
@@ -50,13 +55,38 @@ public class VillageCraft3Essentials {
         modContainer.registerConfig(ModConfig.Type.COMMON, CommonConfig.SPEC);
         modContainer.registerConfig(ModConfig.Type.SERVER, ServerConfig.SPEC);
 
-        // Register compat events
-        if (ModList.get().isLoaded("brassworksmissions")) {
-            ModBrassworksMissionsEvents.registerEvents();
+        // Register compat registries and events
+        if (ModList.get().isLoaded("archers")) {
+            ModArchersEvents.registerEvents();
+        }
+
+        if (ModList.get().isLoaded("aquaculture")) {
+            ModAquaRegistry.register(modEventBus);
         }
 
         if (ModList.get().isLoaded("bluemap")) {
             ModBluemapEvents.registerEvents();
+        }
+
+        if (ModList.get().isLoaded("brassworksmissions")) {
+            ModBrassworksMissionsEvents.registerEvents();
+        }
+
+        if (ModList.get().isLoaded("creategoggles")) {
+            ModCGRegistry.register(modEventBus);
+            ModCGEvents.registerEvents(modEventBus);
+        }
+
+        if (ModList.get().isLoaded("farmersdelight")) {
+            ModFDRegistry.register(modEventBus);
+        }
+
+        if (ModList.get().isLoaded("luckperms")) {
+            ModLuckpermsEvents.registerEvents();
+        }
+
+        if (ModList.get().isLoaded("vanillabackport")) {
+            ModVanillaBackportRegistry.register(modEventBus);
         }
     }
 }

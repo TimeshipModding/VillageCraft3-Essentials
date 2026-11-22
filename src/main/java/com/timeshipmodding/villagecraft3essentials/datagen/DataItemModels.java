@@ -19,10 +19,12 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import java.util.LinkedHashMap;
 import java.util.Objects;
 
-import static com.timeshipmodding.villagecraft3essentials.content.block.registries.ModBlocks.*;
-import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModCompatItems.*;
+import static com.timeshipmodding.villagecraft3essentials.compat.aquaculture.registries.ModAquaRegistry.*;
+import static com.timeshipmodding.villagecraft3essentials.compat.farmersdelight.registries.ModFDRegistry.*;
+import static com.timeshipmodding.villagecraft3essentials.compat.creategoggles.registries.ModCGRegistry.*;
+import static com.timeshipmodding.villagecraft3essentials.compat.vanillabackport.registries.ModVanillaBackportRegistry.*;
 
-import static com.timeshipmodding.villagecraft3essentials.content.item.registries.ModCompatItems.*;
+import static com.timeshipmodding.villagecraft3essentials.content.block.registries.ModBlocks.*;
 import static com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems.*;
 
 public class DataItemModels extends ItemModelProvider {
@@ -106,24 +108,28 @@ public class DataItemModels extends ItemModelProvider {
 
         // Armor Items
         trimmedArmorItem(JADE_HELMET);
+        basicItem(GOGGLE_JADE_HELMET.get());
         trimmedArmorItem(JADE_CHESTPLATE);
         trimmedArmorItem(JADE_LEGGINGS);
         trimmedArmorItem(JADE_BOOTS);
         basicItem(JADE_HORSE_ARMOR.get());
         basicItem(AMBER_NAUTILUS_ARMOR.get());
         trimmedArmorItem(AMBER_HELMET);
+        basicItem(GOGGLE_AMBER_HELMET.get());
         trimmedArmorItem(AMBER_CHESTPLATE);
         trimmedArmorItem(AMBER_LEGGINGS);
         trimmedArmorItem(AMBER_BOOTS);
         basicItem(AMBER_HORSE_ARMOR.get());
         basicItem(JADE_NAUTILUS_ARMOR.get());
         trimmedArmorItem(SILICON_HELMET);
+        basicItem(GOGGLE_SILICON_HELMET.get());
         trimmedArmorItem(SILICON_CHESTPLATE);
         trimmedArmorItem(SILICON_LEGGINGS);
         trimmedArmorItem(SILICON_BOOTS);
         basicItem(SILICON_HORSE_ARMOR.get());
         basicItem(SILICON_NAUTILUS_ARMOR.get());
         trimmedArmorItem(RUBY_HELMET);
+        basicItem(GOGGLE_RUBY_HELMET.get());
         trimmedArmorItem(RUBY_CHESTPLATE);
         trimmedArmorItem(RUBY_LEGGINGS);
         trimmedArmorItem(RUBY_BOOTS);
@@ -179,8 +185,6 @@ public class DataItemModels extends ItemModelProvider {
     }
 
     private void trimmedArmorItem(DeferredItem<Item> itemDeferredItem) {
-        final String MOD_ID = VillageCraft3Essentials.MODID;
-
         if (itemDeferredItem.get() instanceof ArmorItem armorItem) {
             trimMaterials.forEach((trimMaterial, value) -> {
                 float trimValue = value;
@@ -211,7 +215,7 @@ public class DataItemModels extends ItemModelProvider {
                         .model(new ModelFile.UncheckedModelFile(trimNameResLoc.getNamespace() + ":item/" + trimNameResLoc.getPath()))
                         .predicate(mcLoc("trim_type"), trimValue).end()
                         .texture("layer0",
-                                ResourceLocation.fromNamespaceAndPath(MOD_ID,
+                                ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID,
                                         "item/" + itemDeferredItem.getId().getPath()));
             });
         }

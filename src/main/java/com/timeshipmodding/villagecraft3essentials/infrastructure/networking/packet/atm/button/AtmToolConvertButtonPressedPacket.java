@@ -31,10 +31,10 @@ public record AtmToolConvertButtonPressedPacket(BlockPos pos, int data) implemen
         ServerPlayer sender = (ServerPlayer) context.player();
         Level level = sender.level();
         BlockPos pos = payload.pos();
-        BlockEntity be = level.getBlockEntity(pos);
+        BlockEntity blockEntity = level.getBlockEntity(pos);
 
-        if (be instanceof AtmBlockEntity myBlockEntity) {
-            myBlockEntity.setToolConvertButtonPressed(payload.data());
+        if (blockEntity instanceof AtmBlockEntity atmBlockEntity) {
+            atmBlockEntity.setToolConvertButtonPressed(payload.data());
         }
     }
 }

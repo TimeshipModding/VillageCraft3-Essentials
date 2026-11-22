@@ -35,11 +35,15 @@
       "required": false
     },
     {
-      "id": "villagecraft3essentials:silicon_brush",
+      "id": "villagecraft3essentials:silicon_nautilus_armor",
       "required": false
     },
     {
-      "id": "villagecraft3essentials:silicon_nautilus_armor",
+      "id": "villagecraft3essentials:goggle_silicon_helmet",
+      "required": false
+    },
+    {
+      "id": "villagecraft3essentials:silicon_backtank",
       "required": false
     }
   ]

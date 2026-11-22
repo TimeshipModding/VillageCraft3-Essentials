@@ -1,0 +1,38 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "creategoggles"
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_silicon_helmet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "villagecraft3essentials:silicon_helmet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "villagecraft3essentials:goggle_silicon_helmet"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_silicon_helmet"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "villagecraft3essentials:goggle_silicon_helmet"
+    ]
+  }
+}

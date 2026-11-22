@@ -1,0 +1,15 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "creategoggles"
+    }
+  ],
+  "type": "villagecraft3essentials:swap_compat_item_loot_modifier",
+  "conditions": [],
+  "replacementCurrency1": "villagecraft3essentials:jade_backtank",
+  "replacementCurrency2": "villagecraft3essentials:amber_backtank",
+  "replacementCurrency3": "villagecraft3essentials:silicon_backtank",
+  "replacementCurrency4": "villagecraft3essentials:ruby_backtank",
+  "targetCurrency": "creategoggles:diamond_backtank"
+}

@@ -1,7 +1,7 @@
 package com.timeshipmodding.villagecraft3essentials.compat.jei;
 
+import com.timeshipmodding.villagecraft3essentials.compat.farmersdelight.registries.ModFDRegistry;
 import com.timeshipmodding.villagecraft3essentials.compat.jei.transfer.WalletRecipeTransferHandler;
-import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModCompatItems;
 import com.timeshipmodding.villagecraft3essentials.content.screen.WalletScreen;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
@@ -29,10 +29,10 @@ public class JEIPlugin implements IModPlugin {
     @Override
     public void registerRecipes (IRecipeRegistration registration) {
         if (ModList.get().isLoaded("farmersdelight")) {
-            registration.addIngredientInfo(new ItemStack(ModCompatItems.JADE_KNIFE.get()), VanillaTypes.ITEM_STACK, KNIFE_INFO);
-            registration.addIngredientInfo(new ItemStack(ModCompatItems.AMBER_KNIFE.get()), VanillaTypes.ITEM_STACK, KNIFE_INFO);
-            registration.addIngredientInfo(new ItemStack(ModCompatItems.SILICON_KNIFE.get()), VanillaTypes.ITEM_STACK, KNIFE_INFO);
-            registration.addIngredientInfo(new ItemStack(ModCompatItems.RUBY_KNIFE.get()), VanillaTypes.ITEM_STACK, KNIFE_INFO);
+            registration.addIngredientInfo(new ItemStack(ModFDRegistry.JADE_KNIFE.get()), VanillaTypes.ITEM_STACK, KNIFE_INFO);
+            registration.addIngredientInfo(new ItemStack(ModFDRegistry.AMBER_KNIFE.get()), VanillaTypes.ITEM_STACK, KNIFE_INFO);
+            registration.addIngredientInfo(new ItemStack(ModFDRegistry.SILICON_KNIFE.get()), VanillaTypes.ITEM_STACK, KNIFE_INFO);
+            registration.addIngredientInfo(new ItemStack(ModFDRegistry.RUBY_KNIFE.get()), VanillaTypes.ITEM_STACK, KNIFE_INFO);
         }
     }
 

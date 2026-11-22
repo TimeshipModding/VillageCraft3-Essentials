@@ -13,8 +13,11 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import vectorwing.farmersdelight.common.registry.ModItems;
 
-import static com.timeshipmodding.villagecraft3essentials.content.item.registries.ModCompatItems.*;
 import static net.minecraft.world.item.Items.*;
+import static com.timeshipmodding.villagecraft3essentials.compat.aquaculture.registries.ModAquaRegistry.*;
+import static com.timeshipmodding.villagecraft3essentials.compat.farmersdelight.registries.ModFDRegistry.*;
+import static com.timeshipmodding.villagecraft3essentials.compat.creategoggles.registries.ModCGRegistry.*;
+import static com.timeshipmodding.villagecraft3essentials.compat.vanillabackport.registries.ModVanillaBackportRegistry.*;
 
 import static com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems.*;
 import static com.timeshipmodding.villagecraft3essentials.content.block.registries.ModBlocks.*;
@@ -88,10 +91,6 @@ public class EssentialsTab {
                     pOutput.accept(AquaItems.DIAMOND_HOOK.get());
                 }
 
-                if (ModList.get().isLoaded("betterarcheology")) {
-                    pOutput.accept(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("betterarcheology", "diamond_brush")));
-                }
-
                 pOutput.accept(JADE_SHOVEL);
                 pOutput.accept(JADE_PICKAXE);
                 pOutput.accept(JADE_AXE);
@@ -114,10 +113,6 @@ public class EssentialsTab {
                     pOutput.accept(JADE_FISHING_ROD.get());
                     pOutput.accept(JADE_FILLET_KNIFE.get());
                     pOutput.accept(JADE_HOOK.get());
-                }
-
-                if (ModList.get().isLoaded("betterarcheology")) {
-                    pOutput.accept(JADE_BRUSH.get());
                 }
 
                 pOutput.accept(AMBER_SHOVEL);
@@ -144,10 +139,6 @@ public class EssentialsTab {
                     pOutput.accept(AMBER_HOOK.get());
                 }
 
-                if (ModList.get().isLoaded("betterarcheology")) {
-                    pOutput.accept(AMBER_BRUSH.get());
-                }
-
                 pOutput.accept(SILICON_SHOVEL);
                 pOutput.accept(SILICON_PICKAXE);
                 pOutput.accept(SILICON_AXE);
@@ -170,10 +161,6 @@ public class EssentialsTab {
                     pOutput.accept(SILICON_FISHING_ROD.get());
                     pOutput.accept(SILICON_FILLET_KNIFE.get());
                     pOutput.accept(SILICON_HOOK.get());
-                }
-
-                if (ModList.get().isLoaded("betterarcheology")) {
-                    pOutput.accept(SILICON_BRUSH.get());
                 }
 
                 pOutput.accept(RUBY_SHOVEL);
@@ -200,12 +187,18 @@ public class EssentialsTab {
                     pOutput.accept(RUBY_HOOK.get());
                 }
 
-                if (ModList.get().isLoaded("betterarcheology")) {
-                    pOutput.accept(RUBY_BRUSH.get());
+                pOutput.accept(DIAMOND_HELMET);
+
+                if (ModList.get().isLoaded("creategoggles")) {
+                    pOutput.accept(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("creategoggles", "goggle_diamond_helmet")));
                 }
 
-                pOutput.accept(DIAMOND_HELMET);
                 pOutput.accept(DIAMOND_CHESTPLATE);
+
+                if (ModList.get().isLoaded("creategoggles")) {
+                    pOutput.accept(BuiltInRegistries.ITEM.get(ResourceLocation.fromNamespaceAndPath("creategoggles", "diamond_backtank")));
+                }
+
                 pOutput.accept(DIAMOND_LEGGINGS);
                 pOutput.accept(DIAMOND_BOOTS);
                 pOutput.accept(DIAMOND_HORSE_ARMOR);
@@ -215,7 +208,17 @@ public class EssentialsTab {
                 }
 
                 pOutput.accept(JADE_HELMET);
+
+                if (ModList.get().isLoaded("creategoggles")) {
+                    pOutput.accept(GOGGLE_JADE_HELMET.get());
+                }
+
                 pOutput.accept(JADE_CHESTPLATE);
+
+                if (ModList.get().isLoaded("creategoggles")) {
+                    pOutput.accept(JADE_BACKTANK);
+                }
+
                 pOutput.accept(JADE_LEGGINGS);
                 pOutput.accept(JADE_BOOTS);
                 pOutput.accept(JADE_HORSE_ARMOR);
@@ -225,7 +228,17 @@ public class EssentialsTab {
                 }
 
                 pOutput.accept(AMBER_HELMET);
+
+                if (ModList.get().isLoaded("creategoggles")) {
+                    pOutput.accept(GOGGLE_AMBER_HELMET.get());
+                }
+
                 pOutput.accept(AMBER_CHESTPLATE);
+
+                if (ModList.get().isLoaded("creategoggles")) {
+                    pOutput.accept(AMBER_BACKTANK);
+                }
+
                 pOutput.accept(AMBER_LEGGINGS);
                 pOutput.accept(AMBER_BOOTS);
                 pOutput.accept(AMBER_HORSE_ARMOR);
@@ -235,7 +248,17 @@ public class EssentialsTab {
                 }
 
                 pOutput.accept(SILICON_HELMET);
+
+                if (ModList.get().isLoaded("creategoggles")) {
+                    pOutput.accept(GOGGLE_SILICON_HELMET.get());
+                }
+
                 pOutput.accept(SILICON_CHESTPLATE);
+
+                if (ModList.get().isLoaded("creategoggles")) {
+                    pOutput.accept(SILICON_BACKTANK);
+                }
+
                 pOutput.accept(SILICON_LEGGINGS);
                 pOutput.accept(SILICON_BOOTS);
                 pOutput.accept(SILICON_HORSE_ARMOR);
@@ -245,7 +268,17 @@ public class EssentialsTab {
                 }
 
                 pOutput.accept(RUBY_HELMET);
+
+                if (ModList.get().isLoaded("creategoggles")) {
+                    pOutput.accept(GOGGLE_RUBY_HELMET.get());
+                }
+
                 pOutput.accept(RUBY_CHESTPLATE);
+
+                if (ModList.get().isLoaded("creategoggles")) {
+                    pOutput.accept(RUBY_BACKTANK);
+                }
+
                 pOutput.accept(RUBY_LEGGINGS);
                 pOutput.accept(RUBY_BOOTS);
                 pOutput.accept(RUBY_HORSE_ARMOR);

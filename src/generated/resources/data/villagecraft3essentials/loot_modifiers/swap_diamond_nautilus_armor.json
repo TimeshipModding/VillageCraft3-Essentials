@@ -1,0 +1,15 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "vanillabackport"
+    }
+  ],
+  "type": "villagecraft3essentials:swap_compat_item_loot_modifier",
+  "conditions": [],
+  "replacementCurrency1": "villagecraft3essentials:jade_nautilus_armor",
+  "replacementCurrency2": "villagecraft3essentials:amber_nautilus_armor",
+  "replacementCurrency3": "villagecraft3essentials:silicon_nautilus_armor",
+  "replacementCurrency4": "villagecraft3essentials:ruby_nautilus_armor",
+  "targetCurrency": "minecraft:diamond_nautilus_armor"
+}

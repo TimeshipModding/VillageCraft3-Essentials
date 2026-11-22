@@ -2,8 +2,6 @@ package com.timeshipmodding.villagecraft3essentials.infrastructure.data;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentSerialization;
 
 public record KickCommandData(long villagecraftCityKickCooldown, long oasisKickCooldown, long swedishFurnitureStoreKickCooldown, long londonKickCooldown, long blackWaterKickCooldown) {
     public static final Codec<KickCommandData> CODEC = RecordCodecBuilder.create(instance ->
