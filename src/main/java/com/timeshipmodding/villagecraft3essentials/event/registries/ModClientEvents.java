@@ -11,19 +11,22 @@ import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModIt
 import com.timeshipmodding.villagecraft3essentials.content.menu.registries.ModMenus;
 import com.timeshipmodding.villagecraft3essentials.content.screen.AtmScreen;
 import com.timeshipmodding.villagecraft3essentials.content.screen.WalletScreen;
+import com.timeshipmodding.villagecraft3essentials.infrastructure.config.ServerConfig;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.data.cache.DebugTownDataCache;
+import com.timeshipmodding.villagecraft3essentials.infrastructure.data.cache.LuckpermsTownGroupCache;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.mixin.MouseHandlerMixinAccessor;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.networking.packet.wallet.OpenWalletMenuPacket;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.tags.registries.ModItemTags;
 import io.wispforest.accessories.api.client.AccessoriesRendererRegistry;
 import io.wispforest.accessories.api.client.DefaultAccessoryRenderer;
-import io.wispforest.accessories.client.AccessoriesClient;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.ImageButton;
 import net.minecraft.client.gui.components.WidgetSprites;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.InventoryScreen;
+import net.minecraft.client.player.AbstractClientPlayer;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -35,12 +38,10 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
-import net.neoforged.neoforge.client.event.CustomizeGuiOverlayEvent;
-import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
-import net.neoforged.neoforge.client.event.ScreenEvent;
+import net.neoforged.neoforge.client.event.*;
+import net.neoforged.neoforge.common.util.TriState;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
-import org.spongepowered.asm.mixin.gen.Accessor;
 
 import java.util.List;
 
@@ -140,6 +141,34 @@ public class ModClientEvents {
         }
     }
 
+    @SubscribeEvent(priority = EventPriority.LOWEST)
+    public static void onRenderNameTag(RenderNameTagEvent event) {
+        LocalPlayer viewer = Minecraft.getInstance().player;
+
+        if (ServerConfig.ENABLE_WAR_SYSTEM_FEATURES.get() && ServerConfig.ENABLE_NAME_TAG_HIDING.get()) {
+            if (LuckpermsTownGroupCache.isInTownGroup(viewer.getUUID(), ServerConfig.VILLAGECRAFTCITY_GROUP_NAME.get())) {
+                disableNameTagRenderingOnLuckpermsGroup(event, ServerConfig.VILLAGECRAFTCITY_GROUP_NAME.get());
+
+            } else if (LuckpermsTownGroupCache.isInTownGroup(viewer.getUUID(), ServerConfig.OASIS_GROUP_NAME.get())) {
+                disableNameTagRenderingOnLuckpermsGroup(event, ServerConfig.OASIS_GROUP_NAME.get());
+
+            } else if (LuckpermsTownGroupCache.isInTownGroup(viewer.getUUID(), ServerConfig.SWEDISHFURNITURESTORE_GROUP_NAME.get())) {
+                disableNameTagRenderingOnLuckpermsGroup(event, ServerConfig.SWEDISHFURNITURESTORE_GROUP_NAME.get());
+
+            } else if (LuckpermsTownGroupCache.isInTownGroup(viewer.getUUID(), ServerConfig.LONDON_GROUP_NAME.get())) {
+                disableNameTagRenderingOnLuckpermsGroup(event, ServerConfig.LONDON_GROUP_NAME.get());
+
+            } else if (LuckpermsTownGroupCache.isInTownGroup(viewer.getUUID(), ServerConfig.BLACKWATER_GROUP_NAME.get())) {
+                disableNameTagRenderingOnLuckpermsGroup(event, ServerConfig.BLACKWATER_GROUP_NAME.get());
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void onClientPlayerNetwork(ClientPlayerNetworkEvent.LoggingOut event) {
+        LuckpermsTownGroupCache.clear();
+    }
+
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void onRenderOverlay(CustomizeGuiOverlayEvent.DebugText event) {
         List<String> town = event.getLeft();
@@ -148,6 +177,14 @@ public class ModClientEvents {
         if (!townName.isEmpty()) {
             town.add("");
             town.add("[VillageCraft 3 Essentials] Town: " + townName);
+        }
+    }
+
+    private static void disableNameTagRenderingOnLuckpermsGroup(RenderNameTagEvent event, String groupName) {
+        if (event.getEntity() instanceof AbstractClientPlayer player) {
+            if (!LuckpermsTownGroupCache.isInTownGroup(player.getUUID(), groupName)) {
+                event.setCanRender(TriState.FALSE);
+            }
         }
     }
 }

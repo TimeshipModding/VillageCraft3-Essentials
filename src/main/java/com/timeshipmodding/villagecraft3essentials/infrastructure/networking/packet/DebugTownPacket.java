@@ -9,7 +9,7 @@ import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 
-public record DebugTownPacket(String town)  implements CustomPacketPayload {
+public record DebugTownPacket(String town) implements CustomPacketPayload {
     public static final CustomPacketPayload.Type<DebugTownPacket> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "debug_town_packet"));
 
     public static final StreamCodec<FriendlyByteBuf, DebugTownPacket> STREAM_CODEC = StreamCodec.composite(

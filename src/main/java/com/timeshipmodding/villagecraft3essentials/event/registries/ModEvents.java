@@ -6,6 +6,7 @@ import com.timeshipmodding.villagecraft3essentials.compat.bluemap.BlueMapMethods
 import com.timeshipmodding.villagecraft3essentials.compat.luckperms.LuckpermsMethods;
 import com.timeshipmodding.villagecraft3essentials.content.command.DiscordLinkPlayerCommand;
 import com.timeshipmodding.villagecraft3essentials.content.block.registries.ModBlocks;
+import com.timeshipmodding.villagecraft3essentials.content.command.RefreshLuckpermsTownGroupsCommand;
 import com.timeshipmodding.villagecraft3essentials.content.command.SpawnCommand;
 import com.timeshipmodding.villagecraft3essentials.content.command.blackwater.*;
 import com.timeshipmodding.villagecraft3essentials.content.command.swedishfurniturestore.*;
@@ -25,6 +26,7 @@ import com.timeshipmodding.villagecraft3essentials.infrastructure.data.saveddata
 import com.timeshipmodding.villagecraft3essentials.infrastructure.data.saveddata.WarPointsSavedData;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.handler.item.HorseCurrencyArmorItemHandler;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.networking.packet.DebugTownPacket;
+import com.timeshipmodding.villagecraft3essentials.infrastructure.networking.packet.LuckpermsTownGroupPacket;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.networking.packet.atm.AtmRandomConversionRatesPacket;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.data.saveddata.AtmRandomConversionRatesSavedData;
 import net.minecraft.ChatFormatting;
@@ -48,6 +50,7 @@ import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.event.OnDatapackSyncEvent;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDropsEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.event.tick.LevelTickEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
@@ -132,6 +135,7 @@ public class ModEvents {
         new WarScoreResetCommand(event.getDispatcher());
         new RemoveCooldownJailCommand(event.getDispatcher());
         new RemoveCooldownKickCommand(event.getDispatcher());
+        new RefreshLuckpermsTownGroupsCommand(event.getDispatcher());
 
         if (ModList.get().isLoaded("dcintegration")) {
             new DiscordLinkPlayerCommand(event.getDispatcher());
@@ -644,6 +648,18 @@ public class ModEvents {
             }
 
             player.setData(ModDataAttachments.WALLET, wallet);
+        }
+    }
+
+    @SubscribeEvent
+    public static void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
+        if (ServerConfig.ENABLE_WAR_SYSTEM_FEATURES.get() && ServerConfig.ENABLE_NAME_TAG_HIDING.get() && ModList.get().isLoaded("luckperms")) {
+            boolean inVillageCraftCity = LuckpermsMethods.isInGroup(event.getEntity(), ServerConfig.VILLAGECRAFTCITY_GROUP_NAME.get());
+            boolean inOasis = LuckpermsMethods.isInGroup(event.getEntity(), ServerConfig.OASIS_GROUP_NAME.get());
+            boolean inSwedishFurnitureStore = LuckpermsMethods.isInGroup(event.getEntity(), ServerConfig.SWEDISHFURNITURESTORE_GROUP_NAME.get());
+            boolean inLondon = LuckpermsMethods.isInGroup(event.getEntity(), ServerConfig.LONDON_GROUP_NAME.get());
+            boolean inBlackWater = LuckpermsMethods.isInGroup(event.getEntity(), ServerConfig.BLACKWATER_GROUP_NAME.get());
+            PacketDistributor.sendToAllPlayers(new LuckpermsTownGroupPacket(event.getEntity().getUUID(), inVillageCraftCity, inOasis, inSwedishFurnitureStore, inLondon, inBlackWater));
         }
     }
 

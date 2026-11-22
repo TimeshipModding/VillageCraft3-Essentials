@@ -3,6 +3,7 @@ package com.timeshipmodding.villagecraft3essentials.event.registries;
 import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.networking.packet.DebugTownPacket;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.networking.packet.HorseSyncCurrencyArmorEquipPacket;
+import com.timeshipmodding.villagecraft3essentials.infrastructure.networking.packet.LuckpermsTownGroupPacket;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.networking.packet.wallet.OpenWalletMenuPacket;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.networking.packet.atm.*;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.networking.packet.atm.button.AtmRandomConvertButtonPressedPacket;
@@ -28,6 +29,10 @@ public class ModNetworkingEvents {
                 DebugTownPacket.TYPE,
                 DebugTownPacket.STREAM_CODEC,
                 DebugTownPacket::handle);
+        registrar.playToClient(
+                LuckpermsTownGroupPacket.TYPE,
+                LuckpermsTownGroupPacket.STREAM_CODEC,
+                LuckpermsTownGroupPacket::handle);
 
         registrar.playToServer(
                 AtmSwitchTabPacket.TYPE,

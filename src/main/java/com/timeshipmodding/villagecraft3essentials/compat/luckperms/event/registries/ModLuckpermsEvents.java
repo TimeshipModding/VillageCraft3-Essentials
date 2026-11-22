@@ -4,14 +4,17 @@ import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
 import com.timeshipmodding.villagecraft3essentials.compat.luckperms.LuckpermsMethods;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.util.StringFormatter;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.config.ServerConfig;
+import net.luckperms.api.event.user.UserDataRecalculateEvent;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
+import net.neoforged.neoforge.network.PacketDistributor;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 @EventBusSubscriber(modid = VillageCraft3Essentials.MODID)
 public class ModLuckpermsEvents {

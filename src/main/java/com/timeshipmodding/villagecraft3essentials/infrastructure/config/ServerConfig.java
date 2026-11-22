@@ -29,6 +29,7 @@ public class ServerConfig {
     public static ModConfigSpec.BooleanValue ENABLE_SETSPAWN_BLUEMAP_MARKER_CREATION;
     public static ModConfigSpec.BooleanValue ENABLE_TOWN_DEBUG_BLUEMAP_MARKERS;
     public static ModConfigSpec.BooleanValue ENABLE_WAR_SYSTEM_FEATURES;
+    public static ModConfigSpec.BooleanValue ENABLE_NAME_TAG_HIDING;
     public static ModConfigSpec.IntValue CORE_RESPAWN_TIME_MIN;
     public static ModConfigSpec.IntValue CORE_RESPAWN_TIME_MAX;
     public static ModConfigSpec.IntValue VILLAGECRAFTCITY_POINT_MULTIPLIER;
@@ -146,6 +147,9 @@ public class ServerConfig {
         ENABLE_WAR_SYSTEM_FEATURES = BUILDER
                 .comment("Enables the features required for VillageCraft 3's War System")
                 .define("enableWarSystemFeatures", false);
+        ENABLE_NAME_TAG_HIDING = BUILDER
+                .comment("Disables rendering of player's name tags if they do not have the same luckperms town group name")
+                .define("enableNameTagHiding", false);
         CORE_RESPAWN_TIME_MIN = BUILDER
                 .comment("The minimum time in hours for a core to respawn")
                 .defineInRange("coreRespawnTimeMin", 2, 0, Integer.MAX_VALUE);
