@@ -69,6 +69,10 @@ public class DataItemModels extends ItemModelProvider {
         basicItem(COOKED_WORM.get());
         basicItem(WORM.get());
         basicItem(MISSION_REWARD_PLACEHOLDER.get());
+        basicItem(OASIS_GAMBLING_CHIP_1.get());
+        basicItem(OASIS_GAMBLING_CHIP_2.get());
+        basicItem(OASIS_GAMBLING_CHIP_3.get());
+        basicItem(OASIS_GAMBLING_CHIP_4.get());
 
         // Tool Items
         handheldItem(JADE_SWORD.get());

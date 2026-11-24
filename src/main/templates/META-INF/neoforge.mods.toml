@@ -193,7 +193,7 @@ license="${mod_license}"
 [[dependencies.${mod_id}]]
     modId="vista"
     type="optional"
-    versionRange="[5.6.0,)"
+    versionRange="[1.21.1-5.5.7,)"
     ordering="AFTER"
     side="BOTH"
 

@@ -1,4 +1,4 @@
-// 1.21.1	2026-11-07T21:23:39.1438822	Item Models: villagecraft3essentials
+// 1.21.1	2026-11-24T11:41:01.519047	Item Models: villagecraft3essentials
 b561339f3135d8189e8c687143e3c255ad9365ee assets/villagecraft3essentials/models/item/amber.json
 e5eaf01e189a5f62cb633c07077789fa2db9de9d assets/villagecraft3essentials/models/item/amber_axe.json
 5e2574878ef367c0f669a02cd38b1656f72826d2 assets/villagecraft3essentials/models/item/amber_backport_spear.json
@@ -168,6 +168,10 @@ d96947491701afd56807efac801e435403db1ab4 assets/villagecraft3essentials/models/i
 645ff8c6bcc431660530afb75e9f2c636e9e18a8 assets/villagecraft3essentials/models/item/magenta_atm.json
 7fc3a51b76e067651a21300e67835078b70e7ee0 assets/villagecraft3essentials/models/item/mission_reward_placeholder.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/villagecraft3essentials/models/item/mole_spawn_egg.json
+6da6d4c0861c49a208fae3fcc19dcf4172b14d91 assets/villagecraft3essentials/models/item/oasis_gambling_chip_1.json
+785d3190e7a9ea16bbd06808842e40584e7924aa assets/villagecraft3essentials/models/item/oasis_gambling_chip_2.json
+fd7844659b2fc6fc3c3a0ed12cbba5d1703ffdb0 assets/villagecraft3essentials/models/item/oasis_gambling_chip_3.json
+af7b20c51780d56e058726403e09c436d29e63dc assets/villagecraft3essentials/models/item/oasis_gambling_chip_4.json
 055d05b065dc7aa898b578a90607ec391503644b assets/villagecraft3essentials/models/item/orange_atm.json
 ffc59d119a7533b7e5e8e2d87e9daf3753af3fb2 assets/villagecraft3essentials/models/item/pink_atm.json
 5ce8a71a52089fe6cfc1944b7c29fa8b9bc2f3ce assets/villagecraft3essentials/models/item/police_baton.json

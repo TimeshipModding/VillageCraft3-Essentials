@@ -5,12 +5,14 @@ import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
 import com.timeshipmodding.villagecraft3essentials.compat.aquaculture.AquaMethods;
 import com.timeshipmodding.villagecraft3essentials.compat.aquaculture.registries.ModAquaRegistry;
 import com.timeshipmodding.villagecraft3essentials.compat.vanillabackport.VanillaBackportMethods;
+import com.timeshipmodding.villagecraft3essentials.content.block.registries.ModBlocks;
 import com.timeshipmodding.villagecraft3essentials.content.entity.client.registries.ModEntities;
 import com.timeshipmodding.villagecraft3essentials.content.entity.client.renderers.MoleRenderer;
 import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems;
 import com.timeshipmodding.villagecraft3essentials.content.menu.registries.ModMenus;
 import com.timeshipmodding.villagecraft3essentials.content.screen.AtmScreen;
 import com.timeshipmodding.villagecraft3essentials.content.screen.WalletScreen;
+import com.timeshipmodding.villagecraft3essentials.infrastructure.bakedmodels.GamblingChipBakedModel;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.config.ServerConfig;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.data.cache.DebugTownDataCache;
 import com.timeshipmodding.villagecraft3essentials.infrastructure.data.cache.LuckpermsTownGroupCache;
@@ -27,7 +29,9 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.client.renderer.block.BlockModelShaper;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ArmorItem;
@@ -39,6 +43,7 @@ import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.*;
+import net.neoforged.neoforge.client.model.CompositeModel;
 import net.neoforged.neoforge.common.util.TriState;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
@@ -166,6 +171,15 @@ public class ModClientEvents {
     @SubscribeEvent
     public static void onClientPlayerNetwork(ClientPlayerNetworkEvent.LoggingOut event) {
         LuckpermsTownGroupCache.clear();
+    }
+
+    @SubscribeEvent
+    public static void onModifyBakingResult(ModelEvent.ModifyBakingResult event) {
+        ModelResourceLocation stateLoc = BlockModelShaper.stateToModelLocation(ModBlocks.OASIS_GAMBLING_CHIPS.get().defaultBlockState());
+
+        if (event.getModels().get(stateLoc) instanceof CompositeModel.Baked composite) {
+            event.getModels().put(stateLoc, new GamblingChipBakedModel(composite));
+        }
     }
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)

@@ -1,7 +1,9 @@
 package com.timeshipmodding.villagecraft3essentials.content.item.registries;
 
 import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
+import com.timeshipmodding.villagecraft3essentials.content.block.registries.ModBlocks;
 import com.timeshipmodding.villagecraft3essentials.content.entity.client.registries.ModEntities;
+import com.timeshipmodding.villagecraft3essentials.content.blockitem.roleplayblockitem.GamblingChipBlockItem;
 import com.timeshipmodding.villagecraft3essentials.content.item.roleplayitem.AccessoryRoleplayItem;
 import com.timeshipmodding.villagecraft3essentials.content.item.MissionRewardPlaceholderItem;
 import com.timeshipmodding.villagecraft3essentials.content.item.PropellerHatItem;
@@ -79,6 +81,10 @@ public class ModItems {
     public static final DeferredItem<Item> OASIS_DEED_2 = ITEMS.register("oasis_deed_2", () -> new RoleplayItem("oasis", new Item.Properties().stacksTo(1)));
     public static final DeferredItem<Item> OASIS_DEED_3 = ITEMS.register("oasis_deed_3", () -> new RoleplayItem("oasis", new Item.Properties().stacksTo(1)));
     public static final DeferredItem<Item> OASIS_DEED_4 = ITEMS.register("oasis_deed_4", () -> new RoleplayItem("oasis", new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> OASIS_GAMBLING_CHIP_1 = ITEMS.register("oasis_gambling_chip_1", () -> new GamblingChipBlockItem("oasis", 0, ModBlocks.OASIS_GAMBLING_CHIPS.get(), new Item.Properties()));
+    public static final DeferredItem<Item> OASIS_GAMBLING_CHIP_2 = ITEMS.register("oasis_gambling_chip_2", () -> new GamblingChipBlockItem("oasis", 1, ModBlocks.OASIS_GAMBLING_CHIPS.get(), new Item.Properties()));
+    public static final DeferredItem<Item> OASIS_GAMBLING_CHIP_3 = ITEMS.register("oasis_gambling_chip_3", () -> new GamblingChipBlockItem("oasis", 2, ModBlocks.OASIS_GAMBLING_CHIPS.get(), new Item.Properties()));
+    public static final DeferredItem<Item> OASIS_GAMBLING_CHIP_4 = ITEMS.register("oasis_gambling_chip_4", () -> new GamblingChipBlockItem("oasis", 3, ModBlocks.OASIS_GAMBLING_CHIPS.get(), new Item.Properties()));
     public static final DeferredItem<Item> LONDON_HAT_1 = ITEMS.register("london_hat_1", () -> new AccessoryRoleplayItem("london", new Item.Properties().stacksTo(1)));
     public static final DeferredItem<Item> LONDON_HAT_2 = ITEMS.register("london_hat_2", () -> new AccessoryRoleplayItem("london", new Item.Properties().stacksTo(1)));
     public static final DeferredItem<Item> PROPELLER_HAT = ITEMS.register("propeller_hat", () -> new PropellerHatItem(new Item.Properties()));

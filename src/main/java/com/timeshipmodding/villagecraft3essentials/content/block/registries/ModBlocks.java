@@ -2,6 +2,7 @@ package com.timeshipmodding.villagecraft3essentials.content.block.registries;
 
 import com.timeshipmodding.villagecraft3essentials.VillageCraft3Essentials;
 import com.timeshipmodding.villagecraft3essentials.content.block.AtmBlock;
+import com.timeshipmodding.villagecraft3essentials.content.block.roleplayblock.GamblingChipBlock;
 import com.timeshipmodding.villagecraft3essentials.content.blockitem.roleplayblockitem.RoleplayBlockItem;
 import com.timeshipmodding.villagecraft3essentials.content.item.registries.ModItems;
 import com.timeshipmodding.villagecraft3essentials.content.sound.registries.ModSounds;
@@ -12,6 +13,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DropExperienceBlock;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -56,6 +58,7 @@ public class ModBlocks {
     public static final DeferredBlock<AtmBlock> RED_ATM = registerBlock("red_atm", () -> new AtmBlock(14, BlockBehaviour.Properties.of().noOcclusion().mapColor(DyeColor.RED).requiresCorrectToolForDrops().strength(1.8F)));
     public static final DeferredBlock<AtmBlock> WHITE_ATM = registerBlock("white_atm", () -> new AtmBlock(15, BlockBehaviour.Properties.of().noOcclusion().mapColor(DyeColor.WHITE).requiresCorrectToolForDrops().strength(1.8F)));
     public static final DeferredBlock<AtmBlock> YELLOW_ATM = registerBlock("yellow_atm", () -> new AtmBlock(16, BlockBehaviour.Properties.of().noOcclusion().mapColor(DyeColor.YELLOW).requiresCorrectToolForDrops().strength(1.8F)));
+    public static final DeferredBlock<GamblingChipBlock> OASIS_GAMBLING_CHIPS = registerRoleplayBlockWithoutBlockItem("oasis_gambling_chips", () -> new GamblingChipBlock(BlockBehaviour.Properties.of().sound(SoundType.CANDLE).strength(0.1F).noOcclusion().noCollission().noLootTable()));
 
     // Register Methods
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
@@ -64,9 +67,14 @@ public class ModBlocks {
         return toReturn;
     }
 
-    private static <T extends Block> DeferredBlock<T> registerRoleplayBlock(String town, int stackAmount, String name, Supplier<T> block) {
+    private static <T extends Block> DeferredBlock<T> registerRoleplayBlock(String town, String name, Supplier<T> block) {
         DeferredBlock<T> toReturn = BLOCKS.register(name, block);
-        registerRoleplayBlockItem(town, stackAmount, name, toReturn);
+        registerRoleplayBlockItem(town, name, toReturn);
+        return toReturn;
+    }
+
+    private static <T extends Block> DeferredBlock<T> registerRoleplayBlockWithoutBlockItem(String name, Supplier<T> block) {
+        DeferredBlock<T> toReturn = BLOCKS.register(name, block);
         return toReturn;
     }
 
@@ -74,7 +82,7 @@ public class ModBlocks {
         return ModItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
     }
 
-    private static <T extends Block> DeferredItem<Item> registerRoleplayBlockItem(String town, int stackAmount, String name, DeferredBlock<T> block) {
-        return ModItems.ITEMS.register(name, () -> new RoleplayBlockItem(town, block.get(), new Item.Properties().stacksTo(stackAmount)));
+    private static <T extends Block> DeferredItem<Item> registerRoleplayBlockItem(String town, String name, DeferredBlock<T> block) {
+        return ModItems.ITEMS.register(name, () -> new RoleplayBlockItem(town, block.get(), new Item.Properties()));
     }
 }

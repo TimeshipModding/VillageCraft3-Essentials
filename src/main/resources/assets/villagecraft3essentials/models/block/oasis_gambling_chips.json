@@ -1,0 +1,617 @@
+{
+  "loader": "neoforge:composite",
+  "textures": {
+    "0": "villagecraft3essentials:block/oasis_gambling_chips",
+    "particle": "villagecraft3essentials:block/oasis_gambling_chips"
+  },
+  "children": {
+    "stack_0_chip_1": {
+      "textures": { "0": "villagecraft3essentials:block/oasis_gambling_chips" },
+      "elements": [
+        {
+          "name": "red1",
+          "from": [3, 0, 3],
+          "to": [7, 1, 7],
+          "rotation": {"angle": 0, "axis": "y", "origin": [3, 0, 3]},
+          "faces": {
+            "north": {"uv": [0, 0, 4, 1], "texture": "#0"},
+            "east": {"uv": [0, 0, 1, 4], "rotation": 90, "texture": "#0"},
+            "south": {"uv": [0, 0, 4, 1], "texture": "#0"},
+            "west": {"uv": [0, 0, 4, 1], "texture": "#0"},
+            "up": {"uv": [0, 0, 4, 4], "texture": "#0"},
+            "down": {"uv": [0, 0, 4, 4], "texture": "#0"}
+          }
+        }
+      ]
+    },
+    "stack_0_chip_2": {
+      "textures": { "0": "villagecraft3essentials:block/oasis_gambling_chips" },
+      "elements": [
+        {
+          "name": "red2",
+          "from": [3, 1, 3],
+          "to": [7, 2, 7],
+          "rotation": {"angle": 22.5, "axis": "y", "origin": [5, 1.5, 5]},
+          "faces": {
+            "north": {"uv": [0, 0, 4, 1], "texture": "#0"},
+            "east": {"uv": [0, 0, 1, 4], "rotation": 90, "texture": "#0"},
+            "south": {"uv": [0, 0, 4, 1], "texture": "#0"},
+            "west": {"uv": [0, 0, 4, 1], "texture": "#0"},
+            "up": {"uv": [0, 0, 4, 4], "texture": "#0"},
+            "down": {"uv": [0, 0, 4, 4], "texture": "#0"}
+          }
+        }
+      ]
+    },
+    "stack_0_chip_3": {
+      "textures": { "0": "villagecraft3essentials:block/oasis_gambling_chips" },
+      "elements": [
+        {
+          "name": "red3",
+          "from": [3, 2, 3],
+          "to": [7, 3, 7],
+          "rotation": {"angle": 0, "axis": "y", "origin": [3, 2, 3]},
+          "faces": {
+            "north": {"uv": [0, 0, 4, 1], "texture": "#0"},
+            "east": {"uv": [0, 0, 1, 4], "rotation": 90, "texture": "#0"},
+            "south": {"uv": [0, 0, 4, 1], "texture": "#0"},
+            "west": {"uv": [0, 0, 4, 1], "texture": "#0"},
+            "up": {"uv": [0, 0, 4, 4], "texture": "#0"},
+            "down": {"uv": [0, 0, 4, 4], "texture": "#0"}
+          }
+        }
+      ]
+    },
+    "stack_0_chip_4": {
+      "textures": { "0": "villagecraft3essentials:block/oasis_gambling_chips" },
+      "elements": [
+        {
+          "name": "red4",
+          "from": [3, 3, 3],
+          "to": [7, 4, 7],
+          "rotation": {"angle": 22.5, "axis": "y", "origin": [5, 3.5, 5]},
+          "faces": {
+            "north": {"uv": [0, 0, 4, 1], "texture": "#0"},
+            "east": {"uv": [0, 0, 1, 4], "rotation": 90, "texture": "#0"},
+            "south": {"uv": [0, 0, 4, 1], "texture": "#0"},
+            "west": {"uv": [0, 0, 4, 1], "texture": "#0"},
+            "up": {"uv": [0, 0, 4, 4], "texture": "#0"},
+            "down": {"uv": [0, 0, 4, 4], "texture": "#0"}
+          }
+        }
+      ]
+    },
+    "stack_0_chip_5": {
+      "textures": { "0": "villagecraft3essentials:block/oasis_gambling_chips" },
+      "elements": [
+        {
+          "name": "red5",
+          "from": [3, 4, 3],
+          "to": [7, 5, 7],
+          "rotation": {"angle": 0, "axis": "y", "origin": [3, 4, 3]},
+          "faces": {
+            "north": {"uv": [0, 0, 4, 1], "texture": "#0"},
+            "east": {"uv": [0, 0, 1, 4], "rotation": 90, "texture": "#0"},
+            "south": {"uv": [0, 0, 4, 1], "texture": "#0"},
+            "west": {"uv": [0, 0, 4, 1], "texture": "#0"},
+            "up": {"uv": [0, 0, 4, 4], "texture": "#0"},
+            "down": {"uv": [0, 0, 4, 4], "texture": "#0"}
+          }
+        }
+      ]
+    },
+    "stack_0_chip_6": {
+      "textures": { "0": "villagecraft3essentials:block/oasis_gambling_chips" },
+      "elements": [
+        {
+          "name": "red6",
+          "from": [3, 5, 3],
+          "to": [7, 6, 7],
+          "rotation": {"angle": 22.5, "axis": "y", "origin": [5, 5.5, 5]},
+          "faces": {
+            "north": {"uv": [0, 0, 4, 1], "texture": "#0"},
+            "east": {"uv": [0, 0, 1, 4], "rotation": 90, "texture": "#0"},
+            "south": {"uv": [0, 0, 4, 1], "texture": "#0"},
+            "west": {"uv": [0, 0, 4, 1], "texture": "#0"},
+            "up": {"uv": [0, 0, 4, 4], "texture": "#0"},
+            "down": {"uv": [0, 0, 4, 4], "texture": "#0"}
+          }
+        }
+      ]
+    },
+    "stack_0_chip_7": {
+      "textures": { "0": "villagecraft3essentials:block/oasis_gambling_chips" },
+      "elements": [
+        {
+          "name": "red7",
+          "from": [3, 6, 3],
+          "to": [7, 7, 7],
+          "rotation": {"angle": 0, "axis": "y", "origin": [3, 6, 3]},
+          "faces": {
+            "north": {"uv": [0, 0, 4, 1], "texture": "#0"},
+            "east": {"uv": [0, 0, 1, 4], "rotation": 90, "texture": "#0"},
+            "south": {"uv": [0, 0, 4, 1], "texture": "#0"},
+            "west": {"uv": [0, 0, 4, 1], "texture": "#0"},
+            "up": {"uv": [0, 0, 4, 4], "texture": "#0"},
+            "down": {"uv": [0, 0, 4, 4], "texture": "#0"}
+          }
+        }
+      ]
+    },
+    "stack_0_chip_8": {
+      "textures": { "0": "villagecraft3essentials:block/oasis_gambling_chips" },
+      "elements": [
+        {
+          "name": "red8",
+          "from": [3, 7, 3],
+          "to": [7, 8, 7],
+          "rotation": {"angle": 22.5, "axis": "y", "origin": [5, 7.5, 5]},
+          "faces": {
+            "north": {"uv": [0, 0, 4, 1], "texture": "#0"},
+            "east": {"uv": [0, 0, 1, 4], "rotation": 90, "texture": "#0"},
+            "south": {"uv": [0, 0, 4, 1], "texture": "#0"},
+            "west": {"uv": [0, 0, 4, 1], "texture": "#0"},
+            "up": {"uv": [0, 0, 4, 4], "texture": "#0"},
+            "down": {"uv": [0, 0, 4, 4], "texture": "#0"}
+          }
+        }
+      ]
+    },
+    "stack_1_chip_1": {
+      "textures": { "0": "villagecraft3essentials:block/oasis_gambling_chips" },
+      "elements": [
+        {
+          "name": "blue1",
+          "from": [9, 0, 3],
+          "to": [13, 1, 7],
+          "rotation": {"angle": 0, "axis": "y", "origin": [9, 0, 3]},
+          "faces": {
+            "north": {"uv": [4, 0, 8, 1], "texture": "#0"},
+            "east": {"uv": [4, 0, 8, 1], "texture": "#0"},
+            "south": {"uv": [4, 0, 8, 1], "texture": "#0"},
+            "west": {"uv": [4, 0, 8, 1], "texture": "#0"},
+            "up": {"uv": [4, 0, 8, 4], "texture": "#0"},
+            "down": {"uv": [4, 0, 8, 4], "texture": "#0"}
+          }
+        }
+      ]
+    },
+    "stack_1_chip_2": {
+      "textures": { "0": "villagecraft3essentials:block/oasis_gambling_chips" },
+      "elements": [
+        {
+          "name": "blue2",
+          "from": [9, 1, 3],
+          "to": [13, 2, 7],
+          "rotation": {"angle": 22.5, "axis": "y", "origin": [11, 1.5, 5]},
+          "faces": {
+            "north": {"uv": [4, 0, 8, 1], "texture": "#0"},
+            "east": {"uv": [4, 0, 8, 1], "texture": "#0"},
+            "south": {"uv": [4, 0, 8, 1], "texture": "#0"},
+            "west": {"uv": [4, 0, 8, 1], "texture": "#0"},
+            "up": {"uv": [4, 0, 8, 4], "texture": "#0"},
+            "down": {"uv": [4, 0, 8, 4], "texture": "#0"}
+          }
+        }
+      ]
+    },
+    "stack_1_chip_3": {
+      "textures": { "0": "villagecraft3essentials:block/oasis_gambling_chips" },
+      "elements": [
+        {
+          "name": "blue3",
+          "from": [9, 2, 3],
+          "to": [13, 3, 7],
+          "rotation": {"angle": 0, "axis": "y", "origin": [9, 2, 3]},
+          "faces": {
+            "north": {"uv": [4, 0, 8, 1], "texture": "#0"},
+            "east": {"uv": [4, 0, 8, 1], "texture": "#0"},
+            "south": {"uv": [4, 0, 8, 1], "texture": "#0"},
+            "west": {"uv": [4, 0, 8, 1], "texture": "#0"},
+            "up": {"uv": [4, 0, 8, 4], "texture": "#0"},
+            "down": {"uv": [4, 0, 8, 4], "texture": "#0"}
+          }
+        }
+      ]
+    },
+    "stack_1_chip_4": {
+      "textures": { "0": "villagecraft3essentials:block/oasis_gambling_chips" },
+      "elements": [
+        {
+          "name": "blue4",
+          "from": [9, 3, 3],
+          "to": [13, 4, 7],
+          "rotation": {"angle": 22.5, "axis": "y", "origin": [11, 3.5, 5]},
+          "faces": {
+            "north": {"uv": [4, 0, 8, 1], "texture": "#0"},
+            "east": {"uv": [4, 0, 8, 1], "texture": "#0"},
+            "south": {"uv": [4, 0, 8, 1], "texture": "#0"},
+            "west": {"uv": [4, 0, 8, 1], "texture": "#0"},
+            "up": {"uv": [4, 0, 8, 4], "texture": "#0"},
+            "down": {"uv": [4, 0, 8, 4], "texture": "#0"}
+          }
+        }
+      ]
+    },
+    "stack_1_chip_5": {
+      "textures": { "0": "villagecraft3essentials:block/oasis_gambling_chips" },
+      "elements": [
+        {
+          "name": "blue5",
+          "from": [9, 4, 3],
+          "to": [13, 5, 7],
+          "rotation": {"angle": 0, "axis": "y", "origin": [9, 4, 3]},
+          "faces": {
+            "north": {"uv": [4, 0, 8, 1], "texture": "#0"},
+            "east": {"uv": [4, 0, 8, 1], "texture": "#0"},
+            "south": {"uv": [4, 0, 8, 1], "texture": "#0"},
+            "west": {"uv": [4, 0, 8, 1], "texture": "#0"},
+            "up": {"uv": [4, 0, 8, 4], "texture": "#0"},
+            "down": {"uv": [4, 0, 8, 4], "texture": "#0"}
+          }
+        }
+      ]
+    },
+    "stack_1_chip_6": {
+      "textures": { "0": "villagecraft3essentials:block/oasis_gambling_chips" },
+      "elements": [
+        {
+          "name": "blue6",
+          "from": [9, 5, 3],
+          "to": [13, 6, 7],
+          "rotation": {"angle": 22.5, "axis": "y", "origin": [11, 5.5, 5]},
+          "faces": {
+            "north": {"uv": [4, 0, 8, 1], "texture": "#0"},
+            "east": {"uv": [4, 0, 8, 1], "texture": "#0"},
+            "south": {"uv": [4, 0, 8, 1], "texture": "#0"},
+            "west": {"uv": [4, 0, 8, 1], "texture": "#0"},
+            "up": {"uv": [4, 0, 8, 4], "texture": "#0"},
+            "down": {"uv": [4, 0, 8, 4], "texture": "#0"}
+          }
+        }
+      ]
+    },
+    "stack_1_chip_7": {
+      "textures": { "0": "villagecraft3essentials:block/oasis_gambling_chips" },
+      "elements": [
+        {
+          "name": "blue7",
+          "from": [9, 6, 3],
+          "to": [13, 7, 7],
+          "rotation": {"angle": 0, "axis": "y", "origin": [9, 6, 3]},
+          "faces": {
+            "north": {"uv": [4, 0, 8, 1], "texture": "#0"},
+            "east": {"uv": [4, 0, 8, 1], "texture": "#0"},
+            "south": {"uv": [4, 0, 8, 1], "texture": "#0"},
+            "west": {"uv": [4, 0, 8, 1], "texture": "#0"},
+            "up": {"uv": [4, 0, 8, 4], "texture": "#0"},
+            "down": {"uv": [4, 0, 8, 4], "texture": "#0"}
+          }
+        }
+      ]
+    },
+    "stack_1_chip_8": {
+      "textures": { "0": "villagecraft3essentials:block/oasis_gambling_chips" },
+      "elements": [
+        {
+          "name": "blue8",
+          "from": [9, 7, 3],
+          "to": [13, 8, 7],
+          "rotation": {"angle": 22.5, "axis": "y", "origin": [11, 7.5, 5]},
+          "faces": {
+            "north": {"uv": [4, 0, 8, 1], "texture": "#0"},
+            "east": {"uv": [4, 0, 8, 1], "texture": "#0"},
+            "south": {"uv": [4, 0, 8, 1], "texture": "#0"},
+            "west": {"uv": [4, 0, 8, 1], "texture": "#0"},
+            "up": {"uv": [4, 0, 8, 4], "texture": "#0"},
+            "down": {"uv": [4, 0, 8, 4], "texture": "#0"}
+          }
+        }
+      ]
+    },
+    "stack_2_chip_1": {
+      "textures": { "0": "villagecraft3essentials:block/oasis_gambling_chips" },
+      "elements": [
+        {
+          "name": "black1",
+          "from": [3, 0, 9],
+          "to": [7, 1, 13],
+          "rotation": {"angle": 0, "axis": "y", "origin": [3, 0, 9]},
+          "faces": {
+            "north": {"uv": [0, 4, 4, 5], "texture": "#0"},
+            "east": {"uv": [0, 4, 4, 5], "texture": "#0"},
+            "south": {"uv": [0, 4, 4, 5], "texture": "#0"},
+            "west": {"uv": [0, 4, 4, 5], "texture": "#0"},
+            "up": {"uv": [0, 4, 4, 8], "texture": "#0"},
+            "down": {"uv": [0, 4, 4, 8], "texture": "#0"}
+          }
+        }
+      ]
+    },
+    "stack_2_chip_2": {
+      "textures": { "0": "villagecraft3essentials:block/oasis_gambling_chips" },
+      "elements": [
+        {
+          "name": "black2",
+          "from": [3, 1, 9],
+          "to": [7, 2, 13],
+          "rotation": {"angle": 22.5, "axis": "y", "origin": [5, 1.5, 11]},
+          "faces": {
+            "north": {"uv": [0, 4, 4, 5], "texture": "#0"},
+            "east": {"uv": [0, 4, 4, 5], "texture": "#0"},
+            "south": {"uv": [0, 4, 4, 5], "texture": "#0"},
+            "west": {"uv": [0, 4, 4, 5], "texture": "#0"},
+            "up": {"uv": [0, 4, 4, 8], "texture": "#0"},
+            "down": {"uv": [0, 4, 4, 8], "texture": "#0"}
+          }
+        }
+      ]
+    },
+    "stack_2_chip_3": {
+      "textures": { "0": "villagecraft3essentials:block/oasis_gambling_chips" },
+      "elements": [
+        {
+          "name": "black3",
+          "from": [3, 2, 9],
+          "to": [7, 3, 13],
+          "rotation": {"angle": 0, "axis": "y", "origin": [3, 2, 9]},
+          "faces": {
+            "north": {"uv": [0, 4, 4, 5], "texture": "#0"},
+            "east": {"uv": [0, 4, 4, 5], "texture": "#0"},
+            "south": {"uv": [0, 4, 4, 5], "texture": "#0"},
+            "west": {"uv": [0, 4, 4, 5], "texture": "#0"},
+            "up": {"uv": [0, 4, 4, 8], "texture": "#0"},
+            "down": {"uv": [0, 4, 4, 8], "texture": "#0"}
+          }
+        }
+      ]
+    },
+    "stack_2_chip_4": {
+      "textures": { "0": "villagecraft3essentials:block/oasis_gambling_chips" },
+      "elements": [
+        {
+          "name": "black4",
+          "from": [3, 3, 9],
+          "to": [7, 4, 13],
+          "rotation": {"angle": 22.5, "axis": "y", "origin": [5, 3.5, 11]},
+          "faces": {
+            "north": {"uv": [0, 4, 4, 5], "texture": "#0"},
+            "east": {"uv": [0, 4, 4, 5], "texture": "#0"},
+            "south": {"uv": [0, 4, 4, 5], "texture": "#0"},
+            "west": {"uv": [0, 4, 4, 5], "texture": "#0"},
+            "up": {"uv": [0, 4, 4, 8], "texture": "#0"},
+            "down": {"uv": [0, 4, 4, 8], "texture": "#0"}
+          }
+        }
+      ]
+    },
+    "stack_2_chip_5": {
+      "textures": { "0": "villagecraft3essentials:block/oasis_gambling_chips" },
+      "elements": [
+        {
+          "name": "black5",
+          "from": [3, 4, 9],
+          "to": [7, 5, 13],
+          "rotation": {"angle": 0, "axis": "y", "origin": [3, 4, 9]},
+          "faces": {
+            "north": {"uv": [0, 4, 4, 5], "texture": "#0"},
+            "east": {"uv": [0, 4, 4, 5], "texture": "#0"},
+            "south": {"uv": [0, 4, 4, 5], "texture": "#0"},
+            "west": {"uv": [0, 4, 4, 5], "texture": "#0"},
+            "up": {"uv": [0, 4, 4, 8], "texture": "#0"},
+            "down": {"uv": [0, 4, 4, 8], "texture": "#0"}
+          }
+        }
+      ]
+    },
+    "stack_2_chip_6": {
+      "textures": { "0": "villagecraft3essentials:block/oasis_gambling_chips" },
+      "elements": [
+        {
+          "name": "black6",
+          "from": [3, 5, 9],
+          "to": [7, 6, 13],
+          "rotation": {"angle": 22.5, "axis": "y", "origin": [5, 5.5, 11]},
+          "faces": {
+            "north": {"uv": [0, 4, 4, 5], "texture": "#0"},
+            "east": {"uv": [0, 4, 4, 5], "texture": "#0"},
+            "south": {"uv": [0, 4, 4, 5], "texture": "#0"},
+            "west": {"uv": [0, 4, 4, 5], "texture": "#0"},
+            "up": {"uv": [0, 4, 4, 8], "texture": "#0"},
+            "down": {"uv": [0, 4, 4, 8], "texture": "#0"}
+          }
+        }
+      ]
+    },
+    "stack_2_chip_7": {
+      "textures": { "0": "villagecraft3essentials:block/oasis_gambling_chips" },
+      "elements": [
+        {
+          "name": "black7",
+          "from": [3, 6, 9],
+          "to": [7, 7, 13],
+          "rotation": {"angle": 0, "axis": "y", "origin": [3, 6, 9]},
+          "faces": {
+            "north": {"uv": [0, 4, 4, 5], "texture": "#0"},
+            "east": {"uv": [0, 4, 4, 5], "texture": "#0"},
+            "south": {"uv": [0, 4, 4, 5], "texture": "#0"},
+            "west": {"uv": [0, 4, 4, 5], "texture": "#0"},
+            "up": {"uv": [0, 4, 4, 8], "texture": "#0"},
+            "down": {"uv": [0, 4, 4, 8], "texture": "#0"}
+          }
+        }
+      ]
+    },
+    "stack_2_chip_8": {
+      "textures": { "0": "villagecraft3essentials:block/oasis_gambling_chips" },
+      "elements": [
+        {
+          "name": "black8",
+          "from": [3, 7, 9],
+          "to": [7, 8, 13],
+          "rotation": {"angle": 22.5, "axis": "y", "origin": [5, 7.5, 11]},
+          "faces": {
+            "north": {"uv": [0, 4, 4, 5], "texture": "#0"},
+            "east": {"uv": [0, 4, 4, 5], "texture": "#0"},
+            "south": {"uv": [0, 4, 4, 5], "texture": "#0"},
+            "west": {"uv": [0, 4, 4, 5], "texture": "#0"},
+            "up": {"uv": [0, 4, 4, 8], "texture": "#0"},
+            "down": {"uv": [0, 4, 4, 8], "texture": "#0"}
+          }
+        }
+      ]
+    },
+    "stack_3_chip_1": {
+      "textures": { "0": "villagecraft3essentials:block/oasis_gambling_chips" },
+      "elements": [
+        {
+          "name": "green1",
+          "from": [9, 0, 9],
+          "to": [13, 1, 13],
+          "rotation": {"angle": 0, "axis": "y", "origin": [9, 0, 9]},
+          "faces": {
+            "north": {"uv": [4, 4, 8, 5], "texture": "#0"},
+            "east": {"uv": [4, 4, 8, 5], "texture": "#0"},
+            "south": {"uv": [4, 4, 8, 5], "texture": "#0"},
+            "west": {"uv": [4, 4, 8, 5], "texture": "#0"},
+            "up": {"uv": [4, 4, 8, 8], "texture": "#0"},
+            "down": {"uv": [4, 4, 8, 8], "texture": "#0"}
+          }
+        }
+      ]
+    },
+    "stack_3_chip_2": {
+      "textures": { "0": "villagecraft3essentials:block/oasis_gambling_chips" },
+      "elements": [
+        {
+          "name": "green2",
+          "from": [9, 1, 9],
+          "to": [13, 2, 13],
+          "rotation": {"angle": 22.5, "axis": "y", "origin": [11, 1.5, 11]},
+          "faces": {
+            "north": {"uv": [4, 4, 8, 5], "texture": "#0"},
+            "east": {"uv": [4, 4, 8, 5], "texture": "#0"},
+            "south": {"uv": [4, 4, 8, 5], "texture": "#0"},
+            "west": {"uv": [4, 4, 8, 5], "texture": "#0"},
+            "up": {"uv": [4, 4, 8, 8], "texture": "#0"},
+            "down": {"uv": [4, 4, 8, 8], "texture": "#0"}
+          }
+        }
+      ]
+    },
+    "stack_3_chip_3": {
+      "textures": { "0": "villagecraft3essentials:block/oasis_gambling_chips" },
+      "elements": [
+        {
+          "name": "green3",
+          "from": [9, 2, 9],
+          "to": [13, 3, 13],
+          "rotation": {"angle": 0, "axis": "y", "origin": [9, 2, 9]},
+          "faces": {
+            "north": {"uv": [4, 4, 8, 5], "texture": "#0"},
+            "east": {"uv": [4, 4, 8, 5], "texture": "#0"},
+            "south": {"uv": [4, 4, 8, 5], "texture": "#0"},
+            "west": {"uv": [4, 4, 8, 5], "texture": "#0"},
+            "up": {"uv": [4, 4, 8, 8], "texture": "#0"},
+            "down": {"uv": [4, 4, 8, 8], "texture": "#0"}
+          }
+        }
+      ]
+    },
+    "stack_3_chip_4": {
+      "textures": { "0": "villagecraft3essentials:block/oasis_gambling_chips" },
+      "elements": [
+        {
+          "name": "green4",
+          "from": [9, 3, 9],
+          "to": [13, 4, 13],
+          "rotation": {"angle": 22.5, "axis": "y", "origin": [11, 3.5, 11]},
+          "faces": {
+            "north": {"uv": [4, 4, 8, 5], "texture": "#0"},
+            "east": {"uv": [4, 4, 8, 5], "texture": "#0"},
+            "south": {"uv": [4, 4, 8, 5], "texture": "#0"},
+            "west": {"uv": [4, 4, 8, 5], "texture": "#0"},
+            "up": {"uv": [4, 4, 8, 8], "texture": "#0"},
+            "down": {"uv": [4, 4, 8, 8], "texture": "#0"}
+          }
+        }
+      ]
+    },
+    "stack_3_chip_5": {
+      "textures": { "0": "villagecraft3essentials:block/oasis_gambling_chips" },
+      "elements": [
+        {
+          "name": "green5",
+          "from": [9, 4, 9],
+          "to": [13, 5, 13],
+          "rotation": {"angle": 0, "axis": "y", "origin": [9, 4, 9]},
+          "faces": {
+            "north": {"uv": [4, 4, 8, 5], "texture": "#0"},
+            "east": {"uv": [4, 4, 8, 5], "texture": "#0"},
+            "south": {"uv": [4, 4, 8, 5], "texture": "#0"},
+            "west": {"uv": [4, 4, 8, 5], "texture": "#0"},
+            "up": {"uv": [4, 4, 8, 8], "texture": "#0"},
+            "down": {"uv": [4, 4, 8, 8], "texture": "#0"}
+          }
+        }
+      ]
+    },
+    "stack_3_chip_6": {
+      "textures": { "0": "villagecraft3essentials:block/oasis_gambling_chips" },
+      "elements": [
+        {
+          "name": "green6",
+          "from": [9, 5, 9],
+          "to": [13, 6, 13],
+          "rotation": {"angle": 22.5, "axis": "y", "origin": [11, 5.5, 11]},
+          "faces": {
+            "north": {"uv": [4, 4, 8, 5], "texture": "#0"},
+            "east": {"uv": [4, 4, 8, 5], "texture": "#0"},
+            "south": {"uv": [4, 4, 8, 5], "texture": "#0"},
+            "west": {"uv": [4, 4, 8, 5], "texture": "#0"},
+            "up": {"uv": [4, 4, 8, 8], "texture": "#0"},
+            "down": {"uv": [4, 4, 8, 8], "texture": "#0"}
+          }
+        }
+      ]
+    },
+    "stack_3_chip_7": {
+      "textures": { "0": "villagecraft3essentials:block/oasis_gambling_chips" },
+      "elements": [
+        {
+          "name": "green7",
+          "from": [9, 6, 9],
+          "to": [13, 7, 13],
+          "rotation": {"angle": 0, "axis": "y", "origin": [9, 6, 9]},
+          "faces": {
+            "north": {"uv": [4, 4, 8, 5], "texture": "#0"},
+            "east": {"uv": [4, 4, 8, 5], "texture": "#0"},
+            "south": {"uv": [4, 4, 8, 5], "texture": "#0"},
+            "west": {"uv": [4, 4, 8, 5], "texture": "#0"},
+            "up": {"uv": [4, 4, 8, 8], "texture": "#0"},
+            "down": {"uv": [4, 4, 8, 8], "texture": "#0"}
+          }
+        }
+      ]
+    },
+    "stack_3_chip_8": {
+      "textures": { "0": "villagecraft3essentials:block/oasis_gambling_chips" },
+      "elements": [
+        {
+          "name": "green8",
+          "from": [9, 7, 9],
+          "to": [13, 8, 13],
+          "rotation": {"angle": 22.5, "axis": "y", "origin": [11, 7.5, 11]},
+          "faces": {
+            "north": {"uv": [4, 4, 8, 5], "texture": "#0"},
+            "east": {"uv": [4, 4, 8, 5], "texture": "#0"},
+            "south": {"uv": [4, 4, 8, 5], "texture": "#0"},
+            "west": {"uv": [4, 4, 8, 5], "texture": "#0"},
+            "up": {"uv": [4, 4, 8, 8], "texture": "#0"},
+            "down": {"uv": [4, 4, 8, 8], "texture": "#0"}
+          }
+        }
+      ]
+    }
+  }
+}

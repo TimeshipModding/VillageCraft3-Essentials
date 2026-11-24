@@ -312,6 +312,10 @@ public class EssentialsTab {
                 pOutput.accept(OASIS_DEED_2);
                 pOutput.accept(OASIS_DEED_3);
                 pOutput.accept(OASIS_DEED_4);
+                pOutput.accept(OASIS_GAMBLING_CHIP_1);
+                pOutput.accept(OASIS_GAMBLING_CHIP_2);
+                pOutput.accept(OASIS_GAMBLING_CHIP_3);
+                pOutput.accept(OASIS_GAMBLING_CHIP_4);
                 pOutput.accept(LONDON_HAT_1);
                 pOutput.accept(LONDON_HAT_2);
             }).build());
