@@ -120,15 +120,15 @@ dependencies {
         exclude group: "com.flowpowered"
     }
 
+    // Aquaculture 2 Dependency
+    compileOnly("com.teammetallurgy.aquaculture:aquaculture2_${minecraft_version}:${minecraft_version}-${aquaculture_version}")
+    datagenMods("com.teammetallurgy.aquaculture:aquaculture2_${minecraft_version}:${minecraft_version}-${aquaculture_version}")
+
     // Archers (RPG Series) Dependency
     compileOnly("curse.maven:archers-932359:8549422")
 
     // Architectury API
     datagenMods("curse.maven:architectury-api-419699:9608861")
-
-    // Aquaculture 2 Dependency
-    compileOnly("com.teammetallurgy.aquaculture:aquaculture2_${minecraft_version}:${minecraft_version}-${aquaculture_version}")
-    datagenMods("com.teammetallurgy.aquaculture:aquaculture2_${minecraft_version}:${minecraft_version}-${aquaculture_version}")
 
     // BlueMap Dependency
     compileOnly("de.bluecolored:bluemap-api:${project.bluemap_api_version}")
@@ -138,8 +138,8 @@ dependencies {
     compileOnly("curse.maven:create-brassworks-missions-1348982:8561618")
 
     // Create Dependencies
-    compileOnly("com.simibubi.create:create-${minecraft_version}:${create_version}:slim") { transitive = false }
-    datagenMods("com.simibubi.create:create-${minecraft_version}:${create_version}:slim") { transitive = false }
+    compileOnly("com.simibubi.create:create-${minecraft_version}:${create_version}:slim") {transitive = false}
+    datagenMods("com.simibubi.create:create-${minecraft_version}:${create_version}:slim") {transitive = false}
 
     // Create Goggles Dependency
     compileOnly("curse.maven:create-goggles-377835:6776826")

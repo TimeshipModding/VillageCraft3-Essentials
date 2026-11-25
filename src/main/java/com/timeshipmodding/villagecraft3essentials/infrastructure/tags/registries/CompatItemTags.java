@@ -6,8 +6,9 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 
 public class CompatItemTags {
-    public static TagKey<Item> ARCHERS_SPEARS = ItemTags.create(ResourceLocation.fromNamespaceAndPath("archers", "spears"));
+    public static TagKey<Item> AQUACULTURE_HOOK = ItemTags.create(ResourceLocation.fromNamespaceAndPath("aquaculture", "hook"));
     public static TagKey<Item> AQUACULTURE_HOOK_TOOLTIP = ItemTags.create(ResourceLocation.fromNamespaceAndPath("aquaculture", "tooltip"));
+    public static TagKey<Item> ARCHERS_SPEARS = ItemTags.create(ResourceLocation.fromNamespaceAndPath("archers", "spears"));
     public static TagKey<Item> CREATE_PRESSURIZED_AIR_SOURCES = ItemTags.create(ResourceLocation.fromNamespaceAndPath("create", "presurized_air_sources"));
     public static TagKey<Item> CREATE_GOGGLES_GOGGLE = ItemTags.create(ResourceLocation.fromNamespaceAndPath("creategoggles", "goggle"));
     public static TagKey<Item> FARMERSDELIGHT_KNIVES = ItemTags.create(ResourceLocation.fromNamespaceAndPath("farmersdelight", "tools/knives"));

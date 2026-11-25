@@ -447,19 +447,24 @@ public class DataItemTags extends ItemTagsProvider {
         tag(AccessoriesTags.NECKLACE_TAG)
                 .add(VILLAGECRAFTCITY_NECKLACE_1.get());
 
+        // Aquaculture 2 Tags
+        tag(AQUACULTURE_HOOK)
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "jade_hook"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "amber_hook"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "silicon_hook"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "ruby_hook"));
+        tag(AQUACULTURE_HOOK_TOOLTIP)
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "jade_hook"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "amber_hook"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "silicon_hook"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "ruby_hook"));
+
         // Archers Tags
         tag(ARCHERS_SPEARS)
                 .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "jade_spear"))
                 .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "amber_spear"))
                 .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "silicon_spear"))
                 .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "ruby_spear"));
-
-        // Aquaculture 2 Tags
-        tag(AQUACULTURE_HOOK_TOOLTIP)
-                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "jade_hook"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "amber_hook"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "silicon_hook"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(VillageCraft3Essentials.MODID, "ruby_hook"));
 
         // Create Tags
         tag(CREATE_PRESSURIZED_AIR_SOURCES)

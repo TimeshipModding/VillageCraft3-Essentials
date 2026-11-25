@@ -146,7 +146,7 @@ public class EssentialsTab {
                 pOutput.accept(SILICON_SWORD);
 
                 if (ModList.get().isLoaded("vanillabackport")) {
-                    pOutput.accept(SILICON_NAUTILUS_ARMOR.get());
+                    pOutput.accept(SILICON_BACKPORT_SPEAR.get());
                 }
 
                 if (ModList.get().isLoaded("archers")) {
@@ -264,7 +264,7 @@ public class EssentialsTab {
                 pOutput.accept(SILICON_HORSE_ARMOR);
 
                 if (ModList.get().isLoaded("vanillabackport")) {
-                    pOutput.accept(SILICON_BACKPORT_SPEAR.get());
+                    pOutput.accept(SILICON_NAUTILUS_ARMOR.get());
                 }
 
                 pOutput.accept(RUBY_HELMET);

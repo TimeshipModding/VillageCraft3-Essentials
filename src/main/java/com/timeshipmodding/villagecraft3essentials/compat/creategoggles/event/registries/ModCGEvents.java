@@ -9,6 +9,7 @@ import com.simibubi.create.foundation.item.TooltipModifier;
 import dev.engine_room.flywheel.lib.visualization.SimpleBlockEntityVisualizer;
 import net.createmod.catnip.lang.FontHelper;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 
@@ -16,10 +17,11 @@ import static com.timeshipmodding.villagecraft3essentials.compat.creategoggles.r
 
 public class ModCGEvents {
     public static void registerEvents(IEventBus modEventBus) {
-        modEventBus.addListener(ModCGEvents::registerEntityRenderers);
+        modEventBus.register(ModCGEvents.class);
         modEventBus.addListener(ModCGEvents::onClientSetup);
     }
 
+    @SubscribeEvent
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerBlockEntityRenderer(JADE_BACKTANK_BLOCKENTITY.get(), BacktankRenderer::new);
         event.registerBlockEntityRenderer(AMBER_BACKTANK_BLOCKENTITY.get(), BacktankRenderer::new);

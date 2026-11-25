@@ -54,12 +54,12 @@ public class VillageCraft3Essentials {
         modContainer.registerConfig(ModConfig.Type.SERVER, ServerConfig.SPEC);
 
         // Register compat registries and events
-        if (ModList.get().isLoaded("archers")) {
-            ModArchersEvents.registerEvents();
-        }
-
         if (ModList.get().isLoaded("aquaculture")) {
             ModAquaRegistry.register(modEventBus);
+        }
+
+        if (ModList.get().isLoaded("archers")) {
+            ModArchersEvents.registerEvents(modEventBus);
         }
 
         if (ModList.get().isLoaded("bluemap")) {

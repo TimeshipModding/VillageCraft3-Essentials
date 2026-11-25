@@ -5,8 +5,10 @@ import net.archers.ArchersMod;
 import net.archers.item.Group;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModList;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.registries.RegisterEvent;
 import net.spell_engine.rpg_series.item.Equipment;
@@ -16,8 +18,8 @@ import net.spell_engine.rpg_series.item.Weapons;
 import java.util.ArrayList;
 
 public class ModArchersEvents {
-    public static void registerEvents() {
-        NeoForge.EVENT_BUS.register(ModArchersEvents.class);
+    public static void registerEvents(IEventBus modEventBus) {
+        modEventBus.register(ModArchersEvents.class);
     }
 
     @SubscribeEvent

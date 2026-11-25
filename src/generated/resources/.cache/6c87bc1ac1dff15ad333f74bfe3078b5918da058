@@ -1,5 +1,5 @@
-// 1.21.1	2026-11-21T23:09:59.366318	Global Loot Modifiers : villagecraft3essentials
-bc357a0adca6c512729b3e9caa4a46c085b51af9 data/neoforge/loot_modifiers/global_loot_modifiers.json
+// 1.21.1	2026-11-24T17:33:16.4511593	Global Loot Modifiers : villagecraft3essentials
+f6463cbb00cc95d28b815ba7fb88455f71f6b143 data/neoforge/loot_modifiers/global_loot_modifiers.json
 fce9d64c76156fe71351c329cab6b3581fb31e27 data/villagecraft3essentials/loot_modifiers/replace_amber_ore_item_drop.json
 900a5124d0aeb821b3b34228b328c7ed8b1f241f data/villagecraft3essentials/loot_modifiers/replace_deepslate_amber_ore_item_drop.json
 f199b1d57d772d7d5b736bba03343c7ad88858b0 data/villagecraft3essentials/loot_modifiers/replace_deepslate_diamond_ore_item_drop.json

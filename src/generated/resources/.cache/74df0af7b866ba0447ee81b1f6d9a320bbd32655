@@ -1,6 +1,7 @@
-// 1.21.1	2026-11-24T13:00:39.5189463	Tags for minecraft:item mod id villagecraft3essentials
+// 1.21.1	2026-11-24T17:33:16.4641615	Tags for minecraft:item mod id villagecraft3essentials
 10f2fb53536b04a376ab0b8dd363f9586b3be9f2 data/accessories/tags/item/hat.json
 f6170b8b1bb00d8fc6096fbdd721c88c0cd7cd02 data/accessories/tags/item/necklace.json
+9f372a52e8ea587fc32e67c84cfb1df1f00910d7 data/aquaculture/tags/item/hook.json
 9f372a52e8ea587fc32e67c84cfb1df1f00910d7 data/aquaculture/tags/item/tooltip.json
 a5634e20df1a1538cb7062b67656412141cc2247 data/archers/tags/item/spears.json
 259cd722e1d7e4ebaf520e5f22409ad9b2a655a2 data/creategoggles/tags/item/goggle.json
